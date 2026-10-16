@@ -166,6 +166,7 @@
       font-size: 15px;
       line-height: 1.8;
       word-break: break-word;
+      white-space: pre-line;
     }
 
     .file-meta strong {
@@ -298,9 +299,9 @@
         <h3 class="section-title">מדפסות יעד</h3>
         <div class="target-grid">
           <label class="option"><input type="checkbox" value="u1" /> <span>Snapmaker U1</span></label>
-          <label class="option"><input type="checkbox" value="c5" /> <span>Flashforge Creator 5</span></label>
-          <label class="option"><input type="checkbox" value="cc2" /> <span>ELEGOO CC2</span></label>
-          <label class="option"><input type="checkbox" value="qidi" /> <span>QIDI Plus5</span></label>
+          <label class="option"><input type="checkbox" value="c5" disabled /> <span>Flashforge Creator 5 — בבדיקת תאימות</span></label>
+          <label class="option"><input type="checkbox" value="cc2" disabled /> <span>ELEGOO CC2 — בבדיקת תאימות</span></label>
+          <label class="option"><input type="checkbox" value="qidi" disabled /> <span>QIDI Plus5 — בבדיקת תאימות</span></label>
         </div>
       </section>
 
@@ -318,8 +319,9 @@
       </section>
 
       <div class="hint">
-        בשלב זה ההמרה היא MVP טכני: נוצר עותק 3MF חדש עם שם יעד מתאים ליד קובץ המקור.
-        בשלב הבא נחבר parsing אמיתי של 3MF, ניקוי נתוני חומרה והזרקת פרופילי יעד.
+        ההמרה ל-Snapmaker U1 מבוססת על מנוע מקומי, ומייצרת פרויקט חדש ולא עותק זהה.
+        לפני הדפסה חובה לפתוח את הפלט ב-Snapmaker Orca, לבדוק את ההגדרות ולבצע Slicing מחדש.
+        עבור C5, CC2 ו-QIDI לא נוצרים פלטים עד שתושלם בדיקת תאימות.
       </div>
     </section>
   </main>
@@ -336,15 +338,11 @@
 
     function renderFileMeta(file) {
       if (!file) {
-        fileMeta.innerHTML = 'עדיין לא נבחר קובץ.';
+        fileMeta.textContent = 'עדיין לא נבחר קובץ.';
         return;
       }
 
-      fileMeta.innerHTML = `
-        <strong>שם:</strong> ${file.name}<br>
-        <strong>מיקום:</strong> ${file.folder}<br>
-        <strong>גודל:</strong> ${file.sizeLabel}
-      `;
+      fileMeta.textContent = ['שם: ' + file.name, 'מיקום: ' + file.folder, 'גודל: ' + file.sizeLabel].join('\n');
     }
 
     function setStatus(items) {
@@ -365,6 +363,7 @@
 
     async function handlePickedFile(file) {
       selectedFile = file;
+      openFolderBtn.disabled = true;
       renderFileMeta(file);
       setStatus([
         { type: 'success', text: `נבחר קובץ: ${file.name}` },
@@ -395,7 +394,12 @@
       if (!files || !files.length) return;
 
       const dropped = files[0];
-      const result = await window.bridgeApi.inspectDroppedFile(dropped.path);
+      const droppedPath = window.bridgeApi.getDroppedFilePath(dropped);
+      if (!droppedPath) {
+        setStatus([{ type: 'error', text: 'לא ניתן לקבל את נתיב הקובץ שנגרר.' }]);
+        return;
+      }
+      const result = await window.bridgeApi.inspectDroppedFile(droppedPath);
 
       if (!result.ok) {
         setStatus([{ type: 'error', text: result.error }]);
@@ -432,14 +436,15 @@
           return;
         }
 
-        const items = result.results.map((entry) => ({
-          type: 'success',
-          text: `נוצר: ${entry.outputName}`
-        }));
-
+        const items = result.results.flatMap((entry) => [
+          { type: 'success', text: `נוצר פרויקט U1: ${entry.outputName}` },
+          ...((entry.report && entry.report.warnings) || []).map((warning) => ({
+            type: 'warning', text: warning
+          }))
+        ]);
         items.unshift({
           type: 'success',
-          text: `ההמרה הסתיימה בהצלחה בתיקייה: ${result.folder}`
+          text: `המרה מקומית הושלמה בתיקייה: ${result.folder}`
         });
 
         setStatus(items);

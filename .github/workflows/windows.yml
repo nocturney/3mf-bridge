@@ -1,0 +1,63 @@
+name: Windows portable beta
+
+on:
+  push:
+    branches: [feature/real-3mf-engine]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout with pinned conversion engine
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: engine/go.mod
+          cache: false
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Test Go converter and build executable
+        shell: pwsh
+        run: ./scripts/build-engine.ps1
+
+      - name: Install Electron packaging dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Test Electron IPC integration
+        run: npm test
+
+      - name: Create Windows portable app
+        run: npm run package:win
+
+      - name: Validate packaged native engine and make zip
+        shell: pwsh
+        run: |
+          $folder = Get-ChildItem -Path dist -Directory | Select-Object -First 1
+          if (-not $folder) { throw "No packaged application found" }
+          if (-not (Test-Path (Join-Path $folder.FullName 'resources/bin/bridge-core.exe'))) {
+            throw "Native engine is missing from packaged app"
+          }
+          Compress-Archive -Path (Join-Path $folder.FullName '*') -DestinationPath 'dist/3MF-Bridge-Windows-portable.zip' -CompressionLevel Optimal -Force
+
+      - name: Publish Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3mf-bridge-windows-portable
+          path: dist/3MF-Bridge-Windows-portable.zip
+          if-no-files-found: error
+          retention-days: 14

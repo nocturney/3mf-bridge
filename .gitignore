@@ -1,4 +1,7 @@
 node_modules/
 dist/
 out/
+bin/
 *.log
+*.tmp
+tests/fixtures/U1-*.3mf
