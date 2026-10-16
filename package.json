@@ -1,0 +1,21 @@
+{
+  "name": "3mf-bridge",
+  "version": "1.0.0",
+  "description": "Small desktop bridge for converting Bambu 3MF projects to target printer profiles",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "3mf",
+    "electron",
+    "bambu",
+    "converter"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^44.8.0"
+  }
+}
