@@ -39,12 +39,10 @@ func Convert(source, destination, target string) (map[string]any, error) {
 // A missing or mismatched installed profile fails closed.
 func ConvertWithProfile(source, destination, target, profileFile string) (map[string]any, error) {
 	target = strings.ToLower(target)
-	if target != "u1" && targetModels[target] == "" {
+	if targetModels[target] == "" {
 		return nil, fail("TARGET_NOT_VALIDATED", "unknown target %q", target)
 	}
-	if target != "u1" && profileFile == "" {
-		return nil, fail("TARGET_PROFILE_REQUIRED", "installed target slicer profile is required for %s", target)
-	}
+
 	src, err := filepath.Abs(source)
 	if err != nil {
 		return nil, fail("SOURCE_INVALID", "%v", err)
@@ -63,6 +61,17 @@ func ConvertWithProfile(source, destination, target, profileFile string) (map[st
 	if err != nil {
 		return nil, fail("SOURCE_INVALID", "%v", err)
 	}
+	sourceNozzle, err := detectSourceNozzle(src)
+	if err != nil {
+		return nil, fail("SOURCE_NOZZLE_INVALID", "%v", err)
+	}
+	targetNozzle, err := targetNozzleForSource(target, sourceNozzle.Nozzle)
+	if err != nil {
+		return nil, fail("TARGET_NOZZLE_UNAVAILABLE", "%v", err)
+	}
+	if (target != "u1" || targetNozzle != "0.4") && profileFile == "" {
+		return nil, fail("TARGET_PROFILE_REQUIRED", "installed %s %smm slicer nozzle profile is required", target, targetNozzle)
+	}
 	insp, err := converter.Inspect(src)
 	if err != nil {
 		return nil, fail("SOURCE_INVALID", "cannot read source filament assignments: %v", err)
@@ -75,12 +84,17 @@ func ConvertWithProfile(source, destination, target, profileFile string) (map[st
 	}
 	var base *printer.Profile
 	var bundle *targetBundle
-	if target == "u1" {
+	if target == "u1" && targetNozzle == "0.4" {
+		// Keep the already field-validated 0.4mm U1 engine behavior unchanged.
 		base = printer.Builtin("snapmaker-u1")
 	} else {
 		bundle, err = loadTargetBundle(profileFile, target)
 		if err != nil {
 			return nil, fail("TARGET_PROFILE_INVALID", "target %s installed slicer profile: %v", target, err)
+		}
+		if bundle.Nozzle != targetNozzle {
+			return nil, fail("TARGET_NOZZLE_MISMATCH",
+				"requested %s nozzle %s mm but profile bundle is %s mm", target, targetNozzle, bundle.Nozzle)
 		}
 		if err = bindNativeFilamentSettings(bundle, insp.Filaments); err != nil {
 			return nil, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", target, err)
@@ -167,6 +181,11 @@ func ConvertWithProfile(source, destination, target, profileFile string) (map[st
 		"target":                      target,
 		"output":                      dst,
 		"engine":                      "bl2std",
+		"source_nozzle":               sourceNozzle.Nozzle,
+		"source_nozzle_source":        sourceNozzle.Source,
+		"source_nozzle_assumed":       sourceNozzle.Assumed,
+		"target_nozzle":               targetNozzle,
+		"nozzle_remapped":             sourceNozzle.Nozzle != targetNozzle,
 		"source_filament_slots":       len(insp.Filaments),
 		"geometry_vertices":           after.vertices,
 		"geometry_triangles":          after.triangles,

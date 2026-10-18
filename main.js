@@ -119,7 +119,26 @@ function parseEngineReply(stdout) {
   }
 }
 
-async function convertWithVerifiedEngine(filePath, outputPath, target) {
+async function inspectSourceNozzle(filePath) {
+  const executable = app.isPackaged
+    ? path.join(process.resourcesPath, 'bin', 'bridge-core.exe')
+    : path.join(__dirname, 'bin', 'bridge-core.exe');
+  try {
+    const { stdout } = await runExecutable(executable, [
+      '--inspect-nozzle', '--source', filePath
+    ], { windowsHide: true, timeout: 30000, maxBuffer: 256 * 1024 });
+    const parsed = parseEngineReply(stdout);
+    return parsed && parsed.ok ? parsed
+      : { ok: false, code: 'SOURCE_NOZZLE_INVALID', error: 'לא זוהה קוטר הדיזה במקור.' };
+  } catch (err) {
+    return parseEngineReply(err.stdout) || {
+      ok: false, code: 'SOURCE_NOZZLE_INVALID',
+      error: err.message || 'בדיקת קוטר הדיזה במקור נכשלה.'
+    };
+  }
+}
+
+async function convertWithVerifiedEngine(filePath, outputPath, target, sourceNozzle = '0.4') {
   const executable = app.isPackaged
     ? path.join(process.resourcesPath, 'bin', 'bridge-core.exe')
     : path.join(__dirname, 'bin', 'bridge-core.exe');
@@ -137,10 +156,10 @@ async function convertWithVerifiedEngine(filePath, outputPath, target) {
   let scratch;
   try {
     const args = ['--source', filePath, '--output', outputPath, '--target', target];
-    if (target !== 'u1') {
-      // Read the manufacturer's presets directly from installed slicer data.
-      // Temporary bundles are scoped to the conversion and then deleted.
-      const bundle = await loadTargetBundle(target);
+    if (target !== 'u1' || sourceNozzle !== '0.4') {
+      // Read the matching local nozzle, process and filament presets.
+      // The C5 resolver maps source 0.2mm to installed 0.25mm, as approved.
+      const bundle = await loadTargetBundle(target, { nozzle: sourceNozzle });
       scratch = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-profile-'));
       const profileFile = path.join(scratch, 'vendor-preset.json');
       await fs.writeFile(profileFile, JSON.stringify(bundle), { mode: 0o600 });
@@ -228,7 +247,7 @@ ipcMain.handle('inspect-dropped-file', async (_event, droppedPath) => {
 });
 
 ipcMain.handle('get-target-availability', async () => {
-  const checks = await Promise.all(Object.keys(PROFILES).map(async (target) => {
+  const checks = await Promise.all(Object.keys(PROFILES).filter((target) => target !== 'u1').map(async (target) => {
     try {
       const bundle = await loadTargetBundle(target);
       return { target, available: true, slicer: bundle.slicer, model: bundle.profile.printer_model_id };
@@ -275,6 +294,19 @@ ipcMain.handle('convert-3mf', async (_event, payload) => {
     return { ok: false, error: 'יש לבחור קובץ 3MF רגיל בגודל עד 250MB.' };
   }
 
+  const nozzleInfo = await inspectSourceNozzle(filePath);
+  if (!nozzleInfo.ok) {
+    const code = nozzleInfo.code || 'SOURCE_NOZZLE_INVALID';
+    return {
+      ok: false, folder: sourceDir, results: [],
+      failures: targets.map((target) => ({
+        ok: false, target, code,
+        error: nozzleInfo.error || 'בדיקת קוטר הדיזה בקובץ המקור נכשלה.'
+      })),
+      error: nozzleInfo.error
+    };
+  }
+
   // Independent conversions start concurrently; one unsupported filament or
   // vendor profile must not discard successful outputs for other printers.
   const converted = await Promise.all(targets.map(async (target) => {
@@ -288,7 +320,9 @@ ipcMain.handle('convert-3mf', async (_event, payload) => {
         await fs.access(outputPath);
         continue;
       } catch { /* use atomic no-overwrite publishing in the Go engine */ }
-      const conversion = await convertWithVerifiedEngine(filePath, outputPath, target);
+      const conversion = await convertWithVerifiedEngine(
+        filePath, outputPath, target, nozzleInfo.source_nozzle
+      );
       if (conversion.code === 'OUTPUT_EXISTS') continue;
       if (!conversion.ok) {
         return {
@@ -307,6 +341,8 @@ ipcMain.handle('convert-3mf', async (_event, payload) => {
   return {
     ok: results.length > 0,
     folder: sourceDir,
+    sourceNozzle: nozzleInfo.source_nozzle,
+    sourceNozzleAssumed: nozzleInfo.source_nozzle_assumed,
     results,
     failures,
     error: results.length === 0 ? 'כל ההמרות נכשלו. ראו פירוט לפי מדפסת.' : null

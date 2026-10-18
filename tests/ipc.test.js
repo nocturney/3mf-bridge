@@ -20,8 +20,10 @@ const fakeElectron = {
   shell: { openPath: async () => '' }
 };
 
-function fakeVendorBundle(target) {
+function fakeVendorBundle(target, sourceNozzle = '0.4') {
+  const targetNozzle = target === 'c5' && sourceNozzle === '0.2' ? '0.25' : sourceNozzle;
   const models = {
+    u1: 'Snapmaker U1',
     c5: 'Flashforge Creator 5',
     cc2: 'Elegoo Centauri Carbon 2',
     qidi: 'X-Plus 5'
@@ -29,7 +31,7 @@ function fakeVendorBundle(target) {
   return {
     target,
     slicer: 'synthetic test slicer',
-    nozzle: '0.4',
+    nozzle: targetNozzle,
     profile: {
       name: target,
       display_name: models[target],
@@ -43,7 +45,7 @@ function fakeVendorBundle(target) {
         print_settings_id: 'Synthetic Standard 0.2',
         machine_start_gcode: 'G28 ; SYNTHETIC',
         machine_end_gcode: 'M104 S0 ; SYNTHETIC',
-        nozzle_diameter: ['0.4'],
+        nozzle_diameter: [targetNozzle],
         filament_type: ['PLA'],
         filament_colour: ['#FFFFFF'],
         filament_settings_id: ['Synthetic PLA'],
@@ -66,10 +68,10 @@ try {
     if (request === './slicer-profiles' &&
       parent && parent.filename.endsWith(path.sep + 'main.js')) {
       return {
-        PROFILES: { c5: {}, cc2: {}, qidi: {} },
-        loadTargetBundle: async (target) => {
+        PROFILES: { u1: {}, c5: {}, cc2: {}, qidi: {} },
+        loadTargetBundle: async (target, options = {}) => {
           if (target === blockedVendorTarget) throw new Error('Synthetic missing vendor preset');
-          return fakeVendorBundle(target);
+          return fakeVendorBundle(target, options.nozzle);
         }
       };
     }
@@ -188,6 +190,46 @@ test('one missing vendor profile does not cancel successful conversions for othe
     assert.ok(!files.includes('CC2-model.3mf'));
   } finally {
     blockedVendorTarget = null;
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('source 0.2 mm selects Creator 5 native 0.25 mm automatically, other targets remain 0.2', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-ipc-nozzle-'));
+  try {
+    const source = path.join(dir, 'fine.3mf');
+    await fs.copyFile(path.join(__dirname, 'fixtures', 'bambu-nozzle-0.2.3mf'), source);
+    const result = await handlers.get('convert-3mf')(null, {
+      filePath: source, targets: ['u1', 'c5', 'cc2', 'qidi']
+    });
+    assert.equal(result.ok, true, JSON.stringify(result));
+    assert.equal(result.results.length, 4);
+    assert.equal(result.sourceNozzle, '0.2');
+    for (const entry of result.results) {
+      assert.equal(entry.report.source_nozzle, '0.2');
+      const expected = entry.target === 'c5' ? '0.25' : '0.2';
+      assert.equal(entry.report.target_nozzle, expected);
+      assert.equal(entry.report.nozzle_remapped, entry.target === 'c5');
+    }
+  } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('source 0.6/0.8 mm selects matching target nozzles for all 4 printers', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-ipc-wide-'));
+  try {
+    for (const size of ['0.6', '0.8']) {
+      const source = path.join(dir, 'wide-' + size + '.3mf');
+      await fs.copyFile(path.join(__dirname, 'fixtures', 'bambu-nozzle-' + size + '.3mf'), source);
+      const result = await handlers.get('convert-3mf')(null, {
+        filePath: source, targets: ['u1', 'c5', 'cc2', 'qidi']
+      });
+      assert.equal(result.ok, true, JSON.stringify(result));
+      assert.equal(result.results.length, 4);
+      assert.ok(result.results.every((r) => r.report.target_nozzle === size));
+    }
+  } finally {
     await fs.rm(dir, { recursive: true, force: true });
   }
 });

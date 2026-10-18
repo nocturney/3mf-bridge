@@ -23,9 +23,39 @@ type targetBundle struct {
 }
 
 var targetModels = map[string]string{
+	"u1":   "Snapmaker U1",
 	"c5":   "Flashforge Creator 5",
 	"cc2":  "Elegoo Centauri Carbon 2",
 	"qidi": "X-Plus 5",
+}
+
+func validTargetNozzle(target, nozzle string) bool {
+	allowed := map[string]map[string]bool{
+		"u1":   {"0.2": true, "0.4": true, "0.6": true, "0.8": true},
+		"c5":   {"0.25": true, "0.4": true, "0.6": true, "0.8": true},
+		"cc2":  {"0.2": true, "0.4": true, "0.6": true, "0.8": true},
+		"qidi": {"0.2": true, "0.4": true, "0.6": true, "0.8": true},
+	}
+	return allowed[target][nozzle]
+}
+func targetNozzleForSource(target, sourceNozzle string) (string, error) {
+	if target == "c5" && sourceNozzle == "0.2" {
+		// Explicit user approval: map 0.2mm Bambu designs to Creator 5's
+		// physically available 0.25mm nozzle without user interruption.
+		return "0.25", nil
+	}
+	if validTargetNozzle(target, sourceNozzle) {
+		return sourceNozzle, nil
+	}
+	return "", fmt.Errorf("no matching %s target nozzle for source %s mm", target, sourceNozzle)
+}
+func verifyTargetBundleNozzle(bundle *targetBundle) error {
+	raw := bundle.Profile.ProjectSettings["nozzle_diameter"]
+	detected, err := nozzleFromRaw(raw)
+	if err != nil || detected != bundle.Nozzle {
+		return fmt.Errorf("target machine nozzle_diameter (%v) does not match bundled %s mm", raw, bundle.Nozzle)
+	}
+	return nil
 }
 
 func loadTargetBundle(filename, target string) (*targetBundle, error) {
@@ -43,14 +73,17 @@ func loadTargetBundle(filename, target string) (*targetBundle, error) {
 	expected := targetModels[target]
 	if expected == "" || bundle.Target != target || bundle.Profile.Name != target ||
 		bundle.Profile.DisplayName != expected || bundle.Profile.ModelID != expected ||
-		bundle.Profile.FilamentSlots != 4 || bundle.Nozzle != "0.4" {
-		return nil, fmt.Errorf("slicer bundle is not the requested 0.4mm %s profile", target)
+		bundle.Profile.FilamentSlots != 4 || !validTargetNozzle(target, bundle.Nozzle) {
+		return nil, fmt.Errorf("slicer bundle is not a supported %s target profile", target)
 	}
 	if err := bundle.Profile.Validate(); err != nil {
 		return nil, err
 	}
 	if bundle.Profile.ProjectSettings["printer_model"] != expected {
 		return nil, fmt.Errorf("target project settings do not match machine model")
+	}
+	if err := verifyTargetBundleNozzle(&bundle); err != nil {
+		return nil, err
 	}
 	if _, ok := bundle.Profile.ProjectSettings["machine_start_gcode"].(string); !ok {
 		return nil, fmt.Errorf("target firmware start script missing")
@@ -113,8 +146,9 @@ func bindNativeFilamentSettings(bundle *targetBundle, filaments []converter.Fila
 			// Keep safety-critical target temperatures and flow limits fail-closed.
 			// Optional fields are allowed to fall back to installed system
 			// presets; never apply a PLA-only override to PETG/ABS slots.
-			if strings.Contains(key, "temperature") ||
-				strings.Contains(key, "volumetric_speed") ||
+			if strings.HasPrefix(key, "nozzle_temperature") ||
+				strings.HasPrefix(key, "bed_temperature") ||
+				key == "filament_max_volumetric_speed" ||
 				strings.Contains(key, "flow_ratio") ||
 				key == "filament_type" || key == "filament_settings_id" {
 				return fmt.Errorf("missing critical native material setting %q", key)

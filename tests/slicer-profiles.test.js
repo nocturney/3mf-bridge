@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const os = require('node:os');
 const path = require('node:path');
-const { PROFILES, loadTargetBundle } = require('../slicer-profiles');
+const { PROFILES, resolveVariant, loadTargetBundle } = require('../slicer-profiles');
 
 async function writeJson(root, type, name, object) {
   const destination = path.join(root, type, name + '.json');
@@ -40,7 +40,7 @@ async function fakeProfileRoot(target) {
     type: 'filament', name: 'filament_base',
     nozzle_temperature: ['210'], filament_density: ['1.24']
   });
-  for (const [type, name] of Object.entries(spec.materials)) {
+  for (const [type, name] of Object.entries(resolveVariant(target, '0.4').materials)) {
     await writeJson(vendor, 'filament', name, {
       type: 'filament', name, inherits: 'filament_base',
       filament_type: [type], filament_settings_id: [name]
@@ -90,4 +90,21 @@ test('missing, broken, cyclic or spoofed vendor profiles fail closed', async () 
   } finally {
     await fs.rm(root, { recursive: true, force: true });
   }
+});
+
+test('nozzle selection uses exact installed variants, with owner-approved C5 0.2 -> 0.25', () => {
+  for (const target of ['u1', 'c5', 'cc2', 'qidi']) {
+    for (const nozzle of ['0.2', '0.4', '0.6', '0.8']) {
+      const variant = resolveVariant(target, nozzle);
+      const expected = target === 'c5' && nozzle === '0.2' ? '0.25' : nozzle;
+      assert.equal(variant.nozzle, expected);
+      assert.ok(variant.name.includes(expected));
+      assert.ok(variant.process);
+      assert.ok(variant.materials.PLA);
+      if (target !== 'u1' || nozzle !== '0.4') assert.ok(variant.materials.PETG);
+    }
+  }
+  assert.throws(() => resolveVariant('qidi', '0.25'), /no exact/);
+  assert.throws(() => resolveVariant('u1', '0.25'), /no exact/);
+  assert.equal(resolveVariant('c5', '0.25').nozzle, '0.25');
 });

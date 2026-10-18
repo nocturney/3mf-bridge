@@ -1,9 +1,25 @@
 'use strict';
-
 const path = require('node:path');
 const fs = require('node:fs/promises');
 
+// Exact installed hardware variants; 0.2 is *not* interchangeable with
+// Flashforge Creator 5's 0.25 nozzle.
 const PROFILES = Object.freeze({
+  u1: {
+    vendor: 'Snapmaker',
+    slicer: 'Snapmaker Orca',
+    model: 'Snapmaker U1',
+    name: 'Snapmaker U1 (0.4 nozzle)',
+    process: '0.20mm Standard @Snapmaker U1 (0.4 nozzle)',
+    rootParts: ['Snapmaker_Orca', 'resources', 'profiles'],
+    nozzles: ['0.2', '0.4', '0.6', '0.8'],
+    processes: {
+      '0.2': '0.12mm Standard @Snapmaker U1 (0.2 nozzle)',
+      '0.4': '0.20mm Standard @Snapmaker U1 (0.4 nozzle)',
+      '0.6': '0.30mm Standard @Snapmaker U1 (0.6 nozzle)',
+      '0.8': '0.40mm Standard @Snapmaker U1 (0.8 nozzle)'
+    }
+  },
   c5: {
     vendor: 'Flashforge',
     slicer: 'Flash Studio Desktop',
@@ -11,11 +27,12 @@ const PROFILES = Object.freeze({
     name: 'Flashforge Creator 5 0.4 nozzle',
     process: '0.20mm Standard @FF C5',
     rootParts: ['Flashforge', 'Flash Studio Desktop', 'resources', 'profiles'],
-    materials: {
-      PLA: 'Flashforge PLA Basic @FF C5',
-      PETG: 'Flashforge PETG Basic @FF C5',
-      ABS: 'Flashforge ABS Basic @FF C5',
-      ASA: 'Flashforge ASA Basic @FF C5'
+    nozzles: ['0.25', '0.4', '0.6', '0.8'],
+    processes: {
+      '0.25': '0.12mm Standard @FF C5 0.25 nozzle',
+      '0.4': '0.20mm Standard @FF C5',
+      '0.6': '0.30mm Standard @FF C5 0.6 nozzle',
+      '0.8': '0.32mm Standard @FF C5 0.8 nozzle'
     }
   },
   cc2: {
@@ -25,12 +42,12 @@ const PROFILES = Object.freeze({
     name: 'Elegoo Centauri Carbon 2 0.4 nozzle',
     process: '0.20mm Standard @Elegoo CC2 0.4 nozzle',
     rootParts: ['ElegooSlicer', 'resources', 'profiles'],
-    materials: {
-      PLA: 'Elegoo PLA @ECC2',
-      PETG: 'Elegoo PETG @ECC2',
-      ABS: 'Elegoo ABS @ECC2',
-      ASA: 'Elegoo ASA @ECC2',
-      TPU: 'Elegoo TPU 95A @ECC2'
+    nozzles: ['0.2', '0.4', '0.6', '0.8'],
+    processes: {
+      '0.2': '0.10mm Standard @Elegoo CC2 0.2 nozzle',
+      '0.4': '0.20mm Standard @Elegoo CC2 0.4 nozzle',
+      '0.6': '0.30mm Standard @Elegoo CC2 0.6 nozzle',
+      '0.8': '0.40mm Standard @Elegoo CC2 0.8 nozzle'
     }
   },
   qidi: {
@@ -40,14 +57,74 @@ const PROFILES = Object.freeze({
     name: 'X-Plus 5 0.4 nozzle',
     process: '0.20mm Standard @X-Plus 5',
     rootParts: ['OrcaSlicer', 'resources', 'profiles'],
-    materials: {
-      PLA: 'Generic PLA @Qidi X-Plus 5 0.4 nozzle',
-      PETG: 'Generic PETG @Qidi X-Plus 5 0.4 nozzle',
-      ABS: 'Generic ABS @Qidi X-Plus 5 0.4 nozzle',
-      TPU: 'Generic TPU 95A @Qidi X-Plus 5 0.4 nozzle'
+    nozzles: ['0.2', '0.4', '0.6', '0.8'],
+    processes: {
+      '0.2': '0.10mm Standard @X-Plus 5 0.2 nozzle',
+      '0.4': '0.20mm Standard @X-Plus 5',
+      '0.6': '0.30mm Standard @X-Plus 5 0.6 nozzle',
+      '0.8': '0.40mm Standard @X-Plus 5 0.8 nozzle'
     }
   }
 });
+
+function resolveVariant(target, sourceNozzle = '0.4') {
+  // Owner-approved non-interruptive substitution: Creator 5 uses 0.25mm,
+  // whereas Bambu small-nozzle profiles normally use 0.2mm.
+  const nozzle = target === 'c5' && sourceNozzle === '0.2' ? '0.25' : sourceNozzle;
+  const spec = PROFILES[target];
+  if (!spec) throw new Error('Unknown printer target: ' + target);
+  if (!spec.nozzles.includes(nozzle)) {
+    throw new Error(spec.model + ' has no exact ' + nozzle + ' mm nozzle profile; supported: ' +
+      spec.nozzles.join(', ') + ' mm. No automatic nozzle substitution.');
+  }
+  let name;
+  let materials;
+  if (target === 'u1') {
+    name = 'Snapmaker U1 (' + nozzle + ' nozzle)';
+    materials = {
+      PLA: 'Generic PLA @U1 ' + nozzle + ' nozzle',
+      PETG: 'Generic PETG @U1 ' + nozzle + ' nozzle',
+      ABS: 'Generic ABS @U1 ' + nozzle + ' nozzle',
+      ASA: 'Generic ASA @U1 ' + nozzle + ' nozzle'
+    };
+    if (nozzle === '0.4') {
+      // Retain the proven U1 0.4 builtin instead of using this native path.
+      materials = { PLA: 'Snapmaker PLA Basic @U1' };
+    }
+    if (nozzle === '0.6' || nozzle === '0.8') {
+      materials.TPU = 'Generic TPU @U1 ' + nozzle + ' nozzle';
+    }
+  } else if (target === 'c5') {
+    name = 'Flashforge Creator 5 ' + nozzle + ' nozzle';
+    const suffix = nozzle === '0.25' ? ' 0.25 nozzle' : '';
+    materials = {
+      PLA: 'Flashforge PLA Basic @FF C5' + suffix,
+      PETG: 'Flashforge PETG Basic @FF C5' + suffix,
+      ABS: 'Flashforge ABS Basic @FF C5' + suffix,
+      ASA: 'Flashforge ASA Basic @FF C5' + suffix
+    };
+  } else if (target === 'cc2') {
+    name = 'Elegoo Centauri Carbon 2 ' + nozzle + ' nozzle';
+    materials = {
+      PLA: 'Elegoo PLA @ECC2',
+      PETG: 'Elegoo PETG @ECC2',
+      ABS: 'Elegoo ABS @ECC2',
+      ASA: 'Elegoo ASA @ECC2',
+      TPU: 'Elegoo TPU 95A @ECC2'
+    };
+  } else {
+    name = 'X-Plus 5 ' + nozzle + ' nozzle';
+    materials = {
+      PLA: 'Generic PLA @Qidi X-Plus 5 ' + nozzle + ' nozzle',
+      PETG: 'Generic PETG @Qidi X-Plus 5 ' + nozzle + ' nozzle',
+      ABS: 'Generic ABS @Qidi X-Plus 5 ' + nozzle + ' nozzle'
+    };
+    if (nozzle !== '0.2') {
+      materials.TPU = 'Generic TPU 95A @Qidi X-Plus 5 ' + nozzle + ' nozzle';
+    }
+  }
+  return { name, process: spec.processes[nozzle], materials, nozzle, sourceNozzle };
+}
 
 const OMIT = new Set([
   'type', 'name', 'from', 'inherits', 'setting_id', 'instantiation',
@@ -105,7 +182,6 @@ function flattenPreset(index, type, presetName, stack = new Set()) {
   if (!matches || matches.length === 0) {
     throw new Error('Missing installed ' + type + ' preset: ' + presetName);
   }
-  // Prioritize the machine-specific filename over a shared inherited alias.
   const current = matches.find((candidate) =>
     path.basename(candidate.file, '.json') === presetName
   ) || matches[0];
@@ -122,39 +198,54 @@ function flattenPreset(index, type, presetName, stack = new Set()) {
   return result;
 }
 
+function checkNozzleValues(values, nozzle, target) {
+  if (!Array.isArray(values) || values.length === 0 ||
+    values.some((v) => !Number.isFinite(Number(v)) || Math.abs(Number(v) - Number(nozzle)) > 1e-6)) {
+    throw new Error('Installed ' + target + ' machine nozzle diameter does not match ' + nozzle + ' mm');
+  }
+}
+
 async function loadTargetBundle(target, options = {}) {
   const spec = PROFILES[target];
-  if (!spec) throw new Error('Unknown target: ' + target);
+  const sourceNozzle = String(options.nozzle || '0.4');
+  const variant = resolveVariant(target, sourceNozzle);
+  const nozzle = variant.nozzle;
   const root = options.root || defaultRoot(target, options.env);
   const index = await buildIndex(root, spec);
-  const machine = flattenPreset(index, 'machine', spec.name);
-  const process = flattenPreset(index, 'process', spec.process);
+  const machine = flattenPreset(index, 'machine', variant.name);
+  const process = flattenPreset(index, 'process', variant.process);
   if (machine.printer_model !== spec.model) {
     throw new Error('Installed machine profile identity mismatch: ' +
       String(machine.printer_model) + ', expected ' + spec.model);
   }
+  checkNozzleValues(machine.nozzle_diameter, nozzle, target);
   const materials = {};
   const names = {};
-  for (const [type, presetName] of Object.entries(spec.materials)) {
+  for (const [type, presetName] of Object.entries(variant.materials)) {
     const settings = flattenPreset(index, 'filament', presetName);
     materials[type] = settings;
     names[type] = presetName;
   }
-  // The vendor's own machine/process presets own all firmware commands and
-  // motion limits. The target filament preset owns heating, flow and cooling.
   const initial = { ...machine, ...process, ...materials.PLA };
+  // Only the machine owns nozzle geometry, machine limits and firmware.
+  initial.nozzle_diameter = machine.nozzle_diameter;
+  for (const key of Object.keys(machine)) {
+    if (key.startsWith('machine_') || key === 'change_filament_gcode' ||
+      key === 'layer_change_gcode' || key === 'before_layer_change_gcode') {
+      initial[key] = machine[key];
+    }
+  }
   initial.printer_model = spec.model;
-  initial.printer_settings_id = spec.name;
-  initial.print_settings_id = spec.process;
+  initial.printer_settings_id = variant.name;
+  initial.print_settings_id = variant.process;
   initial.filament_settings_id = [names.PLA];
   initial.filament_type = ['PLA'];
   initial.filament_colour = ['#FFFFFF'];
-
   return {
     target,
     slicer: spec.slicer,
     root,
-    nozzle: '0.4',
+    nozzle,
     profile: {
       name: target,
       display_name: spec.model,
@@ -168,4 +259,4 @@ async function loadTargetBundle(target, options = {}) {
   };
 }
 
-module.exports = { PROFILES, defaultRoot, buildIndex, flattenPreset, loadTargetBundle };
+module.exports = { PROFILES, defaultRoot, resolveVariant, buildIndex, flattenPreset, loadTargetBundle };

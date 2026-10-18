@@ -14,8 +14,8 @@ import (
 type parameterRange struct{ min, max float64 }
 
 var safePrintParameters = map[string]parameterRange{
-	"layer_height":               {0.06, 0.32},
-	"initial_layer_print_height": {0.08, 0.32},
+	"layer_height":               {0.04, 0.64},
+	"initial_layer_print_height": {0.04, 0.64},
 	"wall_loops":                 {1, 12},
 	"top_shell_layers":           {0, 20},
 	"bottom_shell_layers":        {0, 20},
@@ -81,6 +81,16 @@ func preservedProfile(source string, baseline *printer.Profile) (*printer.Profil
 		if err != nil || val < bounds.min || val > bounds.max {
 			continue
 		}
+		if key == "layer_height" || key == "initial_layer_print_height" {
+			// A Bambu 0.2mm layer height is not necessarily valid for a
+			// Creator 5 0.25mm toolhead or another target nozzle. If out
+			// of range, retain the target slicer's native process value.
+			min, minOK := profileLayerLimit(p.ProjectSettings["min_layer_height"])
+			max, maxOK := profileLayerLimit(p.ProjectSettings["max_layer_height"])
+			if (minOK && val < min) || (maxOK && val > max) {
+				continue
+			}
+		}
 		p.ProjectSettings[key] = original
 		preserved = append(preserved, key)
 	}
@@ -101,4 +111,45 @@ func parseNumberSetting(value string) (float64, error) {
 		return 0, fmt.Errorf("NaN not allowed")
 	}
 	return number, nil
+}
+
+func profileLayerLimit(raw any) (float64, bool) {
+	if raw == nil {
+		return 0, false
+	}
+	var vals []any
+	switch value := raw.(type) {
+	case []any:
+		vals = value
+	case []string:
+		for _, item := range value {
+			vals = append(vals, item)
+		}
+	default:
+		vals = []any{value}
+	}
+	if len(vals) == 0 {
+		return 0, false
+	}
+	var first float64
+	for i, item := range vals {
+		var s string
+		switch v := item.(type) {
+		case string:
+			s = v
+		case float64:
+			s = strconv.FormatFloat(v, 'f', -1, 64)
+		default:
+			return 0, false
+		}
+		n, err := parseNumberSetting(s)
+		if err != nil || n <= 0 || n > 1 {
+			return 0, false
+		}
+		if i > 0 && (n-first > 0.000001 || first-n > 0.000001) {
+			return 0, false
+		}
+		first = n
+	}
+	return first, true
 }
