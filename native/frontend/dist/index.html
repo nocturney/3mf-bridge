@@ -1,72 +1,192 @@
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' asset:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: asset:; connect-src 'self' ws:; object-src 'none'">
   <title>3MF Bridge</title>
   <link rel="stylesheet" href="./app.css">
   <script defer src="./app.js"></script>
 </head>
 <body>
-  <main class="shell">
-    <section class="header">
-      <div class="headerbar">
-        <p class="eyebrow">3MF Bridge <span class="native-note">/ Native WebView</span></p>
-        <div class="language-switch" role="group" aria-label="Language / שפה">
-          <button id="heBtn" type="button" class="language-btn" lang="he">עברית</button>
-          <button id="enBtn" type="button" class="language-btn" lang="en">English</button>
+<div class="shell" id="appShell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">3</div>
+      <div class="brand-copy">
+        <strong>3MF Bridge</strong>
+        <span data-i18n="brandTagline">Bambu → Native 3MF</span>
+      </div>
+      <span class="version-label" id="installedVersion" title="Version"></span>
+    </div>
+    <div class="topbar-actions">
+      <button id="checkUpdatesBtn" type="button" class="ghost-btn" data-i18n-title="checkUpdates" title="בדיקת עדכונים" aria-label="Check for updates">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9a7.5 7.5 0 0 1 12.7-2L20 12M4 12l1.6 4a7.5 7.5 0 0 0 12.7-1"/></svg>
+      </button>
+      <button id="settingsBtn" type="button" class="ghost-btn labeled-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 2-.1-.1a1.7 1.7 0 0 0-1.9-.3l-.2.1V21h-3v-2.3a1.7 1.7 0 0 0-1.7 0L9 19.7l-2-2 1.1-1.9a1.7 1.7 0 0 0 0-1.7L6 13v-3l2.1-1.1a1.7 1.7 0 0 0 0-1.7L7 5.3l2-2 1.9 1.1a1.7 1.7 0 0 0 1.7 0L13 2h3v2.4l.2.1a1.7 1.7 0 0 0 1.9-.3l.1-.1 2 2-.1.1a1.7 1.7 0 0 0-.3 1.9l.1.2H22v3l-2.3.4a1.7 1.7 0 0 0 0 1.7z" transform="translate(-2 0) scale(.9)"/></svg>
+        <span data-i18n="settings">הגדרות</span>
+      </button>
+      <div class="language-switch" role="group" aria-label="Language">
+        <button id="heBtn" type="button" lang="he">עברית</button>
+        <button id="enBtn" type="button" lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="updateNotice" class="update-notice" hidden>
+    <span id="updateStatus" role="status"></span>
+    <button type="button" id="openUpdateBtn" class="link-btn" hidden></button>
+    <button type="button" id="dismissUpdateBtn" class="ghost-btn" data-i18n-title="dismiss" title="סגירה" aria-label="Close">×</button>
+  </div>
+
+  <div class="sectionbar">
+    <div>
+      <h1 data-i18n="workspaceTitle">סביבת המרה</h1>
+      <p data-i18n="workspaceSubtitle">המרת פרויקטים לכמה מדפסות, בלי לשנות את המקור.</p>
+    </div>
+    <div class="tiny-label"><span class="status-dot"></span><span data-i18n="localOnly">עיבוד מקומי בלבד</span></div>
+  </div>
+
+  <main class="workspace">
+    <div class="left-column">
+      <section class="panel queue-panel">
+        <div class="panel-heading">
+          <div class="panel-title"><span class="section-number">01</span><h2 data-i18n="queueTitle">קובצי מקור</h2><span class="count-chip" id="queueCount">0</span></div>
+          <button id="clearQueueBtn" type="button" class="text-btn" data-i18n="clear" disabled>ניקוי</button>
+        </div>
+        <div class="queue-toolbar">
+          <button type="button" id="addFilesBtn" class="compact-btn primary">
+            <span class="btn-icon">＋</span><span data-i18n="addFiles">הוסף קבצים</span>
+          </button>
+          <button type="button" id="addFolderBtn" class="compact-btn secondary">
+            <span class="btn-icon">▤</span><span data-i18n="addFolder">הוסף תיקייה</span>
+          </button>
+        </div>
+        <div id="dropzone" class="dropzone" tabindex="0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+          <p data-i18n="dropHint">אפשר לגרור קבצים או תיקייה לכאן</p>
+        </div>
+        <div class="queue-list" id="fileList" role="list" aria-label="3MF files"></div>
+        <div class="panel-bottom" id="queueFootnote" data-i18n="queueFootnote">עד 200 קובצי 3MF, כולל תיקיות משנה.</div>
+      </section>
+
+      <section class="panel targets-panel">
+        <div class="panel-heading">
+          <div class="panel-title"><span class="section-number">02</span><h2 data-i18n="targetsTitle">מדפסות יעד</h2></div>
+          <button id="selectAllBtn" class="text-btn" type="button" data-i18n="selectAll">בחר הכול</button>
+        </div>
+        <div class="target-list" id="targetList">
+          <label class="target-option" data-target-row="u1">
+            <input type="checkbox" value="u1" checked>
+            <span class="printer-label"><strong>Snapmaker U1</strong><small data-printer-summary="u1">—</small></span>
+            <button type="button" class="printer-gear" data-settings-target="u1" aria-label="Snapmaker U1 settings" title="Settings">⚙</button>
+          </label>
+          <label class="target-option" data-target-row="c5">
+            <input type="checkbox" value="c5" checked>
+            <span class="printer-label"><strong>Flashforge Creator 5</strong><small data-printer-summary="c5">—</small></span>
+            <button type="button" class="printer-gear" data-settings-target="c5" aria-label="Flashforge Creator 5 settings" title="Settings">⚙</button>
+          </label>
+          <label class="target-option" data-target-row="cc2">
+            <input type="checkbox" value="cc2" checked>
+            <span class="printer-label"><strong>ELEGOO CC2</strong><small data-printer-summary="cc2">—</small></span>
+            <button type="button" class="printer-gear" data-settings-target="cc2" aria-label="ELEGOO CC2 settings" title="Settings">⚙</button>
+          </label>
+          <label class="target-option" data-target-row="qidi">
+            <input type="checkbox" value="qidi" checked>
+            <span class="printer-label"><strong>QIDI Plus5</strong><small data-printer-summary="qidi">—</small></span>
+            <button type="button" class="printer-gear" data-settings-target="qidi" aria-label="QIDI Plus5 settings" title="Settings">⚙</button>
+          </label>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel results-panel" id="resultsPanel">
+      <div class="panel-heading">
+        <div class="panel-title"><span class="section-number">03</span><h2 data-i18n="resultsTitle">תוצאות ודוח המרה</h2></div>
+        <div class="report-counts" id="reportCounts"></div>
+      </div>
+      <div class="results-scroll" id="resultList" role="region" aria-label="Conversion results">
+        <div class="empty-state">
+          <div class="empty-icon">↗</div>
+          <h3 data-i18n="emptyTitle">מוכן להמרה</h3>
+          <p data-i18n="emptyDescription">הוסף פרויקטים, בחר מדפסות והפעל המרה. התוצאות וההגדרות שנשמרו יופיעו כאן.</p>
         </div>
       </div>
-      <h1 data-i18n="title">המרת קובצי Bambu 3MF</h1>
-      <p class="subtitle" data-i18n="subtitle">
-        בחר או גרור פרויקט 3MF, סמן מדפסות יעד, וקבל פרויקטים מותאמים בתיקיית המקור.
-      </p>
-      <div class="updates-bar" id="updatesBar">
-        <span class="installed-version" id="installedVersion">3MF Bridge</span>
-        <button id="checkUpdatesBtn" type="button" class="secondary" data-i18n="checkUpdates">בדיקת עדכונים</button>
-        <span id="updateStatus" role="status" aria-live="polite"></span>
-        <button id="openUpdateBtn" type="button" class="secondary" hidden></button>
+      <div class="report-toolbar" id="reportToolbar" hidden>
+        <button id="exportReportBtn" type="button" class="text-btn">
+          <span aria-hidden="true">⇩</span> <span data-i18n="exportReport">שמירת דו״ח JSON</span>
+        </button>
+        <span class="report-security" data-i18n="validateHint">נדרש Slice מחדש לפני הדפסה</span>
       </div>
-    </section>
-    <section class="content">
-      <section id="dropzone" class="dropzone" tabindex="0">
-        <h2 data-i18n="dropTitle">גרור לכאן קובץ 3MF</h2>
-        <p data-i18n="dropHelp">או לחץ על הכפתור לבחירה ידנית.</p>
-        <div class="actions">
-          <button id="pickFileBtn" class="primary" type="button" data-i18n="choose">בחירת קובץ</button>
-        </div>
-      </section>
-
-      <section id="sourcePanel" class="panel">
-        <h3 class="section-title" data-i18n="sourceTitle">קובץ מקור</h3>
-        <div id="fileMeta" class="file-meta"></div>
-      </section>
-
-      <section id="targetsPanel" class="panel">
-        <h3 class="section-title" data-i18n="targetsTitle">מדפסות יעד</h3>
-        <div class="target-grid">
-          <label class="option"><input type="checkbox" value="u1"/> <span data-target="u1">Snapmaker U1</span></label>
-          <label class="option"><input type="checkbox" value="c5" disabled/> <span data-target="c5">Flashforge Creator 5</span></label>
-          <label class="option"><input type="checkbox" value="cc2" disabled/> <span data-target="cc2">ELEGOO CC2</span></label>
-          <label class="option"><input type="checkbox" value="qidi" disabled/> <span data-target="qidi">QIDI Plus5</span></label>
-        </div>
-      </section>
-
-      <section id="statusPanel" class="panel">
-        <h3 class="section-title" data-i18n="statusTitle">סטטוס</h3>
-        <ul id="statusList" class="status-list" role="status" aria-live="polite"></ul>
-      </section>
-
-      <div id="mainActions" class="footer-actions">
-        <button id="convertBtn" class="primary" type="button" data-i18n="convert">המרת הקובץ</button>
-        <button id="openFolderBtn" class="secondary" type="button" disabled data-i18n="openFolder">פתיחת תיקיית פלט</button>
-      </div>
-
-      <p id="footerHint" class="hint" data-i18n="hint">
-        ההמרה מקומית בלבד. יש לבדוק את הדיזה, החומר וה־Slice בסלייסר המתאים לפני הדפסה.
-      </p>
     </section>
   </main>
+
+  <footer class="actionbar">
+    <div class="actionbar-info">
+      <div id="activityIcon" class="activity-icon" aria-hidden="true"></div>
+      <div>
+        <strong id="activityText" data-i18n="idle">ממתין לקבצים</strong>
+        <small id="activityDetail" data-i18n="idleHint">בחר קבצים ומדפסות כדי להתחיל</small>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button id="openFolderBtn" class="compact-btn secondary" type="button" disabled data-i18n="openFolder">פתח תיקיית פלט</button>
+      <button id="convertBtn" class="compact-btn primary convert-button" type="button" disabled>
+        <span aria-hidden="true">➜</span><span data-i18n="convert">המרה</span><span id="convertCount"></span>
+      </button>
+    </div>
+  </footer>
+</div>
+
+<dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle">
+  <div class="dialog-frame">
+    <header class="dialog-header">
+      <div>
+        <h2 id="settingsTitle" data-i18n="settingsTitle">הגדרות מדפסות</h2>
+        <p data-i18n="settingsHint">ההגדרות נשמרות מקומית ומשמשות בכל המרה חדשה.</p>
+      </div>
+      <button type="button" id="closeSettingsBtn" class="ghost-btn close-dialog" aria-label="Close">×</button>
+    </header>
+    <nav class="settings-tabs" id="settingsTabs" aria-label="Printer selection"></nav>
+    <div class="dialog-scroll">
+      <label class="field">
+        <span data-i18n="physicalNozzle">דיזה המותקנת במדפסת</span>
+        <select id="settingsNozzle"></select>
+        <small data-i18n="nozzleHint">בחירה קבועה תשתמש בפרופיל הדיזה של המדפסת, גם אם קובץ המקור נוצר עם דיזה אחרת.</small>
+      </label>
+      <label class="field">
+        <span data-i18n="preferredSlicer">סלייסר מועדף</span>
+        <select id="settingsSlicer"></select>
+        <small data-i18n="slicerHint">נבחר רק מסלייסרים מקומיים שבהם נמצאו פרופילי יצרן.</small>
+      </label>
+      <div class="field-group">
+        <div class="field-group-heading">
+          <strong data-i18n="filamentPreferences">פרופילי פילמנט מועדפים</strong>
+          <small data-i18n="filamentHint">ניתן להגדיר פרופיל נפרד לכל סוג חומר. Auto משתמש בפרופיל היצרן.</small>
+        </div>
+        <label class="field">
+          <span data-i18n="material">סוג חומר</span>
+          <select id="settingsMaterial">
+            <option value="PLA">PLA</option>
+            <option value="PETG">PETG</option>
+            <option value="ABS">ABS</option>
+            <option value="ASA">ASA</option>
+            <option value="TPU">TPU</option>
+          </select>
+        </label>
+        <label class="field">
+          <span data-i18n="preferredFilament">פרופיל מותקן</span>
+          <select id="settingsFilament"></select>
+        </label>
+      </div>
+      <p id="settingsStatus" class="dialog-status" role="status"></p>
+    </div>
+    <footer class="dialog-actions">
+      <button type="button" class="compact-btn secondary" id="cancelSettingsBtn" data-i18n="cancel">ביטול</button>
+      <button type="button" class="compact-btn primary" id="saveSettingsBtn" data-i18n="saveSettings">שמור הגדרות</button>
+    </footer>
+  </div>
+</dialog>
 </body>
 </html>

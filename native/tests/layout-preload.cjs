@@ -1,0 +1,42 @@
+const {contextBridge}=require('electron');
+const printerList=['u1','c5','cc2','qidi'];
+const names={u1:'Snapmaker U1',c5:'Flashforge Creator 5',cc2:'ELEGOO CC2',qidi:'QIDI Plus5'};
+let saved={version:1,printers:Object.fromEntries(printerList.map(t=>[t,{nozzle:'auto',slicer:'auto',filaments:{}}])),window:{width:1100,height:750}};
+const mockFiles=Array.from({length:32},(_,i)=>({path:'C:\\models\\project-'+String(i+1).padStart(2,'0')+'.3mf',name:'project-'+String(i+1).padStart(2,'0')+'.3mf',folder:'C:\\models',size:1048576,sizeLabel:'1.0 MB'}));
+const app={
+  GetSettings:async()=>saved,
+  SavePrinterSettings:async(target,prefs)=>{saved.printers[target]=prefs;return saved;},
+  Availability:async()=>printerList.map(target=>({target,name:names[target],available:true,slicer:'Installed slicer'})),
+  GetVersion:async()=>({version:'0.4.0-beta.2',platform:'windows-amd64'}),
+  SelectFiles:async()=>mockFiles,
+  SelectFolder:async()=>mockFiles,
+  PrinterOptions:async(target,nozzle,slicer,material)=>({
+    nozzles:['0.2','0.4','0.6','0.8'],
+    slicers:[{id:target==='qidi'?'orca-slicer':'system',name:'Installed vendor slicer',installed:true}],
+    filaments:['Generic '+material+' @'+names[target]+' '+nozzle+' nozzle']
+  }),
+  ConvertBatch:async({filePaths,targets})=>({
+    filesDone:filePaths.length,successes:filePaths.length*targets.length,failures:0,
+    files:filePaths.map(path=>({
+      source:{path,name:path.split('\\').pop(),nozzle:'0.4',plates:2,objects:3,instances:3,
+        filaments:[{id:1,type:'PLA',color:'#B81C28'},{id:2,type:'PETG',color:'#1B92AE'}]},
+      results:targets.map(target=>({
+        target,ok:true,outputName:target.toUpperCase()+'-'+path.split('\\').pop(),
+        outputPath:'C:\\models\\'+target.toUpperCase()+'-'+path.split('\\').pop(),
+        report:{target_nozzle:'0.4',source_nozzle:'0.4',source_filament_slots:2,
+          geometry_triangles:26700,removed_slice_cache_entries:8,
+          preserved_print_keys:['layer_height','support_material','infill_pattern'],
+          native_filament_overrides:{}}
+      })),
+      failures:[]
+    }))
+  }),
+  OpenInSlicer:async()=>{},
+  OpenOutputFolder:async()=>{},
+  ExportLastReport:async()=>{},
+  RememberWindowSize:async()=>{},
+  CheckForUpdates:async()=>({status:'up_to_date'}),
+  OpenUpdatePage:async()=>{}
+};
+contextBridge.exposeInMainWorld('go',{main:{App:app}});
+contextBridge.exposeInMainWorld('runtime',{OnFileDrop:()=>{},EventsOn:()=>{}});

@@ -269,6 +269,12 @@ func validDiameter(raw any, diameter string) bool {
 	return true
 }
 func Load(target, sourceNozzle string) (*Bundle, error) {
+	return LoadConfigured(target, sourceNozzle, "auto", nil)
+}
+
+// LoadConfigured uses only installed vendor presets, with verified saved
+// physical nozzle, slicer and material overrides.
+func LoadConfigured(target, sourceNozzle, slicerID string, overrides map[string]string) (*Bundle, error) {
 	spec, ok := Specs[target]
 	if !ok {
 		return nil, fmt.Errorf("unknown printer %q", target)
@@ -277,8 +283,11 @@ func Load(target, sourceNozzle string) (*Bundle, error) {
 	if err != nil {
 		return nil, err
 	}
-	root, err := FindRoot(target)
+	root, _, actualSlicer, err := ResolveSlicer(target, slicerID)
 	if err != nil {
+		return nil, err
+	}
+	if err := ValidateOverrides(target, nozzle, slicerID, overrides); err != nil {
 		return nil, err
 	}
 	index, err := readCatalog(root, spec)
@@ -301,12 +310,42 @@ func Load(target, sourceNozzle string) (*Bundle, error) {
 		return nil, err
 	}
 	materials := map[string]map[string]any{}
-	for m, name := range filamentNames {
-		preset, err := get("filament", name)
-		if err != nil {
-			return nil, err
+	for m, defaultName := range filamentNames {
+		name := defaultName
+		override := overrides[m]
+		if override != "" {
+			name = override
+		}
+		preset, loadErr := get("filament", name)
+		if loadErr != nil && override == "" {
+			// Not all nozzle families have every material in every slicer
+			// build. Never invent a missing vendor preset.
+			alternatives, listErr := FilamentPresets(target, nozzle, slicerID, m)
+			if listErr == nil && len(alternatives) > 0 {
+				name = alternatives[0]
+				preset, loadErr = get("filament", name)
+			}
+		}
+		if loadErr != nil {
+			if override != "" {
+				return nil, loadErr
+			}
+			delete(filamentNames, m) // unsupported material fails only if used
+			continue
+		}
+		raw, ok := preset["filament_type"].([]any)
+		if !ok || len(raw) == 0 || fmt.Sprint(raw[0]) != m {
+			if override != "" {
+				return nil, fmt.Errorf("saved %s profile has incorrect material type", m)
+			}
+			delete(filamentNames, m)
+			continue
 		}
 		materials[m] = preset
+		filamentNames[m] = name
+	}
+	if materials["PLA"] == nil {
+		return nil, fmt.Errorf("installed %s %s profile has no compatible PLA filament", target, nozzle)
 	}
 	project := map[string]any{}
 	for _, layer := range []map[string]any{machine, process, materials["PLA"]} {
@@ -328,7 +367,7 @@ func Load(target, sourceNozzle string) (*Bundle, error) {
 	project["filament_type"] = []string{"PLA"}
 	project["filament_colour"] = []string{"#FFFFFF"}
 	return &Bundle{
-		Target: target, Slicer: spec.Slicer, Root: root, Nozzle: nozzle,
+		Target: target, Slicer: actualSlicer, Root: root, Nozzle: nozzle,
 		Profile: printer.Profile{
 			Name: target, DisplayName: spec.Model, ModelID: spec.Model, FilamentSlots: 4,
 			FilamentProfiles: filamentNames, DefaultFilamentProfile: filamentNames["PLA"], ProjectSettings: project,

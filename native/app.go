@@ -20,9 +20,12 @@ import (
 const max3MFSize = 250 << 20
 
 type App struct {
-	ctx        context.Context
-	mutex      sync.Mutex
-	lastFolder string
+	ctx         context.Context
+	mutex       sync.Mutex
+	settingsMu  sync.Mutex
+	lastFolder  string
+	generated   map[string]string
+	latestBatch BatchReply
 }
 
 func (a *App) startup(ctx context.Context) { a.ctx = ctx }
