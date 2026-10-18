@@ -5,3 +5,8 @@ bin/
 *.log
 *.tmp
 tests/fixtures/U1-*.3mf
+native/build/bin/
+native/frontend/wailsjs/
+native/frontend/node_modules/
+native/frontend/dist/.DS_Store
+native/.DS_Store

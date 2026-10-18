@@ -1,0 +1,94 @@
+name: Native WebView Windows and macOS
+
+on:
+  push:
+    branches: [feature/native-webview-shell]
+  pull_request:
+    paths:
+      - 'native/**'
+      - 'engine/**'
+      - 'third_party/**'
+      - '.github/workflows/native.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-native:
+    name: Windows native WebView2
+    runs-on: windows-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: native
+    steps:
+      - name: Checkout converter and pinned submodule
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Go toolchain
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: native/go.mod
+          cache: false
+      - name: Test Go engine and native backend
+        shell: pwsh
+        run: go test -count=1 ./...
+      - name: Install stable Wails 2
+        shell: pwsh
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
+      - name: Build native Windows single exe
+        shell: pwsh
+        run: '& "$env:USERPROFILE\go\bin\wails.exe" build -s'
+      - name: Verify standalone binary and archive
+        shell: pwsh
+        run: |
+          $exe = 'build/bin/3MF Bridge.exe'
+          if (!(Test-Path $exe)) { throw 'Native binary missing' }
+          $size = (Get-Item $exe).Length
+          Write-Output "Native Windows exe bytes: $size"
+          if ($size -gt 35000000) { throw 'Native binary unexpectedly large' }
+          Compress-Archive -LiteralPath $exe -DestinationPath 'build/bin/3MF-Bridge-Windows-native.zip' -CompressionLevel Optimal -Force
+      - name: Upload Windows native beta
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3mf-bridge-windows-native
+          path: native/build/bin/3MF-Bridge-Windows-native.zip
+          retention-days: 14
+
+  macos-native:
+    name: macOS native WebKit (Intel)
+    runs-on: macos-15
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: native
+    steps:
+      - name: Checkout converter and pinned submodule
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Go toolchain
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: native/go.mod
+          cache: false
+      - name: Test Go engine and native backend
+        run: go test -count=1 ./...
+      - name: Install stable Wails 2
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
+      - name: Build macOS app using system WebKit
+        run: '"$(go env GOPATH)/bin/wails" build -s'
+      - name: Check native app size and package
+        run: |
+          APP='build/bin/3MF Bridge.app'
+          test -d "$APP"
+          du -sh "$APP"
+          ditto -c -k --sequesterRsrc --keepParent "$APP" build/bin/3MF-Bridge-macOS-Intel.zip
+      - name: Upload macOS native beta (unsigned)
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3mf-bridge-macos-intel-unsigned
+          path: native/build/bin/3MF-Bridge-macOS-Intel.zip
+          retention-days: 14

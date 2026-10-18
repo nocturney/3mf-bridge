@@ -1,0 +1,15 @@
+{
+  "name": "3mf-bridge-native",
+  "outputfilename": "3MF Bridge",
+  "frontend": {
+    "dir": "frontend",
+    "install": "",
+    "build": ""
+  },
+  "wailsjsdir": "frontend",
+  "assetdir": "frontend/dist",
+  "author": {
+    "name": "Velvet Factory",
+    "email": ""
+  }
+}
