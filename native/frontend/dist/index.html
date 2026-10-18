@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' asset:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: asset:; connect-src 'self' ws:; object-src 'none'">
+  <title>3MF Bridge</title>
+  <link rel="stylesheet" href="./app.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="header">
+      <div class="headerbar">
+        <p class="eyebrow">3MF Bridge <span class="native-note">/ Native WebView</span></p>
+        <div class="language-switch" role="group" aria-label="Language / שפה">
+          <button id="heBtn" type="button" class="language-btn" lang="he">עברית</button>
+          <button id="enBtn" type="button" class="language-btn" lang="en">English</button>
+        </div>
+      </div>
+      <h1 data-i18n="title">המרת קובצי Bambu 3MF</h1>
+      <p class="subtitle" data-i18n="subtitle">
+        בחר או גרור פרויקט 3MF, סמן מדפסות יעד, וקבל פרויקטים מותאמים בתיקיית המקור.
+      </p>
+    </section>
+    <section class="content">
+      <section id="dropzone" class="dropzone" tabindex="0">
+        <h2 data-i18n="dropTitle">גרור לכאן קובץ 3MF</h2>
+        <p data-i18n="dropHelp">או לחץ על הכפתור לבחירה ידנית.</p>
+        <div class="actions">
+          <button id="pickFileBtn" class="primary" type="button" data-i18n="choose">בחירת קובץ</button>
+        </div>
+      </section>
+
+      <section id="sourcePanel" class="panel">
+        <h3 class="section-title" data-i18n="sourceTitle">קובץ מקור</h3>
+        <div id="fileMeta" class="file-meta"></div>
+      </section>
+
+      <section id="targetsPanel" class="panel">
+        <h3 class="section-title" data-i18n="targetsTitle">מדפסות יעד</h3>
+        <div class="target-grid">
+          <label class="option"><input type="checkbox" value="u1"/> <span data-target="u1">Snapmaker U1</span></label>
+          <label class="option"><input type="checkbox" value="c5" disabled/> <span data-target="c5">Flashforge Creator 5</span></label>
+          <label class="option"><input type="checkbox" value="cc2" disabled/> <span data-target="cc2">ELEGOO CC2</span></label>
+          <label class="option"><input type="checkbox" value="qidi" disabled/> <span data-target="qidi">QIDI Plus5</span></label>
+        </div>
+      </section>
+
+      <section id="statusPanel" class="panel">
+        <h3 class="section-title" data-i18n="statusTitle">סטטוס</h3>
+        <ul id="statusList" class="status-list" role="status" aria-live="polite"></ul>
+      </section>
+
+      <div id="mainActions" class="footer-actions">
+        <button id="convertBtn" class="primary" type="button" data-i18n="convert">המרת הקובץ</button>
+        <button id="openFolderBtn" class="secondary" type="button" disabled data-i18n="openFolder">פתיחת תיקיית פלט</button>
+      </div>
+
+      <p id="footerHint" class="hint" data-i18n="hint">
+        ההמרה מקומית בלבד. יש לבדוק את הדיזה, החומר וה־Slice בסלייסר המתאים לפני הדפסה.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
