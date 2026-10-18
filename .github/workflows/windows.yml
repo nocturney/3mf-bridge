@@ -38,6 +38,13 @@ jobs:
       - name: Install Electron packaging dependencies
         run: npm ci --no-audit --no-fund
 
+      - name: Verify Electron runtime installation
+        shell: pwsh
+        run: |
+          if (-not (Test-Path '.\node_modules\electron\dist\electron.exe')) {
+            throw 'Electron runtime missing; root npm postinstall did not complete'
+          }
+
       - name: Test Electron IPC and window geometry
         run: npm test
 

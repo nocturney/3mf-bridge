@@ -34,7 +34,7 @@
 
 ## הפעלה מקומית (Windows)
 
-דרישות פיתוח: Node.js 22+, npm, Go 1.24.7+.
+דרישות פיתוח: Node.js 22+, npm, Go 1.24.7+. ההתקנה באמצעות `npm ci` מורידה גם את סביבת Electron המקומית באמצעות `postinstall`; נדרש חיבור אינטרנט בשלב התקנת כלי הפיתוח בלבד, לא בזמן המרת קבצים.
 
 ```powershell
 git submodule update --init
