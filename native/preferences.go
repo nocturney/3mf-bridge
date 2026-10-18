@@ -165,18 +165,23 @@ func validateSettings(target string, pref PrinterSettings, checkInstalled bool) 
 		}
 	}
 	if checkInstalled {
-		nozzle := pref.Nozzle
-		if nozzle == "auto" || nozzle == "" {
-			nozzle = "0.4"
-		}
-		if _, _, _, err := presets.ResolveSlicer(target, pref.Slicer); err != nil {
-			if target == "u1" && pref.Nozzle == "auto" && len(pref.Filaments) == 0 {
-				return nil
+		// A physical nozzle preference is valid without a slicer installed:
+		// the user can configure their printer in advance. Conversion will
+		// still fail closed if a required native vendor profile is missing.
+		// Explicit slicer and filament overrides, however, must resolve now.
+		if pref.Slicer != "" && pref.Slicer != "auto" {
+			if _, _, _, err := presets.ResolveSlicer(target, pref.Slicer); err != nil {
+				return err
 			}
-			return err
 		}
-		if err := presets.ValidateOverrides(target, nozzle, pref.Slicer, pref.Filaments); err != nil {
-			return err
+		if len(pref.Filaments) > 0 {
+			nozzle := pref.Nozzle
+			if nozzle == "auto" || nozzle == "" {
+				nozzle = "0.4"
+			}
+			if err := presets.ValidateOverrides(target, nozzle, pref.Slicer, pref.Filaments); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
