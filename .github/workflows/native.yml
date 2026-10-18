@@ -58,7 +58,7 @@ jobs:
           retention-days: 14
 
   macos-native:
-    name: macOS native WebKit (Intel)
+    name: macOS native WebKit (Apple Silicon)
     runs-on: macos-15
     timeout-minutes: 35
     defaults:
@@ -82,13 +82,13 @@ jobs:
         run: '"$(go env GOPATH)/bin/wails" build -s'
       - name: Check native app size and package
         run: |
-          APP='build/bin/3MF Bridge.app'
+          APP='build/bin/3mf-bridge-native.app'
           test -d "$APP"
           du -sh "$APP"
-          ditto -c -k --sequesterRsrc --keepParent "$APP" build/bin/3MF-Bridge-macOS-Intel.zip
-      - name: Upload macOS native beta (unsigned)
+          ditto -c -k --sequesterRsrc --keepParent "$APP" build/bin/3MF-Bridge-macOS-Apple-Silicon.zip
+      - name: Upload macOS native beta (ad-hoc signed)
         uses: actions/upload-artifact@v4
         with:
-          name: 3mf-bridge-macos-intel-unsigned
-          path: native/build/bin/3MF-Bridge-macOS-Intel.zip
+          name: 3mf-bridge-macos-apple-silicon-adhoc
+          path: native/build/bin/3MF-Bridge-macOS-Apple-Silicon.zip
           retention-days: 14
