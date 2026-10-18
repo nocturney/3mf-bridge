@@ -1,9 +1,10 @@
-const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, shell, screen } = require('electron');
 const path = require('path');
 const fs = require('fs/promises');
 const { execFile } = require('node:child_process');
 const { promisify } = require('node:util');
 const runExecutable = promisify(execFile);
+const { fitContentToDisplay } = require('./window-sizing');
 
 let lastOutputFolder = null;
 
@@ -14,12 +15,54 @@ const TARGETS = {
   qidi: 'QIDI'
 };
 
+async function fitWindowToInitialContent(win) {
+  // Measure after the document and local fonts have loaded. The renderer
+  // reports only numeric dimensions, not arbitrary window controls.
+  const content = await win.webContents.executeJavaScript(`
+    (async () => {
+      await document.fonts.ready;
+      const shell = document.querySelector('.shell');
+      const body = document.body;
+      const styles = getComputedStyle(body);
+      const horizontalPadding =
+        parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
+      const verticalPadding =
+        parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+      const shellBounds = shell ? shell.getBoundingClientRect() : body.getBoundingClientRect();
+      return {
+        width: Math.ceil(shellBounds.width + horizontalPadding + 6),
+        // Unlike body.scrollHeight, this excludes body's min-height: 100vh.
+        height: Math.ceil(shellBounds.height + verticalPadding + 6)
+      };
+    })()
+  `);
+
+  if (win.isDestroyed()) return;
+  const windowBounds = win.getBounds();
+  const clientBounds = win.getContentBounds();
+  const frameWidth = Math.max(0, windowBounds.width - clientBounds.width);
+  const frameHeight = Math.max(0, windowBounds.height - clientBounds.height);
+  const { workArea } = screen.getDisplayMatching(windowBounds);
+
+  // Leave a small margin for the window frame and any OS-reserved space.
+  const fitting = fitContentToDisplay({
+    contentWidth: content.width,
+    contentHeight: content.height,
+    maxClientWidth: Math.max(1, workArea.width - frameWidth - 20),
+    maxClientHeight: Math.max(1, workArea.height - frameHeight - 20)
+  });
+  win.webContents.setZoomFactor(fitting.zoomFactor);
+  win.setContentSize(fitting.width, fitting.height);
+  win.center();
+}
+
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1180,
-    height: 820,
-    minWidth: 980,
-    minHeight: 700,
+    width: 1050,
+    height: 740,
+    minWidth: 720,
+    minHeight: 520,
+    show: false,
     backgroundColor: '#f7f6f2',
     autoHideMenuBar: true,
     webPreferences: {
@@ -29,7 +72,12 @@ function createWindow() {
     }
   });
 
-  win.loadFile(path.join(__dirname, 'index.html'));
+  win.loadFile(path.join(__dirname, 'index.html'))
+    .then(() => fitWindowToInitialContent(win))
+    .catch((error) => console.warn('Window size auto-fit skipped:', error.message))
+    .finally(() => {
+      if (!win.isDestroyed()) win.show();
+    });
 }
 
 function formatBytes(bytes) {

@@ -239,6 +239,128 @@
       line-height: 1.7;
     }
 
+    /* On desktop, arrange the workflow in two short rows instead of one tall column. */
+    @media (min-width: 840px) {
+      body {
+        padding: 12px 16px;
+      }
+
+      .header {
+        padding: 18px 24px 14px;
+      }
+
+      .eyebrow {
+        margin-bottom: 4px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: none;
+      }
+
+      .content {
+        padding: 16px 20px 18px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      #dropzone {
+        grid-column: 1;
+        grid-row: 1;
+        display: grid;
+        align-content: center;
+        padding: 16px;
+      }
+
+      #sourcePanel {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      #targetsPanel {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      #statusPanel {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      #mainActions {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        justify-content: center;
+      }
+
+      #footerHint {
+        grid-column: 1 / -1;
+        grid-row: 4;
+      }
+
+      .panel {
+        padding: 12px 14px;
+      }
+
+      .dropzone h2 {
+        margin-bottom: 4px;
+        font-size: 21px;
+      }
+
+      .dropzone p {
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      button {
+        padding: 10px 18px;
+      }
+
+      .section-title {
+        margin-bottom: 8px;
+        font-size: 17px;
+      }
+
+      .file-meta {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .target-grid {
+        gap: 8px;
+      }
+
+      label.option {
+        padding: 10px;
+        gap: 8px;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.25;
+      }
+
+      .status-list {
+        gap: 8px;
+      }
+
+      .status-item {
+        padding: 9px 11px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .hint {
+        font-size: 12px;
+        line-height: 1.4;
+      }
+    }
+
     @media (max-width: 720px) {
       body {
         padding: 14px;
@@ -288,14 +410,14 @@
         </div>
       </section>
 
-      <section class="panel">
+      <section id="sourcePanel" class="panel">
         <h3 class="section-title">קובץ מקור</h3>
         <div id="fileMeta" class="file-meta">
           עדיין לא נבחר קובץ.
         </div>
       </section>
 
-      <section class="panel">
+      <section id="targetsPanel" class="panel">
         <h3 class="section-title">מדפסות יעד</h3>
         <div class="target-grid">
           <label class="option"><input type="checkbox" value="u1" /> <span>Snapmaker U1</span></label>
@@ -305,12 +427,12 @@
         </div>
       </section>
 
-      <div class="footer-actions">
+      <div id="mainActions" class="footer-actions">
         <button id="convertBtn" class="primary" type="button">המרת הקובץ</button>
         <button id="openFolderBtn" class="secondary" type="button" disabled>פתיחת תיקיית פלט</button>
       </div>
 
-      <section class="panel">
+      <section id="statusPanel" class="panel">
         <h3 class="section-title">סטטוס</h3>
         <ul id="statusList" class="status-list">
           <li class="status-item muted">ממתין לבחירת קובץ.</li>
@@ -318,7 +440,7 @@
         </ul>
       </section>
 
-      <div class="hint">
+      <div id="footerHint" class="hint">
         ההמרה ל-Snapmaker U1 מבוססת על מנוע מקומי, ומייצרת פרויקט חדש ולא עותק זהה.
         לפני הדפסה חובה לפתוח את הפלט ב-Snapmaker Orca, לבדוק את ההגדרות ולבצע Slicing מחדש.
         עבור C5, CC2 ו-QIDI לא נוצרים פלטים עד שתושלם בדיקת תאימות.

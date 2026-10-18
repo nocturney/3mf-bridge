@@ -6,7 +6,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "node --test tests/ipc.test.js",
+    "test": "node --test tests/ipc.test.js tests/window-sizing.test.js",
+    "test:desktop": "electron tests/electron-fit-smoke.js",
     "package:win": "node scripts/package-win.js"
   },
   "keywords": [

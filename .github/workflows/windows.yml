@@ -38,8 +38,17 @@ jobs:
       - name: Install Electron packaging dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: Test Electron IPC integration
+      - name: Test Electron IPC and window geometry
         run: npm test
+
+      - name: Smoke-test Electron auto-fit on Windows
+        shell: pwsh
+        run: |
+          $output = & .\node_modules\electron\dist\electron.exe .\tests\electron-fit-smoke.js 2>&1 | Out-String
+          Write-Output $output
+          if ($LASTEXITCODE -ne 0 -or $output -notmatch 'ELECTRON_FIT_SMOKE .*"fits":true') {
+            throw "Electron window did not fit the available display or the smoke test did not run"
+          }
 
       - name: Create Windows portable app
         run: npm run package:win
