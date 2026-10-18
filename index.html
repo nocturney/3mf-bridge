@@ -397,7 +397,7 @@
       <h1>המרת קובצי Bambu 3MF למדפסות יעד</h1>
       <p class="subtitle">
         בחר או גרור קובץ 3MF, סמן את מדפסות היעד, והמערכת תיצור עותקי פלט בתיקיית המקור
-        עם קידומת מתאימה לכל מדפסת.
+        עם קידומת מתאימה לכל מדפסת, בלי לדרוס קבצים קיימים.
       </p>
     </section>
 
@@ -421,9 +421,9 @@
         <h3 class="section-title">מדפסות יעד</h3>
         <div class="target-grid">
           <label class="option"><input type="checkbox" value="u1" /> <span>Snapmaker U1</span></label>
-          <label class="option"><input type="checkbox" value="c5" disabled /> <span>Flashforge Creator 5 — בבדיקת תאימות</span></label>
-          <label class="option"><input type="checkbox" value="cc2" disabled /> <span>ELEGOO CC2 — בבדיקת תאימות</span></label>
-          <label class="option"><input type="checkbox" value="qidi" disabled /> <span>QIDI Plus5 — בבדיקת תאימות</span></label>
+          <label class="option"><input type="checkbox" value="c5" disabled /> <span data-target-name="c5">Flashforge Creator 5 — בודק פרופיל...</span></label>
+          <label class="option"><input type="checkbox" value="cc2" disabled /> <span data-target-name="cc2">ELEGOO CC2 — בודק פרופיל...</span></label>
+          <label class="option"><input type="checkbox" value="qidi" disabled /> <span data-target-name="qidi">QIDI Plus5 — בודק פרופיל...</span></label>
         </div>
       </section>
 
@@ -441,9 +441,9 @@
       </section>
 
       <div id="footerHint" class="hint">
-        ההמרה ל-Snapmaker U1 מבוססת על מנוע מקומי, ומייצרת פרויקט חדש ולא עותק זהה.
-        לפני הדפסה חובה לפתוח את הפלט ב-Snapmaker Orca, לבדוק את ההגדרות ולבצע Slicing מחדש.
-        עבור C5, CC2 ו-QIDI לא נוצרים פלטים עד שתושלם בדיקת תאימות.
+        כל המרה מבוצעת באופן מקומי ויוצרת פרויקט נפרד עם פרופיל מדפסת אמיתי.
+        עבור C5, CC2 ו-QIDI נדרשת התקנה מקומית של סלייסר היעד ופרופילי היצרן.
+        גרסאות אלו הן ניסיוניות: יש לפתוח כל פלט בסלייסר שלו, לבדוק חומרים והגדרות ולבצע Slicing לפני הדפסה.
       </div>
     </section>
   </main>
@@ -482,6 +482,30 @@
       return Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
         .map((el) => el.value);
     }
+
+    async function refreshTargetAvailability() {
+      const labels = {
+        c5: 'Flashforge Creator 5',
+        cc2: 'ELEGOO CC2',
+        qidi: 'QIDI Plus5'
+      };
+      try {
+        const states = await window.bridgeApi.getTargetAvailability();
+        for (const state of states) {
+          if (!labels[state.target]) continue;
+          const box = document.querySelector('input[value="' + state.target + '"]');
+          const span = document.querySelector('[data-target-name="' + state.target + '"]');
+          box.disabled = !state.available;
+          span.textContent = labels[state.target] +
+            (state.available ? ' — פרופיל מקומי זמין (ניסיוני)' : ' — דרוש פרופיל סלייסר');
+          span.title = state.available ? state.slicer : state.error;
+        }
+      } catch (error) {
+        setStatus([{ type: 'error', text: 'לא ניתן לאתר פרופילי סלייסרים: ' + error.message }]);
+      }
+    }
+
+    window.bridgeLayoutReady = refreshTargetAvailability();
 
     async function handlePickedFile(file) {
       selectedFile = file;
@@ -553,24 +577,34 @@
           targets
         });
 
-        if (!result.ok) {
-          setStatus([{ type: 'error', text: result.error || 'ההמרה נכשלה.' }]);
-          return;
+        const items = [];
+        if (result.results && result.results.length > 0) {
+          items.push({
+            type: 'success',
+            text: `נוצרו ${result.results.length} פרויקטים בתיקיית המקור.`
+          });
+          for (const entry of result.results) {
+            items.push({
+              type: 'success',
+              text: `המרה הושלמה: ${entry.outputName}`
+            });
+          }
+          items.push({
+            type: 'warning',
+            text: 'לכל יעד: פתח את הקובץ בסלייסר המתאים, בדוק חומרים ובצע Slice לפני הדפסה.'
+          });
         }
-
-        const items = result.results.flatMap((entry) => [
-          { type: 'success', text: `נוצר פרויקט U1: ${entry.outputName}` },
-          ...((entry.report && entry.report.warnings) || []).map((warning) => ({
-            type: 'warning', text: warning
-          }))
-        ]);
-        items.unshift({
-          type: 'success',
-          text: `המרה מקומית הושלמה בתיקייה: ${result.folder}`
-        });
-
+        for (const failure of result.failures || []) {
+          items.push({
+            type: 'error',
+            text: `${failure.target.toUpperCase()}: ${failure.error} (${failure.code})`
+          });
+        }
+        if (!result.ok && items.length === 0) {
+          items.push({ type: 'error', text: result.error || 'ההמרה נכשלה.' });
+        }
         setStatus(items);
-        openFolderBtn.disabled = false;
+        openFolderBtn.disabled = !(result.results && result.results.length > 0);
       } catch (error) {
         setStatus([{ type: 'error', text: error.message || 'אירעה שגיאה לא צפויה.' }]);
       } finally {

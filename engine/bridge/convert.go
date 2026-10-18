@@ -30,11 +30,20 @@ func ErrorCode(err error) string {
 	return "CONVERSION_FAILED"
 }
 
-// Convert is deliberately fail-closed: only the U1 adapter is validated here.
-// Unverified targets must not be represented by a renamed copy of the input.
+// Convert keeps the original validated U1 entrypoint for compatibility.
 func Convert(source, destination, target string) (map[string]any, error) {
-	if strings.ToLower(target) != "u1" {
-		return nil, fail("TARGET_NOT_VALIDATED", "target %q has no verified profile adapter", target)
+	return ConvertWithProfile(source, destination, target, "")
+}
+
+// ConvertWithProfile uses manufacturer slicer presets for C5/CC2/QIDI.
+// A missing or mismatched installed profile fails closed.
+func ConvertWithProfile(source, destination, target, profileFile string) (map[string]any, error) {
+	target = strings.ToLower(target)
+	if target != "u1" && targetModels[target] == "" {
+		return nil, fail("TARGET_NOT_VALIDATED", "unknown target %q", target)
+	}
+	if target != "u1" && profileFile == "" {
+		return nil, fail("TARGET_PROFILE_REQUIRED", "installed target slicer profile is required for %s", target)
 	}
 	src, err := filepath.Abs(source)
 	if err != nil {
@@ -64,9 +73,22 @@ func Convert(source, destination, target string) (map[string]any, error) {
 	if len(insp.Filaments) == 0 {
 		return nil, fail("NO_FILAMENTS", "source contains no usable filament data")
 	}
-	base := printer.Builtin("snapmaker-u1")
+	var base *printer.Profile
+	var bundle *targetBundle
+	if target == "u1" {
+		base = printer.Builtin("snapmaker-u1")
+	} else {
+		bundle, err = loadTargetBundle(profileFile, target)
+		if err != nil {
+			return nil, fail("TARGET_PROFILE_INVALID", "target %s installed slicer profile: %v", target, err)
+		}
+		if err = bindNativeFilamentSettings(bundle, insp.Filaments); err != nil {
+			return nil, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", target, err)
+		}
+		base = &bundle.Profile
+	}
 	if base == nil {
-		return nil, fail("ENGINE_INVALID", "upstream U1 profile missing")
+		return nil, fail("ENGINE_INVALID", "target base profile missing")
 	}
 	merged, preserved, err := preservedProfile(src, base)
 	if err != nil {
@@ -124,8 +146,12 @@ func Convert(source, destination, target string) (map[string]any, error) {
 	if after.sliceCaches != 0 {
 		return nil, fail("STALE_GCODE", "converted project still contains sliced machine code")
 	}
-	if !strings.Contains(strings.ToLower(after.printerModel), "snapmaker u1") {
-		return nil, fail("TARGET_IDENTITY_INVALID", "converted project has unexpected printer model %q", after.printerModel)
+	expectedModel := "Snapmaker U1"
+	if target != "u1" {
+		expectedModel = targetModels[target]
+	}
+	if after.printerModel != expectedModel {
+		return nil, fail("TARGET_IDENTITY_INVALID", "converted project has unexpected printer model %q (expected %q)", after.printerModel, expectedModel)
 	}
 	// A hard link in the same directory publishes atomically without replacing
 	// an existing output. This protects the source and all previous conversions.
@@ -138,7 +164,7 @@ func Convert(source, destination, target string) (map[string]any, error) {
 	sort.Strings(preserved)
 	return map[string]any{
 		"ok":                          true,
-		"target":                      "u1",
+		"target":                      target,
 		"output":                      dst,
 		"engine":                      "bl2std",
 		"source_filament_slots":       len(insp.Filaments),
@@ -147,8 +173,8 @@ func Convert(source, destination, target string) (map[string]any, error) {
 		"removed_slice_cache_entries": removed,
 		"preserved_print_keys":        preserved,
 		"warnings": []string{
-			"Open in Snapmaker Orca, review the complete project and re-slice before printing.",
-			"Only a reviewed subset of source print parameters is transferred; machine and firmware values are taken from the U1 reference.",
+			fmt.Sprintf("Open this project in the target slicer for %s and re-slice before printing.", expectedModel),
+			"Review material slots, supports, nozzle and user print parameters; printer-specific firmware scripts come from the installed target profile.",
 		},
 	}, nil
 }

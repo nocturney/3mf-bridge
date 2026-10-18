@@ -5,6 +5,8 @@ const { execFile } = require('node:child_process');
 const { promisify } = require('node:util');
 const runExecutable = promisify(execFile);
 const { fitContentToDisplay } = require('./window-sizing');
+const os = require('node:os');
+const { PROFILES, loadTargetBundle } = require('./slicer-profiles');
 
 let lastOutputFolder = null;
 
@@ -73,7 +75,11 @@ function createWindow() {
   });
 
   win.loadFile(path.join(__dirname, 'index.html'))
-    .then(() => fitWindowToInitialContent(win))
+    .then(async () => {
+      // Let the three installed-slicer checks update their labels first.
+      await win.webContents.executeJavaScript('window.bridgeLayoutReady');
+      if (!win.isDestroyed()) await fitWindowToInitialContent(win);
+    })
     .catch((error) => console.warn('Window size auto-fit skipped:', error.message))
     .finally(() => {
       if (!win.isDestroyed()) win.show();
@@ -113,7 +119,7 @@ function parseEngineReply(stdout) {
   }
 }
 
-async function convertWithVerifiedEngine(filePath, outputPath) {
+async function convertWithVerifiedEngine(filePath, outputPath, target) {
   const executable = app.isPackaged
     ? path.join(process.resourcesPath, 'bin', 'bridge-core.exe')
     : path.join(__dirname, 'bin', 'bridge-core.exe');
@@ -128,23 +134,31 @@ async function convertWithVerifiedEngine(filePath, outputPath) {
     };
   }
 
+  let scratch;
   try {
-    const { stdout } = await runExecutable(executable, [
-      '--source', filePath, '--output', outputPath, '--target', 'u1'
-    ], {
-      windowsHide: true,
-      timeout: 180000,
-      maxBuffer: 256 * 1024
+    const args = ['--source', filePath, '--output', outputPath, '--target', target];
+    if (target !== 'u1') {
+      // Read the manufacturer's presets directly from installed slicer data.
+      // Temporary bundles are scoped to the conversion and then deleted.
+      const bundle = await loadTargetBundle(target);
+      scratch = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-profile-'));
+      const profileFile = path.join(scratch, 'vendor-preset.json');
+      await fs.writeFile(profileFile, JSON.stringify(bundle), { mode: 0o600 });
+      args.push('--profile', profileFile);
+    }
+    const { stdout } = await runExecutable(executable, args, {
+      windowsHide: true, timeout: 180000, maxBuffer: 256 * 1024
     });
     return parseEngineReply(stdout) || {
       ok: false, code: 'ENGINE_NO_REPORT', error: 'לא התקבל דוח תקין ממנוע ההמרה.'
     };
   } catch (err) {
     return parseEngineReply(err.stdout) || {
-      ok: false,
-      code: 'ENGINE_FAILED',
-      error: 'מנוע ההמרה נכשל. הקובץ המקורי לא הוחלף.'
+      ok: false, code: 'ENGINE_FAILED',
+      error: err.message || 'מנוע ההמרה נכשל. קובץ המקור לא הוחלף.'
     };
+  } finally {
+    if (scratch) await fs.rm(scratch, { recursive: true, force: true });
   }
 }
 
@@ -213,6 +227,21 @@ ipcMain.handle('inspect-dropped-file', async (_event, droppedPath) => {
   };
 });
 
+ipcMain.handle('get-target-availability', async () => {
+  const checks = await Promise.all(Object.keys(PROFILES).map(async (target) => {
+    try {
+      const bundle = await loadTargetBundle(target);
+      return { target, available: true, slicer: bundle.slicer, model: bundle.profile.printer_model_id };
+    } catch (err) {
+      return { target, available: false, error: err.message };
+    }
+  }));
+  return [
+    { target: 'u1', available: true, slicer: 'Snapmaker Orca', model: 'Snapmaker U1' },
+    ...checks
+  ];
+});
+
 ipcMain.handle('convert-3mf', async (_event, payload) => {
   const { filePath, targets } = payload || {};
 
@@ -232,13 +261,9 @@ ipcMain.handle('convert-3mf', async (_event, payload) => {
   const sourceDir = path.dirname(filePath);
   const baseName = path.basename(filePath);
 
-  // Never present a copied Bambu file as a converted project.
-  if (targets.length !== 1 || targets[0] !== 'u1') {
-    return {
-      ok: false,
-      code: 'TARGET_NOT_VALIDATED',
-      error: 'כרגע קיימת המרה מאומתת ניסיונית ל-Snapmaker U1 בלבד. שאר היעדים עדיין בבדיקות.'
-    };
+  if (targets.some((target) => !TARGETS[target]) ||
+      new Set(targets).size !== targets.length) {
+    return { ok: false, code: 'TARGET_INVALID', error: 'רשימת יעדים לא תקינה.' };
   }
   let sourceStat;
   try {
@@ -250,35 +275,42 @@ ipcMain.handle('convert-3mf', async (_event, payload) => {
     return { ok: false, error: 'יש לבחור קובץ 3MF רגיל בגודל עד 250MB.' };
   }
 
-  for (let attempt = 1; attempt <= 100; attempt += 1) {
-    const baseOutputName = `${TARGETS.u1}-${baseName}`;
-    const outputName = attempt === 1
-      ? baseOutputName
-      : `${TARGETS.u1}-${path.parse(baseName).name}-${attempt}${path.extname(baseName)}`;
-    const outputPath = path.join(sourceDir, outputName);
-    const conversion = await convertWithVerifiedEngine(filePath, outputPath);
-    if (conversion.code === 'OUTPUT_EXISTS') continue;
-    if (!conversion.ok) {
-      return {
-        ok: false,
-        code: conversion.code || 'CONVERSION_FAILED',
-        error: conversion.error || 'המרת הקובץ נכשלה.'
-      };
+  // Independent conversions start concurrently; one unsupported filament or
+  // vendor profile must not discard successful outputs for other printers.
+  const converted = await Promise.all(targets.map(async (target) => {
+    const prefix = TARGETS[target];
+    for (let attempt = 1; attempt <= 100; attempt += 1) {
+      const outputName = attempt === 1
+        ? `${prefix}-${baseName}`
+        : `${prefix}-${path.parse(baseName).name}-${attempt}${path.extname(baseName)}`;
+      const outputPath = path.join(sourceDir, outputName);
+      try {
+        await fs.access(outputPath);
+        continue;
+      } catch { /* use atomic no-overwrite publishing in the Go engine */ }
+      const conversion = await convertWithVerifiedEngine(filePath, outputPath, target);
+      if (conversion.code === 'OUTPUT_EXISTS') continue;
+      if (!conversion.ok) {
+        return {
+          ok: false, target, code: conversion.code || 'CONVERSION_FAILED',
+          error: conversion.error || 'המרת הקובץ נכשלה.'
+        };
+      }
+      return { ok: true, target, prefix, outputPath, outputName, report: conversion };
     }
-    lastOutputFolder = sourceDir;
-    return {
-      ok: true,
-      folder: sourceDir,
-      results: [{
-        target: 'u1',
-        prefix: 'U1',
-        outputPath,
-        outputName,
-        report: conversion
-      }]
-    };
-  }
-  return { ok: false, error: 'קיימים יותר מדי קובצי פלט עם אותו שם.' };
+    return { ok: false, target, code: 'OUTPUT_COLLISIONS', error: 'קיימים יותר מדי קבצים עם שם זהה.' };
+  }));
+
+  const results = converted.filter((entry) => entry.ok);
+  const failures = converted.filter((entry) => !entry.ok);
+  if (results.length > 0) lastOutputFolder = sourceDir;
+  return {
+    ok: results.length > 0,
+    folder: sourceDir,
+    results,
+    failures,
+    error: results.length === 0 ? 'כל ההמרות נכשלו. ראו פירוט לפי מדפסת.' : null
+  };
 });
 
 ipcMain.handle('open-output-folder', async () => {

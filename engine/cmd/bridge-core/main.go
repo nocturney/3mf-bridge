@@ -13,12 +13,13 @@ func main() {
 	source := flag.String("source", "", "Source Bambu project .3mf")
 	output := flag.String("output", "", "Destination 3MF (never overwritten)")
 	target := flag.String("target", "u1", "Target adapter")
+	profile := flag.String("profile", "", "Target vendor preset bundle (non-U1)")
 	flag.Parse()
 	if *source == "" || *output == "" {
 		emit(map[string]any{"ok": false, "code": "ARGS_INVALID", "error": "--source and --output are required"})
 		os.Exit(2)
 	}
-	result, err := bridge.Convert(*source, *output, *target)
+	result, err := bridge.ConvertWithProfile(*source, *output, *target, *profile)
 	if err != nil {
 		emit(map[string]any{"ok": false, "code": bridge.ErrorCode(err), "error": err.Error()})
 		os.Exit(1)

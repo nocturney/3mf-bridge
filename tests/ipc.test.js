@@ -7,6 +7,7 @@ const vm = require('node:vm');
 const Module = require('node:module');
 
 const handlers = new Map();
+let blockedVendorTarget = null;
 const fakeElectron = {
   app: {
     isPackaged: false,
@@ -18,10 +19,60 @@ const fakeElectron = {
   dialog: { showOpenDialog: async () => ({ canceled: true, filePaths: [] }) },
   shell: { openPath: async () => '' }
 };
+
+function fakeVendorBundle(target) {
+  const models = {
+    c5: 'Flashforge Creator 5',
+    cc2: 'Elegoo Centauri Carbon 2',
+    qidi: 'X-Plus 5'
+  };
+  return {
+    target,
+    slicer: 'synthetic test slicer',
+    nozzle: '0.4',
+    profile: {
+      name: target,
+      display_name: models[target],
+      printer_model_id: models[target],
+      filament_slots: 4,
+      filament_profiles: { PLA: 'Synthetic PLA' },
+      default_filament_profile: 'Synthetic PLA',
+      project_settings: {
+        printer_model: models[target],
+        printer_settings_id: 'Synthetic machine 0.4',
+        print_settings_id: 'Synthetic Standard 0.2',
+        machine_start_gcode: 'G28 ; SYNTHETIC',
+        machine_end_gcode: 'M104 S0 ; SYNTHETIC',
+        nozzle_diameter: ['0.4'],
+        filament_type: ['PLA'],
+        filament_colour: ['#FFFFFF'],
+        filament_settings_id: ['Synthetic PLA'],
+        layer_height: '0.2',
+        enable_support: '0'
+      }
+    },
+    material_settings: {
+      PLA: { filament_type: ['PLA'], filament_colour: ['#FFFFFF'],
+        filament_density: ['1.24'], nozzle_temperature: ['210'],
+        filament_settings_id: ['Synthetic PLA'] }
+    }
+  };
+}
+
 const originalLoad = Module._load;
 try {
   Module._load = function(request, parent, isMain) {
     if (request === 'electron') return fakeElectron;
+    if (request === './slicer-profiles' &&
+      parent && parent.filename.endsWith(path.sep + 'main.js')) {
+      return {
+        PROFILES: { c5: {}, cc2: {}, qidi: {} },
+        loadTargetBundle: async (target) => {
+          if (target === blockedVendorTarget) throw new Error('Synthetic missing vendor preset');
+          return fakeVendorBundle(target);
+        }
+      };
+    }
     return originalLoad.call(this, request, parent, isMain);
   };
   require('../main.js');
@@ -31,7 +82,7 @@ try {
 
 const fixture = path.join(__dirname, 'fixtures', 'bambu-one-color.3mf');
 
-test('renderer script parses and copy-only conversion is removed', async () => {
+test('renderer script parses and copy-only conversion is absent', async () => {
   const html = await fs.readFile(path.join(__dirname, '..', 'index.html'), 'utf8');
   const script = html.match(/<script>([\s\S]*?)<\/script>/);
   assert.ok(script, 'renderer script exists');
@@ -40,59 +91,103 @@ test('renderer script parses and copy-only conversion is removed', async () => {
   assert.ok(!main.includes('fs.copyFile(filePath, outputPath)'), 'must not fake conversion');
 });
 
-test('IPC converts U1, preserves source, creates collision-safe outputs', async () => {
-  const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-ipc-'));
+test('IPC reports all four target adapters as available when profiles resolve', async () => {
+  const states = await handlers.get('get-target-availability')();
+  assert.deepEqual(states.map((x) => x.target), ['u1', 'c5', 'cc2', 'qidi']);
+  assert.ok(states.every((x) => x.available));
+});
+
+test('IPC converts all 4 targets concurrently, protects source, and handles collisions', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-ipc-all-'));
   try {
     const input = path.join(dir, 'model.3mf');
     await fs.copyFile(fixture, input);
     const before = await fs.readFile(input);
     const convert = handlers.get('convert-3mf');
-    assert.equal(typeof convert, 'function');
+    const targets = ['u1', 'c5', 'cc2', 'qidi'];
 
-    const first = await convert(null, { filePath: input, targets: ['u1'] });
-    assert.equal(first.ok, true, JSON.stringify(first));
-    assert.equal(first.results[0].outputName, 'U1-model.3mf');
-    assert.equal(first.results[0].report.engine, 'bl2std');
-    assert.ok(first.results[0].report.removed_slice_cache_entries > 0);
-    const converted = await fs.readFile(first.results[0].outputPath);
-    assert.ok(!converted.equals(before), 'converted 3MF must not be byte-identical');
-    assert.ok((await fs.readFile(input)).equals(before), 'original must never change');
-
-    const second = await convert(null, { filePath: input, targets: ['u1'] });
-    assert.equal(second.ok, true, JSON.stringify(second));
-    assert.equal(second.results[0].outputName, 'U1-model-2.3mf');
-    assert.ok((await fs.readFile(first.results[0].outputPath)).equals(converted));
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const result = await convert(null, { filePath: input, targets });
+      assert.equal(result.ok, true, JSON.stringify(result));
+      assert.equal(result.results.length, 4, JSON.stringify(result));
+      assert.equal(result.failures.length, 0);
+      for (const target of targets) {
+        const entry = result.results.find((r) => r.target === target);
+        assert.ok(entry && entry.report && entry.report.ok);
+        assert.equal(entry.outputName,
+          entry.prefix + '-model' + (attempt === 1 ? '' : '-2') + '.3mf');
+        assert.equal(entry.report.engine, 'bl2std');
+        assert.ok(entry.report.removed_slice_cache_entries >= 3);
+        const out = await fs.readFile(entry.outputPath);
+        assert.ok(!out.equals(before), 'must not copy-only for ' + target);
+      }
+    }
+    assert.ok((await fs.readFile(input)).equals(before));
   } finally {
     await fs.rm(dir, { recursive: true, force: true });
   }
 });
 
-test('IPC blocks unverified printer targets before writing any output', async () => {
-  const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-unsupported-'));
+test('IPC isolates target-specific errors and rejects invalid target keys', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-errors-'));
   try {
     const input = path.join(dir, 'model.3mf');
     await fs.copyFile(fixture, input);
-    for (const targets of [['c5'], ['cc2'], ['qidi'], ['u1', 'c5']]) {
-      const result = await handlers.get('convert-3mf')(null, { filePath: input, targets });
-      assert.equal(result.ok, false, JSON.stringify(result));
-      assert.equal(result.code, 'TARGET_NOT_VALIDATED');
-    }
+    let result = await handlers.get('convert-3mf')(null, {
+      filePath: input, targets: ['u1', 'invalid']
+    });
+    assert.equal(result.ok, false);
+    assert.equal(result.code, 'TARGET_INVALID');
+
+    result = await handlers.get('convert-3mf')(null, {
+      filePath: input, targets: ['qidi', 'qidi']
+    });
+    assert.equal(result.ok, false);
+    assert.equal(result.code, 'TARGET_INVALID');
     assert.deepEqual(await fs.readdir(dir), ['model.3mf']);
   } finally {
     await fs.rm(dir, { recursive: true, force: true });
   }
 });
 
-test('IPC refuses invalid .3mf archives without false success', async () => {
+test('IPC rejects malformed .3mf without writing misleading output', async () => {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-invalid-'));
   try {
     const input = path.join(dir, 'broken.3mf');
     await fs.writeFile(input, 'not zip data');
-    const result = await handlers.get('convert-3mf')(null, { filePath: input, targets: ['u1'] });
+    const result = await handlers.get('convert-3mf')(null, {
+      filePath: input, targets: ['u1', 'c5', 'cc2', 'qidi']
+    });
     assert.equal(result.ok, false);
-    assert.equal(result.code, 'SOURCE_INVALID');
+    assert.equal(result.failures.length, 4);
+    assert.ok(result.failures.every((r) => r.code === 'SOURCE_INVALID'), JSON.stringify(result));
     assert.deepEqual(await fs.readdir(dir), ['broken.3mf']);
   } finally {
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('one missing vendor profile does not cancel successful conversions for other targets', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), '3mf-bridge-partial-'));
+  blockedVendorTarget = 'cc2';
+  try {
+    const input = path.join(dir, 'model.3mf');
+    await fs.copyFile(fixture, input);
+    const result = await handlers.get('convert-3mf')(null, {
+      filePath: input, targets: ['u1', 'c5', 'cc2', 'qidi']
+    });
+    assert.equal(result.ok, true, JSON.stringify(result));
+    assert.deepEqual(result.results.map((r) => r.target), ['u1', 'c5', 'qidi']);
+    assert.equal(result.failures.length, 1);
+    assert.equal(result.failures[0].target, 'cc2');
+    assert.equal(result.failures[0].code, 'ENGINE_FAILED');
+    const files = await fs.readdir(dir);
+    assert.ok(files.includes('U1-model.3mf'));
+    assert.ok(files.includes('C5-model.3mf'));
+    assert.ok(files.includes('QIDI-model.3mf'));
+    assert.ok(!files.includes('CC2-model.3mf'));
+  } finally {
+    blockedVendorTarget = null;
     await fs.rm(dir, { recursive: true, force: true });
   }
 });

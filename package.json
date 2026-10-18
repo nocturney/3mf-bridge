@@ -1,13 +1,14 @@
 {
   "name": "3mf-bridge",
-  "version": "0.2.0-beta.1",
+  "version": "0.3.0-beta.1",
   "private": true,
   "description": "Local desktop bridge for Bambu 3MF projects; verified U1 beta adapter",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "postinstall": "node node_modules/electron/install.js",
-    "test": "node --test tests/ipc.test.js tests/window-sizing.test.js",
+    "test": "node --test tests/ipc.test.js tests/window-sizing.test.js tests/slicer-profiles.test.js",
+    "test:installed": "node tests/smoke-installed-targets.js",
     "test:desktop": "electron tests/electron-fit-smoke.js",
     "package:win": "node scripts/package-win.js"
   },

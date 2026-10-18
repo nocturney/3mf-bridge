@@ -149,7 +149,7 @@ func TestRejectUnverifiedTargetsAndExcessColors(t *testing.T) {
 	out := filepath.Join(dir, "result.3mf")
 	fixture(t, input, 1)
 	_, err := Convert(input, out, "c5")
-	if err == nil || ErrorCode(err) != "TARGET_NOT_VALIDATED" {
+	if err == nil || ErrorCode(err) != "TARGET_PROFILE_REQUIRED" {
 		t.Fatalf("unverified target: %v", err)
 	}
 	if _, err := os.Stat(out); !os.IsNotExist(err) {
