@@ -10,6 +10,7 @@ require (
 	github.com/BryanSmee/bl_to_std v0.0.0
 	github.com/nocturney/3mf-bridge/engine v0.0.0-00010101000000-000000000000
 	github.com/wailsapp/wails/v2 v2.17.0
+	golang.org/x/mod v0.37.0
 )
 
 require (

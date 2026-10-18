@@ -35,12 +35,16 @@ jobs:
       - name: Test Go engine and native backend
         shell: pwsh
         run: go test -count=1 ./...
+      - name: Test update UI (English and Hebrew)
+        run: node --test tests/update-ui.test.js
       - name: Install stable Wails 2
         shell: pwsh
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
       - name: Build native Windows single exe
         shell: pwsh
-        run: '& "$env:USERPROFILE\go\bin\wails.exe" build -s'
+        run: |
+          $sha = git rev-parse HEAD
+          & "$env:USERPROFILE\go\bin\wails.exe" build -s -ldflags "-X main.buildCommit=$sha"
       - name: Verify standalone binary and archive
         shell: pwsh
         run: |
@@ -76,10 +80,14 @@ jobs:
           cache: false
       - name: Test Go engine and native backend
         run: go test -count=1 ./...
+      - name: Test update UI (English and Hebrew)
+        run: node --test tests/update-ui.test.js
       - name: Install stable Wails 2
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
       - name: Build macOS app using system WebKit
-        run: '"$(go env GOPATH)/bin/wails" build -s'
+        run: |
+          sha=$(git rev-parse HEAD)
+          "$(go env GOPATH)/bin/wails" build -s -ldflags "-X main.buildCommit=$sha"
       - name: Check native app size and package
         run: |
           APP='build/bin/3mf-bridge-native.app'

@@ -61,6 +61,37 @@ const messages = Object.freeze({
   }
 });
 
+const updateTranslations = Object.freeze({
+  he: {
+    checkUpdates: 'בדיקת עדכונים',
+    checkingUpdates: 'בודק עדכונים ב-GitHub…',
+    updateAvailable: 'קיימת גרסה חדשה: {v}',
+    latestInstalled: 'הגרסה המותקנת מעודכנת.',
+    noPublishedReleases: 'עדיין לא פורסמו GitHub Releases. אפשר לבדוק בניות Beta.',
+    platformUnavailable: 'קיימת גרסה {v}, אך אין הורדה מתאימה למחשב זה.',
+    unsupportedPlatform: 'עדיין אין חבילת עדכון למערכת זו.',
+    authRequired: 'המאגר פרטי. יש להתחבר ל-GitHub CLI באמצעות gh auth login.' ,
+    updateError: 'בדיקת עדכונים נכשלה',
+    openRelease: 'פתיחת גרסה ב-GitHub',
+    openReleases: 'צפייה בגרסאות',
+    openPreviewBuilds: 'צפייה בבניות Beta'
+  },
+  en: {
+    checkUpdates: 'Check for updates',
+    checkingUpdates: 'Checking GitHub Releases…',
+    updateAvailable: 'New version available: {v}',
+    latestInstalled: 'You already have the latest published version.',
+    noPublishedReleases: 'No GitHub Releases are published yet. You can view beta builds.',
+    platformUnavailable: 'Version {v} exists, but has no download for this computer.',
+    unsupportedPlatform: 'No update package is available for this platform yet.',
+    authRequired: 'This repository is private. Sign in with GitHub CLI using gh auth login.',
+    updateError: 'Could not check for updates',
+    openRelease: 'Open release on GitHub',
+    openReleases: 'View GitHub releases',
+    openPreviewBuilds: 'View beta builds'
+  }
+});
+
 const targetNames = Object.freeze({
   u1: 'Snapmaker U1',
   c5: 'Flashforge Creator 5',
@@ -82,9 +113,13 @@ try {
 let selectedFile = null;
 let busy = false;
 let available = [];
+let installedVersion = null;
+let updateResult = null;
+let updateError = '';
+let updateChecking = false;
 
 function tr(name, attrs = {}) {
-  let value = messages[language][name] || name;
+  let value = messages[language][name] || updateTranslations[language][name] || name;
   for (const [key, val] of Object.entries(attrs)) {
     value = value.replaceAll('{' + key + '}', String(val));
   }
@@ -102,6 +137,95 @@ function setStatus(items) {
 function api() {
   return window.go?.main?.App || null;
 }
+function renderUpdateStatus() {
+  const checkButton = document.getElementById('checkUpdatesBtn');
+  const versionLabel = document.getElementById('installedVersion');
+  const statusLabel = document.getElementById('updateStatus');
+  const openButton = document.getElementById('openUpdateBtn');
+  versionLabel.textContent = installedVersion ? 'v' + installedVersion.version : '3MF Bridge';
+  if (installedVersion?.commit) {
+    versionLabel.title = installedVersion.commit;
+  }
+  checkButton.disabled = updateChecking;
+  openButton.hidden = true;
+  openButton.dataset.kind = '';
+  openButton.dataset.tag = '';
+  statusLabel.removeAttribute('data-status');
+  if (updateChecking) {
+    statusLabel.textContent = tr('checkingUpdates');
+    return;
+  }
+  if (updateError) {
+    statusLabel.textContent = tr('updateError') + ': ' + updateError;
+    statusLabel.dataset.status = 'error';
+    return;
+  }
+  if (!updateResult) {
+    statusLabel.textContent = '';
+    return;
+  }
+  const result = updateResult;
+  statusLabel.dataset.status = result.status;
+  switch (result.status) {
+    case 'update_available':
+      statusLabel.textContent = tr('updateAvailable', {v: result.latestVersion});
+      openButton.hidden = false;
+      openButton.textContent = tr('openRelease');
+      openButton.dataset.kind = 'release';
+      openButton.dataset.tag = result.releaseTag;
+      break;
+    case 'up_to_date':
+      statusLabel.textContent = tr('latestInstalled');
+      break;
+    case 'no_releases':
+      statusLabel.textContent = tr('noPublishedReleases');
+      openButton.hidden = false;
+      openButton.textContent = tr('openPreviewBuilds');
+      openButton.dataset.kind = 'builds';
+      break;
+    case 'platform_unavailable':
+      statusLabel.textContent = tr('platformUnavailable', {v: result.latestVersion});
+      openButton.hidden = false;
+      openButton.textContent = tr('openReleases');
+      openButton.dataset.kind = 'releases';
+      break;
+    case 'authentication_required':
+      statusLabel.textContent = tr('authRequired');
+      openButton.hidden = false;
+      openButton.textContent = tr('openReleases');
+      openButton.dataset.kind = 'releases';
+      break;
+    default:
+      statusLabel.textContent = tr('unsupportedPlatform');
+  }
+}
+async function checkForUpdates() {
+  if (updateChecking || !api()?.CheckForUpdates) return;
+  updateChecking = true;
+  updateError = '';
+  updateResult = null;
+  renderUpdateStatus();
+  try {
+    updateResult = await api().CheckForUpdates();
+  } catch (error) {
+    updateError = error?.message || String(error);
+  } finally {
+    updateChecking = false;
+    renderUpdateStatus();
+  }
+}
+async function openUpdatePage() {
+  const button = document.getElementById('openUpdateBtn');
+  const kind = button.dataset.kind;
+  if (!kind || !api()?.OpenUpdatePage) return;
+  try {
+    await api().OpenUpdatePage(kind, button.dataset.tag || '');
+  } catch (error) {
+    updateError = error?.message || String(error);
+    renderUpdateStatus();
+  }
+}
+
 function renderFile() {
   if (!selectedFile) {
     fileMeta.textContent = tr('unnamed');
@@ -129,6 +253,7 @@ function selectLanguage(lang) {
   renderFile();
   renderTargetAvailability();
   setStatus([{ text: selectedFile ? tr('selectTarget') : tr('idle') }]);
+  renderUpdateStatus();
   fitWindow();
 }
 function fitWindow() {
@@ -250,6 +375,8 @@ async function openFolder() {
   catch (e) { setStatus([{ type: 'error', text: tr('folderError') + ': ' + e.message }]); }
 }
 
+document.getElementById('checkUpdatesBtn').addEventListener('click', checkForUpdates);
+document.getElementById('openUpdateBtn').addEventListener('click', openUpdatePage);
 pickBtn.addEventListener('click', chooseFile);
 convertBtn.addEventListener('click', convert);
 outputBtn.addEventListener('click', openFolder);
@@ -274,6 +401,13 @@ selectLanguage(language);
   }
   if (window.runtime?.OnFileDrop) {
     window.runtime.OnFileDrop((_x, _y, paths) => processDrop(paths), true);
+  }
+  try {
+    installedVersion = await api().GetVersion();
+    renderUpdateStatus();
+  } catch (error) {
+    installedVersion = {version: 'unknown'};
+    renderUpdateStatus();
   }
   await refresh();
 })();

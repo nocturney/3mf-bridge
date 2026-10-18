@@ -394,3 +394,38 @@ body[dir=ltr] .file-meta {direction:ltr;}
 body[dir=ltr] .status-list {text-align:left;}
 body[dir=ltr] .hint {text-align:left;}
 .dropzone:focus-visible,button:focus-visible {outline:2px solid var(--primary);outline-offset:3px;}
+
+/* Update checks use the native Go HTTP backend and do not affect conversion. */
+.updates-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.installed-version {
+  font: 600 12px/1.4 ui-monospace, Consolas, monospace;
+  white-space: nowrap;
+}
+.updates-bar button {
+  font-size: 12px;
+  padding: 7px 13px;
+}
+#updateStatus {
+  flex: 1 1 175px;
+  min-width: 0;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+#updateStatus[data-status="update_available"] {
+  color: var(--success);
+  font-weight: 600;
+}
+#updateStatus[data-status="error"] {
+  color: var(--error);
+}
+#openUpdateBtn[hidden] {
+  display: none;
+}
