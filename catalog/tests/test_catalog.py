@@ -25,6 +25,12 @@ class CatalogFixtures(unittest.TestCase):
                     with self.assertRaises(build.InvalidProfile):
                         build.safe_path(root,path)
 
+    def test_json_snapshot_checksums_ignore_only_checkout_newlines(self):
+        self.assertEqual(check.snapshot_digest(b'{"ok":1}\n'),
+                         check.snapshot_digest(b'{"ok":1}\r\n'))
+        self.assertNotEqual(check.snapshot_digest(b'{"ok":1}\n'),
+                            check.snapshot_digest(b'{"ok":2}\n'))
+
     def test_nozzle_dimensions_are_checked(self):
         self.assertEqual(build.diameters("0.4;0.2;0.4;0.6"), ["0.2","0.4","0.6"])
         for raw in ("foo", "0", "40", "-0.2"):

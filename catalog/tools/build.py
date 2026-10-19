@@ -456,8 +456,8 @@ def build(sources_root: Path, target: Path, update_lock: bool = False):
         if file.name in used_files:
             raise InvalidProfile("manufacturer output name collision: " + file.name)
         used_files.add(file.name)
-        file.write_text(json.dumps({"schema_version": 1, "manufacturer": brand, "models": items},
-                                   ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        file.write_bytes((json.dumps({"schema_version": 1, "manufacturer": brand, "models": items},
+                                     ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
         files.append({"manufacturer": brand, "path": "makers/" + file.name,
                       "models": len(items),
                       "structurally_verified": sum(x["status"] == "structural_verified" for x in items),
@@ -471,13 +471,13 @@ def build(sources_root: Path, target: Path, update_lock: bool = False):
         "conversion_tested": 0,
         "maker_files": files,
     }
-    (target / "data"/"index.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    (target / "sources.lock.json").write_text(
-        json.dumps({"schema_version": 1, "sources": sources}, indent=2) + "\n", encoding="utf-8"
+    (target / "data"/"index.json").write_bytes((json.dumps(manifest, indent=2) + "\n").encode("utf-8"))
+    (target / "sources.lock.json").write_bytes(
+        (json.dumps({"schema_version": 1, "sources": sources}, indent=2) + "\n").encode("utf-8")
     )
-    (target / "data"/"audit.json").write_text(
-        json.dumps({"schema_version": 1, "quarantined": len(quarantine),
-                    "examples": quarantine[:120]}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    (target / "data"/"audit.json").write_bytes(
+        (json.dumps({"schema_version": 1, "quarantined": len(quarantine),
+                     "examples": quarantine[:120]}, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
     )
     summary = {"models": manifest["models"], "manufacturers": manifest["manufacturers"],
                "structurally_verified": manifest["structurally_verified"],

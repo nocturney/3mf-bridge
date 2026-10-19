@@ -29,6 +29,11 @@ def is_commit(value):
     return isinstance(value, str) and re.fullmatch("[a-f0-9]{40}", value) is not None
 
 
+def snapshot_digest(raw: bytes) -> str:
+    """Stable across Git's LF and CRLF working-tree policies."""
+    return hashlib.sha256(raw.replace(b"\r\n", b"\n")).hexdigest()
+
+
 def check_relative(path: str):
     ensure(isinstance(path, str) and path and "\\" not in path and ":" not in path,
            "invalid path: " + repr(path))
@@ -66,7 +71,9 @@ def check_registry(root: Path) -> dict:
         ensure(filename not in seen_files, "duplicate manufacturer output file")
         seen_files.add(filename)
         raw = (root / "data" / filename).read_bytes()
-        ensure(hashlib.sha256(raw).hexdigest() == record["sha256"],
+        # Git may convert LF to CRLF on Windows checkout. Verify the
+        # canonical UTF-8/LF serialized document, not platform newlines.
+        ensure(snapshot_digest(raw) == record["sha256"],
                "manufacturer file checksum mismatch")
         document = json.loads(raw)
         ensure(document["manufacturer"] == record["manufacturer"], "wrong maker label")
