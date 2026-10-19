@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support / תמיכה
+    url: https://github.com/nocturney/slicebridge/blob/main/SUPPORT.md
+    about: See the support guide before reporting an issue.
+  - name: Security vulnerability
+    url: https://github.com/nocturney/slicebridge/security
+    about: Use private vulnerability reporting instead of a public issue.

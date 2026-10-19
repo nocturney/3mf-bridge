@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest an improvement or a supported printer/slicer integration.
+title: "[Feature] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search for an existing issue first. The broad printer catalogue is tracked in #7.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Explain your workflow and why the current approach is difficult.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed experience
+      description: Describe the expected behavior, not just a technical implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Context or compatibility evidence
+      description: Include relevant printer/slicer, profile provenance and test evidence. Do not post private models or vendor payloads.

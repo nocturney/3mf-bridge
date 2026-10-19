@@ -1,0 +1,70 @@
+name: Public site smoke check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "SUPPORT.md"
+      - "PRIVACY.md"
+      - ".github/workflows/public-site-check.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "SUPPORT.md"
+      - "PRIVACY.md"
+      - ".github/workflows/public-site-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  site-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Check bilingual site, links and approved assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import re
+
+          class Check(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.images = []
+                  self.scripts = []
+                  self.links = []
+                  self.errors = []
+              def handle_starttag(self, tag, attrs):
+                  a = dict(attrs)
+                  if tag == "img":
+                      self.images.append(a.get("src", ""))
+                  if tag == "script":
+                      self.scripts.append(a.get("src", ""))
+                  if tag == "a":
+                      self.links.append(a.get("href", ""))
+          root = Path("docs")
+          html = (root / "index.html").read_text(encoding="utf-8")
+          parser = Check()
+          parser.feed(html)
+          assert '<html lang="en" dir="ltr">' in html, "English root locale missing"
+          assert 'lang="he" dir="rtl"' in html, "Hebrew RTL section missing"
+          assert 'data-toggle="en"' in html and 'data-toggle="he"' in html, "Language switching missing"
+          assert "Development preview" in html and "גרסת פיתוח" in html, "Release caveat missing"
+          assert "https://github.com/nocturney/slicebridge" in html, "Repository link missing"
+          assert not any(s for s in parser.scripts), "External scripts require explicit review"
+          assert parser.images, "Missing branding images"
+          for source in parser.images:
+              assert not re.match(r"^[a-z]+:", source), "External image unexpectedly added: " + source
+              assert not source.startswith("/") and ".." not in Path(source).parts, "Unexpected asset path: " + source
+              p = root / source
+              assert p.is_file() and p.stat().st_size > 8, "Missing asset: " + source
+              assert p.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), "Not a PNG: " + source
+          for page in ("PRIVACY.md", "SUPPORT.md", "SECURITY.md"):
+              assert Path(page).is_file(), "Missing public policy: " + page
+          print("PASS: bilingual page, safety notice, links and approved PNG assets")
+          PY
