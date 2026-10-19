@@ -6,7 +6,7 @@ This directory is a small pre-release website for SliceBridge, published via Git
 - `assets/approved-icon.png` and `assets/approved-wave.png`: **exact approved branding blobs**, reused unchanged from the SliceBridge development branch.
 - `assets/social-preview.png`: 1280×640 social card composed from the two approved assets; used for website Open Graph sharing. Repository Settings → Social preview still requires a separate upload through GitHub UI.
 - No account, analytics, cookies, external fonts or download link.
-- **Pre-release:** keep the development disclaimer visible until a signed, validated release exists.
+- **In development:** keep the status honest until a working build is actually available; signing isn't a requirement for hobby/community sharing.
 
 GitHub Pages: https://nocturney.github.io/slicebridge/
 

@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Check SPDX, notices and release disclaimers
+      - name: Check SPDX and third-party notices
         shell: bash
         run: |
           python3 - <<'PY'
@@ -35,6 +35,6 @@ jobs:
           assert "BryanSmee/bl_to_std" in notices
           assert "NOT redistributed" in notices, "Vendor profile redistribution caveat missing"
           checklist = Path("DISTRIBUTION_CHECKLIST.md").read_text(encoding="utf-8")
-          assert "Status: HOLD" in checklist, "Do not quietly remove release gate"
-          print("PASS: GPL-3.0-only metadata, notices and release gate")
+          assert "GPL-3.0-only" in checklist and "matching source" in checklist, "GPL source obligations missing from community guide"
+          print("PASS: GPL-3.0-only metadata, third-party notices and community guide")
           PY

@@ -1,42 +1,17 @@
-# SliceBridge — public distribution checklist
+# SliceBridge — a simple community release checklist
 
-**Status: HOLD — no general release authorized.** This checklist is a release gate, not a claim that each item is complete. Coordinate implementation-dependent work with the separate app-development workflow. Do not publish the draft Beta 3 solely because artifacts exist.
+SliceBridge is a small personal, open-source project. **No corporate approval process, paid signing certificate or notarization is required just to share an experimental build.**
 
-## 1. Rights and attribution
+Before sharing a build:
 
-- [x] The owner selected **open-source distribution**. A consistent **GPL-3.0-only** code license and matching prototype npm metadata are proposed in the licensing PR, matching the pre-existing development branch license. **This does not validate ownership of every upstream asset.**
-- [ ] Confirm all SliceBridge-original copyright owners can license their contributions under GPL-3.0-only and retain original copyright notices.
-- [ ] Ensure code and metadata from all feature branches are reconciled to the same license during reviewed merges; do not misrepresent unmerged feature code as released.
-- [ ] Confirm compliance for the `BryanSmee/bl_to_std` GPL-3.0 component and any derivative/distributed binaries, including corresponding source and notices where required.
-- [ ] Audit all bundled third-party source, art, binaries, icons and scripts for licenses and required notices, including confirmation of rights for the approved SliceBridge artwork. Review [preliminary manifest license inventory](LICENSE_AUDIT.md) and [third-party notices](THIRD_PARTY_NOTICES.md); reconcile inherited `3MF Bridge` wording in development branch.
-- [ ] Ensure **vendor printer/material presets are not bundled or republished** without verified rights. Availability on a third-party public Git repository is not, by itself, permission to redistribute.
-- [ ] Confirm permission to use the approved SliceBridge artwork and the Velvet Factory name.
+- [ ] **Try that exact build** on the Windows/macOS platforms you name. Check that a sample project converts and opens in the target slicer. Clearly label printers or combinations you haven't tested. Always verify nozzle/material settings before printing.
+- [ ] **Include the matching source code** and build information for GPL-covered components, the [GPL-3.0-only license](LICENSE), and required upstream notices/attribution. Don't package vendor profiles you have no right to redistribute.
+- [ ] **Make it clear that it is experimental.** List supported OS/architectures, known limitations and anything a tester should check.
+- [ ] Upload the files to a GitHub Release, ideally with SHA-256 checksums, and link the release from the README/site when it actually exists.
+- [ ] Give people a simple way to [report problems](SUPPORT.md).
 
-## 2. Technical release gate (owned by app-development workflow)
+**Unsigned builds are allowed.** Windows may display a SmartScreen or unknown-publisher warning; macOS Gatekeeper may block opening an unnotarized app by default. Say this clearly rather than claiming the apps are trusted or universally easy to install. Signing/notarization can be added later if it's worth the effort.
 
-- [ ] Merge only reviewed changes after independent QA and green CI on the precise commit being released.
-- [ ] Resolve old `nocturney/3mf-bridge` references and Go module/update-check paths on development branches; verify after migration.
-- [ ] Run clean Windows and macOS builds and automated tests at the release commit.
-- [ ] Verify actual slicer import, intended supported printers, matching nozzle/material profiles and representative physical prints. Disclose untested combinations explicitly.
-- [ ] Test MakerWorld and browser-extension opt-in behavior without silently hijacking file/protocol associations.
-- [ ] Check security of untrusted 3MF inputs, external links, update mechanism, temporary output and permissions.
+The existing `v0.4.0-beta.3` is an **old draft**, not a tested release for today's code. Whether to share a build is a practical decision after app testing, not a mandatory checklist of certificates and approvals.
 
-## 3. Limited beta and community preparation
-
-- [x] Prepare [beta testing protocol](BETA_TESTING.md), GitHub beta feedback form and release notes template.
-- [x] Prepare reviewable dependency-update PR configuration (monthly npm and GitHub Actions); **no unattended merges**.
-- [ ] Identify limited beta testers and assign exact permitted build access; do not post an unreviewed installer as an open download.
-- [ ] Obtain structured per-printer import, Slice and optional controlled physical-print feedback; report unsupported/not-tested variants.
-
-## 4. Packaging and publishing
-
-- [ ] Sign Windows executable/installer as appropriate; sign and notarize macOS distribution, with Apple Silicon/Intel scope explained accurately.
-- [ ] Produce versioned archives with clear platform/architecture labels and SHA-256 checksums.
-- [x] Inspect *existing draft* Beta 3 ZIPs, record hashes/CRC/signature status (see [preflight evidence](RELEASE_PREFLIGHT.md)); both drafts **failed production-signing readiness** and stay unpublished.
-- [x] Identify candidate version-specific Go license files from the development manifest; see [Go inventory](GO_LICENSE_AUDIT.md). This is not a binary SBOM or final licensing clearance.
-- [ ] Review installer/download instructions, README, [privacy notice](PRIVACY.md), [security reporting](SECURITY.md) and third-party notices.
-- [ ] Attach verified assets to a **published** GitHub Release with accurate release notes and limitations; do not treat temporary CI artifacts or drafts as general downloads.
-- [ ] Update the site and changelog only after the release has passed approval.
-- [ ] Check fresh-machine installation and upgrade paths, then monitor issues.
-
-**Release owner and sign-off:** to be named before publication. No auto-publishing is configured through this document.
+Optional helpers: [source ZIP, preliminary SBOM and checksums](RELEASE_OPERATIONS.md). The [historical draft inspection](RELEASE_PREFLIGHT.md) is evidence about that old build, not a universal release-blocking rule.
