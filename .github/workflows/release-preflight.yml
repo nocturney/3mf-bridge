@@ -1,0 +1,93 @@
+name: Release preflight (evidence only)
+
+# Never create, sign, push, publish or deploy software releases.
+# Manual evidence runs are restricted to protected main's immutable trigger commit.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/release_preflight.py"
+      - "tests/test_release_preflight.py"
+      - ".github/workflows/release-preflight.yml"
+      - "RELEASE_OPERATIONS.md"
+  push:
+    branches: [main]
+    paths:
+      - "tools/release_preflight.py"
+      - "tests/test_release_preflight.py"
+      - ".github/workflows/release-preflight.yml"
+      - "RELEASE_OPERATIONS.md"
+  workflow_dispatch:
+    inputs:
+      draft_tag:
+        description: "Optional existing DRAFT release tag for read-only binary checks"
+        type: string
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  self-test:
+    name: Preflight self-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project and tooling
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Test source archive, SBOM and malicious ZIP handling
+        run: python3 -m unittest discover -s tests -p 'test_release_preflight.py' -v
+      - name: Smoke exact source snapshot
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python3 tools/release_preflight.py \
+            --repo . \
+            --source-sha "$SOURCE_SHA" \
+            --out "$RUNNER_TEMP/slicebridge-smoke-evidence"
+
+  inspect-protected-main:
+    name: Manual main evidence package (NEVER publish)
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: self-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout protected main at this workflow's immutable trigger commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate optional draft tag
+        env:
+          DRAFT_TAG: ${{ inputs.draft_tag }}
+        run: |
+          python3 - <<'PY'
+          import os, re
+          tag = os.environ.get("DRAFT_TAG", "")
+          assert not tag or re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_.-]{0,127}", tag), "Invalid draft tag"
+          PY
+      - name: Optionally download existing draft assets for READ-ONLY inspection
+        if: inputs.draft_tag != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DRAFT_TAG: ${{ inputs.draft_tag }}
+        run: |
+          mkdir -p draft-assets
+          gh release download "$DRAFT_TAG" --repo "$GITHUB_REPOSITORY" --dir draft-assets
+      - name: Generate pinned main source ZIP, manifest SBOM and checksums
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          args=(--repo . --out "$RUNNER_TEMP/slicebridge-evidence" --source-sha "$SOURCE_SHA")
+          if [ -d draft-assets ]; then
+            args+=(--assets-dir draft-assets)
+          fi
+          python3 tools/release_preflight.py "${args[@]}"
+          cat "$RUNNER_TEMP/slicebridge-evidence/release-evidence.json"
+      - name: Store source/evidence ONLY (draft binaries excluded)
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: slicebridge-preflight-${{ github.run_id }}
+          path: ${{ runner.temp }}/slicebridge-evidence/
+          if-no-files-found: error
+          retention-days: 14
