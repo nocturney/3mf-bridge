@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Comgrow",
+  "models": [
+    {
+      "id": "comgrow-comgrow-t300",
+      "manufacturer": "Comgrow",
+      "model": "Comgrow T300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Comgrow.json",
+            "sha256": "a2cf80e28d853e9ece04846a60e3e5203f870b9b8856f1fd805be428e3ebd476"
+          },
+          "model": {
+            "path": "machine/Comgrow T300.json",
+            "sha256": "026bece729df9e4cfde56c5debcb63ffe1b0091f7e74359094d483f4e8ea46da",
+            "manufacturer_model_id": "Comgrow_T300"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Comgrow T300 0.4 nozzle",
+                "path": "machine/Comgrow T300 0.4 nozzle.json",
+                "sha256": "1a03a6dea643e078f9691d37a43cffd9758f57b881da708157cea7b40f13e2fe"
+              },
+              "process": {
+                "name": "0.20mm Standard @Comgrow T500",
+                "path": "process/0.20mm Standard @Comgrow T500.json",
+                "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "f305c1605e5f166ce9f0be9fee9cc3877e9f0d10485d773f3d9ba3867a1ec761"
+                  },
+                  {
+                    "name": "0.20mm Standard @Comgrow T500",
+                    "path": "process/0.20mm Standard @Comgrow T500.json",
+                    "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PETG @Comgrow",
+                "path": "filament/Generic PETG @Comgrow.json",
+                "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pet",
+                    "path": "filament/fdm_filament_pet.json",
+                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                  },
+                  {
+                    "name": "Generic PETG @Comgrow",
+                    "path": "filament/Generic PETG @Comgrow.json",
+                    "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Comgrow.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Comgrow.json",
+          "machine": "Comgrow T300 0.4 nozzle",
+          "process": "0.20mm Standard @Comgrow T500",
+          "filament": "Generic PETG @Comgrow"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "comgrow-comgrow-t500",
+      "manufacturer": "Comgrow",
+      "model": "Comgrow T500",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Comgrow.json",
+            "sha256": "a2cf80e28d853e9ece04846a60e3e5203f870b9b8856f1fd805be428e3ebd476"
+          },
+          "model": {
+            "path": "machine/Comgrow T500.json",
+            "sha256": "9bde6afd68b2f79b02a5f0225f40aebfdf06e6ff9c67b5dd9f53408a3422a729",
+            "manufacturer_model_id": "Comgrow_T500"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Comgrow T500 0.4 nozzle",
+                "path": "machine/Comgrow T500 0.4 nozzle.json",
+                "sha256": "53a6dc083781e2786e7cf5e5ce8706ec84589780a994d2afbc1aa957534b8fe2"
+              },
+              "process": {
+                "name": "0.20mm Standard @Comgrow T500",
+                "path": "process/0.20mm Standard @Comgrow T500.json",
+                "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "f305c1605e5f166ce9f0be9fee9cc3877e9f0d10485d773f3d9ba3867a1ec761"
+                  },
+                  {
+                    "name": "0.20mm Standard @Comgrow T500",
+                    "path": "process/0.20mm Standard @Comgrow T500.json",
+                    "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PETG @Comgrow",
+                "path": "filament/Generic PETG @Comgrow.json",
+                "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pet",
+                    "path": "filament/fdm_filament_pet.json",
+                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                  },
+                  {
+                    "name": "Generic PETG @Comgrow",
+                    "path": "filament/Generic PETG @Comgrow.json",
+                    "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Comgrow T500 0.6 nozzle",
+                "path": "machine/Comgrow T500 0.6 nozzle.json",
+                "sha256": "8338200c72e7eb9872503e233327ba93e1a7dc10c40f29a1ec772d0cfd2eae25"
+              },
+              "process": {
+                "name": "0.20mm Standard @Comgrow T500",
+                "path": "process/0.20mm Standard @Comgrow T500.json",
+                "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "f305c1605e5f166ce9f0be9fee9cc3877e9f0d10485d773f3d9ba3867a1ec761"
+                  },
+                  {
+                    "name": "0.20mm Standard @Comgrow T500",
+                    "path": "process/0.20mm Standard @Comgrow T500.json",
+                    "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PETG @Comgrow",
+                "path": "filament/Generic PETG @Comgrow.json",
+                "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pet",
+                    "path": "filament/fdm_filament_pet.json",
+                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                  },
+                  {
+                    "name": "Generic PETG @Comgrow",
+                    "path": "filament/Generic PETG @Comgrow.json",
+                    "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Comgrow T500 0.8 nozzle",
+                "path": "machine/Comgrow T500 0.8 nozzle.json",
+                "sha256": "467ac5beda5c07054891ac02f1b9283ad2ecbb81885e18d91c520ed8b35d653b"
+              },
+              "process": {
+                "name": "0.20mm Standard @Comgrow T500",
+                "path": "process/0.20mm Standard @Comgrow T500.json",
+                "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "f305c1605e5f166ce9f0be9fee9cc3877e9f0d10485d773f3d9ba3867a1ec761"
+                  },
+                  {
+                    "name": "0.20mm Standard @Comgrow T500",
+                    "path": "process/0.20mm Standard @Comgrow T500.json",
+                    "sha256": "dc3a843b9334414213ff7fcac440a69f84deba3bbc08928401bfe3c7595d2b5e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PETG @Comgrow",
+                "path": "filament/Generic PETG @Comgrow.json",
+                "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pet",
+                    "path": "filament/fdm_filament_pet.json",
+                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                  },
+                  {
+                    "name": "Generic PETG @Comgrow",
+                    "path": "filament/Generic PETG @Comgrow.json",
+                    "sha256": "bbda27ab304ec21396c4a1260a0c5c6af546c8b84efadc54f8fcd51542d803fc"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Comgrow.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Comgrow.json",
+          "machine": "Comgrow T500 0.4 nozzle",
+          "process": "0.20mm Standard @Comgrow T500",
+          "filament": "Generic PETG @Comgrow"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Comgrow.json",
+          "machine": "Comgrow T500 0.6 nozzle",
+          "process": "0.20mm Standard @Comgrow T500",
+          "filament": "Generic PETG @Comgrow"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Comgrow.json",
+          "machine": "Comgrow T500 0.8 nozzle",
+          "process": "0.20mm Standard @Comgrow T500",
+          "filament": "Generic PETG @Comgrow"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

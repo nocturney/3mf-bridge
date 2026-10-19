@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "manufacturer": "BIQU",
+  "models": [
+    {
+      "id": "biqu-biqu-b1",
+      "manufacturer": "BIQU",
+      "model": "BIQU B1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/BIQU.json",
+            "sha256": "74836210297c3ecb453ced1fd886278dcafa0cba134a3a119300e749aee515be"
+          },
+          "model": {
+            "path": "machine/BIQU B1.json",
+            "sha256": "3acf77346cc593ba783ff65a784aab37cde58002b9424e319f0e60b2ca12bb5b",
+            "manufacturer_model_id": "B1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "biqu-biqu-bx",
+      "manufacturer": "BIQU",
+      "model": "BIQU BX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/BIQU.json",
+            "sha256": "74836210297c3ecb453ced1fd886278dcafa0cba134a3a119300e749aee515be"
+          },
+          "model": {
+            "path": "machine/BIQU BX.json",
+            "sha256": "4c043965b45082d88ebdaddefc788810d9f251bc17b9132ab831eaeaa241adb9",
+            "manufacturer_model_id": "BX"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "BIQU/1.1.0.ini",
+            "sha256": "bfaf5fe77828ec6d382e0f41b1227ff665a772e4db392d0432f78dfaf068ecbb"
+          },
+          "model": {
+            "path": "BIQU/1.1.0.ini",
+            "section": "printer_model:BIQUBX",
+            "sha256": "bfaf5fe77828ec6d382e0f41b1227ff665a772e4db392d0432f78dfaf068ecbb"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "biqu-biqu-hurakan",
+      "manufacturer": "BIQU",
+      "model": "BIQU Hurakan",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/BIQU.json",
+            "sha256": "74836210297c3ecb453ced1fd886278dcafa0cba134a3a119300e749aee515be"
+          },
+          "model": {
+            "path": "machine/BIQU Hurakan.json",
+            "sha256": "de725b419a7db42fbd701a940da16bf8aa5e5506db286d02bb6eb0c043ba12db",
+            "manufacturer_model_id": "Hurakan"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

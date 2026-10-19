@@ -1,0 +1,909 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Blocks",
+  "models": [
+    {
+      "id": "blocks-blocks-pro-s100",
+      "manufacturer": "Blocks",
+      "model": "BLOCKS Pro S100",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.14",
+          "manifest": {
+            "path": "resources/profiles/Blocks.json",
+            "sha256": "637dbfcf43fd0c635161e11284cc49af09e654d11697cea59e7cf2b482b7774f"
+          },
+          "model": {
+            "path": "machine/BLOCKS Pro S100.json",
+            "sha256": "35a4a5feb9de33543e3121c299364a099045a317352b1db643d018b0b602a65c",
+            "manufacturer_model_id": "BLOCKS Pro S100"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1",
+            "1.2"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BLOCKS Pro S100 0.4 nozzle",
+                "path": "machine/BLOCKS Pro S100 0.4 nozzle.json",
+                "sha256": "3d36687cdf92a0c16f2eeaef3f91d2b18d477539eb54dbbf8daef6c991f935ab"
+              },
+              "process": {
+                "name": "0.20mm Standard 0.4 nozzle @Blocks_Pro_S100",
+                "path": "process/0.20mm Standard 0.4 nozzle @Blocks_Pro_S100.json",
+                "sha256": "c3876707fcd8f39b908d2e3915078969fa577018d79cc047ca29a0cb2ddbd670",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "0.20mm Standard 0.4 nozzle @Blocks_Pro_S100",
+                    "path": "process/0.20mm Standard 0.4 nozzle @Blocks_Pro_S100.json",
+                    "sha256": "c3876707fcd8f39b908d2e3915078969fa577018d79cc047ca29a0cb2ddbd670"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_Pro_S100",
+                "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_Pro_S100",
+                    "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                    "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "BLOCKS Pro S100 0.6 nozzle",
+                "path": "machine/BLOCKS Pro S100 0.6 nozzle.json",
+                "sha256": "5c88b8e4ef3a21fae45210a985484d075afbc8966d02de5667a0b2003fd8ba89"
+              },
+              "process": {
+                "name": "0.30mm Standard 0.6 nozzle @Blocks_Pro_S100",
+                "path": "process/0.30mm Standard 0.6 nozzle @Blocks_Pro_S100.json",
+                "sha256": "20e1a345d6d0ced7426d1a27d3cd11afb978e233fbd15fa10e828a77bacb3e8c",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 0.6 nozzle",
+                    "path": "process/fdm_process_common 0.6 nozzle.json",
+                    "sha256": "e9a4f7eee3f2eed851e43c9941adab49d1728abcc4882a9af2090738a5fc26e4"
+                  },
+                  {
+                    "name": "0.30mm Standard 0.6 nozzle @Blocks_Pro_S100",
+                    "path": "process/0.30mm Standard 0.6 nozzle @Blocks_Pro_S100.json",
+                    "sha256": "20e1a345d6d0ced7426d1a27d3cd11afb978e233fbd15fa10e828a77bacb3e8c"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_Pro_S100",
+                "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_Pro_S100",
+                    "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                    "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "BLOCKS Pro S100 0.8 nozzle",
+                "path": "machine/BLOCKS Pro S100 0.8 nozzle.json",
+                "sha256": "f8b6676929f4bd6eb6dc6465c2c0bf7a4103d6d307e2d8ee20ffa0fab5294a13"
+              },
+              "process": {
+                "name": "0.40mm Standard 0.8 nozzle @Blocks_Pro_S100",
+                "path": "process/0.40mm Standard 0.8 nozzle @Blocks_Pro_S100.json",
+                "sha256": "4748de2a8e7486e739e02edf267ca69604b491f9616a19be7609f04b324a4419",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 0.8 nozzle",
+                    "path": "process/fdm_process_common 0.8 nozzle.json",
+                    "sha256": "24dcf88380d6385cf8cfbfaf4a44ca38bdf0bfed8c466d978c6f8410816f80b7"
+                  },
+                  {
+                    "name": "0.40mm Standard 0.8 nozzle @Blocks_Pro_S100",
+                    "path": "process/0.40mm Standard 0.8 nozzle @Blocks_Pro_S100.json",
+                    "sha256": "4748de2a8e7486e739e02edf267ca69604b491f9616a19be7609f04b324a4419"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_Pro_S100",
+                "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_Pro_S100",
+                    "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                    "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "BLOCKS Pro S100 1.0 nozzle",
+                "path": "machine/BLOCKS Pro S100 1.0 nozzle.json",
+                "sha256": "1d08863f98a2222b3157fa5e512636859189c63f7464fabf7c9ac078ed2fee10"
+              },
+              "process": {
+                "name": "0.50mm Standard 1.0 nozzle @Blocks_Pro_S100",
+                "path": "process/0.50mm Standard 1.0 nozzle @Blocks_Pro_S100.json",
+                "sha256": "1d39317519073db49a46d4ab5a3ae54f310deb91a1a1762c906a44d3e48713de",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 1.0 nozzle",
+                    "path": "process/fdm_process_common 1.0 nozzle.json",
+                    "sha256": "213cc3548adb7c15989ab03845f884a4a918bfd0d528b39260ef01471d2bf06f"
+                  },
+                  {
+                    "name": "0.50mm Standard 1.0 nozzle @Blocks_Pro_S100",
+                    "path": "process/0.50mm Standard 1.0 nozzle @Blocks_Pro_S100.json",
+                    "sha256": "1d39317519073db49a46d4ab5a3ae54f310deb91a1a1762c906a44d3e48713de"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_Pro_S100",
+                "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_Pro_S100",
+                    "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                    "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1.2",
+              "machine": {
+                "name": "BLOCKS Pro S100 1.2 nozzle",
+                "path": "machine/BLOCKS Pro S100 1.2 nozzle.json",
+                "sha256": "4b1a7aa8607d0a7815bd32b05bd2dbffa1444a8c79e0049e35683ff15015d82b"
+              },
+              "process": {
+                "name": "0.60mm Standard 1.2 nozzle @Blocks_Pro_S100",
+                "path": "process/0.60mm Standard 1.2 nozzle @Blocks_Pro_S100.json",
+                "sha256": "43ee4330cc5f974933acd46c574d049d705d618a0e377321ed2156811e11eb8b",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 1.2 nozzle",
+                    "path": "process/fdm_process_common 1.2 nozzle.json",
+                    "sha256": "b63df94be973a30d100e1e3d159afc3f1c83ebb1e501f6c4fa6ce1da034fc583"
+                  },
+                  {
+                    "name": "0.60mm Standard 1.2 nozzle @Blocks_Pro_S100",
+                    "path": "process/0.60mm Standard 1.2 nozzle @Blocks_Pro_S100.json",
+                    "sha256": "43ee4330cc5f974933acd46c574d049d705d618a0e377321ed2156811e11eb8b"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_Pro_S100",
+                "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_Pro_S100",
+                    "path": "filament/Blocks PLA @Blocks_Pro_S100.json",
+                    "sha256": "6b13bec824122c558421a8e70db8cde930ca755753b73c09b749cef836b3912d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Blocks.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8",
+          "1",
+          "1.2"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS Pro S100 0.4 nozzle",
+          "process": "0.20mm Standard 0.4 nozzle @Blocks_Pro_S100",
+          "filament": "Blocks PLA @Blocks_Pro_S100"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS Pro S100 0.6 nozzle",
+          "process": "0.30mm Standard 0.6 nozzle @Blocks_Pro_S100",
+          "filament": "Blocks PLA @Blocks_Pro_S100"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS Pro S100 0.8 nozzle",
+          "process": "0.40mm Standard 0.8 nozzle @Blocks_Pro_S100",
+          "filament": "Blocks PLA @Blocks_Pro_S100"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS Pro S100 1.0 nozzle",
+          "process": "0.50mm Standard 1.0 nozzle @Blocks_Pro_S100",
+          "filament": "Blocks PLA @Blocks_Pro_S100"
+        },
+        "1.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS Pro S100 1.2 nozzle",
+          "process": "0.60mm Standard 1.2 nozzle @Blocks_Pro_S100",
+          "filament": "Blocks PLA @Blocks_Pro_S100"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "blocks-blocks-rd50-v2",
+      "manufacturer": "Blocks",
+      "model": "BLOCKS RD50 V2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.14",
+          "manifest": {
+            "path": "resources/profiles/Blocks.json",
+            "sha256": "637dbfcf43fd0c635161e11284cc49af09e654d11697cea59e7cf2b482b7774f"
+          },
+          "model": {
+            "path": "machine/BLOCKS RD50 V2.json",
+            "sha256": "978db29d0b824f937af415b3b4cd61868a1a083b47ca4435e15b5fe074b779e4",
+            "manufacturer_model_id": "BLOCKS RD50 V2"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BLOCKS RD50 V2 0.4 nozzle",
+                "path": "machine/BLOCKS RD50 V2 0.4 nozzle.json",
+                "sha256": "63b47f26962e89c8ba6752390a625bb79cfff2d42d444e0a17d0c53500ea8c13"
+              },
+              "process": {
+                "name": "0.20mm Standard 0.4 nozzle @Blocks_RD50_V2",
+                "path": "process/0.20mm Standard 0.4 nozzle @Blocks_RD50_V2.json",
+                "sha256": "7766e73c49e3d1d70fb0b8edc573100b65daf93557a903ec008a3e2a8c559ea6",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "0.20mm Standard 0.4 nozzle @Blocks_RD50_V2",
+                    "path": "process/0.20mm Standard 0.4 nozzle @Blocks_RD50_V2.json",
+                    "sha256": "7766e73c49e3d1d70fb0b8edc573100b65daf93557a903ec008a3e2a8c559ea6"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_RD50_V2",
+                "path": "filament/Blocks PLA @Blocks_RD50_V2.json",
+                "sha256": "7e1e36384ea81455806c75f8fda7c9aacd45a58b20ef1993d86bb681fc527db9",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_RD50_V2",
+                    "path": "filament/Blocks PLA @Blocks_RD50_V2.json",
+                    "sha256": "7e1e36384ea81455806c75f8fda7c9aacd45a58b20ef1993d86bb681fc527db9"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "BLOCKS RD50 V2 0.6 nozzle",
+                "path": "machine/BLOCKS RD50 V2 0.6 nozzle.json",
+                "sha256": "fd29637a7c5ccdf42c3d4c6869415cf16f473e998d10a3e01a4161e137402c4b"
+              },
+              "process": {
+                "name": "0.26mm Standard 0.6 nozzle @Blocks_RD50_V2",
+                "path": "process/0.26mm Standard 0.6 nozzle @Blocks_RD50_V2.json",
+                "sha256": "e3e38d8b78d4b1db284eab2471b378d1cfe3af74c9641285d3af4eb134a9ab45",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 0.6 nozzle",
+                    "path": "process/fdm_process_common 0.6 nozzle.json",
+                    "sha256": "e9a4f7eee3f2eed851e43c9941adab49d1728abcc4882a9af2090738a5fc26e4"
+                  },
+                  {
+                    "name": "0.26mm Standard 0.6 nozzle @Blocks_RD50_V2",
+                    "path": "process/0.26mm Standard 0.6 nozzle @Blocks_RD50_V2.json",
+                    "sha256": "e3e38d8b78d4b1db284eab2471b378d1cfe3af74c9641285d3af4eb134a9ab45"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_RD50_V2",
+                "path": "filament/Blocks PLA @Blocks_RD50_V2.json",
+                "sha256": "7e1e36384ea81455806c75f8fda7c9aacd45a58b20ef1993d86bb681fc527db9",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_RD50_V2",
+                    "path": "filament/Blocks PLA @Blocks_RD50_V2.json",
+                    "sha256": "7e1e36384ea81455806c75f8fda7c9aacd45a58b20ef1993d86bb681fc527db9"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "BLOCKS RD50 V2 0.8 nozzle",
+                "path": "machine/BLOCKS RD50 V2 0.8 nozzle.json",
+                "sha256": "c68927cfcc1a2df3b73856188f326e863e8a557877fad34893234325fe66efc0"
+              },
+              "process": {
+                "name": "0.38mm Standard 0.8 nozzle @Blocks_RD50_V2",
+                "path": "process/0.38mm Standard 0.8 nozzle @Blocks_RD50_V2.json",
+                "sha256": "c76a77e33c0d10935a6384db3d201ac66068a86a084d1d6ee3236c0b3c0b1f63",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 0.8 nozzle",
+                    "path": "process/fdm_process_common 0.8 nozzle.json",
+                    "sha256": "24dcf88380d6385cf8cfbfaf4a44ca38bdf0bfed8c466d978c6f8410816f80b7"
+                  },
+                  {
+                    "name": "0.38mm Standard 0.8 nozzle @Blocks_RD50_V2",
+                    "path": "process/0.38mm Standard 0.8 nozzle @Blocks_RD50_V2.json",
+                    "sha256": "c76a77e33c0d10935a6384db3d201ac66068a86a084d1d6ee3236c0b3c0b1f63"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_RD50_V2",
+                "path": "filament/Blocks PLA @Blocks_RD50_V2.json",
+                "sha256": "7e1e36384ea81455806c75f8fda7c9aacd45a58b20ef1993d86bb681fc527db9",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_RD50_V2",
+                    "path": "filament/Blocks PLA @Blocks_RD50_V2.json",
+                    "sha256": "7e1e36384ea81455806c75f8fda7c9aacd45a58b20ef1993d86bb681fc527db9"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Blocks.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS RD50 V2 0.4 nozzle",
+          "process": "0.20mm Standard 0.4 nozzle @Blocks_RD50_V2",
+          "filament": "Blocks PLA @Blocks_RD50_V2"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS RD50 V2 0.6 nozzle",
+          "process": "0.26mm Standard 0.6 nozzle @Blocks_RD50_V2",
+          "filament": "Blocks PLA @Blocks_RD50_V2"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS RD50 V2 0.8 nozzle",
+          "process": "0.38mm Standard 0.8 nozzle @Blocks_RD50_V2",
+          "filament": "Blocks PLA @Blocks_RD50_V2"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "blocks-blocks-rf50",
+      "manufacturer": "Blocks",
+      "model": "BLOCKS RF50",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.14",
+          "manifest": {
+            "path": "resources/profiles/Blocks.json",
+            "sha256": "637dbfcf43fd0c635161e11284cc49af09e654d11697cea59e7cf2b482b7774f"
+          },
+          "model": {
+            "path": "machine/BLOCKS RF50.json",
+            "sha256": "d59e00699df3ec93f434364a9702357a9cca728610450b531e4ddd9935c1a4bb",
+            "manufacturer_model_id": "BLOCKS RF50"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BLOCKS RF50 0.4 nozzle",
+                "path": "machine/BLOCKS RF50 0.4 nozzle.json",
+                "sha256": "7e46e0c8e9bd291e7d55f1e189c919add4b998f29934654540576d6d855a3072"
+              },
+              "process": {
+                "name": "0.20mm Standard 0.4 nozzle @Blocks_RF50",
+                "path": "process/0.20mm Standard 0.4 nozzle @Blocks_RF50.json",
+                "sha256": "2c511de8bb3cfedcf2662885bcc0c1a3c6a4d60e873968fd19ebebe984336c32",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "0.20mm Standard 0.4 nozzle @Blocks_RF50",
+                    "path": "process/0.20mm Standard 0.4 nozzle @Blocks_RF50.json",
+                    "sha256": "2c511de8bb3cfedcf2662885bcc0c1a3c6a4d60e873968fd19ebebe984336c32"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_RF50",
+                "path": "filament/Blocks PLA @Blocks_RF50.json",
+                "sha256": "845229dc4d44154de67004bca6bcc8b3427e34fc235a50aa9787ad5066fc93f9",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_RF50",
+                    "path": "filament/Blocks PLA @Blocks_RF50.json",
+                    "sha256": "845229dc4d44154de67004bca6bcc8b3427e34fc235a50aa9787ad5066fc93f9"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "BLOCKS RF50 0.6 nozzle",
+                "path": "machine/BLOCKS RF50 0.6 nozzle.json",
+                "sha256": "5635f70db7dbbc30218d1cec9e55e6d29e7bf4bb7f81f018bb87a5b8f4ab580d"
+              },
+              "process": {
+                "name": "0.26mm Standard 0.6 nozzle @Blocks_RF50",
+                "path": "process/0.26mm Standard 0.6 nozzle @Blocks_RF50.json",
+                "sha256": "38f42355c05611bb51f2a744b055010b9fc2712517e17e242def404b40756cec",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 0.6 nozzle",
+                    "path": "process/fdm_process_common 0.6 nozzle.json",
+                    "sha256": "e9a4f7eee3f2eed851e43c9941adab49d1728abcc4882a9af2090738a5fc26e4"
+                  },
+                  {
+                    "name": "0.26mm Standard 0.6 nozzle @Blocks_RF50",
+                    "path": "process/0.26mm Standard 0.6 nozzle @Blocks_RF50.json",
+                    "sha256": "38f42355c05611bb51f2a744b055010b9fc2712517e17e242def404b40756cec"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_RF50",
+                "path": "filament/Blocks PLA @Blocks_RF50.json",
+                "sha256": "845229dc4d44154de67004bca6bcc8b3427e34fc235a50aa9787ad5066fc93f9",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_RF50",
+                    "path": "filament/Blocks PLA @Blocks_RF50.json",
+                    "sha256": "845229dc4d44154de67004bca6bcc8b3427e34fc235a50aa9787ad5066fc93f9"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "BLOCKS RF50 0.8 nozzle",
+                "path": "machine/BLOCKS RF50 0.8 nozzle.json",
+                "sha256": "94c7139dc956546587637929ebace31a5f104917ade4d6ff6995643541bf85e5"
+              },
+              "process": {
+                "name": "0.38mm Standard 0.8 nozzle @Blocks_RF50",
+                "path": "process/0.38mm Standard 0.8 nozzle @Blocks_RF50.json",
+                "sha256": "4c90c9878f3f6d04429f2dd2a5aa001c3be4019aeb11dd0bf6f90bdc41d8eacc",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "803198b5c96b4273a18183a715b333180fa96bdf31b099f595bcc1b4915ef96c"
+                  },
+                  {
+                    "name": "fdm_process_blocks_common",
+                    "path": "process/fdm_process_blocks_common.json",
+                    "sha256": "0b8ab0e636e7e86477b8de1e5532a28e4ad36c26189ea3b3d599f4f12267aafd"
+                  },
+                  {
+                    "name": "fdm_process_common 0.8 nozzle",
+                    "path": "process/fdm_process_common 0.8 nozzle.json",
+                    "sha256": "24dcf88380d6385cf8cfbfaf4a44ca38bdf0bfed8c466d978c6f8410816f80b7"
+                  },
+                  {
+                    "name": "0.38mm Standard 0.8 nozzle @Blocks_RF50",
+                    "path": "process/0.38mm Standard 0.8 nozzle @Blocks_RF50.json",
+                    "sha256": "4c90c9878f3f6d04429f2dd2a5aa001c3be4019aeb11dd0bf6f90bdc41d8eacc"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Blocks PLA @Blocks_RF50",
+                "path": "filament/Blocks PLA @Blocks_RF50.json",
+                "sha256": "845229dc4d44154de67004bca6bcc8b3427e34fc235a50aa9787ad5066fc93f9",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "ef80748952c510b274c22777a9f6beb89a25b7677d1632b6e6e8737f686ae07c"
+                  },
+                  {
+                    "name": "Blocks PLA @base",
+                    "path": "filament/Blocks PLA @base.json",
+                    "sha256": "5237fd26c18cb5c1ce658150ce8f9a49947cb342abb2c6d100604e8c03d31052"
+                  },
+                  {
+                    "name": "Blocks PLA @Blocks_RF50",
+                    "path": "filament/Blocks PLA @Blocks_RF50.json",
+                    "sha256": "845229dc4d44154de67004bca6bcc8b3427e34fc235a50aa9787ad5066fc93f9"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Blocks.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS RF50 0.4 nozzle",
+          "process": "0.20mm Standard 0.4 nozzle @Blocks_RF50",
+          "filament": "Blocks PLA @Blocks_RF50"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS RF50 0.6 nozzle",
+          "process": "0.26mm Standard 0.6 nozzle @Blocks_RF50",
+          "filament": "Blocks PLA @Blocks_RF50"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Blocks.json",
+          "machine": "BLOCKS RF50 0.8 nozzle",
+          "process": "0.38mm Standard 0.8 nozzle @Blocks_RF50",
+          "filament": "Blocks PLA @Blocks_RF50"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

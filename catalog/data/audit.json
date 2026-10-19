@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "quarantined": 36,
+  "examples": [
+    {
+      "publisher": "orca",
+      "model": "FELIX Food Double",
+      "manifest": "FELIX Printers.json",
+      "problem": "nozzle diameter outside supported range"
+    },
+    {
+      "publisher": "orca",
+      "model": "FELIX Food Single",
+      "manifest": "FELIX Printers.json",
+      "problem": "nozzle diameter outside supported range"
+    },
+    {
+      "publisher": "orca",
+      "model": "FELIX Food Switch",
+      "manifest": "FELIX Printers.json",
+      "problem": "nozzle diameter outside supported range"
+    },
+    {
+      "publisher": "orca",
+      "model": "Flashforge Adventurer 4 Series",
+      "manifest": "Flashforge.json",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "orca",
+      "model": "Flashforge Guider4",
+      "manifest": "Flashforge.json",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "orca",
+      "model": "Flashforge Guider4 Pro",
+      "manifest": "Flashforge.json",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "orca",
+      "model": "Ginger G1",
+      "manifest": "Ginger Additive.json",
+      "problem": "not an FDM printer"
+    },
+    {
+      "publisher": "orca",
+      "model": "KINARB 1HB",
+      "manifest": "Pragostroj.json",
+      "problem": "nozzle diameter outside supported range"
+    },
+    {
+      "publisher": "orca",
+      "model": "KINARB 2HB",
+      "manifest": "Pragostroj.json",
+      "problem": "nozzle diameter outside supported range"
+    },
+    {
+      "publisher": "orca",
+      "model": "re3D GigabotX 2",
+      "manifest": "re3D.json",
+      "problem": "not an FDM printer"
+    },
+    {
+      "publisher": "orca",
+      "model": "re3D GigabotX 2 XLT",
+      "manifest": "re3D.json",
+      "problem": "not an FDM printer"
+    },
+    {
+      "publisher": "orca",
+      "model": "re3D TerabotX 2",
+      "manifest": "re3D.json",
+      "problem": "not an FDM printer"
+    },
+    {
+      "publisher": "orca",
+      "model": "Snapmaker U1",
+      "manifest": "Snapmaker.json",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "orca",
+      "model": "Sovol Zero",
+      "manifest": "Sovol.json",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "orca",
+      "model": "UltiMaker 2+",
+      "problem": "duplicate model in source"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "Cocoa Press",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "Cocoa Press 2",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "Jubilee",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "Prusawire",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 250mm",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 300mm",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 350mm",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Trident 250mm",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Trident 300mm",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Trident 350mm",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Zero",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Switchwire",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 250mm (Afterburner)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 300mm (Afterburner)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 350mm (Afterburner)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 250mm (Mobius)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 300mm (Mobius)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON2 350mm (Mobius)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Zero (MiniAB)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Switchwire (Afterburner)",
+      "problem": "unparseable nozzle diameter"
+    },
+    {
+      "publisher": "prusa_community",
+      "model": "VORON Switchwire (Mobius)",
+      "problem": "unparseable nozzle diameter"
+    }
+  ]
+}

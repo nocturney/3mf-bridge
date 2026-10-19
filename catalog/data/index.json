@@ -1,0 +1,604 @@
+{
+  "schema_version": 1,
+  "format": "slicebridge-printer-profile-registry",
+  "source_priority": [
+    "manufacturer",
+    "orca",
+    "prusa"
+  ],
+  "selection_rule": "highest-ranked structurally verified candidate",
+  "models": 602,
+  "manufacturers": 84,
+  "structurally_verified": 264,
+  "conversion_tested": 0,
+  "maker_files": [
+    {
+      "manufacturer": "Afinia",
+      "path": "makers/afinia.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "7ef71045f63453d30b2c9ac0cdb2a226543ed96dfbabbe484a323ffa371a133f"
+    },
+    {
+      "manufacturer": "Anker",
+      "path": "makers/anker.json",
+      "models": 5,
+      "structurally_verified": 3,
+      "sha256": "9b6668134698ec36cdd3e09c20d0796a0d79aa323b41236db5f34db4827bc63a"
+    },
+    {
+      "manufacturer": "Anycubic",
+      "path": "makers/anycubic.json",
+      "models": 26,
+      "structurally_verified": 18,
+      "sha256": "9540d93a6e01a41b4318e9d26ec6bbc857d5ce1eb32dcbf8de262ed90529e1de"
+    },
+    {
+      "manufacturer": "Artillery",
+      "path": "makers/artillery.json",
+      "models": 11,
+      "structurally_verified": 10,
+      "sha256": "4381d051bc35a187986fd9b9b283c44fa20cc91f8156db07a1ce70327642ed21"
+    },
+    {
+      "manufacturer": "BIBO",
+      "path": "makers/bibo.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "ad58079c8c95343378cc941f1cfba4ed35e6012a1c3746c2dc4ec64e9824df0a"
+    },
+    {
+      "manufacturer": "BIQU",
+      "path": "makers/biqu.json",
+      "models": 3,
+      "structurally_verified": 0,
+      "sha256": "78dc5f3ae8d189e3ad72727b91d2fb53b4655d8a21bfd433fd20a881182b1f93"
+    },
+    {
+      "manufacturer": "Bambu Lab",
+      "path": "makers/bambu-lab.json",
+      "models": 14,
+      "structurally_verified": 14,
+      "sha256": "3fea67086ff0d389bd177543afd3308bf5a529a67d67361dc8596e019c37b019"
+    },
+    {
+      "manufacturer": "Blocks",
+      "path": "makers/blocks.json",
+      "models": 3,
+      "structurally_verified": 3,
+      "sha256": "61aa9f8a93d07905bfbe442d7628a935bcfed4d156046e457947fb927d27cff5"
+    },
+    {
+      "manufacturer": "CONSTRUCT3D",
+      "path": "makers/construct3d.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "62ddba0320fcfc02efb6c733a82a6b7c29df8934c269d92f5932e253f7645892"
+    },
+    {
+      "manufacturer": "Caribou",
+      "path": "makers/caribou.json",
+      "models": 13,
+      "structurally_verified": 0,
+      "sha256": "169786fafe3d3ede50fb09006fa0979bb82f180662fc3ad702ab13773120a439"
+    },
+    {
+      "manufacturer": "Chuanying",
+      "path": "makers/chuanying.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "948f3fe866141a345b14f57c5118487fff77259cd9c91722d442f00c3ec79396"
+    },
+    {
+      "manufacturer": "Co Print",
+      "path": "makers/co-print.json",
+      "models": 1,
+      "structurally_verified": 1,
+      "sha256": "4d867d42ffe80bc052d70c66dd1ecc40aed1af318db0536231798c98df46cbc6"
+    },
+    {
+      "manufacturer": "CoLiDo",
+      "path": "makers/colido.json",
+      "models": 5,
+      "structurally_verified": 5,
+      "sha256": "cdbcde64c784928f0da03c5306061ee04aaf766e884c7835b08bad8650545bd6"
+    },
+    {
+      "manufacturer": "Comgrow",
+      "path": "makers/comgrow.json",
+      "models": 2,
+      "structurally_verified": 2,
+      "sha256": "23ed0ae086b0f21b4ac9fa9980eebe1723ba38941f74a765d6832f7fa0873e3c"
+    },
+    {
+      "manufacturer": "Creality",
+      "path": "makers/creality.json",
+      "models": 74,
+      "structurally_verified": 54,
+      "sha256": "5e86fb76f761f4544b9de247821f90ae42b05d93b6499ec028358efaeaa49951"
+    },
+    {
+      "manufacturer": "Cubicon",
+      "path": "makers/cubicon.json",
+      "models": 3,
+      "structurally_verified": 0,
+      "sha256": "320be9d80dadd95f30f9e7a9addea20a5ad258dced3ea3b124e88cedf7858aa0"
+    },
+    {
+      "manufacturer": "Custom",
+      "path": "makers/custom.json",
+      "models": 6,
+      "structurally_verified": 0,
+      "sha256": "a04347bda79fd931c0b6b41855939cf6fd005c0102702acc5457d702697c7f21"
+    },
+    {
+      "manufacturer": "DeltaMaker",
+      "path": "makers/deltamaker.json",
+      "models": 3,
+      "structurally_verified": 3,
+      "sha256": "172bbf6eca39a78533befce7b67e136a460813ac37c5873b1aa962e63d4f128a"
+    },
+    {
+      "manufacturer": "Dremel",
+      "path": "makers/dremel.json",
+      "models": 3,
+      "structurally_verified": 3,
+      "sha256": "a81014ece8ce4ca2143bf296c11b652c890afeb3fba73f06aea7aaa41f8f4414"
+    },
+    {
+      "manufacturer": "E2D",
+      "path": "makers/e2d.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "6322966b8bbaa444abb95495433dac87069000f86cc3ace9a132e10abd286023"
+    },
+    {
+      "manufacturer": "ELEGOO",
+      "path": "makers/elegoo.json",
+      "models": 19,
+      "structurally_verified": 18,
+      "sha256": "e2a8c283c18147918533fb40260849784ec1b22adf71212629cc5c4a489dcf18"
+    },
+    {
+      "manufacturer": "Eryone",
+      "path": "makers/eryone.json",
+      "models": 3,
+      "structurally_verified": 0,
+      "sha256": "b9f8f64ad3ab615192cb25b2d8e5f92e843d19e601dfc3f27d91c0b55a7d14de"
+    },
+    {
+      "manufacturer": "FELIX Printers",
+      "path": "makers/felix-printers.json",
+      "models": 4,
+      "structurally_verified": 4,
+      "sha256": "8d5b7aa1ae5c9817e004ee4e2aea5be4174166ee7987fb695a7c0813abab2756"
+    },
+    {
+      "manufacturer": "FLSun",
+      "path": "makers/flsun.json",
+      "models": 7,
+      "structurally_verified": 3,
+      "sha256": "921cf2f1616769ff55e56fb7a64058b102a6494346d357d7b8901995ffdb829b"
+    },
+    {
+      "manufacturer": "Flashforge",
+      "path": "makers/flashforge.json",
+      "models": 10,
+      "structurally_verified": 10,
+      "sha256": "059ac061ddedf137a04e8dd87b550c03368bfd2d67df9f6ebb7a38b11f26772e"
+    },
+    {
+      "manufacturer": "FlyingBear",
+      "path": "makers/flyingbear.json",
+      "models": 4,
+      "structurally_verified": 3,
+      "sha256": "b2348b11fd1394dd3b42c603d5d1bed1bc99735f0773f5d9b59a6fc9c7f60271"
+    },
+    {
+      "manufacturer": "Folgertech",
+      "path": "makers/folgertech.json",
+      "models": 3,
+      "structurally_verified": 0,
+      "sha256": "fd60a054d00e8a20f8cc5cb9a83537a6a6fb72fcb150f290332f1ada55bf7998"
+    },
+    {
+      "manufacturer": "Geeetech",
+      "path": "makers/geeetech.json",
+      "models": 25,
+      "structurally_verified": 0,
+      "sha256": "b21dab27c60b4692e15ddeb252da5d700d596cbd4c9a1761e889814c95040ad4"
+    },
+    {
+      "manufacturer": "Goofoo",
+      "path": "makers/goofoo.json",
+      "models": 4,
+      "structurally_verified": 0,
+      "sha256": "51a79a8df480e7834a045f3c4b6c4b5d1c4a3313f5b0a54af6da7cc7fd9efad3"
+    },
+    {
+      "manufacturer": "HartSmartProducts",
+      "path": "makers/hartsmartproducts.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "3b070169c7e88ce74712ad3950284952a277ca75dd97ae83c74eb5c151afd7df"
+    },
+    {
+      "manufacturer": "INAT",
+      "path": "makers/inat.json",
+      "models": 3,
+      "structurally_verified": 0,
+      "sha256": "4552fe1630bc3b50ecb45a90ca11a32231b1a4a261c175ca05a64d0ab4ae5e3f"
+    },
+    {
+      "manufacturer": "IdeaFormer",
+      "path": "makers/ideaformer.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "21eae25c9414da7780434ee396022f6ad2e0829b79763cdf75666385f573bd95"
+    },
+    {
+      "manufacturer": "InfiMech",
+      "path": "makers/infimech.json",
+      "models": 4,
+      "structurally_verified": 4,
+      "sha256": "eb8fcde45c84a1818265d70fee205777a51a732528fd24d61c46e6f566b3483f"
+    },
+    {
+      "manufacturer": "Infinity3D",
+      "path": "makers/infinity3d.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "a84fb73d8fd8cab146762e2b422528b03b201dbc322d6f0eff3dc4163b1bad9b"
+    },
+    {
+      "manufacturer": "Kingroon",
+      "path": "makers/kingroon.json",
+      "models": 5,
+      "structurally_verified": 0,
+      "sha256": "b0ab184860052f9a842d65518bb1b55b4e69ab5249b406ebf6e052199287e106"
+    },
+    {
+      "manufacturer": "LH",
+      "path": "makers/lh.json",
+      "models": 2,
+      "structurally_verified": 2,
+      "sha256": "72dbc8ae2d6c57786fbab41e26f4ca9c552173fd415300d51b18fce12fa0ba76"
+    },
+    {
+      "manufacturer": "LNL3D",
+      "path": "makers/lnl3d.json",
+      "models": 5,
+      "structurally_verified": 0,
+      "sha256": "76b19006c30f0be8d3edc16879d0f25c510fdbe59a28de0739a9ba04fb0870a0"
+    },
+    {
+      "manufacturer": "LONGER",
+      "path": "makers/longer.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "8f0612929e88a750cc177ddfbc50da81ab0673c91bbe13a7651af7df76e9c2f9"
+    },
+    {
+      "manufacturer": "LulzBot",
+      "path": "makers/lulzbot.json",
+      "models": 7,
+      "structurally_verified": 0,
+      "sha256": "7c48cbb1746e1bea2c0be8adf03f2df84c60f7ca107c7e4d245d9ceb71b7aa69"
+    },
+    {
+      "manufacturer": "M3D",
+      "path": "makers/m3d.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "328038a037a70c82a96a66e08414ee68f56d771f486bd44d3680af11c01a1056"
+    },
+    {
+      "manufacturer": "MagicMaker",
+      "path": "makers/magicmaker.json",
+      "models": 5,
+      "structurally_verified": 0,
+      "sha256": "5e9e70d8c1c554fccc3ead0d44982a7f504e1f4d4054c0c76d025227eeac061a"
+    },
+    {
+      "manufacturer": "MakerGear",
+      "path": "makers/makergear.json",
+      "models": 10,
+      "structurally_verified": 0,
+      "sha256": "b44c9af7e362cfad88741ba28a457f2ff8673a4088d179d37abbef09c9c84b82"
+    },
+    {
+      "manufacturer": "Mellow",
+      "path": "makers/mellow.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "394071c732f774a923814f1004789d28772886046087882b815fea83da4a9ed4"
+    },
+    {
+      "manufacturer": "Meltingplot",
+      "path": "makers/meltingplot.json",
+      "models": 5,
+      "structurally_verified": 0,
+      "sha256": "6ef5e5ddf7d2223f14f42acffea53d7b937a285ec170e7bc41f8073f0dc1aca2"
+    },
+    {
+      "manufacturer": "OpenEYE",
+      "path": "makers/openeye.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "023b6bfdaa2a99f147f27dfc2794b9ea45b67355c5a3d915fedea57a169e7bbd"
+    },
+    {
+      "manufacturer": "OrcaArena",
+      "path": "makers/orcaarena.json",
+      "models": 1,
+      "structurally_verified": 1,
+      "sha256": "1bf68351a247dad2902c1ae0299379b43917d5c0dbe4b1dec4c626165c14858f"
+    },
+    {
+      "manufacturer": "PapapiuLab",
+      "path": "makers/papapiulab.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "04332f4073425eac9e5a49cfa7f2122439e974e31aa2d4168b969a6e5273efb1"
+    },
+    {
+      "manufacturer": "Peopoly",
+      "path": "makers/peopoly.json",
+      "models": 1,
+      "structurally_verified": 1,
+      "sha256": "ff2c934711502979f529a43149463d37cd3993895d73fe58791f6147b3a98c11"
+    },
+    {
+      "manufacturer": "Phrozen",
+      "path": "makers/phrozen.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "bf58b7412c442d7996908785dd2de4e0e03005e9f53616297bc1c09b4fea2131"
+    },
+    {
+      "manufacturer": "Positron3D",
+      "path": "makers/positron3d.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "e5decea424b8d1b8402b8d9038a57dce41c38e4067fd94cf1a4ced71e553a6a4"
+    },
+    {
+      "manufacturer": "Print4Taste",
+      "path": "makers/print4taste.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "f90fe5e40ce8135ae15429806fcbb04d52230a0a50b4fc9e94c20bd58af080a0"
+    },
+    {
+      "manufacturer": "Printcepts",
+      "path": "makers/printcepts.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "64dad6ae8a566fa5596e1ae90c3e30a6c7f5250cdf95a362f5e71fdb5ae1ff9d"
+    },
+    {
+      "manufacturer": "Prusa",
+      "path": "makers/prusa.json",
+      "models": 18,
+      "structurally_verified": 18,
+      "sha256": "4a5d579ff62a399097058f50bc156d17e4c321642df95c6dcd36908b377355c3"
+    },
+    {
+      "manufacturer": "Prusa Research",
+      "path": "makers/prusa-research.json",
+      "models": 26,
+      "structurally_verified": 0,
+      "sha256": "e6caac79691754b0fc749a5b2a28985dd1b9aa85202028af57344a2387772594"
+    },
+    {
+      "manufacturer": "QIDI",
+      "path": "makers/qidi.json",
+      "models": 14,
+      "structurally_verified": 13,
+      "sha256": "f0ddcef47a16038c3f73626e9b4c34bdcb041e44d1a595f6a715e7b67e1c6f89"
+    },
+    {
+      "manufacturer": "RH3D",
+      "path": "makers/rh3d.json",
+      "models": 2,
+      "structurally_verified": 2,
+      "sha256": "963b715c68772412e41c8f06b71caa406cc200890774678c9990a9d3bcfb0601"
+    },
+    {
+      "manufacturer": "Raise3D",
+      "path": "makers/raise3d.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "524dfc4922f96a6fde0fc5fe2b4ed74322036afc5f5a5bbc08127dc765fb1a91"
+    },
+    {
+      "manufacturer": "RatRig",
+      "path": "makers/ratrig.json",
+      "models": 39,
+      "structurally_verified": 0,
+      "sha256": "98c90aac72d3113a33611257c813536eecdecc2e3b70ce4ccf0fb4d5f67d6438"
+    },
+    {
+      "manufacturer": "Rigid3D",
+      "path": "makers/rigid3d.json",
+      "models": 4,
+      "structurally_verified": 0,
+      "sha256": "aaa84f57d682631ffa29a608aeddab5ffa936c7097a1ad0574ce58211de4a218"
+    },
+    {
+      "manufacturer": "RolohaunDesign",
+      "path": "makers/rolohaundesign.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "1f3c3b383be37aa97214e5ee8e85b3bc03aadf70715726e74cb6df4d6948d77f"
+    },
+    {
+      "manufacturer": "SecKit",
+      "path": "makers/seckit.json",
+      "models": 2,
+      "structurally_verified": 2,
+      "sha256": "ea428b970ee9945d03f904dd28ca63271cc76c38ea90e20f6464a9e1aaf7f31d"
+    },
+    {
+      "manufacturer": "SeeMeCNC",
+      "path": "makers/seemecnc.json",
+      "models": 7,
+      "structurally_verified": 7,
+      "sha256": "dd4dd0ed18ae460570b8a199a69885bbf3e5adb8df6f9ed9bab75d620aff6648"
+    },
+    {
+      "manufacturer": "Snapmaker",
+      "path": "makers/snapmaker.json",
+      "models": 18,
+      "structurally_verified": 18,
+      "sha256": "441a3afda493c97352ce7364f69a320a6ce0f7d115ae22dc7f53fc68a7ef84e3"
+    },
+    {
+      "manufacturer": "Sovol",
+      "path": "makers/sovol.json",
+      "models": 20,
+      "structurally_verified": 0,
+      "sha256": "820c4fe3563e346e2c94859fd023d6a87c136469b06487f5fae153ce477525e5"
+    },
+    {
+      "manufacturer": "Tiertime",
+      "path": "makers/tiertime.json",
+      "models": 4,
+      "structurally_verified": 0,
+      "sha256": "54faf23bf19e5daa88e7032886b138b2a97c74ac3e5a59d6313168028db2f211"
+    },
+    {
+      "manufacturer": "TriLAB",
+      "path": "makers/trilab.json",
+      "models": 11,
+      "structurally_verified": 0,
+      "sha256": "dad9b8276f92cfba0f8c45571932af484d46371d8c9879f474a4654325739921"
+    },
+    {
+      "manufacturer": "Trimaker",
+      "path": "makers/trimaker.json",
+      "models": 3,
+      "structurally_verified": 0,
+      "sha256": "cf52b24865d94d4b8f8ceb6d9c16863539b2c10254a93b453a4a6ae13e5b3de4"
+    },
+    {
+      "manufacturer": "Tronxy",
+      "path": "makers/tronxy.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "e6eec5ac98f3ebc6a474c907fc0f975792ae2a996321ad971941f9a4017ed090"
+    },
+    {
+      "manufacturer": "TwoTrees",
+      "path": "makers/twotrees.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "213b4074127ee48ae305e0b2f128b2f9044a997d4c2a2876c8e5bf36d83676b9"
+    },
+    {
+      "manufacturer": "UltiMaker",
+      "path": "makers/ultimaker.json",
+      "models": 4,
+      "structurally_verified": 0,
+      "sha256": "53c342ade7e3f826eebc2cd49c6c57d4ab750eca6d099529d7fc44bc9e72601d"
+    },
+    {
+      "manufacturer": "Vivedino",
+      "path": "makers/vivedino.json",
+      "models": 6,
+      "structurally_verified": 0,
+      "sha256": "867fde09f8ef0817f4132441337fe166ba55d8af5d0695ff4e2d4d37b9d96300"
+    },
+    {
+      "manufacturer": "Volumic",
+      "path": "makers/volumic.json",
+      "models": 21,
+      "structurally_verified": 15,
+      "sha256": "5f38ada14c5330a589af78e90f229c4ce15022309e8670be5b5a7092b3595baf"
+    },
+    {
+      "manufacturer": "Voron",
+      "path": "makers/voron.json",
+      "models": 11,
+      "structurally_verified": 0,
+      "sha256": "0a03f7311d0407e0c6f81eb1f2957eb618cd8ac838f1da9349500e310e214493"
+    },
+    {
+      "manufacturer": "Voxelab",
+      "path": "makers/voxelab.json",
+      "models": 1,
+      "structurally_verified": 0,
+      "sha256": "92a835dbd0f2f3e21a49fe4374d378e482c357f72598cfc1586aebc9094612a1"
+    },
+    {
+      "manufacturer": "Vzbot",
+      "path": "makers/vzbot.json",
+      "models": 2,
+      "structurally_verified": 2,
+      "sha256": "a1ec66f3c26c0b74e167ca356fa4fb257c85c076593827e3794e0aece4c18446"
+    },
+    {
+      "manufacturer": "WEMAKE3D",
+      "path": "makers/wemake3d.json",
+      "models": 2,
+      "structurally_verified": 0,
+      "sha256": "7e0cb195eab3457ff90db4d1f55205f3bbd624d9e2c9bf9ee43119b74bb41d86"
+    },
+    {
+      "manufacturer": "Wanhao",
+      "path": "makers/wanhao.json",
+      "models": 13,
+      "structurally_verified": 0,
+      "sha256": "e6d08e1afc111ecdafaac0a1f80292c34ff7b6636f0804aff010e2679865ae36"
+    },
+    {
+      "manufacturer": "Wanhao France",
+      "path": "makers/wanhao-france.json",
+      "models": 18,
+      "structurally_verified": 17,
+      "sha256": "41467bb5c3b29d61362153260d89d11f538aa501e4c57a3d98cfc54dc0d6bfde"
+    },
+    {
+      "manufacturer": "WonderMaker",
+      "path": "makers/wondermaker.json",
+      "models": 3,
+      "structurally_verified": 3,
+      "sha256": "c0a53bacf7fa79de1fcfe500b1155ca0ca1668ab5f7c1321f7bcfa0c4a06b398"
+    },
+    {
+      "manufacturer": "Z-Bolt",
+      "path": "makers/z-bolt.json",
+      "models": 9,
+      "structurally_verified": 0,
+      "sha256": "45742e048348dd77d99496bccf4b5aec199c5a64a193854d4029ecb4396ad552"
+    },
+    {
+      "manufacturer": "Zonestar",
+      "path": "makers/zonestar.json",
+      "models": 5,
+      "structurally_verified": 0,
+      "sha256": "8a784ae6b072d3e474595d0ba23a97dd4ee63e925cebabe6c4956cd5fa8b9552"
+    },
+    {
+      "manufacturer": "gCreate",
+      "path": "makers/gcreate.json",
+      "models": 5,
+      "structurally_verified": 0,
+      "sha256": "7b8bedfc08e0d27887854cf9d950d12fdc9d1af8bf69715ecf8e90ac385cda60"
+    },
+    {
+      "manufacturer": "iQ",
+      "path": "makers/iq.json",
+      "models": 2,
+      "structurally_verified": 2,
+      "sha256": "eef3b4abab5760a27f04413ef80ee5245432e3b73c408a35c2f8be50f31fa0de"
+    },
+    {
+      "manufacturer": "re3D",
+      "path": "makers/re3d.json",
+      "models": 3,
+      "structurally_verified": 3,
+      "sha256": "2939913dc5077a1c1c778fb3e8147dd9370d4b214c56e4da35044758b0b7c7ff"
+    }
+  ]
+}

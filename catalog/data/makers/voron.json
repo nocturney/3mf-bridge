@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Voron",
+  "models": [
+    {
+      "id": "voron-voron-0-1",
+      "manufacturer": "Voron",
+      "model": "Voron 0.1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron 0.1.json",
+            "sha256": "c758c62df2b78df144b33ffc24a0588b793c7ae382699889f328d92b685377f7",
+            "manufacturer_model_id": "Voron0"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (8)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron-2-4-250",
+      "manufacturer": "Voron",
+      "model": "Voron 2.4 250",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron 2.4 250.json",
+            "sha256": "477a49556346b630e42f62f68776d3ff4113b753b878da4fb8ab0273675e5d80",
+            "manufacturer_model_id": "Voron2_250"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (8)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron-2-4-300",
+      "manufacturer": "Voron",
+      "model": "Voron 2.4 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron 2.4 300.json",
+            "sha256": "bfefbd7bb1011283064597dab4222b067cc71e5ab96b280820881396a118c92e",
+            "manufacturer_model_id": "Voron2_300"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (8)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron-2-4-350",
+      "manufacturer": "Voron",
+      "model": "Voron 2.4 350",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron 2.4 350.json",
+            "sha256": "2e425ba066c5c340c372ab8840389b0e757ede0c7961e41ab7f66a77b21cdd45",
+            "manufacturer_model_id": "Voron2_350"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (8)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron-switchwire-250",
+      "manufacturer": "Voron",
+      "model": "Voron Switchwire 250",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron Switchwire 250.json",
+            "sha256": "d6e9307b3c0e78191b77475b0af69e2077830b52a029c64e0d895ce5aeb54d79",
+            "manufacturer_model_id": "Voron_Switchwire_250"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (8)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron-trident-250",
+      "manufacturer": "Voron",
+      "model": "Voron Trident 250",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron Trident 250.json",
+            "sha256": "b92f79bb5af95ed4e0352815a818ae432a167b28b58b437b5457a701d02b1610",
+            "manufacturer_model_id": "Voron2_Trident_250"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (8)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron-trident-300",
+      "manufacturer": "Voron",
+      "model": "Voron Trident 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron Trident 300.json",
+            "sha256": "a2f0b0eab7cdb4194626ba34ffa5300112ec5e98472b752bf800b243c6901ccd",
+            "manufacturer_model_id": "Voron2_Trident_300"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (8)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron-trident-350",
+      "manufacturer": "Voron",
+      "model": "Voron Trident 350",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Voron.json",
+            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+          },
+          "model": {
+            "path": "machine/Voron Trident 350.json",
+            "sha256": "34357a03a88ced93387c8cc9f22991e6a9d7c62442370f4171632ad2f533e606",
+            "manufacturer_model_id": "Voron2_Trident_350"
+          },
+          "nozzles_mm": [
+            "0.15",
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (7)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron1-250mm-afterburner",
+      "manufacturer": "Voron",
+      "model": "VORON1 250mm (Afterburner)",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "3.0.0",
+          "manifest": {
+            "path": "Voron/3.0.0.ini",
+            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+          },
+          "model": {
+            "path": "Voron/3.0.0.ini",
+            "section": "printer_model:Voron_v1_250_afterburner",
+            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron1-300mm-afterburner",
+      "manufacturer": "Voron",
+      "model": "VORON1 300mm (Afterburner)",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "3.0.0",
+          "manifest": {
+            "path": "Voron/3.0.0.ini",
+            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+          },
+          "model": {
+            "path": "Voron/3.0.0.ini",
+            "section": "printer_model:Voron_v1_300_afterburner",
+            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "voron-voron1-350mm-afterburner",
+      "manufacturer": "Voron",
+      "model": "VORON1 350mm (Afterburner)",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "3.0.0",
+          "manifest": {
+            "path": "Voron/3.0.0.ini",
+            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+          },
+          "model": {
+            "path": "Voron/3.0.0.ini",
+            "section": "printer_model:Voron_v1_350_afterburner",
+            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Print4Taste",
+  "models": [
+    {
+      "id": "print4taste-mycusini-2-0",
+      "manufacturer": "Print4Taste",
+      "model": "mycusini 2.0",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.2",
+          "manifest": {
+            "path": "Print4Taste/1.1.2.ini",
+            "sha256": "a2934e16e63ce4ec3177342c81aced722b1f864dc04d801c219e4a9fbd222dd0"
+          },
+          "model": {
+            "path": "Print4Taste/1.1.2.ini",
+            "section": "printer_model:MC2.0",
+            "sha256": "a2934e16e63ce4ec3177342c81aced722b1f864dc04d801c219e4a9fbd222dd0"
+          },
+          "nozzles_mm": [
+            "1"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

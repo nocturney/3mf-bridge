@@ -1,0 +1,364 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Z-Bolt",
+  "models": [
+    {
+      "id": "z-bolt-z-bolt-s1000",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S1000",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S1000.json",
+            "sha256": "3c8996cd2e242eb114df09bb6fde7acdef6c3f752f4911c937a2ac370726fc8a",
+            "manufacturer_model_id": "Z-Bolt-S1000"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s1000-dual",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S1000 Dual",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S1000 Dual.json",
+            "sha256": "78c6077b506130c2608530253eb62f37291fff383aa0ca1624e3d18d579470e9",
+            "manufacturer_model_id": "Z-Bolt-S1000 Dual"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s300",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S300.json",
+            "sha256": "7bda798c1d8c56dbdf9a22e0847c7490f3fe72790c482c072d554216f03a14f4",
+            "manufacturer_model_id": "Z-Bolt-S300"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s300-dual",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S300 Dual",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S300 Dual.json",
+            "sha256": "d3b043c049fc8d9b7e5de15032e415f09dbd463dfda730a5d732364b30075c82",
+            "manufacturer_model_id": "Z-Bolt-S300 Dual"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s400",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S400",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S400.json",
+            "sha256": "a77a1e189826f3454732bc68ce8aa1f6a76bea33181346b87a6709f78e9862f7",
+            "manufacturer_model_id": "Z-Bolt-S400"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s400-dual",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S400 Dual",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S400 Dual.json",
+            "sha256": "33fa2890d782c7c41aa5a051b3b032df14bf3fb7d9d672d93fa5bb2ae8d8ed86",
+            "manufacturer_model_id": "Z-Bolt-S400 Dual"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s600",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S600",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S600.json",
+            "sha256": "9bdabaf980f402a7910373351cf17f4104d54c0a909107bc7404e42d0831c295",
+            "manufacturer_model_id": "Z-Bolt-S600"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s600-dual",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S600 Dual",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S600 Dual.json",
+            "sha256": "cfb1caa871823d7da34a82bbfd48b6c69fffb85c2702d5fe12de3b332b6cd9c4",
+            "manufacturer_model_id": "Z-Bolt-S600 Dual"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "z-bolt-z-bolt-s800-dual",
+      "manufacturer": "Z-Bolt",
+      "model": "Z-Bolt S800 Dual",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Z-Bolt.json",
+            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+          },
+          "model": {
+            "path": "machine/Z-Bolt S800 Dual.json",
+            "sha256": "fc4a1557e9ae442fb710d4199363123d45a5e7009c830996651f661c223d5478",
+            "manufacturer_model_id": "Z-Bolt-S800 Dual"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

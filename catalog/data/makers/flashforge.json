@@ -1,0 +1,2527 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Flashforge",
+  "models": [
+    {
+      "id": "flashforge-flashforge-ad5x",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge AD5X",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge AD5X.json",
+            "sha256": "d5ac2ab426161be2b9b3268cfbc09ece87ba73d25ea63183b0e3354aa70eeac7",
+            "manufacturer_model_id": "Flashforge-AD5X"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Flashforge AD5X 0.25 nozzle",
+                "path": "machine/FlashForge AD5X 0.25 nozzle.json",
+                "sha256": "8c0b9d9a2ad5d5073c5d857ec10e5c770fbd0abbf4431c4e49f3c86fccba9b9d"
+              },
+              "process": {
+                "name": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+                "path": "process/0.12mm Standard @Flashforge AD5M 0.25 Nozzle.json",
+                "sha256": "40587b00bfe000f3d963ce008fcf5c17a810ed4fa6541242e4118df62bdbdf92",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M 0.4 Nozzle.json",
+                    "sha256": "7e6df9e3ec10d11abb4bc9cfb7ea61aff5e501f45302eedb64f0be15ebfb053b"
+                  },
+                  {
+                    "name": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+                    "path": "process/0.12mm Standard @Flashforge AD5M 0.25 Nozzle.json",
+                    "sha256": "40587b00bfe000f3d963ce008fcf5c17a810ed4fa6541242e4118df62bdbdf92"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge AD5X 0.4 nozzle",
+                "path": "machine/Flashforge AD5X 0.4 nozzle.json",
+                "sha256": "79a2543749f98b16d5ecf09addee8cab81494e4af7e0a0b6b5985c22b941f448"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Flashforge AD5X 0.6 nozzle",
+                "path": "machine/Flashforge AD5X 0.6 nozzle.json",
+                "sha256": "7764be298e6be7524223bcef070f8061f844319219db3f7652db0b7a0d493fe1"
+              },
+              "process": {
+                "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                    "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Flashforge AD5X 0.8 nozzle",
+                "path": "machine/Flashforge AD5X 0.8 nozzle.json",
+                "sha256": "68206f2d23003b9fbaedc6faf018c3cd16fbac6dce940dd8ef345a574908129d"
+              },
+              "process": {
+                "name": "0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle",
+                "path": "process/0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle.json",
+                "sha256": "eacd2d2e0cb6d31abe0a5111675b98f96b6670f040e5db600e2679fa901f4646",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                    "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649"
+                  },
+                  {
+                    "name": "0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle",
+                    "path": "process/0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle.json",
+                    "sha256": "eacd2d2e0cb6d31abe0a5111675b98f96b6670f040e5db600e2679fa901f4646"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge AD5X 0.25 nozzle",
+          "process": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge AD5X 0.4 nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge AD5X 0.6 nozzle",
+          "process": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge AD5X 0.8 nozzle",
+          "process": "0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-adventurer-3-series",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Adventurer 3 Series",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Adventurer 3 Series.json",
+            "sha256": "3d57fa2d0c2e15b461b37dd44b8dc896cceecc30cb3781308d95ac2a5e10bd64",
+            "manufacturer_model_id": "Flashforge-Adventurer-3Series"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Adventurer 3 Series 0.4 Nozzle",
+                "path": "machine/Flashforge Adventurer 3 Series 0.4 nozzle.json",
+                "sha256": "5511ba1b0549b16487cc8ad01f57de4620adb3b0904c6e58ea05887ab421d4f6"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD3 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD3 0.4 Nozzle.json",
+                "sha256": "7c9178041bb750d9775be7e4cb7a802846af035c0d91e8977c94535c937dcd53",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD3 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD3 0.4 Nozzle.json",
+                    "sha256": "7c9178041bb750d9775be7e4cb7a802846af035c0d91e8977c94535c937dcd53"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Flashforge PLA",
+                "path": "filament/Flashforge/Flashforge PLA @FF AD3.json",
+                "sha256": "9cb40d089ffadf57652b8fa51fc98056a7ffeba056935c6d2c200dcd1e11fadb",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Flashforge PLA",
+                    "path": "filament/Flashforge/Flashforge PLA @FF AD3.json",
+                    "sha256": "9cb40d089ffadf57652b8fa51fc98056a7ffeba056935c6d2c200dcd1e11fadb"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 3 Series 0.4 Nozzle",
+          "process": "0.20mm Standard @Flashforge AD3 0.4 Nozzle",
+          "filament": "Flashforge PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-adventurer-5m",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Adventurer 5M",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Adventurer 5M.json",
+            "sha256": "70a17d002ce9ed0249c5d51f5de486abab2bff9fee257390a8446fdc51d6af8c",
+            "manufacturer_model_id": "Flashforge-Adventurer-5M"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Flashforge Adventurer 5M 0.25 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M 0.25 Nozzle.json",
+                "sha256": "7df3d5789250fd66ebb2d1047901d34c1c3c02956386bac58fdf70a24e229532"
+              },
+              "process": {
+                "name": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+                "path": "process/0.12mm Standard @Flashforge AD5M 0.25 Nozzle.json",
+                "sha256": "40587b00bfe000f3d963ce008fcf5c17a810ed4fa6541242e4118df62bdbdf92",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M 0.4 Nozzle.json",
+                    "sha256": "7e6df9e3ec10d11abb4bc9cfb7ea61aff5e501f45302eedb64f0be15ebfb053b"
+                  },
+                  {
+                    "name": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+                    "path": "process/0.12mm Standard @Flashforge AD5M 0.25 Nozzle.json",
+                    "sha256": "40587b00bfe000f3d963ce008fcf5c17a810ed4fa6541242e4118df62bdbdf92"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Adventurer 5M 0.4 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M 0.4 Nozzle.json",
+                "sha256": "e098b0c77f38a389c75df1447294c46c538c1033b54044df490884266794ad7b"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M 0.4 Nozzle.json",
+                "sha256": "7e6df9e3ec10d11abb4bc9cfb7ea61aff5e501f45302eedb64f0be15ebfb053b",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M 0.4 Nozzle.json",
+                    "sha256": "7e6df9e3ec10d11abb4bc9cfb7ea61aff5e501f45302eedb64f0be15ebfb053b"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Flashforge Adventurer 5M 0.6 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M 0.6 Nozzle.json",
+                "sha256": "f38d4a81aac72c0c7bee77ee01103bd1afa9fa316f22441929a9dfdc97f78ba4"
+              },
+              "process": {
+                "name": "0.30mm Standard @Flashforge AD5M 0.6 Nozzle",
+                "path": "process/0.30mm Standard @Flashforge AD5M 0.6 Nozzle.json",
+                "sha256": "8bc4ae24ecd063c33de11ebfbaa2827e96373ee1ffc959520e8a6868a5e2a8c0",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M 0.6 Nozzle.json",
+                    "sha256": "8bc4ae24ecd063c33de11ebfbaa2827e96373ee1ffc959520e8a6868a5e2a8c0"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Flashforge Adventurer 5M 0.8 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M 0.8 Nozzle.json",
+                "sha256": "c37a48c93682b4f56a9ce173973946922cd120334a3abb80ae67353110e715e7"
+              },
+              "process": {
+                "name": "0.40mm Standard @Flashforge AD5M 0.8 Nozzle",
+                "path": "process/0.40mm Standard @Flashforge AD5M 0.8 Nozzle.json",
+                "sha256": "48648b1dcab1f81fcb36e7cfdfe739a84eb4047cb75b65e7f107d722b6b463e9",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M 0.6 Nozzle.json",
+                    "sha256": "8bc4ae24ecd063c33de11ebfbaa2827e96373ee1ffc959520e8a6868a5e2a8c0"
+                  },
+                  {
+                    "name": "0.40mm Standard @Flashforge AD5M 0.8 Nozzle",
+                    "path": "process/0.40mm Standard @Flashforge AD5M 0.8 Nozzle.json",
+                    "sha256": "48648b1dcab1f81fcb36e7cfdfe739a84eb4047cb75b65e7f107d722b6b463e9"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M 0.25 Nozzle",
+          "process": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M 0.4 Nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M 0.6 Nozzle",
+          "process": "0.30mm Standard @Flashforge AD5M 0.6 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M 0.8 Nozzle",
+          "process": "0.40mm Standard @Flashforge AD5M 0.8 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-adventurer-5m-pro",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Adventurer 5M Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Adventurer 5M Pro.json",
+            "sha256": "e459d8c6b20bf012355c48acde49d088513dc3fc32fed9529ac3b083eef71c60",
+            "manufacturer_model_id": "Flashforge-Adventurer-5M-Pro"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Flashforge Adventurer 5M Pro 0.25 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M Pro 0.25 Nozzle.json",
+                "sha256": "9e335a25c972936fc8652c2fb6ac135b174215ef2e2f82abb55595bb64390532"
+              },
+              "process": {
+                "name": "0.12mm Standard @Flashforge AD5M Pro 0.25 Nozzle",
+                "path": "process/0.12mm Standard @Flashforge AD5M Pro 0.25 Nozzle.json",
+                "sha256": "4f4f1e72fd3f9e6fae2f81b848994b025f23e48ede59691899e83c868d26375a",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  },
+                  {
+                    "name": "0.12mm Standard @Flashforge AD5M Pro 0.25 Nozzle",
+                    "path": "process/0.12mm Standard @Flashforge AD5M Pro 0.25 Nozzle.json",
+                    "sha256": "4f4f1e72fd3f9e6fae2f81b848994b025f23e48ede59691899e83c868d26375a"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Adventurer 5M Pro 0.4 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M Pro 0.4 Nozzle.json",
+                "sha256": "6b96286bdb7d5a2461c10cba5de029d71c103f4afd2c7ddf51175d6f7b5277b8"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Flashforge Adventurer 5M Pro 0.6 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M Pro 0.6 Nozzle.json",
+                "sha256": "756819957d8aa025d6a0125de0c8d2ae9c88c7705723cf01522237a5df9931ca"
+              },
+              "process": {
+                "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                    "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Flashforge Adventurer 5M Pro 0.8 Nozzle",
+                "path": "machine/Flashforge Adventurer 5M Pro 0.8 Nozzle.json",
+                "sha256": "1a2a524eb9dda7a1f1da0f1178f428de00d4180b57285580f1ae85cae0dd2808"
+              },
+              "process": {
+                "name": "0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle",
+                "path": "process/0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle.json",
+                "sha256": "eacd2d2e0cb6d31abe0a5111675b98f96b6670f040e5db600e2679fa901f4646",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                    "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649"
+                  },
+                  {
+                    "name": "0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle",
+                    "path": "process/0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle.json",
+                    "sha256": "eacd2d2e0cb6d31abe0a5111675b98f96b6670f040e5db600e2679fa901f4646"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M Pro 0.25 Nozzle",
+          "process": "0.12mm Standard @Flashforge AD5M Pro 0.25 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M Pro 0.4 Nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M Pro 0.6 Nozzle",
+          "process": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer 5M Pro 0.8 Nozzle",
+          "process": "0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-adventurer-a5",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Adventurer A5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Adventurer A5.json",
+            "sha256": "2f80a3b351f0248a88fb4d9b4191663eb62c2c7ed9db3ebecc8560de7123e398",
+            "manufacturer_model_id": "Flashforge-Adventurer-A5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Flashforge Adventurer A5 0.25 nozzle",
+                "path": "machine/Flashforge Adventurer A5 0.25 nozzle.json",
+                "sha256": "7bfbada585daaa1b1238281654ffa63f522edbed933d34e7ccef515679b22490"
+              },
+              "process": {
+                "name": "0.12mm Standard @FF Adventurer A5 0.25 nozzle",
+                "path": "process/0.12mm Standard @FF Adventurer A5 0.25 nozzle.json",
+                "sha256": "e79c41520164d556767f8a5b9cb044e9bd237e8fde7e734e8b6c5c5b7525e60f",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  },
+                  {
+                    "name": "0.12mm Standard @Flashforge AD5M Pro 0.25 Nozzle",
+                    "path": "process/0.12mm Standard @Flashforge AD5M Pro 0.25 Nozzle.json",
+                    "sha256": "4f4f1e72fd3f9e6fae2f81b848994b025f23e48ede59691899e83c868d26375a"
+                  },
+                  {
+                    "name": "0.12mm Standard @FF Adventurer A5 0.25 nozzle",
+                    "path": "process/0.12mm Standard @FF Adventurer A5 0.25 nozzle.json",
+                    "sha256": "e79c41520164d556767f8a5b9cb044e9bd237e8fde7e734e8b6c5c5b7525e60f"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Adventurer A5 0.4 nozzle",
+                "path": "machine/Flashforge Adventurer A5 0.4 nozzle.json",
+                "sha256": "ce894b208f32322ed2c5b79751fedf9d6e857d5e96a41c8388ce517abbba10ce"
+              },
+              "process": {
+                "name": "0.20mm Standard @FF Adventurer A5 0.4 nozzle",
+                "path": "process/0.20mm Standard @FF Adventurer A5 0.4 nozzle.json",
+                "sha256": "80d4550c368f26ce364acb7f4241aef7bc825ca2685ef7c50d8e4bfef813da53",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  },
+                  {
+                    "name": "0.20mm Standard @FF Adventurer A5 0.4 nozzle",
+                    "path": "process/0.20mm Standard @FF Adventurer A5 0.4 nozzle.json",
+                    "sha256": "80d4550c368f26ce364acb7f4241aef7bc825ca2685ef7c50d8e4bfef813da53"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Flashforge Adventurer A5 0.6 nozzle",
+                "path": "machine/Flashforge Adventurer A5 0.6 nozzle.json",
+                "sha256": "577820ae65ca6c03fa13e7b25445661516ffda3c8ddef7179001899c90ddb1bd"
+              },
+              "process": {
+                "name": "0.30mm Standard @FF Adventurer A5 0.6 nozzle",
+                "path": "process/0.30mm Standard @FF Adventurer A5 0.6 nozzle.json",
+                "sha256": "ef535569ce8fcf18c172cfe061e5f080864dbc489e83e6434950c0783bff0658",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                    "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649"
+                  },
+                  {
+                    "name": "0.30mm Standard @FF Adventurer A5 0.6 nozzle",
+                    "path": "process/0.30mm Standard @FF Adventurer A5 0.6 nozzle.json",
+                    "sha256": "ef535569ce8fcf18c172cfe061e5f080864dbc489e83e6434950c0783bff0658"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Flashforge Adventurer A5 0.8 nozzle",
+                "path": "machine/Flashforge Adventurer A5 0.8 nozzle.json",
+                "sha256": "02480c5a80232ecc25aa6866b31985893291d3ef24e00c64e885552adb8c8b23"
+              },
+              "process": {
+                "name": "0.40mm Standard @FF Adventurer A5 0.8 nozzle",
+                "path": "process/0.40mm Standard @FF Adventurer A5 0.8 nozzle.json",
+                "sha256": "a150c83cc0546c5be30fd552a5151963cbf093eac3542679005edc04aa9d8b50",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge AD5M Pro 0.6 Nozzle.json",
+                    "sha256": "734ba4f347bbaf3ddae62ce62021c47fd7363af39cb0b37d970a5d5f4df68649"
+                  },
+                  {
+                    "name": "0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle",
+                    "path": "process/0.40mm Standard @Flashforge AD5M Pro 0.8 Nozzle.json",
+                    "sha256": "eacd2d2e0cb6d31abe0a5111675b98f96b6670f040e5db600e2679fa901f4646"
+                  },
+                  {
+                    "name": "0.40mm Standard @FF Adventurer A5 0.8 nozzle",
+                    "path": "process/0.40mm Standard @FF Adventurer A5 0.8 nozzle.json",
+                    "sha256": "a150c83cc0546c5be30fd552a5151963cbf093eac3542679005edc04aa9d8b50"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer A5 0.25 nozzle",
+          "process": "0.12mm Standard @FF Adventurer A5 0.25 nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer A5 0.4 nozzle",
+          "process": "0.20mm Standard @FF Adventurer A5 0.4 nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer A5 0.6 nozzle",
+          "process": "0.30mm Standard @FF Adventurer A5 0.6 nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Adventurer A5 0.8 nozzle",
+          "process": "0.40mm Standard @FF Adventurer A5 0.8 nozzle",
+          "filament": "Generic PLA @Flashforge"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-artemis",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Artemis",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Artemis.json",
+            "sha256": "0d304be62766e5232e8c2987d94c9e161b3c7f8d9d0099542a6a6232c30a5014",
+            "manufacturer_model_id": "Flashforge-Artemis"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Artemis 0.4 Nozzle",
+                "path": "machine/Flashforge Artemis 0.4 Nozzle.json",
+                "sha256": "e6f4a7fc85222e59cf0ca8f4cc4f217e829fa5c342c3f27de4d0394cdc357c70"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge Artemis 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge Artemis 0.4 Nozzle.json",
+                "sha256": "9041e7f1cf847f8424846648a2e6e8ce4bf2fb7a9a8439b1926da19244a5f470",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge Artemis 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge Artemis 0.4 Nozzle.json",
+                    "sha256": "9041e7f1cf847f8424846648a2e6e8ce4bf2fb7a9a8439b1926da19244a5f470"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Flashforge PLA",
+                "path": "filament/Flashforge/Flashforge PLA @FF AD3.json",
+                "sha256": "9cb40d089ffadf57652b8fa51fc98056a7ffeba056935c6d2c200dcd1e11fadb",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Flashforge PLA",
+                    "path": "filament/Flashforge/Flashforge PLA @FF AD3.json",
+                    "sha256": "9cb40d089ffadf57652b8fa51fc98056a7ffeba056935c6d2c200dcd1e11fadb"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Artemis 0.4 Nozzle",
+          "process": "0.20mm Standard @Flashforge Artemis 0.4 Nozzle",
+          "filament": "Flashforge PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-creator-5",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Creator 5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Creator 5.json",
+            "sha256": "57a3aecd351714edf269a15e67e7480080a1df6140279f64e218f1bfd3de424d",
+            "manufacturer_model_id": "Flashforge-Creator-5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Flashforge Creator 5 0.25 nozzle",
+                "path": "machine/Flashforge Creator 5 0.25 nozzle.json",
+                "sha256": "652b009ef6d93587a4afdfdc0f47f0411561d3f75a5c3b26a6250b29ba2ecedb"
+              },
+              "process": {
+                "name": "0.12mm Standard @FF C5 0.25 nozzle",
+                "path": "process/0.12mm Standard @FF C5 0.25 nozzle.json",
+                "sha256": "d75c7886ceb79a16c8326173af3affa3a1a0af4e59e3f423192d37806ac3d443",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M 0.4 Nozzle.json",
+                    "sha256": "7e6df9e3ec10d11abb4bc9cfb7ea61aff5e501f45302eedb64f0be15ebfb053b"
+                  },
+                  {
+                    "name": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+                    "path": "process/0.12mm Standard @Flashforge AD5M 0.25 Nozzle.json",
+                    "sha256": "40587b00bfe000f3d963ce008fcf5c17a810ed4fa6541242e4118df62bdbdf92"
+                  },
+                  {
+                    "name": "0.10mm Standard @FF AD5X 0.25 nozzle",
+                    "path": "process/0.10mm Standard @FF AD5X 0.25 nozzle.json",
+                    "sha256": "2b3d936fa953a004678ecace45c506dc90378b886c3b4478fdcc8f8fa91cc525"
+                  },
+                  {
+                    "name": "0.12mm Standard @FF C5 0.25 nozzle",
+                    "path": "process/0.12mm Standard @FF C5 0.25 nozzle.json",
+                    "sha256": "d75c7886ceb79a16c8326173af3affa3a1a0af4e59e3f423192d37806ac3d443"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Creator 5 0.4 nozzle",
+                "path": "machine/Flashforge Creator 5 0.4 nozzle.json",
+                "sha256": "91b6133fadbfbedb77543a50fab101b98ddb159a07e432e81df73acbd3a64ce1"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Flashforge Creator 5 0.6 nozzle",
+                "path": "machine/Flashforge Creator 5 0.6 nozzle.json",
+                "sha256": "2fa162c03134494c34d90e65b9ad67cf7f69e799ad6ea3c659869a9a11bd9869"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Flashforge Creator 5 0.8 nozzle",
+                "path": "machine/Flashforge Creator 5 0.8 nozzle.json",
+                "sha256": "61a47a6fcbd4772219365fe507383468354b1b5468ee4154ffe407357171de06"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 0.25 nozzle",
+          "process": "0.12mm Standard @FF C5 0.25 nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 0.4 nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 0.6 nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 0.8 nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-creator-5-pro",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Creator 5 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Creator 5 Pro.json",
+            "sha256": "6c5f021eac7a5cd586e7341e42e21d7f30b114dfd687c77d5ad1e45ea5af2308",
+            "manufacturer_model_id": "Flashforge-Creator-5-Pro"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Flashforge Creator 5 Pro 0.25 nozzle",
+                "path": "machine/Flashforge Creator 5 Pro 0.25 nozzle.json",
+                "sha256": "7c3be032607cb69f53b0749dd507f848f3d1639b00a21b77dc8e0469020de115"
+              },
+              "process": {
+                "name": "0.12mm Standard @FF C5 0.25 nozzle",
+                "path": "process/0.12mm Standard @FF C5 0.25 nozzle.json",
+                "sha256": "d75c7886ceb79a16c8326173af3affa3a1a0af4e59e3f423192d37806ac3d443",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M 0.4 Nozzle.json",
+                    "sha256": "7e6df9e3ec10d11abb4bc9cfb7ea61aff5e501f45302eedb64f0be15ebfb053b"
+                  },
+                  {
+                    "name": "0.12mm Standard @Flashforge AD5M 0.25 Nozzle",
+                    "path": "process/0.12mm Standard @Flashforge AD5M 0.25 Nozzle.json",
+                    "sha256": "40587b00bfe000f3d963ce008fcf5c17a810ed4fa6541242e4118df62bdbdf92"
+                  },
+                  {
+                    "name": "0.10mm Standard @FF AD5X 0.25 nozzle",
+                    "path": "process/0.10mm Standard @FF AD5X 0.25 nozzle.json",
+                    "sha256": "2b3d936fa953a004678ecace45c506dc90378b886c3b4478fdcc8f8fa91cc525"
+                  },
+                  {
+                    "name": "0.12mm Standard @FF C5 0.25 nozzle",
+                    "path": "process/0.12mm Standard @FF C5 0.25 nozzle.json",
+                    "sha256": "d75c7886ceb79a16c8326173af3affa3a1a0af4e59e3f423192d37806ac3d443"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Creator 5 Pro 0.4 nozzle",
+                "path": "machine/Flashforge Creator 5 Pro 0.4 nozzle.json",
+                "sha256": "f53405546e09cfe19d0db75096648476df9d68da011cba1473642cb1800c5849"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Flashforge Creator 5 Pro 0.6 nozzle",
+                "path": "machine/Flashforge Creator 5 Pro 0.6 nozzle.json",
+                "sha256": "ea8e23f537cd9eef1fac647e265b661b9c4aea172ace336eb63b3ed1bd02677a"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Flashforge Creator 5 Pro 0.8 nozzle",
+                "path": "machine/Flashforge Creator 5 Pro 0.8 nozzle.json",
+                "sha256": "e8350df77c22870171fe8808cdb805b66929be8edcecd4f9c639603721b41661"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle.json",
+                    "sha256": "8ad162e8ac02a31b1f854ec50f736b13b2ee6d0a24d387701b6bdc39aa0e06da"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 Pro 0.25 nozzle",
+          "process": "0.12mm Standard @FF C5 0.25 nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 Pro 0.4 nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 Pro 0.6 nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Creator 5 Pro 0.8 nozzle",
+          "process": "0.20mm Standard @Flashforge AD5M Pro 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-guider-2s",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Guider 2s",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Guider 2s.json",
+            "sha256": "2852c3a80d623b4da0830919a0475e5bb0c49a49a06e5fcf762b658dd306e51c",
+            "manufacturer_model_id": "Flashforge-Guider-2s"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Guider 2s 0.4 nozzle",
+                "path": "machine/Flashforge Guider 2s 0.4 nozzle.json",
+                "sha256": "e6f8eae99b6e99b9a89adb68e29a03d27e67886d2673143658ff9a45ef63238b"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge Guider 2s 0.4 nozzle",
+                "path": "process/0.20mm Standard @Flashforge Guider 2s 0.4 nozzle.json",
+                "sha256": "2e8da51793e67550844a23d6cb94f8c510a99603d8c060e4a4b7217277976ce1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge Guider 2s 0.4 nozzle",
+                    "path": "process/0.20mm Standard @Flashforge Guider 2s 0.4 nozzle.json",
+                    "sha256": "2e8da51793e67550844a23d6cb94f8c510a99603d8c060e4a4b7217277976ce1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge",
+                "path": "filament/Generic PLA @Flashforge.json",
+                "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Guider 2s 0.4 nozzle",
+          "process": "0.20mm Standard @Flashforge Guider 2s 0.4 nozzle",
+          "filament": "Generic PLA @Flashforge"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flashforge-flashforge-guider-3-ultra",
+      "manufacturer": "Flashforge",
+      "model": "Flashforge Guider 3 Ultra",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.11",
+          "manifest": {
+            "path": "resources/profiles/Flashforge.json",
+            "sha256": "0f3c8aeacda8e4f651a0f8aaad1ed3866864ce645f0b3046a8fed03f4318e07f"
+          },
+          "model": {
+            "path": "machine/Flashforge Guider 3 Ultra.json",
+            "sha256": "b7e8faf5acf7da451363b149ab353962146b3b748cf703fb3bf5d89ca6f9f5d0",
+            "manufacturer_model_id": "Flashforge-Guider-3-Ultra"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Flashforge Guider 3 Ultra 0.4 Nozzle",
+                "path": "machine/Flashforge Guider 3 Ultra 0.4 Nozzle.json",
+                "sha256": "a9e6516948c575e3dd1ff1f55326b1e4c874fb03b50eb6e22d3a5008b5125865"
+              },
+              "process": {
+                "name": "0.20mm Standard @Flashforge G3U 0.4 Nozzle",
+                "path": "process/0.20mm Standard @Flashforge G3U 0.4 Nozzle.json",
+                "sha256": "3df5a6fe56a03222662dc35d20e3838f38b3a10c4eebd60bf21c28bd5939087d",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.20",
+                    "path": "process/fdm_process_flashforge_0.20.json",
+                    "sha256": "7135d43fa82c7c80dd683d42723f654fad5196ea585eb3310e19b42fa7c3a336"
+                  },
+                  {
+                    "name": "0.20mm Standard @Flashforge G3U 0.4 Nozzle",
+                    "path": "process/0.20mm Standard @Flashforge G3U 0.4 Nozzle.json",
+                    "sha256": "3df5a6fe56a03222662dc35d20e3838f38b3a10c4eebd60bf21c28bd5939087d"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge G3U",
+                "path": "filament/Generic PLA @Flashforge G3U.json",
+                "sha256": "4e44638ea835bf046b5703c0171c4eb0534cbd55a45c3031789d94330fe8fbc5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge G3U",
+                    "path": "filament/Generic PLA @Flashforge G3U.json",
+                    "sha256": "4e44638ea835bf046b5703c0171c4eb0534cbd55a45c3031789d94330fe8fbc5"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Flashforge Guider 3 Ultra 0.6 Nozzle",
+                "path": "machine/Flashforge Guider 3 Ultra 0.6 Nozzle.json",
+                "sha256": "610d0c6da83952bf8ce825eeb988fae8eb0b576929911e33459cd28c2ac5636a"
+              },
+              "process": {
+                "name": "0.30mm Standard @Flashforge G3U 0.6 Nozzle",
+                "path": "process/0.30mm Standard @Flashforge G3U 0.6 Nozzle.json",
+                "sha256": "2c6e7605084198384b8ec5d6833432c380214faaa63cdcb33874a538f1fabcfc",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.30",
+                    "path": "process/fdm_process_flashforge_0.30.json",
+                    "sha256": "d01fb5c20c1bf31d5c8b43e54bb45372030111f1d02075f78d0849d63dd2fd81"
+                  },
+                  {
+                    "name": "0.30mm Standard @Flashforge G3U 0.6 Nozzle",
+                    "path": "process/0.30mm Standard @Flashforge G3U 0.6 Nozzle.json",
+                    "sha256": "2c6e7605084198384b8ec5d6833432c380214faaa63cdcb33874a538f1fabcfc"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge G3U 0.6 Nozzle",
+                "path": "filament/Generic PLA @Flashforge G3U 0.6 Nozzle.json",
+                "sha256": "16f8ccd4679826f67ba15ae8f744bba3dbd30fe9787c02d2cbd3e9142f1b8531",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge G3U 0.6 Nozzle",
+                    "path": "filament/Generic PLA @Flashforge G3U 0.6 Nozzle.json",
+                    "sha256": "16f8ccd4679826f67ba15ae8f744bba3dbd30fe9787c02d2cbd3e9142f1b8531"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Flashforge Guider 3 Ultra 0.8 Nozzle",
+                "path": "machine/Flashforge Guider 3 Ultra 0.8 Nozzle.json",
+                "sha256": "aa51f9aaf5d0b5a3210558b82dcff57154139dacf296825ed847c9d2fd88110a"
+              },
+              "process": {
+                "name": "0.40mm Standard @Flashforge G3U 0.8 Nozzle",
+                "path": "process/0.40mm Standard @Flashforge G3U 0.8 Nozzle.json",
+                "sha256": "b07684ee7f510565ebdb137f39795bbccb9b13c21f77ab2c1de0cb269a8aaed6",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "162a03e5fecea86861fe9672099760de367387a9d8cad82540fd2b4b7d803c6d"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_common",
+                    "path": "process/fdm_process_flashforge_common.json",
+                    "sha256": "201c265c02d14d48851b6d88285b36e4cb0825b7736b155536ec34305682f37f"
+                  },
+                  {
+                    "name": "fdm_process_flashforge_0.40",
+                    "path": "process/fdm_process_flashforge_0.40.json",
+                    "sha256": "3a4eae41eaafbd7a88bbe7417e8a648bc13cd179e1f25b562531bfdf8f36f9ba"
+                  },
+                  {
+                    "name": "0.40mm Standard @Flashforge G3U 0.8 Nozzle",
+                    "path": "process/0.40mm Standard @Flashforge G3U 0.8 Nozzle.json",
+                    "sha256": "b07684ee7f510565ebdb137f39795bbccb9b13c21f77ab2c1de0cb269a8aaed6"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Flashforge G3U 0.8 Nozzle",
+                "path": "filament/Generic PLA @Flashforge G3U 0.8 Nozzle.json",
+                "sha256": "d08887d972e04576633c0f2f92f73f1358b7969c96623731041065877dee352f",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "860b94d0cf50c6752ec5daa5c2d36f2cd84eace4207625135955b646886572de"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c8b32431195cf1c72f4a5f7fba5dcce1884652e3a8cc8599d29226a3cec621a9"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge",
+                    "path": "filament/Generic PLA @Flashforge.json",
+                    "sha256": "6b2a6ca734962582bd7eed2ae2245a6822d770bc642d25773136b5c00240b13d"
+                  },
+                  {
+                    "name": "Generic PLA @Flashforge G3U 0.8 Nozzle",
+                    "path": "filament/Generic PLA @Flashforge G3U 0.8 Nozzle.json",
+                    "sha256": "d08887d972e04576633c0f2f92f73f1358b7969c96623731041065877dee352f"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Flashforge.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Guider 3 Ultra 0.4 Nozzle",
+          "process": "0.20mm Standard @Flashforge G3U 0.4 Nozzle",
+          "filament": "Generic PLA @Flashforge G3U"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Guider 3 Ultra 0.6 Nozzle",
+          "process": "0.30mm Standard @Flashforge G3U 0.6 Nozzle",
+          "filament": "Generic PLA @Flashforge G3U 0.6 Nozzle"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Flashforge.json",
+          "machine": "Flashforge Guider 3 Ultra 0.8 Nozzle",
+          "process": "0.40mm Standard @Flashforge G3U 0.8 Nozzle",
+          "filament": "Generic PLA @Flashforge G3U 0.8 Nozzle"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

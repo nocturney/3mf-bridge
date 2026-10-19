@@ -1,0 +1,479 @@
+{
+  "schema_version": 1,
+  "manufacturer": "FLSun",
+  "models": [
+    {
+      "id": "flsun-flsun-q5",
+      "manufacturer": "FLSun",
+      "model": "FLSun Q5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/FLSun.json",
+            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+          },
+          "model": {
+            "path": "machine/FLSun Q5.json",
+            "sha256": "8108f32e40ddab2712110aac72806345df838b413adf3adf6fac3bea44b77cc7",
+            "manufacturer_model_id": "FLSun-Q5"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FLSun Q5 0.4 nozzle",
+                "path": "machine/FLSun Q5 0.4 nozzle.json",
+                "sha256": "c705d275013176c1e677f3ec2bc95110b3c0ca215067f5a09343bc9b804ada8f"
+              },
+              "process": {
+                "name": "0.20mm Standard @FLSun Q5",
+                "path": "process/0.20mm Standard @FLSun Q5.json",
+                "sha256": "90e96c9ba8da91ebad888019c409dd458022f2e779cb168880533bf745c6d3a6",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "b6ce9ae098047658dae623b465b9cdbb5b7fe5eff99d9186d21cbf5f9c14126b"
+                  },
+                  {
+                    "name": "0.20mm Standard @FLSun Q5",
+                    "path": "process/0.20mm Standard @FLSun Q5.json",
+                    "sha256": "90e96c9ba8da91ebad888019c409dd458022f2e779cb168880533bf745c6d3a6"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FLSun",
+                "path": "filament/Generic PLA @FLSun.json",
+                "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @FLSun",
+                    "path": "filament/Generic PLA @FLSun.json",
+                    "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "FLSun/1.1.0.ini",
+            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+          },
+          "model": {
+            "path": "FLSun/1.1.0.ini",
+            "section": "printer_model:Q5",
+            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/FLSun.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/FLSun.json",
+          "machine": "FLSun Q5 0.4 nozzle",
+          "process": "0.20mm Standard @FLSun Q5",
+          "filament": "Generic PLA @FLSun"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flsun-flsun-qq-s-pro",
+      "manufacturer": "FLSun",
+      "model": "FLSun QQ-S Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/FLSun.json",
+            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+          },
+          "model": {
+            "path": "machine/FLSun QQ-S Pro.json",
+            "sha256": "40eda7e18fce9fbc8017b382f8afb0dcaf347ec9ee7c1360eb6bcc56db86a262",
+            "manufacturer_model_id": "FLSun-QQS-Pro"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FLSun QQ-S Pro 0.4 nozzle",
+                "path": "machine/FLSun QQ-S Pro 0.4 nozzle.json",
+                "sha256": "b31d2301dd326b5456ade3265d270d4f530d7f6c5ffa9c39adc5ed2696d99ed6"
+              },
+              "process": {
+                "name": "0.20mm Standard @FLSun QQSPro",
+                "path": "process/0.20mm Standard @FLSun QQSPro.json",
+                "sha256": "b61f18c0a804a109d9af99d190e63ba32a163dfc13688cd1f52ab1dab30a5932",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "b6ce9ae098047658dae623b465b9cdbb5b7fe5eff99d9186d21cbf5f9c14126b"
+                  },
+                  {
+                    "name": "0.20mm Standard @FLSun QQSPro",
+                    "path": "process/0.20mm Standard @FLSun QQSPro.json",
+                    "sha256": "b61f18c0a804a109d9af99d190e63ba32a163dfc13688cd1f52ab1dab30a5932"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FLSun",
+                "path": "filament/Generic PLA @FLSun.json",
+                "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @FLSun",
+                    "path": "filament/Generic PLA @FLSun.json",
+                    "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/FLSun.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/FLSun.json",
+          "machine": "FLSun QQ-S Pro 0.4 nozzle",
+          "process": "0.20mm Standard @FLSun QQSPro",
+          "filament": "Generic PLA @FLSun"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flsun-flsun-qqs-pro",
+      "manufacturer": "FLSun",
+      "model": "FLSun QQS Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "FLSun/1.1.0.ini",
+            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+          },
+          "model": {
+            "path": "FLSun/1.1.0.ini",
+            "section": "printer_model:QQSP",
+            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "flsun-flsun-s1",
+      "manufacturer": "FLSun",
+      "model": "FLSun S1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/FLSun.json",
+            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+          },
+          "model": {
+            "path": "machine/FLSun S1.json",
+            "sha256": "6b62b6258928cb60aeabeb748bf856453455d8eac47fc75df4f5eef99f896f29",
+            "manufacturer_model_id": "FLSun_S1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "flsun-flsun-super-racer-sr",
+      "manufacturer": "FLSun",
+      "model": "FLSun Super Racer (SR)",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/FLSun.json",
+            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+          },
+          "model": {
+            "path": "machine/FLSun SR.json",
+            "sha256": "ad054c5575478525603a9d04d389304a8844bf9cac76a555b8d2960207cc8dde",
+            "manufacturer_model_id": "FLSun_Super_Racer"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FLSun Super Racer 0.4 nozzle",
+                "path": "machine/FLSun SR 0.4 nozzle.json",
+                "sha256": "349983d58da0be0b01375cbd0281f49520ce499ad75fc2f3b19bfcfff3649f15"
+              },
+              "process": {
+                "name": "0.20mm Standard @FLSun SR",
+                "path": "process/0.20mm Standard @FLSun SR.json",
+                "sha256": "2dbdea7c6d9f58d318064ab3505278a143110f117132db39ebfa59975985cceb",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "b6ce9ae098047658dae623b465b9cdbb5b7fe5eff99d9186d21cbf5f9c14126b"
+                  },
+                  {
+                    "name": "0.20mm Standard @FLSun SR",
+                    "path": "process/0.20mm Standard @FLSun SR.json",
+                    "sha256": "2dbdea7c6d9f58d318064ab3505278a143110f117132db39ebfa59975985cceb"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FLSun",
+                "path": "filament/Generic PLA @FLSun.json",
+                "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @FLSun",
+                    "path": "filament/Generic PLA @FLSun.json",
+                    "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/FLSun.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/FLSun.json",
+          "machine": "FLSun Super Racer 0.4 nozzle",
+          "process": "0.20mm Standard @FLSun SR",
+          "filament": "Generic PLA @FLSun"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flsun-flsun-t1",
+      "manufacturer": "FLSun",
+      "model": "FLSun T1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/FLSun.json",
+            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+          },
+          "model": {
+            "path": "machine/FLSun T1.json",
+            "sha256": "9cc247651439649fa825d510d78d8df4f0f46fc84744f43d1946ed7c4833a5b1",
+            "manufacturer_model_id": "FLSun_T1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "flsun-flsun-v400",
+      "manufacturer": "FLSun",
+      "model": "FLSun V400",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/FLSun.json",
+            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+          },
+          "model": {
+            "path": "machine/FLSun V400.json",
+            "sha256": "561305eb9f2dfcaf2ae83eec98539ac3f194cc057b816f74b6bc417cba7b05d0",
+            "manufacturer_model_id": "FLSun_V400"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

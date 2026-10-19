@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "manufacturer": "LulzBot",
+  "models": [
+    {
+      "id": "lulzbot-lulzbot-mini-1",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Mini 1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "744646044888d543409d6a3449f0b4ef38430b87471898511611571bdcefa813"
+          },
+          "model": {
+            "path": "machine/Lulzbot Mini 1.json",
+            "sha256": "c56eb7c624ee8b56b0a1010de1308e5ababbe15f2b53104e5eea256ede0eb5e4",
+            "manufacturer_model_id": "Lulzbot-Mini-1"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-4-or-5",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz 4 or 5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "744646044888d543409d6a3449f0b4ef38430b87471898511611571bdcefa813"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz 4 or 5.json",
+            "sha256": "3e67ec308caf3da1de6481bdbf8b8fed32a12860c90c1f220408d4706ddf92ee",
+            "manufacturer_model_id": "Lulzbot-Taz-4-5"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-6",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz 6",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "744646044888d543409d6a3449f0b4ef38430b87471898511611571bdcefa813"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz 6.json",
+            "sha256": "272a6eeb9f0dc0b71bd1e21d66910b3d5df1c47116d42d0d2959f032a09f7473",
+            "manufacturer_model_id": "Lulzbot-Taz-6"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-pro-dual",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz Pro Dual",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "744646044888d543409d6a3449f0b4ef38430b87471898511611571bdcefa813"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz Pro Dual.json",
+            "sha256": "ac888f5d8aa2fe55a571c2f30dba7bd45ea4106c3ef758af5a5fcc208fddb5db",
+            "manufacturer_model_id": "Lulzbot-Taz-Pro-Dual"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-pro-s",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz Pro S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "744646044888d543409d6a3449f0b4ef38430b87471898511611571bdcefa813"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz Pro S.json",
+            "sha256": "2bebf21f0c301f06cd32e1c18bbacdfafe3b4b6d83ed1b7a804af9e2ec91ba13",
+            "manufacturer_model_id": "Lulzbot-Taz-Pro-S"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-mini-aero",
+      "manufacturer": "LulzBot",
+      "model": "Mini Aero",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.0.0",
+          "manifest": {
+            "path": "LulzBot/1.0.0.ini",
+            "sha256": "7c90184539424f6513165c9935006e21c7dfc384d2484581c3f76879e32b1dfc"
+          },
+          "model": {
+            "path": "LulzBot/1.0.0.ini",
+            "section": "printer_model:MINI_AERO",
+            "sha256": "7c90184539424f6513165c9935006e21c7dfc384d2484581c3f76879e32b1dfc"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-taz6-aero",
+      "manufacturer": "LulzBot",
+      "model": "Taz6 Aero",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.0.0",
+          "manifest": {
+            "path": "LulzBot/1.0.0.ini",
+            "sha256": "7c90184539424f6513165c9935006e21c7dfc384d2484581c3f76879e32b1dfc"
+          },
+          "model": {
+            "path": "LulzBot/1.0.0.ini",
+            "section": "printer_model:TAZ6_AERO",
+            "sha256": "7c90184539424f6513165c9935006e21c7dfc384d2484581c3f76879e32b1dfc"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

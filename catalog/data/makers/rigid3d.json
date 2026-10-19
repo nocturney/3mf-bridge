@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Rigid3D",
+  "models": [
+    {
+      "id": "rigid3d-rigid3d-mucit",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Mucit",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Mucit",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "rigid3d-rigid3d-mucit2",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Mucit2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Mucit2",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "rigid3d-rigid3d-zero2",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Zero2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Zero2",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "rigid3d-rigid3d-zero3",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Zero3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Zero3",
+            "sha256": "52f37d8290c815baf77659ff02f023ff5e93499a7df7ff08a401405275003086"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

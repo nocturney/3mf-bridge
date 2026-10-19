@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "manufacturer": "SecKit",
+  "models": [
+    {
+      "id": "seckit-seckit-go3",
+      "manufacturer": "SecKit",
+      "model": "Seckit Go3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/SecKit.json",
+            "sha256": "39a5669319814a6c0892a771782905e22239cd2fa87355b4cb09531421a78de3"
+          },
+          "model": {
+            "path": "machine/Seckit Go3.json",
+            "sha256": "9cdd786593726359bc9b373aec0d01cf8b5b5a24e5ef8db3dae9befa640c710a",
+            "manufacturer_model_id": "SK-Go3"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SecKit Go3 0.4 nozzle",
+                "path": "machine/SecKit Go3 0.4 nozzle.json",
+                "sha256": "95653adb40a9beb619f88effd4f833d1454e32fe97f5303d12cd1a5eab58283b"
+              },
+              "process": {
+                "name": "0.20mm Standard @SecKit",
+                "path": "process/0.20mm Standard @SecKit.json",
+                "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "49053d73b79c4882539694aeb835850fae5111d37f19c51017c6ba7022befd42"
+                  },
+                  {
+                    "name": "fdm_process_seckit_common",
+                    "path": "process/fdm_process_seckit_common.json",
+                    "sha256": "b1cafd4ece42546e024033e0290eccdf4ee62f96ef260d34ced550461c32ce26"
+                  },
+                  {
+                    "name": "0.20mm Standard @SecKit",
+                    "path": "process/0.20mm Standard @SecKit.json",
+                    "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PETG @SecKit",
+                "path": "filament/Generic PETG @SecKit.json",
+                "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "6bd8fbf6caa0417019fecad40bfb361ac3b88647e7af6f653721fc6adbbacb1b"
+                  },
+                  {
+                    "name": "fdm_filament_pet",
+                    "path": "filament/fdm_filament_pet.json",
+                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                  },
+                  {
+                    "name": "Generic PETG @SecKit",
+                    "path": "filament/Generic PETG @SecKit.json",
+                    "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SecKit.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SecKit.json",
+          "machine": "SecKit Go3 0.4 nozzle",
+          "process": "0.20mm Standard @SecKit",
+          "filament": "Generic PETG @SecKit"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "seckit-seckit-sk-tank",
+      "manufacturer": "SecKit",
+      "model": "SecKit SK-Tank",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/SecKit.json",
+            "sha256": "39a5669319814a6c0892a771782905e22239cd2fa87355b4cb09531421a78de3"
+          },
+          "model": {
+            "path": "machine/SecKit SK-Tank.json",
+            "sha256": "76c49ef36b60e7509bd9e299bee72b10ae7f252f6b41ad650dd35d79dea1de4d",
+            "manufacturer_model_id": "SK-Tank"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SecKit SK-Tank 0.4 nozzle",
+                "path": "machine/SecKit SK-Tank 0.4 nozzle.json",
+                "sha256": "3573722009e1bd8a476ad47f9343d395d55193a092feed3b13325ac97493bf5d"
+              },
+              "process": {
+                "name": "0.20mm Standard @SecKit",
+                "path": "process/0.20mm Standard @SecKit.json",
+                "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "49053d73b79c4882539694aeb835850fae5111d37f19c51017c6ba7022befd42"
+                  },
+                  {
+                    "name": "fdm_process_seckit_common",
+                    "path": "process/fdm_process_seckit_common.json",
+                    "sha256": "b1cafd4ece42546e024033e0290eccdf4ee62f96ef260d34ced550461c32ce26"
+                  },
+                  {
+                    "name": "0.20mm Standard @SecKit",
+                    "path": "process/0.20mm Standard @SecKit.json",
+                    "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PETG @SecKit",
+                "path": "filament/Generic PETG @SecKit.json",
+                "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "6bd8fbf6caa0417019fecad40bfb361ac3b88647e7af6f653721fc6adbbacb1b"
+                  },
+                  {
+                    "name": "fdm_filament_pet",
+                    "path": "filament/fdm_filament_pet.json",
+                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                  },
+                  {
+                    "name": "Generic PETG @SecKit",
+                    "path": "filament/Generic PETG @SecKit.json",
+                    "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SecKit.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SecKit.json",
+          "machine": "SecKit SK-Tank 0.4 nozzle",
+          "process": "0.20mm Standard @SecKit",
+          "filament": "Generic PETG @SecKit"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

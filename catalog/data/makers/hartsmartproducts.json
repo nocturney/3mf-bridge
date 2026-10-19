@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "manufacturer": "HartSmartProducts",
+  "models": [
+    {
+      "id": "hartsmartproducts-hsp1-i",
+      "manufacturer": "HartSmartProducts",
+      "model": "HSP1-I",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.3.0",
+          "manifest": {
+            "path": "HartSmartProducts/1.3.0.ini",
+            "sha256": "2d9a9b4038dac65688fe33ac920cc73182a0886731fc77dcf270fb38c05cf175"
+          },
+          "model": {
+            "path": "HartSmartProducts/1.3.0.ini",
+            "section": "printer_model:HSP1-I",
+            "sha256": "2d9a9b4038dac65688fe33ac920cc73182a0886731fc77dcf270fb38c05cf175"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "hartsmartproducts-hsp1-i-duplicator-mode",
+      "manufacturer": "HartSmartProducts",
+      "model": "HSP1-I Duplicator Mode",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.3.0",
+          "manifest": {
+            "path": "HartSmartProducts/1.3.0.ini",
+            "sha256": "2d9a9b4038dac65688fe33ac920cc73182a0886731fc77dcf270fb38c05cf175"
+          },
+          "model": {
+            "path": "HartSmartProducts/1.3.0.ini",
+            "section": "printer_model:HSP1-I Duplicator Mode",
+            "sha256": "2d9a9b4038dac65688fe33ac920cc73182a0886731fc77dcf270fb38c05cf175"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

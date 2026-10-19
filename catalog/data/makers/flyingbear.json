@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "manufacturer": "FlyingBear",
+  "models": [
+    {
+      "id": "flyingbear-flyingbear-ghost-6",
+      "manufacturer": "FlyingBear",
+      "model": "FlyingBear Ghost 6",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/FlyingBear.json",
+            "sha256": "b6ce0f1397b686ddb1ee58780faed893f4f6f4538c7e987081d7d3764c0aba81"
+          },
+          "model": {
+            "path": "machine/FlyingBear Ghost 6.json",
+            "sha256": "28bf264a3624daaf94350365c4bccad64e7a9be263315a8a22ed941719a9fb22",
+            "manufacturer_model_id": "FlyingBear Ghost 6"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "flyingbear-flyingbear-ghost7",
+      "manufacturer": "FlyingBear",
+      "model": "FlyingBear Ghost7",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/FlyingBear.json",
+            "sha256": "b6ce0f1397b686ddb1ee58780faed893f4f6f4538c7e987081d7d3764c0aba81"
+          },
+          "model": {
+            "path": "machine/Ghost7/FlyingBear Ghost7.json",
+            "sha256": "9385a34eefbbe12d1c0f45859a7c4d4249238aa11532988fcd9cbf37a2acc258",
+            "manufacturer_model_id": "FlyingBear_Ghost7"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FlyingBear Ghost7 0.4 nozzle",
+                "path": "machine/Ghost7/FlyingBear Ghost7 0.4 nozzle.json",
+                "sha256": "14c4ffb9450381b9ad0ec9045dfba656bc387512b834b00e833715f57e901d8b"
+              },
+              "process": {
+                "name": "0.20mm Standard @FlyingBear Ghost7",
+                "path": "process/Ghost7/0.20mm Standard @FlyingBear Ghost7.json",
+                "sha256": "9a41c61a3dbb0e051dbdd83dd05ff5cf57177f293ebbdf18c1d1faa0dacce754",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common_Ghost7",
+                    "path": "process/Ghost7/fdm_process_common_Ghost7.json",
+                    "sha256": "cc9da27acc2e215273ff27a3e6247ee2ebff5b31b52d67da9e7605a3f727ef5e"
+                  },
+                  {
+                    "name": "0.20mm Standard @FlyingBear Ghost7",
+                    "path": "process/Ghost7/0.20mm Standard @FlyingBear Ghost7.json",
+                    "sha256": "9a41c61a3dbb0e051dbdd83dd05ff5cf57177f293ebbdf18c1d1faa0dacce754"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "FlyingBear PLA Basic @Ghost7",
+                "path": "filament/Ghost7/FlyingBear PLA Basic @Ghost7.json",
+                "sha256": "ac1f3810dd15d966971c5ddc043f53403a068f39556afd30fc913bfa79ee5c47",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common_Ghost7",
+                    "path": "filament/Ghost7/fdm_filament_common_Ghost7.json",
+                    "sha256": "961e5ee0ec3c99e5e00d3cc499fdcff304079f1b0d9e70b9ac1cb8693904adc0"
+                  },
+                  {
+                    "name": "fdm_filament_pla @Ghost7",
+                    "path": "filament/Ghost7/fdm_filament_pla @Ghost7.json",
+                    "sha256": "92b34fb5ea874fef350a492f87bf2200a1f6e7fc74b82d0d660ffdf23f6eda5e"
+                  },
+                  {
+                    "name": "FlyingBear PLA Basic @Ghost7",
+                    "path": "filament/Ghost7/FlyingBear PLA Basic @Ghost7.json",
+                    "sha256": "ac1f3810dd15d966971c5ddc043f53403a068f39556afd30fc913bfa79ee5c47"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/FlyingBear.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/FlyingBear.json",
+          "machine": "FlyingBear Ghost7 0.4 nozzle",
+          "process": "0.20mm Standard @FlyingBear Ghost7",
+          "filament": "FlyingBear PLA Basic @Ghost7"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flyingbear-flyingbear-reborn3",
+      "manufacturer": "FlyingBear",
+      "model": "FlyingBear Reborn3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/FlyingBear.json",
+            "sha256": "b6ce0f1397b686ddb1ee58780faed893f4f6f4538c7e987081d7d3764c0aba81"
+          },
+          "model": {
+            "path": "machine/FlyingBear Reborn3.json",
+            "sha256": "a1a129f9b02435ba0335b5eee128fccef894a3396e990d2728d336ac52ebea40",
+            "manufacturer_model_id": "FlyingBear Reborn3"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FlyingBear Reborn3 0.4 nozzle",
+                "path": "machine/FlyingBear Reborn3 0.4 nozzle.json",
+                "sha256": "a469c7a35ae2e6ac2678f097b79021e9d16f3f308949f97ad35fdcc5d52641b3"
+              },
+              "process": {
+                "name": "0.20mm Standard @FlyingBear Reborn3",
+                "path": "process/0.20mm Standard @FlyingBear Reborn3.json",
+                "sha256": "f5b5fd10fb9a927a504bd9c9d9f256392edf15b5f1cb1237c83f3343d49ce06a",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "2892d5e1094f55a46ace8665ea3b8a336ad94ce5d14e8f8a80889139ed20f799"
+                  },
+                  {
+                    "name": "0.20mm Standard @FlyingBear Reborn3",
+                    "path": "process/0.20mm Standard @FlyingBear Reborn3.json",
+                    "sha256": "f5b5fd10fb9a927a504bd9c9d9f256392edf15b5f1cb1237c83f3343d49ce06a"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FlyingBear",
+                "path": "filament/Generic PLA @FlyingBear.json",
+                "sha256": "c4ecc9c73443122c9cab166ffd688116f60007e13e201058c5eb186de967ba82",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "aeb9660fa4af1864f9413c2f1867fba7a1b29993a85d82354f1a517966fdcf13"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6bc33168b38b76d74a53d8ea380343b85ad4f8de48eac0ad67731ee5be286df0"
+                  },
+                  {
+                    "name": "Generic PLA @FlyingBear",
+                    "path": "filament/Generic PLA @FlyingBear.json",
+                    "sha256": "c4ecc9c73443122c9cab166ffd688116f60007e13e201058c5eb186de967ba82"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/FlyingBear.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/FlyingBear.json",
+          "machine": "FlyingBear Reborn3 0.4 nozzle",
+          "process": "0.20mm Standard @FlyingBear Reborn3",
+          "filament": "Generic PLA @FlyingBear"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "flyingbear-flyingbear-s1",
+      "manufacturer": "FlyingBear",
+      "model": "FlyingBear S1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/FlyingBear.json",
+            "sha256": "b6ce0f1397b686ddb1ee58780faed893f4f6f4538c7e987081d7d3764c0aba81"
+          },
+          "model": {
+            "path": "machine/S1/FlyingBear S1.json",
+            "sha256": "2ec4ee0d0f374696f7948f007e285ed7ee86c88e6ab2bd96d61f5d4699b1e11e",
+            "manufacturer_model_id": "FlyingBear_S1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FlyingBear S1 0.4 nozzle",
+                "path": "machine/S1/FlyingBear S1 0.4 nozzle.json",
+                "sha256": "002a5939afbd40f0864f84253badea356edd051951aa25f5e36995640782f01a"
+              },
+              "process": {
+                "name": "0.20mm Standard @FlyingBear S1",
+                "path": "process/S1/0.20mm Standard @FlyingBear S1.json",
+                "sha256": "0b24f7833c91cae0d5f9dd280c8b4290ac536f1f0d136da8489494a52d7418db",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common_S1",
+                    "path": "process/S1/fdm_process_common_S1.json",
+                    "sha256": "e912991476d9f02e22d356a0778eaedbb2799afc68d00f010ae4eae460206317"
+                  },
+                  {
+                    "name": "0.20mm Standard @FlyingBear S1",
+                    "path": "process/S1/0.20mm Standard @FlyingBear S1.json",
+                    "sha256": "0b24f7833c91cae0d5f9dd280c8b4290ac536f1f0d136da8489494a52d7418db"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "FlyingBear PLA @S1",
+                "path": "filament/S1/FlyingBear PLA @S1.json",
+                "sha256": "c2bbf1b037eaf364557365c49d349deb05a1a8be673e76957d4a84d113b64456",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common_S1",
+                    "path": "filament/S1/fdm_filament_common_S1.json",
+                    "sha256": "e5d9e234cdb0e72d1677c66d3fda07c5c0314e44af08e348bc20d9fa707a3a33"
+                  },
+                  {
+                    "name": "fdm_filament_pla @S1",
+                    "path": "filament/S1/fdm_filament_pla @S1.json",
+                    "sha256": "4e67c94ccda7c4b4922cf95703d569a33f4971f261b8c3d9b4cd7c1f75155b5a"
+                  },
+                  {
+                    "name": "FlyingBear PLA @S1",
+                    "path": "filament/S1/FlyingBear PLA @S1.json",
+                    "sha256": "c2bbf1b037eaf364557365c49d349deb05a1a8be673e76957d4a84d113b64456"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/FlyingBear.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/FlyingBear.json",
+          "machine": "FlyingBear S1 0.4 nozzle",
+          "process": "0.20mm Standard @FlyingBear S1",
+          "filament": "FlyingBear PLA @S1"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

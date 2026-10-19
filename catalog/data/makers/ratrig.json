@@ -1,0 +1,1576 @@
+{
+  "schema_version": 1,
+  "manufacturer": "RatRig",
+  "models": [
+    {
+      "id": "ratrig-ratrig-v-cast",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Cast",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Cast.json",
+            "sha256": "e80d5505fa29e155aedad39dff3da2c8d07a5d3168d46f8417b18e06a4b2e978",
+            "manufacturer_model_id": "V-Cast"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-3-200",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 3 200",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 3 200.json",
+            "sha256": "71f00b2a419669836fe93c2a3225d91d6cef24ae5d9e0283a5259184537e3f8a",
+            "manufacturer_model_id": "V-Core_3_200"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-3-300",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 3 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 3 300.json",
+            "sha256": "7192347c12d2ba2d1870051cf04d257627c7e2403be02266e94f858ffee0e55b",
+            "manufacturer_model_id": "V-Core_3_300"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-3-400",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 3 400",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 3 400.json",
+            "sha256": "25dd1cc7bc797636a9d94ad3a50b51fcda0d9d521f57f01c4ed99d56d31b190b",
+            "manufacturer_model_id": "V-Core_3_400"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-3-500",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 3 500",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 3 500.json",
+            "sha256": "635816da28b811132c1ae8c8561c553f32b81ad3e6c6d7c8e438568db436e6be",
+            "manufacturer_model_id": "V-Core_3_500"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-300",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 300.json",
+            "sha256": "8696b3098486e9e33a7aa8a5ffde3db4ff3f625c3bce1addbc7d220a46213bf9",
+            "manufacturer_model_id": "V-Core_4_300"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-400",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 400",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 400.json",
+            "sha256": "254a44bfae8370328bfa1eea9707833bdff29babc13df9275bd44fdbe2accfa1",
+            "manufacturer_model_id": "V-Core_4_400"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-500",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 500",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 500.json",
+            "sha256": "978061b0c4f2e69702dacf02bf74efc7ef4a2f2c60339844d30d840c8308d430",
+            "manufacturer_model_id": "V-Core_4_500"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-hybrid-300",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 HYBRID 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 HYBRID 300.json",
+            "sha256": "9e9460a4a379c67cc9cf661fa98568a5b4678ab7fbaf918f81518f86d54700f5",
+            "manufacturer_model_id": "V-Core_4_HYBRID_300"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-hybrid-400",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 HYBRID 400",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 HYBRID 400.json",
+            "sha256": "5d4a50bd8f9e17038933804847aaf0606b71b80fa1b4141d022c0634722ddc62",
+            "manufacturer_model_id": "V-Core_4_HYBRID_400"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-hybrid-500",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 HYBRID 500",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 HYBRID 500.json",
+            "sha256": "0197f6ac81feed6bdfa8fa060f4443afab93efed5e1731c1b7f4b47e40015e7b",
+            "manufacturer_model_id": "V-Core_4_HYBRID_500"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-300",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 300.json",
+            "sha256": "3133e02a0f919135b15c50cd705761231f8b9dd2b1cf2a939d0ef59aef8de8bc",
+            "manufacturer_model_id": "V-Core_4_IDEX_300"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-300-copy-mode",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 300 COPY MODE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 300 COPY MODE.json",
+            "sha256": "c09d40d6f280756436e1655c344e3be76bf9288c8c2814c7ed668f3e942e9b73",
+            "manufacturer_model_id": "V-Core_4_IDEX_300_COPY_MODE"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-300-mirror-mode",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 300 MIRROR MODE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 300 MIRROR MODE.json",
+            "sha256": "a7033740e6818a52e1d8848d91fbb5b72cd4075edcf53541077bda1f88dcfe93",
+            "manufacturer_model_id": "V-Core_4_IDEX_300_MIRROR_MODE"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-400",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 400",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 400.json",
+            "sha256": "956709e25422b4fd497d1b67a7a02cd8437950297cc34f07cd9db5124c3028f0",
+            "manufacturer_model_id": "V-Core_4_IDEX_400"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-400-copy-mode",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 400 COPY MODE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 400 COPY MODE.json",
+            "sha256": "1ef14248031ec40e424e5c10051b65ad805b210e2a39318249d31d5754a1af1e",
+            "manufacturer_model_id": "V-Core_4_IDEX_400_COPY_MODE"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-400-mirror-mode",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 400 MIRROR MODE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 400 MIRROR MODE.json",
+            "sha256": "125055f47a024a918862299394bc7f3c58828c66fcc5eba76d04d4ee5d65c28b",
+            "manufacturer_model_id": "V-Core_4_IDEX_400_MIRROR_MODE"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-500",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 500",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 500.json",
+            "sha256": "49a438fecd9963298f7df0eb48253d7fb956794ec247303878537c2a4288307a",
+            "manufacturer_model_id": "V-Core_4_IDEX_500"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-500-copy-mode",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 500 COPY MODE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 500 COPY MODE.json",
+            "sha256": "4ee47d4c22d676f57db31ad887140c609bce5f130f5d4a70acf9a322cba36a44",
+            "manufacturer_model_id": "V-Core_4_IDEX_500_COPY_MODE"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-4-idex-500-mirror-mode",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core 4 IDEX 500 MIRROR MODE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Core 4 IDEX 500 MIRROR MODE.json",
+            "sha256": "b0cb3f4395254085efa05c4cdd63ad201173503e65507f5aaa0ade0447789b73",
+            "manufacturer_model_id": "V-Core_4_IDEX_500_MIRROR_MODE"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-3-1-300mm",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core-3.1 300mm",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC3_300",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-3-1-400mm",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core-3.1 400mm",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC3_400",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-core-3-1-500mm",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Core-3.1 500mm",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC3_500",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-ratrig-v-minion",
+      "manufacturer": "RatRig",
+      "model": "RatRig V-Minion",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Ratrig.json",
+            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+          },
+          "model": {
+            "path": "machine/RatRig V-Minion.json",
+            "sha256": "69b8af10358bc1e43d052d09ed33b51f7d5aaa4fcec2e5d53f937b0fc94ab7f5",
+            "manufacturer_model_id": "V-Minion"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VMINION",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-300x300-corexy",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 300x300 CoreXY",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_300_XY",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-300x300-hybrid",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 300x300 Hybrid",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_300_HY",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-300x300-idex",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 300x300 IDEX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_300_IDEX",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-300x300-idex-copy",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 300x300 IDEX Copy",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_300_IDEX_Copy",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-300x300-idex-mirror",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 300x300 IDEX Mirror",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_300_IDEX_Mirror",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-400x400-corexy",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 400x400 CoreXY",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_400_XY",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-400x400-hybrid",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 400x400 Hybrid",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_400_HY",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-400x400-idex",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 400x400 IDEX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_400_IDEX",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-400x400-idex-copy",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 400x400 IDEX Copy",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_400_IDEX_Copy",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-400x400-idex-mirror",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 400x400 IDEX Mirror",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_400_IDEX_Mirror",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-500x500-corexy",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 500x500 CoreXY",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_500_XY",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-500x500-hybrid",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 500x500 Hybrid",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_500_HY",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-500x500-idex",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 500x500 IDEX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_500_IDEX",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-500x500-idex-copy",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 500x500 IDEX Copy",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_500_IDEX_Copy",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "ratrig-v-core-4-0-500x500-idex-mirror",
+      "manufacturer": "RatRig",
+      "model": "V-Core 4.0 500x500 IDEX Mirror",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.2.0",
+          "manifest": {
+            "path": "RatRig/2.2.0.ini",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "model": {
+            "path": "RatRig/2.2.0.ini",
+            "section": "printer_model:VC4_500_IDEX_Mirror",
+            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

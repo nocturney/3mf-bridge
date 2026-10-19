@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Infinity3D",
+  "models": [
+    {
+      "id": "infinity3d-infinity3d-dev-200",
+      "manufacturer": "Infinity3D",
+      "model": "Infinity3D DEV-200",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Infinity3D/2.1.0.ini",
+            "sha256": "90d09aa9213a92c966aba5e6da348eac0eece2d9c698bb68948a49924ec28ce7"
+          },
+          "model": {
+            "path": "Infinity3D/2.1.0.ini",
+            "section": "printer_model:DEV-200",
+            "sha256": "90d09aa9213a92c966aba5e6da348eac0eece2d9c698bb68948a49924ec28ce7"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "infinity3d-infinity3d-dev-350",
+      "manufacturer": "Infinity3D",
+      "model": "Infinity3D DEV-350",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Infinity3D/2.1.0.ini",
+            "sha256": "90d09aa9213a92c966aba5e6da348eac0eece2d9c698bb68948a49924ec28ce7"
+          },
+          "model": {
+            "path": "Infinity3D/2.1.0.ini",
+            "section": "printer_model:DEV-350",
+            "sha256": "90d09aa9213a92c966aba5e6da348eac0eece2d9c698bb68948a49924ec28ce7"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

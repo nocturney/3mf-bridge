@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Caribou",
+  "models": [
+    {
+      "id": "caribou-caribou-mk3s-220",
+      "manufacturer": "Caribou",
+      "model": "Caribou MK3S+ 220",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_MK3S_220",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribou-mk3s-220-klipper",
+      "manufacturer": "Caribou",
+      "model": "Caribou MK3S+ 220 Klipper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_MK3S_220_Klipper",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribou-mk3s-320",
+      "manufacturer": "Caribou",
+      "model": "Caribou MK3S+ 320",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_MK3S_320",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribou-mk3s-320-klipper",
+      "manufacturer": "Caribou",
+      "model": "Caribou MK3S+ 320 Klipper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_MK3S_320_Klipper",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribou-mk3s-420",
+      "manufacturer": "Caribou",
+      "model": "Caribou MK3S+ 420",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_MK3S_420",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribou-mk3s-420-klipper",
+      "manufacturer": "Caribou",
+      "model": "Caribou MK3S+ 420 Klipper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_MK3S_420_Klipper",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribouduet-220",
+      "manufacturer": "Caribou",
+      "model": "CaribouDuet 220",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_Duet_220",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribouduet-320",
+      "manufacturer": "Caribou",
+      "model": "CaribouDuet 320",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_Duet_320",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribouduet-420",
+      "manufacturer": "Caribou",
+      "model": "CaribouDuet 420",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_Duet_420",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribouidex-duplicate",
+      "manufacturer": "Caribou",
+      "model": "CaribouIDEX Duplicate",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_IDEX_Duplicate",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.35",
+            "0.4"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribouidex-mirror",
+      "manufacturer": "Caribou",
+      "model": "CaribouIDEX Mirror",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_IDEX_Mirror",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.35",
+            "0.4"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-caribouidex-standard",
+      "manufacturer": "Caribou",
+      "model": "CaribouIDEX Standard",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_IDEX_Standard",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.35",
+            "0.4",
+            "0.6"
+          ],
+          "candidate_printer_sections": 5,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "caribou-cariboum",
+      "manufacturer": "Caribou",
+      "model": "CaribouM",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "0.7.0",
+          "manifest": {
+            "path": "Caribou/0.7.0.ini",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "model": {
+            "path": "Caribou/0.7.0.ini",
+            "section": "printer_model:Caribou_M",
+            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.6"
+          ],
+          "candidate_printer_sections": 5,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

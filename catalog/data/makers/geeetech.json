@@ -1,0 +1,1446 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Geeetech",
+  "models": [
+    {
+      "id": "geeetech-geeetech-a10-m",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A10 M",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A10 M.json",
+            "sha256": "502c22f7101559481bc9a2f620c7886302957f8f39e60e80884edb2237da3040",
+            "manufacturer_model_id": "Geeetech_A10 M"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A10M",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a10-pro",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A10 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A10 Pro.json",
+            "sha256": "2a2764f469ffe20299086f02befc7252bada5047dfb514b969c66c8de677e915",
+            "manufacturer_model_id": "Geeetech_A10 Pro"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A10Pro",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a10-t",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A10 T",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A10 T.json",
+            "sha256": "9ceee1da911f9993cbfbaa7a7220e68feb295e0a8f2ec40db3e6c4eb81e8269c",
+            "manufacturer_model_id": "Geeetech_A10 T"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A10T",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a20",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A20",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A20.json",
+            "sha256": "371822720666fad64d0648ae0a489c56414267342aff2cab5dd481d29322d08a",
+            "manufacturer_model_id": "Geeetech_A20"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A20",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a20-m",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A20 M",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A20 M.json",
+            "sha256": "a57cc8188ef6aeccaa3f94f27a50b07de417f795ab825faed0d12f26eed35f7e",
+            "manufacturer_model_id": "Geeetech_A20 M"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A20M",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a20-t",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A20 T",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A20 T.json",
+            "sha256": "c3ac519d9b8f0d50f2ebed352d08ccb1f37ac9bbdd6623070c34db497ff0e5fb",
+            "manufacturer_model_id": "Geeetech_A20 T"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A20T",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a30-m",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A30 M",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A30 M.json",
+            "sha256": "2d16a357c7f8759880ac839ac34af56824941f529a977575a41ab8eca087acf5",
+            "manufacturer_model_id": "Geeetech_A30 M"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A30M",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a30-pro",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A30 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A30 Pro.json",
+            "sha256": "7c407fc27cb77e3ab2cdc0463862ac04c16badef2ff9b03054e12f87157b8d57",
+            "manufacturer_model_id": "Geeetech_A30 Pro"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A30Pro",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-a30-t",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech A30 T",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech A30 T.json",
+            "sha256": "eb2cdcc6455d5da10641f20647167d9fcd1bedecfa0536a795aa739a936f88e0",
+            "manufacturer_model_id": "Geeetech_A30 T"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:A30T",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-e180",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech E180",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:E180",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-giantarmd200",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech GiantArmD200",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:GiantArmD200",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-i3-prob",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech I3 ProB",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:I3ProB",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-i3-proc",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech I3 ProC",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:I3ProC",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-i3-prow",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech I3 ProW",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:I3ProW",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-m1",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech M1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech M1.json",
+            "sha256": "7b91cb61d476355392a494fe9811fcb5d1adffb6db61bc5a269ec4adde8975ca",
+            "manufacturer_model_id": "Geeetech_M1"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:M1",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-me-creator",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Me Creator",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:MeCreator",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-me-creator2",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Me Creator2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:MeCreator2",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-me-ducer",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Me Ducer",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:MeDucer",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-mizar",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Mizar",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech Mizar.json",
+            "sha256": "cea683e79b1560afb1d96f561dd9355c4273e967083639cbc8560276a5bebfa1",
+            "manufacturer_model_id": "Geeetech_Mizar"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:Mizar",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-mizar-m",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Mizar M",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech Mizar M.json",
+            "sha256": "b47c9a1550071cb265afc1ff942014edc758625bacf9171dfd757b65f58131f4",
+            "manufacturer_model_id": "Geeetech_Mizar M"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:MizarM",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-mizar-max",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Mizar Max",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech Mizar Max.json",
+            "sha256": "303b4d954b4ca2ea13b9e9137df919d8547dc359a721d9cfe9e84f9fe1de7d48",
+            "manufacturer_model_id": "Geeetech_Mizar Max"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:MizarMax",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-mizar-pro",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Mizar Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech Mizar Pro.json",
+            "sha256": "7851a5a31c40baf81bb748df019cf839682c3dc10fd794fc90e68ae6760443f4",
+            "manufacturer_model_id": "Geeetech_Mizar Pro"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:MizarPro",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-mizar-s",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Mizar S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech Mizar S.json",
+            "sha256": "9523523a829a6c86eb73a106ad8861ec474f3050ab903aad02abbfef3e663d2a",
+            "manufacturer_model_id": "Geeetech_Mizar S"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:MizarS",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-thunder",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Thunder",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Geeetech.json",
+            "sha256": "8f2256476a6ad55fa1a3f6dabd6ad932c50d37d41e905147264b22d9e5389e12"
+          },
+          "model": {
+            "path": "machine/Geeetech Thunder.json",
+            "sha256": "bb7256efd9d20333e09771d025f4c70f7e54d37e1b8582895bb44b4f8d29755c",
+            "manufacturer_model_id": "Geeetech_Thunder"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:Thunder",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "geeetech-geeetech-thunder-pro",
+      "manufacturer": "Geeetech",
+      "model": "Geeetech Thunder Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "Geeetech/1.1.0.ini",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "model": {
+            "path": "Geeetech/1.1.0.ini",
+            "section": "printer_model:ThunderPro",
+            "sha256": "c4d8af333a02f811620e01dd37670038c3293327f5926b849ab53aeec05663e0"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

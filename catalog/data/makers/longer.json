@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "manufacturer": "LONGER",
+  "models": [
+    {
+      "id": "longer-longer-lk10",
+      "manufacturer": "LONGER",
+      "model": "LONGER LK10",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/LONGER.json",
+            "sha256": "d8e8cadc1efbacecdc8233000a2c4902e6343790b4a9d2729b59f804c8632bb9"
+          },
+          "model": {
+            "path": "machine/LONGER LK10.json",
+            "sha256": "b418e39da13088ebfd0148299449f2a61500cfb5e5d2a2520626a1b8dca8b675",
+            "manufacturer_model_id": "LONGER-LK10"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "longer-longer-lk10-plus",
+      "manufacturer": "LONGER",
+      "model": "LONGER LK10 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/LONGER.json",
+            "sha256": "d8e8cadc1efbacecdc8233000a2c4902e6343790b4a9d2729b59f804c8632bb9"
+          },
+          "model": {
+            "path": "machine/LONGER LK10 Plus.json",
+            "sha256": "bfc10f1c348f2e64605eace6ed7dbe7a6e57febf2b6ec651b4779ec036276bc4",
+            "manufacturer_model_id": "LONGER-LK10Plus"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

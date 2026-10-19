@@ -1,0 +1,506 @@
+{
+  "schema_version": 1,
+  "manufacturer": "iQ",
+  "models": [
+    {
+      "id": "iq-tiq2",
+      "manufacturer": "iQ",
+      "model": "TiQ2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/iQ.json",
+            "sha256": "27a334f10dba25fda660ca020199a417d0fa2d9900b38a7ec1fa7a8fd9992a76"
+          },
+          "model": {
+            "path": "machine/TiQ2.json",
+            "sha256": "c8e24abbf8067932a6ddd38c784f72fc773fbbdc8255611548cccfdc7cfbe133",
+            "manufacturer_model_id": "TiQ2"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "iQ TiQ2 0.25 Nozzle",
+                "path": "machine/iQ TiQ2 0.25 nozzle.json",
+                "sha256": "51fa9236cc31aaa9078a109bdc03f389f05d23705f589f464860c83bdc32623a"
+              },
+              "process": {
+                "name": "0.15mm Standard @iQ TiQ2 (0.25 Nozzle)",
+                "path": "process/0.15mm Standard @iQ TiQ2 (0.25 Nozzle).json",
+                "sha256": "01ec033bd470d185a00210e88492a5c5678c72ddcf8aa9cd7c799f99c4284bf6",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.15mm Standard @iQ TiQ2 (0.25 Nozzle)",
+                    "path": "process/0.15mm Standard @iQ TiQ2 (0.25 Nozzle).json",
+                    "sha256": "01ec033bd470d185a00210e88492a5c5678c72ddcf8aa9cd7c799f99c4284bf6"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "iQ TiQ2 0.4 Nozzle",
+                "path": "machine/iQ TiQ2 0.4 nozzle.json",
+                "sha256": "de24292d231810c8e16d69081c81bda51b936bb11eb4d470d84163fe0b5b2c37"
+              },
+              "process": {
+                "name": "0.20mm Standard @iQ TiQ2 P1 - PACF Pro Fiberthree (0.4 Nozzle)",
+                "path": "process/0.20mm Standard @iQ TiQ2 P1 - PACF Pro Fiberthree (0.4 Nozzle).json",
+                "sha256": "b25a77c6edd061f2f0eec31eff74b89fb803bb941e75d40c03cbe0c66c9fa7a7",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.20mm Standard @iQ TiQ2 P1 - PACF Pro Fiberthree (0.4 Nozzle)",
+                    "path": "process/0.20mm Standard @iQ TiQ2 P1 - PACF Pro Fiberthree (0.4 Nozzle).json",
+                    "sha256": "b25a77c6edd061f2f0eec31eff74b89fb803bb941e75d40c03cbe0c66c9fa7a7"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "iQ TiQ2 0.6 Nozzle",
+                "path": "machine/iQ TiQ2 0.6 nozzle.json",
+                "sha256": "47cd8004304ce5a645df4e28d7db1743e46a6e6434e37c0238d13a8410d44696"
+              },
+              "process": {
+                "name": "0.30mm Standard @iQ TiQ2 (0.6 Nozzle)",
+                "path": "process/0.30mm Standard @iQ TiQ2 (0.6 Nozzle).json",
+                "sha256": "30d970ca4f21fb7ebdbc7c943ccc82d8e2cefb793d5a98f4a4d1d472b38a9943",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.30mm Standard @iQ TiQ2 (0.6 Nozzle)",
+                    "path": "process/0.30mm Standard @iQ TiQ2 (0.6 Nozzle).json",
+                    "sha256": "30d970ca4f21fb7ebdbc7c943ccc82d8e2cefb793d5a98f4a4d1d472b38a9943"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "iQ TiQ2 0.8 Nozzle",
+                "path": "machine/iQ TiQ2 0.8 nozzle.json",
+                "sha256": "b8e969664e90dc02dbd50f7232a3079466160bd39613fff8d0474fbdedd97910"
+              },
+              "process": {
+                "name": "0.40mm Standard @iQ TiQ2 (0.8 Nozzle)",
+                "path": "process/0.40mm Standard @iQ TiQ2 (0.8 Nozzle).json",
+                "sha256": "816a9a9efaec0db1f4566229b8cf2bc01085522a2b2f2b127f35d4abe9862dcc",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.40mm Standard @iQ TiQ2 (0.8 Nozzle)",
+                    "path": "process/0.40mm Standard @iQ TiQ2 (0.8 Nozzle).json",
+                    "sha256": "816a9a9efaec0db1f4566229b8cf2bc01085522a2b2f2b127f35d4abe9862dcc"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/iQ.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ2 0.25 Nozzle",
+          "process": "0.15mm Standard @iQ TiQ2 (0.25 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ2 0.4 Nozzle",
+          "process": "0.20mm Standard @iQ TiQ2 P1 - PACF Pro Fiberthree (0.4 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ2 0.6 Nozzle",
+          "process": "0.30mm Standard @iQ TiQ2 (0.6 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ2 0.8 Nozzle",
+          "process": "0.40mm Standard @iQ TiQ2 (0.8 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "iq-tiq8",
+      "manufacturer": "iQ",
+      "model": "TiQ8",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/iQ.json",
+            "sha256": "27a334f10dba25fda660ca020199a417d0fa2d9900b38a7ec1fa7a8fd9992a76"
+          },
+          "model": {
+            "path": "machine/TiQ8.json",
+            "sha256": "39732a4a92993c2be4dbb82df682a131b3033a6ca7103245973dafa9a20762b4",
+            "manufacturer_model_id": "TiQ8"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "iQ TiQ8 0.25 Nozzle",
+                "path": "machine/iQ TiQ8 0.25 nozzle.json",
+                "sha256": "89ad4c8b0f9ff7c984a81d3e0f852e21577f5da5c44c31c005d4d7d27fcc5350"
+              },
+              "process": {
+                "name": "0.15mm Standard @iQ TiQ8 (0.25 Nozzle)",
+                "path": "process/0.15mm Standard @iQ TiQ8 (0.25 Nozzle).json",
+                "sha256": "da314540d1b43678e154c21d74612a79231ae9bfb2099f46c55d64f29b8b1060",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.15mm Standard @iQ TiQ8 (0.25 Nozzle)",
+                    "path": "process/0.15mm Standard @iQ TiQ8 (0.25 Nozzle).json",
+                    "sha256": "da314540d1b43678e154c21d74612a79231ae9bfb2099f46c55d64f29b8b1060"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "iQ TiQ8 0.4 Nozzle",
+                "path": "machine/iQ TiQ8 0.4 nozzle.json",
+                "sha256": "d8cc90af011ec20330229dab9d7391e7028385142d221db25ac137e3a16076aa"
+              },
+              "process": {
+                "name": "0.20mm Standard @iQ TiQ8 P1 - ABS Natur Material4Print (0.4 Nozzle)",
+                "path": "process/0.20mm Standard @iQ TiQ8 P1 - ABS Natur Material4Print (0.4 Nozzle).json",
+                "sha256": "7f44ad89467ed10b4bc7f8656e9ec0ecca6ac930c1982c22a2035d7a8ae726f0",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.20mm Standard @iQ TiQ8 P1 - ABS Natur Material4Print (0.4 Nozzle)",
+                    "path": "process/0.20mm Standard @iQ TiQ8 P1 - ABS Natur Material4Print (0.4 Nozzle).json",
+                    "sha256": "7f44ad89467ed10b4bc7f8656e9ec0ecca6ac930c1982c22a2035d7a8ae726f0"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "iQ TiQ8 0.6 Nozzle",
+                "path": "machine/iQ TiQ8 0.6 nozzle.json",
+                "sha256": "ad6a6ed7f82a1b351ff1ce7c23f3dcbf7e53ecdcbfedaa3e2b714ef9534b1f59"
+              },
+              "process": {
+                "name": "0.30mm Standard @iQ TiQ8 (0.6 Nozzle)",
+                "path": "process/0.30mm Standard @iQ TiQ8 (0.6 Nozzle).json",
+                "sha256": "42677159151a98d103f7019caba5513587e031c2c150c05ce40a5d727db7509e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.30mm Standard @iQ TiQ8 (0.6 Nozzle)",
+                    "path": "process/0.30mm Standard @iQ TiQ8 (0.6 Nozzle).json",
+                    "sha256": "42677159151a98d103f7019caba5513587e031c2c150c05ce40a5d727db7509e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "iQ TiQ8 0.8 Nozzle",
+                "path": "machine/iQ TiQ8 0.8 nozzle.json",
+                "sha256": "45c17fc7fca25e28285a4e997611c7d9377dc8bd8575865d6a9ef262c0c408ba"
+              },
+              "process": {
+                "name": "0.40mm Standard @iQ TiQ8 (0.8 Nozzle)",
+                "path": "process/0.40mm Standard @iQ TiQ8 (0.8 Nozzle).json",
+                "sha256": "115f60c56f5f423356d6eb9c36fe4f115cbba0475f3c37ffedb456fe4bd5e6bb",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_tiq_common",
+                    "path": "process/fdm_process_tiq_common.json",
+                    "sha256": "301f33a22e6ccdc039c77de5c43f0e822ec23c3c4b2bc7dce6d4a8d4d624d9be"
+                  },
+                  {
+                    "name": "0.40mm Standard @iQ TiQ8 (0.8 Nozzle)",
+                    "path": "process/0.40mm Standard @iQ TiQ8 (0.8 Nozzle).json",
+                    "sha256": "115f60c56f5f423356d6eb9c36fe4f115cbba0475f3c37ffedb456fe4bd5e6bb"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fe583711dfa7ecf6d1a3fa81378f7716b390e26f94d86385c553d0e9c84e0491"
+                  },
+                  {
+                    "name": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle",
+                    "path": "filament/Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle.json",
+                    "sha256": "74e88ca904897f7998f861487370907bfe63b41f8685a0a5d0b0fbd6bc19d72c"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/iQ.json",
+        "nozzles_mm": [
+          "0.25",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ8 0.25 Nozzle",
+          "process": "0.15mm Standard @iQ TiQ8 (0.25 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ8 0.4 Nozzle",
+          "process": "0.20mm Standard @iQ TiQ8 P1 - ABS Natur Material4Print (0.4 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ8 0.6 Nozzle",
+          "process": "0.30mm Standard @iQ TiQ8 (0.6 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/iQ.json",
+          "machine": "iQ TiQ8 0.8 Nozzle",
+          "process": "0.40mm Standard @iQ TiQ8 (0.8 Nozzle)",
+          "filament": "Fiberthree PACF Pro P1 @iQ TiQ2 0.4 Nozzle"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

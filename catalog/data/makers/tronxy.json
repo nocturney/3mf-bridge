@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Tronxy",
+  "models": [
+    {
+      "id": "tronxy-tronxy-x5sa-400-marlin-firmware",
+      "manufacturer": "Tronxy",
+      "model": "Tronxy X5SA 400 Marlin Firmware",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Tronxy.json",
+            "sha256": "ab83966efc3363f93064b1e6249395d6da5ee98c0458eee616f32c4ff63833dd"
+          },
+          "model": {
+            "path": "machine/Tronxy X5SA 400 Marlin Firmware.json",
+            "sha256": "cc2076dd021ac7a4c5386bd1001b3d2683fb17aaa413552923c95cc0f4f0be2c",
+            "manufacturer_model_id": "Tronxy_X5SA_400_Marlin_Firmware"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

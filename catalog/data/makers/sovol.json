@@ -1,0 +1,787 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Sovol",
+  "models": [
+    {
+      "id": "sovol-sovol-sv01",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV01",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV01.json",
+            "sha256": "5b245150a236248cabbf35f7609dd64d56c78b816572318543261b8fe7c49ee3",
+            "manufacturer_model_id": "Sovol-SV01"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv01-pro",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV01 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV01 Pro.json",
+            "sha256": "7f9ef9e8b88de84cb6fb7c3003457dcd57b989970a30c781b4c659422a848503",
+            "manufacturer_model_id": "Sovol-SV01-Pro"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv02",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV02",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV02.json",
+            "sha256": "8281e3e0877b1e4126383fb680e9878d65970892b36661b9baef075f8782e35d",
+            "manufacturer_model_id": "Sovol-SV02"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv05",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV05",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV05.json",
+            "sha256": "7fb27ae904fad3bfff45f6b8a8fad8df6f2233cdde659c2f402e2ac50ecf36d1",
+            "manufacturer_model_id": "Sovol-SV05"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv06",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV06",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV06.json",
+            "sha256": "0d30cee2dd0cc6d67e85f94adce94615ae65cbf98e664513f175a744096d4f8b",
+            "manufacturer_model_id": "Sovol-SV06"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv06-ace",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV06 ACE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV06 ACE.json",
+            "sha256": "47539792431c55f95d13be375986e343c83b21ed237dcb992546262a29853000",
+            "manufacturer_model_id": "Sovol-SV06-ACE"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv06-plus",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV06 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV06 Plus.json",
+            "sha256": "51c8786b61662060450f6af1b2dfc5763aef1f88b1cb7d27d2dafcab7b206adc",
+            "manufacturer_model_id": "Sovol-SV06-Plus"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv06-plus-ace",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV06 Plus ACE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV06 Plus ACE.json",
+            "sha256": "75426b5cefea4f7549172e30d6efe4bbe3a074a0f9c08667e063ebab9725a5c4",
+            "manufacturer_model_id": "Sovol-SV06-Plus-ACE"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv07",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV07",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV07.json",
+            "sha256": "cd3067a8f495eb80a1f31e31b4760e37841ef4ff658c7731daeb0d2c5a537ca4",
+            "manufacturer_model_id": "Sovol-SV07"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv07-plus",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV07 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV07 Plus.json",
+            "sha256": "ded4e2cb78b440e8d0fc22649c289136b1a0bd920649b74b59195bfb28e2ea97",
+            "manufacturer_model_id": "Sovol-SV07Plus"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv08",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV08",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV08.json",
+            "sha256": "8e2c073f497e142e80155a0790fa010763e7b692f37a57e4419637a37d47cb2d",
+            "manufacturer_model_id": "Sovol-SV08"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)",
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sovol-sv08-max",
+      "manufacturer": "Sovol",
+      "model": "Sovol SV08 MAX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Sovol.json",
+            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+          },
+          "model": {
+            "path": "machine/Sovol SV08 MAX.json",
+            "sha256": "2f9076f02cb2b7fc66f11095854b1d35a72aa666eaa07697d837a144b17c5310",
+            "manufacturer_model_id": "Sovol-SV08 MAX"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv01-sv01-bltouch",
+      "manufacturer": "Sovol",
+      "model": "SV01 / SV01 BLTOUCH",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV01",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv01-pro",
+      "manufacturer": "Sovol",
+      "model": "SV01 PRO",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV01 PRO",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv02-sv02-bltouch",
+      "manufacturer": "Sovol",
+      "model": "SV02 / SV02 BLTOUCH",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV02",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv03-sv03-bltouch",
+      "manufacturer": "Sovol",
+      "model": "SV03 / SV03 BLTOUCH",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV03",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv04",
+      "manufacturer": "Sovol",
+      "model": "SV04",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV04",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 6,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv05",
+      "manufacturer": "Sovol",
+      "model": "SV05",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV05",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv06",
+      "manufacturer": "Sovol",
+      "model": "SV06",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV06",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "sovol-sv06-plus",
+      "manufacturer": "Sovol",
+      "model": "SV06 PLUS",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Sovol/2.1.0.ini",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "model": {
+            "path": "Sovol/2.1.0.ini",
+            "section": "printer_model:SV06 PLUS",
+            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

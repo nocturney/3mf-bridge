@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Cubicon",
+  "models": [
+    {
+      "id": "cubicon-cubicon-xceler-i",
+      "manufacturer": "Cubicon",
+      "model": "Cubicon xCeler-I",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Cubicon.json",
+            "sha256": "cd810d50cd436326f80728106f6f8a964a76f40c4da7089f1bd298a1129f5721"
+          },
+          "model": {
+            "path": "machine/Cubicon xCeler-I.json",
+            "sha256": "79ccb85ae57c136f096e6808044a2a3051899640cd60ac884a425f2332d590ee",
+            "manufacturer_model_id": null
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "cubicon-cubicon-xceler-mini",
+      "manufacturer": "Cubicon",
+      "model": "Cubicon xCeler-Mini",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Cubicon.json",
+            "sha256": "cd810d50cd436326f80728106f6f8a964a76f40c4da7089f1bd298a1129f5721"
+          },
+          "model": {
+            "path": "machine/Cubicon xCeler-Mini.json",
+            "sha256": "6238469abdc712ba45a5ee49cf1b477fc3e12d2405f4c8dbfbdec64f5483d45a",
+            "manufacturer_model_id": null
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "cubicon-cubicon-xceler-plus",
+      "manufacturer": "Cubicon",
+      "model": "Cubicon xCeler-Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Cubicon.json",
+            "sha256": "cd810d50cd436326f80728106f6f8a964a76f40c4da7089f1bd298a1129f5721"
+          },
+          "model": {
+            "path": "machine/Cubicon xCeler-Plus.json",
+            "sha256": "07cc354f8e85f8f964dae17881a392501ab719001123217442245d8ac61edab2",
+            "manufacturer_model_id": null
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

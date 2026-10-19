@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "manufacturer": "InfiMech",
+  "models": [
+    {
+      "id": "infimech-infimech-ex",
+      "manufacturer": "InfiMech",
+      "model": "InfiMech EX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/InfiMech.json",
+            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+          },
+          "model": {
+            "path": "machine/EX/InfiMech EX.json",
+            "sha256": "9d4352ab2a66799b2647f4dbf295d96635ab936d19829a1897fb8fbd7ea990e0",
+            "manufacturer_model_id": "InfiMech_EX"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "InfiMech EX 0.4 nozzle",
+                "path": "machine/EX/InfiMech EX 0.4 nozzle.json",
+                "sha256": "9c22038e33dfbddbfe7f47fafa37fbb2424b124c0aa4131f31d43a93126a744e"
+              },
+              "process": {
+                "name": "0.20mm Standard @InfiMech EX",
+                "path": "process/EX/0.20mm Standard @InfiMech EX.json",
+                "sha256": "417ad4ab058e4ea62f5ece5e2d309b05233802f5546e5e21dbbcc78829db96c2",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common_EX",
+                    "path": "process/EX/fdm_process_common_EX.json",
+                    "sha256": "3282be4c40aff5a58fbb8e437886e3a0cf96a327a3b277e5b06d0f135aee6b45"
+                  },
+                  {
+                    "name": "0.20mm Standard @InfiMech EX",
+                    "path": "process/EX/0.20mm Standard @InfiMech EX.json",
+                    "sha256": "417ad4ab058e4ea62f5ece5e2d309b05233802f5546e5e21dbbcc78829db96c2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "InfiMech PLA Basic @EX",
+                "path": "filament/EX/InfiMech PLA Basic @EX.json",
+                "sha256": "1994a0b6207e7566cb3646c08ff81c2b2409d14ac8e5c73d6d2513251086bb62",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common_EX",
+                    "path": "filament/EX/fdm_filament_common_EX.json",
+                    "sha256": "b4be460b01a7aaf672da5940971d03b37ef63decf3e8bff743e6193b6b2e6086"
+                  },
+                  {
+                    "name": "fdm_filament_pla @EX",
+                    "path": "filament/EX/fdm_filament_pla @EX.json",
+                    "sha256": "c815d6ad617204fcd9b8af1d143618b5cdafd231638e546b657406819852b445"
+                  },
+                  {
+                    "name": "InfiMech PLA Basic @EX",
+                    "path": "filament/EX/InfiMech PLA Basic @EX.json",
+                    "sha256": "1994a0b6207e7566cb3646c08ff81c2b2409d14ac8e5c73d6d2513251086bb62"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/InfiMech.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/InfiMech.json",
+          "machine": "InfiMech EX 0.4 nozzle",
+          "process": "0.20mm Standard @InfiMech EX",
+          "filament": "InfiMech PLA Basic @EX"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "infimech-infimech-ex-aps",
+      "manufacturer": "InfiMech",
+      "model": "InfiMech EX+APS",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/InfiMech.json",
+            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+          },
+          "model": {
+            "path": "machine/EX+APS/InfiMech EX+APS.json",
+            "sha256": "f9f9bbb27a5acf9fb79e54933b3cf02438447e0e134d98f266ab633fdce0d3c0",
+            "manufacturer_model_id": "InfiMech_EX+APS"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "InfiMech EX+APS 0.4 nozzle",
+                "path": "machine/EX+APS/InfiMech EX+APS 0.4 nozzle.json",
+                "sha256": "e7f61b068396e73657fa9932612e791cd28b05630295199c2e01228c9d7a476b"
+              },
+              "process": {
+                "name": "0.20mm Standard @InfiMech EX+APS",
+                "path": "process/EX+APS/0.20mm Standard @InfiMech EX+APS.json",
+                "sha256": "88a16ae8f1e2367645b89f9321f52e4a74483d3f2fd12b357f0a7662de068526",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common_EX+APS",
+                    "path": "process/EX+APS/fdm_process_common_EX+APS.json",
+                    "sha256": "56ce3bd05f8891b20435d9880281e4a197f0478c1d6b4d1cb9cbd99e62990d1e"
+                  },
+                  {
+                    "name": "0.20mm Standard @InfiMech EX+APS",
+                    "path": "process/EX+APS/0.20mm Standard @InfiMech EX+APS.json",
+                    "sha256": "88a16ae8f1e2367645b89f9321f52e4a74483d3f2fd12b357f0a7662de068526"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "InfiMech PLA Basic @EX+APS",
+                "path": "filament/EX+APS/InfiMech PLA Basic @EX+APS.json",
+                "sha256": "eaa8b918e3da86c94370aa3d4b6f74f7e7ffed58c64c257fc37d397f5360e929",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common_EX+APS",
+                    "path": "filament/EX+APS/fdm_filament_common_EX+APS.json",
+                    "sha256": "88c3cc891d476ea4c231aa9f21aef8c0317956d1da8bac5ff230562425a8d6aa"
+                  },
+                  {
+                    "name": "fdm_filament_pla @EX+APS",
+                    "path": "filament/EX+APS/fdm_filament_pla @EX+APS.json",
+                    "sha256": "f3c2f36fe6530f9e43d441f294ed13765a648bb3b91110f692c0ba1959e7dfa5"
+                  },
+                  {
+                    "name": "InfiMech PLA Basic @EX+APS",
+                    "path": "filament/EX+APS/InfiMech PLA Basic @EX+APS.json",
+                    "sha256": "eaa8b918e3da86c94370aa3d4b6f74f7e7ffed58c64c257fc37d397f5360e929"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/InfiMech.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/InfiMech.json",
+          "machine": "InfiMech EX+APS 0.4 nozzle",
+          "process": "0.20mm Standard @InfiMech EX+APS",
+          "filament": "InfiMech PLA Basic @EX+APS"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "infimech-infimech-tx",
+      "manufacturer": "InfiMech",
+      "model": "InfiMech TX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/InfiMech.json",
+            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+          },
+          "model": {
+            "path": "machine/InfiMech TX.json",
+            "sha256": "362beaca9af101bea367045ba99b4f15057376932aacb6dbf004a380ffb0c919",
+            "manufacturer_model_id": "InfiMech_TX"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "InfiMech TX 0.4 nozzle",
+                "path": "machine/InfiMech TX 0.4 nozzle.json",
+                "sha256": "4cf16be7712a99ef6fd35ddf19a363ee6f5705594ef8cd2ce27d244e06a9448e"
+              },
+              "process": {
+                "name": "0.20mm Standard @InfiMech TX",
+                "path": "process/0.20mm Standard @InfiMech TX.json",
+                "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "2892d5e1094f55a46ace8665ea3b8a336ad94ce5d14e8f8a80889139ed20f799"
+                  },
+                  {
+                    "name": "0.20mm Standard @InfiMech TX",
+                    "path": "process/0.20mm Standard @InfiMech TX.json",
+                    "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @InfiMech",
+                "path": "filament/Generic PLA @InfiMech.json",
+                "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "aeb9660fa4af1864f9413c2f1867fba7a1b29993a85d82354f1a517966fdcf13"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "27d8813f6505a7b16f40bdad02c3c32119e432cb4fccf6d1ac6d32cc085deda8"
+                  },
+                  {
+                    "name": "Generic PLA @InfiMech",
+                    "path": "filament/Generic PLA @InfiMech.json",
+                    "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/InfiMech.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/InfiMech.json",
+          "machine": "InfiMech TX 0.4 nozzle",
+          "process": "0.20mm Standard @InfiMech TX",
+          "filament": "Generic PLA @InfiMech"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "infimech-infimech-tx-hardened-steel-nozzle",
+      "manufacturer": "InfiMech",
+      "model": "InfiMech TX Hardened Steel Nozzle",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/InfiMech.json",
+            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+          },
+          "model": {
+            "path": "machine/HSN/InfiMech TX Hardened Steel Nozzle.json",
+            "sha256": "95f2cb0ce7bc5c46218c664fd4d2f14725ebdce9a40eefc9d1b3573944abf921",
+            "manufacturer_model_id": "InfiMech_TX_HSN"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "InfiMech TX HSN 0.4 nozzle",
+                "path": "machine/HSN/InfiMech TX HSN 0.4 nozzle.json",
+                "sha256": "0706ddd7b8bbdc529d2bada93c9c9d7fa7992f346cb0b63d30e7381be0bf944e"
+              },
+              "process": {
+                "name": "0.20mm Standard @InfiMech TX",
+                "path": "process/0.20mm Standard @InfiMech TX.json",
+                "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "2892d5e1094f55a46ace8665ea3b8a336ad94ce5d14e8f8a80889139ed20f799"
+                  },
+                  {
+                    "name": "0.20mm Standard @InfiMech TX",
+                    "path": "process/0.20mm Standard @InfiMech TX.json",
+                    "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @InfiMech",
+                "path": "filament/Generic PLA @InfiMech.json",
+                "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "aeb9660fa4af1864f9413c2f1867fba7a1b29993a85d82354f1a517966fdcf13"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "27d8813f6505a7b16f40bdad02c3c32119e432cb4fccf6d1ac6d32cc085deda8"
+                  },
+                  {
+                    "name": "Generic PLA @InfiMech",
+                    "path": "filament/Generic PLA @InfiMech.json",
+                    "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/InfiMech.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/InfiMech.json",
+          "machine": "InfiMech TX HSN 0.4 nozzle",
+          "process": "0.20mm Standard @InfiMech TX",
+          "filament": "Generic PLA @InfiMech"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

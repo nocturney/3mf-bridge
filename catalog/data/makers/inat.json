@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "manufacturer": "INAT",
+  "models": [
+    {
+      "id": "inat-inat-proton-x-rail",
+      "manufacturer": "INAT",
+      "model": "INAT Proton X Rail",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "INAT/1.1.1.ini",
+            "sha256": "086cba4b678e03c710d6e02dbdb851e4bdc8fcd864d151aba5cd22811a6ae0c0"
+          },
+          "model": {
+            "path": "INAT/1.1.1.ini",
+            "section": "printer_model:PROTON_X_RAIL",
+            "sha256": "086cba4b678e03c710d6e02dbdb851e4bdc8fcd864d151aba5cd22811a6ae0c0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "inat-inat-proton-x-rod",
+      "manufacturer": "INAT",
+      "model": "INAT Proton X Rod",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "INAT/1.1.1.ini",
+            "sha256": "086cba4b678e03c710d6e02dbdb851e4bdc8fcd864d151aba5cd22811a6ae0c0"
+          },
+          "model": {
+            "path": "INAT/1.1.1.ini",
+            "section": "printer_model:PROTON_X_ROD",
+            "sha256": "086cba4b678e03c710d6e02dbdb851e4bdc8fcd864d151aba5cd22811a6ae0c0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "inat-inat-proton-xe-750",
+      "manufacturer": "INAT",
+      "model": "INAT Proton XE-750",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "INAT/1.1.1.ini",
+            "sha256": "086cba4b678e03c710d6e02dbdb851e4bdc8fcd864d151aba5cd22811a6ae0c0"
+          },
+          "model": {
+            "path": "INAT/1.1.1.ini",
+            "section": "printer_model:PROTON_XE750",
+            "sha256": "086cba4b678e03c710d6e02dbdb851e4bdc8fcd864d151aba5cd22811a6ae0c0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

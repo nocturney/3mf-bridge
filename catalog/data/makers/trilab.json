@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "manufacturer": "TriLAB",
+  "models": [
+    {
+      "id": "trilab-azteq-dynamic",
+      "manufacturer": "TriLAB",
+      "model": "AzteQ Dynamic",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:AQD",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-azteq-industrial",
+      "manufacturer": "TriLAB",
+      "model": "AzteQ Industrial",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:AQI",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-flexprint",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 + FlexPrint",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2+FP",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-flexprint-2",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 + FlexPrint 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2+FP2",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-plus",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2P",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-plus-flexprint",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 Plus + FlexPrint",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2P+FP",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-plus-flexprint-2",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 Plus + FlexPrint 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2P+FP2",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-l",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ L",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQL",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-m",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ M",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQM",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-xl",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ XL",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQXL",
+            "sha256": "2bdd7174e754126b0e0030e675724263f37c484adc4fe7b694e4cbfebaef45e4"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

@@ -1,0 +1,1082 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Prusa Research",
+  "models": [
+    {
+      "id": "prusa-research-i3-mk2-5",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK2.5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK2.5",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk2-5-mmu2",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK2.5 MMU2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK2.5MMU2",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 5,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk2-5s",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK2.5S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK2.5S",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk2-5s-mmu2s",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK2.5S MMU2S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK2.5SMMU2S",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk2s",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK2S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK2S",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk2s-mmu1",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK2S MMU1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK2SMM",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk3",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk3-mmu2",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK3 MMU2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3MMU2",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk3s-mk3s",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK3S && MK3S+",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3S",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk3s-mk3s-mmu2s",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK3S && MK3S+ MMU2S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3SMMU2S",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-i3-mk3s-mk3s-mmu3",
+      "manufacturer": "Prusa Research",
+      "model": "i3 MK3S && MK3S+ MMU3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3SMMU3",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 7,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mini-mini",
+      "manufacturer": "Prusa Research",
+      "model": "MINI && MINI+",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MINI",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mini-mini-input-shaper",
+      "manufacturer": "Prusa Research",
+      "model": "MINI && MINI+ Input Shaper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MINIIS",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mk3-5-input-shaper",
+      "manufacturer": "Prusa Research",
+      "model": "MK3.5 Input Shaper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3.5",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mk3-5-mmu3",
+      "manufacturer": "Prusa Research",
+      "model": "MK3.5 MMU3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3.5MMU3",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mk3-9-input-shaper",
+      "manufacturer": "Prusa Research",
+      "model": "MK3.9 Input Shaper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3.9",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mk3-9-mmu3",
+      "manufacturer": "Prusa Research",
+      "model": "MK3.9 MMU3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK3.9MMU3",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mk4",
+      "manufacturer": "Prusa Research",
+      "model": "MK4",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK4",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mk4-input-shaper",
+      "manufacturer": "Prusa Research",
+      "model": "MK4 Input Shaper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK4IS",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-mk4-mmu3",
+      "manufacturer": "Prusa Research",
+      "model": "MK4 MMU3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:MK4ISMMU3",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-xl",
+      "manufacturer": "Prusa Research",
+      "model": "XL",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:XL",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-xl-2t",
+      "manufacturer": "Prusa Research",
+      "model": "XL - 2T",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:XL2",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-xl-2t-input-shaper",
+      "manufacturer": "Prusa Research",
+      "model": "XL - 2T Input Shaper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:XL2IS",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-xl-5t",
+      "manufacturer": "Prusa Research",
+      "model": "XL - 5T",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:XL5",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 6,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-xl-5t-input-shaper",
+      "manufacturer": "Prusa Research",
+      "model": "XL - 5T Input Shaper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:XL5IS",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 6,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "prusa-research-xl-input-shaper",
+      "manufacturer": "Prusa Research",
+      "model": "XL Input Shaper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "manufacturer",
+          "publisher": "prusa_official",
+          "repository": "prusa3d/PrusaSlicer-settings",
+          "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+          "bundle_version": "1.14.2",
+          "manifest": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "model": {
+            "path": "live/PrusaResearch/1.14.2.ini",
+            "section": "printer_model:XLIS",
+            "sha256": "69994f7b56cee7c34fbe51bc558c690ec122a87ccf2c1df92c163e849b57bb90"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

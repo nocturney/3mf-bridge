@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Zonestar",
+  "models": [
+    {
+      "id": "zonestar-zonestar-z5",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z5",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "zonestar-zonestar-z5x",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z5X",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z5X",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "zonestar-zonestar-z6",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z6",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z6",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "zonestar-zonestar-z8",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z8",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z8",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "zonestar-zonestar-z9",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z9",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z9",
+            "sha256": "80a47c7c577e576d95ec179ea1ef044ffa336739013c1335c79f55b2094c720c"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

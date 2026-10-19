@@ -1,0 +1,39 @@
+name: Printer profile registry QA
+
+on:
+  pull_request:
+    paths:
+      - 'catalog/**'
+      - '.github/workflows/printer-catalog.yml'
+  push:
+    branches: [main, feature/printer-catalog]
+    paths:
+      - 'catalog/**'
+      - '.github/workflows/printer-catalog.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry:
+    name: Metadata integrity and regression (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    steps:
+      - name: Checkout catalogue
+        uses: actions/checkout@v4
+      - name: Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Verify profile source precedence, references, hashes and nozzles
+        run: python catalog/tools/check.py catalog
+      - name: Parser and committed snapshot regression tests
+        run: python -m unittest discover -s catalog/tests -v
+      - name: Validate JSON schema syntax
+        run: python -c "import json; json.load(open('catalog/schema-v1.json',encoding='utf-8'))"

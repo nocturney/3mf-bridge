@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Wanhao",
+  "models": [
+    {
+      "id": "wanhao-wanhao-d12-300",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D12-300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D12-300.json",
+            "sha256": "9db152239f3712b8d9ec4693a4c71bada597c30a220ef934782a02f51acefc04",
+            "manufacturer_model_id": "D12"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-300-mk1",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-300 MK1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-300 MK1.json",
+            "sha256": "85902b840914baa4b9f133975b648cad56e304acd2795c51afa09fb2298cede4",
+            "manufacturer_model_id": "Wanhao-D9-300-MK1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-300-mk1-bltouch-kit",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-300 MK1 BLTouch kit",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-300 MK1 BLTouch kit.json",
+            "sha256": "cce139015bc4e49f19239fef54b1b458d65d3b6e4f485b4746cc56db9c24f8c4",
+            "manufacturer_model_id": "Wanhao-D9-300-MK1u2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-300-mk2",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-300 MK2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-300 MK2.json",
+            "sha256": "7a73826c85749ef8ef8e4f7a4e98b4f15f28490e9a089ee9cebaafb333a09dba",
+            "manufacturer_model_id": "Wanhao-D9-300-MK2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-300-mk3",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-300 MK3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-300 MK3.json",
+            "sha256": "f12235c4e24c8183c4fe2a4ac8ae52b2ea0a6c9f278a584b4cfe0445755a50bc",
+            "manufacturer_model_id": "Wanhao-D9-300-MK3"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-400-mk1",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-400 MK1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-400 MK1.json",
+            "sha256": "5e52dd444a0b04c6eb3589460da85574ad5ee807315faf633304783c069446d5",
+            "manufacturer_model_id": "Wanhao-D9-400-MK1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-400-mk1-bltouch-kit",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-400 MK1 BLTouch kit",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-400 MK1 BLTouch kit.json",
+            "sha256": "a8b26366fca81fbc68c0e29af0a4b0e32eb2af79d5e442da7937fac08efdbecf",
+            "manufacturer_model_id": "Wanhao-D9-400-MK1u2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-400-mk2",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-400 MK2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-400 MK2.json",
+            "sha256": "16b4336b36532d6af8a29a071839e08792126aa021b87459539498ad43439722",
+            "manufacturer_model_id": "Wanhao-D9-400-MK2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-400-mk3",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-400 MK3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-400 MK3.json",
+            "sha256": "71ef40909bd9599fe6922778038d6ddf5d9f8c15178e02a65accefc86aec472f",
+            "manufacturer_model_id": "Wanhao-D9-400-MK3"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-500-mk1",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-500 MK1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-500 MK1.json",
+            "sha256": "b4048d0f754ba51c1ac512e69e75a26c45fd8676a339da4e1fa1984fab9df5b4",
+            "manufacturer_model_id": "Wanhao-D9-500-MK1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-500-mk1-bltouch-kit",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-500 MK1 BLTouch kit",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-500 MK1 BLTouch kit.json",
+            "sha256": "4a2765ec2a64ae23f045cfcf9834dc41b4950cb662d142aca78b555569e2f4dc",
+            "manufacturer_model_id": "Wanhao-D9-500-MK1u2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-500-mk2",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-500 MK2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-500 MK2.json",
+            "sha256": "b295dbcf2f45431c0e3d60be92a5a7f0a046e3298f314c094d44ee4b6a76e762",
+            "manufacturer_model_id": "Wanhao-D9-500-MK2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wanhao-wanhao-d9-500-mk3",
+      "manufacturer": "Wanhao",
+      "model": "Wanhao D9-500 MK3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Wanhao.json",
+            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+          },
+          "model": {
+            "path": "machine/Wanhao D9-500 MK3.json",
+            "sha256": "5c38638fae7315595821f818307ba0944eaa49c2b8130d836dcdd482c92c8801",
+            "manufacturer_model_id": "Wanhao-D9-500-MK3"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

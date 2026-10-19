@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Anker",
+  "models": [
+    {
+      "id": "anker-anker-m5",
+      "manufacturer": "Anker",
+      "model": "Anker M5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Anker.json",
+            "sha256": "11f2eb03a2c366a3aa2a5db42314b85ec44dd95aab10f21e4b1447e33f33a96b"
+          },
+          "model": {
+            "path": "machine/Anker M5.json",
+            "sha256": "966f201dd8aae9ada86900aaf42400bc9fba5245e8b7f9eb237c800e96580349",
+            "manufacturer_model_id": "V8111"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anker M5 0.4 nozzle",
+                "path": "machine/Anker M5 0.4 nozzle.json",
+                "sha256": "7283ebe14ef328bb63b4a6b0e32a101feeebb822f1a8ba44e66ebcfa48a87993"
+              },
+              "process": {
+                "name": "0.20mm Standard @Anker",
+                "path": "process/0.20mm Standard @Anker.json",
+                "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "229c3ffc9f6f9e136fe3b60443a14aad0e68e1cd98e3fd1f3f7e9ae0d968fe3c"
+                  },
+                  {
+                    "name": "fdm_process_anker_common",
+                    "path": "process/fdm_process_anker_common.json",
+                    "sha256": "3b8818cd6331d6c5f79a900ce3436b3e87e6004c54ef4ed8383e13ceb0dfb2c6"
+                  },
+                  {
+                    "name": "0.20mm Standard @Anker",
+                    "path": "process/0.20mm Standard @Anker.json",
+                    "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA+ @Anker",
+                "path": "filament/Generic PLA+ @Anker.json",
+                "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "345aa60139e29117cdb4426530face09e7d826a35f3cbfac8f45b9e7f29d6395"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a03f4e955588ca942f216747f1307e4f664360decd39788cad54fe0809dd8896"
+                  },
+                  {
+                    "name": "Generic PLA+ @Anker base",
+                    "path": "filament/Generic PLA+ @Anker base.json",
+                    "sha256": "e719d37d5c8f3f15754aa886761320d3ab4ee79a9161d15e86f64b5a90bbc360"
+                  },
+                  {
+                    "name": "Generic PLA+ @Anker",
+                    "path": "filament/Generic PLA+ @Anker.json",
+                    "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Anker.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Anker.json",
+          "machine": "Anker M5 0.4 nozzle",
+          "process": "0.20mm Standard @Anker",
+          "filament": "Generic PLA+ @Anker"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "anker-anker-m5-all-metal-hot-end",
+      "manufacturer": "Anker",
+      "model": "Anker M5 All-Metal Hot End",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Anker.json",
+            "sha256": "11f2eb03a2c366a3aa2a5db42314b85ec44dd95aab10f21e4b1447e33f33a96b"
+          },
+          "model": {
+            "path": "machine/Anker M5 All-Metal Hot End.json",
+            "sha256": "266dc5010ff5bb0d25582bf236b072bdf42b1a75c2561175ef822807774eace1",
+            "manufacturer_model_id": "V8111v2"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anker M5 All-Metal 0.4 nozzle",
+                "path": "machine/Anker M5 All-Metal 0.4 nozzle.json",
+                "sha256": "fac8fbc8317233a6cbdcd8ee91beb2cdb1b9e6d0c9bcadaf682402b4c41da1b2"
+              },
+              "process": {
+                "name": "0.20mm Standard @Anker",
+                "path": "process/0.20mm Standard @Anker.json",
+                "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "229c3ffc9f6f9e136fe3b60443a14aad0e68e1cd98e3fd1f3f7e9ae0d968fe3c"
+                  },
+                  {
+                    "name": "fdm_process_anker_common",
+                    "path": "process/fdm_process_anker_common.json",
+                    "sha256": "3b8818cd6331d6c5f79a900ce3436b3e87e6004c54ef4ed8383e13ceb0dfb2c6"
+                  },
+                  {
+                    "name": "0.20mm Standard @Anker",
+                    "path": "process/0.20mm Standard @Anker.json",
+                    "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA+ @Anker",
+                "path": "filament/Generic PLA+ @Anker.json",
+                "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "345aa60139e29117cdb4426530face09e7d826a35f3cbfac8f45b9e7f29d6395"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a03f4e955588ca942f216747f1307e4f664360decd39788cad54fe0809dd8896"
+                  },
+                  {
+                    "name": "Generic PLA+ @Anker base",
+                    "path": "filament/Generic PLA+ @Anker base.json",
+                    "sha256": "e719d37d5c8f3f15754aa886761320d3ab4ee79a9161d15e86f64b5a90bbc360"
+                  },
+                  {
+                    "name": "Generic PLA+ @Anker",
+                    "path": "filament/Generic PLA+ @Anker.json",
+                    "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Anker.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Anker.json",
+          "machine": "Anker M5 All-Metal 0.4 nozzle",
+          "process": "0.20mm Standard @Anker",
+          "filament": "Generic PLA+ @Anker"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "anker-anker-m5c",
+      "manufacturer": "Anker",
+      "model": "Anker M5C",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Anker.json",
+            "sha256": "11f2eb03a2c366a3aa2a5db42314b85ec44dd95aab10f21e4b1447e33f33a96b"
+          },
+          "model": {
+            "path": "machine/Anker M5C.json",
+            "sha256": "e7102fedc47e017dc865ba83ea78bd64cb135077405d9ae6ee1f771444b87737",
+            "manufacturer_model_id": "V81101C3"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.25",
+            "0.4",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anker M5C 0.4 nozzle",
+                "path": "machine/Anker M5C 0.4 nozzle.json",
+                "sha256": "798667482cfd85205f1839c121dd22f4ca406d90e78d03f990077095d38d8ef9"
+              },
+              "process": {
+                "name": "0.20mm Standard @Anker",
+                "path": "process/0.20mm Standard @Anker.json",
+                "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "229c3ffc9f6f9e136fe3b60443a14aad0e68e1cd98e3fd1f3f7e9ae0d968fe3c"
+                  },
+                  {
+                    "name": "fdm_process_anker_common",
+                    "path": "process/fdm_process_anker_common.json",
+                    "sha256": "3b8818cd6331d6c5f79a900ce3436b3e87e6004c54ef4ed8383e13ceb0dfb2c6"
+                  },
+                  {
+                    "name": "0.20mm Standard @Anker",
+                    "path": "process/0.20mm Standard @Anker.json",
+                    "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA+ @Anker",
+                "path": "filament/Generic PLA+ @Anker.json",
+                "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "345aa60139e29117cdb4426530face09e7d826a35f3cbfac8f45b9e7f29d6395"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a03f4e955588ca942f216747f1307e4f664360decd39788cad54fe0809dd8896"
+                  },
+                  {
+                    "name": "Generic PLA+ @Anker base",
+                    "path": "filament/Generic PLA+ @Anker base.json",
+                    "sha256": "e719d37d5c8f3f15754aa886761320d3ab4ee79a9161d15e86f64b5a90bbc360"
+                  },
+                  {
+                    "name": "Generic PLA+ @Anker",
+                    "path": "filament/Generic PLA+ @Anker.json",
+                    "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Anker.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Anker.json",
+          "machine": "Anker M5C 0.4 nozzle",
+          "process": "0.20mm Standard @Anker",
+          "filament": "Generic PLA+ @Anker"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "anker-ankermake-m5",
+      "manufacturer": "Anker",
+      "model": "AnkerMake M5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Anker/2.1.0.ini",
+            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+          },
+          "model": {
+            "path": "Anker/2.1.0.ini",
+            "section": "printer_model:M5",
+            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "anker-ankermake-m5c",
+      "manufacturer": "Anker",
+      "model": "AnkerMake M5C",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Anker/2.1.0.ini",
+            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+          },
+          "model": {
+            "path": "Anker/2.1.0.ini",
+            "section": "printer_model:M5C",
+            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

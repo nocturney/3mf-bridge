@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Chuanying",
+  "models": [
+    {
+      "id": "chuanying-chuanying-x1",
+      "manufacturer": "Chuanying",
+      "model": "Chuanying X1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Chuanying.json",
+            "sha256": "68611c2bfab43099cc09b1553619abca629b21f27b58d9b69ead5da51c4221fe"
+          },
+          "model": {
+            "path": "machine/Chuanying X1.json",
+            "sha256": "93edfe43d70a98ff67f8cad94722aeb652bdcfb07ed06d3ad1d03a7baa0188e1",
+            "manufacturer_model_id": "Chuanying-X1"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

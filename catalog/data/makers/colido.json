@@ -1,0 +1,551 @@
+{
+  "schema_version": 1,
+  "manufacturer": "CoLiDo",
+  "models": [
+    {
+      "id": "colido-colido-160-v2",
+      "manufacturer": "CoLiDo",
+      "model": "CoLiDo 160 V2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/CoLiDo.json",
+            "sha256": "291574bdccf447c19d2d73483b49aff93493c6594cbe2ce4b0765cf14d93e986"
+          },
+          "model": {
+            "path": "machine/CoLiDo 160 V2.json",
+            "sha256": "5d59addedd16c758004558e148f36bdd128b3ecf61ee21c3cd1e47ec784f800b",
+            "manufacturer_model_id": "CoLiDo_160_V2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "CoLiDo 160 V2 0.4 nozzle",
+                "path": "machine/CoLiDo 160 V2 0.4 nozzle.json",
+                "sha256": "01cbb1d94fd3c4359caf2002db5ecf1988b59dcc2ec84ea8e35b59c4828304c3"
+              },
+              "process": {
+                "name": "0.20mm Standard @CoLiDo X16",
+                "path": "process/0.20mm Standard @CoLiDo X16.json",
+                "sha256": "4d986be4f9623ea17dfb8e222a0e28e172fe4cfb69879d77cff7e15263fae939",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "bd75ca8aafaf70ecdde421e5f1fe02f2d23e06b48e7fa734c7fd9b73fdb23c8c"
+                  },
+                  {
+                    "name": "fdm_process_colido_common",
+                    "path": "process/fdm_process_colido_common.json",
+                    "sha256": "f95d025d167201cb4fd77efae74507e324f306e4075997a070658d5aaf013e76"
+                  },
+                  {
+                    "name": "fdm_process_colidox16_common",
+                    "path": "process/fdm_process_colidox16_common.json",
+                    "sha256": "a29420e25112a74a47f7248f1fc7851c6afe59dfd13830243280a4198a84e3e7"
+                  },
+                  {
+                    "name": "0.20mm Standard @CoLiDo X16",
+                    "path": "process/0.20mm Standard @CoLiDo X16.json",
+                    "sha256": "4d986be4f9623ea17dfb8e222a0e28e172fe4cfb69879d77cff7e15263fae939"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @CoLiDo X16",
+                "path": "filament/Generic PLA @CoLiDo X16.json",
+                "sha256": "005552a5b84ed93c23db30349589898522248fe76de062a23a3822c38046f87d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "6f3c6310a4f133560951a0c233e7aac3c173e4936f9e3ac7b9d966dbe82aa679"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "afed9b57b30c91d5b9ac4989368916550959ba2a0882ff72827c867d8dc7d85d"
+                  },
+                  {
+                    "name": "Generic PLA @CoLiDo X16",
+                    "path": "filament/Generic PLA @CoLiDo X16.json",
+                    "sha256": "005552a5b84ed93c23db30349589898522248fe76de062a23a3822c38046f87d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/CoLiDo.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/CoLiDo.json",
+          "machine": "CoLiDo 160 V2 0.4 nozzle",
+          "process": "0.20mm Standard @CoLiDo X16",
+          "filament": "Generic PLA @CoLiDo X16"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "colido-colido-diy-4-0",
+      "manufacturer": "CoLiDo",
+      "model": "CoLiDo DIY 4.0",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/CoLiDo.json",
+            "sha256": "291574bdccf447c19d2d73483b49aff93493c6594cbe2ce4b0765cf14d93e986"
+          },
+          "model": {
+            "path": "machine/CoLiDo DIY 4.0.json",
+            "sha256": "59a7e08d341866b9ed33101792c2bbeb611417399a6e68edfccd6070f18fa511",
+            "manufacturer_model_id": "CoLiDo_DIY_4_0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "CoLiDo DIY 4.0 0.4 nozzle",
+                "path": "machine/CoLiDo DIY 4.0 0.4 nozzle.json",
+                "sha256": "d78cbb43de6cc1abf249b4101f02263247d39cef799e569217a77102a77f168c"
+              },
+              "process": {
+                "name": "0.20mm Standard @CoLiDo DIY 4.0",
+                "path": "process/0.20mm Standard @CoLiDo DIY 4.0.json",
+                "sha256": "1d6bb3ec7c1480368e5ff291202648d20a7eae22638e3ab5bc7966bae425c96c",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "bd75ca8aafaf70ecdde421e5f1fe02f2d23e06b48e7fa734c7fd9b73fdb23c8c"
+                  },
+                  {
+                    "name": "fdm_process_colido_common",
+                    "path": "process/fdm_process_colido_common.json",
+                    "sha256": "f95d025d167201cb4fd77efae74507e324f306e4075997a070658d5aaf013e76"
+                  },
+                  {
+                    "name": "fdm_process_colidodiy40_common",
+                    "path": "process/fdm_process_colidodiy40_common.json",
+                    "sha256": "6b4db68483898d9753cfb5bd4f59b1472ec198a6db86697729e47fa21425fdba"
+                  },
+                  {
+                    "name": "0.20mm Standard @CoLiDo DIY 4.0",
+                    "path": "process/0.20mm Standard @CoLiDo DIY 4.0.json",
+                    "sha256": "1d6bb3ec7c1480368e5ff291202648d20a7eae22638e3ab5bc7966bae425c96c"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @CoLiDo DIY 4.0",
+                "path": "filament/Generic PLA @CoLiDo DIY 4.0.json",
+                "sha256": "08630b8ab30449fb01edf6a83b5476a546454a6c001b1c0588f7a6c1805539fb",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "6f3c6310a4f133560951a0c233e7aac3c173e4936f9e3ac7b9d966dbe82aa679"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "afed9b57b30c91d5b9ac4989368916550959ba2a0882ff72827c867d8dc7d85d"
+                  },
+                  {
+                    "name": "Generic PLA @CoLiDo DIY 4.0",
+                    "path": "filament/Generic PLA @CoLiDo DIY 4.0.json",
+                    "sha256": "08630b8ab30449fb01edf6a83b5476a546454a6c001b1c0588f7a6c1805539fb"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/CoLiDo.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/CoLiDo.json",
+          "machine": "CoLiDo DIY 4.0 0.4 nozzle",
+          "process": "0.20mm Standard @CoLiDo DIY 4.0",
+          "filament": "Generic PLA @CoLiDo DIY 4.0"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "colido-colido-diy-4-0-v2",
+      "manufacturer": "CoLiDo",
+      "model": "CoLiDo DIY 4.0 V2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/CoLiDo.json",
+            "sha256": "291574bdccf447c19d2d73483b49aff93493c6594cbe2ce4b0765cf14d93e986"
+          },
+          "model": {
+            "path": "machine/CoLiDo DIY 4.0 V2.json",
+            "sha256": "3ff25d37cbff02cf33b7aff1fe47e17e758f658c5175769b99305e1686722fa8",
+            "manufacturer_model_id": "CoLiDo_DIY_4_0_V2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "CoLiDo DIY 4.0 V2 0.4 nozzle",
+                "path": "machine/CoLiDo DIY 4.0 V2 0.4 nozzle.json",
+                "sha256": "de1ece9549ec7c50131e4e450904d8dd0f26cea89ace50d5093f431e15d66e97"
+              },
+              "process": {
+                "name": "0.20mm Standard @CoLiDo DIY 4.0 V2",
+                "path": "process/0.20mm Standard @CoLiDo DIY 4.0 V2.json",
+                "sha256": "f98a305d4469963c5ebb00bda061bab70562556110956545525579b66ad71541",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "bd75ca8aafaf70ecdde421e5f1fe02f2d23e06b48e7fa734c7fd9b73fdb23c8c"
+                  },
+                  {
+                    "name": "fdm_process_colido_common",
+                    "path": "process/fdm_process_colido_common.json",
+                    "sha256": "f95d025d167201cb4fd77efae74507e324f306e4075997a070658d5aaf013e76"
+                  },
+                  {
+                    "name": "fdm_process_colidodiy40v2_common",
+                    "path": "process/fdm_process_colidodiy40v2_common.json",
+                    "sha256": "355072d0868f9f091d222bc85eecf618ce17bc968ad5f153291a39390362a61f"
+                  },
+                  {
+                    "name": "0.20mm Standard @CoLiDo DIY 4.0 V2",
+                    "path": "process/0.20mm Standard @CoLiDo DIY 4.0 V2.json",
+                    "sha256": "f98a305d4469963c5ebb00bda061bab70562556110956545525579b66ad71541"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "CoLiDo PLA+ @CoLiDo DIY 4.0 V2",
+                "path": "filament/CoLiDo PLA+ @CoLiDo DIY 4.0 V2.json",
+                "sha256": "5703636c7c99036c9e9f91f81a8bcc20a070904467baeb44662d4980272f8c58",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "6f3c6310a4f133560951a0c233e7aac3c173e4936f9e3ac7b9d966dbe82aa679"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "afed9b57b30c91d5b9ac4989368916550959ba2a0882ff72827c867d8dc7d85d"
+                  },
+                  {
+                    "name": "CoLiDo PLA+ @CoLiDo DIY 4.0 V2",
+                    "path": "filament/CoLiDo PLA+ @CoLiDo DIY 4.0 V2.json",
+                    "sha256": "5703636c7c99036c9e9f91f81a8bcc20a070904467baeb44662d4980272f8c58"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/CoLiDo.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/CoLiDo.json",
+          "machine": "CoLiDo DIY 4.0 V2 0.4 nozzle",
+          "process": "0.20mm Standard @CoLiDo DIY 4.0 V2",
+          "filament": "CoLiDo PLA+ @CoLiDo DIY 4.0 V2"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "colido-colido-sr1",
+      "manufacturer": "CoLiDo",
+      "model": "CoLiDo SR1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/CoLiDo.json",
+            "sha256": "291574bdccf447c19d2d73483b49aff93493c6594cbe2ce4b0765cf14d93e986"
+          },
+          "model": {
+            "path": "machine/CoLiDo SR1.json",
+            "sha256": "8186ecdb02fbf194f8dc0476e14805c9287aa4191dc4d440b76e536e002d3a23",
+            "manufacturer_model_id": "CoLiDo_SR1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "CoLiDo SR1 0.4 nozzle",
+                "path": "machine/CoLiDo SR1 0.4 nozzle.json",
+                "sha256": "98c61e94e3d40c52cf6affb1ff1b9834a8823ab7da87da899211301652106a5e"
+              },
+              "process": {
+                "name": "0.20mm Standard @CoLiDo SR1",
+                "path": "process/0.20mm Standard @CoLiDo SR1.json",
+                "sha256": "c54ad543a2c12d229abcc13c0cbc4a20617e78fe472d3edd9ec0199210aba740",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "bd75ca8aafaf70ecdde421e5f1fe02f2d23e06b48e7fa734c7fd9b73fdb23c8c"
+                  },
+                  {
+                    "name": "fdm_process_colido_common",
+                    "path": "process/fdm_process_colido_common.json",
+                    "sha256": "f95d025d167201cb4fd77efae74507e324f306e4075997a070658d5aaf013e76"
+                  },
+                  {
+                    "name": "fdm_process_colidosr1_common",
+                    "path": "process/fdm_process_colidosr1_common.json",
+                    "sha256": "3b1368b1661ed53611d3b4ed9320658bcdbc4fad2f818817b2b7031bddc8182d"
+                  },
+                  {
+                    "name": "0.20mm Standard @CoLiDo SR1",
+                    "path": "process/0.20mm Standard @CoLiDo SR1.json",
+                    "sha256": "c54ad543a2c12d229abcc13c0cbc4a20617e78fe472d3edd9ec0199210aba740"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "CoLiDo PLA @CoLiDo SR1",
+                "path": "filament/CoLiDo PLA @CoLiDo SR1.json",
+                "sha256": "2959662f3bd03a920f4a9d2934ca1a3d5e744c9e5416dfe8100f221d50df1c1a",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "6f3c6310a4f133560951a0c233e7aac3c173e4936f9e3ac7b9d966dbe82aa679"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "afed9b57b30c91d5b9ac4989368916550959ba2a0882ff72827c867d8dc7d85d"
+                  },
+                  {
+                    "name": "CoLiDo PLA @CoLiDo SR1",
+                    "path": "filament/CoLiDo PLA @CoLiDo SR1.json",
+                    "sha256": "2959662f3bd03a920f4a9d2934ca1a3d5e744c9e5416dfe8100f221d50df1c1a"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/CoLiDo.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/CoLiDo.json",
+          "machine": "CoLiDo SR1 0.4 nozzle",
+          "process": "0.20mm Standard @CoLiDo SR1",
+          "filament": "CoLiDo PLA @CoLiDo SR1"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "colido-colido-x16",
+      "manufacturer": "CoLiDo",
+      "model": "CoLiDo X16",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/CoLiDo.json",
+            "sha256": "291574bdccf447c19d2d73483b49aff93493c6594cbe2ce4b0765cf14d93e986"
+          },
+          "model": {
+            "path": "machine/CoLiDo X16.json",
+            "sha256": "e043209f334645814b8cfdc13c1cebf4de6b104f92b252a0f6ff0e915625d243",
+            "manufacturer_model_id": "CoLiDo_X16"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "CoLiDo X16 0.4 nozzle",
+                "path": "machine/CoLiDo X16 0.4 nozzle.json",
+                "sha256": "99f6bb758535e5e6ca2cea43d7d3ec442bd4abfe94ac18041965b0a116d225bb"
+              },
+              "process": {
+                "name": "0.20mm Standard @CoLiDo X16",
+                "path": "process/0.20mm Standard @CoLiDo X16.json",
+                "sha256": "4d986be4f9623ea17dfb8e222a0e28e172fe4cfb69879d77cff7e15263fae939",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "bd75ca8aafaf70ecdde421e5f1fe02f2d23e06b48e7fa734c7fd9b73fdb23c8c"
+                  },
+                  {
+                    "name": "fdm_process_colido_common",
+                    "path": "process/fdm_process_colido_common.json",
+                    "sha256": "f95d025d167201cb4fd77efae74507e324f306e4075997a070658d5aaf013e76"
+                  },
+                  {
+                    "name": "fdm_process_colidox16_common",
+                    "path": "process/fdm_process_colidox16_common.json",
+                    "sha256": "a29420e25112a74a47f7248f1fc7851c6afe59dfd13830243280a4198a84e3e7"
+                  },
+                  {
+                    "name": "0.20mm Standard @CoLiDo X16",
+                    "path": "process/0.20mm Standard @CoLiDo X16.json",
+                    "sha256": "4d986be4f9623ea17dfb8e222a0e28e172fe4cfb69879d77cff7e15263fae939"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @CoLiDo X16",
+                "path": "filament/Generic PLA @CoLiDo X16.json",
+                "sha256": "005552a5b84ed93c23db30349589898522248fe76de062a23a3822c38046f87d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "6f3c6310a4f133560951a0c233e7aac3c173e4936f9e3ac7b9d966dbe82aa679"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "afed9b57b30c91d5b9ac4989368916550959ba2a0882ff72827c867d8dc7d85d"
+                  },
+                  {
+                    "name": "Generic PLA @CoLiDo X16",
+                    "path": "filament/Generic PLA @CoLiDo X16.json",
+                    "sha256": "005552a5b84ed93c23db30349589898522248fe76de062a23a3822c38046f87d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/CoLiDo.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/CoLiDo.json",
+          "machine": "CoLiDo X16 0.4 nozzle",
+          "process": "0.20mm Standard @CoLiDo X16",
+          "filament": "Generic PLA @CoLiDo X16"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

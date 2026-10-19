@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "manufacturer": "MagicMaker",
+  "models": [
+    {
+      "id": "magicmaker-mm-boneking",
+      "manufacturer": "MagicMaker",
+      "model": "MM BoneKing",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/MagicMaker.json",
+            "sha256": "34894829f5c914d19a5618f69f8cf59860484ffbba474eeb27d402befe19db3e"
+          },
+          "model": {
+            "path": "machine/MM BoneKing.json",
+            "sha256": "b3779fa96677b967c84bdb4d9118baceb859841f6bb7945025628733eb4290e7",
+            "manufacturer_model_id": "MM-BoneKing"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "magicmaker-mm-hj-sk",
+      "manufacturer": "MagicMaker",
+      "model": "MM hj SK",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/MagicMaker.json",
+            "sha256": "34894829f5c914d19a5618f69f8cf59860484ffbba474eeb27d402befe19db3e"
+          },
+          "model": {
+            "path": "machine/MM hj SK.json",
+            "sha256": "45aec6c743d79ab3eefc08a4cb0112e6b477bdda677beea5da043db9c5ece81c",
+            "manufacturer_model_id": "MM-hj-SK"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "magicmaker-mm-hqs-hj",
+      "manufacturer": "MagicMaker",
+      "model": "MM hqs hj",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/MagicMaker.json",
+            "sha256": "34894829f5c914d19a5618f69f8cf59860484ffbba474eeb27d402befe19db3e"
+          },
+          "model": {
+            "path": "machine/MM hqs hj.json",
+            "sha256": "06cdacc08722c404d5082f59ae6c0a8a22e92a66ced008644630d8c24a5dbe0e",
+            "manufacturer_model_id": "MM-hqs-hj"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "magicmaker-mm-hqs-sf",
+      "manufacturer": "MagicMaker",
+      "model": "MM hqs SF",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/MagicMaker.json",
+            "sha256": "34894829f5c914d19a5618f69f8cf59860484ffbba474eeb27d402befe19db3e"
+          },
+          "model": {
+            "path": "machine/MM hqs SF.json",
+            "sha256": "a1fe95ac17174b0a51857f05c6003b4eda5cd6cb308a2432e10b2dba021cb4b5",
+            "manufacturer_model_id": "MM-hqs-SF"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "magicmaker-mm-slb",
+      "manufacturer": "MagicMaker",
+      "model": "MM slb",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/MagicMaker.json",
+            "sha256": "34894829f5c914d19a5618f69f8cf59860484ffbba474eeb27d402befe19db3e"
+          },
+          "model": {
+            "path": "machine/MM slb.json",
+            "sha256": "4b504119f3b36bdee24182c9acada3741152f4d148b213f8a6647dd7ef2a82ef",
+            "manufacturer_model_id": "MM-slb"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

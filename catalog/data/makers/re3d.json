@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "manufacturer": "re3D",
+  "models": [
+    {
+      "id": "re3d-re3d-gigabot-4",
+      "manufacturer": "re3D",
+      "model": "re3D Gigabot 4",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "03.00.12",
+          "manifest": {
+            "path": "resources/profiles/re3D.json",
+            "sha256": "1a3c8a14ead8c5c89b8a0d05ed2a369315c54f2bd790e688b20c09206f35da8d"
+          },
+          "model": {
+            "path": "machine/re3D Gigabot 4.json",
+            "sha256": "958293900421b35ec10cab7e5a183ce14ecbb6389483313231695983ec831647",
+            "manufacturer_model_id": "re3D Gigabot 4"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "re3D Gigabot 4 0.4 nozzle",
+                "path": "machine/re3D Gigabot 4 0.4 nozzle.json",
+                "sha256": "be850946df46ccc6be76bac7733be9b3aae96bafda780ed60fcbc850a3b9227f"
+              },
+              "process": {
+                "name": "0.26 Standard",
+                "path": "process/0.26mm Standard @re3D fdm 0.4.json",
+                "sha256": "585548aa215c3395bca23600e29ac51e4e0651dcb32831971f79e3149c8f6472",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "6a4983d1e326c8ef6b4d5140d6d3309119fbfd77c989cc6616c45a99b5f93980"
+                  },
+                  {
+                    "name": "fdm_process_re3D_common",
+                    "path": "process/fdm_process_re3D_common.json",
+                    "sha256": "368bbff78aee35392016bff37fd28d6045439229809eb026079a7aa2c736b4eb"
+                  },
+                  {
+                    "name": "0.26 Standard",
+                    "path": "process/0.26mm Standard @re3D fdm 0.4.json",
+                    "sha256": "585548aa215c3395bca23600e29ac51e4e0651dcb32831971f79e3149c8f6472"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "re3D PLA @0.4 nozzle",
+                "path": "filament/re3D PLA @0.4 nozzle.json",
+                "sha256": "70abda56f0c6af872281b19338683b6ea5c2194cf4fb72bf7d3d13078a5b2c0c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "f2785df2e1fff9e94e99dff2061895c26929051f111f7bc35d11c5be5519249c"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "d68b792f07c33eb68d909b6ad2d31414e49553903e05aef9fe1696d9f2d2206f"
+                  },
+                  {
+                    "name": "re3D PLA @0.4 nozzle",
+                    "path": "filament/re3D PLA @0.4 nozzle.json",
+                    "sha256": "70abda56f0c6af872281b19338683b6ea5c2194cf4fb72bf7d3d13078a5b2c0c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "re3D Gigabot 4 0.8 nozzle",
+                "path": "machine/re3D Gigabot 4 0.8 nozzle.json",
+                "sha256": "b5876e2b16306df1c53de0ae96bfe77880bcdbd23d7f8d34c2d9aacb4fbbf9de"
+              },
+              "process": {
+                "name": "0.4 Standard",
+                "path": "process/0.4mm Draft @re3D fdm 0.8.json",
+                "sha256": "0fcb277372bf61df0e4e255078fefd6d6d0b6f0a60a359208751488f80ae6732",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "6a4983d1e326c8ef6b4d5140d6d3309119fbfd77c989cc6616c45a99b5f93980"
+                  },
+                  {
+                    "name": "fdm_process_re3D_common",
+                    "path": "process/fdm_process_re3D_common.json",
+                    "sha256": "368bbff78aee35392016bff37fd28d6045439229809eb026079a7aa2c736b4eb"
+                  },
+                  {
+                    "name": "0.4 Standard",
+                    "path": "process/0.4mm Draft @re3D fdm 0.8.json",
+                    "sha256": "0fcb277372bf61df0e4e255078fefd6d6d0b6f0a60a359208751488f80ae6732"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "re3D PLA @0.8 nozzle",
+                "path": "filament/re3D PLA @0.8 nozzle.json",
+                "sha256": "5ede1958a302f768f7d3ca8db2466f2ce3022a6c069b50a45ab6205a568bf3f2",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "f2785df2e1fff9e94e99dff2061895c26929051f111f7bc35d11c5be5519249c"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "d68b792f07c33eb68d909b6ad2d31414e49553903e05aef9fe1696d9f2d2206f"
+                  },
+                  {
+                    "name": "re3D PLA @0.8 nozzle",
+                    "path": "filament/re3D PLA @0.8 nozzle.json",
+                    "sha256": "5ede1958a302f768f7d3ca8db2466f2ce3022a6c069b50a45ab6205a568bf3f2"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/re3D.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/re3D.json",
+          "machine": "re3D Gigabot 4 0.4 nozzle",
+          "process": "0.26 Standard",
+          "filament": "re3D PLA @0.4 nozzle"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/re3D.json",
+          "machine": "re3D Gigabot 4 0.8 nozzle",
+          "process": "0.4 Standard",
+          "filament": "re3D PLA @0.8 nozzle"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "re3d-re3d-gigabot-4-xlt",
+      "manufacturer": "re3D",
+      "model": "re3D Gigabot 4 XLT",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "03.00.12",
+          "manifest": {
+            "path": "resources/profiles/re3D.json",
+            "sha256": "1a3c8a14ead8c5c89b8a0d05ed2a369315c54f2bd790e688b20c09206f35da8d"
+          },
+          "model": {
+            "path": "machine/re3D Gigabot 4 XLT.json",
+            "sha256": "356832dee0ebf584555783f3583b10a6a471d5548e986657b625715956c6b70d",
+            "manufacturer_model_id": "re3D Gigabot 4 XLT"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "re3D Gigabot 4 XLT 0.4 nozzle",
+                "path": "machine/re3D Gigabot 4 XLT 0.4 nozzle.json",
+                "sha256": "bee15497ea42d12e1bc92b3d613a31ced0e20f4be9e9966d6d307f4f299adb3a"
+              },
+              "process": {
+                "name": "0.26 Standard",
+                "path": "process/0.26mm Standard @re3D fdm 0.4.json",
+                "sha256": "585548aa215c3395bca23600e29ac51e4e0651dcb32831971f79e3149c8f6472",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "6a4983d1e326c8ef6b4d5140d6d3309119fbfd77c989cc6616c45a99b5f93980"
+                  },
+                  {
+                    "name": "fdm_process_re3D_common",
+                    "path": "process/fdm_process_re3D_common.json",
+                    "sha256": "368bbff78aee35392016bff37fd28d6045439229809eb026079a7aa2c736b4eb"
+                  },
+                  {
+                    "name": "0.26 Standard",
+                    "path": "process/0.26mm Standard @re3D fdm 0.4.json",
+                    "sha256": "585548aa215c3395bca23600e29ac51e4e0651dcb32831971f79e3149c8f6472"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "re3D PLA @0.4 nozzle",
+                "path": "filament/re3D PLA @0.4 nozzle.json",
+                "sha256": "70abda56f0c6af872281b19338683b6ea5c2194cf4fb72bf7d3d13078a5b2c0c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "f2785df2e1fff9e94e99dff2061895c26929051f111f7bc35d11c5be5519249c"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "d68b792f07c33eb68d909b6ad2d31414e49553903e05aef9fe1696d9f2d2206f"
+                  },
+                  {
+                    "name": "re3D PLA @0.4 nozzle",
+                    "path": "filament/re3D PLA @0.4 nozzle.json",
+                    "sha256": "70abda56f0c6af872281b19338683b6ea5c2194cf4fb72bf7d3d13078a5b2c0c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "re3D Gigabot 4 XLT 0.8 nozzle",
+                "path": "machine/re3D Gigabot 4 XLT 0.8 nozzle.json",
+                "sha256": "f9f395a24e1d67cc45c1a50e76c72ba0413950a9ac38e62bc9caa0be64119eee"
+              },
+              "process": {
+                "name": "0.4 Standard",
+                "path": "process/0.4mm Draft @re3D fdm 0.8.json",
+                "sha256": "0fcb277372bf61df0e4e255078fefd6d6d0b6f0a60a359208751488f80ae6732",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "6a4983d1e326c8ef6b4d5140d6d3309119fbfd77c989cc6616c45a99b5f93980"
+                  },
+                  {
+                    "name": "fdm_process_re3D_common",
+                    "path": "process/fdm_process_re3D_common.json",
+                    "sha256": "368bbff78aee35392016bff37fd28d6045439229809eb026079a7aa2c736b4eb"
+                  },
+                  {
+                    "name": "0.4 Standard",
+                    "path": "process/0.4mm Draft @re3D fdm 0.8.json",
+                    "sha256": "0fcb277372bf61df0e4e255078fefd6d6d0b6f0a60a359208751488f80ae6732"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "re3D PLA @0.8 nozzle",
+                "path": "filament/re3D PLA @0.8 nozzle.json",
+                "sha256": "5ede1958a302f768f7d3ca8db2466f2ce3022a6c069b50a45ab6205a568bf3f2",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "f2785df2e1fff9e94e99dff2061895c26929051f111f7bc35d11c5be5519249c"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "d68b792f07c33eb68d909b6ad2d31414e49553903e05aef9fe1696d9f2d2206f"
+                  },
+                  {
+                    "name": "re3D PLA @0.8 nozzle",
+                    "path": "filament/re3D PLA @0.8 nozzle.json",
+                    "sha256": "5ede1958a302f768f7d3ca8db2466f2ce3022a6c069b50a45ab6205a568bf3f2"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/re3D.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/re3D.json",
+          "machine": "re3D Gigabot 4 XLT 0.4 nozzle",
+          "process": "0.26 Standard",
+          "filament": "re3D PLA @0.4 nozzle"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/re3D.json",
+          "machine": "re3D Gigabot 4 XLT 0.8 nozzle",
+          "process": "0.4 Standard",
+          "filament": "re3D PLA @0.8 nozzle"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "re3d-re3d-terabot-4",
+      "manufacturer": "re3D",
+      "model": "re3D Terabot 4",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "03.00.12",
+          "manifest": {
+            "path": "resources/profiles/re3D.json",
+            "sha256": "1a3c8a14ead8c5c89b8a0d05ed2a369315c54f2bd790e688b20c09206f35da8d"
+          },
+          "model": {
+            "path": "machine/re3D Terabot 4.json",
+            "sha256": "cc6b092b922be8feb3b10909cdb279d44129f739aa867f3d806aca388e96db37",
+            "manufacturer_model_id": "re3D Terabot 4"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "re3D Terabot 4 0.4 nozzle",
+                "path": "machine/re3D Terabot 4 0.4 nozzle.json",
+                "sha256": "3c9f118991a59fe46e4c0dee265fc85e205419fb3afc88da4973a9954962d0bd"
+              },
+              "process": {
+                "name": "0.26 Standard",
+                "path": "process/0.26mm Standard @re3D fdm 0.4.json",
+                "sha256": "585548aa215c3395bca23600e29ac51e4e0651dcb32831971f79e3149c8f6472",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "6a4983d1e326c8ef6b4d5140d6d3309119fbfd77c989cc6616c45a99b5f93980"
+                  },
+                  {
+                    "name": "fdm_process_re3D_common",
+                    "path": "process/fdm_process_re3D_common.json",
+                    "sha256": "368bbff78aee35392016bff37fd28d6045439229809eb026079a7aa2c736b4eb"
+                  },
+                  {
+                    "name": "0.26 Standard",
+                    "path": "process/0.26mm Standard @re3D fdm 0.4.json",
+                    "sha256": "585548aa215c3395bca23600e29ac51e4e0651dcb32831971f79e3149c8f6472"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "re3D PLA @0.4 nozzle",
+                "path": "filament/re3D PLA @0.4 nozzle.json",
+                "sha256": "70abda56f0c6af872281b19338683b6ea5c2194cf4fb72bf7d3d13078a5b2c0c",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "f2785df2e1fff9e94e99dff2061895c26929051f111f7bc35d11c5be5519249c"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "d68b792f07c33eb68d909b6ad2d31414e49553903e05aef9fe1696d9f2d2206f"
+                  },
+                  {
+                    "name": "re3D PLA @0.4 nozzle",
+                    "path": "filament/re3D PLA @0.4 nozzle.json",
+                    "sha256": "70abda56f0c6af872281b19338683b6ea5c2194cf4fb72bf7d3d13078a5b2c0c"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "re3D Terabot 4 0.8 nozzle",
+                "path": "machine/re3D Terabot 4 0.8 nozzle.json",
+                "sha256": "c1771f49985ef7ca9f15099a074b6632d327618660ecbbe0316a65de9697dba1"
+              },
+              "process": {
+                "name": "0.4 Standard",
+                "path": "process/0.4mm Draft @re3D fdm 0.8.json",
+                "sha256": "0fcb277372bf61df0e4e255078fefd6d6d0b6f0a60a359208751488f80ae6732",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "6a4983d1e326c8ef6b4d5140d6d3309119fbfd77c989cc6616c45a99b5f93980"
+                  },
+                  {
+                    "name": "fdm_process_re3D_common",
+                    "path": "process/fdm_process_re3D_common.json",
+                    "sha256": "368bbff78aee35392016bff37fd28d6045439229809eb026079a7aa2c736b4eb"
+                  },
+                  {
+                    "name": "0.4 Standard",
+                    "path": "process/0.4mm Draft @re3D fdm 0.8.json",
+                    "sha256": "0fcb277372bf61df0e4e255078fefd6d6d0b6f0a60a359208751488f80ae6732"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "re3D PLA @0.8 nozzle",
+                "path": "filament/re3D PLA @0.8 nozzle.json",
+                "sha256": "5ede1958a302f768f7d3ca8db2466f2ce3022a6c069b50a45ab6205a568bf3f2",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "f2785df2e1fff9e94e99dff2061895c26929051f111f7bc35d11c5be5519249c"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "d68b792f07c33eb68d909b6ad2d31414e49553903e05aef9fe1696d9f2d2206f"
+                  },
+                  {
+                    "name": "re3D PLA @0.8 nozzle",
+                    "path": "filament/re3D PLA @0.8 nozzle.json",
+                    "sha256": "5ede1958a302f768f7d3ca8db2466f2ce3022a6c069b50a45ab6205a568bf3f2"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/re3D.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/re3D.json",
+          "machine": "re3D Terabot 4 0.4 nozzle",
+          "process": "0.26 Standard",
+          "filament": "re3D PLA @0.4 nozzle"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/re3D.json",
+          "machine": "re3D Terabot 4 0.8 nozzle",
+          "process": "0.4 Standard",
+          "filament": "re3D PLA @0.8 nozzle"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

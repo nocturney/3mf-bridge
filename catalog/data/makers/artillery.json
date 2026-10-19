@@ -1,0 +1,1420 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Artillery",
+  "models": [
+    {
+      "id": "artillery-artillery-genius",
+      "manufacturer": "Artillery",
+      "model": "Artillery Genius",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Genius.json",
+            "sha256": "3164d13ae61facf147296a1790613ce472374b3c801dda06a796fdfb182f62ee",
+            "manufacturer_model_id": "Artillery-Genius"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Genius 0.4 nozzle",
+                "path": "machine/Artillery Genius 0.4 nozzle.json",
+                "sha256": "2a993aff047ded6fc7db032671ca37d569008d4614296f42f478b263dd016320"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "filament/Generic PLA @Artillery.json",
+                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:Genius",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Genius 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Generic PLA @Artillery"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-genius-pro",
+      "manufacturer": "Artillery",
+      "model": "Artillery Genius Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Genius Pro.json",
+            "sha256": "8576e413dc86f067086abdc09fa542108e9a0297204eb51df450153842cbd509",
+            "manufacturer_model_id": "Artillery-Genius-Pro"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Genius Pro 0.4 nozzle",
+                "path": "machine/Artillery Genius Pro 0.4 nozzle.json",
+                "sha256": "4365f6de8572822fd13839a23f7338ad798660dcb839ebad623a7c7dd53ecd95"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius Pro",
+                "path": "process/0.20mm Standard @Artillery Genius Pro.json",
+                "sha256": "4c3c3eb55e59ef21ec297de05ffad63a7a572c1115d6a9724776dca1852aa561",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius Pro",
+                    "path": "process/0.20mm Standard @Artillery Genius Pro.json",
+                    "sha256": "4c3c3eb55e59ef21ec297de05ffad63a7a572c1115d6a9724776dca1852aa561"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "filament/Generic PLA @Artillery.json",
+                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Genius Pro 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Genius Pro",
+          "filament": "Generic PLA @Artillery"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-hornet",
+      "manufacturer": "Artillery",
+      "model": "Artillery Hornet",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Hornet.json",
+            "sha256": "a309b3d6e868bef56d7e130cc8cef6f42a778f217557fd84e9de5efad7e37079",
+            "manufacturer_model_id": "Artillery-Hornet"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Hornet 0.4 nozzle",
+                "path": "machine/Artillery Hornet 0.4 nozzle.json",
+                "sha256": "7912d0d589ce1103d44077d3d09f90f2aa965b3702710ba417b06d2c1d91be70"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Hornet",
+                "path": "process/0.20mm Standard @Artillery Hornet.json",
+                "sha256": "b96d249fe7e4880f37cb6310f0a93c50e209bd17520b3a46cfc3acefe10c7e5d",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Hornet",
+                    "path": "process/0.20mm Standard @Artillery Hornet.json",
+                    "sha256": "b96d249fe7e4880f37cb6310f0a93c50e209bd17520b3a46cfc3acefe10c7e5d"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "filament/Generic PLA @Artillery.json",
+                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:Hornet",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Hornet 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Hornet",
+          "filament": "Generic PLA @Artillery"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-m1-pro",
+      "manufacturer": "Artillery",
+      "model": "Artillery M1 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery M1 Pro.json",
+            "sha256": "7c655b4fd3ff152d91ff7494d79d112adc7772f36a94387873aac41e466bc30a",
+            "manufacturer_model_id": "Artillery-M1-Pro"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "Artillery M1 Pro 0.2 nozzle",
+                "path": "machine/Artillery M1 Pro 0.2 nozzle.json",
+                "sha256": "f706caf59ece0432d1bb37c9932da90014bf4bda5ab25c7f457cc5c19922f0f4"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery M1 Pro 0.4 nozzle",
+                "path": "machine/Artillery M1 Pro 0.4 nozzle.json",
+                "sha256": "28a9f8f6079ca57900a9baa20b63c7de4b154a90fd91b4764cd5f93d63aa5161"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Artillery M1 Pro 0.6 nozzle",
+                "path": "machine/Artillery M1 Pro 0.6 nozzle.json",
+                "sha256": "0b600f093a0563b61f405854ba3c3cfed5867832a865a2dc067d69475ff414cb"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Artillery M1 Pro 0.8 nozzle",
+                "path": "machine/Artillery M1 Pro 0.8 nozzle.json",
+                "sha256": "e149bf0570fd78e40d11d588dd81b0a879a8409a73a68d6bdbdd8b2746fcbcb3"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery M1 Pro 0.2 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery M1 Pro 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery M1 Pro 0.6 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery M1 Pro 0.8 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-sidewinder-x1",
+      "manufacturer": "Artillery",
+      "model": "Artillery Sidewinder X1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Sidewinder X1.json",
+            "sha256": "5fb9820e791fbb30619946a17bacfcc95821c9720e6f245436553e21acf6113e",
+            "manufacturer_model_id": "Artillery-Sidewinder-X1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X1 0.4 nozzle",
+                "path": "machine/Artillery Sidewinder X1 0.4 nozzle.json",
+                "sha256": "5cdd516e36dab49b2c5d916b86d8a25d72324476148032b80cc3588e05dcaa01"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery X1",
+                "path": "process/0.20mm Standard @Artillery X1.json",
+                "sha256": "9d6b4108243558fd0ca1f2d465cb6ba4a6ff4edc8d1e88a696b4e85825f7dc57",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery X1",
+                    "path": "process/0.20mm Standard @Artillery X1.json",
+                    "sha256": "9d6b4108243558fd0ca1f2d465cb6ba4a6ff4edc8d1e88a696b4e85825f7dc57"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "filament/Generic PLA @Artillery.json",
+                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:X1",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Sidewinder X1 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery X1",
+          "filament": "Generic PLA @Artillery"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-sidewinder-x2",
+      "manufacturer": "Artillery",
+      "model": "Artillery Sidewinder X2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Sidewinder X2.json",
+            "sha256": "fb346bb275008eb954c9c4b8a63e7b064f5f393ee8c4f7d1f86ba0cc2b951d3c",
+            "manufacturer_model_id": "Artillery-Sidewinder-X2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X2 0.4 nozzle",
+                "path": "machine/Artillery Sidewinder X2 0.4 nozzle.json",
+                "sha256": "4368cd9cb00b5dc38f26cb2e86bb7bb62a527bfcb2401bc5a8d6f232456c31c6"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery X2",
+                "path": "process/0.20mm Standard @Artillery X2.json",
+                "sha256": "aec293b4e469f91b7ffa7c8a4e3bf5df54045e59d9d70e1b8fdf96999e83975f",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery X2",
+                    "path": "process/0.20mm Standard @Artillery X2.json",
+                    "sha256": "aec293b4e469f91b7ffa7c8a4e3bf5df54045e59d9d70e1b8fdf96999e83975f"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "filament/Generic PLA @Artillery.json",
+                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Sidewinder X2 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery X2",
+          "filament": "Generic PLA @Artillery"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-sidewinder-x3-plus",
+      "manufacturer": "Artillery",
+      "model": "Artillery Sidewinder X3 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Sidewinder X3 Plus.json",
+            "sha256": "65837b24998deb56a2806ad30b45a10fdb1cca852b3d9d645a1783c04b7e42e9",
+            "manufacturer_model_id": "Artillery-Sidewinder-X3-Plus"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X3 Plus 0.4 nozzle",
+                "path": "machine/Artillery Sidewinder X3 Plus 0.4 nozzle.json",
+                "sha256": "a98778dbb7e725890d96bd8b3161ed4aac92fafa66e1e84bcaefe8836ea0400a"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:X3 Plus",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Sidewinder X3 Plus 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-sidewinder-x3-pro",
+      "manufacturer": "Artillery",
+      "model": "Artillery Sidewinder X3 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Sidewinder X3 Pro.json",
+            "sha256": "dbacbc7fcec56b53842304329d48a0cdab19474c6ade1d7d35fce38037041fc7",
+            "manufacturer_model_id": "Artillery-Sidewinder-X3-Pro"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X3 Pro 0.4 nozzle",
+                "path": "machine/Artillery Sidewinder X3 Pro 0.4 nozzle.json",
+                "sha256": "a1aea4e5da26d251ea1aaab4eb84214f5c7fc9146fd9111e84028893167c7f18"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:X3 Pro",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Sidewinder X3 Pro 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-sidewinder-x4-max",
+      "manufacturer": "Artillery",
+      "model": "Artillery Sidewinder X4 Max",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:X4 Max",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "artillery-artillery-sidewinder-x4-plus",
+      "manufacturer": "Artillery",
+      "model": "Artillery Sidewinder X4 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Sidewinder X4 Plus.json",
+            "sha256": "d2d6ec4aa3464aaae079a7d68877dd5b7c03b1200211b2dadcbe6e8bc8538c52",
+            "manufacturer_model_id": "Artillery-Sidewinder-X4-Plus"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X4 Plus 0.4 nozzle",
+                "path": "machine/Artillery Sidewinder X4 Plus 0.4 nozzle.json",
+                "sha256": "4400e986d44f6aa363ac93fcf27d2a225cdcc98869a960a33e4d7ac4608c6550"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:X4 Plus",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Sidewinder X4 Plus 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "artillery-artillery-sidewinder-x4-pro",
+      "manufacturer": "Artillery",
+      "model": "Artillery Sidewinder X4 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Artillery.json",
+            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+          },
+          "model": {
+            "path": "machine/Artillery Sidewinder X4 Pro.json",
+            "sha256": "39dd44caf3c33d471142b065a2ad6d3f5e54cc5940771d4ef5c7656d8685a5fd",
+            "manufacturer_model_id": "Artillery-Sidewinder-X4-Pro"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X4 Pro 0.4 nozzle",
+                "path": "machine/Artillery Sidewinder X4 Pro 0.4 nozzle.json",
+                "sha256": "41e19861ef6bccbf642e00114d75c11b46bb9cc9ca61f837c6a861cb75a0b8be"
+              },
+              "process": {
+                "name": "0.20mm Standard @Artillery Genius",
+                "path": "process/0.20mm Standard @Artillery Genius.json",
+                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                  },
+                  {
+                    "name": "0.20mm Standard @Artillery Genius",
+                    "path": "process/0.20mm Standard @Artillery Genius.json",
+                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA Basic",
+                "path": "filament/Artillery PLA Basic.json",
+                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "filament/Generic PLA @Artillery.json",
+                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                  },
+                  {
+                    "name": "Artillery PLA Basic",
+                    "path": "filament/Artillery PLA Basic.json",
+                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        },
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "Artillery/1.1.1.ini",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "model": {
+            "path": "Artillery/1.1.1.ini",
+            "section": "printer_model:X4 Pro",
+            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Artillery.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Artillery.json",
+          "machine": "Artillery Sidewinder X4 Pro 0.4 nozzle",
+          "process": "0.20mm Standard @Artillery Genius",
+          "filament": "Artillery PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

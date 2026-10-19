@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Tiertime",
+  "models": [
+    {
+      "id": "tiertime-tiertime-up300-hs",
+      "manufacturer": "Tiertime",
+      "model": "Tiertime UP300 HS",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Tiertime.json",
+            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+          },
+          "model": {
+            "path": "machine/Tiertime UP300 HS.json",
+            "sha256": "458ed7f2a565dfa8a7657f4d41362769b242514f3e93ee7e712cce1ff2c85042",
+            "manufacturer_model_id": "my_tiertime_up300_01"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "tiertime-tiertime-up310-pro",
+      "manufacturer": "Tiertime",
+      "model": "Tiertime UP310 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Tiertime.json",
+            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+          },
+          "model": {
+            "path": "machine/Tiertime UP310 Pro.json",
+            "sha256": "9c156f06a8e96fe480c5be916e5a42dccbb393a220981fbc28fe4ca462664ba7",
+            "manufacturer_model_id": "my_tiertime310_01"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "tiertime-tiertime-up400-pro",
+      "manufacturer": "Tiertime",
+      "model": "Tiertime UP400 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Tiertime.json",
+            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+          },
+          "model": {
+            "path": "machine/Tiertime UP400 Pro.json",
+            "sha256": "8c0c293a6176c9907b2284e7bf464b35cfdb410b1ba26d4b60f75afef549e653",
+            "manufacturer_model_id": "my_tiertime_up400_01"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "tiertime-tiertime-up600-hs",
+      "manufacturer": "Tiertime",
+      "model": "Tiertime UP600 HS",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Tiertime.json",
+            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+          },
+          "model": {
+            "path": "machine/Tiertime UP600 HS.json",
+            "sha256": "9f3d2e0659433e93064a963d05a2d55d21f51219b17f4ba63461fe88057e9a2d",
+            "manufacturer_model_id": "my_tiertime_up600_01"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

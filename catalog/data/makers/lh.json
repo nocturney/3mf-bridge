@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "manufacturer": "LH",
+  "models": [
+    {
+      "id": "lh-lh-stinger",
+      "manufacturer": "LH",
+      "model": "LH Stinger",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/LH.json",
+            "sha256": "08e5ddc59fba156ed2ebc4126cfd8001da3c3fb5e0429e6ae9e434305d5826b3"
+          },
+          "model": {
+            "path": "machine/LH Stinger.json",
+            "sha256": "6ee12e5ff044e1bec6364df441a6fcd1f11b8d4742ccf94a788b16618efe9c05",
+            "manufacturer_model_id": "LHS_M_base"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "LH Stinger 0.4 nozzle",
+                "path": "machine/LH Stinger 0.4 nozzle.json",
+                "sha256": "ba150318e0aac7e81fea201b04be2b717d95eca9e504118456697878471c8367"
+              },
+              "process": {
+                "name": "0.20mm Daily @LH Stinger",
+                "path": "process/0.20mm Daily @LH Stinger.json",
+                "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c047c0b6371467baa9dbc8985be587f3c856e38971cb4ce69305b3dd91c22549"
+                  },
+                  {
+                    "name": "fdm_process_lh_common",
+                    "path": "process/fdm_process_lh_common.json",
+                    "sha256": "aacbf4da487d9d8ba5ad00c8ae854e23f0e0eab589b59c686bb5cb7e858bf699"
+                  },
+                  {
+                    "name": "0.20mm Daily @LH Stinger",
+                    "path": "process/0.20mm Daily @LH Stinger.json",
+                    "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "LHS PLA",
+                "path": "filament/LHS PLA.json",
+                "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fd2069739a4740c8e4b419502718894cfe71509338786c84b9537c4c8e5d9ab1"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6955301060f89c92412a208ff43ca8924525390ae05a1d18704862958408c4f2"
+                  },
+                  {
+                    "name": "LHS PLA",
+                    "path": "filament/LHS PLA.json",
+                    "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/LH.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/LH.json",
+          "machine": "LH Stinger 0.4 nozzle",
+          "process": "0.20mm Daily @LH Stinger",
+          "filament": "LHS PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "lh-lh-stinger-mmu",
+      "manufacturer": "LH",
+      "model": "LH Stinger MMU",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/LH.json",
+            "sha256": "08e5ddc59fba156ed2ebc4126cfd8001da3c3fb5e0429e6ae9e434305d5826b3"
+          },
+          "model": {
+            "path": "machine/LH Stinger MMU.json",
+            "sha256": "08648b26209f70357a07f6c52f0ea660091136b426b2929998bf2b23274b4f06",
+            "manufacturer_model_id": "LHS_M_mmu"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "LH Stinger MMU 0.4 nozzle",
+                "path": "machine/LH Stinger MMU 0.4 nozzle.json",
+                "sha256": "2beef52f368aa94d98c43df46e1169ed72c9be538cc3ee3a8b5a25edaad6ab5c"
+              },
+              "process": {
+                "name": "0.20mm Daily @LH Stinger",
+                "path": "process/0.20mm Daily @LH Stinger.json",
+                "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c047c0b6371467baa9dbc8985be587f3c856e38971cb4ce69305b3dd91c22549"
+                  },
+                  {
+                    "name": "fdm_process_lh_common",
+                    "path": "process/fdm_process_lh_common.json",
+                    "sha256": "aacbf4da487d9d8ba5ad00c8ae854e23f0e0eab589b59c686bb5cb7e858bf699"
+                  },
+                  {
+                    "name": "0.20mm Daily @LH Stinger",
+                    "path": "process/0.20mm Daily @LH Stinger.json",
+                    "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "LHS PLA",
+                "path": "filament/LHS PLA.json",
+                "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "fd2069739a4740c8e4b419502718894cfe71509338786c84b9537c4c8e5d9ab1"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6955301060f89c92412a208ff43ca8924525390ae05a1d18704862958408c4f2"
+                  },
+                  {
+                    "name": "LHS PLA",
+                    "path": "filament/LHS PLA.json",
+                    "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/LH.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/LH.json",
+          "machine": "LH Stinger MMU 0.4 nozzle",
+          "process": "0.20mm Daily @LH Stinger",
+          "filament": "LHS PLA"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

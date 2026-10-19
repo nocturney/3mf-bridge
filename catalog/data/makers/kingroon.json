@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Kingroon",
+  "models": [
+    {
+      "id": "kingroon-kingroon-klp1",
+      "manufacturer": "Kingroon",
+      "model": "Kingroon KLP1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Kingroon.json",
+            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+          },
+          "model": {
+            "path": "machine/Kingroon KLP1.json",
+            "sha256": "17c09f61633c0f5c3709de8417c633656b176e2405147f59297ed8c4c692d08c",
+            "manufacturer_model_id": "Kingroon KLP1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "kingroon-kingroon-kp3s-3-0",
+      "manufacturer": "Kingroon",
+      "model": "Kingroon KP3S 3.0",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Kingroon.json",
+            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+          },
+          "model": {
+            "path": "machine/Kingroon KP3S 3.0.json",
+            "sha256": "5c602fd9eb8c53f66626f4829a289e88d9a8410d90c15fd7779713606eb448f6",
+            "manufacturer_model_id": "Kingroon KP3S 3.0"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "kingroon-kingroon-kp3s-pro-s1",
+      "manufacturer": "Kingroon",
+      "model": "Kingroon KP3S PRO S1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Kingroon.json",
+            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+          },
+          "model": {
+            "path": "machine/Kingroon KP3S PRO S1.json",
+            "sha256": "a14b64ce83523c93b313a75aebffb8e629186bb6cf73b590b1bdb9df331f3006",
+            "manufacturer_model_id": "Kingroon-KP3S-PRO-S1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "kingroon-kingroon-kp3s-pro-v2",
+      "manufacturer": "Kingroon",
+      "model": "Kingroon KP3S PRO V2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Kingroon.json",
+            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+          },
+          "model": {
+            "path": "machine/Kingroon KP3S PRO V2.json",
+            "sha256": "db2f5d15afac35b068b1a481d2b3096fcbf02170edb41d0bce16a6ca208eb045",
+            "manufacturer_model_id": "Kingroon-KP3S-PRO-V2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "kingroon-kingroon-kp3s-v1",
+      "manufacturer": "Kingroon",
+      "model": "Kingroon KP3S V1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Kingroon.json",
+            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+          },
+          "model": {
+            "path": "machine/Kingroon KP3S V1.json",
+            "sha256": "77ae8d348e075fe220a94fcc9ae646cdbc0a7a50a7c9aaf109688ed3226a521e",
+            "manufacturer_model_id": "Kingroon KP3S V1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "manufacturer": "gCreate",
+  "models": [
+    {
+      "id": "gcreate-gmax-1-5xt-plus",
+      "manufacturer": "gCreate",
+      "model": "gMax 1.5XT Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "gCreate/2.1.0.ini",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "model": {
+            "path": "gCreate/2.1.0.ini",
+            "section": "printer_model:GMAX15P",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.8",
+            "1"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "gcreate-gmax-2",
+      "manufacturer": "gCreate",
+      "model": "gMax 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "gCreate/2.1.0.ini",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "model": {
+            "path": "gCreate/2.1.0.ini",
+            "section": "printer_model:GMAX2",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.8",
+            "1"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "gcreate-gmax-2-dual-2in1",
+      "manufacturer": "gCreate",
+      "model": "gMax 2 Dual 2in1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "gCreate/2.1.0.ini",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "model": {
+            "path": "gCreate/2.1.0.ini",
+            "section": "printer_model:GMAX2DUAL2IN1",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "gcreate-gmax-2-dual-chimera",
+      "manufacturer": "gCreate",
+      "model": "gMax 2 Dual Chimera",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "gCreate/2.1.0.ini",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "model": {
+            "path": "gCreate/2.1.0.ini",
+            "section": "printer_model:GMAX2DUAL",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "gcreate-gmax-2-pro",
+      "manufacturer": "gCreate",
+      "model": "gMax 2 Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "gCreate/2.1.0.ini",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "model": {
+            "path": "gCreate/2.1.0.ini",
+            "section": "printer_model:GMAX2PRO",
+            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.8",
+            "1"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

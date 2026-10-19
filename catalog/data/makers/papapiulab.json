@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "manufacturer": "PapapiuLab",
+  "models": [
+    {
+      "id": "papapiulab-papapiu-n1s",
+      "manufacturer": "PapapiuLab",
+      "model": "Papapiu N1S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "PapapiuLab/1.1.0.ini",
+            "sha256": "5acd11863e98d6e56355ce49496c0186af95461e8fa0c3aceda39d909b9aa1a2"
+          },
+          "model": {
+            "path": "PapapiuLab/1.1.0.ini",
+            "section": "printer_model:Papapiu_N1S",
+            "sha256": "5acd11863e98d6e56355ce49496c0186af95461e8fa0c3aceda39d909b9aa1a2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

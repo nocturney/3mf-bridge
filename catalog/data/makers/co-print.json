@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Co Print",
+  "models": [
+    {
+      "id": "co-print-co-print-chromaset",
+      "manufacturer": "Co Print",
+      "model": "Co Print ChromaSet",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Co Print.json",
+            "sha256": "16e3275944ba9616ff2f026f209e50840271be6d0e056bf260a3c2b31c40657e"
+          },
+          "model": {
+            "path": "machine/Co Print ChromaSet.json",
+            "sha256": "ecbf701d1fab635224b5cbcf9bed58be0725818a40ffdb91112f603f0c23f5e8",
+            "manufacturer_model_id": "Co_Print_ChromaSet"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Co Print ChromaSet 0.4 nozzle",
+                "path": "machine/Co Print ChromaSet 0.4 nozzle.json",
+                "sha256": "362c6b42efd9cb8342584848dfeb99f1f12edfbc8f3ea3f62c945b2da2e1c9af"
+              },
+              "process": {
+                "name": "0.2mm Standard @Co Print ChromaSet 0.4",
+                "path": "process/0.2mm Standard @Co Print ChromaSet 0.4.json",
+                "sha256": "cf13f20fb4567f5ed23d8d3b459822abbf2624f93ef3817d392b30c6b12be62b",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "b58b8a6f80cc95de4781ec258fa218c0773529c704342340ba792ba449c91416"
+                  },
+                  {
+                    "name": "fdm_process_coprint_common",
+                    "path": "process/fdm_process_coprint_common.json",
+                    "sha256": "fe79801877892365fba964ecc9e7e4b13fa7457a193c7feaec17db3478b51885"
+                  },
+                  {
+                    "name": "0.2mm Standard @Co Print ChromaSet 0.4",
+                    "path": "process/0.2mm Standard @Co Print ChromaSet 0.4.json",
+                    "sha256": "cf13f20fb4567f5ed23d8d3b459822abbf2624f93ef3817d392b30c6b12be62b"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @CoPrint",
+                "path": "filament/Generic PLA @CoPrint.json",
+                "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "10135ec5eb6c21e476fd5269f753ced96a462ce2415846c66b17e9a6a87d9df6"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "af6eaefa5bb7f712cdc0276cff3d4035cd1f2fbe4c8137e24509911653415b56"
+                  },
+                  {
+                    "name": "Generic PLA @CoPrint",
+                    "path": "filament/Generic PLA @CoPrint.json",
+                    "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Co Print ChromaSet 0.4 nozzle - Ender-3 V3",
+                "path": "machine/Co Print ChromaSet 0.4 nozzle - Ender-3 V3.json",
+                "sha256": "b59582772cc4196dc4f0c31b4c80678ca23b21340583e49a23ef453034bdc212"
+              },
+              "process": {
+                "name": "0.2mm Standard @Co Print ChromaSet 0.4",
+                "path": "process/0.2mm Standard @Co Print ChromaSet 0.4.json",
+                "sha256": "cf13f20fb4567f5ed23d8d3b459822abbf2624f93ef3817d392b30c6b12be62b",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "b58b8a6f80cc95de4781ec258fa218c0773529c704342340ba792ba449c91416"
+                  },
+                  {
+                    "name": "fdm_process_coprint_common",
+                    "path": "process/fdm_process_coprint_common.json",
+                    "sha256": "fe79801877892365fba964ecc9e7e4b13fa7457a193c7feaec17db3478b51885"
+                  },
+                  {
+                    "name": "0.2mm Standard @Co Print ChromaSet 0.4",
+                    "path": "process/0.2mm Standard @Co Print ChromaSet 0.4.json",
+                    "sha256": "cf13f20fb4567f5ed23d8d3b459822abbf2624f93ef3817d392b30c6b12be62b"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @CoPrint",
+                "path": "filament/Generic PLA @CoPrint.json",
+                "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "10135ec5eb6c21e476fd5269f753ced96a462ce2415846c66b17e9a6a87d9df6"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "af6eaefa5bb7f712cdc0276cff3d4035cd1f2fbe4c8137e24509911653415b56"
+                  },
+                  {
+                    "name": "Generic PLA @CoPrint",
+                    "path": "filament/Generic PLA @CoPrint.json",
+                    "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Co Print ChromaSet 0.4 nozzle - Ender-3 V3 Plus",
+                "path": "machine/Co Print ChromaSet 0.4 nozzle - Ender-3 V3 Plus.json",
+                "sha256": "ad27886d25abc94997c9e397077ab4d0af60b2bde6dcff347a4aeccb754c3ae6"
+              },
+              "process": {
+                "name": "0.2mm Standard @Co Print ChromaSet 0.4",
+                "path": "process/0.2mm Standard @Co Print ChromaSet 0.4.json",
+                "sha256": "cf13f20fb4567f5ed23d8d3b459822abbf2624f93ef3817d392b30c6b12be62b",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "b58b8a6f80cc95de4781ec258fa218c0773529c704342340ba792ba449c91416"
+                  },
+                  {
+                    "name": "fdm_process_coprint_common",
+                    "path": "process/fdm_process_coprint_common.json",
+                    "sha256": "fe79801877892365fba964ecc9e7e4b13fa7457a193c7feaec17db3478b51885"
+                  },
+                  {
+                    "name": "0.2mm Standard @Co Print ChromaSet 0.4",
+                    "path": "process/0.2mm Standard @Co Print ChromaSet 0.4.json",
+                    "sha256": "cf13f20fb4567f5ed23d8d3b459822abbf2624f93ef3817d392b30c6b12be62b"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @CoPrint",
+                "path": "filament/Generic PLA @CoPrint.json",
+                "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "10135ec5eb6c21e476fd5269f753ced96a462ce2415846c66b17e9a6a87d9df6"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "af6eaefa5bb7f712cdc0276cff3d4035cd1f2fbe4c8137e24509911653415b56"
+                  },
+                  {
+                    "name": "Generic PLA @CoPrint",
+                    "path": "filament/Generic PLA @CoPrint.json",
+                    "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Co Print ChromaSet 0.4 nozzle fast",
+                "path": "machine/Co Print ChromaSet 0.4 nozzle fast.json",
+                "sha256": "6ab4f1a84d93151e95afab1b460672554e2f97109ae08339d6813e293520d94c"
+              },
+              "process": {
+                "name": "0.2mm Fast @Co Print ChromaSet 0.4",
+                "path": "process/0.2mm Fast @Co Print ChromaSet 0.4.json",
+                "sha256": "a524372ad891a7dd761cc31d8bfbeb6853a1718acd76d31c3630dae28abf50e3",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "b58b8a6f80cc95de4781ec258fa218c0773529c704342340ba792ba449c91416"
+                  },
+                  {
+                    "name": "fdm_process_coprint_common",
+                    "path": "process/fdm_process_coprint_common.json",
+                    "sha256": "fe79801877892365fba964ecc9e7e4b13fa7457a193c7feaec17db3478b51885"
+                  },
+                  {
+                    "name": "0.2mm Fast @Co Print ChromaSet 0.4",
+                    "path": "process/0.2mm Fast @Co Print ChromaSet 0.4.json",
+                    "sha256": "a524372ad891a7dd761cc31d8bfbeb6853a1718acd76d31c3630dae28abf50e3"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @CoPrint",
+                "path": "filament/Generic PLA @CoPrint.json",
+                "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "10135ec5eb6c21e476fd5269f753ced96a462ce2415846c66b17e9a6a87d9df6"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "af6eaefa5bb7f712cdc0276cff3d4035cd1f2fbe4c8137e24509911653415b56"
+                  },
+                  {
+                    "name": "Generic PLA @CoPrint",
+                    "path": "filament/Generic PLA @CoPrint.json",
+                    "sha256": "12f6b6ebf94f5ac55b344c069f9a3fd1e6e648d03c42f3be6e203c2256568c55"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Co Print.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Co Print.json",
+          "machine": "Co Print ChromaSet 0.4 nozzle",
+          "process": "0.2mm Standard @Co Print ChromaSet 0.4",
+          "filament": "Generic PLA @CoPrint"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

@@ -1,0 +1,936 @@
+{
+  "schema_version": 1,
+  "manufacturer": "WonderMaker",
+  "models": [
+    {
+      "id": "wondermaker-wondermaker-zr",
+      "manufacturer": "WonderMaker",
+      "model": "WonderMaker ZR",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/WonderMaker.json",
+            "sha256": "724f3f46c5397bf4d15f47926b1885479a888b6b90b81853bd4391f6bc691bf2"
+          },
+          "model": {
+            "path": "machine/WonderMaker ZR.json",
+            "sha256": "0abba63c6ffa31cc436754642c5b909b01b805be290abd6fce7979eb966f8a6b",
+            "manufacturer_model_id": "WonderMaker ZR"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "WonderMaker ZR 0.2 nozzle",
+                "path": "machine/WonderMaker ZR 0.2 nozzle.json",
+                "sha256": "ca5b55d187a36b30e4fc012499eb84dc2b94d336a7240bfdbba9e3c9de5604b1"
+              },
+              "process": {
+                "name": "0.10mm Standard @WonderMaker ZR 0.2 nozzle",
+                "path": "process/0.10mm Standard @WonderMaker ZR 0.2 nozzle.json",
+                "sha256": "d3634197b90c42f04e1144487eabbbfec56cecf97fe11751f1a82fa2f0747420",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.10_nozzle_0.2",
+                    "path": "process/fdm_process_wm_0.10_nozzle_0.2.json",
+                    "sha256": "89797871362d73b141796f979e74f5e16db7f0823caf982e44cdad670e2f7faf"
+                  },
+                  {
+                    "name": "0.10mm Standard @WonderMaker ZR 0.2 nozzle",
+                    "path": "process/0.10mm Standard @WonderMaker ZR 0.2 nozzle.json",
+                    "sha256": "d3634197b90c42f04e1144487eabbbfec56cecf97fe11751f1a82fa2f0747420"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "WonderMaker ZR 0.4 nozzle",
+                "path": "machine/WonderMaker ZR 0.4 nozzle.json",
+                "sha256": "5f1a5cbde033bb8503bab2bc23a9070f5416104e62fbf97dbbb1e4a9443c74f5"
+              },
+              "process": {
+                "name": "0.20mm Standard @WonderMaker ZR",
+                "path": "process/0.20mm Standard @WonderMaker ZR.json",
+                "sha256": "26050437d90b6603381b4899eb20f26cd0bfa7ab60f10e27ad5414f18e0a1ec3",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.20",
+                    "path": "process/fdm_process_wm_0.20.json",
+                    "sha256": "7da639ea56be51354573e6e945911f4444d584cb30ebef01553603fc4c498c3b"
+                  },
+                  {
+                    "name": "0.20mm Standard @WonderMaker ZR",
+                    "path": "process/0.20mm Standard @WonderMaker ZR.json",
+                    "sha256": "26050437d90b6603381b4899eb20f26cd0bfa7ab60f10e27ad5414f18e0a1ec3"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "WonderMaker ZR 0.6 nozzle",
+                "path": "machine/WonderMaker ZR 0.6 nozzle.json",
+                "sha256": "cc2f8de4ff89ebd7beef75ad3f46ce294c09f2da9344ca606e884d6bcd45fb4b"
+              },
+              "process": {
+                "name": "0.30mm Standard @WonderMaker ZR 0.6 nozzle",
+                "path": "process/0.30mm Standard @WonderMaker ZR 0.6 nozzle.json",
+                "sha256": "ddaddde0e89e14b8cd3c7ee46a7530112631b32135516dacaafe10627f65349e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.30_nozzle_0.6",
+                    "path": "process/fdm_process_wm_0.30_nozzle_0.6.json",
+                    "sha256": "897050046b886c31b154ee11660fb128b668f11e3e599aa7e550be9b235aad95"
+                  },
+                  {
+                    "name": "0.30mm Standard @WonderMaker ZR 0.6 nozzle",
+                    "path": "process/0.30mm Standard @WonderMaker ZR 0.6 nozzle.json",
+                    "sha256": "ddaddde0e89e14b8cd3c7ee46a7530112631b32135516dacaafe10627f65349e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "WonderMaker ZR 0.8 nozzle",
+                "path": "machine/WonderMaker ZR 0.8 nozzle.json",
+                "sha256": "ad7cc6ea89e6481e6624cd87e5c512f5760dbb274ad4110c977e2468fc24bb50"
+              },
+              "process": {
+                "name": "0.40mm Standard @WonderMaker ZR 0.8 nozzle",
+                "path": "process/0.40mm Standard @WonderMaker ZR 0.8 nozzle.json",
+                "sha256": "2710ed07112d480e64298bee100130e62d9e0b8899dfd62ed8ae19f731f3301c",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.40_nozzle_0.8",
+                    "path": "process/fdm_process_wm_0.40_nozzle_0.8.json",
+                    "sha256": "553e70e265db1107d9ad1d56ef8c5115cdbf35fa15606a266f22735b4354be7f"
+                  },
+                  {
+                    "name": "0.40mm Standard @WonderMaker ZR 0.8 nozzle",
+                    "path": "process/0.40mm Standard @WonderMaker ZR 0.8 nozzle.json",
+                    "sha256": "2710ed07112d480e64298bee100130e62d9e0b8899dfd62ed8ae19f731f3301c"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/WonderMaker.json",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR 0.2 nozzle",
+          "process": "0.10mm Standard @WonderMaker ZR 0.2 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR 0.4 nozzle",
+          "process": "0.20mm Standard @WonderMaker ZR",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR 0.6 nozzle",
+          "process": "0.30mm Standard @WonderMaker ZR 0.6 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR 0.8 nozzle",
+          "process": "0.40mm Standard @WonderMaker ZR 0.8 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "wondermaker-wondermaker-zr-ultra",
+      "manufacturer": "WonderMaker",
+      "model": "WonderMaker ZR Ultra",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/WonderMaker.json",
+            "sha256": "724f3f46c5397bf4d15f47926b1885479a888b6b90b81853bd4391f6bc691bf2"
+          },
+          "model": {
+            "path": "machine/WonderMaker ZR Ultra.json",
+            "sha256": "a4c765265a6cdfa636d5ed0d17e1c9389efd2535e00b553befbf3c9853d44a9c",
+            "manufacturer_model_id": "WonderMaker ZR Ultra"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "WonderMaker ZR Ultra 0.2 nozzle",
+                "path": "machine/WonderMaker ZR Ultra 0.2 nozzle.json",
+                "sha256": "c2ea7d55b4c5efb8d9b5a30cf639a46749500259b19c1bb94d6556d670f8a2f2"
+              },
+              "process": {
+                "name": "0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle",
+                "path": "process/0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle.json",
+                "sha256": "21b5ea39aac7f25168200bd580ac83871dfc015a00911c594e97a383235b46f4",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.10_nozzle_0.2",
+                    "path": "process/fdm_process_wm_0.10_nozzle_0.2.json",
+                    "sha256": "89797871362d73b141796f979e74f5e16db7f0823caf982e44cdad670e2f7faf"
+                  },
+                  {
+                    "name": "0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle",
+                    "path": "process/0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle.json",
+                    "sha256": "21b5ea39aac7f25168200bd580ac83871dfc015a00911c594e97a383235b46f4"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "WonderMaker ZR Ultra 0.4 nozzle",
+                "path": "machine/WonderMaker ZR Ultra 0.4 nozzle.json",
+                "sha256": "bff43567ff5b7e4998d3836aeb0bc8cc39f4900ecd4e39645611a43b14a58b8f"
+              },
+              "process": {
+                "name": "0.20mm Standard @WonderMaker ZR Ultra",
+                "path": "process/0.20mm Standard @WonderMaker ZR Ultra.json",
+                "sha256": "eadbae47db50f6a5158e1490490a2b77f1945577fe406155b023d7546d8e1571",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.20",
+                    "path": "process/fdm_process_wm_0.20.json",
+                    "sha256": "7da639ea56be51354573e6e945911f4444d584cb30ebef01553603fc4c498c3b"
+                  },
+                  {
+                    "name": "0.20mm Standard @WonderMaker ZR Ultra",
+                    "path": "process/0.20mm Standard @WonderMaker ZR Ultra.json",
+                    "sha256": "eadbae47db50f6a5158e1490490a2b77f1945577fe406155b023d7546d8e1571"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "WonderMaker ZR Ultra 0.6 nozzle",
+                "path": "machine/WonderMaker ZR Ultra 0.6 nozzle.json",
+                "sha256": "ef330cab0b6e702750b1b0df0a453f41b8b02885e9c1b12b1a4801e0248ebd3b"
+              },
+              "process": {
+                "name": "0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle",
+                "path": "process/0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle.json",
+                "sha256": "8523479711206ccd14fbe933d5d8309358c3befc0f76ffe28b6b5d1855d5a5d5",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.30_nozzle_0.6",
+                    "path": "process/fdm_process_wm_0.30_nozzle_0.6.json",
+                    "sha256": "897050046b886c31b154ee11660fb128b668f11e3e599aa7e550be9b235aad95"
+                  },
+                  {
+                    "name": "0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle",
+                    "path": "process/0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle.json",
+                    "sha256": "8523479711206ccd14fbe933d5d8309358c3befc0f76ffe28b6b5d1855d5a5d5"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "WonderMaker ZR Ultra 0.8 nozzle",
+                "path": "machine/WonderMaker ZR Ultra 0.8 nozzle.json",
+                "sha256": "f33264afe8e0c9fd555aeb88d7be49d59e63037fe39c5f8acc38f1d1fc6aead8"
+              },
+              "process": {
+                "name": "0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle",
+                "path": "process/0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle.json",
+                "sha256": "a8a79a099a14dc54106e3eff046a5dfcb5d1aebd1152e877a87aa40e6ca31f17",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.40_nozzle_0.8",
+                    "path": "process/fdm_process_wm_0.40_nozzle_0.8.json",
+                    "sha256": "553e70e265db1107d9ad1d56ef8c5115cdbf35fa15606a266f22735b4354be7f"
+                  },
+                  {
+                    "name": "0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle",
+                    "path": "process/0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle.json",
+                    "sha256": "a8a79a099a14dc54106e3eff046a5dfcb5d1aebd1152e877a87aa40e6ca31f17"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/WonderMaker.json",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra 0.2 nozzle",
+          "process": "0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra 0.4 nozzle",
+          "process": "0.20mm Standard @WonderMaker ZR Ultra",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra 0.6 nozzle",
+          "process": "0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra 0.8 nozzle",
+          "process": "0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "wondermaker-wondermaker-zr-ultra-s",
+      "manufacturer": "WonderMaker",
+      "model": "WonderMaker ZR Ultra S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/WonderMaker.json",
+            "sha256": "724f3f46c5397bf4d15f47926b1885479a888b6b90b81853bd4391f6bc691bf2"
+          },
+          "model": {
+            "path": "machine/WonderMaker ZR Ultra S.json",
+            "sha256": "6bf875f13d1079dce2af925fe9afb4367e394807876ea7a25dd34d1800ffe471",
+            "manufacturer_model_id": "WonderMaker ZR Ultra S"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "WonderMaker ZR Ultra S 0.2 nozzle",
+                "path": "machine/WonderMaker ZR Ultra S 0.2 nozzle.json",
+                "sha256": "e54d00b9cffcb8dd47c38104f4fcd47b21e460ea8486283a186436d4f68ae702"
+              },
+              "process": {
+                "name": "0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle",
+                "path": "process/0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle.json",
+                "sha256": "21b5ea39aac7f25168200bd580ac83871dfc015a00911c594e97a383235b46f4",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.10_nozzle_0.2",
+                    "path": "process/fdm_process_wm_0.10_nozzle_0.2.json",
+                    "sha256": "89797871362d73b141796f979e74f5e16db7f0823caf982e44cdad670e2f7faf"
+                  },
+                  {
+                    "name": "0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle",
+                    "path": "process/0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle.json",
+                    "sha256": "21b5ea39aac7f25168200bd580ac83871dfc015a00911c594e97a383235b46f4"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "WonderMaker ZR Ultra S 0.4 nozzle",
+                "path": "machine/WonderMaker ZR Ultra S 0.4 nozzle.json",
+                "sha256": "e8f5257c5b4c5d18c1abb2b7ca2fe342dad38a07fa907dbc4fb7d40ea2b1dac1"
+              },
+              "process": {
+                "name": "0.20mm Standard @WonderMaker ZR Ultra",
+                "path": "process/0.20mm Standard @WonderMaker ZR Ultra.json",
+                "sha256": "eadbae47db50f6a5158e1490490a2b77f1945577fe406155b023d7546d8e1571",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.20",
+                    "path": "process/fdm_process_wm_0.20.json",
+                    "sha256": "7da639ea56be51354573e6e945911f4444d584cb30ebef01553603fc4c498c3b"
+                  },
+                  {
+                    "name": "0.20mm Standard @WonderMaker ZR Ultra",
+                    "path": "process/0.20mm Standard @WonderMaker ZR Ultra.json",
+                    "sha256": "eadbae47db50f6a5158e1490490a2b77f1945577fe406155b023d7546d8e1571"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "WonderMaker ZR Ultra S 0.6 nozzle",
+                "path": "machine/WonderMaker ZR Ultra S 0.6 nozzle.json",
+                "sha256": "4d3e35af5379478e0679a01f89e47aa9a8fea6c2b32142e2db7129202ec4f1e8"
+              },
+              "process": {
+                "name": "0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle",
+                "path": "process/0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle.json",
+                "sha256": "8523479711206ccd14fbe933d5d8309358c3befc0f76ffe28b6b5d1855d5a5d5",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.30_nozzle_0.6",
+                    "path": "process/fdm_process_wm_0.30_nozzle_0.6.json",
+                    "sha256": "897050046b886c31b154ee11660fb128b668f11e3e599aa7e550be9b235aad95"
+                  },
+                  {
+                    "name": "0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle",
+                    "path": "process/0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle.json",
+                    "sha256": "8523479711206ccd14fbe933d5d8309358c3befc0f76ffe28b6b5d1855d5a5d5"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "WonderMaker ZR Ultra S 0.8 nozzle",
+                "path": "machine/WonderMaker ZR Ultra S 0.8 nozzle.json",
+                "sha256": "edf3b03d769145814e167233a6b5d712831a1ed6261837a46caf959e236ab6fb"
+              },
+              "process": {
+                "name": "0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle",
+                "path": "process/0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle.json",
+                "sha256": "a8a79a099a14dc54106e3eff046a5dfcb5d1aebd1152e877a87aa40e6ca31f17",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "c3d0b5d9c65965ab3335e9d2c61e5ab3320f9efdbfb729a3afdc441d3a1c34fd"
+                  },
+                  {
+                    "name": "fdm_process_wm_common",
+                    "path": "process/fdm_process_wm_common.json",
+                    "sha256": "0ce0592d135eedc8927de9478b772820374b4f0f2ab1690415791122434cbd41"
+                  },
+                  {
+                    "name": "fdm_process_wm_0.40_nozzle_0.8",
+                    "path": "process/fdm_process_wm_0.40_nozzle_0.8.json",
+                    "sha256": "553e70e265db1107d9ad1d56ef8c5115cdbf35fa15606a266f22735b4354be7f"
+                  },
+                  {
+                    "name": "0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle",
+                    "path": "process/0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle.json",
+                    "sha256": "a8a79a099a14dc54106e3eff046a5dfcb5d1aebd1152e877a87aa40e6ca31f17"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "WonderMaker PLA Basic",
+                "path": "filament/WonderMaker PLA Basic.json",
+                "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "4d39ee8c94cd18e000925e345b0e39858efd76fa9965c87b2803e0995a62015e"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "6c595698806c5f9c2b124a234c783ea0a5e715d5fff6dec56c70c0112bf246d7"
+                  },
+                  {
+                    "name": "WonderMaker PLA Basic",
+                    "path": "filament/WonderMaker PLA Basic.json",
+                    "sha256": "2631a1dd6cf2ec12019b982cc8c57480fab46d7251236cff6c7180d60a9dba39"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/WonderMaker.json",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra S 0.2 nozzle",
+          "process": "0.10mm Standard @WonderMaker ZR Ultra 0.2 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra S 0.4 nozzle",
+          "process": "0.20mm Standard @WonderMaker ZR Ultra",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra S 0.6 nozzle",
+          "process": "0.30mm Standard @WonderMaker ZR Ultra 0.6 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/WonderMaker.json",
+          "machine": "WonderMaker ZR Ultra S 0.8 nozzle",
+          "process": "0.40mm Standard @WonderMaker ZR Ultra 0.8 nozzle",
+          "filament": "WonderMaker PLA Basic"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

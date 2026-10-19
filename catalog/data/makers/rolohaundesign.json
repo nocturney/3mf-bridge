@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "manufacturer": "RolohaunDesign",
+  "models": [
+    {
+      "id": "rolohaundesign-rolohaun-delta-flyer-refit",
+      "manufacturer": "RolohaunDesign",
+      "model": "Rolohaun Delta Flyer Refit",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/RolohaunDesign.json",
+            "sha256": "87b4e268ed24e95ee2c6c39541076be9f968a25f753c239f196a47840f23d9c6"
+          },
+          "model": {
+            "path": "machine/Rolohaun Delta Flyer Refit.json",
+            "sha256": "c0a307209affb20ec541bb432d3a555276600a651a5eb59f0ffaaa7e3048a1b7",
+            "manufacturer_model_id": "RDFR1_1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "rolohaundesign-rook-mk1-ldo",
+      "manufacturer": "RolohaunDesign",
+      "model": "Rook MK1 LDO",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/RolohaunDesign.json",
+            "sha256": "87b4e268ed24e95ee2c6c39541076be9f968a25f753c239f196a47840f23d9c6"
+          },
+          "model": {
+            "path": "machine/Rook MK1 LDO.json",
+            "sha256": "17868724f5e10e378188283247ef989565c9a8d23b5f09bb39fe8f1697588770",
+            "manufacturer_model_id": "RKMK1_1"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

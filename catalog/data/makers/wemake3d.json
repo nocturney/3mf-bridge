@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "manufacturer": "WEMAKE3D",
+  "models": [
+    {
+      "id": "wemake3d-wemake3d-phoenixprov1",
+      "manufacturer": "WEMAKE3D",
+      "model": "WEMAKE3D PhoenixProV1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/WEMAKE3D.json",
+            "sha256": "59a4a3ff1f1ac4cd334405aa26e3d7d8ae6fa93b043649e9913c5fea95573ce9"
+          },
+          "model": {
+            "path": "machine/WEMAKE3D PhoenixProV1.json",
+            "sha256": "c7f8e4b0f3aee79eba07f197a8a0954ab00da409c60fab9cca3eec8cc88c376e",
+            "manufacturer_model_id": "v1"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "wemake3d-wemake3d-tinybotv1",
+      "manufacturer": "WEMAKE3D",
+      "model": "WEMAKE3D TinyBotV1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/WEMAKE3D.json",
+            "sha256": "59a4a3ff1f1ac4cd334405aa26e3d7d8ae6fa93b043649e9913c5fea95573ce9"
+          },
+          "model": {
+            "path": "machine/WEMAKE3D TinyBotV1.json",
+            "sha256": "0550d47bcc3009dfa59ddbf016bda0850b7f19fc253c5721ba34d6d621e7c3d7",
+            "manufacturer_model_id": "v1"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

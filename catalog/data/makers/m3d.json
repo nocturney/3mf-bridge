@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "manufacturer": "M3D",
+  "models": [
+    {
+      "id": "m3d-m3d-enabler-d7500",
+      "manufacturer": "M3D",
+      "model": "M3D Enabler D7500",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/M3D.json",
+            "sha256": "08b1625bb2de2c7df05eb4203b560a8b9d093d28306d41fea099a18049d1113e"
+          },
+          "model": {
+            "path": "machine/M3D Enabler D7500.json",
+            "sha256": "236882afe631dac3d033cb418e1e6e17dc85b3b061ffd768b5190bc16a2ee6e3",
+            "manufacturer_model_id": "M3D_D7500"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "m3d-m3d-enabler-d8500",
+      "manufacturer": "M3D",
+      "model": "M3D Enabler D8500",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/M3D.json",
+            "sha256": "08b1625bb2de2c7df05eb4203b560a8b9d093d28306d41fea099a18049d1113e"
+          },
+          "model": {
+            "path": "machine/M3D Enabler D8500.json",
+            "sha256": "86f5da51319ae95d3ba0d0a581c566dc6e4387fb9f84525f7e788776f2955876",
+            "manufacturer_model_id": "M3D_D8500"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

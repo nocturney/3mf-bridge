@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Afinia",
+  "models": [
+    {
+      "id": "afinia-afinia-h-1-hs",
+      "manufacturer": "Afinia",
+      "model": "Afinia H+1(HS)",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Afinia.json",
+            "sha256": "2b001c0628b4e0ea6d4fd4f74c5ccbcacc79c03421b60aa677604afe3212317c"
+          },
+          "model": {
+            "path": "machine/Afinia H+1(HS).json",
+            "sha256": "a67b2c72477c6380338c71253b695b724048903484e7189ddbf7ec317834aab6",
+            "manufacturer_model_id": "my_afinia_h_1_hs_01"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

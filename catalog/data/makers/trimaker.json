@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Trimaker",
+  "models": [
+    {
+      "id": "trimaker-trimaker-cosmos-ii",
+      "manufacturer": "Trimaker",
+      "model": "Trimaker Cosmos II",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Trimaker/2.1.0.ini",
+            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+          },
+          "model": {
+            "path": "Trimaker/2.1.0.ini",
+            "section": "printer_model:Trimaker Cosmos II",
+            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trimaker-trimaker-nebula",
+      "manufacturer": "Trimaker",
+      "model": "Trimaker Nebula",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Trimaker/2.1.0.ini",
+            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+          },
+          "model": {
+            "path": "Trimaker/2.1.0.ini",
+            "section": "printer_model:Trimaker Nebula ",
+            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 0,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trimaker-trimaker-nebula-cloud",
+      "manufacturer": "Trimaker",
+      "model": "Trimaker Nebula Cloud",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Trimaker/2.1.0.ini",
+            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+          },
+          "model": {
+            "path": "Trimaker/2.1.0.ini",
+            "section": "printer_model:Trimaker Nebula Cloud",
+            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "INI dependency resolution not yet verified"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

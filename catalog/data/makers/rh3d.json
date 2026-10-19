@@ -1,0 +1,710 @@
+{
+  "schema_version": 1,
+  "manufacturer": "RH3D",
+  "models": [
+    {
+      "id": "rh3d-e3ng-v1-2s",
+      "manufacturer": "RH3D",
+      "model": "E3NG v1.2S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/RH3D.json",
+            "sha256": "c20bd71458fb5670b3df8fbac1b36ef76eec7671c94ad9e37245de2a525469ef"
+          },
+          "model": {
+            "path": "machine/E3NG v1.2S.json",
+            "sha256": "f98cae1a7c16cfa00e9dd42ea827c5b490457bed8f3a5da100e0dbd90e99c104",
+            "manufacturer_model_id": "E3NGV12S"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "E3NG v1.2S - 0.2 nozzle",
+                "path": "machine/E3NG v1.2S - 0.2 nozzle.json",
+                "sha256": "29a4eeaef4a14986eb7500cfb1ee5af66306bb72c42d64d0bed508bbba97b852"
+              },
+              "process": {
+                "name": "0.10mm Standard @E3NG v1.2S",
+                "path": "process/0.10mm Standard @E3NG v1.2S.json",
+                "sha256": "54c7df314383d0a4fbc7a44b0eed77322464238b6a790b538b2b0dd67e8427ba",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_E3NG v1.2S",
+                    "path": "process/process_Standard_E3NG v1.2S.json",
+                    "sha256": "ab5a5665a8c87a7c04c24ca1d078d21969fffafcb92979ac6e1177396f7f706d"
+                  },
+                  {
+                    "name": "0.10mm Standard @E3NG v1.2S",
+                    "path": "process/0.10mm Standard @E3NG v1.2S.json",
+                    "sha256": "54c7df314383d0a4fbc7a44b0eed77322464238b6a790b538b2b0dd67e8427ba"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @E3NG v1.2S",
+                "path": "filament/Generic PLA @E3NG v1.2S.json",
+                "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @E3NG v1.2S",
+                    "path": "filament/Generic PLA @E3NG v1.2S.json",
+                    "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "E3NG v1.2S - 0.3 nozzle",
+                "path": "machine/E3NG v1.2S - 0.3 nozzle.json",
+                "sha256": "def5386e17c2ac469145dfaf56ed1034b917306492a66537f07ec354d3f3bead"
+              },
+              "process": {
+                "name": "0.15mm Standard @E3NG v1.2S",
+                "path": "process/0.15mm Standard @E3NG v1.2S.json",
+                "sha256": "806f02c8aa06815099ca80377c8f28cf054ac82194979ae897ede297736609e6",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_E3NG v1.2S",
+                    "path": "process/process_Standard_E3NG v1.2S.json",
+                    "sha256": "ab5a5665a8c87a7c04c24ca1d078d21969fffafcb92979ac6e1177396f7f706d"
+                  },
+                  {
+                    "name": "0.15mm Standard @E3NG v1.2S",
+                    "path": "process/0.15mm Standard @E3NG v1.2S.json",
+                    "sha256": "806f02c8aa06815099ca80377c8f28cf054ac82194979ae897ede297736609e6"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @E3NG v1.2S",
+                "path": "filament/Generic PLA @E3NG v1.2S.json",
+                "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @E3NG v1.2S",
+                    "path": "filament/Generic PLA @E3NG v1.2S.json",
+                    "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "E3NG v1.2S - 0.4 nozzle",
+                "path": "machine/E3NG v1.2S - 0.4 nozzle.json",
+                "sha256": "54030b2a0bceb447f220f0f9c573ecb5266939400552f14174181bb0ebf63c51"
+              },
+              "process": {
+                "name": "0.20mm Standard @E3NG v1.2S",
+                "path": "process/0.20mm Standard @E3NG v1.2S.json",
+                "sha256": "22095162114ba21ee9f3de2499e982593a27338ca7351f127faa1a88dff5ab56",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_E3NG v1.2S",
+                    "path": "process/process_Standard_E3NG v1.2S.json",
+                    "sha256": "ab5a5665a8c87a7c04c24ca1d078d21969fffafcb92979ac6e1177396f7f706d"
+                  },
+                  {
+                    "name": "0.20mm Standard @E3NG v1.2S",
+                    "path": "process/0.20mm Standard @E3NG v1.2S.json",
+                    "sha256": "22095162114ba21ee9f3de2499e982593a27338ca7351f127faa1a88dff5ab56"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @E3NG v1.2S",
+                "path": "filament/Generic PLA @E3NG v1.2S.json",
+                "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @E3NG v1.2S",
+                    "path": "filament/Generic PLA @E3NG v1.2S.json",
+                    "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "E3NG v1.2S - 0.5 nozzle",
+                "path": "machine/E3NG v1.2S - 0.5 nozzle.json",
+                "sha256": "5edf09a8fe8f9ad05375b8f3efb0d4e70afb83e82fcb180f3895e39398442155"
+              },
+              "process": {
+                "name": "0.20mm Standard @E3NG v1.2S",
+                "path": "process/0.20mm Standard @E3NG v1.2S.json",
+                "sha256": "22095162114ba21ee9f3de2499e982593a27338ca7351f127faa1a88dff5ab56",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_E3NG v1.2S",
+                    "path": "process/process_Standard_E3NG v1.2S.json",
+                    "sha256": "ab5a5665a8c87a7c04c24ca1d078d21969fffafcb92979ac6e1177396f7f706d"
+                  },
+                  {
+                    "name": "0.20mm Standard @E3NG v1.2S",
+                    "path": "process/0.20mm Standard @E3NG v1.2S.json",
+                    "sha256": "22095162114ba21ee9f3de2499e982593a27338ca7351f127faa1a88dff5ab56"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @E3NG v1.2S",
+                "path": "filament/Generic PLA @E3NG v1.2S.json",
+                "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @E3NG v1.2S",
+                    "path": "filament/Generic PLA @E3NG v1.2S.json",
+                    "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "E3NG v1.2S - 0.6 nozzle",
+                "path": "machine/E3NG v1.2S - 0.6 nozzle.json",
+                "sha256": "1cd016b5dee71fc085f7c6311e69e4a74e28aa7443cd8cb484f3c6d9bdb88469"
+              },
+              "process": {
+                "name": "0.25mm Standard @E3NG v1.2S",
+                "path": "process/0.25mm Standard @E3NG v1.2S.json",
+                "sha256": "8e548373f1e9fbed41a2f49473deadd142e10e7614987f34d1ccf32e1fb07fa5",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_E3NG v1.2S",
+                    "path": "process/process_Standard_E3NG v1.2S.json",
+                    "sha256": "ab5a5665a8c87a7c04c24ca1d078d21969fffafcb92979ac6e1177396f7f706d"
+                  },
+                  {
+                    "name": "0.25mm Standard @E3NG v1.2S",
+                    "path": "process/0.25mm Standard @E3NG v1.2S.json",
+                    "sha256": "8e548373f1e9fbed41a2f49473deadd142e10e7614987f34d1ccf32e1fb07fa5"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @E3NG v1.2S",
+                "path": "filament/Generic PLA @E3NG v1.2S.json",
+                "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @E3NG v1.2S",
+                    "path": "filament/Generic PLA @E3NG v1.2S.json",
+                    "sha256": "8d116ff9b9ba605827562f75167b04f886d497fe5ab8f06b20ead5a6542f4976"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/RH3D.json",
+        "nozzles_mm": [
+          "0.2",
+          "0.3",
+          "0.4",
+          "0.5",
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "E3NG v1.2S - 0.2 nozzle",
+          "process": "0.10mm Standard @E3NG v1.2S",
+          "filament": "Generic PLA @E3NG v1.2S"
+        },
+        "0.3": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "E3NG v1.2S - 0.3 nozzle",
+          "process": "0.15mm Standard @E3NG v1.2S",
+          "filament": "Generic PLA @E3NG v1.2S"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "E3NG v1.2S - 0.4 nozzle",
+          "process": "0.20mm Standard @E3NG v1.2S",
+          "filament": "Generic PLA @E3NG v1.2S"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "E3NG v1.2S - 0.5 nozzle",
+          "process": "0.20mm Standard @E3NG v1.2S",
+          "filament": "Generic PLA @E3NG v1.2S"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "E3NG v1.2S - 0.6 nozzle",
+          "process": "0.25mm Standard @E3NG v1.2S",
+          "filament": "Generic PLA @E3NG v1.2S"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "rh3d-virtu-e3",
+      "manufacturer": "RH3D",
+      "model": "VIRTU E3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/RH3D.json",
+            "sha256": "c20bd71458fb5670b3df8fbac1b36ef76eec7671c94ad9e37245de2a525469ef"
+          },
+          "model": {
+            "path": "machine/VIRTU E3.json",
+            "sha256": "eb56d8ebddc72ea03afeb762a4f87ffd1ddc511b6ceaea28cbc4d22e42210eab",
+            "manufacturer_model_id": "VIRTUE3"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "VIRTU E3 - 0.2 nozzle",
+                "path": "machine/VIRTU E3 - 0.2 nozzle.json",
+                "sha256": "20384e0d2cd72ff8e6e684b44ca6c8ed8e0c1d883976c42e9b3315f02a39d6ed"
+              },
+              "process": {
+                "name": "0.10mm Standard @VIRTU E3",
+                "path": "process/0.10mm Standard @VIRTU E3.json",
+                "sha256": "376b698c25c83339b6e4b47481576dfa5046473e758777d838bf4a91f9d52388",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_VIRTU E3",
+                    "path": "process/process_Standard_VIRTU E3.json",
+                    "sha256": "8257d101f24f3e187a243fac02c1b2560a1c080b4f696cbe4187b5a0ae8bdac6"
+                  },
+                  {
+                    "name": "0.10mm Standard @VIRTU E3",
+                    "path": "process/0.10mm Standard @VIRTU E3.json",
+                    "sha256": "376b698c25c83339b6e4b47481576dfa5046473e758777d838bf4a91f9d52388"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @VIRTU E3",
+                "path": "filament/Generic PLA @VIRTU E3.json",
+                "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @VIRTU E3",
+                    "path": "filament/Generic PLA @VIRTU E3.json",
+                    "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "VIRTU E3 - 0.3 nozzle",
+                "path": "machine/VIRTU E3 - 0.3 nozzle.json",
+                "sha256": "2a64f0bf5c2612aaa44a1a755fdff1bde1738ba8b824bebd5d3b53f2a6756e40"
+              },
+              "process": {
+                "name": "0.15mm Standard @VIRTU E3",
+                "path": "process/0.15mm Standard @VIRTU E3.json",
+                "sha256": "1cc1236e8b0251e31f913a41a41225bf1d53ea8f4563b67e4f340bf19a3a56c1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_VIRTU E3",
+                    "path": "process/process_Standard_VIRTU E3.json",
+                    "sha256": "8257d101f24f3e187a243fac02c1b2560a1c080b4f696cbe4187b5a0ae8bdac6"
+                  },
+                  {
+                    "name": "0.15mm Standard @VIRTU E3",
+                    "path": "process/0.15mm Standard @VIRTU E3.json",
+                    "sha256": "1cc1236e8b0251e31f913a41a41225bf1d53ea8f4563b67e4f340bf19a3a56c1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @VIRTU E3",
+                "path": "filament/Generic PLA @VIRTU E3.json",
+                "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @VIRTU E3",
+                    "path": "filament/Generic PLA @VIRTU E3.json",
+                    "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VIRTU E3 - 0.4 nozzle",
+                "path": "machine/VIRTU E3 - 0.4 nozzle.json",
+                "sha256": "dbe4d068b62152aa0fbe30f3ec8f5bd7f0b1a9df6417092435baad3173a5e85d"
+              },
+              "process": {
+                "name": "0.20mm Standard @VIRTU E3",
+                "path": "process/0.20mm Standard @VIRTU E3.json",
+                "sha256": "5f970ea2b4083e9f9034cfef7bd0659421079af86445f96925f079a1252ea005",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_VIRTU E3",
+                    "path": "process/process_Standard_VIRTU E3.json",
+                    "sha256": "8257d101f24f3e187a243fac02c1b2560a1c080b4f696cbe4187b5a0ae8bdac6"
+                  },
+                  {
+                    "name": "0.20mm Standard @VIRTU E3",
+                    "path": "process/0.20mm Standard @VIRTU E3.json",
+                    "sha256": "5f970ea2b4083e9f9034cfef7bd0659421079af86445f96925f079a1252ea005"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @VIRTU E3",
+                "path": "filament/Generic PLA @VIRTU E3.json",
+                "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @VIRTU E3",
+                    "path": "filament/Generic PLA @VIRTU E3.json",
+                    "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "VIRTU E3 - 0.5 nozzle",
+                "path": "machine/VIRTU E3 - 0.5 nozzle.json",
+                "sha256": "d74fade6d0c8118a4ad86c025e1141e63522f8648fd38b6fc229392130bb0436"
+              },
+              "process": {
+                "name": "0.20mm Standard @VIRTU E3",
+                "path": "process/0.20mm Standard @VIRTU E3.json",
+                "sha256": "5f970ea2b4083e9f9034cfef7bd0659421079af86445f96925f079a1252ea005",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_VIRTU E3",
+                    "path": "process/process_Standard_VIRTU E3.json",
+                    "sha256": "8257d101f24f3e187a243fac02c1b2560a1c080b4f696cbe4187b5a0ae8bdac6"
+                  },
+                  {
+                    "name": "0.20mm Standard @VIRTU E3",
+                    "path": "process/0.20mm Standard @VIRTU E3.json",
+                    "sha256": "5f970ea2b4083e9f9034cfef7bd0659421079af86445f96925f079a1252ea005"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @VIRTU E3",
+                "path": "filament/Generic PLA @VIRTU E3.json",
+                "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @VIRTU E3",
+                    "path": "filament/Generic PLA @VIRTU E3.json",
+                    "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "VIRTU E3 - 0.6 nozzle",
+                "path": "machine/VIRTU E3 - 0.6 nozzle.json",
+                "sha256": "a5ac4206b376c3f44e6d1756dcb9d5e5d032ece970ef5bc3db7eb19855e325fc"
+              },
+              "process": {
+                "name": "0.25mm Standard @VIRTU E3",
+                "path": "process/0.25mm Standard @VIRTU E3.json",
+                "sha256": "42451c7a5140e0181a307af3fb7b39466f94604d1c086e31a337051f8ddc16ff",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "723f8cb7a6196de0abe54aa34794abe7b84a28a01126f5ca62a5b5798cfb8009"
+                  },
+                  {
+                    "name": "process_Standard_VIRTU E3",
+                    "path": "process/process_Standard_VIRTU E3.json",
+                    "sha256": "8257d101f24f3e187a243fac02c1b2560a1c080b4f696cbe4187b5a0ae8bdac6"
+                  },
+                  {
+                    "name": "0.25mm Standard @VIRTU E3",
+                    "path": "process/0.25mm Standard @VIRTU E3.json",
+                    "sha256": "42451c7a5140e0181a307af3fb7b39466f94604d1c086e31a337051f8ddc16ff"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @VIRTU E3",
+                "path": "filament/Generic PLA @VIRTU E3.json",
+                "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "b91cf10cb80e81ee54829bd151afe55eea14711bcbe210271cd7dec2d58977cc"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "cab1f4c1691887d1d79c5c7793867084ab2ba1084efb492bffb4f1b1e23e2eee"
+                  },
+                  {
+                    "name": "Generic PLA @VIRTU E3",
+                    "path": "filament/Generic PLA @VIRTU E3.json",
+                    "sha256": "e2b510454f12dbd0c895319fb10f93b89fd28fdff72f09a86d3e30a94e6780a1"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/RH3D.json",
+        "nozzles_mm": [
+          "0.2",
+          "0.3",
+          "0.4",
+          "0.5",
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "VIRTU E3 - 0.2 nozzle",
+          "process": "0.10mm Standard @VIRTU E3",
+          "filament": "Generic PLA @VIRTU E3"
+        },
+        "0.3": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "VIRTU E3 - 0.3 nozzle",
+          "process": "0.15mm Standard @VIRTU E3",
+          "filament": "Generic PLA @VIRTU E3"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "VIRTU E3 - 0.4 nozzle",
+          "process": "0.20mm Standard @VIRTU E3",
+          "filament": "Generic PLA @VIRTU E3"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "VIRTU E3 - 0.5 nozzle",
+          "process": "0.20mm Standard @VIRTU E3",
+          "filament": "Generic PLA @VIRTU E3"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/RH3D.json",
+          "machine": "VIRTU E3 - 0.6 nozzle",
+          "process": "0.25mm Standard @VIRTU E3",
+          "filament": "Generic PLA @VIRTU E3"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

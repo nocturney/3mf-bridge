@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Printcepts",
+  "models": [
+    {
+      "id": "printcepts-babybelt-pro",
+      "manufacturer": "Printcepts",
+      "model": "BabyBelt Pro",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "01.00.00.04",
+          "manifest": {
+            "path": "resources/profiles/Printcepts.json",
+            "sha256": "4ea84ec68bbb2af28382a903624107175b66f1428f8fad30408cefbfee642325"
+          },
+          "model": {
+            "path": "machine/BabyBelt Pro.json",
+            "sha256": "b3b110f55df67a09f2cd5b3b71cb9482dacaa1ce01f6edf666a3163796812fb8",
+            "manufacturer_model_id": "Printcepts_BabyBelt_Pro"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}
