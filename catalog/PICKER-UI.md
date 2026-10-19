@@ -1,5 +1,13 @@
 # Offline My Printers / Catalogue (Draft)
 
+## 0.4.0-beta.4.dev.2 — 19 Oct 2026 (development, not released)
+
+- Addressed the QA screenshot showing the source file drop target **cut off** in the lower portion of the panel: ensure the workspace scrolls vertically when fixed banner/progress/toolbar space leaves insufficient height, and preserve at least 205 px for the input queue.
+- Changed target printer selection from compact **rows to selectable cards**, arranged in two columns (one column on very narrow windows). Selection remains tied to the existing safe four converter adapter keys; catalogue-only printers cannot be converted.
+- Restored **visible text next to the top-bar icons** for My Printers, Settings and MakerWorld, with more compact desktop spacing and a two-row toolbar on narrow mobile windows; no duplicated settings or printer-management entry.
+- Node UI layout/semantics regression tests added. UI changes are limited to markup and CSS; no printer profiles, local data or converter behavior changed.
+- Review in Wails on Windows/macOS at 1100x830 and shorter window heights is still required before an approved pre-release.
+
 ## 0.4.0-beta.4.dev.1 — 19 Oct 2026 (development, not released)
 
 - First-run setup starts with **zero preselected printers**. Existing saved `my-printers.json` remains authoritative and is never reset.

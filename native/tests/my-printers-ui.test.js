@@ -116,3 +116,46 @@ test('exactly one My Printers button and one Settings button, with responsive ic
   assert.match(css,/\.topbar \.labeled-btn span\{display:none\}/);
   assert.match(doc,/id="emptyTargetNotice"/);
 });
+
+
+test('queue drop area can scroll instead of cropping in constrained window heights',()=>{
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  assert.match(css,/\/\* 0\.4\.0-beta\.4\.dev\.2[\s\S]*?responsive UI/);
+  const refinement=css.slice(css.indexOf('/* 0.4.0-beta.4.dev.2'));
+  assert.match(refinement,/\.workspace\{\s*[\s\S]*?overflow-y:auto;/);
+  assert.match(refinement,/\.left-column\{\s*[\s\S]*?grid-template-rows:minmax\(205px,1fr\) auto;/);
+  assert.match(refinement,/\.queue-panel\{\s*min-height:205px\}/);
+  assert.match(refinement,/@media\(max-height:750px\)\{\s*\.left-column\{grid-template-rows:minmax\(205px,auto\) auto\}/);
+  assert.match(refinement,/@media\(max-width:740px\) and \(max-height:750px\)/);
+});
+
+test('target printers are accessible two-column selectable cards with a narrow one-column fallback',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  const refinement=css.slice(css.indexOf('/* 0.4.0-beta.4.dev.2'));
+  assert.match(refinement,/\.target-list\{\s*display:grid;\s*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+  assert.match(refinement,/\.target-option:has\(input:checked\)/);
+  assert.match(refinement,/@media\(max-width:480px\)\{\s*\.target-list\{grid-template-columns:1fr\}/);
+  assert.equal((doc.match(/class="target-option"/g)||[]).length,4);
+  assert.equal((doc.match(/class="target-printer-icon" aria-hidden="true"/g)||[]).length,4);
+  for(const key of ['u1','c5','cc2','qidi']){
+    assert.match(doc,new RegExp('<input type="checkbox" value="'+key+'"'));
+    assert.match(doc,new RegExp('data-printer-summary="'+key+'"'));
+  }
+});
+
+test('header always shows labels for printers, settings and MakerWorld, even below 1160px',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  const refinement=css.slice(css.indexOf('/* 0.4.0-beta.4.dev.2'));
+  for(const id of ['myPrintersBtn','settingsBtn','integrationsBtn']){
+    const hit=doc.match(new RegExp('<button id="'+id+'"[^>]*>([\\s\\S]*?)</button>'));
+    assert.ok(hit,id);
+    assert.match(hit[1],/<span[^>]*>[^<]+<\/span>/);
+  }
+  assert.match(refinement,/\.topbar \.labeled-btn span\{\s*display:inline!important;/);
+  assert.match(refinement,/@media\(max-width:740px\)[\s\S]*?\.topbar\{flex-wrap:wrap;/);
+  assert.match(refinement,/@media\(max-width:380px\)[\s\S]*?\.topbar \.labeled-btn span\{font-size:9\.5px\}/);
+  assert.equal((doc.match(/id="myPrintersBtn"/g)||[]).length,1);
+  assert.equal((doc.match(/id="settingsBtn"/g)||[]).length,1);
+});
