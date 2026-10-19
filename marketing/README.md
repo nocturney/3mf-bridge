@@ -26,7 +26,7 @@ This kit documents **pre-release** communications. It is not a download/release 
 - SliceBridge is a local-first **3MF project bridge**, not another slicer.
 - The project currently focuses on Bambu Studio 3MF to **supported** target slicers/printers; the feature list and printer catalogue are not claims of blanket conversion support.
 - The source 3MF is intended to be preserved. Formal release verification remains pending; always review the result in the destination slicer before printing.
-- Open-source direction is chosen, but GPL/rights audit is still in [review PR #12](https://github.com/nocturney/slicebridge/pull/12); do not imply the released binary is already available.
+- The project-owned code is declared **GPL-3.0-only** after [PR #12](https://github.com/nocturney/slicebridge/pull/12) merged. Ownership, third-party rights, and binary distribution checks still remain **HOLD**; do not imply a released binary is available.
 - **There is no approved public download.** Never use “Download now,” “supports every printer,” “one-click print,” “guaranteed compatibility,” or unverified browser support.
 - Do not use vendor logos/product imagery implying partnership or endorsement.
 
