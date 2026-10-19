@@ -37,3 +37,32 @@ jobs:
         run: python -m unittest discover -s catalog/tests -v
       - name: Validate JSON schema syntax
         run: python -c "import json; json.load(open('catalog/schema-v1.json',encoding='utf-8'))"
+
+  package:
+    name: Immutable metadata-only package
+    needs: registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact tested head
+        uses: actions/checkout@v4
+      - name: Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Generate checked metadata bundle and checksum
+        run: python catalog/tools/package.py --output catalog/build-output
+      - name: Verify downloadable ZIP checksum
+        run: |
+          cd catalog/build-output
+          sha256sum --check *.sha256
+      - name: Upload verified metadata-only bundle (not a product release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: slicebridge-catalog-metadata-${{ github.sha }}
+          path: |
+            catalog/build-output/*.zip
+            catalog/build-output/*.sha256
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0

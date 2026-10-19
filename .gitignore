@@ -4,3 +4,5 @@ out/
 *.log
 __pycache__/
 *.pyc
+catalog/build-output/
+catalog/package-smoke/

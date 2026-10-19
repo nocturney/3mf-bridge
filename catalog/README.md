@@ -28,7 +28,11 @@ because its source is official: it must pass compatibility and integrity gates.
 - schema-v1.json — published machine-readable registry format.
 - tools/build.py — Python stdlib source importer; rejects source revision drift.
 - tools/check.py — offline semantic and integrity validation.
-- tests/test_catalog.py and tests/test_prusa_ini.py — fixture, source-priority,
+- tools/attest_sources.py — checks every pinned profile path, file SHA and
+  Prusa INI section against the eight clean checked-out upstream repositories.
+- tools/package.py — creates a deterministic, SHA-256-verified metadata ZIP
+  with no upstream raw profiles, slicer executables or G-code.
+- tests/test_catalog.py, tests/test_package.py and tests/test_prusa_ini.py — fixture, source-priority,
   mixed-nozzle, inheritance and committed snapshot regression.
 
 ## Meaning of validation states
@@ -69,6 +73,8 @@ Python 3.11+, standard library; no slicer is invoked and nothing is printed.
     python catalog/tools/build.py --sources-root PATH_TO_CHECKOUTS
     python catalog/tools/check.py catalog
     python -m unittest discover -s catalog/tests -v
+    python catalog/tools/attest_sources.py --sources-root PATH_TO_CHECKOUTS
+    python catalog/tools/package.py --output catalog/build-output
 
 The parent folder needs pinned Git checkouts named:
 bambu, qidi, elegoo, snapmaker, flashforge, orca, prusa_official and prusa_community.
@@ -79,6 +85,11 @@ explicitly authorize an intentional new snapshot.
 
 Only catalogue-owned data/makers/*.json files are rewritten.
 There are no user profiles, conversion settings or UI files in this branch.
+After all OS-specific metadata integrity tests pass, GitHub Actions uploads
+one immutable, metadata-only ZIP and one SHA-256 checksum as a CI artifact.
+This is **not** a SliceBridge binary, a GitHub Release, an auto-update feed,
+or a statement that any newly indexed printer can already convert 3MF.
+The archive packaging script refuses to overwrite existing output.
 
 ## Source lineage and redistribution
 
