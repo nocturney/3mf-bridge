@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic 4Max Pro.json",
-            "sha256": "bba0135497403e02389d8d50fa5820e67c4fd66c044cd00e79916305700ac01a",
+            "sha256": "9b7ed307dae90cffe65388826f67b86b0ae22a789faac5dc3059355a9a7fb3c6",
             "manufacturer_model_id": "AC-4maxpro"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic 4Max Pro 2.json",
-            "sha256": "f035eda72864be68d393e59799158a83da2a4c0f46135f310c6db39a1e75717d",
+            "sha256": "c5df37377961e237f9fd5e48bd9220901d0ef10da050bd75e328198c6be62aaf",
             "manufacturer_model_id": "Anycubic-4Max-Pro-2"
           },
           "nozzles_mm": [
@@ -71,44 +71,56 @@
               "machine": {
                 "name": "Anycubic 4Max Pro 2 0.4 nozzle",
                 "path": "machine/Anycubic 4Max Pro 2 0.4 nozzle.json",
-                "sha256": "3ec9d462b535658c38e4716a9f9c1a6bf411ffccc6bf64dffb12c89ff19bff6f"
+                "sha256": "56b6de52c0e405cabad6aa502999b3c3ed19bba30c6d7df638a9227232a35db3",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic 4Max Pro 2 0.4 nozzle",
+                    "path": "machine/Anycubic 4Max Pro 2 0.4 nozzle.json",
+                    "sha256": "56b6de52c0e405cabad6aa502999b3c3ed19bba30c6d7df638a9227232a35db3"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic 4MaxPro2",
                 "path": "process/0.20mm Standard @Anycubic 4MaxPro2.json",
-                "sha256": "13cffc666e9efceb24f1f0f4cd607f4e09cbd2477fd0659ce3500f1fed72204f",
+                "sha256": "7c3b8845ba980217e318e8958e74f376d51f6da4aadceea28fbe39c16fd725b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic 4MaxPro2",
                     "path": "process/0.20mm Standard @Anycubic 4MaxPro2.json",
-                    "sha256": "13cffc666e9efceb24f1f0f4cd607f4e09cbd2477fd0659ce3500f1fed72204f"
+                    "sha256": "7c3b8845ba980217e318e8958e74f376d51f6da4aadceea28fbe39c16fd725b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -154,27 +166,105 @@
           "bundle_version": "2.1.1",
           "manifest": {
             "path": "Anycubic/2.1.1.ini",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "model": {
             "path": "Anycubic/2.1.1.ini",
             "section": "printer_model:4MAXPRO20",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anycubic 4Max Pro 2.0",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "printer:Anycubic 4Max Pro 2.0",
+                "inheritance": [
+                  {
+                    "name": "Anycubic 4Max Pro 2.0",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:Anycubic 4Max Pro 2.0"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @4Max Pro 2.0",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "print:0.20mm Quality @4Max Pro 2.0",
+                "inheritance": [
+                  {
+                    "name": "*common_4max*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common_4max*"
+                  },
+                  {
+                    "name": "0.20mm Quality @4Max Pro 2.0",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:0.20mm Quality @4Max Pro 2.0"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @4Max Pro 2.0",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "filament:Generic PLA @4Max Pro 2.0",
+                "inheritance": [
+                  {
+                    "name": "*common_4max*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*common_4max*"
+                  },
+                  {
+                    "name": "*PLA_4max*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*PLA_4max*"
+                  },
+                  {
+                    "name": "Generic PLA @4Max Pro 2.0",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:Generic PLA @4Max Pro 2.0"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Anycubic/2.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Anycubic/2.1.1.ini",
+          "machine": "Anycubic 4Max Pro 2.0",
+          "process": "0.20mm Quality @4Max Pro 2.0",
+          "filament": "Generic PLA @4Max Pro 2.0"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "anycubic-anycubic-chiron",
@@ -192,11 +282,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Chiron.json",
-            "sha256": "cccbf71990d27ad0160ab79b4de4a4deedcdcd3270b636108345543fd07a73f2",
+            "sha256": "583aca5b56fa06a935aac003225369331ad2a4284255d89fceeb31323b130bd5",
             "manufacturer_model_id": "Anycubic-Chiron"
           },
           "nozzles_mm": [
@@ -208,44 +298,56 @@
               "machine": {
                 "name": "Anycubic Chiron 0.4 nozzle",
                 "path": "machine/Anycubic Chiron 0.4 nozzle.json",
-                "sha256": "619c3c6e5fcc045af3a8d94d3b621458ac3493d06c6bb65f7725db1ea245599b"
+                "sha256": "84616354ffc5295741ea57b39ff42ec195b1778d1429576ee99186b9dcdf31a5",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Chiron 0.4 nozzle",
+                    "path": "machine/Anycubic Chiron 0.4 nozzle.json",
+                    "sha256": "84616354ffc5295741ea57b39ff42ec195b1778d1429576ee99186b9dcdf31a5"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Chiron",
                 "path": "process/0.20mm Standard @Anycubic Chiron.json",
-                "sha256": "e7b35cb39e7ebfdd14f5729f65ec2e233346b753e327509801d36ffea655ff2e",
+                "sha256": "0fe6424380f2ea32fff25b0dce5054159e68fae472741241b3af2b731e45697a",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Chiron",
                     "path": "process/0.20mm Standard @Anycubic Chiron.json",
-                    "sha256": "e7b35cb39e7ebfdd14f5729f65ec2e233346b753e327509801d36ffea655ff2e"
+                    "sha256": "0fe6424380f2ea32fff25b0dce5054159e68fae472741241b3af2b731e45697a"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -291,12 +393,12 @@
           "bundle_version": "2.1.1",
           "manifest": {
             "path": "Anycubic/2.1.1.ini",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "model": {
             "path": "Anycubic/2.1.1.ini",
             "section": "printer_model:I3MEGA",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "nozzles_mm": [
             "0.4"
@@ -305,7 +407,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer variant/nozzle not fully defined (1)"
           ]
         }
       ],
@@ -329,11 +431,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic i3 Mega S.json",
-            "sha256": "eb3d1714c778030a9250a8b934304afe365998ed35d3cf7487ca20fd56438b64",
+            "sha256": "ca5da9dbb18476b8dcd42fcaefdc270435298bd8e3bb16a224262f72b009ba3e",
             "manufacturer_model_id": "Anycubic-i3-Mega-S"
           },
           "nozzles_mm": [
@@ -345,44 +447,56 @@
               "machine": {
                 "name": "Anycubic i3 Mega S 0.4 nozzle",
                 "path": "machine/Anycubic i3 Mega S 0.4 nozzle.json",
-                "sha256": "7b0906b98fda523da1cd691eb478028fc9446ca9f4662f07c931d5d18f101cf9"
+                "sha256": "159db494e7a5c5a490c7e6359cf4b45d4e8325495dad6f881f078576065fa741",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic i3 Mega S 0.4 nozzle",
+                    "path": "machine/Anycubic i3 Mega S 0.4 nozzle.json",
+                    "sha256": "159db494e7a5c5a490c7e6359cf4b45d4e8325495dad6f881f078576065fa741"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic i3MegaS",
                 "path": "process/0.20mm Standard @Anycubic i3MegaS.json",
-                "sha256": "410ea844f8c7b03e83a4c531148f1ee243d62a8454e935e9c1fdc10bf7bd6062",
+                "sha256": "08eac3737d41c96c0c603b7dd1d3955a930edf962cfe54e604066366bda28969",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic i3MegaS",
                     "path": "process/0.20mm Standard @Anycubic i3MegaS.json",
-                    "sha256": "410ea844f8c7b03e83a4c531148f1ee243d62a8454e935e9c1fdc10bf7bd6062"
+                    "sha256": "08eac3737d41c96c0c603b7dd1d3955a930edf962cfe54e604066366bda28969"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -399,12 +513,12 @@
           "bundle_version": "2.1.1",
           "manifest": {
             "path": "Anycubic/2.1.1.ini",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "model": {
             "path": "Anycubic/2.1.1.ini",
             "section": "printer_model:I3MEGAS",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "nozzles_mm": [
             "0.4"
@@ -413,7 +527,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer variant/nozzle not fully defined (1)"
           ]
         }
       ],
@@ -453,11 +567,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra.json",
-            "sha256": "5561069141c9333071b8b61d671dd95e302a25bc4482a47713fc580f384eeb72",
+            "sha256": "7145acada92c9bcf80d2a7f1dac075173e9a23d1986183809f78c6bf08931e83",
             "manufacturer_model_id": "Anycubic-Kobra"
           },
           "nozzles_mm": [
@@ -469,44 +583,56 @@
               "machine": {
                 "name": "Anycubic Kobra 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 0.4 nozzle.json",
-                "sha256": "f57cf010275cd7d35e099f4c96261369244ced05d41089ff819b961f7e77fa6c"
+                "sha256": "bf175b052293b42f6974278b39f129edab81e409114dbba90dbca6e195ee9ced",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 0.4 nozzle.json",
+                    "sha256": "bf175b052293b42f6974278b39f129edab81e409114dbba90dbca6e195ee9ced"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra",
                 "path": "process/0.20mm Standard @Anycubic Kobra.json",
-                "sha256": "6338a75e7f7e93c4f7e333d722dc4f9347ba6fc529499b64b9f1e15d9fa0ebf2",
+                "sha256": "04007fdddf1c6722bf6185f15dd4635ec6d6690695a805ebdb9eef664025d58f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra",
                     "path": "process/0.20mm Standard @Anycubic Kobra.json",
-                    "sha256": "6338a75e7f7e93c4f7e333d722dc4f9347ba6fc529499b64b9f1e15d9fa0ebf2"
+                    "sha256": "04007fdddf1c6722bf6185f15dd4635ec6d6690695a805ebdb9eef664025d58f"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -552,11 +678,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 2.json",
-            "sha256": "d8fb047748eb5d928dd75ce48717d27c5ec01390f3cc87d617f7540b80a5ff26",
+            "sha256": "52be93de8c517f912f6d07f75df79179d862623a9220676f9fb07eba8b331939",
             "manufacturer_model_id": "Anycubic-Kobra-2"
           },
           "nozzles_mm": [
@@ -568,44 +694,56 @@
               "machine": {
                 "name": "Anycubic Kobra 2 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 2 0.4 nozzle.json",
-                "sha256": "36c38d36779d6ac6a47536e2c7e79f63cf1ca3070441c7ae5aa56240468b8641"
+                "sha256": "fa5f596e1e3c7c6986d7fa88ede1a4285c33691f29baa65485a59470967504cf",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 2 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 2 0.4 nozzle.json",
+                    "sha256": "fa5f596e1e3c7c6986d7fa88ede1a4285c33691f29baa65485a59470967504cf"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra2",
                 "path": "process/0.20mm Standard @Anycubic Kobra2.json",
-                "sha256": "0980e1dd0f31107e10d61c679cb96ce3afc69cf0de60cfb666e60979b068603e",
+                "sha256": "967d11c2087cf30c201b1f1c062ff34b50abb2cb2db788d26d8e72608d84c8d4",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra2",
                     "path": "process/0.20mm Standard @Anycubic Kobra2.json",
-                    "sha256": "0980e1dd0f31107e10d61c679cb96ce3afc69cf0de60cfb666e60979b068603e"
+                    "sha256": "967d11c2087cf30c201b1f1c062ff34b50abb2cb2db788d26d8e72608d84c8d4"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -651,11 +789,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 2 Max.json",
-            "sha256": "09e341921aa934ffab9cd48673efa0c9051959ff1c6f4f20e645b4c1632ff13b",
+            "sha256": "fbc261de7a22b4919e834ee98386158d4abcc4b07a5bcd12d0a1a4261e11fab3",
             "manufacturer_model_id": "Anycubic Kobra 2 Max"
           },
           "nozzles_mm": [
@@ -667,49 +805,61 @@
               "machine": {
                 "name": "Anycubic Kobra 2 Max 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 2 Max 0.4 nozzle.json",
-                "sha256": "86b4779ab8678e8d0d6929bf141d576c5b85c8433c9bd70c9cfd74a58f3b852a"
+                "sha256": "502b2d4a74e86c8808af9f73394371ce0dc14b755d54a717aae422c455cba8f4",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 2 Max 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 2 Max 0.4 nozzle.json",
+                    "sha256": "502b2d4a74e86c8808af9f73394371ce0dc14b755d54a717aae422c455cba8f4"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra 2 Max 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra 2 Max 0.4 nozzle.json",
-                "sha256": "9712337ef0b428092369e6fd58980254ba14d5c68b439a88ad8bd1b52be0ccd8",
+                "sha256": "3460f7aeb5b9819de4020055c4ce7f381709f3275784ac89ad5e4553bd045427",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra 2 Max 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra 2 Max 0.4 nozzle.json",
-                    "sha256": "9712337ef0b428092369e6fd58980254ba14d5c68b439a88ad8bd1b52be0ccd8"
+                    "sha256": "3460f7aeb5b9819de4020055c4ce7f381709f3275784ac89ad5e4553bd045427"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 2 Max 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 2 Max 0.4 nozzle.json",
-                "sha256": "81c78391a6370b43398addaeccf039cb3a53c327532c9c62f251cf0379ed2370",
+                "sha256": "2f5fbe42d56d983639c461d4ab5110715f1562ec89dae0eddbbefdda301fd273",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 2 Max 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 2 Max 0.4 nozzle.json",
-                    "sha256": "81c78391a6370b43398addaeccf039cb3a53c327532c9c62f251cf0379ed2370"
+                    "sha256": "2f5fbe42d56d983639c461d4ab5110715f1562ec89dae0eddbbefdda301fd273"
                   }
                 ]
               }
@@ -755,11 +905,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 2 Neo.json",
-            "sha256": "393e7afb178039ddacb02188df0fe79b078708d867fe65a207eac0fd9c88e244",
+            "sha256": "68e73b2d5cd38433c9ca3193c3ab5ea271626879d2ad6f3af28e52a22b550a3f",
             "manufacturer_model_id": "Anycubic Kobra 2 Neo"
           },
           "nozzles_mm": [
@@ -771,49 +921,61 @@
               "machine": {
                 "name": "Anycubic Kobra 2 Neo 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 2 Neo 0.4 nozzle.json",
-                "sha256": "ed8bc121c1f7a1504af42bbbfcb82d6dc5168a21473618a8b69bde1c65d2c8f1"
+                "sha256": "8e9cd5304163a84036575c6c84613037c85ae715a53edb2073aa7c36f7650bb5",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 2 Neo 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 2 Neo 0.4 nozzle.json",
+                    "sha256": "8e9cd5304163a84036575c6c84613037c85ae715a53edb2073aa7c36f7650bb5"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle.json",
-                "sha256": "6de9ed68a0577925128edcf399e5669808e572bff70ed4a32e68a325dac3652c",
+                "sha256": "838289629ccc29d47c592894ae2ca9405d29f28a060e8f3f4ec2192537fba2ff",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra 2 Neo 0.4 nozzle.json",
-                    "sha256": "6de9ed68a0577925128edcf399e5669808e572bff70ed4a32e68a325dac3652c"
+                    "sha256": "838289629ccc29d47c592894ae2ca9405d29f28a060e8f3f4ec2192537fba2ff"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle.json",
-                "sha256": "65f8f1c7860b45ae7471821dcd5017f8a679802cfd5c03089e02344e640772b3",
+                "sha256": "113237a2760fd600ce74a691fe7a115f4ad1bdae58668f74dccc22ef1a5143a8",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 2 Neo 0.4 nozzle.json",
-                    "sha256": "65f8f1c7860b45ae7471821dcd5017f8a679802cfd5c03089e02344e640772b3"
+                    "sha256": "113237a2760fd600ce74a691fe7a115f4ad1bdae58668f74dccc22ef1a5143a8"
                   }
                 ]
               }
@@ -859,11 +1021,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 2 Plus.json",
-            "sha256": "12541f7b53ee3fd0737eb567afea07f35a9b57d89f2ef95e651f170014af5271",
+            "sha256": "7eae12721e842a5c462ff0e0778b037eb8435d48f550fc116fb3d03522a60ac4",
             "manufacturer_model_id": "Anycubic Kobra 2 Plus"
           },
           "nozzles_mm": [
@@ -875,49 +1037,61 @@
               "machine": {
                 "name": "Anycubic Kobra 2 Plus 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 2 Plus 0.4 nozzle.json",
-                "sha256": "0d0c03db569307bf3d1df70dfa4c49a7ccb147afd54c8b38a7694a851c8db657"
+                "sha256": "3d23ba0b8518c4a30aa4a8aeffd16410ae5bf0d249f151808d004d68095d82d5",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 2 Plus 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 2 Plus 0.4 nozzle.json",
+                    "sha256": "3d23ba0b8518c4a30aa4a8aeffd16410ae5bf0d249f151808d004d68095d82d5"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra 2 Plus 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra 2 Plus 0.4 nozzle.json",
-                "sha256": "a1f00845340b2fcfc638a4a0badfbf35dae5176123d3803256f28d0ecdc8a489",
+                "sha256": "9dee1a20d4b25ca939c419cc849bb1ba309a8d506db21b13ff021c421a170caa",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra 2 Plus 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra 2 Plus 0.4 nozzle.json",
-                    "sha256": "a1f00845340b2fcfc638a4a0badfbf35dae5176123d3803256f28d0ecdc8a489"
+                    "sha256": "9dee1a20d4b25ca939c419cc849bb1ba309a8d506db21b13ff021c421a170caa"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 2 Plus 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 2 Plus 0.4 nozzle.json",
-                "sha256": "695ea32486b38b338353c303f556edec250e8f6c7f6da91f1ab69e6d939c01db",
+                "sha256": "b2606ebc4be12df3edaa590cd0377db08152ca12f018455e69b25c3a7ca37b6f",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 2 Plus 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 2 Plus 0.4 nozzle.json",
-                    "sha256": "695ea32486b38b338353c303f556edec250e8f6c7f6da91f1ab69e6d939c01db"
+                    "sha256": "b2606ebc4be12df3edaa590cd0377db08152ca12f018455e69b25c3a7ca37b6f"
                   }
                 ]
               }
@@ -963,11 +1137,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 2 Pro.json",
-            "sha256": "6fcf45c74258a312d89c34c09467f1f5ee69ef34247413538e42d9365283d5a9",
+            "sha256": "f9f4081317695b7b6766dcf7fdfe88cfa406bd4afa8be0cec7623349f2aa12ae",
             "manufacturer_model_id": "Anycubic Kobra 2 Pro"
           },
           "nozzles_mm": [
@@ -979,49 +1153,61 @@
               "machine": {
                 "name": "Anycubic Kobra 2 Pro 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 2 Pro 0.4 nozzle.json",
-                "sha256": "fd9c0615fc1c0cf715eb4ce98645e536519af898f9b04e8c0d4c34424f761166"
+                "sha256": "78722e99433d3742cf369dea575b1713bc3a07e22d15d27539d014a5a202ddbf",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 2 Pro 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 2 Pro 0.4 nozzle.json",
+                    "sha256": "78722e99433d3742cf369dea575b1713bc3a07e22d15d27539d014a5a202ddbf"
+                  }
+                ]
               },
               "process": {
                 "name": "0.16mm Optimal @Anycubic Kobra 2 Pro 0.4 nozzle",
                 "path": "process/0.16mm Optimal @Anycubic Kobra 2 Pro 0.4 nozzle.json",
-                "sha256": "8a96af23ffad4c8fccfaf9bb5f564ee4c36c844bc72933e8c61773b226cf441a",
+                "sha256": "41da87a3cb5712d5435c49f23731879a29c5757ae781ff10ebd3290155dba950",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.16mm Optimal @Anycubic Kobra 2 Pro 0.4 nozzle",
                     "path": "process/0.16mm Optimal @Anycubic Kobra 2 Pro 0.4 nozzle.json",
-                    "sha256": "8a96af23ffad4c8fccfaf9bb5f564ee4c36c844bc72933e8c61773b226cf441a"
+                    "sha256": "41da87a3cb5712d5435c49f23731879a29c5757ae781ff10ebd3290155dba950"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 2 Pro 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 2 Pro 0.4 nozzle.json",
-                "sha256": "ff39e1ffa8cf888dffba4683d8c1bc4fbfc3ae38afc41f427d52ffc25f3f8a3a",
+                "sha256": "aee42fb3e33a41f90d4c10dfb1c3a4809f0c8626a754463abf92b98186456a42",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 2 Pro 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 2 Pro 0.4 nozzle.json",
-                    "sha256": "ff39e1ffa8cf888dffba4683d8c1bc4fbfc3ae38afc41f427d52ffc25f3f8a3a"
+                    "sha256": "aee42fb3e33a41f90d4c10dfb1c3a4809f0c8626a754463abf92b98186456a42"
                   }
                 ]
               }
@@ -1067,11 +1253,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 3.json",
-            "sha256": "0c4fe160a107a38f7406150d12aecc8dda057e2a9c2a3ceec7420bd557ac546e",
+            "sha256": "42972f0bd0b9815d72a7d3be3326a62abd42d0217a76f8b5e3715d19a40dd2a6",
             "manufacturer_model_id": "Anycubic Kobra 3"
           },
           "nozzles_mm": [
@@ -1086,49 +1272,61 @@
               "machine": {
                 "name": "Anycubic Kobra 3 0.2 nozzle",
                 "path": "machine/Anycubic Kobra 3 0.2 nozzle.json",
-                "sha256": "0cefe67563728a643150f9fcb2de9cf56162288ca3f3d07b9dea61090fa87560"
+                "sha256": "569a059c821f6fdda8f080590817d8ce749dd0ec67d3c4aff16fa3c4847969d8",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 0.2 nozzle",
+                    "path": "machine/Anycubic Kobra 3 0.2 nozzle.json",
+                    "sha256": "569a059c821f6fdda8f080590817d8ce749dd0ec67d3c4aff16fa3c4847969d8"
+                  }
+                ]
               },
               "process": {
                 "name": "0.10mm Detail @Anycubic Kobra 3 0.2 nozzle",
                 "path": "process/0.10mm Detail @Anycubic Kobra 3 0.2 nozzle.json",
-                "sha256": "80188eda94883d63bb8e373a4290b4b10939677b80f7b6f187dcb68e876f524c",
+                "sha256": "b21088fcda341c21c0c4a7a2c45654d55f6edcc0d5cfbf8f597e49d6b4200d96",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.10mm Detail @Anycubic Kobra 3 0.2 nozzle",
                     "path": "process/0.10mm Detail @Anycubic Kobra 3 0.2 nozzle.json",
-                    "sha256": "80188eda94883d63bb8e373a4290b4b10939677b80f7b6f187dcb68e876f524c"
+                    "sha256": "b21088fcda341c21c0c4a7a2c45654d55f6edcc0d5cfbf8f597e49d6b4200d96"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 0.2 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.2 nozzle.json",
-                "sha256": "6d1c64c09cea9ad65b457baa545494c3e4fa1b431a6f51a018446e5a27113c12",
+                "sha256": "029e224fda5f8881369ef72d577cbcd58cc8485b4e33c40894c01de171334ed8",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 0.2 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.2 nozzle.json",
-                    "sha256": "6d1c64c09cea9ad65b457baa545494c3e4fa1b431a6f51a018446e5a27113c12"
+                    "sha256": "029e224fda5f8881369ef72d577cbcd58cc8485b4e33c40894c01de171334ed8"
                   }
                 ]
               }
@@ -1138,49 +1336,61 @@
               "machine": {
                 "name": "Anycubic Kobra 3 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 3 0.4 nozzle.json",
-                "sha256": "505722d8e3ecc1cdf26ba35dd364391abda3d2ae48b3bc18fccd0ea07f69dc20"
+                "sha256": "1722f2138afb54bc02aeca4d575e4302b8894998b6d79ae1bb9a02b5705aba54",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 3 0.4 nozzle.json",
+                    "sha256": "1722f2138afb54bc02aeca4d575e4302b8894998b6d79ae1bb9a02b5705aba54"
+                  }
+                ]
               },
               "process": {
                 "name": "0.16mm Optimal @Anycubic Kobra 3 0.4 nozzle",
                 "path": "process/0.16mm Optimal @Anycubic Kobra 3 0.4 nozzle.json",
-                "sha256": "fe97925e2931d5262ef7f80bfa8a2430b9879481ca92a1ec92f6985d309d556c",
+                "sha256": "4491cdcdf7eaa4bef7329eb737d90e7f2455fc9740f686e15cbb8072d16c329b",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.16mm Optimal @Anycubic Kobra 3 0.4 nozzle",
                     "path": "process/0.16mm Optimal @Anycubic Kobra 3 0.4 nozzle.json",
-                    "sha256": "fe97925e2931d5262ef7f80bfa8a2430b9879481ca92a1ec92f6985d309d556c"
+                    "sha256": "4491cdcdf7eaa4bef7329eb737d90e7f2455fc9740f686e15cbb8072d16c329b"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.4 nozzle.json",
-                "sha256": "db6ee92f474923539d05928af6446dd94506e2546866b99de3454f6d20d07360",
+                "sha256": "548755eafc9040f65e9d3286c4001b0ce1482fc6e1cace4d85c2534d74cd8075",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.4 nozzle.json",
-                    "sha256": "db6ee92f474923539d05928af6446dd94506e2546866b99de3454f6d20d07360"
+                    "sha256": "548755eafc9040f65e9d3286c4001b0ce1482fc6e1cace4d85c2534d74cd8075"
                   }
                 ]
               }
@@ -1190,49 +1400,61 @@
               "machine": {
                 "name": "Anycubic Kobra 3 0.6 nozzle",
                 "path": "machine/Anycubic Kobra 3 0.6 nozzle.json",
-                "sha256": "8265c3260d3dc2b5685870343c9eb4ab8eea767fb1969e3c8272accc72d52d66"
+                "sha256": "25beff7f641665baed62ff673fd1cc27d2add9bdaa9a78ab11a911c0d79525d9",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 0.6 nozzle",
+                    "path": "machine/Anycubic Kobra 3 0.6 nozzle.json",
+                    "sha256": "25beff7f641665baed62ff673fd1cc27d2add9bdaa9a78ab11a911c0d79525d9"
+                  }
+                ]
               },
               "process": {
                 "name": "0.30mm Standard @Anycubic Kobra 3 0.6 nozzle",
                 "path": "process/0.30mm Standard @Anycubic Kobra 3 0.6 nozzle.json",
-                "sha256": "e2279ab39a12f544f0948261214e0112743b0de2303b05b6d973e8ee91a712d0",
+                "sha256": "d5b29bf4d58e50c9fc6e9fa275377aa7639534c4ae48fc9df529b0a462e09aac",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.30mm Standard @Anycubic Kobra 3 0.6 nozzle",
                     "path": "process/0.30mm Standard @Anycubic Kobra 3 0.6 nozzle.json",
-                    "sha256": "e2279ab39a12f544f0948261214e0112743b0de2303b05b6d973e8ee91a712d0"
+                    "sha256": "d5b29bf4d58e50c9fc6e9fa275377aa7639534c4ae48fc9df529b0a462e09aac"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 0.6 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.6 nozzle.json",
-                "sha256": "02b60253f75155c0129d5068832463ea44a831491dbecc3a03326536c17acdfa",
+                "sha256": "5e84c6904a82392c130ea19a717ec38b64e9be573ecff494e54a9f57f5d9199d",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 0.6 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.6 nozzle.json",
-                    "sha256": "02b60253f75155c0129d5068832463ea44a831491dbecc3a03326536c17acdfa"
+                    "sha256": "5e84c6904a82392c130ea19a717ec38b64e9be573ecff494e54a9f57f5d9199d"
                   }
                 ]
               }
@@ -1242,49 +1464,61 @@
               "machine": {
                 "name": "Anycubic Kobra 3 0.8 nozzle",
                 "path": "machine/Anycubic Kobra 3 0.8 nozzle.json",
-                "sha256": "3bffc65d0d710a731cd9cac5fd755a9b30509847eb3da19fa6ae33af571cffd1"
+                "sha256": "35f72b87281cdd8e7f15f179aada6f162c86d2bd51b96e09ffc351da0c345951",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 0.8 nozzle",
+                    "path": "machine/Anycubic Kobra 3 0.8 nozzle.json",
+                    "sha256": "35f72b87281cdd8e7f15f179aada6f162c86d2bd51b96e09ffc351da0c345951"
+                  }
+                ]
               },
               "process": {
                 "name": "0.40mm Standard @Anycubic Kobra 3 0.8 nozzle",
                 "path": "process/0.40mm Standard @Anycubic Kobra 3 0.8 nozzle.json",
-                "sha256": "eb736d2e93d4f3c6038de2991a23e3dccab7533ec0e9e680cad3283144ec8669",
+                "sha256": "e07b709ae617f0577a1f0da521b84079746b00136fa8af7d1c2892bc30fb7f12",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.40mm Standard @Anycubic Kobra 3 0.8 nozzle",
                     "path": "process/0.40mm Standard @Anycubic Kobra 3 0.8 nozzle.json",
-                    "sha256": "eb736d2e93d4f3c6038de2991a23e3dccab7533ec0e9e680cad3283144ec8669"
+                    "sha256": "e07b709ae617f0577a1f0da521b84079746b00136fa8af7d1c2892bc30fb7f12"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 0.8 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.8 nozzle.json",
-                "sha256": "e62cce5b03e1137c2e907358cd0f6447796cf675302053f1e75e533d64472564",
+                "sha256": "70fdc2257a6eb69412fbcd8c065eeb0683e165fc612a27e3da05645b0401cef1",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 0.8 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 0.8 nozzle.json",
-                    "sha256": "e62cce5b03e1137c2e907358cd0f6447796cf675302053f1e75e533d64472564"
+                    "sha256": "70fdc2257a6eb69412fbcd8c065eeb0683e165fc612a27e3da05645b0401cef1"
                   }
                 ]
               }
@@ -1357,11 +1591,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 3 Max.json",
-            "sha256": "7fdc10046eceef5fcd697360910ed907d3b7288fe77478dbb0f3169ad1d42957",
+            "sha256": "0e7e6d7f6286e97ca1b5f57ae7a0091e4aef1d681329178c3d8b2f2d4cda623f",
             "manufacturer_model_id": "Anycubic Kobra 3 Max"
           },
           "nozzles_mm": [
@@ -1375,44 +1609,56 @@
               "machine": {
                 "name": "Anycubic Kobra 3 Max 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 3 Max 0.4 nozzle.json",
-                "sha256": "9c235fbc8eaa546d58f1d8fa500afd174e143b71ccd1df67a2ff2461489f8776"
+                "sha256": "3146076428ccf846da90f1f3179539131b52f6e234e3f68349eb367d413cc992",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 Max 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 3 Max 0.4 nozzle.json",
+                    "sha256": "3146076428ccf846da90f1f3179539131b52f6e234e3f68349eb367d413cc992"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra 3 Max 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra 3 Max 0.4 nozzle.json",
-                "sha256": "1932746cd093096ace2a94e056f62feba2f9bbe71aa4bc6c3cc391443f1f46ed",
+                "sha256": "657f190683f9d5e4de448ddea5f577c5e9e5c1681772e5248d1bd923b3975c84",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra 3 Max 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra 3 Max 0.4 nozzle.json",
-                    "sha256": "1932746cd093096ace2a94e056f62feba2f9bbe71aa4bc6c3cc391443f1f46ed"
+                    "sha256": "657f190683f9d5e4de448ddea5f577c5e9e5c1681772e5248d1bd923b3975c84"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 Max 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 Max 0.4 nozzle.json",
-                "sha256": "04574ee6364b87878d8231ab6f4f23c87c8220205c08858fc633fba71dc8f93d",
+                "sha256": "d32582e2e87762e3fabea34f35fdf2add7e8d5757f6f520a05d7da3e558823ae",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 Max 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 Max 0.4 nozzle.json",
-                    "sha256": "04574ee6364b87878d8231ab6f4f23c87c8220205c08858fc633fba71dc8f93d"
+                    "sha256": "d32582e2e87762e3fabea34f35fdf2add7e8d5757f6f520a05d7da3e558823ae"
                   }
                 ]
               }
@@ -1422,44 +1668,56 @@
               "machine": {
                 "name": "Anycubic Kobra 3 Max 0.6 nozzle",
                 "path": "machine/Anycubic Kobra 3 Max 0.6 nozzle.json",
-                "sha256": "e1820ec56349a451187f6fa07b3db190b5f324285a4fa42ebbabf7c438898101"
+                "sha256": "caf97627272b46a996a8592007685b3da84f923d2cbad88c060ec5c473c9c47c",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 Max 0.6 nozzle",
+                    "path": "machine/Anycubic Kobra 3 Max 0.6 nozzle.json",
+                    "sha256": "caf97627272b46a996a8592007685b3da84f923d2cbad88c060ec5c473c9c47c"
+                  }
+                ]
               },
               "process": {
                 "name": "0.30mm Standard @Anycubic Kobra 3 Max 0.6 nozzle",
                 "path": "process/0.30mm Standard @Anycubic Kobra 3 Max 0.6 nozzle.json",
-                "sha256": "497b18384df3759d397831ccf337c3f8ccda710adc04330c5828fcbebf6d1d46",
+                "sha256": "7d3b08d5c3c3e5431fd8a74bdd36bbbe2b8d14809093314bc2eecb0e02695176",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.30mm Standard @Anycubic Kobra 3 Max 0.6 nozzle",
                     "path": "process/0.30mm Standard @Anycubic Kobra 3 Max 0.6 nozzle.json",
-                    "sha256": "497b18384df3759d397831ccf337c3f8ccda710adc04330c5828fcbebf6d1d46"
+                    "sha256": "7d3b08d5c3c3e5431fd8a74bdd36bbbe2b8d14809093314bc2eecb0e02695176"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 Max 0.6 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 Max 0.6 nozzle.json",
-                "sha256": "020fc7764252d2ed339417323096066de62b01f08f33dea6a0337413f224f170",
+                "sha256": "80efd86d537cd1d5a3180200fad4616ed71016d36dc147eb1bc1fa6cb5ee10e4",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 Max 0.6 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 Max 0.6 nozzle.json",
-                    "sha256": "020fc7764252d2ed339417323096066de62b01f08f33dea6a0337413f224f170"
+                    "sha256": "80efd86d537cd1d5a3180200fad4616ed71016d36dc147eb1bc1fa6cb5ee10e4"
                   }
                 ]
               }
@@ -1469,44 +1727,56 @@
               "machine": {
                 "name": "Anycubic Kobra 3 Max 0.8 nozzle",
                 "path": "machine/Anycubic Kobra 3 Max 0.8 nozzle.json",
-                "sha256": "7bfd96976b0fa0e1e93e8ded46e0117536905a9fb7ebff69e295636e46eee62b"
+                "sha256": "621eb000ce7ceaeb603b81ddfb358de4d442894a6c740dbc38e9da38c55e710c",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 Max 0.8 nozzle",
+                    "path": "machine/Anycubic Kobra 3 Max 0.8 nozzle.json",
+                    "sha256": "621eb000ce7ceaeb603b81ddfb358de4d442894a6c740dbc38e9da38c55e710c"
+                  }
+                ]
               },
               "process": {
                 "name": "0.40mm Standard @Anycubic Kobra 3 Max 0.8 nozzle",
                 "path": "process/0.40mm Standard @Anycubic Kobra 3 Max 0.8 nozzle.json",
-                "sha256": "c641b5284bc193cdd7359c567274e5bec22ac469fe657c78df036f8503367323",
+                "sha256": "67acb83d58c7c03a4935b92a45c90cc5dad768c8da10dc8af666281dd3511b79",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.40mm Standard @Anycubic Kobra 3 Max 0.8 nozzle",
                     "path": "process/0.40mm Standard @Anycubic Kobra 3 Max 0.8 nozzle.json",
-                    "sha256": "c641b5284bc193cdd7359c567274e5bec22ac469fe657c78df036f8503367323"
+                    "sha256": "67acb83d58c7c03a4935b92a45c90cc5dad768c8da10dc8af666281dd3511b79"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 Max 0.8 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 Max 0.8 nozzle.json",
-                "sha256": "1f6da92e6e44d47ca5fb36de96bbd72b295412e02f63f4d7e57073ac037c8aa9",
+                "sha256": "317232fcaddabf6ba223bc382e2eb482cbb4f93f8fc72fbe16e4ec091ce82c1e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 Max 0.8 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 Max 0.8 nozzle.json",
-                    "sha256": "1f6da92e6e44d47ca5fb36de96bbd72b295412e02f63f4d7e57073ac037c8aa9"
+                    "sha256": "317232fcaddabf6ba223bc382e2eb482cbb4f93f8fc72fbe16e4ec091ce82c1e"
                   }
                 ]
               }
@@ -1570,11 +1840,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra 3 V2.json",
-            "sha256": "e2ef7f533bccc0da69ca62e75845c8583e123810c7dc16461ba81182bda0c30a",
+            "sha256": "a9e7d264f200ae74999509643183e8c550abb6c74e6f4628f54997107b699b63",
             "manufacturer_model_id": "Anycubic Kobra 3 V2"
           },
           "nozzles_mm": [
@@ -1589,44 +1859,56 @@
               "machine": {
                 "name": "Anycubic Kobra 3 V2 0.2 nozzle",
                 "path": "machine/Anycubic Kobra 3 V2 0.2 nozzle.json",
-                "sha256": "cce6820d8f035b2e5cdd686c654b8e1bc7c76b7374b5f3f1a60561efa610e254"
+                "sha256": "d7491e7b2300317267043cb0be8ad14764a620f0ad6e628014a7ea6427b3d828",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 V2 0.2 nozzle",
+                    "path": "machine/Anycubic Kobra 3 V2 0.2 nozzle.json",
+                    "sha256": "d7491e7b2300317267043cb0be8ad14764a620f0ad6e628014a7ea6427b3d828"
+                  }
+                ]
               },
               "process": {
                 "name": "0.10mm Standard @Anycubic Kobra 3 V2 0.2 nozzle",
                 "path": "process/0.10mm Standard @Anycubic Kobra 3 V2 0.2 nozzle.json",
-                "sha256": "9473fb6d788645c70c8530790ffe5caedf46f72bdc6c0f35b7744a3cc723d608",
+                "sha256": "265d4828e5e5ae838277f98684ac599a37754950ab763225472838d24d59db65",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.10mm Standard @Anycubic Kobra 3 V2 0.2 nozzle",
                     "path": "process/0.10mm Standard @Anycubic Kobra 3 V2 0.2 nozzle.json",
-                    "sha256": "9473fb6d788645c70c8530790ffe5caedf46f72bdc6c0f35b7744a3cc723d608"
+                    "sha256": "265d4828e5e5ae838277f98684ac599a37754950ab763225472838d24d59db65"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.2 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.2 nozzle.json",
-                "sha256": "c71b7118dbf06cce18a17c35c33694f1fc85e9fdd6599bccf623b905523affd1",
+                "sha256": "cdf630c5633ea2b38806a1f36f6533f1d98033a04b95da7bf7968b9702bda000",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.2 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.2 nozzle.json",
-                    "sha256": "c71b7118dbf06cce18a17c35c33694f1fc85e9fdd6599bccf623b905523affd1"
+                    "sha256": "cdf630c5633ea2b38806a1f36f6533f1d98033a04b95da7bf7968b9702bda000"
                   }
                 ]
               }
@@ -1636,44 +1918,56 @@
               "machine": {
                 "name": "Anycubic Kobra 3 V2 0.4 nozzle",
                 "path": "machine/Anycubic Kobra 3 V2 0.4 nozzle.json",
-                "sha256": "4b1e72017d9dce00203eba46dd9e69ce2c4c9ec3155ad03d57b9a4bf7f848dad"
+                "sha256": "1d14627392c4c9e0133c911bb0f394ea6498198c9dd6c35d042bcfdfc9f2700b",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 V2 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra 3 V2 0.4 nozzle.json",
+                    "sha256": "1d14627392c4c9e0133c911bb0f394ea6498198c9dd6c35d042bcfdfc9f2700b"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra 3 V2 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra 3 V2 0.4 nozzle.json",
-                "sha256": "f6742e99d4453c8448508bb71984b5b80b846d08b34f6e76a1823a85958e504a",
+                "sha256": "5155cfb4bffa0deef778e9c979e9239158efd470749be3f330e9e043a5345663",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra 3 V2 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra 3 V2 0.4 nozzle.json",
-                    "sha256": "f6742e99d4453c8448508bb71984b5b80b846d08b34f6e76a1823a85958e504a"
+                    "sha256": "5155cfb4bffa0deef778e9c979e9239158efd470749be3f330e9e043a5345663"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.4 nozzle.json",
-                "sha256": "75b2bab0307ab24077f8b64cc6e0a8937c1b52876b774ef8dda4f818932bc2c0",
+                "sha256": "63359ebd46d19027b245a5ace97c6900d7c924cf908019894381b789324d1069",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.4 nozzle.json",
-                    "sha256": "75b2bab0307ab24077f8b64cc6e0a8937c1b52876b774ef8dda4f818932bc2c0"
+                    "sha256": "63359ebd46d19027b245a5ace97c6900d7c924cf908019894381b789324d1069"
                   }
                 ]
               }
@@ -1683,44 +1977,56 @@
               "machine": {
                 "name": "Anycubic Kobra 3 V2 0.6 nozzle",
                 "path": "machine/Anycubic Kobra 3 V2 0.6 nozzle.json",
-                "sha256": "ca9452c46883203962ec73c81f207988b2440a41e495a0f3fd5c4e03a97bffb4"
+                "sha256": "c6b2c4ddfc6eae4c0c05710c96b62e7db5a0c8ad3fddeeb33bbec1b555e33c92",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 V2 0.6 nozzle",
+                    "path": "machine/Anycubic Kobra 3 V2 0.6 nozzle.json",
+                    "sha256": "c6b2c4ddfc6eae4c0c05710c96b62e7db5a0c8ad3fddeeb33bbec1b555e33c92"
+                  }
+                ]
               },
               "process": {
                 "name": "0.30mm Standard @Anycubic Kobra 3 V2 0.6 nozzle",
                 "path": "process/0.30mm Standard @Anycubic Kobra 3 V2 0.6 nozzle.json",
-                "sha256": "ffa7f9a27e66f7b6312db24520e60c90e9510d56b65041261cf63354ec48fbb8",
+                "sha256": "bc154a9daaf9abd03397be6b1982e3c535fc6a9f65e6581bc983dc4c9532c309",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.30mm Standard @Anycubic Kobra 3 V2 0.6 nozzle",
                     "path": "process/0.30mm Standard @Anycubic Kobra 3 V2 0.6 nozzle.json",
-                    "sha256": "ffa7f9a27e66f7b6312db24520e60c90e9510d56b65041261cf63354ec48fbb8"
+                    "sha256": "bc154a9daaf9abd03397be6b1982e3c535fc6a9f65e6581bc983dc4c9532c309"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.6 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.6 nozzle.json",
-                "sha256": "49db1f818604451f0bdcef99cd2daaf9d59bb69ee01dceee735f64371ffd5ca4",
+                "sha256": "4e9be04579ed0d9de64d29e5f9fa4b73dc75f7fd8cff80bef8e08fa1892da537",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.6 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.6 nozzle.json",
-                    "sha256": "49db1f818604451f0bdcef99cd2daaf9d59bb69ee01dceee735f64371ffd5ca4"
+                    "sha256": "4e9be04579ed0d9de64d29e5f9fa4b73dc75f7fd8cff80bef8e08fa1892da537"
                   }
                 ]
               }
@@ -1730,44 +2036,56 @@
               "machine": {
                 "name": "Anycubic Kobra 3 V2 0.8 nozzle",
                 "path": "machine/Anycubic Kobra 3 V2 0.8 nozzle.json",
-                "sha256": "7fcdac7c332ed004ca8246639b2b97cb93311497960f80eb464b39d1b8d6febc"
+                "sha256": "e58ad3d374dcb6d51e9d4653924cc7f17ba85803779ae38fd4dff3921f2f80aa",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra 3 V2 0.8 nozzle",
+                    "path": "machine/Anycubic Kobra 3 V2 0.8 nozzle.json",
+                    "sha256": "e58ad3d374dcb6d51e9d4653924cc7f17ba85803779ae38fd4dff3921f2f80aa"
+                  }
+                ]
               },
               "process": {
                 "name": "0.40mm Standard @Anycubic Kobra 3 V2 0.8 nozzle",
                 "path": "process/0.40mm Standard @Anycubic Kobra 3 V2 0.8 nozzle.json",
-                "sha256": "7eeca74d85b985a479df14895d858da58432c6ef0ec99cea02f6ac0975a74893",
+                "sha256": "f5b7cb085fc63c562bb9ad6c7519b9e7cc5b5c21deba32cee91a41d6b8e55c66",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.40mm Standard @Anycubic Kobra 3 V2 0.8 nozzle",
                     "path": "process/0.40mm Standard @Anycubic Kobra 3 V2 0.8 nozzle.json",
-                    "sha256": "7eeca74d85b985a479df14895d858da58432c6ef0ec99cea02f6ac0975a74893"
+                    "sha256": "f5b7cb085fc63c562bb9ad6c7519b9e7cc5b5c21deba32cee91a41d6b8e55c66"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.8 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.8 nozzle.json",
-                "sha256": "dd9dbed18a5bfdfa118906a9e60f0108349a9ed9dd31eb299d75c3cbd950e2fb",
+                "sha256": "5ff01b5c12c127c3e07b7386d3ec7dbbdb1f22e9dd49a3d92e54aa1adba271e7",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra 3 V2 0.8 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra 3 V2 0.8 nozzle.json",
-                    "sha256": "dd9dbed18a5bfdfa118906a9e60f0108349a9ed9dd31eb299d75c3cbd950e2fb"
+                    "sha256": "5ff01b5c12c127c3e07b7386d3ec7dbbdb1f22e9dd49a3d92e54aa1adba271e7"
                   }
                 ]
               }
@@ -1840,11 +2158,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra Max.json",
-            "sha256": "ad2ad442605e42164ef816928c25ab17804fa32ae521820b6860f3a7f479b9d1",
+            "sha256": "b9bb3a47fd0c3cb9142ada3348eb80b7ee0346904b8151045b32ceb541b20fda",
             "manufacturer_model_id": "Anycubic-Kobra-Max"
           },
           "nozzles_mm": [
@@ -1856,44 +2174,56 @@
               "machine": {
                 "name": "Anycubic Kobra Max 0.4 nozzle",
                 "path": "machine/Anycubic Kobra Max 0.4 nozzle.json",
-                "sha256": "e46338a30a6a343c2cc63fd20cd68ddc491e3963d515cae001c5cffc2c032813"
+                "sha256": "b1164c6fe94436e5a1467d6175d2d715fea7f9449060766944b7761342f74e69",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra Max 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra Max 0.4 nozzle.json",
+                    "sha256": "b1164c6fe94436e5a1467d6175d2d715fea7f9449060766944b7761342f74e69"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic KobraMax",
                 "path": "process/0.20mm Standard @Anycubic KobraMax.json",
-                "sha256": "890430988c5fb2e12c9a95b7f08bd8529e72f8d4d414f8dda3528ecb660cfb66",
+                "sha256": "8bd471e3ad624681e35dd2952bd20bf4cbf7bdf4a0f07a9a38fc1d8090afd140",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic KobraMax",
                     "path": "process/0.20mm Standard @Anycubic KobraMax.json",
-                    "sha256": "890430988c5fb2e12c9a95b7f08bd8529e72f8d4d414f8dda3528ecb660cfb66"
+                    "sha256": "8bd471e3ad624681e35dd2952bd20bf4cbf7bdf4a0f07a9a38fc1d8090afd140"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -1939,11 +2269,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra Neo.json",
-            "sha256": "de1e3ef3831003b9b529eb952445c6576ab0c076c755116ef3541290b6cff537",
+            "sha256": "1b3ed92a48328f092598fe57e1542205f67e7a2d3d193cb8933ec8185e302039",
             "manufacturer_model_id": "Anycubic Kobra Neo"
           },
           "nozzles_mm": [
@@ -1955,44 +2285,56 @@
               "machine": {
                 "name": "Anycubic Kobra Neo 0.4 nozzle",
                 "path": "machine/Anycubic Kobra Neo 0.4 nozzle.json",
-                "sha256": "605e5f134c4322b27ca6065f2c5575d3c7e3bc1ed93d8c70d3724c2310ccab1b"
+                "sha256": "1be7c12ad2bc13a1d6c6ebce49a430815a93b24e8d1c9df76e403f7a6d5a90f0",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra Neo 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra Neo 0.4 nozzle.json",
+                    "sha256": "1be7c12ad2bc13a1d6c6ebce49a430815a93b24e8d1c9df76e403f7a6d5a90f0"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra Neo 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra Neo 0.4 nozzle.json",
-                "sha256": "3b0d1164c753db3403e9be5ab06ee14a8173fb97de5c456f1bea491bd93ebdb9",
+                "sha256": "1be6c5fc75d9d9de513b1e4f8041d4aa79f88c6f10b486a4a2362c5a5ffa0b12",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra Neo 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra Neo 0.4 nozzle.json",
-                    "sha256": "3b0d1164c753db3403e9be5ab06ee14a8173fb97de5c456f1bea491bd93ebdb9"
+                    "sha256": "1be6c5fc75d9d9de513b1e4f8041d4aa79f88c6f10b486a4a2362c5a5ffa0b12"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -2038,11 +2380,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra Plus.json",
-            "sha256": "7fec7ec01db9619bf78732af3ef998e7ce748f34453f53e366f34b1f7f86a6ec",
+            "sha256": "853bacef7f594715224c4306adee930e75081c11fac75dcf23d07504e1b125df",
             "manufacturer_model_id": "Anycubic-Kobra-Plus"
           },
           "nozzles_mm": [
@@ -2054,44 +2396,56 @@
               "machine": {
                 "name": "Anycubic Kobra Plus 0.4 nozzle",
                 "path": "machine/Anycubic Kobra Plus 0.4 nozzle.json",
-                "sha256": "e931bf231e592260372d5c784c92b1d144721b9442c90385f10051129b2a4e9f"
+                "sha256": "6ce1c207ef5d5a04c127e8d17751c362dcf881c417efe4da32fdc2db981b07ee",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra Plus 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra Plus 0.4 nozzle.json",
+                    "sha256": "6ce1c207ef5d5a04c127e8d17751c362dcf881c417efe4da32fdc2db981b07ee"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic KobraPlus",
                 "path": "process/0.20mm Standard @Anycubic KobraPlus.json",
-                "sha256": "1bbdc02e109d38617fdde4e519c5b87b26d81bbeba8dd3711be81c2aeaced48e",
+                "sha256": "5e7b6dbc731963826eebbdef450f3b5a598572af95cb0ee8fbdd5fab286ba438",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic KobraPlus",
                     "path": "process/0.20mm Standard @Anycubic KobraPlus.json",
-                    "sha256": "1bbdc02e109d38617fdde4e519c5b87b26d81bbeba8dd3711be81c2aeaced48e"
+                    "sha256": "5e7b6dbc731963826eebbdef450f3b5a598572af95cb0ee8fbdd5fab286ba438"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }
@@ -2137,11 +2491,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra S1.json",
-            "sha256": "25f43691ed2ce019f9987341e52a538e65647188933ad542b9aadabd7b5d60a8",
+            "sha256": "677d8260257f45703252d9d98e631584cc005a0795dc2e089ed3c8a1048992ed",
             "manufacturer_model_id": "Anycubic Kobra S1"
           },
           "nozzles_mm": [
@@ -2153,44 +2507,56 @@
               "machine": {
                 "name": "Anycubic Kobra S1 0.4 nozzle",
                 "path": "machine/Anycubic Kobra S1 0.4 nozzle.json",
-                "sha256": "c565628869f2fe9a90a8870d5cb1a348434805e77ba7a7d89ce28a3c1e26dc3b"
+                "sha256": "ddb36d235b220d86f279bbead9b407b1c6462c0b8471e476f3409a8f2e5f9dfc",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra S1 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra S1 0.4 nozzle.json",
+                    "sha256": "ddb36d235b220d86f279bbead9b407b1c6462c0b8471e476f3409a8f2e5f9dfc"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra S1 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra S1 0.4 nozzle.json",
-                "sha256": "86687a39cc9cc89ecc7c85fd6e6cd570ce7717a963880c84ac40ba8e8213b34d",
+                "sha256": "a270e42b6918a62c35dbc7118137b0fb288a101d0c4fc5e573a2ef48af3b445c",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra S1 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra S1 0.4 nozzle.json",
-                    "sha256": "86687a39cc9cc89ecc7c85fd6e6cd570ce7717a963880c84ac40ba8e8213b34d"
+                    "sha256": "a270e42b6918a62c35dbc7118137b0fb288a101d0c4fc5e573a2ef48af3b445c"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra S1 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra S1 0.4 nozzle.json",
-                "sha256": "325b25e6ce2ab3a00899182c724ddb64441e7e3737340c8bb3b7f8f5b57e0cda",
+                "sha256": "740e34c84aedad16327e61b7fb62795a91db1bbb048d7dfa93d82c08459b217b",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra S1 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra S1 0.4 nozzle.json",
-                    "sha256": "325b25e6ce2ab3a00899182c724ddb64441e7e3737340c8bb3b7f8f5b57e0cda"
+                    "sha256": "740e34c84aedad16327e61b7fb62795a91db1bbb048d7dfa93d82c08459b217b"
                   }
                 ]
               }
@@ -2236,11 +2602,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra S1 Max.json",
-            "sha256": "5c6953c46e0caaa3ae6377e174d8444b269d817f9be09aed457c18bc391789a0",
+            "sha256": "3176108f1e7635468068e2bab1c4cb06bf7f9968fdf43457e68b6d3edb9cd1d7",
             "manufacturer_model_id": "Anycubic Kobra S1 Max"
           },
           "nozzles_mm": [
@@ -2255,44 +2621,56 @@
               "machine": {
                 "name": "Anycubic Kobra S1 Max 0.25 nozzle",
                 "path": "machine/Anycubic Kobra S1 Max 0.25 nozzle.json",
-                "sha256": "88b4bdb34be00a19bff8cd44ed0341569e8ea2d3416709ea1931fa6214f46fca"
+                "sha256": "7683ae2d7e4f188b42d5111e052d328a1d1e0a4c6fa7f672ca040d491ebd27e6",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra S1 Max 0.25 nozzle",
+                    "path": "machine/Anycubic Kobra S1 Max 0.25 nozzle.json",
+                    "sha256": "7683ae2d7e4f188b42d5111e052d328a1d1e0a4c6fa7f672ca040d491ebd27e6"
+                  }
+                ]
               },
               "process": {
                 "name": "0.08mm Standard @Anycubic Kobra S1 Max 0.25 nozzle",
                 "path": "process/0.08mm Standard @Anycubic Kobra S1 Max 0.25 nozzle.json",
-                "sha256": "ad3bb3ababd7a71cbd40c21c7968ee44c6f637c3d3aceea5909c3a58caed6532",
+                "sha256": "8b8f01c3f1abc691bef6a2022eae25a6b89e6b306837091119f74fbf1e5659f2",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.08mm Standard @Anycubic Kobra S1 Max 0.25 nozzle",
                     "path": "process/0.08mm Standard @Anycubic Kobra S1 Max 0.25 nozzle.json",
-                    "sha256": "ad3bb3ababd7a71cbd40c21c7968ee44c6f637c3d3aceea5909c3a58caed6532"
+                    "sha256": "8b8f01c3f1abc691bef6a2022eae25a6b89e6b306837091119f74fbf1e5659f2"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.25 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.25 nozzle.json",
-                "sha256": "69385c11376d5891b0b450c7f86f1dcba3e12272339c111cbe7340fa344dcc67",
+                "sha256": "e32fcf19cccc93944430ff1149e4e40c7c10593dc4998e0fd1037f93b45e5c70",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.25 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.25 nozzle.json",
-                    "sha256": "69385c11376d5891b0b450c7f86f1dcba3e12272339c111cbe7340fa344dcc67"
+                    "sha256": "e32fcf19cccc93944430ff1149e4e40c7c10593dc4998e0fd1037f93b45e5c70"
                   }
                 ]
               }
@@ -2302,44 +2680,56 @@
               "machine": {
                 "name": "Anycubic Kobra S1 Max 0.4 nozzle",
                 "path": "machine/Anycubic Kobra S1 Max 0.4 nozzle.json",
-                "sha256": "4edc38204eb08753743735984d6707add027baba2515245421ab3244a03b2f04"
+                "sha256": "bae85d8c18486a03242fbc7344c6fde7331db4bf4e82f90369554c7e2ff2b127",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra S1 Max 0.4 nozzle",
+                    "path": "machine/Anycubic Kobra S1 Max 0.4 nozzle.json",
+                    "sha256": "bae85d8c18486a03242fbc7344c6fde7331db4bf4e82f90369554c7e2ff2b127"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Kobra S1 Max 0.4 nozzle",
                 "path": "process/0.20mm Standard @Anycubic Kobra S1 Max 0.4 nozzle.json",
-                "sha256": "df68817e3decd8e872d286d4dd3c4ea5045550361eae9e55154cea796d0fb0dd",
+                "sha256": "b7b44e87432afe273717555e377fc8de21d58674d06b6f4e7422fdaea6c15bc3",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Kobra S1 Max 0.4 nozzle",
                     "path": "process/0.20mm Standard @Anycubic Kobra S1 Max 0.4 nozzle.json",
-                    "sha256": "df68817e3decd8e872d286d4dd3c4ea5045550361eae9e55154cea796d0fb0dd"
+                    "sha256": "b7b44e87432afe273717555e377fc8de21d58674d06b6f4e7422fdaea6c15bc3"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.4 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.4 nozzle.json",
-                "sha256": "da88537cf574f069c26f3699f9602189d41d0e949738b099dbe868ad46df3bfc",
+                "sha256": "4f7229135df860141831f679c479177f891c73ca81161dfa8ea748251a17852a",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.4 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.4 nozzle.json",
-                    "sha256": "da88537cf574f069c26f3699f9602189d41d0e949738b099dbe868ad46df3bfc"
+                    "sha256": "4f7229135df860141831f679c479177f891c73ca81161dfa8ea748251a17852a"
                   }
                 ]
               }
@@ -2349,44 +2739,56 @@
               "machine": {
                 "name": "Anycubic Kobra S1 Max 0.6 nozzle",
                 "path": "machine/Anycubic Kobra S1 Max 0.6 nozzle.json",
-                "sha256": "86cfb03694fec9c1f2592d854206c8f14f617703f8ebf12e14351e4f4a6e7ff6"
+                "sha256": "4d91c15cdbe9b8ee72cd929cbeb1123e91b0a22c6bf820005b0fb6ae253d9269",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra S1 Max 0.6 nozzle",
+                    "path": "machine/Anycubic Kobra S1 Max 0.6 nozzle.json",
+                    "sha256": "4d91c15cdbe9b8ee72cd929cbeb1123e91b0a22c6bf820005b0fb6ae253d9269"
+                  }
+                ]
               },
               "process": {
                 "name": "0.30mm Standard @Anycubic Kobra S1 Max 0.6 nozzle",
                 "path": "process/0.30mm Standard @Anycubic Kobra S1 Max 0.6 nozzle.json",
-                "sha256": "8c5e6ebca294d2157812a2b604bcedd556fdab5a04de21e060f2470163e3dfac",
+                "sha256": "627e06ae7b70fa040f637992627ef88d391dc294764e1b15d9adecb99023f332",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.30mm Standard @Anycubic Kobra S1 Max 0.6 nozzle",
                     "path": "process/0.30mm Standard @Anycubic Kobra S1 Max 0.6 nozzle.json",
-                    "sha256": "8c5e6ebca294d2157812a2b604bcedd556fdab5a04de21e060f2470163e3dfac"
+                    "sha256": "627e06ae7b70fa040f637992627ef88d391dc294764e1b15d9adecb99023f332"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.6 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.6 nozzle.json",
-                "sha256": "13e6cc9d513063d8778c88251c8fdcf99ed085296231d048227f62ae2e877b28",
+                "sha256": "6afbac777830df7bbeada07a873d6486a0251d8f9d6fe46bbc44fe73087b7f53",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.6 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.6 nozzle.json",
-                    "sha256": "13e6cc9d513063d8778c88251c8fdcf99ed085296231d048227f62ae2e877b28"
+                    "sha256": "6afbac777830df7bbeada07a873d6486a0251d8f9d6fe46bbc44fe73087b7f53"
                   }
                 ]
               }
@@ -2396,44 +2798,56 @@
               "machine": {
                 "name": "Anycubic Kobra S1 Max 0.8 nozzle",
                 "path": "machine/Anycubic Kobra S1 Max 0.8 nozzle.json",
-                "sha256": "a3048e1b1d7ff5a85c6cb83fb61649885fe063f3f65c2378ddf4004a06a32516"
+                "sha256": "a85c085562da7a71c6f4b42b2d6993b05987a4b6b806ff6177472eebb5381f75",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Kobra S1 Max 0.8 nozzle",
+                    "path": "machine/Anycubic Kobra S1 Max 0.8 nozzle.json",
+                    "sha256": "a85c085562da7a71c6f4b42b2d6993b05987a4b6b806ff6177472eebb5381f75"
+                  }
+                ]
               },
               "process": {
                 "name": "0.40mm Standard @Anycubic Kobra S1 Max 0.8 nozzle",
                 "path": "process/0.40mm Standard @Anycubic Kobra S1 Max 0.8 nozzle.json",
-                "sha256": "9767ef1a271aa4462f35b03f5c3c7afd5b7754e669e3ae4fb240b112690644fe",
+                "sha256": "92326fbd58c6fb018153222e1886c8fd79800da808aa4f2f9aa07402cba822a9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.40mm Standard @Anycubic Kobra S1 Max 0.8 nozzle",
                     "path": "process/0.40mm Standard @Anycubic Kobra S1 Max 0.8 nozzle.json",
-                    "sha256": "9767ef1a271aa4462f35b03f5c3c7afd5b7754e669e3ae4fb240b112690644fe"
+                    "sha256": "92326fbd58c6fb018153222e1886c8fd79800da808aa4f2f9aa07402cba822a9"
                   }
                 ]
               },
               "filament": {
                 "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.8 nozzle",
                 "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.8 nozzle.json",
-                "sha256": "f95492e19364c30d74b24aa1e883109b69aba7ff04edcc2f1d1ecc68a97e8215",
+                "sha256": "368512ad3077ec4500020732df5fcb23524bef14bbf393250a729280fa65bec3",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Anycubic PLA @Anycubic Kobra S1 Max 0.8 nozzle",
                     "path": "filament/Anycubic PLA @Anycubic Kobra S1 Max 0.8 nozzle.json",
-                    "sha256": "f95492e19364c30d74b24aa1e883109b69aba7ff04edcc2f1d1ecc68a97e8215"
+                    "sha256": "368512ad3077ec4500020732df5fcb23524bef14bbf393250a729280fa65bec3"
                   }
                 ]
               }
@@ -2506,11 +2920,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Kobra X.json",
-            "sha256": "7b420b03486efe3a1686a33bc2350e8bf9d748cb07217ba53f689099b73ed1a4",
+            "sha256": "6d8cb108d172826000cbf7eb9a49e7d68c3e436d15c4d273b049887a84a71f33",
             "manufacturer_model_id": "Anycubic Kobra X"
           },
           "nozzles_mm": [
@@ -2543,27 +2957,117 @@
           "bundle_version": "2.1.1",
           "manifest": {
             "path": "Anycubic/2.1.1.ini",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "model": {
             "path": "Anycubic/2.1.1.ini",
             "section": "printer_model:AKLP",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anycubic Kossel Linear Plus",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "printer:Anycubic Kossel Linear Plus",
+                "inheritance": [
+                  {
+                    "name": "*common_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:*common_akossel*"
+                  },
+                  {
+                    "name": "Anycubic Kossel Linear Plus",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:Anycubic Kossel Linear Plus"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm QUALITY @AKOSSEL",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "print:0.20mm QUALITY @AKOSSEL",
+                "inheritance": [
+                  {
+                    "name": "*common_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common_akossel*"
+                  },
+                  {
+                    "name": "*0.20mm_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*0.20mm_akossel*"
+                  },
+                  {
+                    "name": "0.20mm QUALITY @AKOSSEL",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:0.20mm QUALITY @AKOSSEL"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @AKOSSEL",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "filament:Generic PLA @AKOSSEL",
+                "inheritance": [
+                  {
+                    "name": "*common_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*common_akossel*"
+                  },
+                  {
+                    "name": "*PLA_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*PLA_akossel*"
+                  },
+                  {
+                    "name": "Generic PLA @AKOSSEL",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:Generic PLA @AKOSSEL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Anycubic/2.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Anycubic/2.1.1.ini",
+          "machine": "Anycubic Kossel Linear Plus",
+          "process": "0.20mm QUALITY @AKOSSEL",
+          "filament": "Generic PLA @AKOSSEL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "anycubic-anycubic-kossel-pulley-linear",
@@ -2581,27 +3085,117 @@
           "bundle_version": "2.1.1",
           "manifest": {
             "path": "Anycubic/2.1.1.ini",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "model": {
             "path": "Anycubic/2.1.1.ini",
             "section": "printer_model:AK",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anycubic Kossel Pulley (Linear)",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "printer:Anycubic Kossel Pulley (Linear)",
+                "inheritance": [
+                  {
+                    "name": "*common_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:*common_akossel*"
+                  },
+                  {
+                    "name": "Anycubic Kossel Pulley (Linear)",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:Anycubic Kossel Pulley (Linear)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm QUALITY @AKOSSEL",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "print:0.20mm QUALITY @AKOSSEL",
+                "inheritance": [
+                  {
+                    "name": "*common_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common_akossel*"
+                  },
+                  {
+                    "name": "*0.20mm_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*0.20mm_akossel*"
+                  },
+                  {
+                    "name": "0.20mm QUALITY @AKOSSEL",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:0.20mm QUALITY @AKOSSEL"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @AKOSSEL",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "filament:Generic PLA @AKOSSEL",
+                "inheritance": [
+                  {
+                    "name": "*common_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*common_akossel*"
+                  },
+                  {
+                    "name": "*PLA_akossel*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*PLA_akossel*"
+                  },
+                  {
+                    "name": "Generic PLA @AKOSSEL",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:Generic PLA @AKOSSEL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Anycubic/2.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Anycubic/2.1.1.ini",
+          "machine": "Anycubic Kossel Pulley (Linear)",
+          "process": "0.20mm QUALITY @AKOSSEL",
+          "filament": "Generic PLA @AKOSSEL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "anycubic-anycubic-mega-zero",
@@ -2619,27 +3213,117 @@
           "bundle_version": "2.1.1",
           "manifest": {
             "path": "Anycubic/2.1.1.ini",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "model": {
             "path": "Anycubic/2.1.1.ini",
             "section": "printer_model:MEGA0",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anycubic Mega Zero",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "printer:Anycubic Mega Zero",
+                "inheritance": [
+                  {
+                    "name": "*common_mega0*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:*common_mega0*"
+                  },
+                  {
+                    "name": "Anycubic Mega Zero",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:Anycubic Mega Zero"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @MEGA0",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "print:0.20mm NORMAL @MEGA0",
+                "inheritance": [
+                  {
+                    "name": "*common_mega0*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common_mega0*"
+                  },
+                  {
+                    "name": "*0.20mm_mega0*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*0.20mm_mega0*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @MEGA0",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:0.20mm NORMAL @MEGA0"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Anycubic PLA @MEGA0",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "filament:Anycubic PLA @MEGA0",
+                "inheritance": [
+                  {
+                    "name": "*common_mega0*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*common_mega0*"
+                  },
+                  {
+                    "name": "*PLA_mega0*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*PLA_mega0*"
+                  },
+                  {
+                    "name": "Anycubic PLA @MEGA0",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:Anycubic PLA @MEGA0"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Anycubic/2.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Anycubic/2.1.1.ini",
+          "machine": "Anycubic Mega Zero",
+          "process": "0.20mm NORMAL @MEGA0",
+          "filament": "Anycubic PLA @MEGA0"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "anycubic-anycubic-predator",
@@ -2657,11 +3341,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Predator.json",
-            "sha256": "77836510615758977970277aa688092dc109422dfbe70452cc9e47b801288525",
+            "sha256": "d9b88cab5cb733d036b75856e570e25d21dc286cfd8de1e1c4cb0678acc514f0",
             "manufacturer_model_id": "Anycubic_Predator"
           },
           "nozzles_mm": [
@@ -2681,12 +3365,12 @@
           "bundle_version": "2.1.1",
           "manifest": {
             "path": "Anycubic/2.1.1.ini",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "model": {
             "path": "Anycubic/2.1.1.ini",
             "section": "printer_model:PREDATOR",
-            "sha256": "eb6f828e27fd135963150ed0dbd7c868058ecdc80df89ad6002978ad580c3d72"
+            "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a"
           },
           "nozzles_mm": [
             "0.4",
@@ -2694,16 +3378,310 @@
             "0.8"
           ],
           "candidate_printer_sections": 3,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Anycubic Predator 0.4 nozzle",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "printer:Anycubic Predator 0.4 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:*common predator*"
+                  },
+                  {
+                    "name": "Anycubic Predator 0.4 nozzle",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:Anycubic Predator 0.4 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.16mm 0.4 nozzle DETAILED QUALITY @PREDATOR",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "print:0.16mm 0.4 nozzle DETAILED QUALITY @PREDATOR",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator*"
+                  },
+                  {
+                    "name": "*common predator 0.4 nozzle*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator 0.4 nozzle*"
+                  },
+                  {
+                    "name": "*common predator 0.4 nozzle detailed*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator 0.4 nozzle detailed*"
+                  },
+                  {
+                    "name": "*common predator quality*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator quality*"
+                  },
+                  {
+                    "name": "0.16mm 0.4 nozzle DETAILED QUALITY @PREDATOR",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:0.16mm 0.4 nozzle DETAILED QUALITY @PREDATOR"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @PREDATOR",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "filament:Generic PLA @PREDATOR",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*common predator*"
+                  },
+                  {
+                    "name": "*PLA predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*PLA predator*"
+                  },
+                  {
+                    "name": "Generic PLA @PREDATOR",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:Generic PLA @PREDATOR"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Anycubic Predator 0.6 nozzle",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "printer:Anycubic Predator 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:*common predator*"
+                  },
+                  {
+                    "name": "Anycubic Predator 0.6 nozzle",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:Anycubic Predator 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "print:0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator*"
+                  },
+                  {
+                    "name": "*common predator 0.8 nozzle*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator 0.8 nozzle*"
+                  },
+                  {
+                    "name": "*common predator 0.8 nozzle detailed*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator 0.8 nozzle detailed*"
+                  },
+                  {
+                    "name": "*common predator quality*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator quality*"
+                  },
+                  {
+                    "name": "0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @PREDATOR",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "filament:Generic PLA @PREDATOR",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*common predator*"
+                  },
+                  {
+                    "name": "*PLA predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*PLA predator*"
+                  },
+                  {
+                    "name": "Generic PLA @PREDATOR",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:Generic PLA @PREDATOR"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Anycubic Predator 0.8 nozzle",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "printer:Anycubic Predator 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:*common predator*"
+                  },
+                  {
+                    "name": "Anycubic Predator 0.8 nozzle",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "printer:Anycubic Predator 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "print:0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator*"
+                  },
+                  {
+                    "name": "*common predator 0.8 nozzle*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator 0.8 nozzle*"
+                  },
+                  {
+                    "name": "*common predator 0.8 nozzle detailed*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator 0.8 nozzle detailed*"
+                  },
+                  {
+                    "name": "*common predator quality*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:*common predator quality*"
+                  },
+                  {
+                    "name": "0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "print:0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @PREDATOR",
+                "path": "Anycubic/2.1.1.ini",
+                "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                "section": "filament:Generic PLA @PREDATOR",
+                "inheritance": [
+                  {
+                    "name": "*common predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*common predator*"
+                  },
+                  {
+                    "name": "*PLA predator*",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:*PLA predator*"
+                  },
+                  {
+                    "name": "Generic PLA @PREDATOR",
+                    "path": "Anycubic/2.1.1.ini",
+                    "sha256": "5a3b404eabe99db1c8913ff3579ac1ccaf55c07941a65a384022f100d90afc5a",
+                    "section": "filament:Generic PLA @PREDATOR"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Anycubic/2.1.1.ini",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Anycubic/2.1.1.ini",
+          "machine": "Anycubic Predator 0.4 nozzle",
+          "process": "0.16mm 0.4 nozzle DETAILED QUALITY @PREDATOR",
+          "filament": "Generic PLA @PREDATOR"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Anycubic/2.1.1.ini",
+          "machine": "Anycubic Predator 0.6 nozzle",
+          "process": "0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+          "filament": "Generic PLA @PREDATOR"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Anycubic/2.1.1.ini",
+          "machine": "Anycubic Predator 0.8 nozzle",
+          "process": "0.24mm 0.8 nozzle DETAILED QUALITY @PREDATOR",
+          "filament": "Generic PLA @PREDATOR"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "anycubic-anycubic-vyper",
@@ -2721,11 +3699,11 @@
           "bundle_version": "02.04.00.09",
           "manifest": {
             "path": "resources/profiles/Anycubic.json",
-            "sha256": "eeace1098a602a49ee5198e3aece8fe9d9795ef293a7ca0def32bd364b135097"
+            "sha256": "e859f8be76133017d73754c78e75a09264935a250c2f0ea7308132276be264dc"
           },
           "model": {
             "path": "machine/Anycubic Vyper.json",
-            "sha256": "f8ea088ddc51551778997c9a15e0a785e0ce8b898eb89c7913e922b315222f1e",
+            "sha256": "5a8341ff48b5c61497df7dc1bf5a38e0a54e6a74011fba1fe4b6d3a762089064",
             "manufacturer_model_id": "Anycubic-Vyper"
           },
           "nozzles_mm": [
@@ -2737,44 +3715,56 @@
               "machine": {
                 "name": "Anycubic Vyper 0.4 nozzle",
                 "path": "machine/Anycubic Vyper 0.4 nozzle.json",
-                "sha256": "e743192f155841787988caa49a07755cfafd9e8176b6ca24cd5d76dff9680342"
+                "sha256": "ee55c9a690fb52328754eeeac912eff0e82d590263c69b5161e89f6605fdf64b",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "1df0b43348013ef428542e8cabf99875b1f1cb751481a13f5a7a0bd7cf4b5d3e"
+                  },
+                  {
+                    "name": "Anycubic Vyper 0.4 nozzle",
+                    "path": "machine/Anycubic Vyper 0.4 nozzle.json",
+                    "sha256": "ee55c9a690fb52328754eeeac912eff0e82d590263c69b5161e89f6605fdf64b"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anycubic Vyper",
                 "path": "process/0.20mm Standard @Anycubic Vyper.json",
-                "sha256": "4d5b4e8a752664737d6c8f81611b80e45796c1b4d50dab48eab264fb2f5dfac9",
+                "sha256": "0c3f6bbe12c3665bb2d3c75ed30279a160d2dfefe7682e2552ffd93ee9246e37",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f42a8e174d35d52f3f9712af20c48b110de4de073ce273eea7b0b226e848a47e"
+                    "sha256": "6390eb1cbff290c0318cf7f193182d6ef9e84c364ba05f04af14b8fcc419812a"
                   },
                   {
                     "name": "0.20mm Standard @Anycubic Vyper",
                     "path": "process/0.20mm Standard @Anycubic Vyper.json",
-                    "sha256": "4d5b4e8a752664737d6c8f81611b80e45796c1b4d50dab48eab264fb2f5dfac9"
+                    "sha256": "0c3f6bbe12c3665bb2d3c75ed30279a160d2dfefe7682e2552ffd93ee9246e37"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Anycubic",
                 "path": "filament/Generic PLA @Anycubic.json",
-                "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024",
+                "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "4ca4e6f6dc6faeb11157b94b004bb7c985bf54b6496a9a9821201d25077ce071"
+                    "sha256": "adde78695bfa61d3af4e6d2b01579e7ae968d3788b5e49b50f22a7f2e53f5759"
                   },
                   {
                     "name": "Generic PLA @Anycubic",
                     "path": "filament/Generic PLA @Anycubic.json",
-                    "sha256": "2af53c720efd32ec4dfdda3a9bbf84193a9b3ab01ac8e6349c685c62a2202024"
+                    "sha256": "05c3da168c61f40e726fa50f4a426cd470a0ed3d26c2caa1ea6a43294a053ae0"
                   }
                 ]
               }

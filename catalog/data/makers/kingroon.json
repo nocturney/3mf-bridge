@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Kingroon.json",
-            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+            "sha256": "5adf190da9bb064eac3c97304eea0bc615ff4a4b30d0c3420b81c364f860098c"
           },
           "model": {
             "path": "machine/Kingroon KLP1.json",
-            "sha256": "17c09f61633c0f5c3709de8417c633656b176e2405147f59297ed8c4c692d08c",
+            "sha256": "fecaf03a2eee0ac33ef911bc43048b605c300e637981bacf2479f536b0212893",
             "manufacturer_model_id": "Kingroon KLP1"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Kingroon.json",
-            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+            "sha256": "5adf190da9bb064eac3c97304eea0bc615ff4a4b30d0c3420b81c364f860098c"
           },
           "model": {
             "path": "machine/Kingroon KP3S 3.0.json",
-            "sha256": "5c602fd9eb8c53f66626f4829a289e88d9a8410d90c15fd7779713606eb448f6",
+            "sha256": "1e76726ce62d9531a6930435905ca28d0eaca46c7f4cb9eb6e51f1d755d092d2",
             "manufacturer_model_id": "Kingroon KP3S 3.0"
           },
           "nozzles_mm": [
@@ -92,11 +92,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Kingroon.json",
-            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+            "sha256": "5adf190da9bb064eac3c97304eea0bc615ff4a4b30d0c3420b81c364f860098c"
           },
           "model": {
             "path": "machine/Kingroon KP3S PRO S1.json",
-            "sha256": "a14b64ce83523c93b313a75aebffb8e629186bb6cf73b590b1bdb9df331f3006",
+            "sha256": "f4fd2f14336c1a9274a03424909ae0ebba5f6c02c7f5a6c4ada3b722b3b92774",
             "manufacturer_model_id": "Kingroon-KP3S-PRO-S1"
           },
           "nozzles_mm": [
@@ -129,11 +129,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Kingroon.json",
-            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+            "sha256": "5adf190da9bb064eac3c97304eea0bc615ff4a4b30d0c3420b81c364f860098c"
           },
           "model": {
             "path": "machine/Kingroon KP3S PRO V2.json",
-            "sha256": "db2f5d15afac35b068b1a481d2b3096fcbf02170edb41d0bce16a6ca208eb045",
+            "sha256": "2048ba4eabe55250a21d5a35d8e47af1285ecc588584892cf532abe056bdef93",
             "manufacturer_model_id": "Kingroon-KP3S-PRO-V2"
           },
           "nozzles_mm": [
@@ -166,11 +166,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Kingroon.json",
-            "sha256": "4d0068b8dfcebb60be1bc967d50153d22e77134401b84cc2b5515ee0c04d1f84"
+            "sha256": "5adf190da9bb064eac3c97304eea0bc615ff4a4b30d0c3420b81c364f860098c"
           },
           "model": {
             "path": "machine/Kingroon KP3S V1.json",
-            "sha256": "77ae8d348e075fe220a94fcc9ae646cdbc0a7a50a7c9aaf109688ed3226a521e",
+            "sha256": "520fd76ad596c2f51f531205ada0678fed0ae945585a34111831ba23609767f7",
             "manufacturer_model_id": "Kingroon KP3S V1"
           },
           "nozzles_mm": [

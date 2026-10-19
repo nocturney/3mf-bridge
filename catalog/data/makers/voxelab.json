@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.02",
           "manifest": {
             "path": "resources/profiles/Voxelab.json",
-            "sha256": "111f1859f7c7b9935d3b025d17b7dbbd65bedee6f17370d40c357f2a836ec8f2"
+            "sha256": "9af111f55f5956fde1c7c7628b0c55fa70a8e962e8f71c31d741c6dca9f85554"
           },
           "model": {
             "path": "machine/Voxelab Aquila X2.json",
-            "sha256": "d7661f43e4a355d566b4149d8f2144d5ce23f85f4e80b992a89904f574a0f54d",
+            "sha256": "09bf89157b75dd6ce2df337e8feb8d7dec384cdfff42413cddd8220e28ae9088",
             "manufacturer_model_id": "Voxelab-Aquila-X2"
           },
           "nozzles_mm": [

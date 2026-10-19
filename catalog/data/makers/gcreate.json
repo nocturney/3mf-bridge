@@ -18,12 +18,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "gCreate/2.1.0.ini",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "model": {
             "path": "gCreate/2.1.0.ini",
             "section": "printer_model:GMAX15P",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "nozzles_mm": [
             "0.3",
@@ -32,11 +32,11 @@
             "0.8",
             "1"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 5,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer missing default filament (5)"
           ]
         }
       ],
@@ -60,12 +60,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "gCreate/2.1.0.ini",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "model": {
             "path": "gCreate/2.1.0.ini",
             "section": "printer_model:GMAX2",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "nozzles_mm": [
             "0.3",
@@ -74,11 +74,11 @@
             "0.8",
             "1"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 5,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer missing default filament (5)"
           ]
         }
       ],
@@ -102,12 +102,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "gCreate/2.1.0.ini",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "model": {
             "path": "gCreate/2.1.0.ini",
             "section": "printer_model:GMAX2DUAL2IN1",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "nozzles_mm": [
             "0.5"
@@ -116,7 +116,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer missing default filament (1)"
           ]
         }
       ],
@@ -140,12 +140,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "gCreate/2.1.0.ini",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "model": {
             "path": "gCreate/2.1.0.ini",
             "section": "printer_model:GMAX2DUAL",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "nozzles_mm": [
             "0.5"
@@ -154,7 +154,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer missing default filament (1)"
           ]
         }
       ],
@@ -178,12 +178,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "gCreate/2.1.0.ini",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "model": {
             "path": "gCreate/2.1.0.ini",
             "section": "printer_model:GMAX2PRO",
-            "sha256": "528369511c5e9b4edc93a3ee77f6cbec582251f9d4d4a9bb9483d814b86d4eb8"
+            "sha256": "d391eeb54172e6d621c7e1f9ff00d13d3d71d6ad875c8df16dbef84175a9494b"
           },
           "nozzles_mm": [
             "0.3",
@@ -192,11 +192,11 @@
             "0.8",
             "1"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 5,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer missing default filament (5)"
           ]
         }
       ],

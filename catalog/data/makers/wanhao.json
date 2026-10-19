@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D12-300.json",
-            "sha256": "9db152239f3712b8d9ec4693a4c71bada597c30a220ef934782a02f51acefc04",
+            "sha256": "ce0e948f3e5f81a0c379a22ddbc7e15ab1720069a53eb1e587f65bddcf60db9c",
             "manufacturer_model_id": "D12"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-300 MK1.json",
-            "sha256": "85902b840914baa4b9f133975b648cad56e304acd2795c51afa09fb2298cede4",
+            "sha256": "5c5d418206a0d7dc3ea9018b5a6633f9e5c2fd01dfbade8df91ec981cbd3ca6d",
             "manufacturer_model_id": "Wanhao-D9-300-MK1"
           },
           "nozzles_mm": [
@@ -92,11 +92,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-300 MK1 BLTouch kit.json",
-            "sha256": "cce139015bc4e49f19239fef54b1b458d65d3b6e4f485b4746cc56db9c24f8c4",
+            "sha256": "be3453db7e8ddc33ef5d5a5cfc5abdd0b64b7d813bcc20a681569a4f3ec17543",
             "manufacturer_model_id": "Wanhao-D9-300-MK1u2"
           },
           "nozzles_mm": [
@@ -129,11 +129,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-300 MK2.json",
-            "sha256": "7a73826c85749ef8ef8e4f7a4e98b4f15f28490e9a089ee9cebaafb333a09dba",
+            "sha256": "7d3a9c27744aa4bb248fadd9e40cd44abd3c571fe7f7db263f243d5658ebd041",
             "manufacturer_model_id": "Wanhao-D9-300-MK2"
           },
           "nozzles_mm": [
@@ -166,11 +166,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-300 MK3.json",
-            "sha256": "f12235c4e24c8183c4fe2a4ac8ae52b2ea0a6c9f278a584b4cfe0445755a50bc",
+            "sha256": "9ae864ba12e8dfc1543717646ba4e390ecd28754a33260c00c0ce2b0a2332178",
             "manufacturer_model_id": "Wanhao-D9-300-MK3"
           },
           "nozzles_mm": [
@@ -203,11 +203,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-400 MK1.json",
-            "sha256": "5e52dd444a0b04c6eb3589460da85574ad5ee807315faf633304783c069446d5",
+            "sha256": "c5ba815609f38730446e03227ceccec19d4cf5434990b03bda4b0d53f4ac1564",
             "manufacturer_model_id": "Wanhao-D9-400-MK1"
           },
           "nozzles_mm": [
@@ -240,11 +240,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-400 MK1 BLTouch kit.json",
-            "sha256": "a8b26366fca81fbc68c0e29af0a4b0e32eb2af79d5e442da7937fac08efdbecf",
+            "sha256": "d9a8e2a79f17ef9a942fa89079d93bb96eee3e531dadf87551a35dbb4f3b8518",
             "manufacturer_model_id": "Wanhao-D9-400-MK1u2"
           },
           "nozzles_mm": [
@@ -277,11 +277,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-400 MK2.json",
-            "sha256": "16b4336b36532d6af8a29a071839e08792126aa021b87459539498ad43439722",
+            "sha256": "5d8040feb93ca917326468bf2ab707e0a802262ca25e7c0cd223ae8b34d79055",
             "manufacturer_model_id": "Wanhao-D9-400-MK2"
           },
           "nozzles_mm": [
@@ -314,11 +314,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-400 MK3.json",
-            "sha256": "71ef40909bd9599fe6922778038d6ddf5d9f8c15178e02a65accefc86aec472f",
+            "sha256": "1351e99bbbfa601a3f86410657b167fe86db4c782f7381ad975617e33b190d53",
             "manufacturer_model_id": "Wanhao-D9-400-MK3"
           },
           "nozzles_mm": [
@@ -351,11 +351,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-500 MK1.json",
-            "sha256": "b4048d0f754ba51c1ac512e69e75a26c45fd8676a339da4e1fa1984fab9df5b4",
+            "sha256": "ca568cb0ab08a0c3d4c2df4ce42c0529ce4bf9a96f352feeffe849931e22adca",
             "manufacturer_model_id": "Wanhao-D9-500-MK1"
           },
           "nozzles_mm": [
@@ -388,11 +388,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-500 MK1 BLTouch kit.json",
-            "sha256": "4a2765ec2a64ae23f045cfcf9834dc41b4950cb662d142aca78b555569e2f4dc",
+            "sha256": "949787fd5a0faaa74dc5079029646ce68123250d7d5ab57ddd92ff7bb13ef7b3",
             "manufacturer_model_id": "Wanhao-D9-500-MK1u2"
           },
           "nozzles_mm": [
@@ -425,11 +425,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-500 MK2.json",
-            "sha256": "b295dbcf2f45431c0e3d60be92a5a7f0a046e3298f314c094d44ee4b6a76e762",
+            "sha256": "66cc3ead73bbca192bbbb005bf25bf0e02a1b9c55777618911880b62fadb105e",
             "manufacturer_model_id": "Wanhao-D9-500-MK2"
           },
           "nozzles_mm": [
@@ -462,11 +462,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Wanhao.json",
-            "sha256": "f4ceb8edc8725bf2b80f97f32ea8e7459a2d52f6f5806d2bd21e2ccfb5da9b01"
+            "sha256": "1a806dd71d155dead52b591eb50cbd11e924363dcc4e687ef28bd780b11a5c88"
           },
           "model": {
             "path": "machine/Wanhao D9-500 MK3.json",
-            "sha256": "5c38638fae7315595821f818307ba0944eaa49c2b8130d836dcdd482c92c8801",
+            "sha256": "cbfd71aa204fc06425bc89a6af4066ef06140ff27037d20d4938fd0310f19d9c",
             "manufacturer_model_id": "Wanhao-D9-500-MK3"
           },
           "nozzles_mm": [

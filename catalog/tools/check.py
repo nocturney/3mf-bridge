@@ -9,7 +9,11 @@ import sys
 from pathlib import Path, PurePosixPath
 
 ORDER = {"manufacturer": 0, "orca": 1, "prusa": 2}
-VENDOR_PUBLISHERS = {"bambu", "qidi", "elegoo", "prusa_official"}
+VENDOR_PUBLISHERS = {"bambu", "qidi", "elegoo", "snapmaker", "flashforge", "prusa_official"}
+
+
+def nozzle_sort_key(value: str):
+    return tuple(float(part) for part in value.split("+"))
 
 
 def ensure(condition: bool, message: str):
@@ -40,6 +44,32 @@ def check_relative(path: str):
     pure = PurePosixPath(path)
     ensure(not pure.is_absolute() and ".." not in pure.parts and "\x00" not in path,
            "unsafe relative source path: " + repr(path))
+
+
+def check_preset_reference(part: dict, kind: str):
+    check_relative(part["path"])
+    ensure(is_digest(part["sha256"]) and part["name"],
+           "unverifiable " + kind + " reference")
+    chain = part.get("inheritance")
+    is_ini = part["path"].lower().endswith(".ini")
+    section_kind = {"machine": "printer", "process": "print", "filament": "filament"}[kind]
+    if is_ini:
+        ensure(part.get("section") == section_kind + ":" + part["name"],
+               "INI preset reference omits exact typed section")
+    if kind in ("machine", "process", "filament"):
+        ensure(chain and chain[-1]["sha256"] == part["sha256"]
+               and chain[-1]["name"] == part["name"], "missing preset inheritance")
+        names = set()
+        for ancestor in chain:
+            check_relative(ancestor["path"])
+            ensure(ancestor["name"] not in names and is_digest(ancestor["sha256"]),
+                   "inheritance cycle, duplicate name or unhashed ancestor")
+            if is_ini:
+                ensure(ancestor.get("section") == section_kind + ":" + ancestor["name"]
+                       and ancestor["path"] == part["path"]
+                       and ancestor["sha256"] == part["sha256"],
+                       "INI ancestor differs from pinned vendor bundle")
+            names.add(ancestor["name"])
 
 
 def check_registry(root: Path) -> dict:
@@ -117,21 +147,13 @@ def check_registry(root: Path) -> dict:
                 for variant in variants:
                     ensure(variant["nozzle_mm"] in declared, "variant nozzle mismatch")
                     for required in ("machine", "process", "filament"):
-                        part = variant[required]
-                        check_relative(part["path"])
-                        ensure(is_digest(part["sha256"]) and part["name"],
-                               "unverifiable machine/process/filament reference")
-                        if required in ("process", "filament"):
-                            chain = part.get("inheritance", [])
-                            ensure(chain and chain[-1]["sha256"] == part["sha256"]
-                                   and chain[-1]["name"] == part["name"],
-                                   "missing/mismatched preset inheritance chain")
-                            names = set()
-                            for ancestor in chain:
-                                check_relative(ancestor["path"])
-                                ensure(ancestor["name"] not in names and is_digest(ancestor["sha256"]),
-                                       "preset inheritance cycle or unhashed ancestor")
-                                names.add(ancestor["name"])
+                        check_preset_reference(variant[required], required)
+                    if "filaments" in variant:
+                        all_defaults = variant["filaments"]
+                        ensure(len(all_defaults) >= 2 and all_defaults[0] == variant["filament"],
+                               "multi-extruder defaults are incomplete or misordered")
+                        for material in all_defaults:
+                            check_preset_reference(material, "filament")
                 actual_order.append((ORDER[candidate["provider"]],
                                      not verified, publisher, candidate["manifest"]["path"]))
                 if verified:
@@ -146,7 +168,7 @@ def check_registry(root: Path) -> dict:
                        expected["publisher"] == chosen["publisher"] and
                        expected["manifest"] == chosen["manifest"]["path"],
                        "wrong preferred provider or fallback priority")
-                actual = sorted({v["nozzle_mm"] for v in chosen["variants"]}, key=float)
+                actual = sorted({v["nozzle_mm"] for v in chosen["variants"]}, key=nozzle_sort_key)
                 ensure(expected["nozzles_mm"] == actual, "incorrect validated nozzle choices")
                 verified_in_maker += 1
             else:

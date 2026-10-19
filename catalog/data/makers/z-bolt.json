@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S1000.json",
-            "sha256": "3c8996cd2e242eb114df09bb6fde7acdef6c3f752f4911c937a2ac370726fc8a",
+            "sha256": "5dadbc840054b974547e7f951452590ae971010218254f0118910e49655892f5",
             "manufacturer_model_id": "Z-Bolt-S1000"
           },
           "nozzles_mm": [
@@ -57,11 +57,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S1000 Dual.json",
-            "sha256": "78c6077b506130c2608530253eb62f37291fff383aa0ca1624e3d18d579470e9",
+            "sha256": "712136cfd0682e522fd2530152a22ba532bd521f260c0ed058e3a0a28add0d34",
             "manufacturer_model_id": "Z-Bolt-S1000 Dual"
           },
           "nozzles_mm": [
@@ -96,11 +96,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S300.json",
-            "sha256": "7bda798c1d8c56dbdf9a22e0847c7490f3fe72790c482c072d554216f03a14f4",
+            "sha256": "91886235ba11c69ffc3027aceceed59c0d4d055d64afd63d210ef75721cf626f",
             "manufacturer_model_id": "Z-Bolt-S300"
           },
           "nozzles_mm": [
@@ -136,11 +136,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S300 Dual.json",
-            "sha256": "d3b043c049fc8d9b7e5de15032e415f09dbd463dfda730a5d732364b30075c82",
+            "sha256": "f015eea288845238478b9d6fe377969202d2da625436476e4fd74a50cf14cd04",
             "manufacturer_model_id": "Z-Bolt-S300 Dual"
           },
           "nozzles_mm": [
@@ -176,11 +176,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S400.json",
-            "sha256": "a77a1e189826f3454732bc68ce8aa1f6a76bea33181346b87a6709f78e9862f7",
+            "sha256": "25d2d1f2eaae99bf560cc4825e5dfffbab3308e2143864a2fe359fe42c49a68f",
             "manufacturer_model_id": "Z-Bolt-S400"
           },
           "nozzles_mm": [
@@ -216,11 +216,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S400 Dual.json",
-            "sha256": "33fa2890d782c7c41aa5a051b3b032df14bf3fb7d9d672d93fa5bb2ae8d8ed86",
+            "sha256": "44071781f5499b6da6f749f28cbe26c59db01ed034debfcf66dac4d1f98b7874",
             "manufacturer_model_id": "Z-Bolt-S400 Dual"
           },
           "nozzles_mm": [
@@ -256,11 +256,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S600.json",
-            "sha256": "9bdabaf980f402a7910373351cf17f4104d54c0a909107bc7404e42d0831c295",
+            "sha256": "1eae67d7a0fe86be5e653c2577df1f97b32afa1ea39c205717691219f6e762ca",
             "manufacturer_model_id": "Z-Bolt-S600"
           },
           "nozzles_mm": [
@@ -296,11 +296,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S600 Dual.json",
-            "sha256": "cfb1caa871823d7da34a82bbfd48b6c69fffb85c2702d5fe12de3b332b6cd9c4",
+            "sha256": "72773d2c7070881fe326dd146fc5a3530c868686a4420becae35c7e714a6318a",
             "manufacturer_model_id": "Z-Bolt-S600 Dual"
           },
           "nozzles_mm": [
@@ -336,11 +336,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Z-Bolt.json",
-            "sha256": "a545712f81610441768fa45355c5e4e257a573a8af0ce12933d5df73a69e1de5"
+            "sha256": "410b606ccd0896de50343f6cdec0a262399d838ee89e43aa46764767d927fab9"
           },
           "model": {
             "path": "machine/Z-Bolt S800 Dual.json",
-            "sha256": "fc4a1557e9ae442fb710d4199363123d45a5e7009c830996651f661c223d5478",
+            "sha256": "35f20e5f590645329efbdc8903fda39290c270ac27876cfce97dd7e5314e97fc",
             "manufacturer_model_id": "Z-Bolt-S800 Dual"
           },
           "nozzles_mm": [

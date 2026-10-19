@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Dremel.json",
-            "sha256": "4636e1c23a8cfd3f92344bdb30107b757e04c5b4102d98d92adf2e8135153e5d"
+            "sha256": "61461d42285f91b6121952784433ca6c2436daf32f63917a5b6c05c03bd5dbbd"
           },
           "model": {
             "path": "machine/Dremel 3D20.json",
-            "sha256": "3b0dd304f1d1cf21517a3314ce2fffc092a54e565b066490f573c8e80a22b2cb",
+            "sha256": "95985e4caa8f5bebfeebf7ef0fa1a6fe40bb9a8b4c333c3c9b725d4c878012c1",
             "manufacturer_model_id": "Dremel_3D20"
           },
           "nozzles_mm": [
@@ -34,49 +34,66 @@
               "machine": {
                 "name": "Dremel 3D20 0.4 nozzle",
                 "path": "machine/Dremel 3D20 0.4 nozzle.json",
-                "sha256": "2495d08aa6773cf4a938fd2b72a87182ce219f9de299cc161dcffef73cc5cd30"
+                "sha256": "2642e57cab969fab75494278480f9b0c9e4821969f93403c5bcedf02653d8918",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "2194b339439fa5388740c6a997cea4e9510ea169781c03660bcc32e37e1407cc"
+                  },
+                  {
+                    "name": "fdm_dremel_common",
+                    "path": "machine/fdm_dremel_common.json",
+                    "sha256": "2ea0089522e307914d07a0020f92890f79445bd09bcf060f923c6089f61a8cab"
+                  },
+                  {
+                    "name": "Dremel 3D20 0.4 nozzle",
+                    "path": "machine/Dremel 3D20 0.4 nozzle.json",
+                    "sha256": "2642e57cab969fab75494278480f9b0c9e4821969f93403c5bcedf02653d8918"
+                  }
+                ]
               },
               "process": {
                 "name": ".20mm Standard @Dremel 3D20 0.4",
                 "path": "process/.20mm Standard @Dremel 3D20 0.4.json",
-                "sha256": "4178630652ea1c02a2894a1853e6dfdfaf1fbebc3dd5dd25467a0fa1bfd7ba64",
+                "sha256": "54d4e08aa9b9ac85b170e3a556b2819a8d466dbfb5e77deffbf99bd1ae3b9e96",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f305c1605e5f166ce9f0be9fee9cc3877e9f0d10485d773f3d9ba3867a1ec761"
+                    "sha256": "1b5498eb7fdb944e478885e4971ea7f7b30b7db101b9438f0002d00bd6c748f8"
                   },
                   {
                     "name": "fdm_process_dremel_common",
                     "path": "process/fdm_process_dremel_common.json",
-                    "sha256": "5538d3c6c472161878da89e47d1d7c848c8784798625799acfd717ea1d34ed0b"
+                    "sha256": "fac442af3ef9b823d6f27ba3a599c974d18c9b6c4cdc2c8f15fb73c5a5e9b3d5"
                   },
                   {
                     "name": ".20mm Standard @Dremel 3D20 0.4",
                     "path": "process/.20mm Standard @Dremel 3D20 0.4.json",
-                    "sha256": "4178630652ea1c02a2894a1853e6dfdfaf1fbebc3dd5dd25467a0fa1bfd7ba64"
+                    "sha256": "54d4e08aa9b9ac85b170e3a556b2819a8d466dbfb5e77deffbf99bd1ae3b9e96"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Dremel 3D20 all",
                 "path": "filament/Generic PLA @Dremel 3D20 all.json",
-                "sha256": "99ab66ff2610e346944bf35477ee1756236f49aaad9ef628bc34f181ec36b370",
+                "sha256": "3a2135587129daaf843ac5d56f698affc8f1f9571bbfce6e4b2f4cb92470e803",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "56ca6856288b598a2fe126a587345d5f6e4828e282c3f7b297f8b57fb1d0119c"
+                    "sha256": "162bca72886137a8b5736cab767627f764729da771968757322093c366d1cbea"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8b1f5fba234141b6c1664bfc5e672c633dac46ec8fe1c89a7d7b70d90193d2c1"
+                    "sha256": "ec4fc63032cc73cf82fd71ed0bd7d3da77241fd9a343c3e6b31a72f05dbc7279"
                   },
                   {
                     "name": "Generic PLA @Dremel 3D20 all",
                     "path": "filament/Generic PLA @Dremel 3D20 all.json",
-                    "sha256": "99ab66ff2610e346944bf35477ee1756236f49aaad9ef628bc34f181ec36b370"
+                    "sha256": "3a2135587129daaf843ac5d56f698affc8f1f9571bbfce6e4b2f4cb92470e803"
                   }
                 ]
               }
@@ -122,11 +139,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Dremel.json",
-            "sha256": "4636e1c23a8cfd3f92344bdb30107b757e04c5b4102d98d92adf2e8135153e5d"
+            "sha256": "61461d42285f91b6121952784433ca6c2436daf32f63917a5b6c05c03bd5dbbd"
           },
           "model": {
             "path": "machine/Dremel 3D40.json",
-            "sha256": "6925cb4511a1144c8c437c3622121e0d9cd2270edbfdb1311bfad40910900fca",
+            "sha256": "d47e39522b48df00008d7d3317e3168a4e96d5f98d29e60dfba1591965bb8052",
             "manufacturer_model_id": "Dremel_3D40"
           },
           "nozzles_mm": [
@@ -138,49 +155,66 @@
               "machine": {
                 "name": "Dremel 3D40 0.4 nozzle",
                 "path": "machine/Dremel 3D40 0.4 nozzle.json",
-                "sha256": "ec2555f7c3f1af19519d55a57e607366a50ed4ab80d2ab59879b940781caed16"
+                "sha256": "75267ab36e540b9fde0f64de8125316b6ffe3d60dd89dd7adc18e3af95d057dc",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "2194b339439fa5388740c6a997cea4e9510ea169781c03660bcc32e37e1407cc"
+                  },
+                  {
+                    "name": "fdm_dremel_common",
+                    "path": "machine/fdm_dremel_common.json",
+                    "sha256": "2ea0089522e307914d07a0020f92890f79445bd09bcf060f923c6089f61a8cab"
+                  },
+                  {
+                    "name": "Dremel 3D40 0.4 nozzle",
+                    "path": "machine/Dremel 3D40 0.4 nozzle.json",
+                    "sha256": "75267ab36e540b9fde0f64de8125316b6ffe3d60dd89dd7adc18e3af95d057dc"
+                  }
+                ]
               },
               "process": {
                 "name": ".20mm Standard @Dremel 3D40 0.4",
                 "path": "process/.20mm Standard @Dremel 3D40 0.4.json",
-                "sha256": "0dfb09ef838ad83b7351957bf3697d8a9242c3fd643844f5e66f8667b7bfef3d",
+                "sha256": "2205611e11383c7b32e6c966e1ec9da16d07d12a695709b06c4bcb34f3f4298f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f305c1605e5f166ce9f0be9fee9cc3877e9f0d10485d773f3d9ba3867a1ec761"
+                    "sha256": "1b5498eb7fdb944e478885e4971ea7f7b30b7db101b9438f0002d00bd6c748f8"
                   },
                   {
                     "name": "fdm_process_dremel_common",
                     "path": "process/fdm_process_dremel_common.json",
-                    "sha256": "5538d3c6c472161878da89e47d1d7c848c8784798625799acfd717ea1d34ed0b"
+                    "sha256": "fac442af3ef9b823d6f27ba3a599c974d18c9b6c4cdc2c8f15fb73c5a5e9b3d5"
                   },
                   {
                     "name": ".20mm Standard @Dremel 3D40 0.4",
                     "path": "process/.20mm Standard @Dremel 3D40 0.4.json",
-                    "sha256": "0dfb09ef838ad83b7351957bf3697d8a9242c3fd643844f5e66f8667b7bfef3d"
+                    "sha256": "2205611e11383c7b32e6c966e1ec9da16d07d12a695709b06c4bcb34f3f4298f"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Dremel 3D40 all",
                 "path": "filament/Generic PLA @Dremel 3D40 all.json",
-                "sha256": "3570a50575ee73a92e9a29dcfcaeaeb4cb01fd3d7f8c6b53941cb2ebc7035c43",
+                "sha256": "0b31371d81d8c3c46fc0121b2ec45a4eaa7ea04467352834a4ffd7124440e341",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "56ca6856288b598a2fe126a587345d5f6e4828e282c3f7b297f8b57fb1d0119c"
+                    "sha256": "162bca72886137a8b5736cab767627f764729da771968757322093c366d1cbea"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8b1f5fba234141b6c1664bfc5e672c633dac46ec8fe1c89a7d7b70d90193d2c1"
+                    "sha256": "ec4fc63032cc73cf82fd71ed0bd7d3da77241fd9a343c3e6b31a72f05dbc7279"
                   },
                   {
                     "name": "Generic PLA @Dremel 3D40 all",
                     "path": "filament/Generic PLA @Dremel 3D40 all.json",
-                    "sha256": "3570a50575ee73a92e9a29dcfcaeaeb4cb01fd3d7f8c6b53941cb2ebc7035c43"
+                    "sha256": "0b31371d81d8c3c46fc0121b2ec45a4eaa7ea04467352834a4ffd7124440e341"
                   }
                 ]
               }
@@ -226,11 +260,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/Dremel.json",
-            "sha256": "4636e1c23a8cfd3f92344bdb30107b757e04c5b4102d98d92adf2e8135153e5d"
+            "sha256": "61461d42285f91b6121952784433ca6c2436daf32f63917a5b6c05c03bd5dbbd"
           },
           "model": {
             "path": "machine/Dremel 3D45.json",
-            "sha256": "d14a1265537dd8fd98fd0df6535032e4fad0cadf785244c37da033ebb9fe9d08",
+            "sha256": "1a999cf788928cf7e252ec262e384c056cba507c66d9edf2a7df1785a500a920",
             "manufacturer_model_id": "Dremel_3D45"
           },
           "nozzles_mm": [
@@ -242,49 +276,66 @@
               "machine": {
                 "name": "Dremel 3D45 0.4 nozzle",
                 "path": "machine/Dremel 3D45 0.4 nozzle.json",
-                "sha256": "b4e5328383018121045c5ab8cdaca9143e906d211ce3b6aba87854971792fe7f"
+                "sha256": "29d8e4cb3cfe884fed667067725756f083a8ea480644e1c2a6813235c52a1cff",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "2194b339439fa5388740c6a997cea4e9510ea169781c03660bcc32e37e1407cc"
+                  },
+                  {
+                    "name": "fdm_dremel_common",
+                    "path": "machine/fdm_dremel_common.json",
+                    "sha256": "2ea0089522e307914d07a0020f92890f79445bd09bcf060f923c6089f61a8cab"
+                  },
+                  {
+                    "name": "Dremel 3D45 0.4 nozzle",
+                    "path": "machine/Dremel 3D45 0.4 nozzle.json",
+                    "sha256": "29d8e4cb3cfe884fed667067725756f083a8ea480644e1c2a6813235c52a1cff"
+                  }
+                ]
               },
               "process": {
                 "name": ".20mm Standard @Dremel 3D45 0.4",
                 "path": "process/.20mm Standard @Dremel 3D45 0.4.json",
-                "sha256": "6d7dbee8b18d1869ca2cafe60c44a350665ed4a06fc68bf7884d9b09452123c5",
+                "sha256": "b63508cf56902f70c2fc71cfd9322941847d4805ff61b915251500e0aff67ec8",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "f305c1605e5f166ce9f0be9fee9cc3877e9f0d10485d773f3d9ba3867a1ec761"
+                    "sha256": "1b5498eb7fdb944e478885e4971ea7f7b30b7db101b9438f0002d00bd6c748f8"
                   },
                   {
                     "name": "fdm_process_dremel_common",
                     "path": "process/fdm_process_dremel_common.json",
-                    "sha256": "5538d3c6c472161878da89e47d1d7c848c8784798625799acfd717ea1d34ed0b"
+                    "sha256": "fac442af3ef9b823d6f27ba3a599c974d18c9b6c4cdc2c8f15fb73c5a5e9b3d5"
                   },
                   {
                     "name": ".20mm Standard @Dremel 3D45 0.4",
                     "path": "process/.20mm Standard @Dremel 3D45 0.4.json",
-                    "sha256": "6d7dbee8b18d1869ca2cafe60c44a350665ed4a06fc68bf7884d9b09452123c5"
+                    "sha256": "b63508cf56902f70c2fc71cfd9322941847d4805ff61b915251500e0aff67ec8"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Dremel 3D45 all",
                 "path": "filament/Generic PLA @Dremel 3D45 all.json",
-                "sha256": "8399b861addb43401868a84d61952ace9d7b1a8829ef4486e86c0f912a6132d5",
+                "sha256": "6acfea9b455a53465ddd25c1780256dfa3fa03e12196a57c8e5fe026f4b0e691",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "56ca6856288b598a2fe126a587345d5f6e4828e282c3f7b297f8b57fb1d0119c"
+                    "sha256": "162bca72886137a8b5736cab767627f764729da771968757322093c366d1cbea"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8b1f5fba234141b6c1664bfc5e672c633dac46ec8fe1c89a7d7b70d90193d2c1"
+                    "sha256": "ec4fc63032cc73cf82fd71ed0bd7d3da77241fd9a343c3e6b31a72f05dbc7279"
                   },
                   {
                     "name": "Generic PLA @Dremel 3D45 all",
                     "path": "filament/Generic PLA @Dremel 3D45 all.json",
-                    "sha256": "8399b861addb43401868a84d61952ace9d7b1a8829ef4486e86c0f912a6132d5"
+                    "sha256": "6acfea9b455a53465ddd25c1780256dfa3fa03e12196a57c8e5fe026f4b0e691"
                   }
                 ]
               }

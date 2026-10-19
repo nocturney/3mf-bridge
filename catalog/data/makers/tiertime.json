@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Tiertime.json",
-            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+            "sha256": "3dd3b1193c2a0e9775d22b1df83d368681ffb3935c3fe814c6ea03cb31d35830"
           },
           "model": {
             "path": "machine/Tiertime UP300 HS.json",
-            "sha256": "458ed7f2a565dfa8a7657f4d41362769b242514f3e93ee7e712cce1ff2c85042",
+            "sha256": "1790c3ccdef97e45cd443868871b783d62d98ded79885c3a66e86ad55ad28dcd",
             "manufacturer_model_id": "my_tiertime_up300_01"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Tiertime.json",
-            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+            "sha256": "3dd3b1193c2a0e9775d22b1df83d368681ffb3935c3fe814c6ea03cb31d35830"
           },
           "model": {
             "path": "machine/Tiertime UP310 Pro.json",
-            "sha256": "9c156f06a8e96fe480c5be916e5a42dccbb393a220981fbc28fe4ca462664ba7",
+            "sha256": "5e766d8f49ef6d934eba40f8236e73ce3c089893601908b465a3c871471ae547",
             "manufacturer_model_id": "my_tiertime310_01"
           },
           "nozzles_mm": [
@@ -92,11 +92,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Tiertime.json",
-            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+            "sha256": "3dd3b1193c2a0e9775d22b1df83d368681ffb3935c3fe814c6ea03cb31d35830"
           },
           "model": {
             "path": "machine/Tiertime UP400 Pro.json",
-            "sha256": "8c0c293a6176c9907b2284e7bf464b35cfdb410b1ba26d4b60f75afef549e653",
+            "sha256": "ea6b824bdf0628c15fc5c622919afc06883a8e9e7dad457a904633a8e2415ab1",
             "manufacturer_model_id": "my_tiertime_up400_01"
           },
           "nozzles_mm": [
@@ -131,11 +131,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Tiertime.json",
-            "sha256": "1097d9793a69b01c4a9c70b5edbc5902e9aae8284d685e58cd2f93ed7aa2b163"
+            "sha256": "3dd3b1193c2a0e9775d22b1df83d368681ffb3935c3fe814c6ea03cb31d35830"
           },
           "model": {
             "path": "machine/Tiertime UP600 HS.json",
-            "sha256": "9f3d2e0659433e93064a963d05a2d55d21f51219b17f4ba63461fe88057e9a2d",
+            "sha256": "6b78fb1eaddb7c06d3bbfd6f3221f6e4a6edc9fea83ffe466a096a97e29a646a",
             "manufacturer_model_id": "my_tiertime_up600_01"
           },
           "nozzles_mm": [

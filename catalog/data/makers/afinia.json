@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Afinia.json",
-            "sha256": "2b001c0628b4e0ea6d4fd4f74c5ccbcacc79c03421b60aa677604afe3212317c"
+            "sha256": "87cfabb271237bf352022b8652ce886be3d17c81237639a559cecbaaa3433214"
           },
           "model": {
             "path": "machine/Afinia H+1(HS).json",
-            "sha256": "a67b2c72477c6380338c71253b695b724048903484e7189ddbf7ec317834aab6",
+            "sha256": "aa421332c7f109f81acca2f2831be82186ff17ba2903a2d9ffd6f5a268cc11e7",
             "manufacturer_model_id": "my_afinia_h_1_hs_01"
           },
           "nozzles_mm": [

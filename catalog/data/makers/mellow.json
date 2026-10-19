@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.02",
           "manifest": {
             "path": "resources/profiles/Mellow.json",
-            "sha256": "ec7d2893654143e15426cc47b6b78d397e8fed186089f120d8ec21273ebeb0af"
+            "sha256": "c5a4fb6627b319d2c78dd801ea04405fbcec716584e0b64faf00e6507c4d6cdb"
           },
           "model": {
             "path": "machine/M1.json",
-            "sha256": "d1d7a6716ec4702adc4cc2fcd2328d98513c0bb4165eb3dd83712a4ce16cc736",
+            "sha256": "4788817706a450bd1debb8b1bf536f2723964edcc9c7ef28593d2b6f9a475dd2",
             "manufacturer_model_id": "m1_1"
           },
           "nozzles_mm": [

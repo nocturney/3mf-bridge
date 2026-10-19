@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Phrozen.json",
-            "sha256": "708a0817a8b55d244fcdc4a626fe759acc368b2bab77b56dc1077b819a6e6869"
+            "sha256": "333ff5a37d8fa41f1ca4a101f5b2ee8d61b3ad63d2a1aa112a86c222524459ed"
           },
           "model": {
             "path": "machine/Phrozen Arco.json",
-            "sha256": "10259c4a8d6703e82298fcda2536171b5c75599f436247733137057338b6e7d0",
+            "sha256": "031e1b8ae17cd59caf07d80b9b1982e2e4923d61bf6b5ca6f12f2802469dbf12",
             "manufacturer_model_id": "Phrozen Arco"
           },
           "nozzles_mm": [

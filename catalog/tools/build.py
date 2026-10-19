@@ -10,10 +10,14 @@ import subprocess
 from collections import Counter, defaultdict
 from pathlib import Path, PurePosixPath
 
+from prusa_ini import validate_model as validate_ini_model
+
 SOURCES = (
     ("bambu", "manufacturer", "bambulab/BambuStudio", "resources/profiles"),
     ("qidi", "manufacturer", "QIDITECH/QIDIStudio", "resources/profiles"),
     ("elegoo", "manufacturer", "elegooofficial/ElegooSlicer", "resources/profiles"),
+    ("snapmaker", "manufacturer", "Snapmaker/Orca_Presets", "."),
+    ("flashforge", "manufacturer", "FlashForge/Orca-Flashforge", "resources/profiles"),
     ("orca", "orca", "OrcaSlicer/OrcaSlicer", "resources/profiles"),
     ("prusa_official", "manufacturer", "prusa3d/PrusaSlicer-settings", "live/PrusaResearch"),
     ("prusa_community", "prusa", "prusa3d/PrusaSlicer-settings-non-prusa-fff", "."),
@@ -38,7 +42,8 @@ class InvalidProfile(ValueError):
 
 
 def sha(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
+    # Upstream JSON/INI is text: stable source digest across Git CRLF/LF policies.
+    return hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
 
 
 def safe_path(root: Path, relative: str) -> Path:
@@ -87,6 +92,20 @@ def model_key(brand: str, model: str) -> str:
     return key
 
 
+def nozzle_sort_key(value: str):
+    return tuple(float(part) for part in value.split("+"))
+
+
+def normalized_nozzle_token(token: str) -> str:
+    """Model variants may describe multi-toolhead mixtures, e.g. 0.4+0.6."""
+    if not re.fullmatch(r"\d+(?:\.\d+)?(?:\+\d+(?:\.\d+)?){0,7}", token):
+        raise InvalidProfile("unparseable nozzle configuration")
+    numbers = [float(part) for part in token.split("+")]
+    if any(not (0.1 <= n <= 1.2) for n in numbers):
+        raise InvalidProfile("nozzle diameter outside supported range")
+    return "+".join(f"{n:g}" for n in numbers)
+
+
 def diameters(value) -> list[str]:
     if isinstance(value, str):
         tokens = value.split(";")
@@ -94,19 +113,8 @@ def diameters(value) -> list[str]:
         tokens = value
     else:
         tokens = []
-    parsed = set()
-    for token in tokens:
-        token = str(token).strip()
-        if not token:
-            continue
-        try:
-            number = float(token)
-        except ValueError as exc:
-            raise InvalidProfile("unparseable nozzle diameter") from exc
-        if not (0.1 <= number <= 1.2):
-            raise InvalidProfile("nozzle diameter outside supported range")
-        parsed.add(f"{number:g}")
-    return sorted(parsed, key=float)
+    parsed = {normalized_nozzle_token(str(t).strip()) for t in tokens if str(t).strip()}
+    return sorted(parsed, key=nozzle_sort_key)
 
 
 def by_name(manifest: dict, key: str) -> dict[str, str]:
@@ -132,10 +140,13 @@ def resolve_machine(name: str, folder: Path, index: dict[str, str],
     if values.get("type") not in ("machine", None):
         raise InvalidProfile("wrong machine profile type")
     parent = values.get("inherits")
+    ancestry = []
     if parent:
-        inherited, _, _ = resolve_machine(parent, folder, index, cache, visiting + (name,))
+        inherited, _, _, chain = resolve_machine(parent, folder, index, cache, visiting + (name,))
         values = {**inherited, **values}
-    cache[name] = (values, filehash, index[name])
+        ancestry.extend(chain)
+    ancestry.append({"name": name, "path": index[name], "sha256": filehash})
+    cache[name] = (values, filehash, index[name], ancestry)
     return cache[name]
 
 
@@ -184,12 +195,20 @@ def validation_for_model(folder: Path, item: dict, manifest: dict, maps: dict):
     errors = Counter()
     for machine_name in machine:
         try:
-            config, mach_hash, mach_path = resolve_machine(machine_name, folder, machine, cache)
+            config, mach_hash, mach_path, mach_chain = resolve_machine(machine_name, folder, machine, cache)
             if normalized(config.get("printer_model")) != normalized(name):
                 continue
-            nozzle = diameters(config.get("nozzle_diameter"))
-            if len(nozzle) != 1 or nozzle[0] not in declared:
-                raise InvalidProfile("nozzle/model mismatch")
+            physical_nozzles = diameters(config.get("nozzle_diameter"))
+            selected_variant = config.get("printer_variant")
+            if selected_variant:
+                selected_variant = normalized_nozzle_token(str(selected_variant).strip())
+                expected_parts = set(selected_variant.split("+"))
+                if selected_variant not in declared or set(physical_nozzles) != expected_parts:
+                    raise InvalidProfile("machine nozzle configuration does not match model")
+            elif len(physical_nozzles) == 1 and physical_nozzles[0] in declared:
+                selected_variant = physical_nozzles[0]
+            else:
+                raise InvalidProfile("mixed physical nozzles require an explicit model variant")
             print_name = config.get("default_print_profile")
             if not isinstance(print_name, str) or print_name not in process:
                 raise InvalidProfile("missing process preset")
@@ -211,8 +230,9 @@ def validation_for_model(folder: Path, item: dict, manifest: dict, maps: dict):
             if fil is None or not filament_chain:
                 raise InvalidProfile("no valid default filament dependency chain")
             variants.append({
-                "nozzle_mm": nozzle[0],
-                "machine": {"name": machine_name, "path": mach_path, "sha256": mach_hash},
+                "nozzle_mm": selected_variant,
+                "machine": {"name": machine_name, "path": mach_path,
+                            "sha256": mach_hash, "inheritance": mach_chain},
                 "process": {"name": print_name, "path": process[print_name],
                             "sha256": print_chain[-1]["sha256"], "inheritance": print_chain},
                 "filament": {"name": fil, "path": filament[fil],
@@ -221,7 +241,7 @@ def validation_for_model(folder: Path, item: dict, manifest: dict, maps: dict):
         except InvalidProfile as exc:
             # Bad variants cannot be used as a verified machine configuration.
             errors[str(exc)] += 1
-    variants.sort(key=lambda v: (float(v["nozzle_mm"]), v["machine"]["name"]))
+    variants.sort(key=lambda v: (nozzle_sort_key(v["nozzle_mm"]), v["machine"]["name"]))
     return {
         "model": {"path": relative, "sha256": modelhash,
                   "manufacturer_model_id": model.get("model_id")},
@@ -248,7 +268,9 @@ def scan_orca_json(source: dict, checkout: Path):
             permitted = {
                 "bambu": {"BBL"},
                 "qidi": {"Q Series", "X 3 Series", "X 4 Series", "X 5 Series"},
-                "elegoo": {"Elegoo"}
+                "elegoo": {"Elegoo"},
+                "snapmaker": {"Snapmaker"},
+                "flashforge": {"Flashforge"}
             }[publisher]
             if vendor not in permitted:
                 continue
@@ -321,8 +343,7 @@ def scan_prusa(source: dict, checkout: Path):
         relative = chosen.relative_to(checkout).as_posix()
         content = chosen.read_bytes()
         sections = read_ini_sections(chosen)
-        printers = [values for section, values in sections.items()
-                    if section.startswith("printer:")]
+        bundle_hash = sha(content)
         for section, values in sections.items():
             if not section.startswith("printer_model:") or values.get("technology", "FFF") not in ("FFF","FDM"):
                 continue
@@ -331,7 +352,7 @@ def scan_prusa(source: dict, checkout: Path):
                 nozzle = diameters(values.get("variants"))
                 if not name or not nozzle:
                     raise InvalidProfile("Prusa model missing variant/nozzle")
-                linked = sum(p.get("printer_model") == section.split(":",1)[1] for p in printers)
+                verified = validate_ini_model(sections, section, nozzle, relative, bundle_hash)
                 yield {"manufacturer": brand, "name": name,
                        "candidate": {
                            "provider": source["provider"],
@@ -339,13 +360,10 @@ def scan_prusa(source: dict, checkout: Path):
                            "repository": source["repository"],
                            "commit": source["commit"],
                            "bundle_version": chosen.stem,
-                           "manifest": {"path": relative, "sha256": sha(content)},
-                           "model": {"path": relative, "section": section, "sha256": sha(content)},
+                           "manifest": {"path": relative, "sha256": bundle_hash},
+                           "model": {"path": relative, "section": section, "sha256": bundle_hash},
                            "nozzles_mm": nozzle,
-                           "candidate_printer_sections": linked,
-                           "variants": [],
-                           "validation": "index_only",
-                           "warnings": ["INI dependency resolution not yet verified"],
+                           **verified,
                        }}
             except InvalidProfile as exc:
                 yield {"quarantine": {"publisher": source["key"],
@@ -391,7 +409,7 @@ def combine(incoming):
         model["preferred_profile"] = (
             {"provider": preferred["provider"], "publisher": preferred["publisher"],
              "manifest": preferred["manifest"]["path"],
-             "nozzles_mm": sorted({v["nozzle_mm"] for v in preferred["variants"]}, key=float)}
+             "nozzles_mm": sorted({v["nozzle_mm"] for v in preferred["variants"]}, key=nozzle_sort_key)}
             if preferred else None
         )
         # Resolve each physical nozzle separately: original manufacturer can
@@ -411,7 +429,7 @@ def combine(incoming):
                         "process": variant["process"]["name"],
                         "filament": variant["filament"]["name"],
                     }
-        model["preferred_by_nozzle"] = dict(sorted(by_nozzle.items(), key=lambda x: float(x[0])))
+        model["preferred_by_nozzle"] = dict(sorted(by_nozzle.items(), key=lambda x: nozzle_sort_key(x[0])))
         model["status"] = "structural_verified" if preferred else "index_only"
     return sorted(models.values(), key=lambda x: (x["manufacturer"].casefold(), x["model"].casefold())), quarantine
 
@@ -425,10 +443,21 @@ def build(sources_root: Path, target: Path, update_lock: bool = False):
         checkout = sources_root / key
         if not (checkout / ".git").exists():
             raise FileNotFoundError(f"Missing pinned git checkout: {checkout}")
-        commit = subprocess.check_output(["git","-C",str(checkout),"rev-parse","HEAD"],
+        commit = subprocess.check_output(["git", "-C", str(checkout), "rev-parse", "HEAD"],
                                          text=True).strip()
         if not re.fullmatch(r"[0-9a-f]{40}", commit):
             raise InvalidProfile("unreadable git revision")
+        actual_remote = subprocess.check_output(
+            ["git", "-C", str(checkout), "remote", "get-url", "origin"],
+            text=True).strip().rstrip("/")
+        expected_remote = ("https://github.com/" + repo).lower()
+        if actual_remote.lower().removesuffix(".git") != expected_remote:
+            raise InvalidProfile("wrong upstream repository for " + key)
+        dirty = subprocess.check_output(
+            ["git", "-C", str(checkout), "status", "--porcelain",
+             "--untracked-files=all"], text=True)
+        if dirty.strip():
+            raise InvalidProfile("upstream checkout contains uncommitted changes: " + key)
         if existing and not update_lock:
             if key not in pinned or pinned[key]["commit"] != commit:
                 raise InvalidProfile("upstream revision changed for " + key + "; review changes and pass --update-lock")

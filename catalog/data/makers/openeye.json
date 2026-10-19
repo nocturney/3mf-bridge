@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/OpenEYE.json",
-            "sha256": "a193d11ff408745ff559c8d85431fd5537d721606bf93b33528413d05a8b996b"
+            "sha256": "f2d8cca1fe6d51b0f77d75bcf5003bab4d12c466d815490925527fcf97fdcdcc"
           },
           "model": {
             "path": "machine/OpenEYE Peacock V2.json",
-            "sha256": "4de3d58989d9f2fae7b523b7002aaf81e17189b7f01e4f757af8bc2640d5cc21",
+            "sha256": "fc62b9a0db8de70632fb4d68c99a666dc099b7e9d53825752db608156fee61d0",
             "manufacturer_model_id": "openeye_01"
           },
           "nozzles_mm": [

@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/TwoTrees.json",
-            "sha256": "6493c0346f99fcf92cbce1a06a38c71be53d2110909233240fb5d0ed2d0d58ae"
+            "sha256": "256747aa176a9f2a84afbcbfba95f4d5649fe38dfa5b0d8b9633900f5ed46b5e"
           },
           "model": {
             "path": "machine/TwoTrees SK1.json",
-            "sha256": "a02e47a8fa5b4b16e5d52a1d0eb7719a7eb21aec8888ac388244ff4c3dd15dce",
+            "sha256": "a73d0271b15e69bdeb2a6cbeb50c26268dc7d5ece1c594112612834178ce60fa",
             "manufacturer_model_id": "TwoTrees_SK1"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/TwoTrees.json",
-            "sha256": "6493c0346f99fcf92cbce1a06a38c71be53d2110909233240fb5d0ed2d0d58ae"
+            "sha256": "256747aa176a9f2a84afbcbfba95f4d5649fe38dfa5b0d8b9633900f5ed46b5e"
           },
           "model": {
             "path": "machine/TwoTrees SP-5 Klipper.json",
-            "sha256": "d51fe8b49b39ae2591ac3095ea8174ea15b23f25ba45e39825219f42b47a2aa2",
+            "sha256": "f92b636648f9c36a815676d536ceff03d26f45a0f69bbee22b5c301a1fecfaaa",
             "manufacturer_model_id": "TwoTrees_SP-5_Klipper"
           },
           "nozzles_mm": [

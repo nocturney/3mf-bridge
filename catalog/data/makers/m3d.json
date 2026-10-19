@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/M3D.json",
-            "sha256": "08b1625bb2de2c7df05eb4203b560a8b9d093d28306d41fea099a18049d1113e"
+            "sha256": "25ca8aa18d25646d55f012bc12ca4f9e13cdd5b5c1c00a7c04b80401149bf96f"
           },
           "model": {
             "path": "machine/M3D Enabler D7500.json",
-            "sha256": "236882afe631dac3d033cb418e1e6e17dc85b3b061ffd768b5190bc16a2ee6e3",
+            "sha256": "3d64034084922ace2496f03ad98328fac7d12932819886cbfce3f2caa490851b",
             "manufacturer_model_id": "M3D_D7500"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/M3D.json",
-            "sha256": "08b1625bb2de2c7df05eb4203b560a8b9d093d28306d41fea099a18049d1113e"
+            "sha256": "25ca8aa18d25646d55f012bc12ca4f9e13cdd5b5c1c00a7c04b80401149bf96f"
           },
           "model": {
             "path": "machine/M3D Enabler D8500.json",
-            "sha256": "86f5da51319ae95d3ba0d0a581c566dc6e4387fb9f84525f7e788776f2955876",
+            "sha256": "9a5f90ef82302641d2d0ebf7f23cca591783ca9053f1b0cee32cee6cd523d347",
             "manufacturer_model_id": "M3D_D8500"
           },
           "nozzles_mm": [

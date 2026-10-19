@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Cubicon.json",
-            "sha256": "cd810d50cd436326f80728106f6f8a964a76f40c4da7089f1bd298a1129f5721"
+            "sha256": "c9685d8c0c54dbd2ac05c54e1f4179aee1b5332a36c5fd48537654c439746f34"
           },
           "model": {
             "path": "machine/Cubicon xCeler-I.json",
-            "sha256": "79ccb85ae57c136f096e6808044a2a3051899640cd60ac884a425f2332d590ee",
+            "sha256": "a04ec9fb9f553c37a4c788358e1327117d8ea9c917a78c6bfd17ad4b3428a7ea",
             "manufacturer_model_id": null
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Cubicon.json",
-            "sha256": "cd810d50cd436326f80728106f6f8a964a76f40c4da7089f1bd298a1129f5721"
+            "sha256": "c9685d8c0c54dbd2ac05c54e1f4179aee1b5332a36c5fd48537654c439746f34"
           },
           "model": {
             "path": "machine/Cubicon xCeler-Mini.json",
-            "sha256": "6238469abdc712ba45a5ee49cf1b477fc3e12d2405f4c8dbfbdec64f5483d45a",
+            "sha256": "204a959697a816fbe8d58dbe26718917068d0b3ba364d2486aee29cb2ffece71",
             "manufacturer_model_id": null
           },
           "nozzles_mm": [
@@ -92,11 +92,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Cubicon.json",
-            "sha256": "cd810d50cd436326f80728106f6f8a964a76f40c4da7089f1bd298a1129f5721"
+            "sha256": "c9685d8c0c54dbd2ac05c54e1f4179aee1b5332a36c5fd48537654c439746f34"
           },
           "model": {
             "path": "machine/Cubicon xCeler-Plus.json",
-            "sha256": "07cc354f8e85f8f964dae17881a392501ab719001123217442245d8ac61edab2",
+            "sha256": "3797269d7731fa3d67d9f86bbc1a5b3eabcf13a912ae682161a350c4b80968b1",
             "manufacturer_model_id": null
           },
           "nozzles_mm": [

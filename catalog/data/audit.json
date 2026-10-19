@@ -1,7 +1,19 @@
 {
   "schema_version": 1,
-  "quarantined": 36,
+  "quarantined": 37,
   "examples": [
+    {
+      "publisher": "flashforge",
+      "model": "Flashforge Guider4 Pro",
+      "manifest": "Flashforge.json",
+      "problem": "unparseable nozzle configuration"
+    },
+    {
+      "publisher": "flashforge",
+      "model": "Flashforge Guider4",
+      "manifest": "Flashforge.json",
+      "problem": "unparseable nozzle configuration"
+    },
     {
       "publisher": "orca",
       "model": "FELIX Food Double",
@@ -24,19 +36,19 @@
       "publisher": "orca",
       "model": "Flashforge Adventurer 4 Series",
       "manifest": "Flashforge.json",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "orca",
       "model": "Flashforge Guider4",
       "manifest": "Flashforge.json",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "orca",
       "model": "Flashforge Guider4 Pro",
       "manifest": "Flashforge.json",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "orca",
@@ -76,15 +88,9 @@
     },
     {
       "publisher": "orca",
-      "model": "Snapmaker U1",
-      "manifest": "Snapmaker.json",
-      "problem": "unparseable nozzle diameter"
-    },
-    {
-      "publisher": "orca",
       "model": "Sovol Zero",
       "manifest": "Sovol.json",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "orca",
@@ -94,107 +100,107 @@
     {
       "publisher": "prusa_community",
       "model": "Cocoa Press",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "Cocoa Press 2",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "Jubilee",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "Prusawire",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 250mm",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 300mm",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 350mm",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Trident 250mm",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Trident 300mm",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Trident 350mm",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Zero",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Switchwire",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 250mm (Afterburner)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 300mm (Afterburner)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 350mm (Afterburner)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 250mm (Mobius)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 300mm (Mobius)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON2 350mm (Mobius)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Zero (MiniAB)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Switchwire (Afterburner)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     },
     {
       "publisher": "prusa_community",
       "model": "VORON Switchwire (Mobius)",
-      "problem": "unparseable nozzle diameter"
+      "problem": "unparseable nozzle configuration"
     }
   ]
 }

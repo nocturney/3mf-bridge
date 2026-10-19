@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/WEMAKE3D.json",
-            "sha256": "59a4a3ff1f1ac4cd334405aa26e3d7d8ae6fa93b043649e9913c5fea95573ce9"
+            "sha256": "7269547d1593c3a4aa1099743e4a33172762465dcfb1a1e5b91b26538ba27d49"
           },
           "model": {
             "path": "machine/WEMAKE3D PhoenixProV1.json",
-            "sha256": "c7f8e4b0f3aee79eba07f197a8a0954ab00da409c60fab9cca3eec8cc88c376e",
+            "sha256": "46491031fd104e60ae7cb6f697056b65ef61548781e5ef12a94fce70eccc983e",
             "manufacturer_model_id": "v1"
           },
           "nozzles_mm": [
@@ -58,11 +58,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/WEMAKE3D.json",
-            "sha256": "59a4a3ff1f1ac4cd334405aa26e3d7d8ae6fa93b043649e9913c5fea95573ce9"
+            "sha256": "7269547d1593c3a4aa1099743e4a33172762465dcfb1a1e5b91b26538ba27d49"
           },
           "model": {
             "path": "machine/WEMAKE3D TinyBotV1.json",
-            "sha256": "0550d47bcc3009dfa59ddbf016bda0850b7f19fc253c5721ba34d6d621e7c3d7",
+            "sha256": "19bc363e3f9951e6687a6045ca5a6aac7e9ddea7b08349374f472e4eaf1f105e",
             "manufacturer_model_id": "v1"
           },
           "nozzles_mm": [

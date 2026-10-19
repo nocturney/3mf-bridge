@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Raise3D.json",
-            "sha256": "b479d4cda57f23731d2bd5f1f0a96290591e2259e31e7f7864964e0673801025"
+            "sha256": "0370a2cc3b8e87214a419a18e3f87e5a288d21c9f2f7764f2ae4d1378a39ae23"
           },
           "model": {
             "path": "machine/Raise3D Pro3.json",
-            "sha256": "33a1fc6ef6afd5833ed7aee54ae7b903347c8badf4ec49f8a739b789b438a54a",
+            "sha256": "a46ca0cf54f1844ce7f99f9a9634edf6541d901574b5012fe54c62b8afb46806",
             "manufacturer_model_id": "Raise3D-Pro3"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Raise3D.json",
-            "sha256": "b479d4cda57f23731d2bd5f1f0a96290591e2259e31e7f7864964e0673801025"
+            "sha256": "0370a2cc3b8e87214a419a18e3f87e5a288d21c9f2f7764f2ae4d1378a39ae23"
           },
           "model": {
             "path": "machine/Raise3D Pro3 Plus.json",
-            "sha256": "2d83725acd56f53acfe3e2ef6df18ed0c321ae79d5bc375785f68ec6808dbdec",
+            "sha256": "9b788b01845dc6948ad50aa68b92f2ea33ab78abfc648919ad5f992c15970233",
             "manufacturer_model_id": "Raise3D-Pro3-Plus"
           },
           "nozzles_mm": [

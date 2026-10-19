@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV01.json",
-            "sha256": "5b245150a236248cabbf35f7609dd64d56c78b816572318543261b8fe7c49ee3",
+            "sha256": "b0975837a3eb5710871209cdcc1f6ae6fb0c268dd720bfec4464324d07fdb776",
             "manufacturer_model_id": "Sovol-SV01"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV01 Pro.json",
-            "sha256": "7f9ef9e8b88de84cb6fb7c3003457dcd57b989970a30c781b4c659422a848503",
+            "sha256": "65dd9ef63ea12d3ba924a9ba128e379c2ae3e12da6d2155874af4c47b61e2e34",
             "manufacturer_model_id": "Sovol-SV01-Pro"
           },
           "nozzles_mm": [
@@ -92,11 +92,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV02.json",
-            "sha256": "8281e3e0877b1e4126383fb680e9878d65970892b36661b9baef075f8782e35d",
+            "sha256": "5bb59b6b1d2c0f6dc27b949d013a4c36982e59839dbff56fd0cbb74ed2a34b8d",
             "manufacturer_model_id": "Sovol-SV02"
           },
           "nozzles_mm": [
@@ -129,11 +129,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV05.json",
-            "sha256": "7fb27ae904fad3bfff45f6b8a8fad8df6f2233cdde659c2f402e2ac50ecf36d1",
+            "sha256": "d1c12d14d63b56d7b5ad974cdd96acaf3f1f8d973a1a23e48a482d8f945a1e7c",
             "manufacturer_model_id": "Sovol-SV05"
           },
           "nozzles_mm": [
@@ -166,11 +166,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV06.json",
-            "sha256": "0d30cee2dd0cc6d67e85f94adce94615ae65cbf98e664513f175a744096d4f8b",
+            "sha256": "898776e9477441f2b651053f07bf7a07f6f99dc92643155532b715f02b1d355d",
             "manufacturer_model_id": "Sovol-SV06"
           },
           "nozzles_mm": [
@@ -203,11 +203,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV06 ACE.json",
-            "sha256": "47539792431c55f95d13be375986e343c83b21ed237dcb992546262a29853000",
+            "sha256": "a8215dfc18d4ca9c7bb3f001f17643ffe000a7c788a1e0cdad9ed90f0505d51c",
             "manufacturer_model_id": "Sovol-SV06-ACE"
           },
           "nozzles_mm": [
@@ -243,11 +243,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV06 Plus.json",
-            "sha256": "51c8786b61662060450f6af1b2dfc5763aef1f88b1cb7d27d2dafcab7b206adc",
+            "sha256": "db90693c5d37360a3d59da8c943c74a54d547f68f75581a816b38d71c4429d31",
             "manufacturer_model_id": "Sovol-SV06-Plus"
           },
           "nozzles_mm": [
@@ -280,11 +280,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV06 Plus ACE.json",
-            "sha256": "75426b5cefea4f7549172e30d6efe4bbe3a074a0f9c08667e063ebab9725a5c4",
+            "sha256": "0a8388bb25d11f73021d26f2fb84ab7a6e07c2d4adc20d747b680f071cbf24bd",
             "manufacturer_model_id": "Sovol-SV06-Plus-ACE"
           },
           "nozzles_mm": [
@@ -317,11 +317,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV07.json",
-            "sha256": "cd3067a8f495eb80a1f31e31b4760e37841ef4ff658c7731daeb0d2c5a537ca4",
+            "sha256": "2abe0d0520e3d72c8a92e540634ee6a7c1a2d328b75130a0149d1878f7cc1097",
             "manufacturer_model_id": "Sovol-SV07"
           },
           "nozzles_mm": [
@@ -354,11 +354,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV07 Plus.json",
-            "sha256": "ded4e2cb78b440e8d0fc22649c289136b1a0bd920649b74b59195bfb28e2ea97",
+            "sha256": "f484c65b486a5fe75d8044283535b97326f79cada42db666de878f5b5917fbcd",
             "manufacturer_model_id": "Sovol-SV07Plus"
           },
           "nozzles_mm": [
@@ -391,11 +391,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV08.json",
-            "sha256": "8e2c073f497e142e80155a0790fa010763e7b692f37a57e4419637a37d47cb2d",
+            "sha256": "05b927604166a75d78c9314404b9086059cf7a6f90f109b95a45e50c67b051d7",
             "manufacturer_model_id": "Sovol-SV08"
           },
           "nozzles_mm": [
@@ -432,11 +432,11 @@
           "bundle_version": "02.04.00.08",
           "manifest": {
             "path": "resources/profiles/Sovol.json",
-            "sha256": "d78715d613d1776452476bb1eec5b68de9acb8ff16da7cefecb894d531b8486d"
+            "sha256": "4c81afd9755fc9619b79b4f607bd59a5147f413f6c22135e006243cb84e36e49"
           },
           "model": {
             "path": "machine/Sovol SV08 MAX.json",
-            "sha256": "2f9076f02cb2b7fc66f11095854b1d35a72aa666eaa07697d837a144b17c5310",
+            "sha256": "f4e5603065b3a54ca615192bbb9f4ff6d60a7531f61434913f4ff45b896603bb",
             "manufacturer_model_id": "Sovol-SV08 MAX"
           },
           "nozzles_mm": [
@@ -471,12 +471,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV01",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -484,17 +484,542 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 5,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV01 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01"
+                  },
+                  {
+                    "name": "SV01 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV01*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV01_BLTouch",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01_BLTouch",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01"
+                  },
+                  {
+                    "name": "SV01_BLTouch",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01_BLTouch"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV01 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01"
+                  },
+                  {
+                    "name": "SV01 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV01*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV01 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01"
+                  },
+                  {
+                    "name": "SV01 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV01*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV01",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01",
+          "process": "0.20mm SPEED @SV01",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV01",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV01",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "sovol-sv01-pro",
@@ -512,12 +1037,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV01 PRO",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -525,17 +1050,455 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV01 PRO 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01 PRO 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01 PRO",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 PRO"
+                  },
+                  {
+                    "name": "SV01 PRO 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 PRO 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV01*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV01 PRO",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01 PRO",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01 PRO",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 PRO"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV01 PRO 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01 PRO 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01 PRO",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 PRO"
+                  },
+                  {
+                    "name": "SV01 PRO 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 PRO 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV01*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV01 PRO 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV01 PRO 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV01 PRO",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 PRO"
+                  },
+                  {
+                    "name": "SV01 PRO 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV01 PRO 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV01",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV01",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV01*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV01",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV01"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01 PRO 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV01",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01 PRO",
+          "process": "0.20mm SPEED @SV01",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01 PRO 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV01",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV01 PRO 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV01",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "sovol-sv02-sv02-bltouch",
@@ -553,12 +1516,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV02",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -566,17 +1529,542 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 2,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 5,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV02 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV02 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02"
+                  },
+                  {
+                    "name": "SV02 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV02",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV02",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV02*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV02*"
+                  },
+                  {
+                    "name": "*SV02*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV02*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV02"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV02",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV02",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV02",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV02",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV02*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV02*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV02"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV02_BLTouch",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV02_BLTouch",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02"
+                  },
+                  {
+                    "name": "SV02_BLTouch",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02_BLTouch"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV02",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV02",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV02*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV02*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV02"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV02 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV02 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02"
+                  },
+                  {
+                    "name": "SV02 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV02",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV02",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV02*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV02*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV02"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV02 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV02 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02"
+                  },
+                  {
+                    "name": "SV02 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV02 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV02",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV02",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV02*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV02*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV02",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV02"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV02 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV02",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV02",
+          "process": "0.20mm SPEED @SV02",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV02 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV02",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV02 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV02",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "sovol-sv03-sv03-bltouch",
@@ -594,12 +2082,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV03",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -607,17 +2095,542 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 5,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV03 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV03 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03"
+                  },
+                  {
+                    "name": "SV03 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV03",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV03",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV03*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV03*"
+                  },
+                  {
+                    "name": "*SV03*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV03*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV03"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV03",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV03",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV03",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV03",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV03*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV03*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV03"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV03_BLTouch",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV03_BLTouch",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03"
+                  },
+                  {
+                    "name": "SV03_BLTouch",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03_BLTouch"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV03",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV03",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV03*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV03*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV03"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV03 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV03 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03"
+                  },
+                  {
+                    "name": "SV03 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV03",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV03",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV03*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV03*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV03"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV03 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV03 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03"
+                  },
+                  {
+                    "name": "SV03 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV03 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV03",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV03",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV03*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV03*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV03",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV03"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV03 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV03",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV03",
+          "process": "0.20mm SPEED @SV03",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV03 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV03",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV03 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV03",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "sovol-sv04",
@@ -635,12 +2648,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV04",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -648,17 +2661,491 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 6,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 24,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV04 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV04 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV04"
+                  },
+                  {
+                    "name": "SV04 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV04 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV04",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV04",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV04*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV04*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "*SV04*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV04*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV04"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV04",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV04",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV04"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV04",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV04",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "*SV04*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV04*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV04"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV04 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV04 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV04"
+                  },
+                  {
+                    "name": "SV04 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV04 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV04",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV04",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV04*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV04*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV04"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV04 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV04 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV04"
+                  },
+                  {
+                    "name": "SV04 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV04 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV04",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV04",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV04*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV04*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV04",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV04"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm SPEED @SV04 Copy Mode (1)",
+            "print missing preset: 0.10mm DETAIL @0.3 nozzle SV04 Copy Mode (1)",
+            "print missing preset: 0.30mm QUALITY @0.6 nozzle SV04 Copy Mode (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle SV04 Copy Mode (1)",
+            "print missing preset: 0.20mm SPEED @SV04 Dual Mode (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV04 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV04",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV04",
+          "process": "0.20mm SPEED @SV04",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV04 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV04",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV04 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV04",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "sovol-sv05",
@@ -676,12 +3163,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV05",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -689,17 +3176,467 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV05 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV05 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV05"
+                  },
+                  {
+                    "name": "SV05 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV05 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV05",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV05",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV05*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV05*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "*SV05*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV05*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV05"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV05",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV05",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV05"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV05",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV05",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV01*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV01*"
+                  },
+                  {
+                    "name": "*SV05*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV05*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV05"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV05 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV05 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV05"
+                  },
+                  {
+                    "name": "SV05 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV05 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV05",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV05",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV05*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV05*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV05"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV05 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV05 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV05"
+                  },
+                  {
+                    "name": "SV05 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV05 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV05",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV05",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV05*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV05*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV05",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV05"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV05 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV05",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV05",
+          "process": "0.20mm SPEED @SV05",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV05 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV05",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV05 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV05",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "sovol-sv06",
@@ -717,12 +3654,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV06",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -730,17 +3667,437 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV06 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06"
+                  },
+                  {
+                    "name": "SV06 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*SV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV06*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV06*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV06 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06"
+                  },
+                  {
+                    "name": "SV06 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV06 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06"
+                  },
+                  {
+                    "name": "SV06 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV06",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06",
+          "process": "0.20mm SPEED @SV06",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV06",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV06",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "sovol-sv06-plus",
@@ -758,12 +4115,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Sovol/2.1.0.ini",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "model": {
             "path": "Sovol/2.1.0.ini",
             "section": "printer_model:SV06 PLUS",
-            "sha256": "e624d347e9ba11103310dafcd690c0ab932172a3a5e83ac4e2ca44ac33dd8357"
+            "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6"
           },
           "nozzles_mm": [
             "0.3",
@@ -771,17 +4128,437 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.3",
+              "machine": {
+                "name": "SV06 PLUS 0.3 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06 PLUS 0.3 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06 PLUS",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 PLUS"
+                  },
+                  {
+                    "name": "SV06 PLUS 0.3 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 PLUS 0.3 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm DETAIL @0.3 nozzle SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.10mm DETAIL @0.3 nozzle SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.05mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.05mm*"
+                  },
+                  {
+                    "name": "*0.07mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.07mm*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.3nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzle*"
+                  },
+                  {
+                    "name": "*0.3nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.3nozzleSV06*"
+                  },
+                  {
+                    "name": "*SV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV06*"
+                  },
+                  {
+                    "name": "0.10mm DETAIL @0.3 nozzle SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.10mm DETAIL @0.3 nozzle SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SV06 PLUS",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06 PLUS",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06 PLUS",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 PLUS"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm SPEED @SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.20mm SPEED @SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*SV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*SV06*"
+                  },
+                  {
+                    "name": "0.20mm SPEED @SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.20mm SPEED @SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "SV06 PLUS 0.6 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06 PLUS 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06 PLUS",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 PLUS"
+                  },
+                  {
+                    "name": "SV06 PLUS 0.6 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 PLUS 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.30mm QUALITY @0.6 nozzle SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "*0.6nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.6nozzleSV06*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "SV06 PLUS 0.8 nozzle",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "printer:SV06 PLUS 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "SV06 PLUS",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 PLUS"
+                  },
+                  {
+                    "name": "SV06 PLUS 0.8 nozzle",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "printer:SV06 PLUS 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm QUALITY @0.8 nozzle SV06",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "print:0.40mm QUALITY @0.8 nozzle SV06",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "*0.8nozzleSV06*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:*0.8nozzleSV06*"
+                  },
+                  {
+                    "name": "0.40mm QUALITY @0.8 nozzle SV06",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "print:0.40mm QUALITY @0.8 nozzle SV06"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA 0.8 @SOVOL",
+                "path": "Sovol/2.1.0.ini",
+                "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                "section": "filament:Generic PLA 0.8 @SOVOL",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA @SOVOL"
+                  },
+                  {
+                    "name": "Generic PLA 0.8 @SOVOL",
+                    "path": "Sovol/2.1.0.ini",
+                    "sha256": "5d7f8ea8094c584e7e8a033966acc840757701849ac5654d9abdc4c538b1ece6",
+                    "section": "filament:Generic PLA 0.8 @SOVOL"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Sovol/2.1.0.ini",
+        "nozzles_mm": [
+          "0.3",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.3": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06 PLUS 0.3 nozzle",
+          "process": "0.10mm DETAIL @0.3 nozzle SV06",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06 PLUS",
+          "process": "0.20mm SPEED @SV06",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06 PLUS 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle SV06",
+          "filament": "Generic PLA @SOVOL"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Sovol/2.1.0.ini",
+          "machine": "SV06 PLUS 0.8 nozzle",
+          "process": "0.40mm QUALITY @0.8 nozzle SV06",
+          "filament": "Generic PLA 0.8 @SOVOL"
+        }
+      },
+      "status": "structural_verified"
     }
   ]
 }

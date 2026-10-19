@@ -18,12 +18,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_M3_ID_0",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -34,9 +34,7 @@
           "candidate_printer_sections": 0,
           "variants": [],
           "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "warnings": []
         }
       ],
       "preferred_profile": null,
@@ -59,12 +57,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_M3_ID_0_DUPLICATION",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -72,17 +70,755 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 2,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 8,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0 0.25 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0 0.25 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 0.25 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 0.25 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0 0.25 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0 0.25 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 0.25 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 0.25 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0 (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0 (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0 0.50 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0 0.50 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 0.50 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 0.50 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0 0.50 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0 0.50 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 0.50 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 0.50 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0 0.75 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0 0.75 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 0.75 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 0.75 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.0 0.75 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.0 0.75 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.0 0.75 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.0 0.75 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.0 0.25 Nozzle",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.0",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.0 0.50 Nozzle",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.0 0.75 Nozzle",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-m3-independent-dual-rev-1",
@@ -100,12 +836,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_M3_ID_1",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -113,17 +849,395 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1 0.25 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1 0.25 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 0.25 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 0.25 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1 0.50 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1 0.50 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 0.50 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 0.50 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1 0.75 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1 0.75 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 0.75 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 0.75 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1 0.25 Nozzle",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1 0.50 Nozzle",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1 0.75 Nozzle",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-m3-independent-dual-rev-1-duplication-mode",
@@ -141,12 +1255,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_M3_ID_1_DUPLICATION",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -154,17 +1268,419 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1 0.25 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1 0.25 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 0.25 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 0.25 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1 (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1 (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1 0.50 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1 0.50 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 0.50 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 0.50 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear M3 Independent Dual Rev.1 0.75 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Independent Dual Rev.1 0.75 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear M3 Independent Dual Rev.1 0.75 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Independent Dual Rev.1 0.75 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1 0.25 Nozzle (Duplication Mode)",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1 (Duplication Mode)",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1 0.50 Nozzle (Duplication Mode)",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Independent Dual Rev.1 0.75 Nozzle (Duplication Mode)",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-m3-single-extruder",
@@ -182,12 +1698,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_M3_SE",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -195,17 +1711,395 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear M3 Single Extruder 0.25 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Single Extruder 0.25 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Single Extruder",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Single Extruder"
+                  },
+                  {
+                    "name": "MakerGear M3 Single Extruder 0.25 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Single Extruder 0.25 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear M3 Single Extruder",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Single Extruder",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Single Extruder",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Single Extruder"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear M3 Single Extruder 0.50 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Single Extruder 0.50 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Single Extruder",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Single Extruder"
+                  },
+                  {
+                    "name": "MakerGear M3 Single Extruder 0.50 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Single Extruder 0.50 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear M3 Single Extruder 0.75 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M3 Single Extruder 0.75 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M3 Single Extruder",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Single Extruder"
+                  },
+                  {
+                    "name": "MakerGear M3 Single Extruder 0.75 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M3 Single Extruder 0.75 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Single Extruder 0.25 Nozzle",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Single Extruder",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Single Extruder 0.50 Nozzle",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M3 Single Extruder 0.75 Nozzle",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-makergear-m2-dual",
@@ -223,12 +2117,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_M2_DUAL",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -236,17 +2130,395 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear M2 Dual 0.25 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 Dual 0.25 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 Dual",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 Dual"
+                  },
+                  {
+                    "name": "MakerGear M2 Dual 0.25 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 Dual 0.25 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear M2 Dual",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 Dual",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 Dual",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 Dual"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear M2 Dual 0.50 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 Dual 0.50 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 Dual",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 Dual"
+                  },
+                  {
+                    "name": "MakerGear M2 Dual 0.50 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 Dual 0.50 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear M2 Dual 0.75 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 Dual 0.75 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 Dual",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 Dual"
+                  },
+                  {
+                    "name": "MakerGear M2 Dual 0.75 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 Dual 0.75 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 Dual 0.25 Nozzle",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 Dual",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 Dual 0.50 Nozzle",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 Dual 0.75 Nozzle",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-makergear-m2-v4-hotend",
@@ -264,12 +2536,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_M2",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -277,17 +2549,395 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear M2 0.25 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 0.25 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 (V4 Hotend)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 (V4 Hotend)"
+                  },
+                  {
+                    "name": "MakerGear M2 0.25 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 0.25 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear M2 (V4 Hotend)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 (V4 Hotend)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 (V4 Hotend)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 (V4 Hotend)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear M2 0.50 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 0.50 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 (V4 Hotend)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 (V4 Hotend)"
+                  },
+                  {
+                    "name": "MakerGear M2 0.50 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 0.50 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear M2 0.75 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear M2 0.75 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear M2 (V4 Hotend)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 (V4 Hotend)"
+                  },
+                  {
+                    "name": "MakerGear M2 0.75 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear M2 0.75 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 0.25 Nozzle",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 (V4 Hotend)",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 0.50 Nozzle",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear M2 0.75 Nozzle",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-micro",
@@ -305,27 +2955,123 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_MICRO",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "MakerGear Micro",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Micro",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Micro",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Micro"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.40 Nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.40 Nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.40nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.40nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.40 Nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.40 Nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear_Micro",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear_Micro",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear_Micro",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear_Micro"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Micro",
+          "process": "0.20mm Normal @0.40 Nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear_Micro"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-ultra-one",
@@ -343,12 +3089,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_U1",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -356,17 +3102,395 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear Ultra One 0.25 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One 0.25 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  },
+                  {
+                    "name": "MakerGear Ultra One 0.25 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One 0.25 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear Ultra One 0.35 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One 0.35 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  },
+                  {
+                    "name": "MakerGear Ultra One 0.35 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One 0.35 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear Ultra One",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear Ultra One 0.75 Nozzle",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One 0.75 Nozzle",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  },
+                  {
+                    "name": "MakerGear Ultra One 0.75 Nozzle",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One 0.75 Nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One 0.25 Nozzle",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One 0.35 Nozzle",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One 0.75 Nozzle",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "makergear-ultra-one-duplication-mode",
@@ -384,12 +3508,12 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "MakerGear/1.1.0.ini",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "model": {
             "path": "MakerGear/1.1.0.ini",
             "section": "printer_model:MAKERGEAR_U1_DUPLICATION",
-            "sha256": "089dc9c2055de915f94d3a4dc01e93a9ea1d0782946240b3f3bfa1702958b84d"
+            "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310"
           },
           "nozzles_mm": [
             "0.25",
@@ -397,17 +3521,419 @@
             "0.5",
             "0.75"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "MakerGear Ultra One 0.25 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One 0.25 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  },
+                  {
+                    "name": "MakerGear Ultra One (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear Ultra One 0.25 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One 0.25 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.15mm Normal @0.25 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.15mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.15mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.15mm Normal @0.25 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.15mm Normal @0.25 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "MakerGear Ultra One 0.35 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One 0.35 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  },
+                  {
+                    "name": "MakerGear Ultra One (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear Ultra One 0.35 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One 0.35 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Normal @0.35 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm Normal @0.35 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Normal @0.35 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "MakerGear Ultra One (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  },
+                  {
+                    "name": "MakerGear Ultra One (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.20mm Quality @0.50 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "*0.50nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.50nozzle*"
+                  },
+                  {
+                    "name": "0.20mm Quality @0.50 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.20mm Quality @0.50 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.75",
+              "machine": {
+                "name": "MakerGear Ultra One 0.75 Nozzle (Duplication Mode)",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "printer:MakerGear Ultra One 0.75 Nozzle (Duplication Mode)",
+                "inheritance": [
+                  {
+                    "name": "*default*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:*default*"
+                  },
+                  {
+                    "name": "MakerGear Ultra One",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One"
+                  },
+                  {
+                    "name": "MakerGear Ultra One (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One (Duplication Mode)"
+                  },
+                  {
+                    "name": "MakerGear Ultra One 0.75 Nozzle (Duplication Mode)",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "printer:MakerGear Ultra One 0.75 Nozzle (Duplication Mode)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "print:0.25mm Quality @0.75 nozzle MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.25mm*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.25mm*"
+                  },
+                  {
+                    "name": "*0.75nozzle*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:*0.75nozzle*"
+                  },
+                  {
+                    "name": "0.25mm Quality @0.75 nozzle MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "print:0.25mm Quality @0.75 nozzle MakerGear"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "MakerGear PLA @MakerGear",
+                "path": "MakerGear/1.1.0.ini",
+                "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                "section": "filament:MakerGear PLA @MakerGear",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "MakerGear PLA @MakerGear",
+                    "path": "MakerGear/1.1.0.ini",
+                    "sha256": "e663c591646ccef4f949cd1aba2d43768c69685f396204addec7fbed2013f310",
+                    "section": "filament:MakerGear PLA @MakerGear"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "MakerGear/1.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.5",
+          "0.75"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One 0.25 Nozzle (Duplication Mode)",
+          "process": "0.15mm Normal @0.25 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One 0.35 Nozzle (Duplication Mode)",
+          "process": "0.20mm Normal @0.35 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One (Duplication Mode)",
+          "process": "0.20mm Quality @0.50 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        },
+        "0.75": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "MakerGear/1.1.0.ini",
+          "machine": "MakerGear Ultra One 0.75 Nozzle (Duplication Mode)",
+          "process": "0.25mm Quality @0.75 nozzle MakerGear",
+          "filament": "MakerGear PLA @MakerGear"
+        }
+      },
+      "status": "structural_verified"
     }
   ]
 }

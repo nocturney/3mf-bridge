@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Anker.json",
-            "sha256": "11f2eb03a2c366a3aa2a5db42314b85ec44dd95aab10f21e4b1447e33f33a96b"
+            "sha256": "2fa16934fa471b50343bc9be926d24bd1b66ac81dad39263861837f906f9ca74"
           },
           "model": {
             "path": "machine/Anker M5.json",
-            "sha256": "966f201dd8aae9ada86900aaf42400bc9fba5245e8b7f9eb237c800e96580349",
+            "sha256": "ad05795e5f9b7204df04697227e11b57e2d702237fa8fc69f30aad5198b369cd",
             "manufacturer_model_id": "V8111"
           },
           "nozzles_mm": [
@@ -37,54 +37,71 @@
               "machine": {
                 "name": "Anker M5 0.4 nozzle",
                 "path": "machine/Anker M5 0.4 nozzle.json",
-                "sha256": "7283ebe14ef328bb63b4a6b0e32a101feeebb822f1a8ba44e66ebcfa48a87993"
+                "sha256": "0b01c8f92d049840e168593e6317475275e813be7d65b0a7cd490110f9c4e8fc",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "8ba2dbd77df8be2942e7f61bc0a02cdbd14cdfd3898b1ecbc881ac535017a333"
+                  },
+                  {
+                    "name": "fdm_marlin_common",
+                    "path": "machine/fdm_marlin_common.json",
+                    "sha256": "86d56562c3fbb502e2fd5da64acb4657c413e59c6b320db0a55468120d3fd10d"
+                  },
+                  {
+                    "name": "Anker M5 0.4 nozzle",
+                    "path": "machine/Anker M5 0.4 nozzle.json",
+                    "sha256": "0b01c8f92d049840e168593e6317475275e813be7d65b0a7cd490110f9c4e8fc"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anker",
                 "path": "process/0.20mm Standard @Anker.json",
-                "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4",
+                "sha256": "3c6e0f80224eaabd6aa8031c981165bcf00bfc5c1fa3a2dad05b7a1b8bd06832",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "229c3ffc9f6f9e136fe3b60443a14aad0e68e1cd98e3fd1f3f7e9ae0d968fe3c"
+                    "sha256": "bf70c18e1cf191d3d1c368dc3b871d864f77e0c6ce0e7b7b52205796672ba642"
                   },
                   {
                     "name": "fdm_process_anker_common",
                     "path": "process/fdm_process_anker_common.json",
-                    "sha256": "3b8818cd6331d6c5f79a900ce3436b3e87e6004c54ef4ed8383e13ceb0dfb2c6"
+                    "sha256": "f8c10c02c80ef0c3faeddffb0808ee9f61772127c398e56f14bf41dbd1159ca1"
                   },
                   {
                     "name": "0.20mm Standard @Anker",
                     "path": "process/0.20mm Standard @Anker.json",
-                    "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4"
+                    "sha256": "3c6e0f80224eaabd6aa8031c981165bcf00bfc5c1fa3a2dad05b7a1b8bd06832"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA+ @Anker",
                 "path": "filament/Generic PLA+ @Anker.json",
-                "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e",
+                "sha256": "0610ae36f3ba681f739318cd9d1077a3bd42ed70ce44745a4b14ebcb9cab9423",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "345aa60139e29117cdb4426530face09e7d826a35f3cbfac8f45b9e7f29d6395"
+                    "sha256": "92ca5dbbad793d6c7002236f0f6cff7db34244e9dba8b325016db6fe6333c11b"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "a03f4e955588ca942f216747f1307e4f664360decd39788cad54fe0809dd8896"
+                    "sha256": "71d40030be556cf25fab462fe710982560c6fbae9a8801b3be3f61dc7c02c45a"
                   },
                   {
                     "name": "Generic PLA+ @Anker base",
                     "path": "filament/Generic PLA+ @Anker base.json",
-                    "sha256": "e719d37d5c8f3f15754aa886761320d3ab4ee79a9161d15e86f64b5a90bbc360"
+                    "sha256": "239f3f69b1d5a9c37f115f5f216dc2d77b4dd2d77af3bf02c989c1b850ee41e4"
                   },
                   {
                     "name": "Generic PLA+ @Anker",
                     "path": "filament/Generic PLA+ @Anker.json",
-                    "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e"
+                    "sha256": "0610ae36f3ba681f739318cd9d1077a3bd42ed70ce44745a4b14ebcb9cab9423"
                   }
                 ]
               }
@@ -130,11 +147,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Anker.json",
-            "sha256": "11f2eb03a2c366a3aa2a5db42314b85ec44dd95aab10f21e4b1447e33f33a96b"
+            "sha256": "2fa16934fa471b50343bc9be926d24bd1b66ac81dad39263861837f906f9ca74"
           },
           "model": {
             "path": "machine/Anker M5 All-Metal Hot End.json",
-            "sha256": "266dc5010ff5bb0d25582bf236b072bdf42b1a75c2561175ef822807774eace1",
+            "sha256": "8278f81e423b1ddf4a6ebbbed479575cc131f1948d7f90218f6835a5d0b54f15",
             "manufacturer_model_id": "V8111v2"
           },
           "nozzles_mm": [
@@ -149,54 +166,71 @@
               "machine": {
                 "name": "Anker M5 All-Metal 0.4 nozzle",
                 "path": "machine/Anker M5 All-Metal 0.4 nozzle.json",
-                "sha256": "fac8fbc8317233a6cbdcd8ee91beb2cdb1b9e6d0c9bcadaf682402b4c41da1b2"
+                "sha256": "ecaae414cf5bd62289066c5dc88a082e96df6c82fb1cfecb1db9a2eb13ac61ca",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "8ba2dbd77df8be2942e7f61bc0a02cdbd14cdfd3898b1ecbc881ac535017a333"
+                  },
+                  {
+                    "name": "fdm_marlin_common",
+                    "path": "machine/fdm_marlin_common.json",
+                    "sha256": "86d56562c3fbb502e2fd5da64acb4657c413e59c6b320db0a55468120d3fd10d"
+                  },
+                  {
+                    "name": "Anker M5 All-Metal 0.4 nozzle",
+                    "path": "machine/Anker M5 All-Metal 0.4 nozzle.json",
+                    "sha256": "ecaae414cf5bd62289066c5dc88a082e96df6c82fb1cfecb1db9a2eb13ac61ca"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anker",
                 "path": "process/0.20mm Standard @Anker.json",
-                "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4",
+                "sha256": "3c6e0f80224eaabd6aa8031c981165bcf00bfc5c1fa3a2dad05b7a1b8bd06832",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "229c3ffc9f6f9e136fe3b60443a14aad0e68e1cd98e3fd1f3f7e9ae0d968fe3c"
+                    "sha256": "bf70c18e1cf191d3d1c368dc3b871d864f77e0c6ce0e7b7b52205796672ba642"
                   },
                   {
                     "name": "fdm_process_anker_common",
                     "path": "process/fdm_process_anker_common.json",
-                    "sha256": "3b8818cd6331d6c5f79a900ce3436b3e87e6004c54ef4ed8383e13ceb0dfb2c6"
+                    "sha256": "f8c10c02c80ef0c3faeddffb0808ee9f61772127c398e56f14bf41dbd1159ca1"
                   },
                   {
                     "name": "0.20mm Standard @Anker",
                     "path": "process/0.20mm Standard @Anker.json",
-                    "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4"
+                    "sha256": "3c6e0f80224eaabd6aa8031c981165bcf00bfc5c1fa3a2dad05b7a1b8bd06832"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA+ @Anker",
                 "path": "filament/Generic PLA+ @Anker.json",
-                "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e",
+                "sha256": "0610ae36f3ba681f739318cd9d1077a3bd42ed70ce44745a4b14ebcb9cab9423",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "345aa60139e29117cdb4426530face09e7d826a35f3cbfac8f45b9e7f29d6395"
+                    "sha256": "92ca5dbbad793d6c7002236f0f6cff7db34244e9dba8b325016db6fe6333c11b"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "a03f4e955588ca942f216747f1307e4f664360decd39788cad54fe0809dd8896"
+                    "sha256": "71d40030be556cf25fab462fe710982560c6fbae9a8801b3be3f61dc7c02c45a"
                   },
                   {
                     "name": "Generic PLA+ @Anker base",
                     "path": "filament/Generic PLA+ @Anker base.json",
-                    "sha256": "e719d37d5c8f3f15754aa886761320d3ab4ee79a9161d15e86f64b5a90bbc360"
+                    "sha256": "239f3f69b1d5a9c37f115f5f216dc2d77b4dd2d77af3bf02c989c1b850ee41e4"
                   },
                   {
                     "name": "Generic PLA+ @Anker",
                     "path": "filament/Generic PLA+ @Anker.json",
-                    "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e"
+                    "sha256": "0610ae36f3ba681f739318cd9d1077a3bd42ed70ce44745a4b14ebcb9cab9423"
                   }
                 ]
               }
@@ -242,11 +276,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Anker.json",
-            "sha256": "11f2eb03a2c366a3aa2a5db42314b85ec44dd95aab10f21e4b1447e33f33a96b"
+            "sha256": "2fa16934fa471b50343bc9be926d24bd1b66ac81dad39263861837f906f9ca74"
           },
           "model": {
             "path": "machine/Anker M5C.json",
-            "sha256": "e7102fedc47e017dc865ba83ea78bd64cb135077405d9ae6ee1f771444b87737",
+            "sha256": "f6361fca583b231343d9ffc518cffc4ac21768fb5199bd4ca1525d186c76e944",
             "manufacturer_model_id": "V81101C3"
           },
           "nozzles_mm": [
@@ -261,54 +295,71 @@
               "machine": {
                 "name": "Anker M5C 0.4 nozzle",
                 "path": "machine/Anker M5C 0.4 nozzle.json",
-                "sha256": "798667482cfd85205f1839c121dd22f4ca406d90e78d03f990077095d38d8ef9"
+                "sha256": "41c0599ed853cc80160dc7a5459680016151374c6ab988a32862fad90a9012c4",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "8ba2dbd77df8be2942e7f61bc0a02cdbd14cdfd3898b1ecbc881ac535017a333"
+                  },
+                  {
+                    "name": "fdm_marlin_common",
+                    "path": "machine/fdm_marlin_common.json",
+                    "sha256": "86d56562c3fbb502e2fd5da64acb4657c413e59c6b320db0a55468120d3fd10d"
+                  },
+                  {
+                    "name": "Anker M5C 0.4 nozzle",
+                    "path": "machine/Anker M5C 0.4 nozzle.json",
+                    "sha256": "41c0599ed853cc80160dc7a5459680016151374c6ab988a32862fad90a9012c4"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Anker",
                 "path": "process/0.20mm Standard @Anker.json",
-                "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4",
+                "sha256": "3c6e0f80224eaabd6aa8031c981165bcf00bfc5c1fa3a2dad05b7a1b8bd06832",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "229c3ffc9f6f9e136fe3b60443a14aad0e68e1cd98e3fd1f3f7e9ae0d968fe3c"
+                    "sha256": "bf70c18e1cf191d3d1c368dc3b871d864f77e0c6ce0e7b7b52205796672ba642"
                   },
                   {
                     "name": "fdm_process_anker_common",
                     "path": "process/fdm_process_anker_common.json",
-                    "sha256": "3b8818cd6331d6c5f79a900ce3436b3e87e6004c54ef4ed8383e13ceb0dfb2c6"
+                    "sha256": "f8c10c02c80ef0c3faeddffb0808ee9f61772127c398e56f14bf41dbd1159ca1"
                   },
                   {
                     "name": "0.20mm Standard @Anker",
                     "path": "process/0.20mm Standard @Anker.json",
-                    "sha256": "f80e012bc091caa5b7307177468a365ae5f023124e1ff375668586182daed7b4"
+                    "sha256": "3c6e0f80224eaabd6aa8031c981165bcf00bfc5c1fa3a2dad05b7a1b8bd06832"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA+ @Anker",
                 "path": "filament/Generic PLA+ @Anker.json",
-                "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e",
+                "sha256": "0610ae36f3ba681f739318cd9d1077a3bd42ed70ce44745a4b14ebcb9cab9423",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "345aa60139e29117cdb4426530face09e7d826a35f3cbfac8f45b9e7f29d6395"
+                    "sha256": "92ca5dbbad793d6c7002236f0f6cff7db34244e9dba8b325016db6fe6333c11b"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "a03f4e955588ca942f216747f1307e4f664360decd39788cad54fe0809dd8896"
+                    "sha256": "71d40030be556cf25fab462fe710982560c6fbae9a8801b3be3f61dc7c02c45a"
                   },
                   {
                     "name": "Generic PLA+ @Anker base",
                     "path": "filament/Generic PLA+ @Anker base.json",
-                    "sha256": "e719d37d5c8f3f15754aa886761320d3ab4ee79a9161d15e86f64b5a90bbc360"
+                    "sha256": "239f3f69b1d5a9c37f115f5f216dc2d77b4dd2d77af3bf02c989c1b850ee41e4"
                   },
                   {
                     "name": "Generic PLA+ @Anker",
                     "path": "filament/Generic PLA+ @Anker.json",
-                    "sha256": "dd10a9d7d1cb40ac8cdc2fc2879be4363e1d2b0cbacf419d432721f29a502e5e"
+                    "sha256": "0610ae36f3ba681f739318cd9d1077a3bd42ed70ce44745a4b14ebcb9cab9423"
                   }
                 ]
               }
@@ -354,12 +405,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Anker/2.1.0.ini",
-            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+            "sha256": "ffbf6c79fe637b6f31437b66ff4f4e19b0df327fa0496bb1858e8e6fc13cee44"
           },
           "model": {
             "path": "Anker/2.1.0.ini",
             "section": "printer_model:M5",
-            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+            "sha256": "ffbf6c79fe637b6f31437b66ff4f4e19b0df327fa0496bb1858e8e6fc13cee44"
           },
           "nozzles_mm": [
             "0.4"
@@ -368,7 +419,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 mm OPTIMAL (0.4 mm nozzle) @ANKER (1)"
           ]
         }
       ],
@@ -392,12 +443,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Anker/2.1.0.ini",
-            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+            "sha256": "ffbf6c79fe637b6f31437b66ff4f4e19b0df327fa0496bb1858e8e6fc13cee44"
           },
           "model": {
             "path": "Anker/2.1.0.ini",
             "section": "printer_model:M5C",
-            "sha256": "815546eb698f33e0128b39cb59a5ab9daa150d42a848d5d491fcc3c20d2d72cf"
+            "sha256": "ffbf6c79fe637b6f31437b66ff4f4e19b0df327fa0496bb1858e8e6fc13cee44"
           },
           "nozzles_mm": [
             "0.4"
@@ -406,7 +457,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 mm OPTIMAL (0.4 mm nozzle) @ANKER (1)"
           ]
         }
       ],

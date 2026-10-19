@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 230 PRO M2 DIRECT.json",
-            "sha256": "c6951ac8d7bd0c672efe8faa1821ecfcbbb6cb1b1d070c138986077986dd6567",
+            "sha256": "c20a3d73da9abea868b953e32734231e4da1c2d9c63931d101efa64ea7103704",
             "manufacturer_model_id": "D12 230 PRO M2 DIRECT"
           },
           "nozzles_mm": [
@@ -34,49 +34,61 @@
               "machine": {
                 "name": "D12 230 PRO M2 DIRECT 0.4 nozzle",
                 "path": "machine/D12 230 PRO M2 DIRECT 0.4 nozzle.json",
-                "sha256": "694bd1c15a428854207ffe130747e8c62c8a7829d024076edafaa931469454d4"
+                "sha256": "128e70f3a1e4c8393c06eb609f510ce514c256b7238a5eef4d5b57748bc19dd3",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 230 PRO M2 DIRECT 0.4 nozzle",
+                    "path": "machine/D12 230 PRO M2 DIRECT 0.4 nozzle.json",
+                    "sha256": "128e70f3a1e4c8393c06eb609f510ce514c256b7238a5eef4d5b57748bc19dd3"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-230",
                 "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57",
+                "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-230",
                     "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                    "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57"
+                    "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Direct Drive",
                 "path": "filament/YUMI PLA Direct Drive.json",
-                "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf",
+                "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Direct Drive",
                     "path": "filament/YUMI PLA Direct Drive.json",
-                    "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf"
+                    "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae"
                   }
                 ]
               }
@@ -122,11 +134,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 230 PRO M2 MONO DUAL.json",
-            "sha256": "b669065a5d6a2e6745591091c8512c96200b29219b485ef1c52cf844526d3899",
+            "sha256": "2f54d8c6957115c64e9f70c012815dae629168671ef1ab3bbf8db4346e18a1b7",
             "manufacturer_model_id": "D12 230 PRO M2 MONO DUAL"
           },
           "nozzles_mm": [
@@ -138,49 +150,61 @@
               "machine": {
                 "name": "D12 230 PRO M2 MONO DUAL 0.4 nozzle",
                 "path": "machine/D12 230 PRO M2 MONO DUAL 0.4 nozzle.json",
-                "sha256": "7ff43902e27ad2cd03172a26264d4e94a5895c893d8140dff3f9b9f70722977d"
+                "sha256": "bfdf6bd17fe8eb1669ccc16ba72a271074895cdfd0760f285c5bf694047eef09",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 230 PRO M2 MONO DUAL 0.4 nozzle",
+                    "path": "machine/D12 230 PRO M2 MONO DUAL 0.4 nozzle.json",
+                    "sha256": "bfdf6bd17fe8eb1669ccc16ba72a271074895cdfd0760f285c5bf694047eef09"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-230",
                 "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57",
+                "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-230",
                     "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                    "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57"
+                    "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -226,11 +250,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 230 PRO M2 MONO DUAL PoopTool.json",
-            "sha256": "a1c784cafb9b2dfd0eea15bacc0a99936b2d78935502917e33d3376677a9d7f0",
+            "sha256": "840369927e41478b7f822590fead9bb18184f925d6b5888c4081bd55be90f57e",
             "manufacturer_model_id": "D12 230 PRO M2 MONO DUAL PoopTool"
           },
           "nozzles_mm": [
@@ -242,49 +266,61 @@
               "machine": {
                 "name": "D12 230 PRO M2 MONO DUAL 0.4 nozzle PoopTool",
                 "path": "machine/D12 230 PRO M2 MONO DUAL 0.4 nozzle PoopTool.json",
-                "sha256": "8605ba20fc04bbaac141656f73b2fd146b655c65868102c3c365f8257a907bda"
+                "sha256": "69b1e1c5b4c5a2f914f504c11aeaec51c2d49a1b98935689cc99bd26a9587911",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 230 PRO M2 MONO DUAL 0.4 nozzle PoopTool",
+                    "path": "machine/D12 230 PRO M2 MONO DUAL 0.4 nozzle PoopTool.json",
+                    "sha256": "69b1e1c5b4c5a2f914f504c11aeaec51c2d49a1b98935689cc99bd26a9587911"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-230 PoopTool",
                 "path": "process/0.20mm Standard @Wanhao-D12-230 PoopTool.json",
-                "sha256": "2beba64f9f461ba4ccffc7ad0d5e3bae0496c1c8048c61a565c89bf1c162d77b",
+                "sha256": "c18572a870af4ab8db4160dc111b43e63b926f2095808baaa6c002b9200bfe30",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-230 PoopTool",
                     "path": "process/0.20mm Standard @Wanhao-D12-230 PoopTool.json",
-                    "sha256": "2beba64f9f461ba4ccffc7ad0d5e3bae0496c1c8048c61a565c89bf1c162d77b"
+                    "sha256": "c18572a870af4ab8db4160dc111b43e63b926f2095808baaa6c002b9200bfe30"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -330,11 +366,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 230 PRO SMARTPAD DIRECT.json",
-            "sha256": "4216c1cdb61aa410728a577fbc683916ecb6b53d268127569a98f178c93c1c5d",
+            "sha256": "0337b92124b9a4a1f9c7cf3c11926a247f1f013cfb838a03b1ee79474ce26777",
             "manufacturer_model_id": "D12 230 PRO SMARTPAD DIRECT"
           },
           "nozzles_mm": [
@@ -346,49 +382,61 @@
               "machine": {
                 "name": "D12 230 PRO SMARTPAD DIRECT 0.4 nozzle",
                 "path": "machine/D12 230 PRO SMARTPAD DIRECT 0.4 nozzle.json",
-                "sha256": "293e0d3da29ee0db2a3a9743db263ca2ec0ca38bb2b0581bf3d158c22637c593"
+                "sha256": "07910ae79b1635de9e13d4130f8018155ab5b76a8cb712cf5dc0c5c212ca5e19",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 230 PRO SMARTPAD DIRECT 0.4 nozzle",
+                    "path": "machine/D12 230 PRO SMARTPAD DIRECT 0.4 nozzle.json",
+                    "sha256": "07910ae79b1635de9e13d4130f8018155ab5b76a8cb712cf5dc0c5c212ca5e19"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-230",
                 "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57",
+                "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-230",
                     "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                    "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57"
+                    "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Direct Drive",
                 "path": "filament/YUMI PLA Direct Drive.json",
-                "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf",
+                "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Direct Drive",
                     "path": "filament/YUMI PLA Direct Drive.json",
-                    "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf"
+                    "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae"
                   }
                 ]
               }
@@ -434,11 +482,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 230 PRO SMARTPAD MONO DUAL.json",
-            "sha256": "82875b41ec38379c57d674bd9fff4289b7899d615495d62bfd5881d571c38293",
+            "sha256": "1b8b506c91478e257285a5d468addd7b5b96e2a11ec364a63f3fee98e8f109d7",
             "manufacturer_model_id": "D12 230 PRO SMARTPAD MONO DUAL"
           },
           "nozzles_mm": [
@@ -450,49 +498,61 @@
               "machine": {
                 "name": "D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle",
                 "path": "machine/D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle.json",
-                "sha256": "6acd3047b9920ca5a2aee063d13f454555bdd7f668b44f44e97a65814f425ab0"
+                "sha256": "e9ef52728a078d43464d863b05d9d2b281b4b512518eccf994a2d67374fc843a",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle",
+                    "path": "machine/D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle.json",
+                    "sha256": "e9ef52728a078d43464d863b05d9d2b281b4b512518eccf994a2d67374fc843a"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-230",
                 "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57",
+                "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-230",
                     "path": "process/0.20mm Standard @Wanhao-D12-230.json",
-                    "sha256": "e4755e5b1eaf0a186a4d3463cf2c11216b1f7c553c264dcc08833d9376f4bd57"
+                    "sha256": "558cb3705de99129d1df7493addd444dbc9ad682debc60ced27e2fd0690a6671"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -538,11 +598,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 230 PRO SMARTPAD MONO DUAL PoopTool.json",
-            "sha256": "50c44942c16f40e5b1fa09666d9b6c5060cf508e5c1c7f6a5f2af5eb88fac48b",
+            "sha256": "662208d6426ec396efebaecca82cb2bf93d5979c17986b3e9c57ec065d6193b7",
             "manufacturer_model_id": "D12 230 PRO SMARTPAD MONO DUAL PoopTool"
           },
           "nozzles_mm": [
@@ -554,49 +614,61 @@
               "machine": {
                 "name": "D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle PoopTool",
                 "path": "machine/D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle PoopTool.json",
-                "sha256": "8d92c2c25d04df880b6e3b8c5efcdd1bdeea5849b3c69ebdf93123da82983130"
+                "sha256": "804d916769e3bc2a9810dca7dbbf80e6d2695962ede50963a6c4212e50ddde8c",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle PoopTool",
+                    "path": "machine/D12 230 PRO SMARTPAD MONO DUAL 0.4 nozzle PoopTool.json",
+                    "sha256": "804d916769e3bc2a9810dca7dbbf80e6d2695962ede50963a6c4212e50ddde8c"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-230 PoopTool",
                 "path": "process/0.20mm Standard @Wanhao-D12-230 PoopTool.json",
-                "sha256": "2beba64f9f461ba4ccffc7ad0d5e3bae0496c1c8048c61a565c89bf1c162d77b",
+                "sha256": "c18572a870af4ab8db4160dc111b43e63b926f2095808baaa6c002b9200bfe30",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-230 PoopTool",
                     "path": "process/0.20mm Standard @Wanhao-D12-230 PoopTool.json",
-                    "sha256": "2beba64f9f461ba4ccffc7ad0d5e3bae0496c1c8048c61a565c89bf1c162d77b"
+                    "sha256": "c18572a870af4ab8db4160dc111b43e63b926f2095808baaa6c002b9200bfe30"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -642,11 +714,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 300 PRO M2 DIRECT.json",
-            "sha256": "38500c5a50125788e5573416b84e916372dd24ecbd966387a3c2c51c97e88aa6",
+            "sha256": "9d2ea13b946faa14b8d1b3f26c7ebd87358d30c4df840e7ef250980992f19ebb",
             "manufacturer_model_id": "D12 300 PRO M2 DIRECT"
           },
           "nozzles_mm": [
@@ -658,49 +730,61 @@
               "machine": {
                 "name": "D12 300 PRO M2 DIRECT 0.4 nozzle",
                 "path": "machine/D12 300 PRO M2 DIRECT 0.4 nozzle.json",
-                "sha256": "76bf6e9ba04100269114b3e246fb7c441a237b56261741cb3a82ad28b542334b"
+                "sha256": "1d937f78b76aded8709f9c78fa28e1a56cade810e18af71b12dc8c73757f61e8",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 300 PRO M2 DIRECT 0.4 nozzle",
+                    "path": "machine/D12 300 PRO M2 DIRECT 0.4 nozzle.json",
+                    "sha256": "1d937f78b76aded8709f9c78fa28e1a56cade810e18af71b12dc8c73757f61e8"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-300",
                 "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b",
+                "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-300",
                     "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                    "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b"
+                    "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Direct Drive",
                 "path": "filament/YUMI PLA Direct Drive.json",
-                "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf",
+                "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Direct Drive",
                     "path": "filament/YUMI PLA Direct Drive.json",
-                    "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf"
+                    "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae"
                   }
                 ]
               }
@@ -746,11 +830,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 300 PRO M2 MONO DUAL.json",
-            "sha256": "cf1f3c58c583be7abfde73a87f50feb932021fcb82a04ab621192765d1409749",
+            "sha256": "25822e5aee35493fb5fdceee4046bf4ce5176e5c80fe0a7f0438018324919a95",
             "manufacturer_model_id": "D12 300 PRO M2 MONO DUAL"
           },
           "nozzles_mm": [
@@ -762,49 +846,61 @@
               "machine": {
                 "name": "D12 300 PRO M2 MONO DUAL 0.4 nozzle",
                 "path": "machine/D12 300 PRO M2 MONO DUAL 0.4 nozzle.json",
-                "sha256": "30e8a0d72c1ecc66ce0e59dede4d7069a79944d16659fe2118323e41e4f1693f"
+                "sha256": "d9fd348300ffbcade7331eddec8458f3c20e4d992c31000ef5f0e3cb3501e82b",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 300 PRO M2 MONO DUAL 0.4 nozzle",
+                    "path": "machine/D12 300 PRO M2 MONO DUAL 0.4 nozzle.json",
+                    "sha256": "d9fd348300ffbcade7331eddec8458f3c20e4d992c31000ef5f0e3cb3501e82b"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-300",
                 "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b",
+                "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-300",
                     "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                    "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b"
+                    "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -850,11 +946,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 300 PRO M2 MONO DUAL PoopTool.json",
-            "sha256": "0eedf289573dafe231dcf762230319cf7d92a17577f569c329ce6c55c26ad79b",
+            "sha256": "91229c307ec4c1a796ce1ff16c697fc70060321df7c6149704a1d0ab31ff5718",
             "manufacturer_model_id": "D12 300 PRO M2 MONO DUAL PoopTool"
           },
           "nozzles_mm": [
@@ -866,49 +962,61 @@
               "machine": {
                 "name": "D12 300 PRO M2 MONO DUAL PoopTool 0.4 nozzle",
                 "path": "machine/D12 300 PRO M2 MONO DUAL PoopTool 0.4 nozzle.json",
-                "sha256": "3ee5ff24b9fdeafa7f2cca3d97b652a5c0a2e180a7678ecba260fbdac6030ed0"
+                "sha256": "a46ba4abf4e8790b4c7f1148d5d1a5cfdcadc852e679f3c801eda945fa973c00",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 300 PRO M2 MONO DUAL PoopTool 0.4 nozzle",
+                    "path": "machine/D12 300 PRO M2 MONO DUAL PoopTool 0.4 nozzle.json",
+                    "sha256": "a46ba4abf4e8790b4c7f1148d5d1a5cfdcadc852e679f3c801eda945fa973c00"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-300 PoopTool",
                 "path": "process/0.20mm Standard @Wanhao-D12-300 PoopTool.json",
-                "sha256": "3308ea4883bb95bdf9827eeb982b5b563f2d01a3a60e6d8d06e187ebc04e849c",
+                "sha256": "71b6f9b24b4db593d6face4da6b80420f9ae554b4cf2139f2e58e17f0938e896",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-300 PoopTool",
                     "path": "process/0.20mm Standard @Wanhao-D12-300 PoopTool.json",
-                    "sha256": "3308ea4883bb95bdf9827eeb982b5b563f2d01a3a60e6d8d06e187ebc04e849c"
+                    "sha256": "71b6f9b24b4db593d6face4da6b80420f9ae554b4cf2139f2e58e17f0938e896"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -954,11 +1062,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 300 PRO SMARTPAD DIRECT.json",
-            "sha256": "4ba2f47cd971827882f5db6c359fd22b8a1474bcb4712b2e9eecda31af655d2d",
+            "sha256": "af3f8d581bcb8a70deff8f67adce0db4ba2512fbf49da176ef24a42dc915b3e3",
             "manufacturer_model_id": "D12 300 PRO SMARTPAD DIRECT"
           },
           "nozzles_mm": [
@@ -970,49 +1078,61 @@
               "machine": {
                 "name": "D12 300 PRO SMARTPAD DIRECT 0.4 nozzle",
                 "path": "machine/D12 300 PRO SMARTPAD DIRECT 0.4 nozzle.json",
-                "sha256": "7220a8b7c480c130f212af9caee9b30302d395492d2a41601cd063c6697d4e18"
+                "sha256": "68b28fa566cb2200af5dfcd537377f43bfc69e6ab6d389d5963a3550d1b077d9",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 300 PRO SMARTPAD DIRECT 0.4 nozzle",
+                    "path": "machine/D12 300 PRO SMARTPAD DIRECT 0.4 nozzle.json",
+                    "sha256": "68b28fa566cb2200af5dfcd537377f43bfc69e6ab6d389d5963a3550d1b077d9"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-300",
                 "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b",
+                "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-300",
                     "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                    "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b"
+                    "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Direct Drive",
                 "path": "filament/YUMI PLA Direct Drive.json",
-                "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf",
+                "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Direct Drive",
                     "path": "filament/YUMI PLA Direct Drive.json",
-                    "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf"
+                    "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae"
                   }
                 ]
               }
@@ -1058,11 +1178,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 300 PRO SMARTPAD MONO DUAL.json",
-            "sha256": "332bf3548190120e60c5ec76de5bcb51ec8a450c6f8ab2b60ed66e0916a24fc6",
+            "sha256": "7c8f6605f75b1201422bdd23e7e80c9d2b7aa963dadcd35453bfdf5bc0ea6609",
             "manufacturer_model_id": "D12 300 PRO SMARTPAD MONO DUAL"
           },
           "nozzles_mm": [
@@ -1074,49 +1194,61 @@
               "machine": {
                 "name": "D12 300 PRO SMARTPAD MONO DUAL 0.4 nozzle",
                 "path": "machine/D12 300 PRO SMARTPAD MONO DUAL 0.4 nozzle.json",
-                "sha256": "b0af6ffb27b583d3d32c24317a50f7788577b1a3662f75ab5dd005c3029930d0"
+                "sha256": "0e819bc794696637b60faf2736b5165733eb546058837e0cf6ee6a6c0735617d",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 300 PRO SMARTPAD MONO DUAL 0.4 nozzle",
+                    "path": "machine/D12 300 PRO SMARTPAD MONO DUAL 0.4 nozzle.json",
+                    "sha256": "0e819bc794696637b60faf2736b5165733eb546058837e0cf6ee6a6c0735617d"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-300",
                 "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b",
+                "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-300",
                     "path": "process/0.20mm Standard @Wanhao-D12-300.json",
-                    "sha256": "1f2dee3eaa18ec3d1222003882b448f78c17202e896ac76cf94634dca114f08b"
+                    "sha256": "4b26d8dd991a3276e7927ed9017faca7f19566aa3c9db41f7fcf5e74a89be11f"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -1162,11 +1294,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 300 PRO SMARTPAD MONO DUAL PoopTool.json",
-            "sha256": "8e22914572487b4f2eec6a8d432798fa659019f507c50a3c1a8ab2979356744b",
+            "sha256": "7d18c946412e1642e890c8e31d9ebe8d28de4f621cb7acde3e3ce668e7f2bb99",
             "manufacturer_model_id": "D12 300 PRO SMARTPAD MONO DUAL PoopTool"
           },
           "nozzles_mm": [
@@ -1178,49 +1310,61 @@
               "machine": {
                 "name": "D12 300 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle",
                 "path": "machine/D12 300 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle.json",
-                "sha256": "4dd9af7a527f21c5de3ac731aaff9879d8fa9e28a640c779f98c1cee561f457e"
+                "sha256": "4b81699d56ca42d7027864a7bef3df9dffa7bc1eb7f42726ec42baadcb6cc9d7",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 300 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle",
+                    "path": "machine/D12 300 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle.json",
+                    "sha256": "4b81699d56ca42d7027864a7bef3df9dffa7bc1eb7f42726ec42baadcb6cc9d7"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-300 PoopTool",
                 "path": "process/0.20mm Standard @Wanhao-D12-300 PoopTool.json",
-                "sha256": "3308ea4883bb95bdf9827eeb982b5b563f2d01a3a60e6d8d06e187ebc04e849c",
+                "sha256": "71b6f9b24b4db593d6face4da6b80420f9ae554b4cf2139f2e58e17f0938e896",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-300 PoopTool",
                     "path": "process/0.20mm Standard @Wanhao-D12-300 PoopTool.json",
-                    "sha256": "3308ea4883bb95bdf9827eeb982b5b563f2d01a3a60e6d8d06e187ebc04e849c"
+                    "sha256": "71b6f9b24b4db593d6face4da6b80420f9ae554b4cf2139f2e58e17f0938e896"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -1266,11 +1410,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 500 PRO M2 DIRECT.json",
-            "sha256": "b1e7f5ef4ca6b0c766bce7f786ad4d0c56776600125099fac2d6fae088f59c49",
+            "sha256": "cd1ade13b2f3643d2ecb672b04d73fe5ba19a32a22f363b2b20fae3c5a7e5e03",
             "manufacturer_model_id": "D12 500 PRO M2 DIRECT"
           },
           "nozzles_mm": [
@@ -1301,11 +1445,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 500 PRO M2 MONO DUAL.json",
-            "sha256": "3b1c3da370597a1a64547711c5e172409d0bee3cc3a1e2f3d98919d5f4fc188a",
+            "sha256": "3f3252c13b09a259a41481eeb3053004dc99214d1582fbeb40c8c9b5e1658f13",
             "manufacturer_model_id": "D12 500 PRO M2 MONO DUAL"
           },
           "nozzles_mm": [
@@ -1317,49 +1461,61 @@
               "machine": {
                 "name": "D12 500 PRO M2 MONO DUAL 0.4 nozzle",
                 "path": "machine/D12 500 PRO M2 MONO DUAL 0.4 nozzle.json",
-                "sha256": "6006a0c2d8b9061d93acaf7cc20e2aed365d40ed7690c5c4cdcf0d3ace1c8e47"
+                "sha256": "66acd7f1b29c077672df46134d495b69a8d3c8282b6dcc896e10c2fd19056234",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 500 PRO M2 MONO DUAL 0.4 nozzle",
+                    "path": "machine/D12 500 PRO M2 MONO DUAL 0.4 nozzle.json",
+                    "sha256": "66acd7f1b29c077672df46134d495b69a8d3c8282b6dcc896e10c2fd19056234"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-500",
                 "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8",
+                "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-500",
                     "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                    "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8"
+                    "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -1405,11 +1561,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 500 PRO M2 MONO DUAL PoopTool.json",
-            "sha256": "cf21cb851aed836ecee9ea5120811ad5abb23ffaf0b9502f6ecf78c6c1d91acc",
+            "sha256": "5a1a4e25c76c397d8352fad0bb476356ea3a240bd3c2ad5b5fc83eb5ea0c708b",
             "manufacturer_model_id": "D12 500 PRO M2 MONO DUAL PoopTool"
           },
           "nozzles_mm": [
@@ -1421,49 +1577,61 @@
               "machine": {
                 "name": "D12 500 PRO M2 MONO DUAL PoopTool 0.4 nozzle",
                 "path": "machine/D12 500 PRO M2 MONO DUAL PoopTool 0.4 nozzle.json",
-                "sha256": "215ee0b8c8809951f1d765bb850a2324bc94cb19c5d35206cbedb54f5444676e"
+                "sha256": "9043b07d3fa7fa8052fc9e4bd7d49b015fbdeddf606636433ac7fdf9b56e2bf7",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 500 PRO M2 MONO DUAL PoopTool 0.4 nozzle",
+                    "path": "machine/D12 500 PRO M2 MONO DUAL PoopTool 0.4 nozzle.json",
+                    "sha256": "9043b07d3fa7fa8052fc9e4bd7d49b015fbdeddf606636433ac7fdf9b56e2bf7"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-500 PoopTool",
                 "path": "process/0.20mm Standard @Wanhao-D12-500 PoopTool.json",
-                "sha256": "782cfe3254e53024cbb1a04de2ed5ef8875cf3095e95f3e5867045c675bec0ab",
+                "sha256": "bcb79d5c77ca3e397fe516f2d4c7c5926bca042b9579203e07962e3a2b3dea86",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-500 PoopTool",
                     "path": "process/0.20mm Standard @Wanhao-D12-500 PoopTool.json",
-                    "sha256": "782cfe3254e53024cbb1a04de2ed5ef8875cf3095e95f3e5867045c675bec0ab"
+                    "sha256": "bcb79d5c77ca3e397fe516f2d4c7c5926bca042b9579203e07962e3a2b3dea86"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -1509,11 +1677,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 500 PRO SMARTPAD DIRECT.json",
-            "sha256": "b4d6aae47cfa99c53f18a796b71c614c5a1a064e62fd3ea676346ddc0696c25e",
+            "sha256": "1a1413e9c8b6c3614af52008d5e1a449c392871ec5dc061e366f77e6a9c67922",
             "manufacturer_model_id": "D12 500 PRO SMARTPAD DIRECT"
           },
           "nozzles_mm": [
@@ -1525,49 +1693,61 @@
               "machine": {
                 "name": "D12 500 PRO M2 DIRECT 0.4 nozzle",
                 "path": "machine/D12 500 PRO M2 DIRECT 0.4 nozzle.json",
-                "sha256": "c9ddf0bb9407f84a14576c4fac54f886082d5a75ed87d3899f06b285119225d9"
+                "sha256": "394f20393aee813744d8c60d3ad09b48752eeab8ea22695080ca56d75626dff1",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 500 PRO M2 DIRECT 0.4 nozzle",
+                    "path": "machine/D12 500 PRO M2 DIRECT 0.4 nozzle.json",
+                    "sha256": "394f20393aee813744d8c60d3ad09b48752eeab8ea22695080ca56d75626dff1"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-500",
                 "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8",
+                "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-500",
                     "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                    "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8"
+                    "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Direct Drive",
                 "path": "filament/YUMI PLA Direct Drive.json",
-                "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf",
+                "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Direct Drive",
                     "path": "filament/YUMI PLA Direct Drive.json",
-                    "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf"
+                    "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae"
                   }
                 ]
               }
@@ -1577,49 +1757,61 @@
               "machine": {
                 "name": "D12 500 PRO SMARTPAD DIRECT 0.4 nozzle",
                 "path": "machine/D12 500 PRO SMARTPAD DIRECT 0.4 nozzle.json",
-                "sha256": "f88a0a21cf17a0809c9ca77de23660320cd39e48a2cb2f60369794d1aae78300"
+                "sha256": "fa5ade7d80d8c38806eb5801f460761ce7ace2bb9bb10053e54828dc6b3d23e6",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 500 PRO SMARTPAD DIRECT 0.4 nozzle",
+                    "path": "machine/D12 500 PRO SMARTPAD DIRECT 0.4 nozzle.json",
+                    "sha256": "fa5ade7d80d8c38806eb5801f460761ce7ace2bb9bb10053e54828dc6b3d23e6"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-500",
                 "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8",
+                "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-500",
                     "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                    "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8"
+                    "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Direct Drive",
                 "path": "filament/YUMI PLA Direct Drive.json",
-                "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf",
+                "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Direct Drive",
                     "path": "filament/YUMI PLA Direct Drive.json",
-                    "sha256": "e1e14891191fe1336610f82187bbdbae7218b53e279c53057bff676c3d24dcdf"
+                    "sha256": "2c28bc21d44d143271c1d488988a9e96a7d96cb88f37e1b1b5774c8b4835b0ae"
                   }
                 ]
               }
@@ -1665,11 +1857,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 500 PRO SMARTPAD MONO DUAL.json",
-            "sha256": "73a65992175856e924c9d4c3c7bc7539e262bf2f473bac6c08cd37df0c000c8e",
+            "sha256": "fafd9ab013e36a555e47c1d94b5d88cd5f9c5d9ae3188881f78edb45247db835",
             "manufacturer_model_id": "D12 500 PRO SMARTPAD MONO DUAL"
           },
           "nozzles_mm": [
@@ -1681,49 +1873,61 @@
               "machine": {
                 "name": "D12 500 PRO SMARTPAD MONO DUAL 0.4 nozzle",
                 "path": "machine/D12 500 PRO SMARTPAD MONO DUAL 0.4 nozzle.json",
-                "sha256": "8548d9779c2b98a5a6233d1ac391180d8e86be63f190bed5684eadc847308b8b"
+                "sha256": "22d9d0ac91cf67c05a242d21d142f86668c2c3e409c45e57b4b98d17b715b594",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 500 PRO SMARTPAD MONO DUAL 0.4 nozzle",
+                    "path": "machine/D12 500 PRO SMARTPAD MONO DUAL 0.4 nozzle.json",
+                    "sha256": "22d9d0ac91cf67c05a242d21d142f86668c2c3e409c45e57b4b98d17b715b594"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-500",
                 "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8",
+                "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-500",
                     "path": "process/0.20mm Standard @Wanhao-D12-500.json",
-                    "sha256": "723a80e93b2a6a3c88ec46c34bccd83dd97e61735ee9ee22516e123f0bc304d8"
+                    "sha256": "5b0f6c54167e60b665cd23a05fb8ab8edf2ad2d7de85b4a4da21ff11c23f1ba5"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }
@@ -1769,11 +1973,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Wanhao France.json",
-            "sha256": "1feb6046feee85c811b53275d8b5fa128ed6e8b32be26d6a884eee427f98a4bf"
+            "sha256": "012afb5e3dcfe940810256010b36b7740659ec8436ac20fba98b8a46d83105fb"
           },
           "model": {
             "path": "machine/D12 500 PRO SMARTPAD MONO DUAL PoopTool.json",
-            "sha256": "ae59f71500112bde5ea2d884280768909d6cc760aa84bfd06961d08c656947b2",
+            "sha256": "952459a8a9099d27886afaffdb9673da3e7eef31655f6e459c8d6d4e57658b29",
             "manufacturer_model_id": "D12 500 PRO SMARTPAD MONO DUAL PoopTool"
           },
           "nozzles_mm": [
@@ -1785,49 +1989,61 @@
               "machine": {
                 "name": "D12 500 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle",
                 "path": "machine/D12 500 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle.json",
-                "sha256": "407dc445fb7d94715153d5b1966c5694832028df0c498111fdad918a270633a8"
+                "sha256": "41028ff1ccfc88fb0d7d0b483fb747e7b82bef45f43f6ab373d7af4f6a59f0e6",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "620d2cd9e47c872cbeb7d19ea78efc883e8ec721598b9edbb1328bc990176175"
+                  },
+                  {
+                    "name": "D12 500 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle",
+                    "path": "machine/D12 500 PRO SMARTPAD MONO DUAL PoopTool 0.4 nozzle.json",
+                    "sha256": "41028ff1ccfc88fb0d7d0b483fb747e7b82bef45f43f6ab373d7af4f6a59f0e6"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Wanhao-D12-500 PoopTool",
                 "path": "process/0.20mm Standard @Wanhao-D12-500 PoopTool.json",
-                "sha256": "782cfe3254e53024cbb1a04de2ed5ef8875cf3095e95f3e5867045c675bec0ab",
+                "sha256": "bcb79d5c77ca3e397fe516f2d4c7c5926bca042b9579203e07962e3a2b3dea86",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c6a6b3d3d29e162bb1cbb6cd9c44384ee8ad88ad504f0338c2defe24ddbbc537"
+                    "sha256": "1ee19bc953cbd1c9c9c43f2bd43cf3527b94fab4a84d4fce5959c826e35f230d"
                   },
                   {
                     "name": "0.20mm Standard @Wanhao-D12-500 PoopTool",
                     "path": "process/0.20mm Standard @Wanhao-D12-500 PoopTool.json",
-                    "sha256": "782cfe3254e53024cbb1a04de2ed5ef8875cf3095e95f3e5867045c675bec0ab"
+                    "sha256": "bcb79d5c77ca3e397fe516f2d4c7c5926bca042b9579203e07962e3a2b3dea86"
                   }
                 ]
               },
               "filament": {
                 "name": "YUMI PLA Bowden",
                 "path": "filament/YUMI PLA Bowden.json",
-                "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889",
+                "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "3854427cb02ca1ed2c140057945c7a762a2b8d8d6e3703d12d0ee511dad8629b"
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "519c51f9554afe4f0a15b74fb7bac503a2287167f507e7b3edbd7b251b27db82"
+                    "sha256": "59d216f028c2e45532cad10869f864edf8c0e6e956955694d74d7cc7979929d2"
                   },
                   {
                     "name": "Generic PLA @Yumi",
                     "path": "filament/Generic PLA @Yumi.json",
-                    "sha256": "684cec2f4ea8d6d8cc9ac9b2b59153eaed52666f8042c9c3fffe81ea02e458ef"
+                    "sha256": "e68c3097d496899e7ebd6b13eb7481296adea3f9df7d3d386100530feeda6f51"
                   },
                   {
                     "name": "YUMI PLA Bowden",
                     "path": "filament/YUMI PLA Bowden.json",
-                    "sha256": "9773b4268aefe0f1e3a098ec936df666fa3c8e9c27d85803f8fe00ac6f093889"
+                    "sha256": "9d267b9105419ae0b8562767a44af39d58fcf98f9c24fb03fc708c67abb6d2a5"
                   }
                 ]
               }

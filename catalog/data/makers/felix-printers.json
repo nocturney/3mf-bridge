@@ -18,11 +18,11 @@
           "bundle_version": "1.0.0",
           "manifest": {
             "path": "resources/profiles/FELIX Printers.json",
-            "sha256": "97aa5e67e1cbb7005378f83892f183e54263e8054b8d5f414f282229d696a504"
+            "sha256": "b7a92ff25470e6a5b9c4afeba3a56f3e07bfd987843c553a76254634b11cb66e"
           },
           "model": {
             "path": "machine/FELIX Pro 3.json",
-            "sha256": "325cf3c3d6f7a722df2c7992e5045d091225441f8b8b806a8aaae482239c2bbd",
+            "sha256": "67ffee468c38c51cf468339a4a2966e06e90a0f03d38f22db5d03f5c93c7162e",
             "manufacturer_model_id": "felix_pro_series"
           },
           "nozzles_mm": [
@@ -37,49 +37,66 @@
               "machine": {
                 "name": "FELIX Pro 3 0.25mm nozzle",
                 "path": "machine/FELIX Pro 3 0.25mm nozzle.json",
-                "sha256": "39c1aa6c09e956a56141393278bc27187b47de8de6b8feb149ca84aa063bf36a"
+                "sha256": "5bf8ed63e8352c0ccfbe1b5553178fb770c23066cc1e65167b83e0040e4c1e5e",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_3_common",
+                    "path": "machine/fdm_felix_pro_3_common.json",
+                    "sha256": "f31ebeb2debd011c825c8fc0574ba507eb15d79303caae6cc0aada658f13b524"
+                  },
+                  {
+                    "name": "FELIX Pro 3 0.25mm nozzle",
+                    "path": "machine/FELIX Pro 3 0.25mm nozzle.json",
+                    "sha256": "5bf8ed63e8352c0ccfbe1b5553178fb770c23066cc1e65167b83e0040e4c1e5e"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.25mm",
                 "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0",
+                "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.25mm",
                     "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                    "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0"
+                    "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513",
+                "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                    "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513"
+                    "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b"
                   }
                 ]
               }
@@ -89,49 +106,66 @@
               "machine": {
                 "name": "FELIX Pro 3 0.35mm nozzle",
                 "path": "machine/FELIX Pro 3 0.35mm nozzle.json",
-                "sha256": "d186a5be4b92168e5e51e500f331baeacc9eee064f59b69185b190c071660dd1"
+                "sha256": "972aceebc15063a7a34900cd5a1c7248c1a689853efc1835c4ce43911c39c2ea",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_3_common",
+                    "path": "machine/fdm_felix_pro_3_common.json",
+                    "sha256": "f31ebeb2debd011c825c8fc0574ba507eb15d79303caae6cc0aada658f13b524"
+                  },
+                  {
+                    "name": "FELIX Pro 3 0.35mm nozzle",
+                    "path": "machine/FELIX Pro 3 0.35mm nozzle.json",
+                    "sha256": "972aceebc15063a7a34900cd5a1c7248c1a689853efc1835c4ce43911c39c2ea"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.35mm",
                 "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b",
+                "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.35mm",
                     "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                    "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b"
+                    "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab",
+                "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                    "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab"
+                    "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207"
                   }
                 ]
               }
@@ -141,49 +175,66 @@
               "machine": {
                 "name": "FELIX Pro 3 0.50mm nozzle",
                 "path": "machine/FELIX Pro 3 0.50mm nozzle.json",
-                "sha256": "a60bbd3a046abd34218b2402c1da7b474bca08b55486d6d333db78cf2c7cf97f"
+                "sha256": "9c9d542571919b33b19f93de74f6f0dff4d47199d0ca4f24d16d2c308a0b357e",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_3_common",
+                    "path": "machine/fdm_felix_pro_3_common.json",
+                    "sha256": "f31ebeb2debd011c825c8fc0574ba507eb15d79303caae6cc0aada658f13b524"
+                  },
+                  {
+                    "name": "FELIX Pro 3 0.50mm nozzle",
+                    "path": "machine/FELIX Pro 3 0.50mm nozzle.json",
+                    "sha256": "9c9d542571919b33b19f93de74f6f0dff4d47199d0ca4f24d16d2c308a0b357e"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.50mm",
                 "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c",
+                "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.50mm",
                     "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                    "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c"
+                    "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f",
+                "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                    "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f"
+                    "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402"
                   }
                 ]
               }
@@ -193,49 +244,66 @@
               "machine": {
                 "name": "FELIX Pro 3 0.70mm nozzle",
                 "path": "machine/FELIX Pro 3 0.70mm nozzle.json",
-                "sha256": "d1b45fedf50b0bf536dd8a72c9b2222afee69fa6e5c163a14d9b4bbe4a5b8f06"
+                "sha256": "18c0d8b19de12ff383b8d6bb17a3307fc39bcb738b2b018600dab2f1f04f4f15",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_3_common",
+                    "path": "machine/fdm_felix_pro_3_common.json",
+                    "sha256": "f31ebeb2debd011c825c8fc0574ba507eb15d79303caae6cc0aada658f13b524"
+                  },
+                  {
+                    "name": "FELIX Pro 3 0.70mm nozzle",
+                    "path": "machine/FELIX Pro 3 0.70mm nozzle.json",
+                    "sha256": "18c0d8b19de12ff383b8d6bb17a3307fc39bcb738b2b018600dab2f1f04f4f15"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.70mm",
                 "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9",
+                "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.70mm",
                     "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                    "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9"
+                    "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371",
+                "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                    "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371"
+                    "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa"
                   }
                 ]
               }
@@ -308,11 +376,11 @@
           "bundle_version": "1.0.0",
           "manifest": {
             "path": "resources/profiles/FELIX Printers.json",
-            "sha256": "97aa5e67e1cbb7005378f83892f183e54263e8054b8d5f414f282229d696a504"
+            "sha256": "b7a92ff25470e6a5b9c4afeba3a56f3e07bfd987843c553a76254634b11cb66e"
           },
           "model": {
             "path": "machine/FELIX Pro L 3.0.json",
-            "sha256": "0c87d41e70c72b185da74a83e50a03eaf668c6823225b8f21e19e3c5086e43e4",
+            "sha256": "c2765c0b153fa8a4a92266318387b71c672686c697c5e79bb2142099423b2970",
             "manufacturer_model_id": "felix_pro_series"
           },
           "nozzles_mm": [
@@ -327,49 +395,66 @@
               "machine": {
                 "name": "FELIX Pro L 3.0 0.25mm nozzle",
                 "path": "machine/FELIX Pro L 3.0 0.25mm nozzle.json",
-                "sha256": "3dc2ecdc9920008f10ca7a8175074d049e97514c94515c315e9eca0b4d3502a0"
+                "sha256": "72ff9d790c74ce620e173e41407dae330a37789d677d3f1a4791a4f8747ef0bd",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_l_3_common",
+                    "path": "machine/fdm_felix_pro_l_3.json",
+                    "sha256": "660315c8bb8ba8b400d3f203b46fcf93bf21855952638576f7ceb98779dc233f"
+                  },
+                  {
+                    "name": "FELIX Pro L 3.0 0.25mm nozzle",
+                    "path": "machine/FELIX Pro L 3.0 0.25mm nozzle.json",
+                    "sha256": "72ff9d790c74ce620e173e41407dae330a37789d677d3f1a4791a4f8747ef0bd"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.25mm",
                 "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0",
+                "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.25mm",
                     "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                    "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0"
+                    "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513",
+                "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                    "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513"
+                    "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b"
                   }
                 ]
               }
@@ -379,49 +464,66 @@
               "machine": {
                 "name": "FELIX Pro L 3.0 0.35mm nozzle",
                 "path": "machine/FELIX Pro L 3.0 0.35mm nozzle.json",
-                "sha256": "d27027644017ac73d0a2398d3a114d0eb85ed2874a04693f1c076e1633baca52"
+                "sha256": "158b71f3e704b7d3e4374526475e674002e44ffad2ffe6ec7c03f7c1c6181222",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_l_3_common",
+                    "path": "machine/fdm_felix_pro_l_3.json",
+                    "sha256": "660315c8bb8ba8b400d3f203b46fcf93bf21855952638576f7ceb98779dc233f"
+                  },
+                  {
+                    "name": "FELIX Pro L 3.0 0.35mm nozzle",
+                    "path": "machine/FELIX Pro L 3.0 0.35mm nozzle.json",
+                    "sha256": "158b71f3e704b7d3e4374526475e674002e44ffad2ffe6ec7c03f7c1c6181222"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.35mm",
                 "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b",
+                "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.35mm",
                     "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                    "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b"
+                    "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab",
+                "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                    "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab"
+                    "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207"
                   }
                 ]
               }
@@ -431,49 +533,66 @@
               "machine": {
                 "name": "FELIX Pro L 3.0 0.50mm nozzle",
                 "path": "machine/FELIX Pro L 3.0 0.50mm nozzle.json",
-                "sha256": "fe33d736809ec5ef740921fb7d06a89110d12bbe703e239de336daff890af976"
+                "sha256": "8c48260d400f57746ea7057a78866097850a5acd026b66e8892af131eba95d30",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_l_3_common",
+                    "path": "machine/fdm_felix_pro_l_3.json",
+                    "sha256": "660315c8bb8ba8b400d3f203b46fcf93bf21855952638576f7ceb98779dc233f"
+                  },
+                  {
+                    "name": "FELIX Pro L 3.0 0.50mm nozzle",
+                    "path": "machine/FELIX Pro L 3.0 0.50mm nozzle.json",
+                    "sha256": "8c48260d400f57746ea7057a78866097850a5acd026b66e8892af131eba95d30"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.50mm",
                 "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c",
+                "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.50mm",
                     "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                    "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c"
+                    "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f",
+                "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                    "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f"
+                    "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402"
                   }
                 ]
               }
@@ -483,49 +602,66 @@
               "machine": {
                 "name": "FELIX Pro L 3.0 0.70mm nozzle",
                 "path": "machine/FELIX Pro L 3.0 0.70mm nozzle.json",
-                "sha256": "7c7f58c4ff6ada766ea08bfc3c787d1a3739313b0c995b8609ff965475d8601b"
+                "sha256": "8d48f1d93d790b76b66aafe33da1ef83ee2674338abac1874d4f7f6577eb58a5",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_l_3_common",
+                    "path": "machine/fdm_felix_pro_l_3.json",
+                    "sha256": "660315c8bb8ba8b400d3f203b46fcf93bf21855952638576f7ceb98779dc233f"
+                  },
+                  {
+                    "name": "FELIX Pro L 3.0 0.70mm nozzle",
+                    "path": "machine/FELIX Pro L 3.0 0.70mm nozzle.json",
+                    "sha256": "8d48f1d93d790b76b66aafe33da1ef83ee2674338abac1874d4f7f6577eb58a5"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.70mm",
                 "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9",
+                "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.70mm",
                     "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                    "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9"
+                    "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371",
+                "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                    "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371"
+                    "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa"
                   }
                 ]
               }
@@ -598,11 +734,11 @@
           "bundle_version": "1.0.0",
           "manifest": {
             "path": "resources/profiles/FELIX Printers.json",
-            "sha256": "97aa5e67e1cbb7005378f83892f183e54263e8054b8d5f414f282229d696a504"
+            "sha256": "b7a92ff25470e6a5b9c4afeba3a56f3e07bfd987843c553a76254634b11cb66e"
           },
           "model": {
             "path": "machine/FELIX Pro XL 3.0.json",
-            "sha256": "fe49d0cedeef83fa622447221e357e7fe62db61aa47b001a71c4bc8ec5941e63",
+            "sha256": "291971aa04d50b790caae07db21357287a3652eebb49e9cc75d67de01973b4a6",
             "manufacturer_model_id": "felix_pro_series"
           },
           "nozzles_mm": [
@@ -617,49 +753,66 @@
               "machine": {
                 "name": "FELIX Pro XL 3.0 0.25mm nozzle",
                 "path": "machine/FELIX Pro XL 3.0 0.25mm nozzle.json",
-                "sha256": "40cd04a948ea2d7c0aca867f9e875be2dcb819f5b69cc2bda943462421247329"
+                "sha256": "e71d22ef6cace34719bab996c395bd796f8b5de17c89afef41c4f304821d57ea",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_xl_3_common",
+                    "path": "machine/fdm_felix_pro_xl_3_common.json",
+                    "sha256": "4a0ae26b5689b754ce7aa359e414692052511921eedb8a2b514198f1c79ffbbb"
+                  },
+                  {
+                    "name": "FELIX Pro XL 3.0 0.25mm nozzle",
+                    "path": "machine/FELIX Pro XL 3.0 0.25mm nozzle.json",
+                    "sha256": "e71d22ef6cace34719bab996c395bd796f8b5de17c89afef41c4f304821d57ea"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.25mm",
                 "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0",
+                "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.25mm",
                     "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                    "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0"
+                    "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513",
+                "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                    "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513"
+                    "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b"
                   }
                 ]
               }
@@ -669,49 +822,66 @@
               "machine": {
                 "name": "FELIX Pro XL 3.0 0.35mm nozzle",
                 "path": "machine/FELIX Pro XL 3.0 0.35mm nozzle.json",
-                "sha256": "6f0646c491ec48be46fc5c4700bab051b5a6d1b84605ca432a687686cab9e505"
+                "sha256": "f3dac4f3989adcacb7491561641805ec07c7c197451c61fbf4fff5a8f0ecd55e",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_xl_3_common",
+                    "path": "machine/fdm_felix_pro_xl_3_common.json",
+                    "sha256": "4a0ae26b5689b754ce7aa359e414692052511921eedb8a2b514198f1c79ffbbb"
+                  },
+                  {
+                    "name": "FELIX Pro XL 3.0 0.35mm nozzle",
+                    "path": "machine/FELIX Pro XL 3.0 0.35mm nozzle.json",
+                    "sha256": "f3dac4f3989adcacb7491561641805ec07c7c197451c61fbf4fff5a8f0ecd55e"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.35mm",
                 "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b",
+                "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.35mm",
                     "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                    "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b"
+                    "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab",
+                "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                    "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab"
+                    "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207"
                   }
                 ]
               }
@@ -721,49 +891,66 @@
               "machine": {
                 "name": "FELIX Pro XL 3.0 0.50mm nozzle",
                 "path": "machine/FELIX Pro XL 3.0 0.50mm nozzle.json",
-                "sha256": "8cc1ed62f438b1288a8d8ee13fa76475dc3d062ef6e653c9c5013bf9766d30c5"
+                "sha256": "be5fff9ffe6545071deed25f7353c3052899f945d2cc11a0d02596c6f5e35c1d",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_xl_3_common",
+                    "path": "machine/fdm_felix_pro_xl_3_common.json",
+                    "sha256": "4a0ae26b5689b754ce7aa359e414692052511921eedb8a2b514198f1c79ffbbb"
+                  },
+                  {
+                    "name": "FELIX Pro XL 3.0 0.50mm nozzle",
+                    "path": "machine/FELIX Pro XL 3.0 0.50mm nozzle.json",
+                    "sha256": "be5fff9ffe6545071deed25f7353c3052899f945d2cc11a0d02596c6f5e35c1d"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.50mm",
                 "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c",
+                "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.50mm",
                     "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                    "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c"
+                    "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f",
+                "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                    "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f"
+                    "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402"
                   }
                 ]
               }
@@ -773,49 +960,66 @@
               "machine": {
                 "name": "FELIX Pro XL 3.0 0.70mm nozzle",
                 "path": "machine/FELIX Pro XL 3.0 0.70mm nozzle.json",
-                "sha256": "f2c7256a34a274a9d7d2e7938bc4422d383992c217e5457448668303d1afd90e"
+                "sha256": "98ca8b2df0723a8e22b1bd8189a5b66757868f3c6944d89d50e716592672e43d",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_pro_xl_3_common",
+                    "path": "machine/fdm_felix_pro_xl_3_common.json",
+                    "sha256": "4a0ae26b5689b754ce7aa359e414692052511921eedb8a2b514198f1c79ffbbb"
+                  },
+                  {
+                    "name": "FELIX Pro XL 3.0 0.70mm nozzle",
+                    "path": "machine/FELIX Pro XL 3.0 0.70mm nozzle.json",
+                    "sha256": "98ca8b2df0723a8e22b1bd8189a5b66757868f3c6944d89d50e716592672e43d"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.70mm",
                 "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9",
+                "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.70mm",
                     "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                    "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9"
+                    "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371",
+                "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                    "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371"
+                    "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa"
                   }
                 ]
               }
@@ -888,11 +1092,11 @@
           "bundle_version": "1.0.0",
           "manifest": {
             "path": "resources/profiles/FELIX Printers.json",
-            "sha256": "97aa5e67e1cbb7005378f83892f183e54263e8054b8d5f414f282229d696a504"
+            "sha256": "b7a92ff25470e6a5b9c4afeba3a56f3e07bfd987843c553a76254634b11cb66e"
           },
           "model": {
             "path": "machine/FELIX Tec 4.json",
-            "sha256": "d11ee5bd1dd274c08fd9afc3ac92cf8e07563eedcbf0324c9cc75f7c5c1239a3",
+            "sha256": "4b52b7064375e9f5150057faa634d9a1aee4a0b063a429e70693ad304dfe8df9",
             "manufacturer_model_id": "felix_tec_series"
           },
           "nozzles_mm": [
@@ -907,49 +1111,66 @@
               "machine": {
                 "name": "FELIX Tec 4 0.25mm nozzle",
                 "path": "machine/FELIX Tec 4 0.25mm nozzle.json",
-                "sha256": "1c2d40424cd7cee564ec954a09659b5f093236fcb348315bba09e3348483b09b"
+                "sha256": "f198b715f1a6f686d3a2206b4e7b17369e2d5997b47e3a35bf4f1c8fe693995b",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_tec_common",
+                    "path": "machine/fdm_felix_tec_common.json",
+                    "sha256": "e72dd399dc46379bffda788c398ba9a27813624080bf965c44d0254cb3558a20"
+                  },
+                  {
+                    "name": "FELIX Tec 4 0.25mm nozzle",
+                    "path": "machine/FELIX Tec 4 0.25mm nozzle.json",
+                    "sha256": "f198b715f1a6f686d3a2206b4e7b17369e2d5997b47e3a35bf4f1c8fe693995b"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.25mm",
                 "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0",
+                "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.25mm",
                     "path": "process/FELIX Plastic Normal @ 0.25mm.json",
-                    "sha256": "65f55033e179c904762f341118b049f804499073c0d2c64e973bb05addc548d0"
+                    "sha256": "56b98f7c4caeef7ef8f7ec854a8375f4b6154167d2d2b6ed0eba22d14bc57b8f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513",
+                "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.25mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.25mm.json",
-                    "sha256": "73e9abe9b3405eb2022f91cdac335ceecbd1a7b0d2dda02b31b67f5bbb188513"
+                    "sha256": "cd08c8f3660bb30c9dc1089490216cd5ca72dccfa885ddd2a4bb445ed928368b"
                   }
                 ]
               }
@@ -959,49 +1180,66 @@
               "machine": {
                 "name": "FELIX Tec 4 0.35mm nozzle",
                 "path": "machine/FELIX Tec 4 0.35mm nozzle.json",
-                "sha256": "8da5363f7d9a8d7287d49d38efae894b29148ee7e77cf442f2ab4e6e0db42be5"
+                "sha256": "bec779ae933e26242c9ebc2756f8110651d5028fc75b3d8998f7e317f63c83ca",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_tec_common",
+                    "path": "machine/fdm_felix_tec_common.json",
+                    "sha256": "e72dd399dc46379bffda788c398ba9a27813624080bf965c44d0254cb3558a20"
+                  },
+                  {
+                    "name": "FELIX Tec 4 0.35mm nozzle",
+                    "path": "machine/FELIX Tec 4 0.35mm nozzle.json",
+                    "sha256": "bec779ae933e26242c9ebc2756f8110651d5028fc75b3d8998f7e317f63c83ca"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.35mm",
                 "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b",
+                "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.35mm",
                     "path": "process/FELIX Plastic Normal @ 0.35mm.json",
-                    "sha256": "b554fc9b9e09b9798fd80b42de4bc3f9949a2d224f8007050fa4d859c82a2a7b"
+                    "sha256": "6e3f6ab56d6111295edf04a7963e9e1192cad9af89ca0699aa11d9fc7500ea9f"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab",
+                "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.35mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.35mm.json",
-                    "sha256": "60ad7be0d70f0a9832bb0efea8750589522bdfc135c9a473c54c8e654c5b8bab"
+                    "sha256": "eeb2a63ddcb5cc6826b93d16ce906b05403011250b9a75d98384358ded5d5207"
                   }
                 ]
               }
@@ -1011,49 +1249,66 @@
               "machine": {
                 "name": "FELIX Tec 4 0.50mm nozzle",
                 "path": "machine/FELIX Tec 4 0.50mm nozzle.json",
-                "sha256": "e4bf651d0314925e011a3570a31951399b156d818b0981bef1473f3c6ebd9296"
+                "sha256": "0320e2a389dac0787aeca1231de154f7c554bab559712b0534c674c2a28fd50e",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_tec_common",
+                    "path": "machine/fdm_felix_tec_common.json",
+                    "sha256": "e72dd399dc46379bffda788c398ba9a27813624080bf965c44d0254cb3558a20"
+                  },
+                  {
+                    "name": "FELIX Tec 4 0.50mm nozzle",
+                    "path": "machine/FELIX Tec 4 0.50mm nozzle.json",
+                    "sha256": "0320e2a389dac0787aeca1231de154f7c554bab559712b0534c674c2a28fd50e"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.50mm",
                 "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c",
+                "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.50mm",
                     "path": "process/FELIX Plastic Normal @ 0.50mm.json",
-                    "sha256": "4995018c850f615069e539d1cfb54c85f22ecf5ab4633ef58957e67c1b698d4c"
+                    "sha256": "002e6d91e633baad13d94af54b40b0014888b2f26d0cdf8fba572a2ae81720c2"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f",
+                "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.50mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.50mm.json",
-                    "sha256": "428724da6e1021580aa1a1ac8c9548f2f0a617883709bd94049ade23c571595f"
+                    "sha256": "f592dbb07ad3e86f6c2b676296ad77cc1dfe8afd16cdacdab7de9e2b25fd0402"
                   }
                 ]
               }
@@ -1063,49 +1318,66 @@
               "machine": {
                 "name": "FELIX Tec 4 0.70mm nozzle",
                 "path": "machine/FELIX Tec 4 0.70mm nozzle.json",
-                "sha256": "2391e474ab250981dab146d7636212f3873fa9f4fbe1e75d89e97a68b5de308a"
+                "sha256": "f2e878ddd9c6405d414dcc61640387db33559a952835c9d59aef490e1268b46f",
+                "inheritance": [
+                  {
+                    "name": "fdm_all_machines_common",
+                    "path": "machine/fdm_all_machines_common.json",
+                    "sha256": "da0593c7af44772185f5cd84dd5b90a0e7a4401d6af4415230878c1e5e20262b"
+                  },
+                  {
+                    "name": "fdm_felix_tec_common",
+                    "path": "machine/fdm_felix_tec_common.json",
+                    "sha256": "e72dd399dc46379bffda788c398ba9a27813624080bf965c44d0254cb3558a20"
+                  },
+                  {
+                    "name": "FELIX Tec 4 0.70mm nozzle",
+                    "path": "machine/FELIX Tec 4 0.70mm nozzle.json",
+                    "sha256": "f2e878ddd9c6405d414dcc61640387db33559a952835c9d59aef490e1268b46f"
+                  }
+                ]
               },
               "process": {
                 "name": "FELIX Plastic Normal @ 0.70mm",
                 "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9",
+                "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "709092d89ea0ec34499da881e6e87d9211fc8a8b246f4dfdca96ab3c1297fcda"
+                    "sha256": "1a3d1cf81dfc5e568c3185962b42cc1f49f6e9bf0c28f672016fda99653e0d68"
                   },
                   {
                     "name": "fdm_process_felix_plastic_common",
                     "path": "process/fdm_process_felix_plastic_common.json",
-                    "sha256": "e2b4fbc7df38ce6fe7cb7d7ed2417e5616c7d63e02a1692e51346c078ef07889"
+                    "sha256": "736733784353022b714ebbeedf9db0379f58b2489ebf0f58077ab70164f8efeb"
                   },
                   {
                     "name": "FELIX Plastic Normal @ 0.70mm",
                     "path": "process/FELIX Plastic Normal @ 0.70mm.json",
-                    "sha256": "ddf5f5471a4bd4716b84774e74f70fc27b9bb13da02f5ec465d371ac8acd03d9"
+                    "sha256": "819a6ff129f8495ab9ae411f20cb243d9d751fa189ad46f0cb080f1df7f2ccf9"
                   }
                 ]
               },
               "filament": {
                 "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                 "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371",
+                "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "37120efcd1aa9690a392fa6ba341dbe5a3794b5a1715f868e13ff69b29c880bb"
+                    "sha256": "461a96a5500de2d05ed1bc068c760cffd367c8ff60fdc7cf0f5715001c443716"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "fe2e4e1840429a8417a7e92f22f9a16eea831547f1318ae0ae613c1a06448965"
+                    "sha256": "9fb86fc2720b8867d8dbf5bd27426835c99bcceb2d00df29465ee66baf4a32eb"
                   },
                   {
                     "name": "FELIX Premium PLA Hardened Steel @ 0.70mm",
                     "path": "filament/FELIXPlastic/FELIX Premium PLA Hardened Steel @ 0.70mm.json",
-                    "sha256": "49ade39f31d805e515b665e8ee62037365056d75d68f7032eded1f3650984371"
+                    "sha256": "dec643e54c9da0cba8c74d983eb1178b4636b3fbccd2ff6b6feacd16d2efd5aa"
                   }
                 ]
               }

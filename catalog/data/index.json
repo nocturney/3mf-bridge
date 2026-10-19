@@ -7,9 +7,9 @@
     "prusa"
   ],
   "selection_rule": "highest-ranked structurally verified candidate",
-  "models": 602,
+  "models": 603,
   "manufacturers": 84,
-  "structurally_verified": 264,
+  "structurally_verified": 403,
   "conversion_tested": 0,
   "maker_files": [
     {
@@ -17,588 +17,588 @@
       "path": "makers/afinia.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "e143067021144cedafcdbae8b7122572e156f0e5e604461989556977e451d23b"
+      "sha256": "42dfe2cc6229ea6bed87b6adb6464b161e1560075c656b92ec2f2cebc613b1ed"
     },
     {
       "manufacturer": "Anker",
       "path": "makers/anker.json",
       "models": 5,
       "structurally_verified": 3,
-      "sha256": "04e643d904c4a6971df49b69f8af2d494736bbd5ed200569934e2a0d3066a737"
+      "sha256": "d0e58e74cc03b3ba75cb40c32a5f165861ed65ce9b2d0f7b8ef59128eec7e539"
     },
     {
       "manufacturer": "Anycubic",
       "path": "makers/anycubic.json",
       "models": 26,
-      "structurally_verified": 18,
-      "sha256": "e306749dc4e37fa004fe58142e59a6c1fc75956fbef395dc2a0556252a028226"
+      "structurally_verified": 23,
+      "sha256": "acd95407f353c5da935c3613fbf8155af2b96f3d14fa957f47c74a287acd33b8"
     },
     {
       "manufacturer": "Artillery",
       "path": "makers/artillery.json",
       "models": 11,
-      "structurally_verified": 10,
-      "sha256": "47cb46729f41cf9a3e58b6dc2a6a67f1c7e31e8a8336b0976212f3be4984dbb3"
+      "structurally_verified": 11,
+      "sha256": "41b55e11f0258ad19d8905e848b35ea8be38cb19a559f480bf0d70f77256f3a5"
     },
     {
       "manufacturer": "BIBO",
       "path": "makers/bibo.json",
       "models": 1,
-      "structurally_verified": 0,
-      "sha256": "f4cdeb16781401c4ec7ad550525f32e83b89b0df5b8054878cf992cd66ff7fb5"
+      "structurally_verified": 1,
+      "sha256": "bf7f8b3082aeaa26a0d77d5c1eb49ff4bc861538230a3ef7da1f8ed81187144f"
     },
     {
       "manufacturer": "BIQU",
       "path": "makers/biqu.json",
       "models": 3,
-      "structurally_verified": 0,
-      "sha256": "e0cbd75d81974b34f3819b82ee9db89add56443de15c1adce7a8d9ccb76accb1"
+      "structurally_verified": 1,
+      "sha256": "95b321a45b000bf8fe1042a3cb649de453e1cddb3cfb940d2f2cfb93b05e9fe3"
     },
     {
       "manufacturer": "Bambu Lab",
       "path": "makers/bambu-lab.json",
       "models": 14,
       "structurally_verified": 14,
-      "sha256": "a32769bad20b9d3bd517578847ca33e74ba644250264cc6fa534d0849c3c041b"
+      "sha256": "b2749b7b12e7f1bf13eefaaf75581107f8fe88745226886d0fff4d3b7152fe08"
     },
     {
       "manufacturer": "Blocks",
       "path": "makers/blocks.json",
       "models": 3,
       "structurally_verified": 3,
-      "sha256": "02d41e663ea8e140b5367bfdc314e8da704e67a554fe2f156732bcd68b9c1e6e"
+      "sha256": "7a8cb4888f2ca7015be921b2f0b5d560d90089cc682cca5cb68fe860d58a31c3"
     },
     {
       "manufacturer": "CONSTRUCT3D",
       "path": "makers/construct3d.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "604971cc469432ecd636d345816a0dab93ad89201c5fdb87b376aac01748f14b"
+      "sha256": "c71d3b17b149444c71863d56a3ad91a14fedc5c466062bb4b9dc8e956024d8ac"
     },
     {
       "manufacturer": "Caribou",
       "path": "makers/caribou.json",
       "models": 13,
-      "structurally_verified": 0,
-      "sha256": "2e1066218ebcda8ba0459cf93f91869bbd194a901dfd7bc08a279123e2565f78"
+      "structurally_verified": 12,
+      "sha256": "85a8a6e6c6fcdd27c4eff08e080603d387187cfe06d904e8b2be52d47bded4a8"
     },
     {
       "manufacturer": "Chuanying",
       "path": "makers/chuanying.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "fec0661ed5288bdf362d43be5fc4e7f88569771c059593d499483955d0e5d43c"
+      "sha256": "05c6c13e3dd0ca79b896740afbf5a2e542add0b62c2bc6036fd1951b6fed7f97"
     },
     {
       "manufacturer": "Co Print",
       "path": "makers/co-print.json",
       "models": 1,
       "structurally_verified": 1,
-      "sha256": "88a80c7822c96f6a9d5cc20323867cf6de2fc3e0c9292ddf75d48d90abf90f12"
+      "sha256": "0ceeaff8e19e1265ee2becbd333b52a1b9608fff3d4bc4dbd0ac3f873c585ffc"
     },
     {
       "manufacturer": "CoLiDo",
       "path": "makers/colido.json",
       "models": 5,
       "structurally_verified": 5,
-      "sha256": "9af600f1286a47b4aa3ab8c5bf70d35aabc623cfc431f85ba269489b6822d682"
+      "sha256": "4feba181fc8755fecc5296dd1ced64a7e381d6b292ded6cc4767bf7e6ca9f7b4"
     },
     {
       "manufacturer": "Comgrow",
       "path": "makers/comgrow.json",
       "models": 2,
       "structurally_verified": 2,
-      "sha256": "5b207a9e0fc0fd2dbd317d5ac1072265916829ff6c1b6f3ef840c5de86b6ca26"
+      "sha256": "1b4ebfa6042daa169247e663fa237ea5044bf0ad2c35f1ba20f185e8fb775f9e"
     },
     {
       "manufacturer": "Creality",
       "path": "makers/creality.json",
       "models": 74,
-      "structurally_verified": 54,
-      "sha256": "692813c51cc567cd5d42930351f747eac5a1e2a72a78dc48dede489de8931c93"
+      "structurally_verified": 72,
+      "sha256": "7d2a1424d5cd4cbb17aaebf4ddcb55c1f0ecbeebf16d1e6c53abe277d162880d"
     },
     {
       "manufacturer": "Cubicon",
       "path": "makers/cubicon.json",
       "models": 3,
       "structurally_verified": 0,
-      "sha256": "27f05084a0c5334757ab59eb4c9eb8e77c5fb81ee81f2749a2f7fd0c49f9febe"
+      "sha256": "d3b45369e8419b8748cf5b9be9bd519b1a58f24ee814479b56f8826c9a6080a8"
     },
     {
       "manufacturer": "Custom",
       "path": "makers/custom.json",
       "models": 6,
       "structurally_verified": 0,
-      "sha256": "f25024bf8e6f92006542cf7320f39a3a2b92912937bc6e144c445aefde845cdf"
+      "sha256": "bba75e6ad09e23890c90ca583c8257238f84be7a5a9539f14811fa0a06137923"
     },
     {
       "manufacturer": "DeltaMaker",
       "path": "makers/deltamaker.json",
       "models": 3,
       "structurally_verified": 3,
-      "sha256": "02f3a324abb326be4b30e420063003ef8f07620b5588e151ad01c377a8353876"
+      "sha256": "e3604fa3cbd97c89c9e578a921e173e35c8ec2690ec8cc35cfe5974bcc54379e"
     },
     {
       "manufacturer": "Dremel",
       "path": "makers/dremel.json",
       "models": 3,
       "structurally_verified": 3,
-      "sha256": "71c106dc5710cb0f3dc7db6faa4e92f8afc00265d320836fa31c74ccd922c545"
+      "sha256": "588d16e64bbbc93915eebeb60f50e4e8408a0cbb4df2ad070123218c38401311"
     },
     {
       "manufacturer": "E2D",
       "path": "makers/e2d.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "789be77873001c3f6e4a1d423da5a9788757eef0f3762093642cd7b934cf803e"
+      "sha256": "92030afcf7b67801bdc79d89c9880f19b100fe15d17757548f4c0d643fb1b64c"
     },
     {
       "manufacturer": "ELEGOO",
       "path": "makers/elegoo.json",
       "models": 19,
-      "structurally_verified": 18,
-      "sha256": "19dc8bdd81a75f56f9ee1dbfaec1c79fc637e81e836f6b6cb558e4a611c28604"
+      "structurally_verified": 19,
+      "sha256": "fb95cbe145d73a5fb6f82d07f09d5f7d44b4be4ce01891551c456ece818eaa08"
     },
     {
       "manufacturer": "Eryone",
       "path": "makers/eryone.json",
       "models": 3,
       "structurally_verified": 0,
-      "sha256": "56c9984f3d253bde98e98a8d3a119600235821d643e3e7186c7e1fbeaa214ad3"
+      "sha256": "d8f09f272ecefa9cb7797a060ecd66f84ca4ca56f0b9d8fd03c421b2fcfdb92f"
     },
     {
       "manufacturer": "FELIX Printers",
       "path": "makers/felix-printers.json",
       "models": 4,
       "structurally_verified": 4,
-      "sha256": "5cad9b29f9008378cbc8312ccd1a5c1b7feeeb2d17ed6588a6713a4275fcb208"
+      "sha256": "bfab52ca3df4786ae544021bc5bf2e73c715960f15f7b56b16b7ec6bfa448b14"
     },
     {
       "manufacturer": "FLSun",
       "path": "makers/flsun.json",
       "models": 7,
-      "structurally_verified": 3,
-      "sha256": "1cd9eb63f864166b2018455c9eeaa7ddacfc65b7ed050324e3678fc05879b25f"
+      "structurally_verified": 4,
+      "sha256": "7121173dba188bc6664c41e336cb5d5116070e2b933684a2cdb3351a70076bb6"
     },
     {
       "manufacturer": "Flashforge",
       "path": "makers/flashforge.json",
       "models": 10,
       "structurally_verified": 10,
-      "sha256": "fdd238030666f716ea08bbb161f7daf2c8cbf7db8be3d2478f2041ccd8abe09f"
+      "sha256": "6a616ca2c01c90fceb3798ee1de88e378c4b7b5ca9e43a1de5a25f8781e88eb2"
     },
     {
       "manufacturer": "FlyingBear",
       "path": "makers/flyingbear.json",
       "models": 4,
       "structurally_verified": 3,
-      "sha256": "c80cd0bd6668db0c69e7365d286ca31fa09bdb70d10c9e5f310886ca29f09644"
+      "sha256": "a51cf693ff1ec01c478f9208cbba0abd6b5c755009ead8eef764245165f42eeb"
     },
     {
       "manufacturer": "Folgertech",
       "path": "makers/folgertech.json",
       "models": 3,
       "structurally_verified": 0,
-      "sha256": "c0d281d44bf15bf94ef4a3522def3f85a7ce743680a783ed5259dd3803007a5e"
+      "sha256": "fdab1191ca8d9b1ade50f7d73688f920d74f754e844d1bd5a58b2c75a07f8afe"
     },
     {
       "manufacturer": "Geeetech",
       "path": "makers/geeetech.json",
       "models": 25,
-      "structurally_verified": 0,
-      "sha256": "fcaebf5b5762c79b5d655e463de9be4d95a1b97ab6c2fedace8018ab7e1f364b"
+      "structurally_verified": 25,
+      "sha256": "52d1a74612bdfff42150bb6de5a0bd2874f828489a28c8fadc4f388b35699fad"
     },
     {
       "manufacturer": "Goofoo",
       "path": "makers/goofoo.json",
       "models": 4,
       "structurally_verified": 0,
-      "sha256": "ff200106f79f483e79270eab3fb4cc3a3e5df5b7fd549defc86064d3046b50f3"
+      "sha256": "1fdc85536e5c205ca382ac21d3160258a4a818f6bb40a25783595a9a4d653922"
     },
     {
       "manufacturer": "HartSmartProducts",
       "path": "makers/hartsmartproducts.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "d44663d4565b6e107512cf4086a0d07d03226c695bd4903db44f76f095a45a10"
+      "sha256": "80673dd288f1f4284e6fc9d41a93fd5644c7abc55a200989a0d187c6fd042ab9"
     },
     {
       "manufacturer": "INAT",
       "path": "makers/inat.json",
       "models": 3,
-      "structurally_verified": 0,
-      "sha256": "887ca267c1ea7d2612b0fc0650b4be09ca50ac2fd9534de8dea0099f2c5e7493"
+      "structurally_verified": 3,
+      "sha256": "1532b9015dbf6227febbee02d2e94ac4dc85881e6d26a0ec1f72b3c6518ce18e"
     },
     {
       "manufacturer": "IdeaFormer",
       "path": "makers/ideaformer.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "aee4c55d893d98b26c436d9f4a41a6f4a5a7e66b243e7ade6cfb37ae321c2861"
+      "sha256": "97f09c24bc558caea5e7f996d6e2132169c55ba6c21f7ec1a657e0624b27bf23"
     },
     {
       "manufacturer": "InfiMech",
       "path": "makers/infimech.json",
       "models": 4,
       "structurally_verified": 4,
-      "sha256": "c2d754b3e459382fd6463aa048b73eb42d40bc3f584fb4c7fa61c0f5ef5a9aed"
+      "sha256": "1947ed5ae1f01f555de166f5322ccc061f89d5e18907c0754f68631c22d5fa88"
     },
     {
       "manufacturer": "Infinity3D",
       "path": "makers/infinity3d.json",
       "models": 2,
-      "structurally_verified": 0,
-      "sha256": "18ba79af7e83c735601bab27155650379ab4afee55579c3fea79267249bb3a68"
+      "structurally_verified": 2,
+      "sha256": "07120dd0869d28755ec9a3aaad1a78c05401be3624f0d75921cd8b23a0b050d7"
     },
     {
       "manufacturer": "Kingroon",
       "path": "makers/kingroon.json",
       "models": 5,
       "structurally_verified": 0,
-      "sha256": "28d57b9971f1cb91a7c18173f50a6432c75af5268265b0435e82f4628d3d8282"
+      "sha256": "d88d86bb5acf750ab36af584b26e8ae5d2fae77a0b5aaf0f3ac57953b3d3a8d4"
     },
     {
       "manufacturer": "LH",
       "path": "makers/lh.json",
       "models": 2,
       "structurally_verified": 2,
-      "sha256": "7682eeab25d33bfc3549e6d499bd7aad077ceb9de08d9370cbaf21355404306d"
+      "sha256": "67e97f0de6355a3fd126a32a6e30041e2fde24f36b33a3414f7fa90ece816177"
     },
     {
       "manufacturer": "LNL3D",
       "path": "makers/lnl3d.json",
       "models": 5,
-      "structurally_verified": 0,
-      "sha256": "4d08eb577af1693508b744b3d62a16e14b247321864c73f96db79d01e547296a"
+      "structurally_verified": 5,
+      "sha256": "cec2eda0ce89e98db4abcd57716c3339278dcb3e57cbbace550b8e5939cde09b"
     },
     {
       "manufacturer": "LONGER",
       "path": "makers/longer.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "2f2ee8cdc580dcced1544764bfd1797f91507404fe696545897ae8d2d8f8895a"
+      "sha256": "4682ee519c43c1ea88c326fed6b1f5cb2c0442ed1714cf14db1793b12b76733c"
     },
     {
       "manufacturer": "LulzBot",
       "path": "makers/lulzbot.json",
       "models": 7,
-      "structurally_verified": 0,
-      "sha256": "9477e03159ef2b06324d461d0ff03d279a35d44bb86edb0804a929d56063a69e"
+      "structurally_verified": 2,
+      "sha256": "94dc1732ecf145c918b0c2ea6edee73a46b66b601836215b0b1d8656a4427fc3"
     },
     {
       "manufacturer": "M3D",
       "path": "makers/m3d.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "882df243cfde925d014893ddd312318335de9ef07490014c96c33e402c592946"
+      "sha256": "081bf7aed0694b9a6cc3e13264c27c1458620cee2144efced2fd0ecc218ca49e"
     },
     {
       "manufacturer": "MagicMaker",
       "path": "makers/magicmaker.json",
       "models": 5,
       "structurally_verified": 0,
-      "sha256": "125964bcfe14871c6c34eec041c71a49fffd6944b031b7845ec1378ffe0aeaaa"
+      "sha256": "ac5a7dc7492103b87210aa2de2e0fa5b40dbf39b652a316fc4f8e7e982225312"
     },
     {
       "manufacturer": "MakerGear",
       "path": "makers/makergear.json",
       "models": 10,
-      "structurally_verified": 0,
-      "sha256": "a78a54d0565973b2d19abb577def177ead7f861d0378cdf59b52de7cce8c294c"
+      "structurally_verified": 9,
+      "sha256": "81bae034cbde47b9be817dbb308efe4db5f20d20bc238a1fe4676d9f6d246079"
     },
     {
       "manufacturer": "Mellow",
       "path": "makers/mellow.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "9c738fa60cf08cfda95935a0d1704a5ee232332d324b095ca859a272c3396057"
+      "sha256": "4343be3b050f8675a136fd58069cbedcc444a73db0b699084f7df0fb7e5261f4"
     },
     {
       "manufacturer": "Meltingplot",
       "path": "makers/meltingplot.json",
       "models": 5,
       "structurally_verified": 0,
-      "sha256": "7a4fcab8023dd8a4106991fa43ab1b55d2df8f55724611e19d1c94722558037b"
+      "sha256": "6d5597ca1fd6140b29b008dcf62f140b93ffe948ff74eb23c18bd48b02c4b81c"
     },
     {
       "manufacturer": "OpenEYE",
       "path": "makers/openeye.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "2267ac20081d34b389d2db966ce05c24e3f1385386f999f884201fd8b1628f23"
+      "sha256": "b166a4fbbd8761d50424c49ee6a6433eee8652c26ddc09c43dd8641c22510fc5"
     },
     {
       "manufacturer": "OrcaArena",
       "path": "makers/orcaarena.json",
       "models": 1,
       "structurally_verified": 1,
-      "sha256": "59d9bf8feb792b2151fdb4fec138e8cbbab5fa777d43b919647ad77b1709b324"
+      "sha256": "ce1a2930d0917196cc054879ea88e40f73d5476e4cca585c7ee8cbfe5701fe7f"
     },
     {
       "manufacturer": "PapapiuLab",
       "path": "makers/papapiulab.json",
       "models": 1,
-      "structurally_verified": 0,
-      "sha256": "35de39ce11ef85cf70ee57ef8b594e1630ea7c0bffdf42f23dd1841c3cf7bfc0"
+      "structurally_verified": 1,
+      "sha256": "e271c20e68b80f69fb2bdade9e0a56a1f4be7a43ad67feae15b90c1649abedfb"
     },
     {
       "manufacturer": "Peopoly",
       "path": "makers/peopoly.json",
       "models": 1,
       "structurally_verified": 1,
-      "sha256": "4a10d855978be3e4ceb16d61ee2aec801d70e593d2a76c2a48d01add8a0d964f"
+      "sha256": "f2098e5d619ae3b24b2895ee19e388a8d6707c72c73e8e80c67339c0785ee0e8"
     },
     {
       "manufacturer": "Phrozen",
       "path": "makers/phrozen.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "cf343a5bad89f505a04819ee652c6136a0cc07d43740c8b7cf87449cd0a87827"
+      "sha256": "cd604afa511f2039abe10054e3e409ccf9b8284f7a71e2771e551ce0d395451f"
     },
     {
       "manufacturer": "Positron3D",
       "path": "makers/positron3d.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "50b94ea56de17cccbeb4e41f79caec1e91a74ae3ef9169285ee7315a125703c5"
+      "sha256": "288f9d4aef260643f49906eb01acc00a7b09936be420ec0cc3f69bf2e2556f26"
     },
     {
       "manufacturer": "Print4Taste",
       "path": "makers/print4taste.json",
       "models": 1,
-      "structurally_verified": 0,
-      "sha256": "333cc3c5b2c39ec8b125392f96822fc098a996a0eb03b6720cfbf77ff87ba510"
+      "structurally_verified": 1,
+      "sha256": "affa1d4a6d3ac627e807c035c6bdd7ea5a00e9d26398304b1895b189142b4aaf"
     },
     {
       "manufacturer": "Printcepts",
       "path": "makers/printcepts.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "ba23c4db70328b6759db3be405da9b36f706b8bd768bc51d65c1d29b348f8591"
+      "sha256": "787d7cd9098a9211342dd1fd22dc15604527fd5d9faa23152c5a286a13895894"
     },
     {
       "manufacturer": "Prusa",
       "path": "makers/prusa.json",
       "models": 18,
       "structurally_verified": 18,
-      "sha256": "d2de12eb450dfe018f5f3139abf1ffc3eb86701626733a7c0cb7483a3c64bfda"
+      "sha256": "45ecceb42ac92fcbf36f667935ed2210e40b0aede10f55c3993de8fe4314187d"
     },
     {
       "manufacturer": "Prusa Research",
       "path": "makers/prusa-research.json",
       "models": 26,
-      "structurally_verified": 0,
-      "sha256": "792e8fe6795699fbb55d54fd0e4ff9b2a6ea4df53dc67a454896ab78fe34ec0b"
+      "structurally_verified": 26,
+      "sha256": "8bec53560868d2feca1e1d43fc6394711b97b45d73e58471ab77e74077faa372"
     },
     {
       "manufacturer": "QIDI",
       "path": "makers/qidi.json",
       "models": 14,
-      "structurally_verified": 13,
-      "sha256": "10063205ed99f38251b621174a0e619e3b652bf061b991ddad624e579046194d"
+      "structurally_verified": 14,
+      "sha256": "f4f984bdad196237e0d5f5b6034d8e12f3c98c2a12f614d167a44e969a901cb3"
     },
     {
       "manufacturer": "RH3D",
       "path": "makers/rh3d.json",
       "models": 2,
       "structurally_verified": 2,
-      "sha256": "bde5ed851a99a6356e9d334c6bd0ca2fe8b1b5274913af85c3e8b897c2efef6f"
+      "sha256": "80e0303802b119c34426d26862f594d5bdd6a292624974d8e08b9248e893330e"
     },
     {
       "manufacturer": "Raise3D",
       "path": "makers/raise3d.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "070b02abf9427e4a45a629c023fb6a3eb4c2103e8641013ef6f3bc9cc99b87ab"
+      "sha256": "3e93f26c10c660100fe1a9b86b6c150cff972f8fbe38fd4413ad101e5023961a"
     },
     {
       "manufacturer": "RatRig",
       "path": "makers/ratrig.json",
       "models": 39,
       "structurally_verified": 0,
-      "sha256": "52de97556e434106aa89e9247e5ed250541f59627621f8d22c8143a9a1a493fd"
+      "sha256": "dc29471e89aae00ef60d3e77844dcde3d41a2e7c2eef85a1859c2b2f7d786cdf"
     },
     {
       "manufacturer": "Rigid3D",
       "path": "makers/rigid3d.json",
       "models": 4,
-      "structurally_verified": 0,
-      "sha256": "dcc170d348dcb7333c16d9802e8a962f4bcc5714678cbff7a4ae8e880907c61c"
+      "structurally_verified": 4,
+      "sha256": "e24a6b08c0c96fddc540787a24e887ceb4532523be961001a7ec545145fa14af"
     },
     {
       "manufacturer": "RolohaunDesign",
       "path": "makers/rolohaundesign.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "a17ad0990d50cf0a736b36d32c220206adf67149f87d21d25f556c9ebe0a4f69"
+      "sha256": "6eaa66e3ac07cae26a5e9de5d5b854fc1df25effba1651c2201bb46849ad41ee"
     },
     {
       "manufacturer": "SecKit",
       "path": "makers/seckit.json",
       "models": 2,
       "structurally_verified": 2,
-      "sha256": "5a6923da9435f98782cdf8477391364f00dfc7e2ddda3801672c744c2f340c4c"
+      "sha256": "1d7bddf2e8294d156e3628f85acea8359c98968fbe94dbdfcde2b15dd5a21a81"
     },
     {
       "manufacturer": "SeeMeCNC",
       "path": "makers/seemecnc.json",
       "models": 7,
       "structurally_verified": 7,
-      "sha256": "a46a69204ff84342e7adec4aeddc84ce894731df813539bc0ae493391d28ae9d"
+      "sha256": "5f706927c1bb129d30def8a9b63b1f659aefca44fff020a43205506b335753e0"
     },
     {
       "manufacturer": "Snapmaker",
       "path": "makers/snapmaker.json",
-      "models": 18,
-      "structurally_verified": 18,
-      "sha256": "34e3a7a10ba67f1c47a0ea2a1b7550f58e08cd55cf0aee4ab3ab6afec0799d75"
+      "models": 19,
+      "structurally_verified": 19,
+      "sha256": "12882ed79c317d7eeba3215b13ba6c52eccef7241f4205c9499a6eb59f06f01b"
     },
     {
       "manufacturer": "Sovol",
       "path": "makers/sovol.json",
       "models": 20,
-      "structurally_verified": 0,
-      "sha256": "bb76c066dbc6857c52c495e69944f45dca42ca9e98c8ebf37a24bc503e559dfb"
+      "structurally_verified": 8,
+      "sha256": "8bd19b7e58dd8f20c45aac83db63d83547c6ac0df2aacb4432a6bfd08cf23a02"
     },
     {
       "manufacturer": "Tiertime",
       "path": "makers/tiertime.json",
       "models": 4,
       "structurally_verified": 0,
-      "sha256": "154b03cdb856e57c56e25dfd69b7c46e39f8906c4b586f45576ef9cf21f7d7e0"
+      "sha256": "c42bdf0c9635fadbf1b9e4b02073731b82c2785aee21d2af05d7a998bf8767e5"
     },
     {
       "manufacturer": "TriLAB",
       "path": "makers/trilab.json",
       "models": 11,
-      "structurally_verified": 0,
-      "sha256": "d19fe37eb993b49763a61991b919a58202cd536cad5af7cee5c8c14083d8251b"
+      "structurally_verified": 4,
+      "sha256": "eb610a95b12c07034b9f01874cb874d1b0451cfa0596e8c97862e805953cb4a4"
     },
     {
       "manufacturer": "Trimaker",
       "path": "makers/trimaker.json",
       "models": 3,
       "structurally_verified": 0,
-      "sha256": "6d4003d24b85a5876fdaa444e1aac94c310c80c4203d4474b543d2daa8157ab2"
+      "sha256": "08876a01c4305b5d1c0bb291fdaae489da2e1705ea017f8908bcadf2300654d5"
     },
     {
       "manufacturer": "Tronxy",
       "path": "makers/tronxy.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "2a277354fa378b2663cb6199776791ff072f2c5531bccbe49f55c0e94de5c219"
+      "sha256": "54313bd942f0f71acd8775cf52a6164ddb494aec441cf4359f103e0de6ec5bf7"
     },
     {
       "manufacturer": "TwoTrees",
       "path": "makers/twotrees.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "e66477b164b6fd05365d3ac1a83f84a89a9c8a76de552d15f18b61c8e719c3d0"
+      "sha256": "4f0cc81ef7e23bc3a228017e6fccbe0db5823c730aca8fce00c15936c790a8d5"
     },
     {
       "manufacturer": "UltiMaker",
       "path": "makers/ultimaker.json",
       "models": 4,
-      "structurally_verified": 0,
-      "sha256": "8c4c0a48b9f0b0cf73eed900cfbc65a62bc6eae224e26334b498a4c56c599415"
+      "structurally_verified": 2,
+      "sha256": "2cf04e39486c5deb853129b8c7ce147f84bba8204f3d8b512c0889d6224657b1"
     },
     {
       "manufacturer": "Vivedino",
       "path": "makers/vivedino.json",
       "models": 6,
       "structurally_verified": 0,
-      "sha256": "dda2b659927a8bb36ac8333e71553dd3852ac026d6f387230a5e8986a6b6d35b"
+      "sha256": "9afb644e0f253a854aeebb0686ff23b392c1c13c65c59f26fc86c4c5af6db2ad"
     },
     {
       "manufacturer": "Volumic",
       "path": "makers/volumic.json",
       "models": 21,
       "structurally_verified": 15,
-      "sha256": "71a34441993a39dadd3ccf152648a412048ce9411360e12d51b9d6b0e74539e6"
+      "sha256": "a936366dadf30a1efaa640d684a6f4575673d7c5644e9e063a4e748aff59829c"
     },
     {
       "manufacturer": "Voron",
       "path": "makers/voron.json",
       "models": 11,
       "structurally_verified": 0,
-      "sha256": "7302b5f8068644f5b62c6932a27a8a8aa9a5ed3e8c9bc974bed39acc24693aba"
+      "sha256": "441b03ed851937f2c85cb212c291768cd08c36e2d5132ec29b326c20dfd4ae98"
     },
     {
       "manufacturer": "Voxelab",
       "path": "makers/voxelab.json",
       "models": 1,
       "structurally_verified": 0,
-      "sha256": "4436f4e36d9596d34908328b29d9dd6ef806ef4fd005244960500f1eaf66b1f9"
+      "sha256": "1b1e291510dbf3ac9ada1b40972c6202dd2c3d01e0a45837e9bb50159149651b"
     },
     {
       "manufacturer": "Vzbot",
       "path": "makers/vzbot.json",
       "models": 2,
       "structurally_verified": 2,
-      "sha256": "b7b1ad3a70a58454aa7f4edde1e5ecf32c134bf2cf107a143ef419fc35b5f3f0"
+      "sha256": "280b1b3b347629898abca1b5a370ffe4254077854eab898cc6bcfb734fee4607"
     },
     {
       "manufacturer": "WEMAKE3D",
       "path": "makers/wemake3d.json",
       "models": 2,
       "structurally_verified": 0,
-      "sha256": "974f5c851b69f6ac7b1aab032f882eb9f8c11ed04bb7b6d5f057a909637306b5"
+      "sha256": "6f6547f2a82faf42f5df1b60e9a181b834e05258fca850d7a1e6eb465b918f5b"
     },
     {
       "manufacturer": "Wanhao",
       "path": "makers/wanhao.json",
       "models": 13,
       "structurally_verified": 0,
-      "sha256": "21603c8f38784fe670cffbf841fe724e162afe98afa05c37204c165673c848e5"
+      "sha256": "3326928c3339c46b7959073d25597eb1b005ce16e53229d1a030f39e9879b733"
     },
     {
       "manufacturer": "Wanhao France",
       "path": "makers/wanhao-france.json",
       "models": 18,
       "structurally_verified": 17,
-      "sha256": "b63f5386307ed768f345d5d83b1782d04af0374c6c2aea352df439daedcf9eb3"
+      "sha256": "11cf407d2ab11272a17d8b442bc9b7f9cc7a796e7f92f1698fe512e2ac18a352"
     },
     {
       "manufacturer": "WonderMaker",
       "path": "makers/wondermaker.json",
       "models": 3,
       "structurally_verified": 3,
-      "sha256": "cee7ba1c40e1757d646c7fd7f232539fdf4d551aa66043a60e9e830743c77ae0"
+      "sha256": "c9c9a0201b299ea46d7d4b75eef2af67a4c396efb18331df2020dcc63100a336"
     },
     {
       "manufacturer": "Z-Bolt",
       "path": "makers/z-bolt.json",
       "models": 9,
       "structurally_verified": 0,
-      "sha256": "5f0303779f59f177f9de3478d7859440980b778fab0032370c0589942736ea39"
+      "sha256": "178363b28e4ff5402e3cd4a293cde9a5053517bbf5c06b9fac6acbf0a01fe12a"
     },
     {
       "manufacturer": "Zonestar",
       "path": "makers/zonestar.json",
       "models": 5,
-      "structurally_verified": 0,
-      "sha256": "477d4753a3b4493edb539d6e7b6608c431eec68a3cb2f0b21e5a79dedcdd4d0d"
+      "structurally_verified": 5,
+      "sha256": "ee0bd8815b3ee473eaaac763d968216d62ea0fbb89e6cd5c34402dbeae9ccffd"
     },
     {
       "manufacturer": "gCreate",
       "path": "makers/gcreate.json",
       "models": 5,
       "structurally_verified": 0,
-      "sha256": "0be5c95c619873f67cf0ef9827df0fe03690f1465e01e1e1f607fa041387fe46"
+      "sha256": "304caa8b6375fda75a584d6a9641a1187eca377f808f9625d6990ad3614c34ea"
     },
     {
       "manufacturer": "iQ",
       "path": "makers/iq.json",
       "models": 2,
       "structurally_verified": 2,
-      "sha256": "709d1ce8799a89c51f1446d2b0704f3525d4c6abc42f18b91bcda13efd4bef14"
+      "sha256": "2089f0d0515c2efe8d234731bada5ab80f19986ec34de498eb6b7a607bfa8af0"
     },
     {
       "manufacturer": "re3D",
       "path": "makers/re3d.json",
       "models": 3,
       "structurally_verified": 3,
-      "sha256": "89552e3a38ce24127547b8e1ef31053d52cec12893db77cf3a3d49012b6c6bd4"
+      "sha256": "d0327c8e4f9056faeffed9fcba37ddc6307776e6530cdf5959d10c0831308a06"
     }
   ]
 }

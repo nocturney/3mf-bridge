@@ -26,6 +26,22 @@
       "license_status": "review_before_redistribution"
     },
     {
+      "key": "snapmaker",
+      "provider": "manufacturer",
+      "repository": "Snapmaker/Orca_Presets",
+      "commit": "0c2d17834b7820339c1cf4326fda7db9da4a766a",
+      "base": ".",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "flashforge",
+      "provider": "manufacturer",
+      "repository": "FlashForge/Orca-Flashforge",
+      "commit": "c45cc8216c184574c36873314ae7caea67c7a1ad",
+      "base": "resources/profiles",
+      "license_status": "review_before_redistribution"
+    },
+    {
       "key": "orca",
       "provider": "orca",
       "repository": "OrcaSlicer/OrcaSlicer",

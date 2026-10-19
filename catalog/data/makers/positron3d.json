@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.02",
           "manifest": {
             "path": "resources/profiles/Positron3D.json",
-            "sha256": "2bac86cd08babc08cca033561c640d72caeab032703bc4656d24627749d6d7f5"
+            "sha256": "f640ed09ecf173d343f7aea3bd6b9eda875106442aa06442a0b09d468658dac6"
           },
           "model": {
             "path": "machine/The Positron.json",
-            "sha256": "b904052b1eae4c82cd9234d45ee74fa188513d2d197025c5999af4890a140c3f",
+            "sha256": "8d2fc2dcd27974ec79222c8f80dae097ff0c14afcf7164e8edfd161f28696715",
             "manufacturer_model_id": "thepositron_1"
           },
           "nozzles_mm": [

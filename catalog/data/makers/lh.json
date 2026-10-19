@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/LH.json",
-            "sha256": "08e5ddc59fba156ed2ebc4126cfd8001da3c3fb5e0429e6ae9e434305d5826b3"
+            "sha256": "e2347fcc0b58d64788d60e2ee931b58779aab191b6a2c793d2e0c2f0f14315d3"
           },
           "model": {
             "path": "machine/LH Stinger.json",
-            "sha256": "6ee12e5ff044e1bec6364df441a6fcd1f11b8d4742ccf94a788b16618efe9c05",
+            "sha256": "0c55c1d09c233aef42c49d723f5a780f1e47df206cdd198017b4707f22b3d61e",
             "manufacturer_model_id": "LHS_M_base"
           },
           "nozzles_mm": [
@@ -34,49 +34,66 @@
               "machine": {
                 "name": "LH Stinger 0.4 nozzle",
                 "path": "machine/LH Stinger 0.4 nozzle.json",
-                "sha256": "ba150318e0aac7e81fea201b04be2b717d95eca9e504118456697878471c8367"
+                "sha256": "032b32ad6dfb0e5a0ee02b5479599664b9ed868e92e7d2ea37dc63cd31d62e51",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "7e7b2d630d012fdc2a36c09993c46382c2172679a0771fa6e8be38894abd25df"
+                  },
+                  {
+                    "name": "fdm_lh_common",
+                    "path": "machine/fdm_lh_common.json",
+                    "sha256": "f11c11619d23a25bcc781dba3d35720b90693c8b19475ac63d947a738b222f08"
+                  },
+                  {
+                    "name": "LH Stinger 0.4 nozzle",
+                    "path": "machine/LH Stinger 0.4 nozzle.json",
+                    "sha256": "032b32ad6dfb0e5a0ee02b5479599664b9ed868e92e7d2ea37dc63cd31d62e51"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Daily @LH Stinger",
                 "path": "process/0.20mm Daily @LH Stinger.json",
-                "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db",
+                "sha256": "c589eafe70e900fa2d43b326ef4c607bb8bf7042fc25acb5a2bab83ede22fd21",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c047c0b6371467baa9dbc8985be587f3c856e38971cb4ce69305b3dd91c22549"
+                    "sha256": "d6f143e7379fbcce9a54501673cd0b0261ba754e0e6db65e8ed4ac0f15186242"
                   },
                   {
                     "name": "fdm_process_lh_common",
                     "path": "process/fdm_process_lh_common.json",
-                    "sha256": "aacbf4da487d9d8ba5ad00c8ae854e23f0e0eab589b59c686bb5cb7e858bf699"
+                    "sha256": "b5b37c987cb52342efdd66bb0ecba77065c31beabfa31aab7d929cef288704b1"
                   },
                   {
                     "name": "0.20mm Daily @LH Stinger",
                     "path": "process/0.20mm Daily @LH Stinger.json",
-                    "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db"
+                    "sha256": "c589eafe70e900fa2d43b326ef4c607bb8bf7042fc25acb5a2bab83ede22fd21"
                   }
                 ]
               },
               "filament": {
                 "name": "LHS PLA",
                 "path": "filament/LHS PLA.json",
-                "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e",
+                "sha256": "dc5eac7289bbb5aa23547f353ba97b4cef9e1df9ea299962cb705797a65a0265",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "fd2069739a4740c8e4b419502718894cfe71509338786c84b9537c4c8e5d9ab1"
+                    "sha256": "125efe29c2adc87f5ffe8cc6c7e387d5bd6c3d3fbc38825eb0d9ed56bc3b3585"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "6955301060f89c92412a208ff43ca8924525390ae05a1d18704862958408c4f2"
+                    "sha256": "350900b43907e99bb18547f7f1ab0f8a980963d4b206525870e4789cf7087ba8"
                   },
                   {
                     "name": "LHS PLA",
                     "path": "filament/LHS PLA.json",
-                    "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e"
+                    "sha256": "dc5eac7289bbb5aa23547f353ba97b4cef9e1df9ea299962cb705797a65a0265"
                   }
                 ]
               }
@@ -122,11 +139,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/LH.json",
-            "sha256": "08e5ddc59fba156ed2ebc4126cfd8001da3c3fb5e0429e6ae9e434305d5826b3"
+            "sha256": "e2347fcc0b58d64788d60e2ee931b58779aab191b6a2c793d2e0c2f0f14315d3"
           },
           "model": {
             "path": "machine/LH Stinger MMU.json",
-            "sha256": "08648b26209f70357a07f6c52f0ea660091136b426b2929998bf2b23274b4f06",
+            "sha256": "35d97053f3db90cc769d0fb278b3c1d2ee621eeb3e2b0cdb159f757e06de9db2",
             "manufacturer_model_id": "LHS_M_mmu"
           },
           "nozzles_mm": [
@@ -138,49 +155,71 @@
               "machine": {
                 "name": "LH Stinger MMU 0.4 nozzle",
                 "path": "machine/LH Stinger MMU 0.4 nozzle.json",
-                "sha256": "2beef52f368aa94d98c43df46e1169ed72c9be538cc3ee3a8b5a25edaad6ab5c"
+                "sha256": "0e411d0f1dd5af092f3302977f5425a6b85cbd4a6ed0b808a45113cac90112ea",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "7e7b2d630d012fdc2a36c09993c46382c2172679a0771fa6e8be38894abd25df"
+                  },
+                  {
+                    "name": "fdm_lh_common",
+                    "path": "machine/fdm_lh_common.json",
+                    "sha256": "f11c11619d23a25bcc781dba3d35720b90693c8b19475ac63d947a738b222f08"
+                  },
+                  {
+                    "name": "fdm_lh_mmu_common",
+                    "path": "machine/fdm_lh_mmu_common.json",
+                    "sha256": "1dda47d0fa57e1ad6777060e9ca4f6a1069122361fd3acb539ffe17583d9fc83"
+                  },
+                  {
+                    "name": "LH Stinger MMU 0.4 nozzle",
+                    "path": "machine/LH Stinger MMU 0.4 nozzle.json",
+                    "sha256": "0e411d0f1dd5af092f3302977f5425a6b85cbd4a6ed0b808a45113cac90112ea"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Daily @LH Stinger",
                 "path": "process/0.20mm Daily @LH Stinger.json",
-                "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db",
+                "sha256": "c589eafe70e900fa2d43b326ef4c607bb8bf7042fc25acb5a2bab83ede22fd21",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "c047c0b6371467baa9dbc8985be587f3c856e38971cb4ce69305b3dd91c22549"
+                    "sha256": "d6f143e7379fbcce9a54501673cd0b0261ba754e0e6db65e8ed4ac0f15186242"
                   },
                   {
                     "name": "fdm_process_lh_common",
                     "path": "process/fdm_process_lh_common.json",
-                    "sha256": "aacbf4da487d9d8ba5ad00c8ae854e23f0e0eab589b59c686bb5cb7e858bf699"
+                    "sha256": "b5b37c987cb52342efdd66bb0ecba77065c31beabfa31aab7d929cef288704b1"
                   },
                   {
                     "name": "0.20mm Daily @LH Stinger",
                     "path": "process/0.20mm Daily @LH Stinger.json",
-                    "sha256": "77974fdcfc7197e6776dc88817eee651333df599449758af46abc1ffae2ee3db"
+                    "sha256": "c589eafe70e900fa2d43b326ef4c607bb8bf7042fc25acb5a2bab83ede22fd21"
                   }
                 ]
               },
               "filament": {
                 "name": "LHS PLA",
                 "path": "filament/LHS PLA.json",
-                "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e",
+                "sha256": "dc5eac7289bbb5aa23547f353ba97b4cef9e1df9ea299962cb705797a65a0265",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "fd2069739a4740c8e4b419502718894cfe71509338786c84b9537c4c8e5d9ab1"
+                    "sha256": "125efe29c2adc87f5ffe8cc6c7e387d5bd6c3d3fbc38825eb0d9ed56bc3b3585"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "6955301060f89c92412a208ff43ca8924525390ae05a1d18704862958408c4f2"
+                    "sha256": "350900b43907e99bb18547f7f1ab0f8a980963d4b206525870e4789cf7087ba8"
                   },
                   {
                     "name": "LHS PLA",
                     "path": "filament/LHS PLA.json",
-                    "sha256": "97ba7df288ebed7b00f288c3b2ef10affa14c1387eb169489366ed02e5c75e8e"
+                    "sha256": "dc5eac7289bbb5aa23547f353ba97b4cef9e1df9ea299962cb705797a65a0265"
                   }
                 ]
               }

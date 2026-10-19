@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Cast.json",
-            "sha256": "e80d5505fa29e155aedad39dff3da2c8d07a5d3168d46f8417b18e06a4b2e978",
+            "sha256": "0fddd0153e3de6eefbc2143b889539a9511563cb723194fc31266eff7da308c4",
             "manufacturer_model_id": "V-Cast"
           },
           "nozzles_mm": [
@@ -56,11 +56,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 3 200.json",
-            "sha256": "71f00b2a419669836fe93c2a3225d91d6cef24ae5d9e0283a5259184537e3f8a",
+            "sha256": "0e31df676081ea334eb41e3d1d4f9778bfae668eef97459f2d6cc7fe147d6959",
             "manufacturer_model_id": "V-Core_3_200"
           },
           "nozzles_mm": [
@@ -93,11 +93,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 3 300.json",
-            "sha256": "7192347c12d2ba2d1870051cf04d257627c7e2403be02266e94f858ffee0e55b",
+            "sha256": "64f998a3cd3daf3ca67bad769ada088f05e0d90a021ea8b6ff5b20b8941db473",
             "manufacturer_model_id": "V-Core_3_300"
           },
           "nozzles_mm": [
@@ -130,11 +130,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 3 400.json",
-            "sha256": "25dd1cc7bc797636a9d94ad3a50b51fcda0d9d521f57f01c4ed99d56d31b190b",
+            "sha256": "29670ec5dc3df19e8a7ce44ddad227158bbba0a51d9f66f7ac0d38461fc07ce1",
             "manufacturer_model_id": "V-Core_3_400"
           },
           "nozzles_mm": [
@@ -167,11 +167,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 3 500.json",
-            "sha256": "635816da28b811132c1ae8c8561c553f32b81ad3e6c6d7c8e438568db436e6be",
+            "sha256": "2cedc5f2fb9e1e221326a2c566ee4aeb5b2a5fcf408fa0047d5288b0eeee2d3d",
             "manufacturer_model_id": "V-Core_3_500"
           },
           "nozzles_mm": [
@@ -204,11 +204,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 300.json",
-            "sha256": "8696b3098486e9e33a7aa8a5ffde3db4ff3f625c3bce1addbc7d220a46213bf9",
+            "sha256": "b1565674188cbca66ec6ff6c8fc9a54e89145c701173f4712bd59807918e0a1d",
             "manufacturer_model_id": "V-Core_4_300"
           },
           "nozzles_mm": [
@@ -244,11 +244,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 400.json",
-            "sha256": "254a44bfae8370328bfa1eea9707833bdff29babc13df9275bd44fdbe2accfa1",
+            "sha256": "f5443551103085f1f6c4085d8d75a217dfa09ed1918a9c760b4978cf1a70767f",
             "manufacturer_model_id": "V-Core_4_400"
           },
           "nozzles_mm": [
@@ -284,11 +284,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 500.json",
-            "sha256": "978061b0c4f2e69702dacf02bf74efc7ef4a2f2c60339844d30d840c8308d430",
+            "sha256": "226cb56cb7415740c27b725bdac458f8174e535dad193cca6268108cf24f541f",
             "manufacturer_model_id": "V-Core_4_500"
           },
           "nozzles_mm": [
@@ -324,11 +324,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 HYBRID 300.json",
-            "sha256": "9e9460a4a379c67cc9cf661fa98568a5b4678ab7fbaf918f81518f86d54700f5",
+            "sha256": "8102df8d7d3a95379a23e77ae7078aaf7b7455b5bcdf96ae9560c6786164a20c",
             "manufacturer_model_id": "V-Core_4_HYBRID_300"
           },
           "nozzles_mm": [
@@ -364,11 +364,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 HYBRID 400.json",
-            "sha256": "5d4a50bd8f9e17038933804847aaf0606b71b80fa1b4141d022c0634722ddc62",
+            "sha256": "a0596ceaf4f514272fe78e867ac0f8c92cacf8eba5264184131f4d9cd3e17076",
             "manufacturer_model_id": "V-Core_4_HYBRID_400"
           },
           "nozzles_mm": [
@@ -404,11 +404,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 HYBRID 500.json",
-            "sha256": "0197f6ac81feed6bdfa8fa060f4443afab93efed5e1731c1b7f4b47e40015e7b",
+            "sha256": "cbda8ac0173d9f5ed40cbfe805030b69561093b4ca9b99d29982b44144b0d8de",
             "manufacturer_model_id": "V-Core_4_HYBRID_500"
           },
           "nozzles_mm": [
@@ -444,11 +444,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 300.json",
-            "sha256": "3133e02a0f919135b15c50cd705761231f8b9dd2b1cf2a939d0ef59aef8de8bc",
+            "sha256": "3d47816ca371ad7d1a911a2fbb98d5f990b92a27f5dc4d97952278091256aeb8",
             "manufacturer_model_id": "V-Core_4_IDEX_300"
           },
           "nozzles_mm": [
@@ -484,11 +484,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 300 COPY MODE.json",
-            "sha256": "c09d40d6f280756436e1655c344e3be76bf9288c8c2814c7ed668f3e942e9b73",
+            "sha256": "9d02ff31938cf84f927969f4a19bbcd824984ff5eafae631717c84ee90e6803e",
             "manufacturer_model_id": "V-Core_4_IDEX_300_COPY_MODE"
           },
           "nozzles_mm": [
@@ -524,11 +524,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 300 MIRROR MODE.json",
-            "sha256": "a7033740e6818a52e1d8848d91fbb5b72cd4075edcf53541077bda1f88dcfe93",
+            "sha256": "9912188f15ffa5c0abacad6285faaa267525faa3ccb2ebe4c87c59db66e9b4d2",
             "manufacturer_model_id": "V-Core_4_IDEX_300_MIRROR_MODE"
           },
           "nozzles_mm": [
@@ -564,11 +564,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 400.json",
-            "sha256": "956709e25422b4fd497d1b67a7a02cd8437950297cc34f07cd9db5124c3028f0",
+            "sha256": "4bfa634967ec869681c9111ef756e562f05e95fe879d98aa65b2a24d53c61627",
             "manufacturer_model_id": "V-Core_4_IDEX_400"
           },
           "nozzles_mm": [
@@ -604,11 +604,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 400 COPY MODE.json",
-            "sha256": "1ef14248031ec40e424e5c10051b65ad805b210e2a39318249d31d5754a1af1e",
+            "sha256": "9b33f97b6f88bb33d5f6187e74494109e4fe41d57528e81f5abd154ff95edd67",
             "manufacturer_model_id": "V-Core_4_IDEX_400_COPY_MODE"
           },
           "nozzles_mm": [
@@ -644,11 +644,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 400 MIRROR MODE.json",
-            "sha256": "125055f47a024a918862299394bc7f3c58828c66fcc5eba76d04d4ee5d65c28b",
+            "sha256": "edca1da15d54fca8709c03f00a7b132297141c707082cb237bd27411cc3a8a4e",
             "manufacturer_model_id": "V-Core_4_IDEX_400_MIRROR_MODE"
           },
           "nozzles_mm": [
@@ -684,11 +684,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 500.json",
-            "sha256": "49a438fecd9963298f7df0eb48253d7fb956794ec247303878537c2a4288307a",
+            "sha256": "a175793222df675e622be638f7184f8304e6c58ee430b17c73e1842a8c571141",
             "manufacturer_model_id": "V-Core_4_IDEX_500"
           },
           "nozzles_mm": [
@@ -724,11 +724,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 500 COPY MODE.json",
-            "sha256": "4ee47d4c22d676f57db31ad887140c609bce5f130f5d4a70acf9a322cba36a44",
+            "sha256": "c040ed0c711230ae9b4eed3c014ef5c966131b228dcb1f04bd2d27df8eb117b3",
             "manufacturer_model_id": "V-Core_4_IDEX_500_COPY_MODE"
           },
           "nozzles_mm": [
@@ -764,11 +764,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Core 4 IDEX 500 MIRROR MODE.json",
-            "sha256": "b0cb3f4395254085efa05c4cdd63ad201173503e65507f5aaa0ade0447789b73",
+            "sha256": "db231f1676b699059c3e127ebf7937d9641fb9ccaf2c73d4dd9a073c3ff3bd72",
             "manufacturer_model_id": "V-Core_4_IDEX_500_MIRROR_MODE"
           },
           "nozzles_mm": [
@@ -804,12 +804,12 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC3_300",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
@@ -820,7 +820,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "filament missing preset: PunkFil PETG @RatRig (3)"
           ]
         }
       ],
@@ -844,12 +844,12 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC3_400",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
@@ -860,7 +860,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "filament missing preset: PunkFil PETG @RatRig (3)"
           ]
         }
       ],
@@ -884,12 +884,12 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC3_500",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
@@ -900,7 +900,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "filament missing preset: PunkFil PETG @RatRig (3)"
           ]
         }
       ],
@@ -924,11 +924,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Ratrig.json",
-            "sha256": "bd33e4fc1a52d96fa0776c6705a73e3e0bf0175cbc90388c2ddf0c8332650e0c"
+            "sha256": "0ec810cf94b5a649e8675b50c9b580c66650a8de7206d48680271c1e1f430433"
           },
           "model": {
             "path": "machine/RatRig V-Minion.json",
-            "sha256": "69b8af10358bc1e43d052d09ed33b51f7d5aaa4fcec2e5d53f937b0fc94ab7f5",
+            "sha256": "dc92f9ac7a5f163ecd66baa220eba8c3a7168c54aaaee08c3dd46a354cc3cce2",
             "manufacturer_model_id": "V-Minion"
           },
           "nozzles_mm": [
@@ -948,12 +948,12 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VMINION",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
@@ -964,7 +964,8 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "filament missing preset: PunkFil PETG @RatRig (2)",
+            "physical nozzle and model variant differ (1)"
           ]
         }
       ],
@@ -988,12 +989,12 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_300_XY",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
@@ -1004,7 +1005,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1028,23 +1029,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_300_HY",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1068,23 +1069,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_300_IDEX",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1108,23 +1109,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_300_IDEX_Copy",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1148,23 +1149,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_300_IDEX_Mirror",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1188,23 +1189,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_400_XY",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1228,23 +1229,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_400_HY",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1268,23 +1269,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_400_IDEX",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1308,23 +1309,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_400_IDEX_Copy",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1348,23 +1349,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_400_IDEX_Mirror",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1388,23 +1389,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_500_XY",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1428,23 +1429,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_500_HY",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1468,23 +1469,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_500_IDEX",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 2,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1508,23 +1509,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_500_IDEX_Copy",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],
@@ -1548,23 +1549,23 @@
           "bundle_version": "2.2.0",
           "manifest": {
             "path": "RatRig/2.2.0.ini",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "model": {
             "path": "RatRig/2.2.0.ini",
             "section": "printer_model:VC4_500_IDEX_Mirror",
-            "sha256": "ab4a0d2889ae1875c2d9fc860889aba9683c243157b306affd3d5d3cfe9e5205"
+            "sha256": "6c4279108ebddfcec3662feaf13ffaa384eba29fcf667e1140374c336f453337"
           },
           "nozzles_mm": [
             "0.4",
             "0.5",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 3,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.2 QUALITY (3)"
           ]
         }
       ],

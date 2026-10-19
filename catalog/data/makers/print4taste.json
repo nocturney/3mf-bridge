@@ -18,27 +18,93 @@
           "bundle_version": "1.1.2",
           "manifest": {
             "path": "Print4Taste/1.1.2.ini",
-            "sha256": "a2934e16e63ce4ec3177342c81aced722b1f864dc04d801c219e4a9fbd222dd0"
+            "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562"
           },
           "model": {
             "path": "Print4Taste/1.1.2.ini",
             "section": "printer_model:MC2.0",
-            "sha256": "a2934e16e63ce4ec3177342c81aced722b1f864dc04d801c219e4a9fbd222dd0"
+            "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562"
           },
           "nozzles_mm": [
             "1"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "mycusini 2.0",
+                "path": "Print4Taste/1.1.2.ini",
+                "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                "section": "printer:mycusini 2.0",
+                "inheritance": [
+                  {
+                    "name": "mycusini 2.0",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "printer:mycusini 2.0"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm SOLID @MC2.0",
+                "path": "Print4Taste/1.1.2.ini",
+                "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                "section": "print:0.50mm SOLID @MC2.0",
+                "inheritance": [
+                  {
+                    "name": "*common_MC2.0*",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "print:*common_MC2.0*"
+                  },
+                  {
+                    "name": "0.50mm SOLID @MC2.0",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "print:0.50mm SOLID @MC2.0"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "mycusini 3D Choco @MC2.0",
+                "path": "Print4Taste/1.1.2.ini",
+                "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                "section": "filament:mycusini 3D Choco @MC2.0",
+                "inheritance": [
+                  {
+                    "name": "mycusini 3D Choco @MC2.0",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "filament:mycusini 3D Choco @MC2.0"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Print4Taste/1.1.2.ini",
+        "nozzles_mm": [
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "1": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Print4Taste/1.1.2.ini",
+          "machine": "mycusini 2.0",
+          "process": "0.50mm SOLID @MC2.0",
+          "filament": "mycusini 3D Choco @MC2.0"
+        }
+      },
+      "status": "structural_verified"
     }
   ]
 }

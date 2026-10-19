@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/InfiMech.json",
-            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+            "sha256": "a0cd7ec7e9b100dacc10eb6e510c0ce6442c9b2fad44349ef7b4ff92b3a1a8d9"
           },
           "model": {
             "path": "machine/EX/InfiMech EX.json",
-            "sha256": "9d4352ab2a66799b2647f4dbf295d96635ab936d19829a1897fb8fbd7ea990e0",
+            "sha256": "3bb8a66bd93d2853280b2706ab001b07f269fa4f1ea3cad94904fb10ce4f723a",
             "manufacturer_model_id": "InfiMech_EX"
           },
           "nozzles_mm": [
@@ -34,44 +34,61 @@
               "machine": {
                 "name": "InfiMech EX 0.4 nozzle",
                 "path": "machine/EX/InfiMech EX 0.4 nozzle.json",
-                "sha256": "9c22038e33dfbddbfe7f47fafa37fbb2424b124c0aa4131f31d43a93126a744e"
+                "sha256": "7cfed090e74cad29dea3977b47e704f352610f5c317af0ca81b2642b8d760644",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "41e34f1d24178b7ce4251727f01de34e145f5f5ceb149d18a9846270970d6d45"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "7f346c09eab727daa490b3192c0d500c76c6d82f5dbf7cfa8fdffe0522088306"
+                  },
+                  {
+                    "name": "InfiMech EX 0.4 nozzle",
+                    "path": "machine/EX/InfiMech EX 0.4 nozzle.json",
+                    "sha256": "7cfed090e74cad29dea3977b47e704f352610f5c317af0ca81b2642b8d760644"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @InfiMech EX",
                 "path": "process/EX/0.20mm Standard @InfiMech EX.json",
-                "sha256": "417ad4ab058e4ea62f5ece5e2d309b05233802f5546e5e21dbbcc78829db96c2",
+                "sha256": "8c018524927e9c4bcfc72357bd240c4f09f9a12a76bd3d1c1f3b6ff9daa6bce9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common_EX",
                     "path": "process/EX/fdm_process_common_EX.json",
-                    "sha256": "3282be4c40aff5a58fbb8e437886e3a0cf96a327a3b277e5b06d0f135aee6b45"
+                    "sha256": "66f91ef50625a84a67c0d03244a58729586146f4748db3b319dd13aff51c9773"
                   },
                   {
                     "name": "0.20mm Standard @InfiMech EX",
                     "path": "process/EX/0.20mm Standard @InfiMech EX.json",
-                    "sha256": "417ad4ab058e4ea62f5ece5e2d309b05233802f5546e5e21dbbcc78829db96c2"
+                    "sha256": "8c018524927e9c4bcfc72357bd240c4f09f9a12a76bd3d1c1f3b6ff9daa6bce9"
                   }
                 ]
               },
               "filament": {
                 "name": "InfiMech PLA Basic @EX",
                 "path": "filament/EX/InfiMech PLA Basic @EX.json",
-                "sha256": "1994a0b6207e7566cb3646c08ff81c2b2409d14ac8e5c73d6d2513251086bb62",
+                "sha256": "7b9f470b77173e22d928c30cc5c6d7314de7edbf3335d961395e49b6f6ee1093",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common_EX",
                     "path": "filament/EX/fdm_filament_common_EX.json",
-                    "sha256": "b4be460b01a7aaf672da5940971d03b37ef63decf3e8bff743e6193b6b2e6086"
+                    "sha256": "e273956b576e203ddee878b4fc077271e46068dd3d7d4c509d83344167926abd"
                   },
                   {
                     "name": "fdm_filament_pla @EX",
                     "path": "filament/EX/fdm_filament_pla @EX.json",
-                    "sha256": "c815d6ad617204fcd9b8af1d143618b5cdafd231638e546b657406819852b445"
+                    "sha256": "be117c33b157a7a5fe233724b2425ee83fe78635184fd1df6b6e206efc75da40"
                   },
                   {
                     "name": "InfiMech PLA Basic @EX",
                     "path": "filament/EX/InfiMech PLA Basic @EX.json",
-                    "sha256": "1994a0b6207e7566cb3646c08ff81c2b2409d14ac8e5c73d6d2513251086bb62"
+                    "sha256": "7b9f470b77173e22d928c30cc5c6d7314de7edbf3335d961395e49b6f6ee1093"
                   }
                 ]
               }
@@ -117,11 +134,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/InfiMech.json",
-            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+            "sha256": "a0cd7ec7e9b100dacc10eb6e510c0ce6442c9b2fad44349ef7b4ff92b3a1a8d9"
           },
           "model": {
             "path": "machine/EX+APS/InfiMech EX+APS.json",
-            "sha256": "f9f9bbb27a5acf9fb79e54933b3cf02438447e0e134d98f266ab633fdce0d3c0",
+            "sha256": "47bee73343b0a8a9507f8659810c3d3a6077135262eca3da35683c3c5c1bf5cc",
             "manufacturer_model_id": "InfiMech_EX+APS"
           },
           "nozzles_mm": [
@@ -133,44 +150,61 @@
               "machine": {
                 "name": "InfiMech EX+APS 0.4 nozzle",
                 "path": "machine/EX+APS/InfiMech EX+APS 0.4 nozzle.json",
-                "sha256": "e7f61b068396e73657fa9932612e791cd28b05630295199c2e01228c9d7a476b"
+                "sha256": "5280bf315bc5615754981dab295bb264d2cb3ff7c957ae1d9c340d23cc77d046",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "41e34f1d24178b7ce4251727f01de34e145f5f5ceb149d18a9846270970d6d45"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "7f346c09eab727daa490b3192c0d500c76c6d82f5dbf7cfa8fdffe0522088306"
+                  },
+                  {
+                    "name": "InfiMech EX+APS 0.4 nozzle",
+                    "path": "machine/EX+APS/InfiMech EX+APS 0.4 nozzle.json",
+                    "sha256": "5280bf315bc5615754981dab295bb264d2cb3ff7c957ae1d9c340d23cc77d046"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @InfiMech EX+APS",
                 "path": "process/EX+APS/0.20mm Standard @InfiMech EX+APS.json",
-                "sha256": "88a16ae8f1e2367645b89f9321f52e4a74483d3f2fd12b357f0a7662de068526",
+                "sha256": "bad03aa55451e7529303ab9a241266cb376271922eb1bf63bce137889b3d06ff",
                 "inheritance": [
                   {
                     "name": "fdm_process_common_EX+APS",
                     "path": "process/EX+APS/fdm_process_common_EX+APS.json",
-                    "sha256": "56ce3bd05f8891b20435d9880281e4a197f0478c1d6b4d1cb9cbd99e62990d1e"
+                    "sha256": "22958147515745b23c4a3431a0473a65c9b455358abbc4d52eeb23b0f25e22be"
                   },
                   {
                     "name": "0.20mm Standard @InfiMech EX+APS",
                     "path": "process/EX+APS/0.20mm Standard @InfiMech EX+APS.json",
-                    "sha256": "88a16ae8f1e2367645b89f9321f52e4a74483d3f2fd12b357f0a7662de068526"
+                    "sha256": "bad03aa55451e7529303ab9a241266cb376271922eb1bf63bce137889b3d06ff"
                   }
                 ]
               },
               "filament": {
                 "name": "InfiMech PLA Basic @EX+APS",
                 "path": "filament/EX+APS/InfiMech PLA Basic @EX+APS.json",
-                "sha256": "eaa8b918e3da86c94370aa3d4b6f74f7e7ffed58c64c257fc37d397f5360e929",
+                "sha256": "7163aae31770921003a453cfec9adc5db2077d1aa060791e61bceec60ebac448",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common_EX+APS",
                     "path": "filament/EX+APS/fdm_filament_common_EX+APS.json",
-                    "sha256": "88c3cc891d476ea4c231aa9f21aef8c0317956d1da8bac5ff230562425a8d6aa"
+                    "sha256": "557e8d92b8853b5a23aa28c03b7e036cd4644f6663470f37007737e63d569ba9"
                   },
                   {
                     "name": "fdm_filament_pla @EX+APS",
                     "path": "filament/EX+APS/fdm_filament_pla @EX+APS.json",
-                    "sha256": "f3c2f36fe6530f9e43d441f294ed13765a648bb3b91110f692c0ba1959e7dfa5"
+                    "sha256": "ed115ffe102766ca9d4dba5ca84fd504eea8b88fa617d407e5c42b0a5e803015"
                   },
                   {
                     "name": "InfiMech PLA Basic @EX+APS",
                     "path": "filament/EX+APS/InfiMech PLA Basic @EX+APS.json",
-                    "sha256": "eaa8b918e3da86c94370aa3d4b6f74f7e7ffed58c64c257fc37d397f5360e929"
+                    "sha256": "7163aae31770921003a453cfec9adc5db2077d1aa060791e61bceec60ebac448"
                   }
                 ]
               }
@@ -216,11 +250,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/InfiMech.json",
-            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+            "sha256": "a0cd7ec7e9b100dacc10eb6e510c0ce6442c9b2fad44349ef7b4ff92b3a1a8d9"
           },
           "model": {
             "path": "machine/InfiMech TX.json",
-            "sha256": "362beaca9af101bea367045ba99b4f15057376932aacb6dbf004a380ffb0c919",
+            "sha256": "1d5defcf1ab16cfef2ca9507b1ab4244abc98ddc6121edcfba546ef9aba5bd0d",
             "manufacturer_model_id": "InfiMech_TX"
           },
           "nozzles_mm": [
@@ -232,44 +266,61 @@
               "machine": {
                 "name": "InfiMech TX 0.4 nozzle",
                 "path": "machine/InfiMech TX 0.4 nozzle.json",
-                "sha256": "4cf16be7712a99ef6fd35ddf19a363ee6f5705594ef8cd2ce27d244e06a9448e"
+                "sha256": "2883ddcb80fbeee77c5ed3e6b1e27d80271b747ab59f9f7b9801f758b1b2bf92",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "41e34f1d24178b7ce4251727f01de34e145f5f5ceb149d18a9846270970d6d45"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "7f346c09eab727daa490b3192c0d500c76c6d82f5dbf7cfa8fdffe0522088306"
+                  },
+                  {
+                    "name": "InfiMech TX 0.4 nozzle",
+                    "path": "machine/InfiMech TX 0.4 nozzle.json",
+                    "sha256": "2883ddcb80fbeee77c5ed3e6b1e27d80271b747ab59f9f7b9801f758b1b2bf92"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @InfiMech TX",
                 "path": "process/0.20mm Standard @InfiMech TX.json",
-                "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03",
+                "sha256": "0c22ad2830c387f69aa725035c7accf6723411d7a898876e77f0c11d3f22ea83",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "2892d5e1094f55a46ace8665ea3b8a336ad94ce5d14e8f8a80889139ed20f799"
+                    "sha256": "b726b07378b84fab68df4121dadab03ed62af1a17380d37fae4af63e3ef98f6f"
                   },
                   {
                     "name": "0.20mm Standard @InfiMech TX",
                     "path": "process/0.20mm Standard @InfiMech TX.json",
-                    "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03"
+                    "sha256": "0c22ad2830c387f69aa725035c7accf6723411d7a898876e77f0c11d3f22ea83"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @InfiMech",
                 "path": "filament/Generic PLA @InfiMech.json",
-                "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752",
+                "sha256": "65e23ac8bdaade73e561fa3fc0e4a68131e79c74618f16a5f3f764e7e4412feb",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "aeb9660fa4af1864f9413c2f1867fba7a1b29993a85d82354f1a517966fdcf13"
+                    "sha256": "7501a47239b7fd80d1ee153e412fad5b54241d950dcbc4c3f916993f20f931cc"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "27d8813f6505a7b16f40bdad02c3c32119e432cb4fccf6d1ac6d32cc085deda8"
+                    "sha256": "17f99badbf6051983cd177ab3a29db785c266ffa0ca74faa7e7a17748f3ac8b9"
                   },
                   {
                     "name": "Generic PLA @InfiMech",
                     "path": "filament/Generic PLA @InfiMech.json",
-                    "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752"
+                    "sha256": "65e23ac8bdaade73e561fa3fc0e4a68131e79c74618f16a5f3f764e7e4412feb"
                   }
                 ]
               }
@@ -315,11 +366,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/InfiMech.json",
-            "sha256": "1362cfdefe30dfe82f8e84e69c77659d056a9fa66c3c03d890295cba071a0d7a"
+            "sha256": "a0cd7ec7e9b100dacc10eb6e510c0ce6442c9b2fad44349ef7b4ff92b3a1a8d9"
           },
           "model": {
             "path": "machine/HSN/InfiMech TX Hardened Steel Nozzle.json",
-            "sha256": "95f2cb0ce7bc5c46218c664fd4d2f14725ebdce9a40eefc9d1b3573944abf921",
+            "sha256": "832af52964b8b457653454df8618f8f30c0195628d8f78b6c6315a008a1492aa",
             "manufacturer_model_id": "InfiMech_TX_HSN"
           },
           "nozzles_mm": [
@@ -331,44 +382,61 @@
               "machine": {
                 "name": "InfiMech TX HSN 0.4 nozzle",
                 "path": "machine/HSN/InfiMech TX HSN 0.4 nozzle.json",
-                "sha256": "0706ddd7b8bbdc529d2bada93c9c9d7fa7992f346cb0b63d30e7381be0bf944e"
+                "sha256": "815f189b4e85a5c6b38c962fe6b559d06a6ad7e83d3d4c9fd6aaba844f11f7e1",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "41e34f1d24178b7ce4251727f01de34e145f5f5ceb149d18a9846270970d6d45"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "7f346c09eab727daa490b3192c0d500c76c6d82f5dbf7cfa8fdffe0522088306"
+                  },
+                  {
+                    "name": "InfiMech TX HSN 0.4 nozzle",
+                    "path": "machine/HSN/InfiMech TX HSN 0.4 nozzle.json",
+                    "sha256": "815f189b4e85a5c6b38c962fe6b559d06a6ad7e83d3d4c9fd6aaba844f11f7e1"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @InfiMech TX",
                 "path": "process/0.20mm Standard @InfiMech TX.json",
-                "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03",
+                "sha256": "0c22ad2830c387f69aa725035c7accf6723411d7a898876e77f0c11d3f22ea83",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "2892d5e1094f55a46ace8665ea3b8a336ad94ce5d14e8f8a80889139ed20f799"
+                    "sha256": "b726b07378b84fab68df4121dadab03ed62af1a17380d37fae4af63e3ef98f6f"
                   },
                   {
                     "name": "0.20mm Standard @InfiMech TX",
                     "path": "process/0.20mm Standard @InfiMech TX.json",
-                    "sha256": "2794f1692b3bb7ee6f29fd4dc4976eabf6e3076b779c9d103fd289c221341d03"
+                    "sha256": "0c22ad2830c387f69aa725035c7accf6723411d7a898876e77f0c11d3f22ea83"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @InfiMech",
                 "path": "filament/Generic PLA @InfiMech.json",
-                "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752",
+                "sha256": "65e23ac8bdaade73e561fa3fc0e4a68131e79c74618f16a5f3f764e7e4412feb",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "aeb9660fa4af1864f9413c2f1867fba7a1b29993a85d82354f1a517966fdcf13"
+                    "sha256": "7501a47239b7fd80d1ee153e412fad5b54241d950dcbc4c3f916993f20f931cc"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "27d8813f6505a7b16f40bdad02c3c32119e432cb4fccf6d1ac6d32cc085deda8"
+                    "sha256": "17f99badbf6051983cd177ab3a29db785c266ffa0ca74faa7e7a17748f3ac8b9"
                   },
                   {
                     "name": "Generic PLA @InfiMech",
                     "path": "filament/Generic PLA @InfiMech.json",
-                    "sha256": "ef9047cabcd2a56b444a6e66c7216c7066a0d76cd3bc1df9b9ec0e5b3fd0f752"
+                    "sha256": "65e23ac8bdaade73e561fa3fc0e4a68131e79c74618f16a5f3f764e7e4412feb"
                   }
                 ]
               }

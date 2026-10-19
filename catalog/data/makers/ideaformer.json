@@ -18,11 +18,11 @@
           "bundle_version": "02.00.00.06",
           "manifest": {
             "path": "resources/profiles/IdeaFormer.json",
-            "sha256": "eae95c8921cfce370dc18aec7e16675df94264b3e7df1d1b01cf0988061d97bf"
+            "sha256": "1ddc573a520954265a4299ca81d69365bb27d2618a14f1fb395bba0ddc767e54"
           },
           "model": {
             "path": "machine/IdeaFormer IR3 V2.json",
-            "sha256": "70abc8ff3604a26d42999d86e8cd53b1e7e31d00bd8c17214ecb6e28aeb2d042",
+            "sha256": "04a5ad69fca3ca9cbfc90692a2f1c6a77aa68fc71539d99e5e0d481f7d8f4222",
             "manufacturer_model_id": "IdeaFormer_IR3_V2"
           },
           "nozzles_mm": [

@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/FLSun.json",
-            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+            "sha256": "b5b3e577674b1a69d770be4a5820eec6cf4c98c930726d7ccda249aa349b37bb"
           },
           "model": {
             "path": "machine/FLSun Q5.json",
-            "sha256": "8108f32e40ddab2712110aac72806345df838b413adf3adf6fac3bea44b77cc7",
+            "sha256": "d76b3979cc4e5de77476c7b35517c8c84aef4120fc8fc7907fdfa643c318c451",
             "manufacturer_model_id": "FLSun-Q5"
           },
           "nozzles_mm": [
@@ -34,44 +34,56 @@
               "machine": {
                 "name": "FLSun Q5 0.4 nozzle",
                 "path": "machine/FLSun Q5 0.4 nozzle.json",
-                "sha256": "c705d275013176c1e677f3ec2bc95110b3c0ca215067f5a09343bc9b804ada8f"
+                "sha256": "5a849e27bb64dba5f303ab240baa1121c59d023711406e3e5fc9af5385390849",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "7b1a391957172471de6ac09dd78825a00fe708e4757267bc8d0253712b5ab1d9"
+                  },
+                  {
+                    "name": "FLSun Q5 0.4 nozzle",
+                    "path": "machine/FLSun Q5 0.4 nozzle.json",
+                    "sha256": "5a849e27bb64dba5f303ab240baa1121c59d023711406e3e5fc9af5385390849"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @FLSun Q5",
                 "path": "process/0.20mm Standard @FLSun Q5.json",
-                "sha256": "90e96c9ba8da91ebad888019c409dd458022f2e779cb168880533bf745c6d3a6",
+                "sha256": "10211cad1a4ba2f7583cfbbe3da541c3b7a48fe583934b10d1b8363a8bd7cab3",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "b6ce9ae098047658dae623b465b9cdbb5b7fe5eff99d9186d21cbf5f9c14126b"
+                    "sha256": "c579cb2112876dc70671f5f200696a94e403d7ad173cb442d53e7d82ff8d3286"
                   },
                   {
                     "name": "0.20mm Standard @FLSun Q5",
                     "path": "process/0.20mm Standard @FLSun Q5.json",
-                    "sha256": "90e96c9ba8da91ebad888019c409dd458022f2e779cb168880533bf745c6d3a6"
+                    "sha256": "10211cad1a4ba2f7583cfbbe3da541c3b7a48fe583934b10d1b8363a8bd7cab3"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @FLSun",
                 "path": "filament/Generic PLA @FLSun.json",
-                "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6",
+                "sha256": "1a3e337c409d89f8782f1c70da8833334750f3c48d06b06c3b94249c60c2ca11",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @FLSun",
                     "path": "filament/Generic PLA @FLSun.json",
-                    "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6"
+                    "sha256": "1a3e337c409d89f8782f1c70da8833334750f3c48d06b06c3b94249c60c2ca11"
                   }
                 ]
               }
@@ -88,23 +100,190 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "FLSun/1.1.0.ini",
-            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+            "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310"
           },
           "model": {
             "path": "FLSun/1.1.0.ini",
             "section": "printer_model:Q5",
-            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+            "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310"
           },
           "nozzles_mm": [
             "0.4",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 2,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FLSun Q5",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "printer:FLSun Q5",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:*common_flsunq*"
+                  },
+                  {
+                    "name": "FLSun Q5",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:FLSun Q5"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm QUALITY @FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "print:0.20mm QUALITY @FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*common_flsunq*"
+                  },
+                  {
+                    "name": "*0.20mm_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*0.20mm_flsunq*"
+                  },
+                  {
+                    "name": "*QQSP*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*QQSP*"
+                  },
+                  {
+                    "name": "0.20mm QUALITY @FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:0.20mm QUALITY @FLSUN"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "filament:Generic PLA @FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*common_flsunq*"
+                  },
+                  {
+                    "name": "*PLA_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*PLA_flsunq*"
+                  },
+                  {
+                    "name": "Generic PLA @FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:Generic PLA @FLSUN"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "FLSun Q5 0.6 nozzle",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "printer:FLSun Q5 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:*common_flsunq*"
+                  },
+                  {
+                    "name": "FLSun Q5",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:FLSun Q5"
+                  },
+                  {
+                    "name": "FLSun Q5 0.6 nozzle",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:FLSun Q5 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "print:0.30mm QUALITY @0.6 nozzle FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*common_flsunq*"
+                  },
+                  {
+                    "name": "*0.30mm_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*0.30mm_flsunq*"
+                  },
+                  {
+                    "name": "*0.6nozzleFLSUN*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*0.6nozzleFLSUN*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle FLSUN"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "filament:Generic PLA @FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*common_flsunq*"
+                  },
+                  {
+                    "name": "*PLA_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*PLA_flsunq*"
+                  },
+                  {
+                    "name": "Generic PLA @FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:Generic PLA @FLSUN"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {
@@ -123,6 +302,14 @@
           "machine": "FLSun Q5 0.4 nozzle",
           "process": "0.20mm Standard @FLSun Q5",
           "filament": "Generic PLA @FLSun"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "FLSun/1.1.0.ini",
+          "machine": "FLSun Q5 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle FLSUN",
+          "filament": "Generic PLA @FLSUN"
         }
       },
       "status": "structural_verified"
@@ -143,11 +330,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/FLSun.json",
-            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+            "sha256": "b5b3e577674b1a69d770be4a5820eec6cf4c98c930726d7ccda249aa349b37bb"
           },
           "model": {
             "path": "machine/FLSun QQ-S Pro.json",
-            "sha256": "40eda7e18fce9fbc8017b382f8afb0dcaf347ec9ee7c1360eb6bcc56db86a262",
+            "sha256": "543fcc1caef87a2e3686865d7b98f7509b8aec2933ce99c2c86ed512d5f6d315",
             "manufacturer_model_id": "FLSun-QQS-Pro"
           },
           "nozzles_mm": [
@@ -159,44 +346,56 @@
               "machine": {
                 "name": "FLSun QQ-S Pro 0.4 nozzle",
                 "path": "machine/FLSun QQ-S Pro 0.4 nozzle.json",
-                "sha256": "b31d2301dd326b5456ade3265d270d4f530d7f6c5ffa9c39adc5ed2696d99ed6"
+                "sha256": "00f1fb46dc1134bf9ca34594cebfaee003743e1a3ec71fb07043440f3bfb2770",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "7b1a391957172471de6ac09dd78825a00fe708e4757267bc8d0253712b5ab1d9"
+                  },
+                  {
+                    "name": "FLSun QQ-S Pro 0.4 nozzle",
+                    "path": "machine/FLSun QQ-S Pro 0.4 nozzle.json",
+                    "sha256": "00f1fb46dc1134bf9ca34594cebfaee003743e1a3ec71fb07043440f3bfb2770"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @FLSun QQSPro",
                 "path": "process/0.20mm Standard @FLSun QQSPro.json",
-                "sha256": "b61f18c0a804a109d9af99d190e63ba32a163dfc13688cd1f52ab1dab30a5932",
+                "sha256": "4a53a78aa05fcda9526045965df72997127e943190be685582ed92d05b475bf7",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "b6ce9ae098047658dae623b465b9cdbb5b7fe5eff99d9186d21cbf5f9c14126b"
+                    "sha256": "c579cb2112876dc70671f5f200696a94e403d7ad173cb442d53e7d82ff8d3286"
                   },
                   {
                     "name": "0.20mm Standard @FLSun QQSPro",
                     "path": "process/0.20mm Standard @FLSun QQSPro.json",
-                    "sha256": "b61f18c0a804a109d9af99d190e63ba32a163dfc13688cd1f52ab1dab30a5932"
+                    "sha256": "4a53a78aa05fcda9526045965df72997127e943190be685582ed92d05b475bf7"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @FLSun",
                 "path": "filament/Generic PLA @FLSun.json",
-                "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6",
+                "sha256": "1a3e337c409d89f8782f1c70da8833334750f3c48d06b06c3b94249c60c2ca11",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @FLSun",
                     "path": "filament/Generic PLA @FLSun.json",
-                    "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6"
+                    "sha256": "1a3e337c409d89f8782f1c70da8833334750f3c48d06b06c3b94249c60c2ca11"
                   }
                 ]
               }
@@ -242,28 +441,220 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "FLSun/1.1.0.ini",
-            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+            "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310"
           },
           "model": {
             "path": "FLSun/1.1.0.ini",
             "section": "printer_model:QQSP",
-            "sha256": "7532bbc5a6535ce18ae3550033397e050e27b42c514d13fb437200cb496d0b33"
+            "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310"
           },
           "nozzles_mm": [
             "0.4",
             "0.6"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 2,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "FLSun QQS Pro",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "printer:FLSun QQS Pro",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:*common_flsunq*"
+                  },
+                  {
+                    "name": "FLSun QQS Pro",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:FLSun QQS Pro"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm QUALITY @FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "print:0.20mm QUALITY @FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*common_flsunq*"
+                  },
+                  {
+                    "name": "*0.20mm_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*0.20mm_flsunq*"
+                  },
+                  {
+                    "name": "*QQSP*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*QQSP*"
+                  },
+                  {
+                    "name": "0.20mm QUALITY @FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:0.20mm QUALITY @FLSUN"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "filament:Generic PLA @FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*common_flsunq*"
+                  },
+                  {
+                    "name": "*PLA_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*PLA_flsunq*"
+                  },
+                  {
+                    "name": "Generic PLA @FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:Generic PLA @FLSUN"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "FLSun QQS Pro 0.6 nozzle",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "printer:FLSun QQS Pro 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:*common_flsunq*"
+                  },
+                  {
+                    "name": "FLSun QQS Pro",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:FLSun QQS Pro"
+                  },
+                  {
+                    "name": "FLSun QQS Pro 0.6 nozzle",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "printer:FLSun QQS Pro 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY @0.6 nozzle FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "print:0.30mm QUALITY @0.6 nozzle FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*common_flsunq*"
+                  },
+                  {
+                    "name": "*0.30mm_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*0.30mm_flsunq*"
+                  },
+                  {
+                    "name": "*0.6nozzleFLSUN*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:*0.6nozzleFLSUN*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY @0.6 nozzle FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "print:0.30mm QUALITY @0.6 nozzle FLSUN"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @FLSUN",
+                "path": "FLSun/1.1.0.ini",
+                "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                "section": "filament:Generic PLA @FLSUN",
+                "inheritance": [
+                  {
+                    "name": "*common_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*common_flsunq*"
+                  },
+                  {
+                    "name": "*PLA_flsunq*",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:*PLA_flsunq*"
+                  },
+                  {
+                    "name": "Generic PLA @FLSUN",
+                    "path": "FLSun/1.1.0.ini",
+                    "sha256": "5957297244d3c3c92932e4a8af5d04ac839fa7226bb636c0e8d48cb67b1ef310",
+                    "section": "filament:Generic PLA @FLSUN"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "FLSun/1.1.0.ini",
+        "nozzles_mm": [
+          "0.4",
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "FLSun/1.1.0.ini",
+          "machine": "FLSun QQS Pro",
+          "process": "0.20mm QUALITY @FLSUN",
+          "filament": "Generic PLA @FLSUN"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "FLSun/1.1.0.ini",
+          "machine": "FLSun QQS Pro 0.6 nozzle",
+          "process": "0.30mm QUALITY @0.6 nozzle FLSUN",
+          "filament": "Generic PLA @FLSUN"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "flsun-flsun-s1",
@@ -281,11 +672,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/FLSun.json",
-            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+            "sha256": "b5b3e577674b1a69d770be4a5820eec6cf4c98c930726d7ccda249aa349b37bb"
           },
           "model": {
             "path": "machine/FLSun S1.json",
-            "sha256": "6b62b6258928cb60aeabeb748bf856453455d8eac47fc75df4f5eef99f896f29",
+            "sha256": "37250ee01966e2268c0979d2081a94cd6a455b85a8b4826552c5ee02457f4074",
             "manufacturer_model_id": "FLSun_S1"
           },
           "nozzles_mm": [
@@ -318,11 +709,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/FLSun.json",
-            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+            "sha256": "b5b3e577674b1a69d770be4a5820eec6cf4c98c930726d7ccda249aa349b37bb"
           },
           "model": {
             "path": "machine/FLSun SR.json",
-            "sha256": "ad054c5575478525603a9d04d389304a8844bf9cac76a555b8d2960207cc8dde",
+            "sha256": "d2f7bea7aa46b1fa35a2f1b4025d558e1ea257f6764162962a2b88b5ff1f2c99",
             "manufacturer_model_id": "FLSun_Super_Racer"
           },
           "nozzles_mm": [
@@ -334,44 +725,56 @@
               "machine": {
                 "name": "FLSun Super Racer 0.4 nozzle",
                 "path": "machine/FLSun SR 0.4 nozzle.json",
-                "sha256": "349983d58da0be0b01375cbd0281f49520ce499ad75fc2f3b19bfcfff3649f15"
+                "sha256": "4fe5dda42091f33d63fef3dc1ddbef1c3459dbba598a330ca57d62f27647713e",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "7b1a391957172471de6ac09dd78825a00fe708e4757267bc8d0253712b5ab1d9"
+                  },
+                  {
+                    "name": "FLSun Super Racer 0.4 nozzle",
+                    "path": "machine/FLSun SR 0.4 nozzle.json",
+                    "sha256": "4fe5dda42091f33d63fef3dc1ddbef1c3459dbba598a330ca57d62f27647713e"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @FLSun SR",
                 "path": "process/0.20mm Standard @FLSun SR.json",
-                "sha256": "2dbdea7c6d9f58d318064ab3505278a143110f117132db39ebfa59975985cceb",
+                "sha256": "3e342115fb338bb4257e333a52383f5da6615469d291255574123c7f32eec11a",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "b6ce9ae098047658dae623b465b9cdbb5b7fe5eff99d9186d21cbf5f9c14126b"
+                    "sha256": "c579cb2112876dc70671f5f200696a94e403d7ad173cb442d53e7d82ff8d3286"
                   },
                   {
                     "name": "0.20mm Standard @FLSun SR",
                     "path": "process/0.20mm Standard @FLSun SR.json",
-                    "sha256": "2dbdea7c6d9f58d318064ab3505278a143110f117132db39ebfa59975985cceb"
+                    "sha256": "3e342115fb338bb4257e333a52383f5da6615469d291255574123c7f32eec11a"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @FLSun",
                 "path": "filament/Generic PLA @FLSun.json",
-                "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6",
+                "sha256": "1a3e337c409d89f8782f1c70da8833334750f3c48d06b06c3b94249c60c2ca11",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "46fc981e3c2f720650c8f36074f3ec95089d5216951449d61cfdf65aa9a18f99"
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @FLSun",
                     "path": "filament/Generic PLA @FLSun.json",
-                    "sha256": "a09cc5c11309cba41c4c18cb696deaa4c197238352feb219fca474bd9bde31e6"
+                    "sha256": "1a3e337c409d89f8782f1c70da8833334750f3c48d06b06c3b94249c60c2ca11"
                   }
                 ]
               }
@@ -417,11 +820,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/FLSun.json",
-            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+            "sha256": "b5b3e577674b1a69d770be4a5820eec6cf4c98c930726d7ccda249aa349b37bb"
           },
           "model": {
             "path": "machine/FLSun T1.json",
-            "sha256": "9cc247651439649fa825d510d78d8df4f0f46fc84744f43d1946ed7c4833a5b1",
+            "sha256": "963f5048b4db63946e89341a7bdeeba27954655bb3705a21520842396f762c8d",
             "manufacturer_model_id": "FLSun_T1"
           },
           "nozzles_mm": [
@@ -454,11 +857,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/FLSun.json",
-            "sha256": "46e81d1263c9a0e0315dd55be02a6d96af13e6ee40c400d2e44418935cb5cf39"
+            "sha256": "b5b3e577674b1a69d770be4a5820eec6cf4c98c930726d7ccda249aa349b37bb"
           },
           "model": {
             "path": "machine/FLSun V400.json",
-            "sha256": "561305eb9f2dfcaf2ae83eec98539ac3f194cc057b816f74b6bc417cba7b05d0",
+            "sha256": "99ba28c4d06ced7c0469e919ffd53160d6a163f44bdca8f392ff0166eff9ff1f",
             "manufacturer_model_id": "FLSun_V400"
           },
           "nozzles_mm": [

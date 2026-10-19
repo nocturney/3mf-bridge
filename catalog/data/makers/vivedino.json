@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.13",
           "manifest": {
             "path": "resources/profiles/Vivedino.json",
-            "sha256": "db2d5fe04cdf6e3eac02d1aeb8d1e642eb868937ec1993f4ea4d319ea5d3ed07"
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
           },
           "model": {
             "path": "machine/Troodon2Klipper.json",
-            "sha256": "610a0c2e693f0e174e028c0218c7317e97b29e8aa11593c5e69ac6beeadd2742",
+            "sha256": "77fa1bceb3efa695ee26ddf4a75bc6c4f86561dd4ffa2d15953a3aec416cc823",
             "manufacturer_model_id": "Troodon2Klipper"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.13",
           "manifest": {
             "path": "resources/profiles/Vivedino.json",
-            "sha256": "db2d5fe04cdf6e3eac02d1aeb8d1e642eb868937ec1993f4ea4d319ea5d3ed07"
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
           },
           "model": {
             "path": "machine/Troodon2RRF.json",
-            "sha256": "8ea90badbcf11fb6f12f7fe8d002365e97772905714a4ba046bd6ab62ceda187",
+            "sha256": "662e2b103ee393d937f509059600b00dca9c954a6040b29896d25622f09e883f",
             "manufacturer_model_id": "Troodon2RRF"
           },
           "nozzles_mm": [
@@ -92,11 +92,11 @@
           "bundle_version": "02.04.00.13",
           "manifest": {
             "path": "resources/profiles/Vivedino.json",
-            "sha256": "db2d5fe04cdf6e3eac02d1aeb8d1e642eb868937ec1993f4ea4d319ea5d3ed07"
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
           },
           "model": {
             "path": "machine/XplorerDualGantry.json",
-            "sha256": "d1fcc184b9edb4bc729333446d6e03797c9fdb631477d0930f6be7830ac0ca35",
+            "sha256": "ef30a8b588c386e3c09b214abadc7b3c986daa2fe3b2ca496444f3d97325968f",
             "manufacturer_model_id": "XplorerDualGantry"
           },
           "nozzles_mm": [
@@ -131,11 +131,11 @@
           "bundle_version": "02.04.00.13",
           "manifest": {
             "path": "resources/profiles/Vivedino.json",
-            "sha256": "db2d5fe04cdf6e3eac02d1aeb8d1e642eb868937ec1993f4ea4d319ea5d3ed07"
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
           },
           "model": {
             "path": "machine/XplorerIDEX.json",
-            "sha256": "da14157c9edcb530e6dc116136d9936408078f21f5bf16548e35c3cc132d9f18",
+            "sha256": "39de8c90cf09d35a1b4e8638521c126b9f30102b4937c5f728d5cc3d512c23ba",
             "manufacturer_model_id": "XplorerIDEX"
           },
           "nozzles_mm": [
@@ -170,11 +170,11 @@
           "bundle_version": "02.04.00.13",
           "manifest": {
             "path": "resources/profiles/Vivedino.json",
-            "sha256": "db2d5fe04cdf6e3eac02d1aeb8d1e642eb868937ec1993f4ea4d319ea5d3ed07"
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
           },
           "model": {
             "path": "machine/XplorerIQEX.json",
-            "sha256": "7aa882709427afa0628e1b0d88cb0e8b333b39d4de82848d60a37946a2da9be8",
+            "sha256": "c72e7eff59e25a850b5d70bd81c628816bd91d2ba78956922375770b67ddf27a",
             "manufacturer_model_id": "XplorerIQEX"
           },
           "nozzles_mm": [
@@ -209,11 +209,11 @@
           "bundle_version": "02.04.00.13",
           "manifest": {
             "path": "resources/profiles/Vivedino.json",
-            "sha256": "db2d5fe04cdf6e3eac02d1aeb8d1e642eb868937ec1993f4ea4d319ea5d3ed07"
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
           },
           "model": {
             "path": "machine/XplorerSingle.json",
-            "sha256": "1f50e49cacde0c2ebe8b460671a6b7aef4307e00d8bf10a03465f28f59953597",
+            "sha256": "f3524b74b2af2cfb82535fc8b217a1055b7077fdfe84fec3fd803b14b3a8a59d",
             "manufacturer_model_id": "XplorerSingle"
           },
           "nozzles_mm": [

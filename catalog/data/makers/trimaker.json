@@ -18,12 +18,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Trimaker/2.1.0.ini",
-            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+            "sha256": "6f70a25765ce2086f0fcb0a8896952696cea4f10ca8c2cb22cf170cc882d10bd"
           },
           "model": {
             "path": "Trimaker/2.1.0.ini",
             "section": "printer_model:Trimaker Cosmos II",
-            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+            "sha256": "6f70a25765ce2086f0fcb0a8896952696cea4f10ca8c2cb22cf170cc882d10bd"
           },
           "nozzles_mm": [
             "0.4"
@@ -32,7 +32,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer missing default filament (1)"
           ]
         }
       ],
@@ -56,12 +56,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Trimaker/2.1.0.ini",
-            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+            "sha256": "6f70a25765ce2086f0fcb0a8896952696cea4f10ca8c2cb22cf170cc882d10bd"
           },
           "model": {
             "path": "Trimaker/2.1.0.ini",
             "section": "printer_model:Trimaker Nebula ",
-            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+            "sha256": "6f70a25765ce2086f0fcb0a8896952696cea4f10ca8c2cb22cf170cc882d10bd"
           },
           "nozzles_mm": [
             "0.4"
@@ -69,9 +69,7 @@
           "candidate_printer_sections": 0,
           "variants": [],
           "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "warnings": []
         }
       ],
       "preferred_profile": null,
@@ -94,12 +92,12 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Trimaker/2.1.0.ini",
-            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+            "sha256": "6f70a25765ce2086f0fcb0a8896952696cea4f10ca8c2cb22cf170cc882d10bd"
           },
           "model": {
             "path": "Trimaker/2.1.0.ini",
             "section": "printer_model:Trimaker Nebula Cloud",
-            "sha256": "353a178dd86df71bb6345ba1539134a94953a43833e50f798c911ead3012104d"
+            "sha256": "6f70a25765ce2086f0fcb0a8896952696cea4f10ca8c2cb22cf170cc882d10bd"
           },
           "nozzles_mm": [
             "0.4"
@@ -108,7 +106,7 @@
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "printer missing default filament (1)"
           ]
         }
       ],

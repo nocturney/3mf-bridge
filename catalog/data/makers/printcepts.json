@@ -18,11 +18,11 @@
           "bundle_version": "01.00.00.04",
           "manifest": {
             "path": "resources/profiles/Printcepts.json",
-            "sha256": "4ea84ec68bbb2af28382a903624107175b66f1428f8fad30408cefbfee642325"
+            "sha256": "937755f30d0464c96142fe1f91756f8e490a40c3713c4905e28ad908c11d651b"
           },
           "model": {
             "path": "machine/BabyBelt Pro.json",
-            "sha256": "b3b110f55df67a09f2cd5b3b71cb9482dacaa1ce01f6edf666a3163796812fb8",
+            "sha256": "f9974873e15e8f168cbe82c6bb5cd59000c560be6a5dd9bff555562a6faa45e7",
             "manufacturer_model_id": "Printcepts_BabyBelt_Pro"
           },
           "nozzles_mm": [

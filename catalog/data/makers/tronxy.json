@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.02",
           "manifest": {
             "path": "resources/profiles/Tronxy.json",
-            "sha256": "ab83966efc3363f93064b1e6249395d6da5ee98c0458eee616f32c4ff63833dd"
+            "sha256": "fe288d1e637c39054b173ad3908e0a870aa07fc90f987a5ef0aa650357f82831"
           },
           "model": {
             "path": "machine/Tronxy X5SA 400 Marlin Firmware.json",
-            "sha256": "cc2076dd021ac7a4c5386bd1001b3d2683fb17aaa413552923c95cc0f4f0be2c",
+            "sha256": "393dc6052b4cbcc1eea1b9479d320aa83e51f9b5ef8c320dd331e0eee9917fc8",
             "manufacturer_model_id": "Tronxy_X5SA_400_Marlin_Firmware"
           },
           "nozzles_mm": [

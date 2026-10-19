@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.01",
           "manifest": {
             "path": "resources/profiles/Meltingplot.json",
-            "sha256": "05246c83137cbed77e9e266e5648112a2fb54eec67793b36e71496aa8557df4a"
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
           },
           "model": {
             "path": "machine/Meltingplot CHX 350.json",
-            "sha256": "f4cbd3045323c1f0c72b1ed91d78fb37fe0bb3e42374ea843898a4d7fb3efb1f",
+            "sha256": "e9fa23ed3f7491353e799bcfa6e92e230714583c913f4ce797a9949b1132f247",
             "manufacturer_model_id": "Meltingplot-CHX-350"
           },
           "nozzles_mm": [
@@ -59,11 +59,11 @@
           "bundle_version": "02.04.00.01",
           "manifest": {
             "path": "resources/profiles/Meltingplot.json",
-            "sha256": "05246c83137cbed77e9e266e5648112a2fb54eec67793b36e71496aa8557df4a"
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
           },
           "model": {
             "path": "machine/Meltingplot MBL 133.json",
-            "sha256": "401d09e9a828ea4bb4db9579055eb1f209f95bd22da26d7bf398ab4ea11556e6",
+            "sha256": "8238baf8d2157fccad290307a17068562ed25e5649227eb9794721f28ae89728",
             "manufacturer_model_id": "Meltingplot-MBL-133"
           },
           "nozzles_mm": [
@@ -100,11 +100,11 @@
           "bundle_version": "02.04.00.01",
           "manifest": {
             "path": "resources/profiles/Meltingplot.json",
-            "sha256": "05246c83137cbed77e9e266e5648112a2fb54eec67793b36e71496aa8557df4a"
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
           },
           "model": {
             "path": "machine/Meltingplot MBL 136.json",
-            "sha256": "10c02584457c8f8134b3db07560d2b4f782ceccc967e8d844044838070443dab",
+            "sha256": "1ed4a72ae11136e476b1ba2158a77e757f3a077a354c60fbb151cf64017cb857",
             "manufacturer_model_id": "Meltingplot-MBL-136"
           },
           "nozzles_mm": [
@@ -141,11 +141,11 @@
           "bundle_version": "02.04.00.01",
           "manifest": {
             "path": "resources/profiles/Meltingplot.json",
-            "sha256": "05246c83137cbed77e9e266e5648112a2fb54eec67793b36e71496aa8557df4a"
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
           },
           "model": {
             "path": "machine/Meltingplot MBL 308.json",
-            "sha256": "811998329bf447b367526ccabf88de3215aa40311ef3553cd7f2b9409b979b47",
+            "sha256": "6763a211261929d76bad30324c21c5b97eeb733ba761e016b2a8c7195fb9367d",
             "manufacturer_model_id": "Meltingplot-MBL-308"
           },
           "nozzles_mm": [
@@ -182,11 +182,11 @@
           "bundle_version": "02.04.00.01",
           "manifest": {
             "path": "resources/profiles/Meltingplot.json",
-            "sha256": "05246c83137cbed77e9e266e5648112a2fb54eec67793b36e71496aa8557df4a"
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
           },
           "model": {
             "path": "machine/Meltingplot MBL 480.json",
-            "sha256": "43027820714506284f552359c71faee7105ef3c9964ffe97949eac7c2e957338",
+            "sha256": "845cea234393bb05259aa252fe1d70fd0b2ce35be6c5b6ef04dd265d1f53c789",
             "manufacturer_model_id": "Meltingplot-MBL-480"
           },
           "nozzles_mm": [

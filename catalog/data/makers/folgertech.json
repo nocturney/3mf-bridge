@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Folgertech.json",
-            "sha256": "88c2bc88d3b680b98e8485ed1a1f7942fac02d5458e8ff9cd1754ae9939bbc73"
+            "sha256": "17a96ac17fb1ff212cb1da2eb86afb4fbae0f314b0be50e53b77cc1e4edf4e40"
           },
           "model": {
             "path": "machine/Folgertech FT-5.json",
-            "sha256": "40d47458030ef26f1508b6456309aa465c5a2f8c5c9a89b479a43dce39c8c2ff",
+            "sha256": "cd5c49829a4f60dabfff560975ab4080153a744780617c67323b18a71025ddd7",
             "manufacturer_model_id": "FT-5"
           },
           "nozzles_mm": [
@@ -56,11 +56,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Folgertech.json",
-            "sha256": "88c2bc88d3b680b98e8485ed1a1f7942fac02d5458e8ff9cd1754ae9939bbc73"
+            "sha256": "17a96ac17fb1ff212cb1da2eb86afb4fbae0f314b0be50e53b77cc1e4edf4e40"
           },
           "model": {
             "path": "machine/Folgertech FT-6.json",
-            "sha256": "58f472cc20e702549fe3453379b9f5469e9af0eeacaeea4b40657654ea0cfc21",
+            "sha256": "69951d3426c898dac0f2328f5890da69491d154a66f09c2a03c046e05c20a1e1",
             "manufacturer_model_id": "FT-6"
           },
           "nozzles_mm": [
@@ -94,11 +94,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Folgertech.json",
-            "sha256": "88c2bc88d3b680b98e8485ed1a1f7942fac02d5458e8ff9cd1754ae9939bbc73"
+            "sha256": "17a96ac17fb1ff212cb1da2eb86afb4fbae0f314b0be50e53b77cc1e4edf4e40"
           },
           "model": {
             "path": "machine/Folgertech i3.json",
-            "sha256": "f71faf2c7fe16998581d9db2885226459336e10d7e92ae8d99985639070f0ca5",
+            "sha256": "6fbc1b2315e9ccba668da4d8cdf0a61fb0a1eb51451833fdc8207ae57b555cbe",
             "manufacturer_model_id": "i3"
           },
           "nozzles_mm": [

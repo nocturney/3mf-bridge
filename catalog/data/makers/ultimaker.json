@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/UltiMaker.json",
-            "sha256": "21dfda2ca1747ee0f89f093f8e432c5f45678c3185d30c154adbc38556aa4dd3"
+            "sha256": "0546b258640b2e2e28eb2d21cab4480e9342663cb0adc0baaeaa3d7e7d1bd129"
           },
           "model": {
             "path": "machine/UltiMaker 2.json",
-            "sha256": "7801cf1469bf677f7fd3dfa4613a6adee3c82b7254af0f1f7dd2b227847b544b",
+            "sha256": "f26b07fe96ef068866b4efd56b8fd35ecc724acc9c967b6a828008af489a7582",
             "manufacturer_model_id": "UltiMaker-2"
           },
           "nozzles_mm": [
@@ -44,27 +44,198 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Ultimaker/2.1.0.ini",
-            "sha256": "98197ac4392bef8ea2cd727ee26d3515b612a1ee895a3584fe7f2ee5cc983502"
+            "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948"
           },
           "model": {
             "path": "Ultimaker/2.1.0.ini",
             "section": "printer_model:ULTIMAKER2",
-            "sha256": "98197ac4392bef8ea2cd727ee26d3515b612a1ee895a3584fe7f2ee5cc983502"
+            "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 2,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Ultimaker 2",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "printer:Ultimaker 2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Ultimaker 2",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:Ultimaker 2"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "print:0.20mm NORMAL @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:0.20mm NORMAL @ULTIMAKER"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "filament:Generic PLA @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:Generic PLA @ULTIMAKER"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Ultimaker 2 DXUv2",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "printer:Ultimaker 2 DXUv2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Ultimaker 2",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:Ultimaker 2"
+                  },
+                  {
+                    "name": "Ultimaker 2 DXUv2",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:Ultimaker 2 DXUv2"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "print:0.20mm NORMAL @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:0.20mm NORMAL @ULTIMAKER"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "filament:Generic PLA @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:Generic PLA @ULTIMAKER"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Ultimaker/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Ultimaker/2.1.0.ini",
+          "machine": "Ultimaker 2",
+          "process": "0.20mm NORMAL @ULTIMAKER",
+          "filament": "Generic PLA @ULTIMAKER"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "ultimaker-ultimaker-2-extended",
@@ -82,11 +253,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/UltiMaker.json",
-            "sha256": "21dfda2ca1747ee0f89f093f8e432c5f45678c3185d30c154adbc38556aa4dd3"
+            "sha256": "0546b258640b2e2e28eb2d21cab4480e9342663cb0adc0baaeaa3d7e7d1bd129"
           },
           "model": {
             "path": "machine/UltiMaker 2 extended+.json",
-            "sha256": "5f930567da5009a7007a6707f58db4c89f6cdf57d119a8498babff03e532ec76",
+            "sha256": "7cc5e5eafa996e6148ba1917b9527a4aaaabeb156d6b4c3fd0f1530ee8276db9",
             "manufacturer_model_id": "UltiMaker-2-extended-plus"
           },
           "nozzles_mm": [
@@ -121,27 +292,204 @@
           "bundle_version": "2.1.0",
           "manifest": {
             "path": "Ultimaker/2.1.0.ini",
-            "sha256": "98197ac4392bef8ea2cd727ee26d3515b612a1ee895a3584fe7f2ee5cc983502"
+            "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948"
           },
           "model": {
             "path": "Ultimaker/2.1.0.ini",
             "section": "printer_model:ULTIMAKERSline",
-            "sha256": "98197ac4392bef8ea2cd727ee26d3515b612a1ee895a3584fe7f2ee5cc983502"
+            "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948"
           },
           "nozzles_mm": [
             "0.4"
           ],
-          "candidate_printer_sections": 3,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "candidate_printer_sections": 2,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Ultimaker S3",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "printer:Ultimaker S3",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*sline*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:*sline*"
+                  },
+                  {
+                    "name": "Ultimaker S3",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:Ultimaker S3"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "print:0.20mm NORMAL @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:0.20mm NORMAL @ULTIMAKER"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "filament:Generic PLA @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:Generic PLA @ULTIMAKER"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Ultimaker S5/S7",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "printer:Ultimaker S5/S7",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*sline*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:*sline*"
+                  },
+                  {
+                    "name": "Ultimaker S5/S7",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "printer:Ultimaker S5/S7"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "print:0.20mm NORMAL @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "print:0.20mm NORMAL @ULTIMAKER"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @ULTIMAKER",
+                "path": "Ultimaker/2.1.0.ini",
+                "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                "section": "filament:Generic PLA @ULTIMAKER",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @ULTIMAKER",
+                    "path": "Ultimaker/2.1.0.ini",
+                    "sha256": "f9ce2d7d2f43641580961190e52c71460cf0d4427a1f96f8296eeb383c2c9948",
+                    "section": "filament:Generic PLA @ULTIMAKER"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Ultimaker/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Ultimaker/2.1.0.ini",
+          "machine": "Ultimaker S3",
+          "process": "0.20mm NORMAL @ULTIMAKER",
+          "filament": "Generic PLA @ULTIMAKER"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "ultimaker-ultimaker-s5",
@@ -159,11 +507,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/UltiMaker.json",
-            "sha256": "21dfda2ca1747ee0f89f093f8e432c5f45678c3185d30c154adbc38556aa4dd3"
+            "sha256": "0546b258640b2e2e28eb2d21cab4480e9342663cb0adc0baaeaa3d7e7d1bd129"
           },
           "model": {
             "path": "machine/UltiMaker S5.json",
-            "sha256": "b97ac9964377d97d097ade735ac9ea498a30faf8af3a2926928f105d2a265d0e",
+            "sha256": "6cd7bf254576a598f1e6901b6391fe210be4c8f44e6b5e9203dc44b953752dc6",
             "manufacturer_model_id": "UltiMaker-S5"
           },
           "nozzles_mm": [

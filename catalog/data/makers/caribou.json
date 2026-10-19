@@ -18,12 +18,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_MK3S_220",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -33,17 +33,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Caribou 220 MK3S+ 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou 220 MK3S+ 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouMK3*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouMK3*"
+                  },
+                  {
+                    "name": "Caribou 220 MK3S+ 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 220 MK3S+ 0.4mm nozzle"
+                  },
+                  {
+                    "name": "Caribou 220 MK3S+ 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 220 MK3S+ 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou 220 MK3S+ 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribou-mk3s-220-klipper",
@@ -61,12 +169,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_MK3S_220_Klipper",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -76,17 +184,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Caribou 220 MK3S+ Klipper 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou 220 MK3S+ Klipper 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouMK3Klipper*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouMK3Klipper*"
+                  },
+                  {
+                    "name": "Caribou 220 MK3S+ Klipper 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 220 MK3S+ Klipper 0.4mm nozzle"
+                  },
+                  {
+                    "name": "Caribou 220 MK3S+ Klipper 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 220 MK3S+ Klipper 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou 220 MK3S+ Klipper 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribou-mk3s-320",
@@ -104,12 +320,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_MK3S_320",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -119,17 +335,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Caribou 320 MK3S+ 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou 320 MK3S+ 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouMK3*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouMK3*"
+                  },
+                  {
+                    "name": "Caribou 320 MK3S+ 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 320 MK3S+ 0.4mm nozzle"
+                  },
+                  {
+                    "name": "Caribou 320 MK3S+ 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 320 MK3S+ 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Carbon (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou 320 MK3S+ 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribou-mk3s-320-klipper",
@@ -147,12 +471,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_MK3S_320_Klipper",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -162,17 +486,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Caribou 320 MK3S+ Klipper 0.6mmnozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou 320 MK3S+ Klipper 0.6mmnozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouMK3Klipper*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouMK3Klipper*"
+                  },
+                  {
+                    "name": "Caribou 320 MK3S+ Klipper 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 320 MK3S+ Klipper 0.4mm nozzle"
+                  },
+                  {
+                    "name": "Caribou 320 MK3S+ Klipper 0.6mmnozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 320 MK3S+ Klipper 0.6mmnozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou 320 MK3S+ Klipper 0.6mmnozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribou-mk3s-420",
@@ -190,12 +622,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_MK3S_420",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -205,17 +637,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Caribou 420 MK3S+ 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou 420 MK3S+ 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouMK3*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouMK3*"
+                  },
+                  {
+                    "name": "Caribou 420 MK3S+ 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 420 MK3S+ 0.4mm nozzle"
+                  },
+                  {
+                    "name": "Caribou 420 MK3S+ 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 420 MK3S+ 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou 420 MK3S+ 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribou-mk3s-420-klipper",
@@ -233,12 +773,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_MK3S_420_Klipper",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -248,17 +788,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Caribou 420 MK3S+ Klipper 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou 420 MK3S+ Klipper 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouMK3Klipper*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouMK3Klipper*"
+                  },
+                  {
+                    "name": "Caribou 420 MK3S+ Klipper 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 420 MK3S+ Klipper 0.4mm nozzle"
+                  },
+                  {
+                    "name": "Caribou 420 MK3S+ Klipper 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou 420 MK3S+ Klipper 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou 420 MK3S+ Klipper 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribouduet-220",
@@ -276,12 +924,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_Duet_220",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -291,17 +939,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "CaribouDuet 220 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:CaribouDuet 220 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouDuet*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouDuet*"
+                  },
+                  {
+                    "name": "CaribouDuet 220 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:CaribouDuet 220 0.4mm nozzle"
+                  },
+                  {
+                    "name": "CaribouDuet 220 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:CaribouDuet 220 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "CaribouDuet 220 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribouduet-320",
@@ -319,12 +1075,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_Duet_320",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -334,17 +1090,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "CaribouDuet 320 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:CaribouDuet 320 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouDuet*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouDuet*"
+                  },
+                  {
+                    "name": "CaribouDuet 320 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:CaribouDuet 320 0.4mm nozzle"
+                  },
+                  {
+                    "name": "CaribouDuet 320 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:CaribouDuet 320 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "CaribouDuet 320 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribouduet-420",
@@ -362,12 +1226,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_Duet_420",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -377,17 +1241,125 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 6,
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "CaribouDuet 420 0.6mm nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:CaribouDuet 420 0.6mm nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouDuet*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouDuet*"
+                  },
+                  {
+                    "name": "CaribouDuet 420 0.4mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:CaribouDuet 420 0.4mm nozzle"
+                  },
+                  {
+                    "name": "CaribouDuet 420 0.6mm nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:CaribouDuet 420 0.6mm nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.30mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.30mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.30mm QUALITY 0.6mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY @Caribou (1)",
+            "print missing preset: 0.10mm DETAIL 0.25mm nozzle @Caribou (1)",
+            "print missing preset: 0.15mm DETAIL 0.3mm nozzle @Caribou (1)",
+            "print missing preset: 0.25mm QUALITY 0.5mm nozzle @Caribou (1)",
+            "print missing preset: 0.40mm QUALITY @0.8 nozzle Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "CaribouDuet 420 0.6mm nozzle",
+          "process": "0.30mm QUALITY 0.6mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribouidex-duplicate",
@@ -405,12 +1377,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_IDEX_Duplicate",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -418,16 +1390,286 @@
             "0.4"
           ],
           "candidate_printer_sections": 3,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Caribou IDEX Duplicate 0.25 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Duplicate 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Duplicate 0.25 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Duplicate 0.25 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "Caribou IDEX Duplicate 0.35 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Duplicate 0.35 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Duplicate 0.35 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Duplicate 0.35 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Caribou IDEX Duplicate 0.4 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Duplicate 0.4 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Duplicate 0.4 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Duplicate 0.4 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.20mm QUALITY 0.4mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.20mm QUALITY 0.4mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Duplicate 0.25 nozzle",
+          "process": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Duplicate 0.35 nozzle",
+          "process": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Duplicate 0.4 nozzle",
+          "process": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribouidex-mirror",
@@ -445,12 +1687,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_IDEX_Mirror",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -458,16 +1700,286 @@
             "0.4"
           ],
           "candidate_printer_sections": 3,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Caribou IDEX Mirror 0.25 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Mirror 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Mirror 0.25 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Mirror 0.25 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.35",
+              "machine": {
+                "name": "Caribou IDEX Mirror 0.35 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Mirror 0.35 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Mirror 0.35 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Mirror 0.35 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Caribou IDEX Mirror 0.4 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Mirror 0.4 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Mirror 0.4 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Mirror 0.4 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.20mm QUALITY 0.4mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.20mm QUALITY 0.4mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.35",
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Mirror 0.25 nozzle",
+          "process": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        },
+        "0.35": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Mirror 0.35 nozzle",
+          "process": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Mirror 0.4 nozzle",
+          "process": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-caribouidex-standard",
@@ -485,12 +1997,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_IDEX_Standard",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -498,17 +2010,200 @@
             "0.4",
             "0.6"
           ],
-          "candidate_printer_sections": 5,
-          "variants": [],
-          "validation": "index_only",
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "Caribou IDEX Standard 0.25 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Standard 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Standard 0.25 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Standard 0.25 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.10mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.10mm*"
+                  },
+                  {
+                    "name": "*0.25nozzle*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.25nozzle*"
+                  },
+                  {
+                    "name": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.10mm QUALITY 0.25mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Caribou IDEX Standard 0.4 nozzle",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "printer:Caribou IDEX Standard 0.4 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*common_CaribouIDEX_printer*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:*common_CaribouIDEX_printer*"
+                  },
+                  {
+                    "name": "Caribou IDEX Standard 0.4 nozzle",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "printer:Caribou IDEX Standard 0.4 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "print:0.20mm QUALITY 0.4mm nozzle @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "print:0.20mm QUALITY 0.4mm nozzle @Caribou"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Caribou PLA @Caribou",
+                "path": "Caribou/0.7.0.ini",
+                "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                "section": "filament:Caribou PLA @Caribou",
+                "inheritance": [
+                  {
+                    "name": "*common_Caribou_print*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*common_Caribou_print*"
+                  },
+                  {
+                    "name": "*PLA_Caribou*",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:*PLA_Caribou*"
+                  },
+                  {
+                    "name": "Caribou PLA @Caribou",
+                    "path": "Caribou/0.7.0.ini",
+                    "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a",
+                    "section": "filament:Caribou PLA @Caribou"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.20mm QUALITY 0.6mm nozzle @Caribou (1)",
+            "print missing preset: 0.20mm QUALITY 0.35mm nozzle @Caribou (1)"
           ]
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Caribou/0.7.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Standard 0.25 nozzle",
+          "process": "0.10mm QUALITY 0.25mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Caribou/0.7.0.ini",
+          "machine": "Caribou IDEX Standard 0.4 nozzle",
+          "process": "0.20mm QUALITY 0.4mm nozzle @Caribou",
+          "filament": "Caribou PLA @Caribou"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "caribou-cariboum",
@@ -526,12 +2221,12 @@
           "bundle_version": "0.7.0",
           "manifest": {
             "path": "Caribou/0.7.0.ini",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "model": {
             "path": "Caribou/0.7.0.ini",
             "section": "printer_model:Caribou_M",
-            "sha256": "bde39f797ee855d913529f32a95481b368d539dbe9fd1a8ca837b3e513ae65d5"
+            "sha256": "9f7c5660dd2d9775edd4775cea7d7b7e4e843068d58f1280f099b5ca6edbf62a"
           },
           "nozzles_mm": [
             "0.25",
@@ -539,11 +2234,11 @@
             "0.4",
             "0.6"
           ],
-          "candidate_printer_sections": 5,
+          "candidate_printer_sections": 4,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "filament missing preset: Prusament PLA (4)"
           ]
         }
       ],

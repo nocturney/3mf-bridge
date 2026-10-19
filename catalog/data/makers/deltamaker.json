@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/DeltaMaker.json",
-            "sha256": "80f53ea532b186b4f02cabe1073e11018f53a2d36d0160b26c9f544fee2a8ef4"
+            "sha256": "0bc472568b0d4536426fa9378a49ac7b66b839a0aea93fc90668bfb9d96973d5"
           },
           "model": {
             "path": "machine/DeltaMaker 2.json",
-            "sha256": "d70275c4c38e73388a30978dd7cb3ee7a8136a8a37424bc40d75fef49c71c2d6",
+            "sha256": "0c908796e9447500f251ae3b8a054a97943004fe0b5493daef4a903bd1d61cdc",
             "manufacturer_model_id": "deltamaker-2"
           },
           "nozzles_mm": [
@@ -34,44 +34,56 @@
               "machine": {
                 "name": "DeltaMaker 2 0.35 nozzle",
                 "path": "machine/DeltaMaker 2 0.35 nozzle.json",
-                "sha256": "b1c83ccb612e2df23a32a39bfef43fb3707e9ebde33aa819de71894346832443"
+                "sha256": "4c88278c544c760fcbec1d596a7bd54e4c76ebdf08d5ef365ef6e7f22f2f49a7",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "a50e9533dae0a64b0d4b259abebf7c242c097880f2b950f4a72290f0ee9c5f0d"
+                  },
+                  {
+                    "name": "DeltaMaker 2 0.35 nozzle",
+                    "path": "machine/DeltaMaker 2 0.35 nozzle.json",
+                    "sha256": "4c88278c544c760fcbec1d596a7bd54e4c76ebdf08d5ef365ef6e7f22f2f49a7"
+                  }
+                ]
               },
               "process": {
                 "name": "0.18mm Standard @DeltaMaker",
                 "path": "process/0.18mm Standard @DeltaMaker.json",
-                "sha256": "2dcc8ec082b1e1ceff4432c3266effad2c64025f189c5be7dad340c7809bab09",
+                "sha256": "bb172d110d5e056873fa97dc590efab9e067f010ffadeb50ab50fd0a2a8a6242",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "669b0ca8daee7342dace58e68163afbdf4dbf6731f4ec5d9a59912d166406a62"
+                    "sha256": "254b11e6519d24c299b544a59dad6c0a45529961aa937bc9429dce1688a0f3ea"
                   },
                   {
                     "name": "0.18mm Standard @DeltaMaker",
                     "path": "process/0.18mm Standard @DeltaMaker.json",
-                    "sha256": "2dcc8ec082b1e1ceff4432c3266effad2c64025f189c5be7dad340c7809bab09"
+                    "sha256": "bb172d110d5e056873fa97dc590efab9e067f010ffadeb50ab50fd0a2a8a6242"
                   }
                 ]
               },
               "filament": {
                 "name": "DeltaMaker Brand PLA",
                 "path": "filament/DeltaMaker Brand PLA.json",
-                "sha256": "f820da537794213b42a8325ef5996fdfd4189b4f7779cc82333abe8ab1f0da19",
+                "sha256": "054eae2a944b71f25297e96e901131bd556b04174c8033ed7b01be1c8695d62c",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "5fefc83c276cd9f3cd765e7e100a258d13450e3509f1baf65f051d6bde2fddfc"
+                    "sha256": "3035b356c281d6913438e43169aa051414193e32d872f1626ba80f5db1231846"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "f21fc4b5f1412b67ed625bb330dab3a3c25ac665653d8f7b83372b9b734af04b"
+                    "sha256": "b1d3a8aba71a23c614854b99f9e35d0e4ff0bd5d9c0fbfbd9b7673bdc4f2e416"
                   },
                   {
                     "name": "DeltaMaker Brand PLA",
                     "path": "filament/DeltaMaker Brand PLA.json",
-                    "sha256": "f820da537794213b42a8325ef5996fdfd4189b4f7779cc82333abe8ab1f0da19"
+                    "sha256": "054eae2a944b71f25297e96e901131bd556b04174c8033ed7b01be1c8695d62c"
                   }
                 ]
               }
@@ -117,11 +129,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/DeltaMaker.json",
-            "sha256": "80f53ea532b186b4f02cabe1073e11018f53a2d36d0160b26c9f544fee2a8ef4"
+            "sha256": "0bc472568b0d4536426fa9378a49ac7b66b839a0aea93fc90668bfb9d96973d5"
           },
           "model": {
             "path": "machine/DeltaMaker 2T.json",
-            "sha256": "06345cbdec0745741f5db8d87949473e1af9b38cc098db54807fba68d1ccf28e",
+            "sha256": "ea453180f2c4d72fb0c30ad607d0d7683f8afa7b6789f10a480b4d39b0c1cdcb",
             "manufacturer_model_id": "deltamaker-2t"
           },
           "nozzles_mm": [
@@ -133,44 +145,56 @@
               "machine": {
                 "name": "DeltaMaker 2T 0.5 nozzle",
                 "path": "machine/DeltaMaker 2T 0.5 nozzle.json",
-                "sha256": "f3c983a2e5f2b306932fc264546b37a6928d61a55783362aac788e3b7e178703"
+                "sha256": "d4ee08729d7d184cb9121e13e4a89287752c4aa4aa2cb3acc8c4544ebb2285fb",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "a50e9533dae0a64b0d4b259abebf7c242c097880f2b950f4a72290f0ee9c5f0d"
+                  },
+                  {
+                    "name": "DeltaMaker 2T 0.5 nozzle",
+                    "path": "machine/DeltaMaker 2T 0.5 nozzle.json",
+                    "sha256": "d4ee08729d7d184cb9121e13e4a89287752c4aa4aa2cb3acc8c4544ebb2285fb"
+                  }
+                ]
               },
               "process": {
                 "name": "0.18mm Standard @DeltaMaker",
                 "path": "process/0.18mm Standard @DeltaMaker.json",
-                "sha256": "2dcc8ec082b1e1ceff4432c3266effad2c64025f189c5be7dad340c7809bab09",
+                "sha256": "bb172d110d5e056873fa97dc590efab9e067f010ffadeb50ab50fd0a2a8a6242",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "669b0ca8daee7342dace58e68163afbdf4dbf6731f4ec5d9a59912d166406a62"
+                    "sha256": "254b11e6519d24c299b544a59dad6c0a45529961aa937bc9429dce1688a0f3ea"
                   },
                   {
                     "name": "0.18mm Standard @DeltaMaker",
                     "path": "process/0.18mm Standard @DeltaMaker.json",
-                    "sha256": "2dcc8ec082b1e1ceff4432c3266effad2c64025f189c5be7dad340c7809bab09"
+                    "sha256": "bb172d110d5e056873fa97dc590efab9e067f010ffadeb50ab50fd0a2a8a6242"
                   }
                 ]
               },
               "filament": {
                 "name": "DeltaMaker Brand PLA",
                 "path": "filament/DeltaMaker Brand PLA.json",
-                "sha256": "f820da537794213b42a8325ef5996fdfd4189b4f7779cc82333abe8ab1f0da19",
+                "sha256": "054eae2a944b71f25297e96e901131bd556b04174c8033ed7b01be1c8695d62c",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "5fefc83c276cd9f3cd765e7e100a258d13450e3509f1baf65f051d6bde2fddfc"
+                    "sha256": "3035b356c281d6913438e43169aa051414193e32d872f1626ba80f5db1231846"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "f21fc4b5f1412b67ed625bb330dab3a3c25ac665653d8f7b83372b9b734af04b"
+                    "sha256": "b1d3a8aba71a23c614854b99f9e35d0e4ff0bd5d9c0fbfbd9b7673bdc4f2e416"
                   },
                   {
                     "name": "DeltaMaker Brand PLA",
                     "path": "filament/DeltaMaker Brand PLA.json",
-                    "sha256": "f820da537794213b42a8325ef5996fdfd4189b4f7779cc82333abe8ab1f0da19"
+                    "sha256": "054eae2a944b71f25297e96e901131bd556b04174c8033ed7b01be1c8695d62c"
                   }
                 ]
               }
@@ -216,11 +240,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/DeltaMaker.json",
-            "sha256": "80f53ea532b186b4f02cabe1073e11018f53a2d36d0160b26c9f544fee2a8ef4"
+            "sha256": "0bc472568b0d4536426fa9378a49ac7b66b839a0aea93fc90668bfb9d96973d5"
           },
           "model": {
             "path": "machine/DeltaMaker 2XT.json",
-            "sha256": "8829d39e64cd250c607d521ff27e966f18cd4cad9e5f68ed75dbda5d63772905",
+            "sha256": "31ea9349baec83e5fafde77c61d54fc6aa47ab2946a7dab82fc9bac4a148640f",
             "manufacturer_model_id": "deltamaker-2xt"
           },
           "nozzles_mm": [
@@ -232,44 +256,56 @@
               "machine": {
                 "name": "DeltaMaker 2XT 0.5 nozzle",
                 "path": "machine/DeltaMaker 2XT 0.5 nozzle.json",
-                "sha256": "0cd25b5e416a2fa92c22c9806c8f68751143cc50577b54e97a83185fef66ace7"
+                "sha256": "bcc73307badf327b9aa1a5632dcfa3d042e28f101049bab6951d119f6be2f02c",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "a50e9533dae0a64b0d4b259abebf7c242c097880f2b950f4a72290f0ee9c5f0d"
+                  },
+                  {
+                    "name": "DeltaMaker 2XT 0.5 nozzle",
+                    "path": "machine/DeltaMaker 2XT 0.5 nozzle.json",
+                    "sha256": "bcc73307badf327b9aa1a5632dcfa3d042e28f101049bab6951d119f6be2f02c"
+                  }
+                ]
               },
               "process": {
                 "name": "0.25mm Draft @DeltaMaker",
                 "path": "process/0.25mm Draft @DeltaMaker.json",
-                "sha256": "6a790fdf862f674c549b391720cf43c68125ff3f984026bdc176d96f916d3f37",
+                "sha256": "0e910ff2b3e46e8187f8f6f33306dbff0a1459cb1f3ce425110ae3d9b019c5b4",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "669b0ca8daee7342dace58e68163afbdf4dbf6731f4ec5d9a59912d166406a62"
+                    "sha256": "254b11e6519d24c299b544a59dad6c0a45529961aa937bc9429dce1688a0f3ea"
                   },
                   {
                     "name": "0.25mm Draft @DeltaMaker",
                     "path": "process/0.25mm Draft @DeltaMaker.json",
-                    "sha256": "6a790fdf862f674c549b391720cf43c68125ff3f984026bdc176d96f916d3f37"
+                    "sha256": "0e910ff2b3e46e8187f8f6f33306dbff0a1459cb1f3ce425110ae3d9b019c5b4"
                   }
                 ]
               },
               "filament": {
                 "name": "DeltaMaker Brand PLA",
                 "path": "filament/DeltaMaker Brand PLA.json",
-                "sha256": "f820da537794213b42a8325ef5996fdfd4189b4f7779cc82333abe8ab1f0da19",
+                "sha256": "054eae2a944b71f25297e96e901131bd556b04174c8033ed7b01be1c8695d62c",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "5fefc83c276cd9f3cd765e7e100a258d13450e3509f1baf65f051d6bde2fddfc"
+                    "sha256": "3035b356c281d6913438e43169aa051414193e32d872f1626ba80f5db1231846"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "f21fc4b5f1412b67ed625bb330dab3a3c25ac665653d8f7b83372b9b734af04b"
+                    "sha256": "b1d3a8aba71a23c614854b99f9e35d0e4ff0bd5d9c0fbfbd9b7673bdc4f2e416"
                   },
                   {
                     "name": "DeltaMaker Brand PLA",
                     "path": "filament/DeltaMaker Brand PLA.json",
-                    "sha256": "f820da537794213b42a8325ef5996fdfd4189b4f7779cc82333abe8ab1f0da19"
+                    "sha256": "054eae2a944b71f25297e96e901131bd556b04174c8033ed7b01be1c8695d62c"
                   }
                 ]
               }

@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/RolohaunDesign.json",
-            "sha256": "87b4e268ed24e95ee2c6c39541076be9f968a25f753c239f196a47840f23d9c6"
+            "sha256": "090122884250cfeb7db0323f4176cb34ddfa773f40d5aa31dc56d1b1beadf9ef"
           },
           "model": {
             "path": "machine/Rolohaun Delta Flyer Refit.json",
-            "sha256": "c0a307209affb20ec541bb432d3a555276600a651a5eb59f0ffaaa7e3048a1b7",
+            "sha256": "e7c1b88672298ca69017e465d2f7c47f740d5f009756e29f55d6a8a300ff6ab6",
             "manufacturer_model_id": "RDFR1_1"
           },
           "nozzles_mm": [
@@ -55,11 +55,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/RolohaunDesign.json",
-            "sha256": "87b4e268ed24e95ee2c6c39541076be9f968a25f753c239f196a47840f23d9c6"
+            "sha256": "090122884250cfeb7db0323f4176cb34ddfa773f40d5aa31dc56d1b1beadf9ef"
           },
           "model": {
             "path": "machine/Rook MK1 LDO.json",
-            "sha256": "17868724f5e10e378188283247ef989565c9a8d23b5f09bb39fe8f1697588770",
+            "sha256": "43b658de03967cf6410ae04aefcd58a098e0eeeb0b495a17e0d390027a872bef",
             "manufacturer_model_id": "RKMK1_1"
           },
           "nozzles_mm": [

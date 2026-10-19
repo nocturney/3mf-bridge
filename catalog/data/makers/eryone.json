@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Eryone.json",
-            "sha256": "7a2b370adf98638826ac23edd5b08bf35b84374583d1f52a173e7c1c7c4de1af"
+            "sha256": "d4c71e3169596dfa9468b5046fac66d19fbf8e08cf37bca380df3d3fc2f3e07b"
           },
           "model": {
             "path": "machine/ER20/Eryone ER20.json",
-            "sha256": "9d428f4962f724dea1cb176645dedf97230be6aac79976d699ab8b97afcf6de7",
+            "sha256": "bfb19c8076f6374ebb63aa8a1cd90bdb8aecef2f03730600f6b86823cf13e20b",
             "manufacturer_model_id": "Eryone ER20"
           },
           "nozzles_mm": [
@@ -59,11 +59,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Eryone.json",
-            "sha256": "7a2b370adf98638826ac23edd5b08bf35b84374583d1f52a173e7c1c7c4de1af"
+            "sha256": "d4c71e3169596dfa9468b5046fac66d19fbf8e08cf37bca380df3d3fc2f3e07b"
           },
           "model": {
             "path": "machine/ER20_Klipper/Eryone ER20 Klipper.json",
-            "sha256": "f5473a79c9b5e76c85a0cafb29b1dd7628abfc19db030db2161e3d8b1a095ad9",
+            "sha256": "f9a3471fb997eb0feb210b5b3fdffd1646b8c67e195f483538ce6308ffe39c9a",
             "manufacturer_model_id": "Eryone ER20 Klipper"
           },
           "nozzles_mm": [
@@ -100,11 +100,11 @@
           "bundle_version": "02.04.00.07",
           "manifest": {
             "path": "resources/profiles/Eryone.json",
-            "sha256": "7a2b370adf98638826ac23edd5b08bf35b84374583d1f52a173e7c1c7c4de1af"
+            "sha256": "d4c71e3169596dfa9468b5046fac66d19fbf8e08cf37bca380df3d3fc2f3e07b"
           },
           "model": {
             "path": "machine/Thinker X400.json",
-            "sha256": "1d57115d5ba63d95f798c1e042517ee093800286eb2eff0103e37f533999c939",
+            "sha256": "ef5b44a0417d950222d1e52d10a6d9ad64df0356f053808e0e6c260789c602e4",
             "manufacturer_model_id": "Thinker-X400"
           },
           "nozzles_mm": [

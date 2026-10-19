@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/SecKit.json",
-            "sha256": "39a5669319814a6c0892a771782905e22239cd2fa87355b4cb09531421a78de3"
+            "sha256": "661e5ebda8ee26004ff13f1ab596b431b3a5313c95de95cb6ad7dd647a1d494a"
           },
           "model": {
             "path": "machine/Seckit Go3.json",
-            "sha256": "9cdd786593726359bc9b373aec0d01cf8b5b5a24e5ef8db3dae9befa640c710a",
+            "sha256": "12f4fee6767eba435c0822ae1a0d46660c459af05256158b70636d3c602c923a",
             "manufacturer_model_id": "SK-Go3"
           },
           "nozzles_mm": [
@@ -34,49 +34,66 @@
               "machine": {
                 "name": "SecKit Go3 0.4 nozzle",
                 "path": "machine/SecKit Go3 0.4 nozzle.json",
-                "sha256": "95653adb40a9beb619f88effd4f833d1454e32fe97f5303d12cd1a5eab58283b"
+                "sha256": "69400b8a35968d9d4af1d91c7ffe24e90a82528a6a2ba6d46823f826dbe67545",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "df1daf897b83e380fdd206d6f7f0e7e7ca7b418aa1b185ccb6e83df1da361770"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "f56fbda1ee153fcceb4114d0fb4400aae6c28f5bdaf4a140cf564a02cfd29411"
+                  },
+                  {
+                    "name": "SecKit Go3 0.4 nozzle",
+                    "path": "machine/SecKit Go3 0.4 nozzle.json",
+                    "sha256": "69400b8a35968d9d4af1d91c7ffe24e90a82528a6a2ba6d46823f826dbe67545"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @SecKit",
                 "path": "process/0.20mm Standard @SecKit.json",
-                "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907",
+                "sha256": "4aa52cddc15bfe219b2584190793f97e52611c011734e15766d4a5ed982fb7d7",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "49053d73b79c4882539694aeb835850fae5111d37f19c51017c6ba7022befd42"
+                    "sha256": "4e318cd83e2b01ac873232c5016f7f69d24f32c21943646b76c7fded23a85684"
                   },
                   {
                     "name": "fdm_process_seckit_common",
                     "path": "process/fdm_process_seckit_common.json",
-                    "sha256": "b1cafd4ece42546e024033e0290eccdf4ee62f96ef260d34ced550461c32ce26"
+                    "sha256": "2829fb44ee886d75da9a23966931ef4daff1a0a9cda6502fbaf1610e8337c98e"
                   },
                   {
                     "name": "0.20mm Standard @SecKit",
                     "path": "process/0.20mm Standard @SecKit.json",
-                    "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907"
+                    "sha256": "4aa52cddc15bfe219b2584190793f97e52611c011734e15766d4a5ed982fb7d7"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PETG @SecKit",
                 "path": "filament/Generic PETG @SecKit.json",
-                "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139",
+                "sha256": "49196340cb13810e6f1f40b51c1afae16488ccd14f4d2123405100243ad50a61",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "6bd8fbf6caa0417019fecad40bfb361ac3b88647e7af6f653721fc6adbbacb1b"
+                    "sha256": "65c3724987e134dd8f11289a68007fa1fe30716e11bfc9ebe7314b4ec6fb1db7"
                   },
                   {
                     "name": "fdm_filament_pet",
                     "path": "filament/fdm_filament_pet.json",
-                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                    "sha256": "88565540a8a897fa90a8043f6f756e63a92f43cc6f436badaa8a074b14635ec2"
                   },
                   {
                     "name": "Generic PETG @SecKit",
                     "path": "filament/Generic PETG @SecKit.json",
-                    "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139"
+                    "sha256": "49196340cb13810e6f1f40b51c1afae16488ccd14f4d2123405100243ad50a61"
                   }
                 ]
               }
@@ -122,11 +139,11 @@
           "bundle_version": "02.04.00.04",
           "manifest": {
             "path": "resources/profiles/SecKit.json",
-            "sha256": "39a5669319814a6c0892a771782905e22239cd2fa87355b4cb09531421a78de3"
+            "sha256": "661e5ebda8ee26004ff13f1ab596b431b3a5313c95de95cb6ad7dd647a1d494a"
           },
           "model": {
             "path": "machine/SecKit SK-Tank.json",
-            "sha256": "76c49ef36b60e7509bd9e299bee72b10ae7f252f6b41ad650dd35d79dea1de4d",
+            "sha256": "9d63c296d3a901a4b7d52b24ddc0d948574f10c4a1518b40892032aa5902919b",
             "manufacturer_model_id": "SK-Tank"
           },
           "nozzles_mm": [
@@ -138,49 +155,66 @@
               "machine": {
                 "name": "SecKit SK-Tank 0.4 nozzle",
                 "path": "machine/SecKit SK-Tank 0.4 nozzle.json",
-                "sha256": "3573722009e1bd8a476ad47f9343d395d55193a092feed3b13325ac97493bf5d"
+                "sha256": "d247473b07252bf4e6a39b637f0aed77d13e4d75682b54e1a06153d8e33528b6",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "df1daf897b83e380fdd206d6f7f0e7e7ca7b418aa1b185ccb6e83df1da361770"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "f56fbda1ee153fcceb4114d0fb4400aae6c28f5bdaf4a140cf564a02cfd29411"
+                  },
+                  {
+                    "name": "SecKit SK-Tank 0.4 nozzle",
+                    "path": "machine/SecKit SK-Tank 0.4 nozzle.json",
+                    "sha256": "d247473b07252bf4e6a39b637f0aed77d13e4d75682b54e1a06153d8e33528b6"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @SecKit",
                 "path": "process/0.20mm Standard @SecKit.json",
-                "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907",
+                "sha256": "4aa52cddc15bfe219b2584190793f97e52611c011734e15766d4a5ed982fb7d7",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "49053d73b79c4882539694aeb835850fae5111d37f19c51017c6ba7022befd42"
+                    "sha256": "4e318cd83e2b01ac873232c5016f7f69d24f32c21943646b76c7fded23a85684"
                   },
                   {
                     "name": "fdm_process_seckit_common",
                     "path": "process/fdm_process_seckit_common.json",
-                    "sha256": "b1cafd4ece42546e024033e0290eccdf4ee62f96ef260d34ced550461c32ce26"
+                    "sha256": "2829fb44ee886d75da9a23966931ef4daff1a0a9cda6502fbaf1610e8337c98e"
                   },
                   {
                     "name": "0.20mm Standard @SecKit",
                     "path": "process/0.20mm Standard @SecKit.json",
-                    "sha256": "90cc7d95632184f0aa38ac0cc017582dc8e32635f8ea439db4f2c34f01085907"
+                    "sha256": "4aa52cddc15bfe219b2584190793f97e52611c011734e15766d4a5ed982fb7d7"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PETG @SecKit",
                 "path": "filament/Generic PETG @SecKit.json",
-                "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139",
+                "sha256": "49196340cb13810e6f1f40b51c1afae16488ccd14f4d2123405100243ad50a61",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "6bd8fbf6caa0417019fecad40bfb361ac3b88647e7af6f653721fc6adbbacb1b"
+                    "sha256": "65c3724987e134dd8f11289a68007fa1fe30716e11bfc9ebe7314b4ec6fb1db7"
                   },
                   {
                     "name": "fdm_filament_pet",
                     "path": "filament/fdm_filament_pet.json",
-                    "sha256": "6808c27b192fef7d17a94a366fd2074cb9673695c143e8e1b036b7859f929ea9"
+                    "sha256": "88565540a8a897fa90a8043f6f756e63a92f43cc6f436badaa8a074b14635ec2"
                   },
                   {
                     "name": "Generic PETG @SecKit",
                     "path": "filament/Generic PETG @SecKit.json",
-                    "sha256": "c9b14164c6a365616142860fce92cba4bb085b41643a93f18b9a74a36bdcb139"
+                    "sha256": "49196340cb13810e6f1f40b51c1afae16488ccd14f4d2123405100243ad50a61"
                   }
                 ]
               }

@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Chuanying.json",
-            "sha256": "68611c2bfab43099cc09b1553619abca629b21f27b58d9b69ead5da51c4221fe"
+            "sha256": "4fabc5446ddaab97fcec77550de5bf92bdba9e50ef5f5078404355352f8f114c"
           },
           "model": {
             "path": "machine/Chuanying X1.json",
-            "sha256": "93edfe43d70a98ff67f8cad94722aeb652bdcfb07ed06d3ad1d03a7baa0188e1",
+            "sha256": "01ccc0a5cfac0146181d7ad1e66c3ad3870e51bffcdb4deadfe976eeb81118a5",
             "manufacturer_model_id": "Chuanying-X1"
           },
           "nozzles_mm": [

@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Genius.json",
-            "sha256": "3164d13ae61facf147296a1790613ce472374b3c801dda06a796fdfb182f62ee",
+            "sha256": "497fe18fa506480d3fc6abb90ea4471e38398aa4b23ec6b6c8596283ad6ff9ac",
             "manufacturer_model_id": "Artillery-Genius"
           },
           "nozzles_mm": [
@@ -34,44 +34,56 @@
               "machine": {
                 "name": "Artillery Genius 0.4 nozzle",
                 "path": "machine/Artillery Genius 0.4 nozzle.json",
-                "sha256": "2a993aff047ded6fc7db032671ca37d569008d4614296f42f478b263dd016320"
+                "sha256": "fa574c146dc9de089480b61689deb504aa3cf706a19d7865cc1a774564820f38",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Genius 0.4 nozzle",
+                    "path": "machine/Artillery Genius 0.4 nozzle.json",
+                    "sha256": "fa574c146dc9de089480b61689deb504aa3cf706a19d7865cc1a774564820f38"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Artillery",
                 "path": "filament/Generic PLA @Artillery.json",
-                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   }
                 ]
               }
@@ -88,22 +100,183 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:Genius",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 2,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Genius",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Genius",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*common_STOCK_FW*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_STOCK_FW*"
+                  },
+                  {
+                    "name": "Artillery Genius",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Genius"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:0.20mm NORMAL @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:0.20mm NORMAL @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Generic PLA @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Generic PLA @Artillery"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Genius BL-TOUCH",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Genius BL-TOUCH",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*common_UPD_FW*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_UPD_FW*"
+                  },
+                  {
+                    "name": "Artillery Genius BL-TOUCH",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Genius BL-TOUCH"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:0.20mm NORMAL @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:0.20mm NORMAL @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Generic PLA @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Generic PLA @Artillery"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {
@@ -142,11 +315,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Genius Pro.json",
-            "sha256": "8576e413dc86f067086abdc09fa542108e9a0297204eb51df450153842cbd509",
+            "sha256": "5fac28919410fb7b8eb24e50be354959a12760b9bb0383786374def4c1475049",
             "manufacturer_model_id": "Artillery-Genius-Pro"
           },
           "nozzles_mm": [
@@ -158,44 +331,56 @@
               "machine": {
                 "name": "Artillery Genius Pro 0.4 nozzle",
                 "path": "machine/Artillery Genius Pro 0.4 nozzle.json",
-                "sha256": "4365f6de8572822fd13839a23f7338ad798660dcb839ebad623a7c7dd53ecd95"
+                "sha256": "254c3aa3b32702fa6aa1ff7311d15f18eb57a41e9dde4d57d08b83cc66fb8ff1",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Genius Pro 0.4 nozzle",
+                    "path": "machine/Artillery Genius Pro 0.4 nozzle.json",
+                    "sha256": "254c3aa3b32702fa6aa1ff7311d15f18eb57a41e9dde4d57d08b83cc66fb8ff1"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius Pro",
                 "path": "process/0.20mm Standard @Artillery Genius Pro.json",
-                "sha256": "4c3c3eb55e59ef21ec297de05ffad63a7a572c1115d6a9724776dca1852aa561",
+                "sha256": "75c590f22ab10c31b5c8e57d3367e26330777ca3a6df3a8fc189a1edec45697a",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius Pro",
                     "path": "process/0.20mm Standard @Artillery Genius Pro.json",
-                    "sha256": "4c3c3eb55e59ef21ec297de05ffad63a7a572c1115d6a9724776dca1852aa561"
+                    "sha256": "75c590f22ab10c31b5c8e57d3367e26330777ca3a6df3a8fc189a1edec45697a"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Artillery",
                 "path": "filament/Generic PLA @Artillery.json",
-                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   }
                 ]
               }
@@ -241,11 +426,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Hornet.json",
-            "sha256": "a309b3d6e868bef56d7e130cc8cef6f42a778f217557fd84e9de5efad7e37079",
+            "sha256": "f342ad2c143463498821e6dd4b9428700f1df7b325b6a6d1f88ed3b037a7420e",
             "manufacturer_model_id": "Artillery-Hornet"
           },
           "nozzles_mm": [
@@ -257,44 +442,56 @@
               "machine": {
                 "name": "Artillery Hornet 0.4 nozzle",
                 "path": "machine/Artillery Hornet 0.4 nozzle.json",
-                "sha256": "7912d0d589ce1103d44077d3d09f90f2aa965b3702710ba417b06d2c1d91be70"
+                "sha256": "0d5108ed274efefafed6e4a6c61d7a23f8b49e036fdfbcf0cfac491da2671c2c",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Hornet 0.4 nozzle",
+                    "path": "machine/Artillery Hornet 0.4 nozzle.json",
+                    "sha256": "0d5108ed274efefafed6e4a6c61d7a23f8b49e036fdfbcf0cfac491da2671c2c"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Hornet",
                 "path": "process/0.20mm Standard @Artillery Hornet.json",
-                "sha256": "b96d249fe7e4880f37cb6310f0a93c50e209bd17520b3a46cfc3acefe10c7e5d",
+                "sha256": "1549d1a5b40c741b1046b47ad553e979ac88d9e6277c10e1eb79b18adee78921",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Hornet",
                     "path": "process/0.20mm Standard @Artillery Hornet.json",
-                    "sha256": "b96d249fe7e4880f37cb6310f0a93c50e209bd17520b3a46cfc3acefe10c7e5d"
+                    "sha256": "1549d1a5b40c741b1046b47ad553e979ac88d9e6277c10e1eb79b18adee78921"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Artillery",
                 "path": "filament/Generic PLA @Artillery.json",
-                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   }
                 ]
               }
@@ -311,22 +508,108 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:Hornet",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Hornet",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Hornet",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*common_STOCK_FW*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_STOCK_FW*"
+                  },
+                  {
+                    "name": "*bowden*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*bowden*"
+                  },
+                  {
+                    "name": "Artillery Hornet",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Hornet"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:0.20mm NORMAL @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:0.20mm NORMAL @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Generic PLA @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Generic PLA @Artillery"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {
@@ -365,11 +648,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery M1 Pro.json",
-            "sha256": "7c655b4fd3ff152d91ff7494d79d112adc7772f36a94387873aac41e466bc30a",
+            "sha256": "aacbc79881cdb27d77cfd4f82d810fa31abac39cfe627207bb40144f23810bbc",
             "manufacturer_model_id": "Artillery-M1-Pro"
           },
           "nozzles_mm": [
@@ -384,49 +667,56 @@
               "machine": {
                 "name": "Artillery M1 Pro 0.2 nozzle",
                 "path": "machine/Artillery M1 Pro 0.2 nozzle.json",
-                "sha256": "f706caf59ece0432d1bb37c9932da90014bf4bda5ab25c7f457cc5c19922f0f4"
+                "sha256": "2b31d0108b9e5e21c46031514295037624268e25a983d78688c71005b35d9e1b",
+                "inheritance": [
+                  {
+                    "name": "Artillery M1 Pro 0.2 nozzle",
+                    "path": "machine/Artillery M1 Pro 0.2 nozzle.json",
+                    "sha256": "2b31d0108b9e5e21c46031514295037624268e25a983d78688c71005b35d9e1b"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -436,49 +726,61 @@
               "machine": {
                 "name": "Artillery M1 Pro 0.4 nozzle",
                 "path": "machine/Artillery M1 Pro 0.4 nozzle.json",
-                "sha256": "28a9f8f6079ca57900a9baa20b63c7de4b154a90fd91b4764cd5f93d63aa5161"
+                "sha256": "cd50fa11d5d7f4aa9e2d1bca7db94ea84fcedd6fc384c45b9d0502074f039ed4",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery M1 Pro 0.4 nozzle",
+                    "path": "machine/Artillery M1 Pro 0.4 nozzle.json",
+                    "sha256": "cd50fa11d5d7f4aa9e2d1bca7db94ea84fcedd6fc384c45b9d0502074f039ed4"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -488,49 +790,56 @@
               "machine": {
                 "name": "Artillery M1 Pro 0.6 nozzle",
                 "path": "machine/Artillery M1 Pro 0.6 nozzle.json",
-                "sha256": "0b600f093a0563b61f405854ba3c3cfed5867832a865a2dc067d69475ff414cb"
+                "sha256": "7eb82d4a0e960ecae7aaa55705eb7bf9002ea7ad820b18baaf66335ff0f76e29",
+                "inheritance": [
+                  {
+                    "name": "Artillery M1 Pro 0.6 nozzle",
+                    "path": "machine/Artillery M1 Pro 0.6 nozzle.json",
+                    "sha256": "7eb82d4a0e960ecae7aaa55705eb7bf9002ea7ad820b18baaf66335ff0f76e29"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -540,49 +849,56 @@
               "machine": {
                 "name": "Artillery M1 Pro 0.8 nozzle",
                 "path": "machine/Artillery M1 Pro 0.8 nozzle.json",
-                "sha256": "e149bf0570fd78e40d11d588dd81b0a879a8409a73a68d6bdbdd8b2746fcbcb3"
+                "sha256": "165c9ea86339b12fdb294306903eea26112224b2c25d55dc4951a0115b8f45a5",
+                "inheritance": [
+                  {
+                    "name": "Artillery M1 Pro 0.8 nozzle",
+                    "path": "machine/Artillery M1 Pro 0.8 nozzle.json",
+                    "sha256": "165c9ea86339b12fdb294306903eea26112224b2c25d55dc4951a0115b8f45a5"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -655,11 +971,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Sidewinder X1.json",
-            "sha256": "5fb9820e791fbb30619946a17bacfcc95821c9720e6f245436553e21acf6113e",
+            "sha256": "1caa7929cccee40d1462931d3f8f5dafb811e78f6a6436ed4180926b94f0ca78",
             "manufacturer_model_id": "Artillery-Sidewinder-X1"
           },
           "nozzles_mm": [
@@ -671,44 +987,56 @@
               "machine": {
                 "name": "Artillery Sidewinder X1 0.4 nozzle",
                 "path": "machine/Artillery Sidewinder X1 0.4 nozzle.json",
-                "sha256": "5cdd516e36dab49b2c5d916b86d8a25d72324476148032b80cc3588e05dcaa01"
+                "sha256": "2812bdc5b49543176db1e1f015fbf17cde164ed800faa2b72bcf4a282d7bb940",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X1 0.4 nozzle",
+                    "path": "machine/Artillery Sidewinder X1 0.4 nozzle.json",
+                    "sha256": "2812bdc5b49543176db1e1f015fbf17cde164ed800faa2b72bcf4a282d7bb940"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery X1",
                 "path": "process/0.20mm Standard @Artillery X1.json",
-                "sha256": "9d6b4108243558fd0ca1f2d465cb6ba4a6ff4edc8d1e88a696b4e85825f7dc57",
+                "sha256": "be3f6b2f0d2b3407b27581066e4408d2f2472e9fc7ce91a15e344ddb4a322d4a",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery X1",
                     "path": "process/0.20mm Standard @Artillery X1.json",
-                    "sha256": "9d6b4108243558fd0ca1f2d465cb6ba4a6ff4edc8d1e88a696b4e85825f7dc57"
+                    "sha256": "be3f6b2f0d2b3407b27581066e4408d2f2472e9fc7ce91a15e344ddb4a322d4a"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Artillery",
                 "path": "filament/Generic PLA @Artillery.json",
-                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   }
                 ]
               }
@@ -725,22 +1053,183 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:X1",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 2,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X1",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Sidewinder X1",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*common_STOCK_FW*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_STOCK_FW*"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X1",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Sidewinder X1"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:0.20mm NORMAL @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:0.20mm NORMAL @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Generic PLA @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Generic PLA @Artillery"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X1 BL-TOUCH",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Sidewinder X1 BL-TOUCH",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*common_UPD_FW*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_UPD_FW*"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X1 BL-TOUCH",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Sidewinder X1 BL-TOUCH"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:0.20mm NORMAL @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:0.20mm NORMAL @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Generic PLA @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Generic PLA @Artillery"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {
@@ -779,11 +1268,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Sidewinder X2.json",
-            "sha256": "fb346bb275008eb954c9c4b8a63e7b064f5f393ee8c4f7d1f86ba0cc2b951d3c",
+            "sha256": "904b1eb7054fa456266dfcf8300503b73d8c3960711d3bb4646771bcac961508",
             "manufacturer_model_id": "Artillery-Sidewinder-X2"
           },
           "nozzles_mm": [
@@ -795,44 +1284,56 @@
               "machine": {
                 "name": "Artillery Sidewinder X2 0.4 nozzle",
                 "path": "machine/Artillery Sidewinder X2 0.4 nozzle.json",
-                "sha256": "4368cd9cb00b5dc38f26cb2e86bb7bb62a527bfcb2401bc5a8d6f232456c31c6"
+                "sha256": "c5f5d9a01dc0ceabb15096e07d51ca8b6d594afdd25c219168dd5c94266416f4",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X2 0.4 nozzle",
+                    "path": "machine/Artillery Sidewinder X2 0.4 nozzle.json",
+                    "sha256": "c5f5d9a01dc0ceabb15096e07d51ca8b6d594afdd25c219168dd5c94266416f4"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery X2",
                 "path": "process/0.20mm Standard @Artillery X2.json",
-                "sha256": "aec293b4e469f91b7ffa7c8a4e3bf5df54045e59d9d70e1b8fdf96999e83975f",
+                "sha256": "33188eece254109501220e367980e58d48f2ab432d78389ce6667bc87cab2224",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery X2",
                     "path": "process/0.20mm Standard @Artillery X2.json",
-                    "sha256": "aec293b4e469f91b7ffa7c8a4e3bf5df54045e59d9d70e1b8fdf96999e83975f"
+                    "sha256": "33188eece254109501220e367980e58d48f2ab432d78389ce6667bc87cab2224"
                   }
                 ]
               },
               "filament": {
                 "name": "Generic PLA @Artillery",
                 "path": "filament/Generic PLA @Artillery.json",
-                "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659",
+                "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   }
                 ]
               }
@@ -878,11 +1379,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Sidewinder X3 Plus.json",
-            "sha256": "65837b24998deb56a2806ad30b45a10fdb1cca852b3d9d645a1783c04b7e42e9",
+            "sha256": "b6a1e8db5cf2c9cc77197db0edc74730921b4cf058fe19660c26d6ba3f8b7fad",
             "manufacturer_model_id": "Artillery-Sidewinder-X3-Plus"
           },
           "nozzles_mm": [
@@ -894,49 +1395,61 @@
               "machine": {
                 "name": "Artillery Sidewinder X3 Plus 0.4 nozzle",
                 "path": "machine/Artillery Sidewinder X3 Plus 0.4 nozzle.json",
-                "sha256": "a98778dbb7e725890d96bd8b3161ed4aac92fafa66e1e84bcaefe8836ea0400a"
+                "sha256": "3ed9f6b0c2024abbd57f8f6580c517b43ae5e3939b4ac83135552114a0250a42",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X3 Plus 0.4 nozzle",
+                    "path": "machine/Artillery Sidewinder X3 Plus 0.4 nozzle.json",
+                    "sha256": "3ed9f6b0c2024abbd57f8f6580c517b43ae5e3939b4ac83135552114a0250a42"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -953,22 +1466,102 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:X3 Plus",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X3 Plus",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Sidewinder X3 Plus",
+                "inheritance": [
+                  {
+                    "name": "*common_X3_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X3_X4*"
+                  },
+                  {
+                    "name": "*common_X3*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X3*"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X3 Plus",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Sidewinder X3 Plus"
+                  }
+                ]
+              },
+              "process": {
+                "name": "X3 Default (0.20mm) @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:X3 Default (0.20mm) @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x3*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x3*"
+                  },
+                  {
+                    "name": "X3 Default (0.20mm) @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:X3 Default (0.20mm) @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA @X3",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Artillery PLA @X3",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x3*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x3*"
+                  },
+                  {
+                    "name": "Artillery PLA @X3",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Artillery PLA @X3"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {
@@ -1007,11 +1600,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Sidewinder X3 Pro.json",
-            "sha256": "dbacbc7fcec56b53842304329d48a0cdab19474c6ade1d7d35fce38037041fc7",
+            "sha256": "2351a5284c9cdf0ef7747991241243cd3acdc610b0d67a058384c2876dbbf577",
             "manufacturer_model_id": "Artillery-Sidewinder-X3-Pro"
           },
           "nozzles_mm": [
@@ -1023,49 +1616,61 @@
               "machine": {
                 "name": "Artillery Sidewinder X3 Pro 0.4 nozzle",
                 "path": "machine/Artillery Sidewinder X3 Pro 0.4 nozzle.json",
-                "sha256": "a1aea4e5da26d251ea1aaab4eb84214f5c7fc9146fd9111e84028893167c7f18"
+                "sha256": "fc2331d771593eb1127e8a926cc61b1a81144d9b76b31481ed6db4bae4c4a1fc",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X3 Pro 0.4 nozzle",
+                    "path": "machine/Artillery Sidewinder X3 Pro 0.4 nozzle.json",
+                    "sha256": "fc2331d771593eb1127e8a926cc61b1a81144d9b76b31481ed6db4bae4c4a1fc"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -1082,22 +1687,102 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:X3 Pro",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X3 Pro",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Sidewinder X3 Pro",
+                "inheritance": [
+                  {
+                    "name": "*common_X3_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X3_X4*"
+                  },
+                  {
+                    "name": "*common_X3*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X3*"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X3 Pro",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Sidewinder X3 Pro"
+                  }
+                ]
+              },
+              "process": {
+                "name": "X3 Default (0.20mm) @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:X3 Default (0.20mm) @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x3*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x3*"
+                  },
+                  {
+                    "name": "X3 Default (0.20mm) @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:X3 Default (0.20mm) @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA @X3",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Artillery PLA @X3",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x3*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x3*"
+                  },
+                  {
+                    "name": "Artillery PLA @X3",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Artillery PLA @X3"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {
@@ -1136,27 +1821,135 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:X4 Max",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X4 Max",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Sidewinder X4 Max",
+                "inheritance": [
+                  {
+                    "name": "*common_X3_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X3_X4*"
+                  },
+                  {
+                    "name": "*common_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X4*"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X4 Max",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Sidewinder X4 Max"
+                  }
+                ]
+              },
+              "process": {
+                "name": "ArtillerySlicer X4 Max PETG & PLA & PLA+ @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:ArtillerySlicer X4 Max PETG & PLA & PLA+ @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4*"
+                  },
+                  {
+                    "name": "*common_x4_max*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4_max*"
+                  },
+                  {
+                    "name": "*common_x4_ABS_PETG_PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4_ABS_PETG_PLA*"
+                  },
+                  {
+                    "name": "ArtillerySlicer X4 Max PETG & PLA & PLA+ @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:ArtillerySlicer X4 Max PETG & PLA & PLA+ @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA & PLA HS @X4",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Artillery PLA & PLA HS @X4",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x4*"
+                  },
+                  {
+                    "name": "Artillery PLA & PLA HS @X4",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Artillery PLA & PLA HS @X4"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Artillery/1.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Artillery/1.1.1.ini",
+          "machine": "Artillery Sidewinder X4 Max",
+          "process": "ArtillerySlicer X4 Max PETG & PLA & PLA+ @Artillery",
+          "filament": "Artillery PLA & PLA HS @X4"
+        }
+      },
+      "status": "structural_verified"
     },
     {
       "id": "artillery-artillery-sidewinder-x4-plus",
@@ -1174,11 +1967,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Sidewinder X4 Plus.json",
-            "sha256": "d2d6ec4aa3464aaae079a7d68877dd5b7c03b1200211b2dadcbe6e8bc8538c52",
+            "sha256": "b9e361bbc873952a97c6cfa114d26dd4db57dace7b440b8d989acb37f79db829",
             "manufacturer_model_id": "Artillery-Sidewinder-X4-Plus"
           },
           "nozzles_mm": [
@@ -1190,49 +1983,61 @@
               "machine": {
                 "name": "Artillery Sidewinder X4 Plus 0.4 nozzle",
                 "path": "machine/Artillery Sidewinder X4 Plus 0.4 nozzle.json",
-                "sha256": "4400e986d44f6aa363ac93fcf27d2a225cdcc98869a960a33e4d7ac4608c6550"
+                "sha256": "643a4a5e7b2aae314c4cf0df6707e47d7bbedf4dab1076475e28cf65a53218a4",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X4 Plus 0.4 nozzle",
+                    "path": "machine/Artillery Sidewinder X4 Plus 0.4 nozzle.json",
+                    "sha256": "643a4a5e7b2aae314c4cf0df6707e47d7bbedf4dab1076475e28cf65a53218a4"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -1249,22 +2054,114 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:X4 Plus",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X4 Plus",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Sidewinder X4 Plus",
+                "inheritance": [
+                  {
+                    "name": "*common_X3_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X3_X4*"
+                  },
+                  {
+                    "name": "*common_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X4*"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X4 Plus",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Sidewinder X4 Plus"
+                  }
+                ]
+              },
+              "process": {
+                "name": "ArtillerySlicer X4 Plus PETG & PLA & PLA+ @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:ArtillerySlicer X4 Plus PETG & PLA & PLA+ @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4*"
+                  },
+                  {
+                    "name": "*common_x4_plus*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4_plus*"
+                  },
+                  {
+                    "name": "*common_x4_ABS_PETG_PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4_ABS_PETG_PLA*"
+                  },
+                  {
+                    "name": "ArtillerySlicer X4 Plus PETG & PLA & PLA+ @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:ArtillerySlicer X4 Plus PETG & PLA & PLA+ @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA & PLA HS @X4",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Artillery PLA & PLA HS @X4",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x4*"
+                  },
+                  {
+                    "name": "Artillery PLA & PLA HS @X4",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Artillery PLA & PLA HS @X4"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {
@@ -1303,11 +2200,11 @@
           "bundle_version": "02.04.00.06",
           "manifest": {
             "path": "resources/profiles/Artillery.json",
-            "sha256": "019d521ebb976beb0ccb47990811874a41cf461b9cae9ea83a45d2faf571945b"
+            "sha256": "608c3d9ddbfd1336cf36acd30163a41d1b13e31d19fb8573d1b05179467ac646"
           },
           "model": {
             "path": "machine/Artillery Sidewinder X4 Pro.json",
-            "sha256": "39dd44caf3c33d471142b065a2ad6d3f5e54cc5940771d4ef5c7656d8685a5fd",
+            "sha256": "7d12eee70637c53248e4d04941f7729d186ade6efd133d785cd1bfb8a9bf7e68",
             "manufacturer_model_id": "Artillery-Sidewinder-X4-Pro"
           },
           "nozzles_mm": [
@@ -1319,49 +2216,61 @@
               "machine": {
                 "name": "Artillery Sidewinder X4 Pro 0.4 nozzle",
                 "path": "machine/Artillery Sidewinder X4 Pro 0.4 nozzle.json",
-                "sha256": "41e19861ef6bccbf642e00114d75c11b46bb9cc9ca61f837c6a861cb75a0b8be"
+                "sha256": "8b17217996623313f571988b12279670166c2a58938c1dbac871209443db832a",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "bb3cb72877caa6a04fc6372fb38ffa0ebf6e15c83cfe4be7ac85de67a49a4332"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X4 Pro 0.4 nozzle",
+                    "path": "machine/Artillery Sidewinder X4 Pro 0.4 nozzle.json",
+                    "sha256": "8b17217996623313f571988b12279670166c2a58938c1dbac871209443db832a"
+                  }
+                ]
               },
               "process": {
                 "name": "0.20mm Standard @Artillery Genius",
                 "path": "process/0.20mm Standard @Artillery Genius.json",
-                "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8",
+                "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9",
                 "inheritance": [
                   {
                     "name": "fdm_process_common",
                     "path": "process/fdm_process_common.json",
-                    "sha256": "a9b2e7479312d474729f68fbc0717aceb3cd9ab8e62eff1aee979824568af95a"
+                    "sha256": "9b0399990ca9a465ace2400574b4becc5c9af4f77fe176dd26e3e7cdbf3f7f41"
                   },
                   {
                     "name": "0.20mm Standard @Artillery Genius",
                     "path": "process/0.20mm Standard @Artillery Genius.json",
-                    "sha256": "642ac92dbc8d9399672887b869cf9551db1019f62d05a608952dd77d07aab1b8"
+                    "sha256": "89f3bf6285c253f9191234711be73b364ede1f62792738fc19a077e7334275b9"
                   }
                 ]
               },
               "filament": {
                 "name": "Artillery PLA Basic",
                 "path": "filament/Artillery PLA Basic.json",
-                "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5",
+                "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "7e9e2aab22308279f16ffdb84bea3b3a0016d1e305ab411db493c2eb9ef4ff0a"
+                    "sha256": "2a0f65f43fd868552ece3c2b94978175265fadc81464faf61301b528a82191ab"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "acfc73a3567dab325918b51674014562996a89fc0dcf4ab56f82e21d1d8ec4b3"
+                    "sha256": "035fc18dffb16a80e829ae670fb6d6dcf9cc29b9fc02fe911811bb919188b08f"
                   },
                   {
                     "name": "Generic PLA @Artillery",
                     "path": "filament/Generic PLA @Artillery.json",
-                    "sha256": "5d0f44b53c82319c1e9630b5301ed4f99c7a26ab13c04d19d86e4441920fe659"
+                    "sha256": "58f8bc4189922794b38f5835a478c7de7182755513580dce58f4405b1cea4394"
                   },
                   {
                     "name": "Artillery PLA Basic",
                     "path": "filament/Artillery PLA Basic.json",
-                    "sha256": "03c646452fe31dcc2292feddc5a9fe55b0c6dcce5e2bf5a06a027abb0cdfd6b5"
+                    "sha256": "f874b73b080b6d0bebd68cc0cbf4ce1764bed160471a5424c75cc866bffafe3e"
                   }
                 ]
               }
@@ -1378,22 +2287,114 @@
           "bundle_version": "1.1.1",
           "manifest": {
             "path": "Artillery/1.1.1.ini",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "model": {
             "path": "Artillery/1.1.1.ini",
             "section": "printer_model:X4 Pro",
-            "sha256": "7875a11e130be8fb522c92b76580ca0fb7a7f67813ca05b7599e38c0038d6ba2"
+            "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Artillery Sidewinder X4 Pro",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "printer:Artillery Sidewinder X4 Pro",
+                "inheritance": [
+                  {
+                    "name": "*common_X3_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X3_X4*"
+                  },
+                  {
+                    "name": "*common_X4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:*common_X4*"
+                  },
+                  {
+                    "name": "Artillery Sidewinder X4 Pro",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "printer:Artillery Sidewinder X4 Pro"
+                  }
+                ]
+              },
+              "process": {
+                "name": "ArtillerySlicer X4 Pro PETG & PLA & PLA+ @Artillery",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "print:ArtillerySlicer X4 Pro PETG & PLA & PLA+ @Artillery",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4*"
+                  },
+                  {
+                    "name": "*common_x4_pro*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4_pro*"
+                  },
+                  {
+                    "name": "*common_x4_ABS_PETG_PLA*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:*common_x4_ABS_PETG_PLA*"
+                  },
+                  {
+                    "name": "ArtillerySlicer X4 Pro PETG & PLA & PLA+ @Artillery",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "print:ArtillerySlicer X4 Pro PETG & PLA & PLA+ @Artillery"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Artillery PLA & PLA HS @X4",
+                "path": "Artillery/1.1.1.ini",
+                "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                "section": "filament:Artillery PLA & PLA HS @X4",
+                "inheritance": [
+                  {
+                    "name": "*common_x3_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x3_x4*"
+                  },
+                  {
+                    "name": "*common_x4*",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:*common_x4*"
+                  },
+                  {
+                    "name": "Artillery PLA & PLA HS @X4",
+                    "path": "Artillery/1.1.1.ini",
+                    "sha256": "3892517e95736ef482747886e98981a79b3f8e22de3e66e9d3af9c999dbd96a2",
+                    "section": "filament:Artillery PLA & PLA HS @X4"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
       "preferred_profile": {

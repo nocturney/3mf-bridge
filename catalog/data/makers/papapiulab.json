@@ -18,27 +18,111 @@
           "bundle_version": "1.1.0",
           "manifest": {
             "path": "PapapiuLab/1.1.0.ini",
-            "sha256": "5acd11863e98d6e56355ce49496c0186af95461e8fa0c3aceda39d909b9aa1a2"
+            "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9"
           },
           "model": {
             "path": "PapapiuLab/1.1.0.ini",
             "section": "printer_model:Papapiu_N1S",
-            "sha256": "5acd11863e98d6e56355ce49496c0186af95461e8fa0c3aceda39d909b9aa1a2"
+            "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9"
           },
           "nozzles_mm": [
             "0.4"
           ],
           "candidate_printer_sections": 1,
-          "variants": [],
-          "validation": "index_only",
-          "warnings": [
-            "INI dependency resolution not yet verified"
-          ]
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Papapiu N1S",
+                "path": "PapapiuLab/1.1.0.ini",
+                "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                "section": "printer:Papapiu N1S",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "PapapiuLab/1.1.0.ini",
+                    "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "PapapiuLab/1.1.0.ini",
+                    "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                    "section": "printer:*0.4nozzle*"
+                  },
+                  {
+                    "name": "Papapiu N1S",
+                    "path": "PapapiuLab/1.1.0.ini",
+                    "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                    "section": "printer:Papapiu N1S"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @Papapiu",
+                "path": "PapapiuLab/1.1.0.ini",
+                "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                "section": "print:0.20mm NORMAL @Papapiu",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "PapapiuLab/1.1.0.ini",
+                    "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.2mm*",
+                    "path": "PapapiuLab/1.1.0.ini",
+                    "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                    "section": "print:*0.2mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @Papapiu",
+                    "path": "PapapiuLab/1.1.0.ini",
+                    "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                    "section": "print:0.20mm NORMAL @Papapiu"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Papapiu",
+                "path": "PapapiuLab/1.1.0.ini",
+                "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                "section": "filament:Generic PLA @Papapiu",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Papapiu",
+                    "path": "PapapiuLab/1.1.0.ini",
+                    "sha256": "2aa73fd45d4439c88bfffaada35a954cc340af39b53728012b25bf65bb42d7f9",
+                    "section": "filament:Generic PLA @Papapiu"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
         }
       ],
-      "preferred_profile": null,
-      "preferred_by_nozzle": {},
-      "status": "index_only"
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "PapapiuLab/1.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "PapapiuLab/1.1.0.ini",
+          "machine": "Papapiu N1S",
+          "process": "0.20mm NORMAL @Papapiu",
+          "filament": "Generic PLA @Papapiu"
+        }
+      },
+      "status": "structural_verified"
     }
   ]
 }

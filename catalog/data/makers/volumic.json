@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO42.json",
-            "sha256": "b68a59d5a90bcfe6401259a5f579b4e7bbbceeeb3af096909e271bb69f97fc83",
+            "sha256": "792f4f12445877dbde2e521fe0677ea775d906f612bc63d0cf2f5fa005348fe3",
             "manufacturer_model_id": "V420"
           },
           "nozzles_mm": [
@@ -34,44 +34,56 @@
               "machine": {
                 "name": "EXO42 (0.4 nozzle)",
                 "path": "machine/EXO42 (0.4 nozzle).json",
-                "sha256": "f3cc579901e3d886d102b251c8fa8fae9bb3de2144c0e6054a4d696136db04ec"
+                "sha256": "59741f390f101fd1c19d8ce4ebe36aa007bf217db546277d3b70983ebc2d5483",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO42 (0.4 nozzle)",
+                    "path": "machine/EXO42 (0.4 nozzle).json",
+                    "sha256": "59741f390f101fd1c19d8ce4ebe36aa007bf217db546277d3b70983ebc2d5483"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed - 0.15mm",
                 "path": "process/Normal speed - 0.15mm.json",
-                "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed - 0.15mm",
                     "path": "process/Normal speed - 0.15mm.json",
-                    "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1"
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -117,11 +129,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO42 IDRE.json",
-            "sha256": "e4682d5601d0d0ecf54a783f8f9d1ac0c5feb6079a490269faad18dbd9ad1400",
+            "sha256": "78da124c368c3af05d2b3da644cd532deb554871aba16d5ffa4d296788f35e5e",
             "manufacturer_model_id": "V420I"
           },
           "nozzles_mm": [
@@ -154,11 +166,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO42 Performance.json",
-            "sha256": "31c3db2e8f184816bebc74c38cfefe01d1b173850927c6a126dd6f6e50cedc92",
+            "sha256": "f773e763a82cbb793b3b1f16777780241b21cc7db4d966532987f5a52929dbee",
             "manufacturer_model_id": "V420K"
           },
           "nozzles_mm": [
@@ -191,11 +203,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO42 Stage 2.json",
-            "sha256": "b4e2ecce598a23831ad1ce4d3d01a2c68f4c479cb5d130528f38374f30d6acd8",
+            "sha256": "c1018ed8184ce5de21b27598576506048b5932b1d1bda56475c3a88f919506ab",
             "manufacturer_model_id": "V420S2"
           },
           "nozzles_mm": [
@@ -207,44 +219,56 @@
               "machine": {
                 "name": "EXO42 Stage 2 (0.4 nozzle)",
                 "path": "machine/EXO42 Stage 2 (0.4 nozzle).json",
-                "sha256": "fbb7c2bf0862447cfdcd6f84a5e528065434e1dc55ab07a0c35fba9f1be6e54a"
+                "sha256": "fc781f47c87315bfb3b6309e012228ddfe3544f6cfa0b1530569c4a410e6ce86",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO42 Stage 2 (0.4 nozzle)",
+                    "path": "machine/EXO42 Stage 2 (0.4 nozzle).json",
+                    "sha256": "fc781f47c87315bfb3b6309e012228ddfe3544f6cfa0b1530569c4a410e6ce86"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed (Stage 2) - 0.20mm",
                 "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed (Stage 2) - 0.20mm",
                     "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                    "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4"
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -290,11 +314,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO65.json",
-            "sha256": "fea71d2c95798a72a82f68eac85556ad555e32dd6ebca87f58e9aeba67061927",
+            "sha256": "ceb6c615c08083c0188ce335716a84c8ca93e2e7596c022cc140d4d4c47b6eaa",
             "manufacturer_model_id": "V650"
           },
           "nozzles_mm": [
@@ -306,44 +330,56 @@
               "machine": {
                 "name": "EXO65 (0.6 nozzle)",
                 "path": "machine/EXO65 (0.6 nozzle).json",
-                "sha256": "986ce7154884e2e73dc14ba94c8cbf28357bdb4d0902f18a4fe6e751ec381912"
+                "sha256": "5d6fdaf68e50bedb22098929e963ae8f174bf559391a037b32d7383f5068aa6a",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO65 (0.6 nozzle)",
+                    "path": "machine/EXO65 (0.6 nozzle).json",
+                    "sha256": "5d6fdaf68e50bedb22098929e963ae8f174bf559391a037b32d7383f5068aa6a"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed - 0.15mm",
                 "path": "process/Normal speed - 0.15mm.json",
-                "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed - 0.15mm",
                     "path": "process/Normal speed - 0.15mm.json",
-                    "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1"
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -389,11 +425,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO65 IDRE.json",
-            "sha256": "16f81b8d99e86ed69a235ab7a5b12077e845f5b73f0dfb851783b17427b5c45d",
+            "sha256": "4f84ac0556bbf2094652dc2bd68f29fc0226b93f93dc579a0a4c8fac36917dfb",
             "manufacturer_model_id": "V650I"
           },
           "nozzles_mm": [
@@ -426,11 +462,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO65 Performance.json",
-            "sha256": "3071e4ead5caefa275a843a48e10068e73c537268fa704444d718c0e7927febd",
+            "sha256": "f10cd28d0203998b8d9970e6aa1da0f30ca9b839c8705da857a20125871a7795",
             "manufacturer_model_id": "V650K"
           },
           "nozzles_mm": [
@@ -465,11 +501,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/EXO65 Stage 2.json",
-            "sha256": "bdbe88410cd71c8bbed03eb7e92a22f678bb37a349afca7040995dc474c8454c",
+            "sha256": "95494776ff65c2bb2c3455d67946f7644d5d764c3d1d9621e202a73a770db2c8",
             "manufacturer_model_id": "V650S2"
           },
           "nozzles_mm": [
@@ -481,44 +517,56 @@
               "machine": {
                 "name": "EXO65 Stage 2 (0.6 nozzle)",
                 "path": "machine/EXO65 Stage 2 (0.6 nozzle).json",
-                "sha256": "9a36d773396c6ba2e39f0653580f6815345b5a5c0e2e64c6e3f3dfa4154c3f3f"
+                "sha256": "872417b709078944cd7a0f484e611adc40b475d4af457467cc655d94594b8e2e",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO65 Stage 2 (0.6 nozzle)",
+                    "path": "machine/EXO65 Stage 2 (0.6 nozzle).json",
+                    "sha256": "872417b709078944cd7a0f484e611adc40b475d4af457467cc655d94594b8e2e"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed (Stage 2) - 0.20mm",
                 "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed (Stage 2) - 0.20mm",
                     "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                    "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4"
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -564,11 +612,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/SH65.json",
-            "sha256": "7a36c8906c3eafe4830907bcb69d74145b4535f0834dabffe63bd50e32394246",
+            "sha256": "049f11e60ba7daafafb1fbcbe81491a3075fe89c5e91dccc6507799916c52522",
             "manufacturer_model_id": "V650300"
           },
           "nozzles_mm": [
@@ -580,44 +628,56 @@
               "machine": {
                 "name": "SH65 (0.4 nozzle)",
                 "path": "machine/SH65 (0.4 nozzle).json",
-                "sha256": "98aa1e5d3e3f5aa18497957efd2fa40bfaf59b45018ecf98f9fb081d3346a2ad"
+                "sha256": "4e9cf817bc33b21ca67c22e8d0cb7cd8caa03baf9602d799d4520f49e5f81b47",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "SH65 (0.4 nozzle)",
+                    "path": "machine/SH65 (0.4 nozzle).json",
+                    "sha256": "4e9cf817bc33b21ca67c22e8d0cb7cd8caa03baf9602d799d4520f49e5f81b47"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed - 0.15mm",
                 "path": "process/Normal speed - 0.15mm.json",
-                "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed - 0.15mm",
                     "path": "process/Normal speed - 0.15mm.json",
-                    "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1"
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -663,11 +723,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/SH65 IDRE.json",
-            "sha256": "be86fd6643d681eafdec3a7fbb2ab38ac8e39cd6a6eda2087776c28cc27cf2e8",
+            "sha256": "76f6fe963089b68cd0ab260f4e4ae4b2d9c751c6c68cbbe40d524c131fbc55c6",
             "manufacturer_model_id": "V650300I"
           },
           "nozzles_mm": [
@@ -700,11 +760,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/SH65 Performance.json",
-            "sha256": "4606296923c0751baf5b8940be313baf4028380904e6971e8f7abf5a10a31370",
+            "sha256": "798ffc512ac3d41415a1c23a93811410eca54231e98fac8dedd97702d1dbe8ae",
             "manufacturer_model_id": "V650300K"
           },
           "nozzles_mm": [
@@ -737,11 +797,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/SH65 Stage 2.json",
-            "sha256": "29bd17fff5ae4738b7f0fa56b722cdf868e7f6ef89a0b3e7726c2446a5351772",
+            "sha256": "45dd986177331ea18702fc758c1584ac528c1133fd2ab96321e3972afc6c17bd",
             "manufacturer_model_id": "V650300S2"
           },
           "nozzles_mm": [
@@ -753,44 +813,56 @@
               "machine": {
                 "name": "SH65 Stage 2 (0.4 nozzle)",
                 "path": "machine/SH65 Stage 2 (0.4 nozzle).json",
-                "sha256": "f29a65c55b6bef94a4f84264c5317090214d66532d3acaa89ec0b36759ec2020"
+                "sha256": "4cfb8e5a5688027c04393a504c5096bc5d263d531cf7c27c4773623bf921de74",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "SH65 Stage 2 (0.4 nozzle)",
+                    "path": "machine/SH65 Stage 2 (0.4 nozzle).json",
+                    "sha256": "4cfb8e5a5688027c04393a504c5096bc5d263d531cf7c27c4773623bf921de74"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed (Stage 2) - 0.20mm",
                 "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed (Stage 2) - 0.20mm",
                     "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                    "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4"
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -836,11 +908,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS20MK2.json",
-            "sha256": "d9301419e301049baa21f74429c55e6d3b43919c5daaedc93734b2aa9249bc23",
+            "sha256": "6dc9377a6308e697874e34a58ddc5ce5c3fe2cea19c3072c596526c73395b3c4",
             "manufacturer_model_id": "V20"
           },
           "nozzles_mm": [
@@ -852,44 +924,56 @@
               "machine": {
                 "name": "VS20MK2 (0.4 nozzle)",
                 "path": "machine/VS20MK2 (0.4 nozzle).json",
-                "sha256": "8e38eaef213d0bafba5d077f699c0412f92d92679592ff194b4651c539ec3370"
+                "sha256": "9e4ce565958466c28eb8987610fb91a8b361c856c1c4bcf6721050652eb10748",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS20MK2 (0.4 nozzle)",
+                    "path": "machine/VS20MK2 (0.4 nozzle).json",
+                    "sha256": "9e4ce565958466c28eb8987610fb91a8b361c856c1c4bcf6721050652eb10748"
+                  }
+                ]
               },
               "process": {
                 "name": "Compatible speed - 0.15mm",
                 "path": "process/Compatible speed - 0.15mm.json",
-                "sha256": "86ec0e53e28edc4787433445f9cc2dd3f9959dd0b6066162fdef404bb6c9e86b",
+                "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Compatible speed - 0.15mm",
                     "path": "process/Compatible speed - 0.15mm.json",
-                    "sha256": "86ec0e53e28edc4787433445f9cc2dd3f9959dd0b6066162fdef404bb6c9e86b"
+                    "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -935,11 +1019,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30MK2.json",
-            "sha256": "b6779addf9b63d9a821651c19354e21f70905b6a73907fbca1cb87fa2708e69a",
+            "sha256": "b41b0f71b19ca9266f158733934c24e980c643733b60fc5585758e9fe3564e64",
             "manufacturer_model_id": "V30"
           },
           "nozzles_mm": [
@@ -951,44 +1035,56 @@
               "machine": {
                 "name": "VS30MK2 (0.4 nozzle)",
                 "path": "machine/VS30MK2 (0.4 nozzle).json",
-                "sha256": "05551c481a42c97a73c5938bd5055c76b129e211111e1dce485d263d7a914c6c"
+                "sha256": "f58c4db0943db902d0736dc57ca87e002fd5adc504018c41e43064f2bea26e02",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30MK2 (0.4 nozzle)",
+                    "path": "machine/VS30MK2 (0.4 nozzle).json",
+                    "sha256": "f58c4db0943db902d0736dc57ca87e002fd5adc504018c41e43064f2bea26e02"
+                  }
+                ]
               },
               "process": {
                 "name": "Compatible speed - 0.15mm",
                 "path": "process/Compatible speed - 0.15mm.json",
-                "sha256": "86ec0e53e28edc4787433445f9cc2dd3f9959dd0b6066162fdef404bb6c9e86b",
+                "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Compatible speed - 0.15mm",
                     "path": "process/Compatible speed - 0.15mm.json",
-                    "sha256": "86ec0e53e28edc4787433445f9cc2dd3f9959dd0b6066162fdef404bb6c9e86b"
+                    "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -1034,11 +1130,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30MK3.json",
-            "sha256": "b814363fc5bee1f968dee9dffc1c4daac3efde3599d17362c0bbfd1cc884f313",
+            "sha256": "957333a00de2f220e047cf1341a4b81a80673b2ed65030c6c4209e1decb648b5",
             "manufacturer_model_id": "V300A"
           },
           "nozzles_mm": [
@@ -1050,44 +1146,56 @@
               "machine": {
                 "name": "VS30MK3 (0.4 nozzle)",
                 "path": "machine/VS30MK3 (0.4 nozzle).json",
-                "sha256": "63c702a5bbcdc70be34ccf2765ec88efb6904cc07594c5933b6889e035d794c4"
+                "sha256": "3bc1631344b99508dd9528bc7a6c2bd95c9f40e106419ac1645a5cdc00928d21",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30MK3 (0.4 nozzle)",
+                    "path": "machine/VS30MK3 (0.4 nozzle).json",
+                    "sha256": "3bc1631344b99508dd9528bc7a6c2bd95c9f40e106419ac1645a5cdc00928d21"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed - 0.15mm",
                 "path": "process/Normal speed - 0.15mm.json",
-                "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed - 0.15mm",
                     "path": "process/Normal speed - 0.15mm.json",
-                    "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1"
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -1133,11 +1241,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30MK3 Stage 2.json",
-            "sha256": "6fd7338b6f320db7a1378c7146c862124d5b88550dffe779540ee5952bab17a6",
+            "sha256": "41699095deef81b1aa79d4b5027b199a873ccf7661e9bdf6c7c81ff7fec7c83b",
             "manufacturer_model_id": "V300AS2"
           },
           "nozzles_mm": [
@@ -1149,44 +1257,56 @@
               "machine": {
                 "name": "VS30MK3 Stage 2 (0.4 nozzle)",
                 "path": "machine/VS30MK3 Stage 2 (0.4 nozzle).json",
-                "sha256": "50351bec2f76b6e99855e28462d6b7965024c1038a202ffa420c6551e7e3fe72"
+                "sha256": "cb4f84f488f78ba2f61c1fa3b59c04ba65d5e63a14fe90541cb5777bd5dd2656",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30MK3 Stage 2 (0.4 nozzle)",
+                    "path": "machine/VS30MK3 Stage 2 (0.4 nozzle).json",
+                    "sha256": "cb4f84f488f78ba2f61c1fa3b59c04ba65d5e63a14fe90541cb5777bd5dd2656"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed (Stage 2) - 0.20mm",
                 "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed (Stage 2) - 0.20mm",
                     "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                    "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4"
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -1232,11 +1352,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30SC.json",
-            "sha256": "bc7097738888829d50f81c6744756d967d0d8c84e91409e41c9f5e331a4da3d3",
+            "sha256": "74c5b4ac14361665ae84197a563b8d44490969c3c44a89a0d8669067bf30feed",
             "manufacturer_model_id": "V300A"
           },
           "nozzles_mm": [
@@ -1248,44 +1368,56 @@
               "machine": {
                 "name": "VS30SC (0.4 nozzle)",
                 "path": "machine/VS30SC (0.4 nozzle).json",
-                "sha256": "02720ae3f01bb63b1c7d7fa2670d5a733aa660bf3b244d0c88684d8fac4f78d0"
+                "sha256": "d658770689a09a4a6ae08ebba2034b916f8965d35ae8b888aad51f11abae38dc",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC (0.4 nozzle)",
+                    "path": "machine/VS30SC (0.4 nozzle).json",
+                    "sha256": "d658770689a09a4a6ae08ebba2034b916f8965d35ae8b888aad51f11abae38dc"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed - 0.15mm",
                 "path": "process/Normal speed - 0.15mm.json",
-                "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed - 0.15mm",
                     "path": "process/Normal speed - 0.15mm.json",
-                    "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1"
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -1331,11 +1463,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30SC2.json",
-            "sha256": "5525e5d1d850a715712037a8fa6a5b1e3dd463e64bfb5195bb2bbf45dbde85e0",
+            "sha256": "bc1ac9aa90f3585462b853ea16fc3ac89ace02fc638e59b49b2ac32f2c9ae6f0",
             "manufacturer_model_id": "V300"
           },
           "nozzles_mm": [
@@ -1347,44 +1479,56 @@
               "machine": {
                 "name": "VS30SC2 (0.4 nozzle)",
                 "path": "machine/VS30SC2 (0.4 nozzle).json",
-                "sha256": "a0fc1cea3f71b7fd32fc4ee3757eaa346624a8af2b3a2fcf64141ed076f6ff6f"
+                "sha256": "3ef4a88b40feb8cd7181070e9713e43ccba05075ae87aa6eeedf392fde07e9c3",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC2 (0.4 nozzle)",
+                    "path": "machine/VS30SC2 (0.4 nozzle).json",
+                    "sha256": "3ef4a88b40feb8cd7181070e9713e43ccba05075ae87aa6eeedf392fde07e9c3"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed - 0.15mm",
                 "path": "process/Normal speed - 0.15mm.json",
-                "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed - 0.15mm",
                     "path": "process/Normal speed - 0.15mm.json",
-                    "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1"
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -1430,11 +1574,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30SC2 Performance.json",
-            "sha256": "03e4c554ca081441839399044ce3400a9eacd13623eae406626441343c395af6",
+            "sha256": "71f198df203f651e7c40de89bec3e5fc4136578a94570bd1d21c11399d84caa2",
             "manufacturer_model_id": "V300P"
           },
           "nozzles_mm": [
@@ -1446,44 +1590,56 @@
               "machine": {
                 "name": "VS30SC2 Performance (0.4 nozzle)",
                 "path": "machine/VS30SC2 Performance (0.4 nozzle).json",
-                "sha256": "3cf98517f7916cc8adaedfaf8677f4dc1e41038a462815927df00abff398eff4"
+                "sha256": "5664fdcb43faafadf2beb5c819cea3939fd5a84737dccf4a3feabf3d9a38fc23",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC2 Performance (0.4 nozzle)",
+                    "path": "machine/VS30SC2 Performance (0.4 nozzle).json",
+                    "sha256": "5664fdcb43faafadf2beb5c819cea3939fd5a84737dccf4a3feabf3d9a38fc23"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal performance VS30 - 0.20mm",
                 "path": "process/Normal performance VS30 - 0.20mm.json",
-                "sha256": "c5f01086b53b72837834d91e7e35c1e577a12fefc2bdb93cd6e2823a4def4a68",
+                "sha256": "d41dee08792108e7934c0145c7d11633201e8d16372ae96698636557d136b8f3",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal performance VS30 - 0.20mm",
                     "path": "process/Normal performance VS30 - 0.20mm.json",
-                    "sha256": "c5f01086b53b72837834d91e7e35c1e577a12fefc2bdb93cd6e2823a4def4a68"
+                    "sha256": "d41dee08792108e7934c0145c7d11633201e8d16372ae96698636557d136b8f3"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -1529,11 +1685,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30SC2 Stage 2.json",
-            "sha256": "58ed5e93c653ac017672f4fc0569310bd076d9480be782dac4fc6e17a9090d93",
+            "sha256": "16df5fc45a2b346c8ac845cee153bada1b1c02d1ca596575d65a2bbacc32712d",
             "manufacturer_model_id": "V300S2"
           },
           "nozzles_mm": [
@@ -1545,44 +1701,56 @@
               "machine": {
                 "name": "VS30SC2 Stage 2 (0.4 nozzle)",
                 "path": "machine/VS30SC2 Stage 2 (0.4 nozzle).json",
-                "sha256": "afe1140e779587645ebf9c1cbda36203cbf6ab9a4564a415cbd5571f9b7a81e8"
+                "sha256": "d42d75293c872e2bd78ecac259d6a8ac49fb7bdbd338ac77c48460a896c4246f",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC2 Stage 2 (0.4 nozzle)",
+                    "path": "machine/VS30SC2 Stage 2 (0.4 nozzle).json",
+                    "sha256": "d42d75293c872e2bd78ecac259d6a8ac49fb7bdbd338ac77c48460a896c4246f"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed (Stage 2) - 0.20mm",
                 "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed (Stage 2) - 0.20mm",
                     "path": "process/Normal speed (Stage 2) - 0.20mm.json",
-                    "sha256": "737243853925392e07a0fdab11b0a10ea8a3012734a5a246b537ddb3fbb704c4"
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }
@@ -1628,11 +1796,11 @@
           "bundle_version": "02.04.00.05",
           "manifest": {
             "path": "resources/profiles/Volumic.json",
-            "sha256": "6b1df6b91efc0041dd1920a49b57b8b2e2098130d0b2713fadd1e4d32f8719da"
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
           },
           "model": {
             "path": "machine/VS30ULTRA.json",
-            "sha256": "8437923a68bc226a39b242c2bc71245383f5f0bc67409c222235436114402c43",
+            "sha256": "1705dcdda317c2112518b176411034eec6d716a11aa3fecbb5941ed6505cc710",
             "manufacturer_model_id": "V300B"
           },
           "nozzles_mm": [
@@ -1644,44 +1812,56 @@
               "machine": {
                 "name": "VS30ULTRA (0.4 nozzle)",
                 "path": "machine/VS30ULTRA (0.4 nozzle).json",
-                "sha256": "4cf094f8467c2afbae530827166220d9bb8e33d38be6cfc29d8173b2219de329"
+                "sha256": "f93d852cc61e98a7b0f672260765ad551729b3b3ac5dd592b5d3e5a7d2b2d7e4",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30ULTRA (0.4 nozzle)",
+                    "path": "machine/VS30ULTRA (0.4 nozzle).json",
+                    "sha256": "f93d852cc61e98a7b0f672260765ad551729b3b3ac5dd592b5d3e5a7d2b2d7e4"
+                  }
+                ]
               },
               "process": {
                 "name": "Normal speed - 0.15mm",
                 "path": "process/Normal speed - 0.15mm.json",
-                "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
                 "inheritance": [
                   {
                     "name": "fdm_process_volumic_common",
                     "path": "process/fdm_process_volumic_common.json",
-                    "sha256": "359397527db59176650c8bf195fdab5ea5249def339414f3da995e37f1ae15a0"
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
                   },
                   {
                     "name": "Normal speed - 0.15mm",
                     "path": "process/Normal speed - 0.15mm.json",
-                    "sha256": "e4ee18fc5fc18be1862fc8e2bd0ad011af71a44dd2ee0e8d330043f84a01c8c1"
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
                   }
                 ]
               },
               "filament": {
                 "name": "Volumic UNIVERSAL Ultra",
                 "path": "filament/Volumic UNIVERSAL Ultra.json",
-                "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
                 "inheritance": [
                   {
                     "name": "fdm_filament_common",
                     "path": "filament/fdm_filament_common.json",
-                    "sha256": "23531ef7940a2b879ca6100010b27ecfa734a07975c5b5bc19cd68f41dae7179"
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
                   },
                   {
                     "name": "fdm_filament_pla",
                     "path": "filament/fdm_filament_pla.json",
-                    "sha256": "8fc26efbb1e193cf02d4d820b78d15eb0f633739436ee0070934cbae63cf8da2"
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
                   },
                   {
                     "name": "Volumic UNIVERSAL Ultra",
                     "path": "filament/Volumic UNIVERSAL Ultra.json",
-                    "sha256": "5e4f514be03b01aa05e906aab63c34531799c1fed3aafe82dbda9adbf0f2ccb4"
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
                   }
                 ]
               }

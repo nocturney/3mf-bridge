@@ -18,11 +18,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron 0.1.json",
-            "sha256": "c758c62df2b78df144b33ffc24a0588b793c7ae382699889f328d92b685377f7",
+            "sha256": "3029eca89962f6b833afb1600741dc96b40923f3a939b09e1f5ab10f9f5bef4b",
             "manufacturer_model_id": "Voron0"
           },
           "nozzles_mm": [
@@ -62,11 +62,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron 2.4 250.json",
-            "sha256": "477a49556346b630e42f62f68776d3ff4113b753b878da4fb8ab0273675e5d80",
+            "sha256": "a26450c21f442d8b8a8582659b22eee536226fb9ae22b68d1676fa3078b69878",
             "manufacturer_model_id": "Voron2_250"
           },
           "nozzles_mm": [
@@ -106,11 +106,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron 2.4 300.json",
-            "sha256": "bfefbd7bb1011283064597dab4222b067cc71e5ab96b280820881396a118c92e",
+            "sha256": "fe1e464df9b29dcfb0da74e5fe645e6ad6b6f7ee73337590b68899664af4f23b",
             "manufacturer_model_id": "Voron2_300"
           },
           "nozzles_mm": [
@@ -150,11 +150,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron 2.4 350.json",
-            "sha256": "2e425ba066c5c340c372ab8840389b0e757ede0c7961e41ab7f66a77b21cdd45",
+            "sha256": "3ae6a61cfa8fc885ede186d197014f22fa9127438a223d3bdbee3a52528a3207",
             "manufacturer_model_id": "Voron2_350"
           },
           "nozzles_mm": [
@@ -194,11 +194,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron Switchwire 250.json",
-            "sha256": "d6e9307b3c0e78191b77475b0af69e2077830b52a029c64e0d895ce5aeb54d79",
+            "sha256": "adab08d316c2474ff2e36ae38025767de035c47c189ebc3530c74336e3f5f742",
             "manufacturer_model_id": "Voron_Switchwire_250"
           },
           "nozzles_mm": [
@@ -238,11 +238,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron Trident 250.json",
-            "sha256": "b92f79bb5af95ed4e0352815a818ae432a167b28b58b437b5457a701d02b1610",
+            "sha256": "be97dddfa27936fe771236576b7c7a0c483872a4ed2f3259a967ee151befc03f",
             "manufacturer_model_id": "Voron2_Trident_250"
           },
           "nozzles_mm": [
@@ -282,11 +282,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron Trident 300.json",
-            "sha256": "a2f0b0eab7cdb4194626ba34ffa5300112ec5e98472b752bf800b243c6901ccd",
+            "sha256": "a3d862b8363fe299d78f72511f32c2978eacfa0b9b1c94083badd4134b2c5b1d",
             "manufacturer_model_id": "Voron2_Trident_300"
           },
           "nozzles_mm": [
@@ -326,11 +326,11 @@
           "bundle_version": "02.04.00.03",
           "manifest": {
             "path": "resources/profiles/Voron.json",
-            "sha256": "2dea506602f9124569fedc093654d510c5d6b33ed55749687f23a8fb73b28d79"
+            "sha256": "fdb25c9cd99f60770b7111df9843dbec8cab60e3f56a7c49b6f3cfb7aef85dee"
           },
           "model": {
             "path": "machine/Voron Trident 350.json",
-            "sha256": "34357a03a88ced93387c8cc9f22991e6a9d7c62442370f4171632ad2f533e606",
+            "sha256": "d28cbbcc25166856d38820b022cbef70fb7c8c3ceeda8bf84295b9866e4d65bc",
             "manufacturer_model_id": "Voron2_Trident_350"
           },
           "nozzles_mm": [
@@ -371,12 +371,12 @@
           "bundle_version": "3.0.0",
           "manifest": {
             "path": "Voron/3.0.0.ini",
-            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+            "sha256": "179ee446b7f1fd711c26db53ecc0500febc7213488d37798937ae8db31932235"
           },
           "model": {
             "path": "Voron/3.0.0.ini",
             "section": "printer_model:Voron_v1_250_afterburner",
-            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+            "sha256": "179ee446b7f1fd711c26db53ecc0500febc7213488d37798937ae8db31932235"
           },
           "nozzles_mm": [
             "0.25",
@@ -386,11 +386,15 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 6,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.10mm 0.25nozzle (1)",
+            "print missing preset: 0.10mm 0.3nozzle (1)",
+            "print missing preset: 0.15mm 0.4nozzle (1)",
+            "print missing preset: 0.2mm 0.5nozzle (1)",
+            "print missing preset: 0.2mm 0.6nozzle (1)"
           ]
         }
       ],
@@ -414,12 +418,12 @@
           "bundle_version": "3.0.0",
           "manifest": {
             "path": "Voron/3.0.0.ini",
-            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+            "sha256": "179ee446b7f1fd711c26db53ecc0500febc7213488d37798937ae8db31932235"
           },
           "model": {
             "path": "Voron/3.0.0.ini",
             "section": "printer_model:Voron_v1_300_afterburner",
-            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+            "sha256": "179ee446b7f1fd711c26db53ecc0500febc7213488d37798937ae8db31932235"
           },
           "nozzles_mm": [
             "0.25",
@@ -429,11 +433,15 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 6,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.10mm 0.25nozzle (1)",
+            "print missing preset: 0.10mm 0.3nozzle (1)",
+            "print missing preset: 0.15mm 0.4nozzle (1)",
+            "print missing preset: 0.2mm 0.5nozzle (1)",
+            "print missing preset: 0.2mm 0.6nozzle (1)"
           ]
         }
       ],
@@ -457,12 +465,12 @@
           "bundle_version": "3.0.0",
           "manifest": {
             "path": "Voron/3.0.0.ini",
-            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+            "sha256": "179ee446b7f1fd711c26db53ecc0500febc7213488d37798937ae8db31932235"
           },
           "model": {
             "path": "Voron/3.0.0.ini",
             "section": "printer_model:Voron_v1_350_afterburner",
-            "sha256": "9049f1fdfc28acb53c0c62ab37ae23ffd6e9c2ff1885609a7af9524b8794816c"
+            "sha256": "179ee446b7f1fd711c26db53ecc0500febc7213488d37798937ae8db31932235"
           },
           "nozzles_mm": [
             "0.25",
@@ -472,11 +480,15 @@
             "0.6",
             "0.8"
           ],
-          "candidate_printer_sections": 1,
+          "candidate_printer_sections": 6,
           "variants": [],
           "validation": "index_only",
           "warnings": [
-            "INI dependency resolution not yet verified"
+            "print missing preset: 0.10mm 0.25nozzle (1)",
+            "print missing preset: 0.10mm 0.3nozzle (1)",
+            "print missing preset: 0.15mm 0.4nozzle (1)",
+            "print missing preset: 0.2mm 0.5nozzle (1)",
+            "print missing preset: 0.2mm 0.6nozzle (1)"
           ]
         }
       ],
