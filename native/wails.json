@@ -1,6 +1,6 @@
 {
-  "name": "3mf-bridge-native",
-  "outputfilename": "3MF Bridge",
+  "name": "SliceBridge",
+  "outputfilename": "SliceBridge",
   "frontend": {
     "dir": "frontend",
     "install": "",

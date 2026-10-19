@@ -4,16 +4,16 @@
 // local-only file handling, and a persisted per-printer hardware profile.
 const translations = {
   he: {
-    brandTagline:'Bambu → Native 3MF',settings:'הגדרות',checkUpdates:'בדיקת עדכונים',
+    brandTagline:'מחברים בין סלייסרים',settings:'הגדרות',checkUpdates:'בדיקת עדכונים',
     dismiss:'סגירה',workspaceTitle:'סביבת המרה',
     workspaceSubtitle:'המרת פרויקטים לכמה מדפסות, בלי לשנות את המקור.',
     localOnly:'עיבוד מקומי בלבד',queueTitle:'קובצי מקור',clear:'ניקוי',
     addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',
     dropHint:'גרור קובצי 3MF או תיקייה לכאן',queueFootnote:'עד 200 קובצי 3MF, כולל תיקיות משנה.',
     targetsTitle:'מדפסות יעד',selectAll:'בחר הכול',deselectAll:'בטל בחירה',
-    resultsTitle:'תוצאות ודוח המרה',emptyTitle:'מוכן להמרה',
+    resultsTitle:'תוצאות המרה',emptyTitle:'מוכן להמרה',
     emptyDescription:'הוסף פרויקטים, בחר מדפסות והפעל המרה. דו״ח מפורט יוצג כאן לכל מדפסת.',
-    exportReport:'שמירת דו״ח JSON',validateHint:'חובה לבצע Slice מחדש לפני הדפסה',
+    clearResults:'נקה תוצאות',validateHint:'חובה לבצע Slice מחדש לפני הדפסה',
     idle:'ממתין לקבצים',idleHint:'בחר קבצים ומדפסות כדי להתחיל',
     ready:'מוכן להמרה',readyHint:'{files} קבצים × {printers} מדפסות',
     converting:'ממיר פרויקטים…',convertingFile:'קובץ {index} מתוך {total}: {name}',
@@ -50,7 +50,6 @@ const translations = {
     close:'סגירה',settingsError:'שגיאה בהגדרות',
     addError:'לא ניתן להוסיף קבצים',convertError:'המרה נכשלה',
     launchError:'לא ניתן לפתוח את הסלייסר',
-    exportError:'לא ניתן לשמור את הדו״ח',
     noUpdate:'לא נבדקו עדכונים',
     checkingUpdates:'בודק עדכונים ב־GitHub…',updateAvailable:'גרסה חדשה זמינה: {v}',
     latestInstalled:'הגרסה המותקנת מעודכנת.',
@@ -61,16 +60,16 @@ const translations = {
     openReleases:'צפייה בגרסאות',openPreviewBuilds:'צפייה בבניות Beta'
   },
   en: {
-    brandTagline:'Bambu → Native 3MF',settings:'Settings',checkUpdates:'Check for updates',
+    brandTagline:'Bridge your prints',settings:'Settings',checkUpdates:'Check for updates',
     dismiss:'Dismiss',workspaceTitle:'Conversion workspace',
     workspaceSubtitle:'Convert projects for multiple printers without altering your originals.',
     localOnly:'Completely local',queueTitle:'Source projects',clear:'Clear',
     addFiles:'Add files',addFolder:'Add folder',
     dropHint:'Drop 3MF files or folders here',queueFootnote:'Up to 200 projects, including subfolders.',
     targetsTitle:'Target printers',selectAll:'Select all',deselectAll:'Clear selection',
-    resultsTitle:'Results and conversion report',emptyTitle:'Ready to convert',
+    resultsTitle:'Conversion results',emptyTitle:'Ready to convert',
     emptyDescription:'Add projects, select printers and convert. Each output gets its own detailed report.',
-    exportReport:'Save JSON report',validateHint:'Always re-slice before printing',
+    clearResults:'Clear results',validateHint:'Always re-slice before printing',
     idle:'Waiting for projects',idleHint:'Add projects and select printers to start',
     ready:'Ready to convert',readyHint:'{files} projects × {printers} printers',
     converting:'Converting projects…',convertingFile:'Project {index} of {total}: {name}',
@@ -107,7 +106,6 @@ const translations = {
     close:'Close',settingsError:'Settings error',
     addError:'Could not add projects',convertError:'Conversion failed',
     launchError:'Could not launch the slicer',
-    exportError:'Could not save the report',
     noUpdate:'Updates have not been checked',
     checkingUpdates:'Checking GitHub Releases…',updateAvailable:'New version available: {v}',
     latestInstalled:'You have the latest published version.',
@@ -280,8 +278,10 @@ async function addFiles(infos){
       next.push(info);
     }
   }
+  if(next.length===files.length)return;
   files=next;
   memoryStatus=null;
+  clearResults();
   renderQueue();
 }
 async function pickFiles(){
@@ -370,7 +370,7 @@ function resultLine(parent,result,source){
 }
 function renderResults(){
   dom.resultList.replaceChildren();
-  el('reportToolbar').hidden=!(lastBatch?.filesDone>0);
+  el('clearResultsBtn').disabled=busy||!lastBatch;
   dom.reportCounts.replaceChildren();
   if(!lastBatch){
     const empty=node('div','empty-state');
@@ -413,13 +413,22 @@ function renderResults(){
   }
   dom.resultList.append(fragment);
 }
+function clearResults(){
+  if(busy)return;
+  lastBatch=null;
+  progress=null;
+  memoryStatus=null;
+  dom.resultList.scrollTop=0;
+  renderResults();
+  renderActionBar();
+}
 async function runBatch(){
   if(busy)return;
   if(files.length===0){setActivity(t('noSource'),'','warning');return;}
   const targets=getSelectedTargets();
   if(!targets.length){setActivity(t('noTargets'),'','warning');return;}
-  busy=true;progress=null;memoryStatus=null;
-  renderQueue();renderTargets();renderActionBar();
+  busy=true;progress=null;memoryStatus=null;lastBatch=null;
+  renderResults();renderQueue();renderTargets();renderActionBar();
   try{
     const response=await api().ConvertBatch({filePaths:files.map((f)=>f.path),targets});
     if(response.error){
@@ -437,17 +446,14 @@ async function runBatch(){
     setActivity(t('convertError'),e?.message||String(e),'warning');
   }finally{
     busy=false;progress=null;
-    renderQueue();renderTargets();renderActionBar();
+    renderResults();renderQueue();renderTargets();renderActionBar();
   }
 }
 async function openFolder(){
   try{await api().OpenOutputFolder();}
   catch(e){setActivity(t('launchError'),e?.message||String(e),'warning');}
 }
-async function exportReport(){
-  try{await api().ExportLastReport(language);}
-  catch(e){setActivity(t('exportError'),e?.message||String(e),'warning');}
-}
+
 function fillSelect(element,items,selected){
   element.replaceChildren();
   for(const option of items){
@@ -611,7 +617,7 @@ function registerHandlers(){
   el('selectAllBtn').addEventListener('click',selectAll);
   el('convertBtn').addEventListener('click',runBatch);
   el('openFolderBtn').addEventListener('click',openFolder);
-  el('exportReportBtn').addEventListener('click',exportReport);
+  el('clearResultsBtn').addEventListener('click',()=>{if(!busy)clearResults();});
   el('settingsBtn').addEventListener('click',()=>openSettings('u1'));
   el('closeSettingsBtn').addEventListener('click',()=>dom.settings.close());
   el('cancelSettingsBtn').addEventListener('click',()=>dom.settings.close());

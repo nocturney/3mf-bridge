@@ -20,7 +20,7 @@ const (
 	Repository  = "nocturney/3mf-bridge"
 	APIURL      = "https://api.github.com/repos/nocturney/3mf-bridge/releases?per_page=50"
 	ReleasesURL = "https://github.com/nocturney/3mf-bridge/releases"
-	BuildsURL   = "https://github.com/nocturney/3mf-bridge/actions/workflows/native.yml?query=branch%3Afeature%2Fnative-webview-shell"
+	BuildsURL   = "https://github.com/nocturney/3mf-bridge/actions/workflows/native.yml"
 	maxResponse = 2 << 20
 )
 
@@ -76,11 +76,11 @@ func ReleaseURL(tag string) (string, error) {
 func expectedAssets(goos, arch string) []string {
 	switch goos + "/" + arch {
 	case "windows/amd64":
-		return []string{"3mf-bridge-windows-native.zip", "3mf-bridge-windows-x64.zip"}
+		return []string{"slicebridge-windows.zip", "slicebridge-windows-native.zip", "3mf-bridge-windows-native.zip", "3mf-bridge-windows-x64.zip"}
 	case "darwin/arm64":
-		return []string{"3mf-bridge-macos-apple-silicon.zip", "3mf-bridge-macos-arm64.zip"}
+		return []string{"slicebridge-macos-apple-silicon.zip", "slicebridge-macos-arm64.zip", "3mf-bridge-macos-apple-silicon.zip", "3mf-bridge-macos-arm64.zip"}
 	case "darwin/amd64":
-		return []string{"3mf-bridge-macos-intel.zip", "3mf-bridge-macos-amd64.zip"}
+		return []string{"slicebridge-macos-intel.zip", "3mf-bridge-macos-intel.zip", "3mf-bridge-macos-amd64.zip"}
 	}
 	return nil
 }
@@ -125,7 +125,7 @@ func Check(ctx context.Context, client *http.Client, endpoint, installed, goos, 
 	}
 	request.Header.Set("Accept", "application/vnd.github+json")
 	request.Header.Set("X-GitHub-Api-Version", "2022-11-28")
-	request.Header.Set("User-Agent", "3MF-Bridge/"+strings.TrimPrefix(current, "v"))
+	request.Header.Set("User-Agent", "SliceBridge/"+strings.TrimPrefix(current, "v"))
 	response, err := client.Do(request)
 	if err != nil {
 		return out, fmt.Errorf("GitHub Releases check: %w", err)

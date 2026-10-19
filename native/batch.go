@@ -2,7 +2,6 @@ package main
 
 import (
 	"archive/zip"
-	"encoding/json"
 	"encoding/xml"
 	"errors"
 	"fmt"
@@ -483,41 +482,4 @@ func (a *App) OpenInSlicer(target, outputPath string) error {
 		return exec.Command("open", "-a", exe, outputPath).Start()
 	}
 	return exec.Command(exe, outputPath).Start()
-}
-func (a *App) ExportLastReport(lang string) (string, error) {
-	if a.ctx == nil {
-		return "", fmt.Errorf("desktop window not ready")
-	}
-	a.mutex.Lock()
-	report := a.latestBatch
-	a.mutex.Unlock()
-	if report.FilesDone == 0 {
-		return "", fmt.Errorf("there is no conversion report to export")
-	}
-	title := "Save 3MF Bridge conversion report"
-	if lang == "he" {
-		title = "שמירת דו״ח המרה"
-	}
-	dest, err := wailsruntime.SaveFileDialog(a.ctx, wailsruntime.SaveDialogOptions{
-		Title:           title,
-		DefaultFilename: "3MF-Bridge-report.json",
-		Filters:         []wailsruntime.FileFilter{{DisplayName: "JSON (*.json)", Pattern: "*.json"}},
-	})
-	if err != nil {
-		return "", err
-	}
-	if dest == "" {
-		return "", nil
-	}
-	if filepath.Ext(dest) != ".json" {
-		return "", fmt.Errorf("report file must use .json extension")
-	}
-	b, err := json.MarshalIndent(report, "", "  ")
-	if err != nil {
-		return "", err
-	}
-	if err = os.WriteFile(dest, append(b, '\n'), 0600); err != nil {
-		return "", err
-	}
-	return dest, nil
 }

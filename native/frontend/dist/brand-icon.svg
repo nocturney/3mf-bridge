@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="SliceBridge layered mint and forest arch">
+  <defs>
+    <linearGradient id="tile" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F5FFFB"/>
+      <stop offset=".56" stop-color="#E6FAF2"/>
+      <stop offset="1" stop-color="#D9F1E7"/>
+    </linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2=".9">
+      <stop offset="0" stop-color="#CEFFE8"/>
+      <stop offset=".42" stop-color="#9CE8CC"/>
+      <stop offset="1" stop-color="#4DB69C"/>
+    </linearGradient>
+    <linearGradient id="center" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#8AD8BF"/>
+      <stop offset="1" stop-color="#329982"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-40%" width="160%" height="200%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+    <path id="arch" d="M 152 529 C 303 540 360 283 512 284 C 664 283 721 540 872 529 L 872 582 C 729 581 648 346 512 345 C 376 346 295 581 152 582 Z"/>
+  </defs>
+  <rect width="1024" height="1024" rx="226" fill="url(#tile)"/>
+  <rect x="10" y="10" width="1004" height="1004" rx="220" fill="none" stroke="#FFFFFF" stroke-opacity=".62" stroke-width="14"/>
+  <ellipse cx="512" cy="777" rx="285" ry="34" fill="#184c3b" opacity=".11" filter="url(#soft)"/>
+  <use href="#arch" transform="translate(0 170)" fill="#193F38"/>
+  <use href="#arch" transform="translate(0 126)" fill="#24685C"/>
+  <use href="#arch" transform="translate(0 82)" fill="#2F7F73"/>
+  <use href="#arch" transform="translate(0 38)" fill="url(#center)"/>
+  <use href="#arch" transform="translate(0 -7)" fill="url(#top)"/>
+  <path d="M 179 518 C 316 523 383 269 512 269 C 641 269 708 523 845 518" fill="none" stroke="#F6FFF9" stroke-width="14" stroke-linecap="round" opacity=".88"/>
+  <path d="M 168 628 C 303 634 379 393 512 391 C 646 391 721 634 856 628" fill="none" stroke="#D9FFF0" stroke-width="7" opacity=".62"/>
+</svg>
