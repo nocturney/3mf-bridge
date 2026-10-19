@@ -44,10 +44,8 @@ jobs:
         run: |
           python ../catalog/tools/check.py ../catalog
           if ($LASTEXITCODE -ne 0) { throw "Catalog metadata verification failed" }
-          python ../catalog/tools/export_ui.py --catalog ../catalog --output frontend/dist/printer-catalog.json
-          if ($LASTEXITCODE -ne 0) { throw "Printer picker export failed" }
-          $changed = git -C .. status --porcelain -- native/frontend/dist/printer-catalog.json
-          if ($changed) { throw "Offline printer picker snapshot drift" }
+          python ../catalog/tools/verify_ui.py --catalog ../catalog --repo ..
+          if ($LASTEXITCODE -ne 0) { throw "Committed printer picker snapshot drift" }
       - name: Test Go engine and native backend
         shell: pwsh
         run: go test -count=1 ./...
@@ -101,8 +99,7 @@ jobs:
       - name: Verify offline printer catalogue is reproducible
         run: |
           python3 ../catalog/tools/check.py ../catalog
-          python3 ../catalog/tools/export_ui.py --catalog ../catalog --output frontend/dist/printer-catalog.json
-          test -z "$(git -C .. status --porcelain -- native/frontend/dist/printer-catalog.json)"
+          python3 ../catalog/tools/verify_ui.py --catalog ../catalog --repo ..
       - name: Test Go engine and native backend
         run: go test -count=1 ./...
       - name: Test native UI and browser handoff
