@@ -27,3 +27,7 @@
 5. Confirm clear `LICENSE`, `THIRD_PARTY_NOTICES.md`, copyright and trademark permissions and independent QA before declaring rights clearance complete.
 
 Tracking: [legal/license #9](https://github.com/nocturney/slicebridge/issues/9) · [public release #11](https://github.com/nocturney/slicebridge/issues/11) · [LICENSING.md](LICENSING.md).
+
+## Go/Wails follow-up (19 October 2026)
+
+Examined 32 manifest entries, including 30 external version-specific module ZIPs with candidate license files and two local replacements. The preliminary classifications and remaining limitations are in [GO_LICENSE_AUDIT.md](GO_LICENSE_AUDIT.md). Draft ZIP inspection and approved artwork hash inventory are in [RELEASE_PREFLIGHT.md](RELEASE_PREFLIGHT.md).

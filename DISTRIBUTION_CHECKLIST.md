@@ -32,6 +32,8 @@
 
 - [ ] Sign Windows executable/installer as appropriate; sign and notarize macOS distribution, with Apple Silicon/Intel scope explained accurately.
 - [ ] Produce versioned archives with clear platform/architecture labels and SHA-256 checksums.
+- [x] Inspect *existing draft* Beta 3 ZIPs, record hashes/CRC/signature status (see [preflight evidence](RELEASE_PREFLIGHT.md)); both drafts **failed production-signing readiness** and stay unpublished.
+- [x] Identify candidate version-specific Go license files from the development manifest; see [Go inventory](GO_LICENSE_AUDIT.md). This is not a binary SBOM or final licensing clearance.
 - [ ] Review installer/download instructions, README, [privacy notice](PRIVACY.md), [security reporting](SECURITY.md) and third-party notices.
 - [ ] Attach verified assets to a **published** GitHub Release with accurate release notes and limitations; do not treat temporary CI artifacts or drafts as general downloads.
 - [ ] Update the site and changelog only after the release has passed approval.
