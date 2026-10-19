@@ -354,7 +354,7 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 }
 .brand-banner-art{
   position:absolute;inset:0 0 0 auto;width:78%;z-index:-1;
-  background-image:linear-gradient(to right,#0e3d36 0%,#0e3d36ad 22%,transparent 56%),url('./slicebridge-banner.jpg');
+  background-image:linear-gradient(to right,#0e3d36 0%,#0e3d36ad 22%,transparent 56%),url('./slicebridge-banner.png');
   background-position:center,right 57%;
   background-size:100% 100%,cover;background-repeat:no-repeat;
 }

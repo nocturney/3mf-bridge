@@ -4,7 +4,7 @@
 // local-only file handling, and a persisted per-printer hardware profile.
 const translations = {
   he: {
-    brandTagline:'מחברים בין סלייסרים',settings:'הגדרות',checkUpdates:'בדיקת עדכונים',
+    brandTagline:'מחברים בין סלייסרים',settings:'הגדרות',browserIntegration:'MakerWorld',checkUpdates:'בדיקת עדכונים',
     dismiss:'סגירה',workspaceTitle:'סביבת המרה',
     workspaceSubtitle:'המרת פרויקטים לכמה מדפסות, בלי לשנות את המקור.',
     localOnly:'עיבוד מקומי בלבד',queueTitle:'קובצי מקור',clear:'ניקוי',
@@ -60,7 +60,7 @@ const translations = {
     openReleases:'צפייה בגרסאות',openPreviewBuilds:'צפייה בבניות Beta'
   },
   en: {
-    brandTagline:'Bridge your prints',settings:'Settings',checkUpdates:'Check for updates',
+    brandTagline:'Bridge your prints',settings:'Settings',browserIntegration:'MakerWorld',checkUpdates:'Check for updates',
     dismiss:'Dismiss',workspaceTitle:'Conversion workspace',
     workspaceSubtitle:'Convert projects for multiple printers without altering your originals.',
     localOnly:'Completely local',queueTitle:'Source projects',clear:'Clear',

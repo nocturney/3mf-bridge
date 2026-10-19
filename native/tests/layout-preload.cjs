@@ -37,7 +37,10 @@ const app={
   OpenOutputFolder:async()=>{},
   RememberWindowSize:async()=>{},
   CheckForUpdates:async()=>({status:'up_to_date'}),
-  OpenUpdatePage:async()=>{}
+  OpenUpdatePage:async()=>{},
+  BrowserLinkStatus:async()=>({platform:'windows',registered:false}),
+  EnableBrowserLink:async()=>{},
+  OpenBrowserSetup:async()=>{}
 };
 contextBridge.exposeInMainWorld('go',{main:{App:app}});
 contextBridge.exposeInMainWorld('runtime',{OnFileDrop:()=>{},EventsOn:()=>{}});

@@ -76,6 +76,7 @@
       once: 'SliceBridge this time',always: 'Always use SliceBridge',
       bambu: 'Bambu Studio',cancel: 'Cancel'
     };
+    const previousFocus = document.activeElement;
     const wrap = document.createElement('div');
     wrap.style.cssText = 'position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;background:rgba(6,34,28,.44);font-family:system-ui,Arial,sans-serif;';
     const shadow = wrap.attachShadow({ mode: 'closed' });
@@ -93,10 +94,16 @@
     section.dir = he ? 'rtl' : 'ltr';
     section.setAttribute('role', 'dialog');
     section.setAttribute('aria-modal', 'true');
-    const title = document.createElement('h2'); title.textContent = copy.heading;
+    const title = document.createElement('h2');
+    title.id = 'slicebridge-choice-heading';
+    title.textContent = copy.heading;
+    section.setAttribute('aria-labelledby', title.id);
     const detail = document.createElement('p'); detail.textContent = copy.info;
     const nav = document.createElement('nav');
-    const close = () => {wrap.remove();popup=null;};
+    const close = () => {
+      wrap.remove(); popup = null;
+      if (previousFocus?.isConnected && typeof previousFocus.focus === 'function') previousFocus.focus();
+    };
     const add = (label,callback,primary=false) => {
       const b=document.createElement('button');
       b.type='button';b.textContent=label;
@@ -112,7 +119,16 @@
     section.append(title,detail,nav);shadow.append(style,section);
     wrap.addEventListener('keydown', e => {
       if(e.key==='Escape'){e.preventDefault();close();}
-      if(e.key==='Tab'){ /* focus stays inside via available buttons */ }
+      if(e.key==='Tab'){
+        const buttons = Array.from(nav.querySelectorAll('button:not([disabled])'));
+        const active = shadow.activeElement;
+        if (!buttons.length) {e.preventDefault();return;}
+        if (e.shiftKey && (active===buttons[0] || !buttons.includes(active))) {
+          e.preventDefault(); buttons[buttons.length-1].focus();
+        } else if (!e.shiftKey && (active===buttons[buttons.length-1] || !buttons.includes(active))) {
+          e.preventDefault(); buttons[0].focus();
+        }
+      }
     });
     wrap.addEventListener('mousedown',e=>{if(e.target===wrap)close();});
     (document.body || document.documentElement).append(wrap);

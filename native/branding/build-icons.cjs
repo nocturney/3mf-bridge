@@ -7,7 +7,7 @@ const crypto=require('node:crypto');
 const sharp=require(process.env.SHARP_MODULE||'sharp');
 const native=path.resolve(__dirname,'..');
 const repo=path.resolve(native,'..');
-const input=path.join(__dirname,'direction1-reference','approved-icon.webp');
+const input=path.join(__dirname,'direction1-reference','approved-icon.png');
 const tile=fs.readFileSync(input);
 const sizes=[16,24,32,48,64,128,256];
 const chunks=[['icp4',16],['icp5',32],['icp6',64],['ic07',128],['ic08',256],['ic09',512],['ic10',1024]];
@@ -55,8 +55,13 @@ function icns(images){
  for(const size of [16,32,48,128]){
   files.push([path.join(repo,'browser-extension','shared','icon-'+size+'.png'),await png(size)]);
  }
- const wave=fs.readFileSync(path.join(__dirname,'direction1-reference','approved-wave.webp'));
- files.push([path.join(native,'frontend','dist','slicebridge-banner.webp'),wave]);
+ // Take only the wave portion from the approved banner crop. Keep its text in
+ // accessible HTML so it is not duplicated by background-image rendering.
+ const wave=fs.readFileSync(path.join(__dirname,'direction1-reference','approved-wave.png'));
+ const waveMeta=await sharp(wave).metadata();
+ const left=Math.floor(waveMeta.width*.46);
+ const waveOnly=await sharp(wave).extract({left,top:0,width:waveMeta.width-left,height:waveMeta.height}).png().toBuffer();
+ files.push([path.join(native,'frontend','dist','slicebridge-banner.png'),waveOnly]);
  for(const [file,bytes] of files){
   fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,bytes);
   console.log(path.relative(repo,file),bytes.length,crypto.createHash('sha256').update(bytes).digest('hex').slice(0,13));

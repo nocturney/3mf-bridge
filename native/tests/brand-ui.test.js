@@ -8,19 +8,20 @@ const read=(f)=>fs.readFileSync(path.join(base,f),'utf8');
 
 test('approved SliceBridge name and Mint/Forest identity are embedded',()=>{
  const page=read('frontend/dist/index.html');
- const manifest=JSON.parse(read('wails.json'));
+ const manifest=JSON.parse(read('wails.json').replace(/^\uFEFF/,''));
  assert.equal(manifest.name,'SliceBridge');
  assert.equal(manifest.outputfilename,'SliceBridge');
  assert.equal(manifest.info.productName,'SliceBridge');
  const css=read('frontend/dist/app.css');
- const icon=read('frontend/dist/brand-icon.svg');
+ const icon=fs.readFileSync(path.join(base,'frontend/dist/brand-icon.png'));
  assert.match(page,/<title>SliceBridge<\/title>/);
- assert.match(page,/class="brand-mark" src="\.\/brand-icon\.svg"/);
+ assert.match(page,/class="brand-mark" src="\.\/brand-icon\.png"/);
  assert.match(page,/<strong>Slice<span class="brand-accent">Bridge<\/span><\/strong>/);
  for(const hex of ['DFF6EE','A9E5D0','5BBFA8','2F7F73','193F38']){
-  assert.ok((css+icon).includes('#'+hex),'missing approved shade '+hex);
+  assert.ok(css.toUpperCase().includes('#'+hex),'missing approved shade '+hex);
  }
- assert.match(icon,/id="arch"/);
+ assert.equal(icon.subarray(1,4).toString(),'PNG');
+ assert.ok(icon.length>10000,'approved image-derived icon must not be the old SVG');
  assert.doesNotMatch(page,/class="brand-mark"[^>]*>3<\/div>/);
 });
 

@@ -17,6 +17,7 @@ async function inspect(win){
       documentScroll:document.documentElement.scrollHeight-innerHeight,
       bodyScroll:document.body.scrollHeight-innerHeight,
       header:rect('.topbar'),footer:rect('.actionbar'),
+      banner:rect('.brand-banner'),progressBar:rect('.conversion-progress'),
       workspace:rect('.workspace'),queue:rect('.queue-list'),
       results:rect('.results-scroll'),
       queueScroll:e('.queue-list').scrollHeight-e('.queue-list').clientHeight,
@@ -25,11 +26,16 @@ async function inspect(win){
       modal:e('#settingsDialog').open,
       modalHeight:e('#settingsDialog').getBoundingClientRect().height,
       conversionDisabled:e('#convertBtn').disabled,
+      integrationsModal:e('#integrationsDialog').open,
+      integrationsStatus:e('#browserLinkStatus').textContent,
       reportCards:document.querySelectorAll('.file-report').length,
       clearResultsDisabled:e('#clearResultsBtn').disabled,
       brandImageLoaded:e('.brand-mark').naturalWidth>0,
       metaInFooter:!!e('footer .app-meta #installedVersion')&&!!e('footer .app-meta #checkUpdatesBtn'),
       hasJsonExport:!!e('#exportReportBtn'),
+      integrationLabel:e('#integrationsBtn').textContent.trim(),
+      progressPercent:e('#progressPercent').textContent,
+      progressFill:rect('#progressFill'),progressTrack:rect('#progressTrack'),
       makerworldBadges:document.querySelectorAll('.makerworld-badge').length
     };
   })()`);
@@ -49,13 +55,23 @@ async function main(){
   let layout=await inspect(win);
   assert.equal(layout.documentScroll,0,'document scroll at desktop size');
   assert.equal(layout.bodyScroll,0,'body scroll at desktop size');
-  assert.ok(layout.footer.bottom<=layout.viewport.h+1 &&layout.footer.bottom>=layout.viewport.h-1,
-    'fixed actionbar must align to bottom of the window');
+  assert.ok(Math.abs(layout.footer.bottom-layout.banner.y)<2,'actionbar must sit above fixed banner');
+  assert.ok(Math.abs(layout.banner.bottom-layout.progressBar.y)<2,'progress must sit directly below banner');
+  assert.ok(Math.abs(layout.progressBar.bottom-layout.viewport.h)<2,'progress must align with bottom of window');
   assert.equal(layout.brandImageLoaded,true,'new SliceBridge icon must render');
   assert.equal(layout.metaInFooter,true,'version and update button share bottom bar');
   assert.equal(layout.hasJsonExport,false,'old JSON export must be removed');
+  assert.equal(layout.integrationLabel,'MakerWorld','integration button should have a readable title');
   assert.ok(layout.workspace.height>250,'workspace must have useful height');
   assert.ok(layout.queue.height>40,'file list needs independent scroll container');
+  await win.webContents.executeJavaScript("document.getElementById('integrationsBtn').click()");
+  await sleep(150);
+  layout=await inspect(win);
+  assert.equal(layout.integrationsModal,true,'MakerWorld onboarding modal must open');
+  assert.match(layout.integrationsStatus,/approval required/i,'consent requirement is visible');
+  await win.webContents.executeJavaScript("document.getElementById('closeIntegrationsBtn').click()");
+  layout=await inspect(win);
+  assert.equal(layout.integrationsModal,false,'MakerWorld modal must close');
 
   await win.webContents.executeJavaScript("document.getElementById('addFilesBtn').click()");
   await sleep(200);
@@ -114,8 +130,9 @@ async function main(){
   await sleep(180);
   layout=await inspect(win);
   assert.equal(layout.documentScroll,0,'body stays fixed in compact window');
-  assert.ok(layout.footer.bottom<=layout.viewport.h+1&&layout.footer.bottom>=layout.viewport.h-1,
-    'footer must remain attached to bottom in compact window');
+  assert.ok(Math.abs(layout.footer.bottom-layout.banner.y)<2,'compact actionbar must be above banner');
+  assert.ok(Math.abs(layout.banner.bottom-layout.progressBar.y)<2,'compact banner must be above progress');
+  assert.ok(Math.abs(layout.progressBar.bottom-layout.viewport.h)<2,'compact progress must remain at window bottom');
   assert.ok(layout.workspace.height>100,'compact workspace remains usable');
   const image2=await win.webContents.capturePage();
   await fs.writeFile(path.join(__dirname,'..','..','dist','native-workflow-compact.png'),image2.toPNG());
