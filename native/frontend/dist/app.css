@@ -736,3 +736,21 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 @media(max-width:860px){
   .target-printer-icon{width:40px;height:40px;flex-basis:40px}
 }
+
+/* Browser extension installation: one clear action, advanced beta steps folded. */
+.integration-install-row #installExtensionBtn{flex:1 1 200px;min-height:38px}
+.integration-store-status{margin:0;color:#496c60;font-size:11px;line-height:1.55}
+.integration-store-status.error{color:#a34435}
+.integration-beta-details{
+  border:1px solid #d6e9df;border-radius:10px;
+  background:#f8fcfa;padding:10px 12px;
+}
+.integration-beta-details summary{
+  cursor:pointer;list-style:auto;font-size:11px;
+  font-weight:650;color:#315f50;line-height:1.45;
+}
+.integration-beta-details[open] summary{margin-bottom:11px}
+.integration-beta-details>p{margin:0 0 10px;color:#526d62;font-size:11px;line-height:1.55}
+.integration-install-help{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.integration-install-help button{font-size:11px;flex:1 1 165px}
+.integration-beta-details .integration-instructions{margin-bottom:9px}

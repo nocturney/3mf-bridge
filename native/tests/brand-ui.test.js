@@ -65,3 +65,7 @@ test('MakerWorld connection labels are localized, not translation keys',()=>{
  assert.doesNotMatch(page,/browserIntegration|Browser integration/);
  assert.doesNotMatch(integrations,/browserIntegration|Browser integration/);
 });
+
+// Existing native CI invokes this suite explicitly; include the opt-in
+// browser installation flow regressions without changing protected workflows.
+require('./extension-install-ui.test.js');

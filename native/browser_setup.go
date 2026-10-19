@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -138,35 +139,110 @@ func findWindowsBrowser(browser string) (string, error) {
 	return "", fmt.Errorf("%s is not installed in a standard location", browser)
 }
 
-// Clicking a mode in the native app opens the selected browser, not an
-// unrelated default browser. Only the extension's confirmation saves a mode.
-func (a *App) OpenMakerWorldMode(browser, mode string) error {
-	url, err := makerWorldSetupURL(mode)
-	if err != nil {
-		return err
+// The official store links are deliberately empty until the publisher has a
+// live, verified extension listing. Never send nontechnical users to a store
+// search page or promise one-click installation before approval.
+var approvedExtensionStoreURLs = map[string]string{}
+
+func browserExtensionsPage(browser string) (string, error) {
+	switch browser {
+	case "edge":
+		return "edge://extensions", nil
+	case "chrome":
+		return "chrome://extensions", nil
+	case "brave":
+		return "brave://extensions", nil
+	case "firefox":
+		return "about:debugging#/runtime/this-firefox", nil
+	default:
+		return "", fmt.Errorf("unsupported browser %q", browser)
 	}
-	browser = strings.ToLower(strings.TrimSpace(browser))
-	if _, err = browserExtensionKind(browser); err != nil {
-		return err
+}
+
+func verifiedExtensionStoreURL(browser string) (string, error) {
+	if _, err := browserExtensionKind(browser); err != nil {
+		return "", err
 	}
+	storeBrowser := browser
+	if browser == "brave" { storeBrowser = "chrome" }
+	candidate := approvedExtensionStoreURLs[storeBrowser]
+	if candidate == "" { return "", nil }
+	parsed, err := url.Parse(candidate)
+	if err != nil || parsed.Scheme != "https" || parsed.User != nil || parsed.RawQuery != "" || parsed.Fragment != "" {
+		return "", errors.New("invalid official extension store URL")
+	}
+	path := parsed.EscapedPath()
+	switch storeBrowser {
+	case "edge":
+		if parsed.Host != "microsoftedge.microsoft.com" || !strings.HasPrefix(path, "/addons/detail/") {
+			return "", errors.New("unapproved Edge store URL")
+		}
+	case "chrome":
+		if parsed.Host != "chromewebstore.google.com" || !strings.HasPrefix(path, "/detail/") {
+			return "", errors.New("unapproved Chrome store URL")
+		}
+	case "firefox":
+		if parsed.Host != "addons.mozilla.org" || !strings.HasPrefix(path, "/en-US/firefox/addon/") {
+			return "", errors.New("unapproved Firefox store URL")
+		}
+	default:
+		return "", errors.New("unknown extension store")
+	}
+	return candidate, nil
+}
+
+// BrowserExtensionStoreURL exposes a read-only approved listing, if one exists.
+func (a *App) BrowserExtensionStoreURL(browser string) (string, error) {
+	return verifiedExtensionStoreURL(strings.ToLower(strings.TrimSpace(browser)))
+}
+
+// Only internal callers can open a browser URL, after validating an exact
+// allowlisted settings page, official store listing, or MakerWorld mode URL.
+// Never accept a URL string from the webview as a public Wails method.
+func (a *App) launchTrustedBrowserURL(browser, targetURL string) error {
 	if a.ctx == nil {
 		return errors.New("desktop not ready")
 	}
 	if runtime.GOOS == "windows" {
 		binary, err := findWindowsBrowser(browser)
-		if err != nil {
-			return err
-		}
-		proc := exec.Command(binary, url)
-		if err := proc.Start(); err != nil {
-			return err
-		}
+		if err != nil { return err }
+		proc := exec.Command(binary, targetURL)
+		if err := proc.Start(); err != nil { return err }
 		return proc.Process.Release()
 	}
 	if runtime.GOOS == "darwin" {
 		apps := map[string]string{"edge": "Microsoft Edge", "chrome": "Google Chrome", "brave": "Brave Browser", "firefox": "Firefox"}
-		return exec.Command("open", "-a", apps[browser], url).Run()
+		return exec.Command("open", "-a", apps[browser], targetURL).Run()
 	}
-	wailsruntime.BrowserOpenURL(a.ctx, url)
+	wailsruntime.BrowserOpenURL(a.ctx, targetURL)
 	return nil
+}
+
+// OpenBrowserExtensionsPage opens only the selected browser's own extensions
+// manager, as an explicit user action. No extension is installed silently.
+func (a *App) OpenBrowserExtensionsPage(browser string) error {
+	browser = strings.ToLower(strings.TrimSpace(browser))
+	page, err := browserExtensionsPage(browser)
+	if err != nil { return err }
+	return a.launchTrustedBrowserURL(browser, page)
+}
+
+// OpenBrowserExtensionStore is enabled only after an approved listing URL has
+// been added to the pinned allowlist in a code-reviewed, versioned release.
+func (a *App) OpenBrowserExtensionStore(browser string) error {
+	browser = strings.ToLower(strings.TrimSpace(browser))
+	page, err := verifiedExtensionStoreURL(browser)
+	if err != nil { return err }
+	if page == "" { return errors.New("browser extension is not published in an approved store yet") }
+	return a.launchTrustedBrowserURL(browser, page)
+}
+
+// Clicking a mode opens the exact selected browser; only the extension
+// confirmation (not this app) persists a MakerWorld preference.
+func (a *App) OpenMakerWorldMode(browser, mode string) error {
+	page, err := makerWorldSetupURL(mode)
+	if err != nil { return err }
+	browser = strings.ToLower(strings.TrimSpace(browser))
+	if _, err = browserExtensionKind(browser); err != nil { return err }
+	return a.launchTrustedBrowserURL(browser, page)
 }

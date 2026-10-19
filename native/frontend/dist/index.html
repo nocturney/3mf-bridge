@@ -258,8 +258,8 @@
 
       <section class="integration-step" aria-labelledby="integrationStepTwo">
         <div class="integration-step-heading"><span class="step-index">02</span><div>
-          <h3 id="integrationStepTwo" data-i18n="stepTwoTitle">Add the browser extension</h3>
-          <p data-i18n="stepTwoHint">One-time setup in each browser. No GitHub download needed.</p>
+          <h3 id="integrationStepTwo" data-i18n="stepTwoTitle">Install the browser extension</h3>
+          <p data-i18n="stepTwoHint">Choose your browser. SliceBridge will guide you through the available installation option.</p>
         </div></div>
         <div class="integration-install-row">
           <label for="browserTargetSelect" data-i18n="browserLabel">Browser</label>
@@ -269,15 +269,24 @@
             <option value="brave">Brave</option>
             <option value="firefox">Firefox (test)</option>
           </select>
-          <button id="prepareExtensionBtn" class="compact-btn primary" type="button" data-i18n="prepareExtension">Open extension folder</button>
+          <button id="installExtensionBtn" class="compact-btn primary" type="button" data-i18n="guidedBetaInstall">Start guided beta install</button>
         </div>
-        <ol class="integration-instructions">
-          <li><span data-i18n="installInstructionOne">Open this address in the browser:</span> <code id="browserSettingsAddress" dir="ltr">edge://extensions</code></li>
-          <li data-i18n="installInstructionTwo">Enable Developer mode, then choose Load unpacked.</li>
-          <li data-i18n="installInstructionThree">Select the folder opened by the button above. Pin the SliceBridge extension if helpful.</li>
-        </ol>
-        <p id="firefoxInstallWarning" class="integration-caution" data-i18n="firefoxInstallWarning" hidden>Firefox test extensions must be reloaded after restarting Firefox.</p>
-        <p id="extensionFolderStatus" class="integration-feedback" role="status" aria-live="polite"></p>
+        <p id="extensionStoreStatus" class="integration-store-status" role="status" aria-live="polite">Store installation is not available yet. This is a beta setup.</p>
+        <details id="betaInstallDetails" class="integration-beta-details">
+          <summary data-i18n="betaInstallGuide">Beta setup steps (advanced)</summary>
+          <p data-i18n="betaInstallInfo">The beta extension is included in SliceBridge. Your browser must still ask permission before installation.</p>
+          <div class="integration-install-help">
+            <button id="prepareExtensionBtn" class="compact-btn secondary" type="button" data-i18n="prepareExtension">Open extension folder</button>
+            <button id="openExtensionsBtn" class="compact-btn secondary" type="button" data-i18n="openExtensionsPage">Open browser extensions</button>
+          </div>
+          <ol class="integration-instructions">
+            <li><span data-i18n="installInstructionOne">The browser extensions page:</span> <code id="browserSettingsAddress" dir="ltr">edge://extensions</code></li>
+            <li data-i18n="installInstructionTwo">Enable Developer mode, then choose Load unpacked.</li>
+            <li data-i18n="installInstructionThree">Select the prepared SliceBridge folder shown in File Explorer.</li>
+          </ol>
+          <p id="firefoxInstallWarning" class="integration-caution" data-i18n="firefoxInstallWarning" hidden>Firefox test extensions must be reloaded after restarting Firefox.</p>
+          <p id="extensionFolderStatus" class="integration-feedback" role="status" aria-live="polite"></p>
+        </details>
       </section>
 
       <section class="integration-step" aria-labelledby="integrationStepThree">

@@ -18,12 +18,23 @@
       browserLinkError:'לא ניתן לבדוק את מצב הקישורים. אפשר לנסות שוב.',
       enableBrowserLinks:'אפשר קישורי SliceBridge',
       stepTwoTitle:'התקן את התוסף בדפדפן',
-      stepTwoHint:'התקנה חד־פעמית לכל דפדפן. הקבצים מוכנים כאן במחשב — בלי GitHub.',
+      stepTwoHint:'בחר דפדפן — SliceBridge יציג את דרך ההתקנה הזמינה.',
+      guidedBetaInstall:'התחל התקנת בטא מודרכת',
+      installFromStore:'התקן מחנות הדפדפן',
+      storeChecking:'בודק אפשרות התקנה רשמית…',
+      storeReady:'התקנה רשמית זמינה. הדפדפן יבקש את אישורך.',
+      storeNotPublished:'התוסף עדיין לא פורסם בחנות. כרגע זמינה התקנת בטא מודרכת בלבד.',
+      betaInstallGuide:'הוראות התקנת בטא',
+      betaInstallInfo:'התוסף כלול באפליקציה. הדפדפן יבקש ממך לאשר את הטעינה; אין התקנה שקטה.',
+      openExtensionsPage:'פתח את מסך התוספים',
+      betaOpened:'תיקיית התוסף ומסך התוספים נפתחו. אשר מצב מפתחים ובחר ״טען תוסף לא ארוז״.',
+      betaOpenedFirefox:'התיקייה ודף התוספים נפתחו. בחר Load Temporary Add-on ואז manifest.json. זו התקנה זמנית.',
+      storeOpened:'חנות התוספים נפתחה בדפדפן שבחרת. לחץ ״התקן״ בחנות לאישור.',
       browserLabel:'דפדפן',
       prepareExtension:'פתח תיקיית תוסף',
-      installInstructionOne:'פתח בדפדפן את הכתובת:',
+      installInstructionOne:'מסך התוספים בדפדפן:',
       installInstructionTwo:'הפעל Developer mode ואז לחץ Load unpacked (טען תוסף לא ארוז).',
-      installInstructionThree:'בחר את תיקיית התוסף שנפתחה בלחיצה על הכפתור למעלה.',
+      installInstructionThree:'בחר את תיקיית SliceBridge שנפתחה לך במחשב.',
       installInstructionTwoFirefox:'בחר This Firefox ולחץ Load Temporary Add-on.',
       installInstructionThreeFirefox:'בחר את הקובץ manifest.json מתוך תיקיית התוסף שנפתחה.',
       firefoxInstallWarning:'ב־Firefox זו התקנת בדיקה זמנית; יש לטעון מחדש אחרי סגירת הדפדפן.',
@@ -57,12 +68,23 @@
       browserLinkError:'Could not verify browser-link setup. Try again.',
       enableBrowserLinks:'Enable SliceBridge links',
       stepTwoTitle:'Install the browser extension',
-      stepTwoHint:'One-time setup per browser. The files are built into the app — no GitHub required.',
+      stepTwoHint:'Choose your browser and SliceBridge will show the available install route.',
+      guidedBetaInstall:'Start guided beta install',
+      installFromStore:'Install from browser store',
+      storeChecking:'Checking official store availability…',
+      storeReady:'Official store install is available. Your browser will ask for approval.',
+      storeNotPublished:'The extension is not yet listed in a browser store. Guided beta installation is available.',
+      betaInstallGuide:'Beta installation steps',
+      betaInstallInfo:'The beta extension is included in the app. Your browser must approve the install; nothing is silently installed.',
+      openExtensionsPage:'Open browser extensions page',
+      betaOpened:'The extension folder and browser extensions page are open. Enable Developer mode and choose Load unpacked.',
+      betaOpenedFirefox:'The folder and Firefox add-on page are open. Choose Load Temporary Add-on, then select manifest.json. This install is temporary.',
+      storeOpened:'The browser store is open. Choose Install there to confirm.',
       browserLabel:'Browser',
       prepareExtension:'Open extension folder',
-      installInstructionOne:'Open this address in your browser:',
+      installInstructionOne:'Browser extensions page:',
       installInstructionTwo:'Turn on Developer mode and select Load unpacked.',
-      installInstructionThree:'Select the extension folder that the button above opened.',
+      installInstructionThree:'Select the SliceBridge folder opened in File Explorer or Finder.',
       installInstructionTwoFirefox:'Choose This Firefox and click Load Temporary Add-on.',
       installInstructionThreeFirefox:'Select manifest.json from the opened extension folder.',
       firefoxInstallWarning:'Firefox temporary add-ons disappear on browser restart; reload the test extension.',
@@ -95,6 +117,11 @@
   });
   let folderResult = null;
   let ready = false;
+  let storeLink = null;
+  let storeRequest = 0;
+  const install = el('installExtensionBtn');
+  const betaDetails = el('betaInstallDetails');
+  const openExtensions = el('openExtensionsBtn');
   const prepare = el('prepareExtensionBtn');
   const enable = el('enableLinksBtn');
   const confirm = el('applyBrowserModeBtn');
@@ -114,10 +141,47 @@
     steps[1].textContent = t(firefox?'installInstructionTwoFirefox':'installInstructionTwo');
     steps[2].textContent = t(firefox?'installInstructionThreeFirefox':'installInstructionThree');
   }
+  function updateStoreStatus() {
+    install.textContent=t(storeLink?'installFromStore':'guidedBetaInstall');
+    setMessage(el('extensionStoreStatus'),t(storeLink?'storeReady':'storeNotPublished'));
+  }
+  // Both UI and native code require an exact approved store host and path.
+  // The native code owns the canonical published URL and opens the browser.
+  function isOfficialStoreLink(browserType, raw) {
+    if(typeof raw!=='string')return false;
+    try {
+      const parsed=new URL(raw);
+      const store=browserType==='brave'?'chrome':browserType;
+      const host={edge:'microsoftedge.microsoft.com',
+        chrome:'chromewebstore.google.com',firefox:'addons.mozilla.org'}[store];
+      const prefix={edge:'/addons/detail/',
+        chrome:'/detail/',firefox:'/en-US/firefox/addon/'}[store];
+      return parsed.protocol==='https:' && parsed.host===host &&
+        parsed.pathname.startsWith(prefix) && !parsed.search && !parsed.hash &&
+        !parsed.username && !parsed.password;
+    }catch{return false;}
+  }
+  // Blank means "not published": never send users to store search results.
+  async function refreshStore() {
+    const request=++storeRequest;
+    const selected=browser.value;
+    storeLink=null;
+    install.disabled=true;
+    setMessage(el('extensionStoreStatus'),t('storeChecking'));
+    let candidate='';
+    try {
+      if(api()?.BrowserExtensionStoreURL)candidate=await api().BrowserExtensionStoreURL(selected);
+    } catch { candidate=''; }
+    if(request!==storeRequest || browser.value!==selected)return;
+    storeLink=isOfficialStoreLink(selected,candidate)?candidate:null;
+    install.disabled=false;
+    updateStoreStatus();
+  }
   function translate() {
     dialog.querySelectorAll('[data-i18n]').forEach(node => {node.textContent=t(node.dataset.i18n);});
     dialog.dir = document.documentElement.dir;
     updateBrowserGuide();
+    updateStoreStatus();
     if (folderResult) showPreparedFolder(folderResult.folder);
   }
   function showPreparedFolder(folder) {
@@ -165,6 +229,7 @@
     translate();
     dialog.showModal();
     refreshStatus();
+    refreshStore();
   });
   el('closeIntegrationsBtn').addEventListener('click',()=>dialog.close());
   el('doneIntegrationsBtn').addEventListener('click',()=>dialog.close());
@@ -184,24 +249,71 @@
   });
   browser.addEventListener('change',()=>{
     folderResult=null;
+    betaDetails.open=false;
     setMessage(el('extensionFolderStatus'),'');
     updateBrowserGuide();
+    refreshStore();
+  });
+  async function prepareFiles(){
+    if(!api()?.PrepareBrowserExtension)throw new Error(t('browserLinkError'));
+    const result=await api().PrepareBrowserExtension(browser.value);
+    if(!result||typeof result.folder!=='string'||!result.folder){
+      throw new Error(t('folderError'));
+    }
+    folderResult=result;
+    showPreparedFolder(result.folder);
+  }
+  async function openExtensionManager(){
+    if(!api()?.OpenBrowserExtensionsPage)throw new Error(t('browserLinkError'));
+    await api().OpenBrowserExtensionsPage(browser.value);
+  }
+  // Store = one explicit click on a verified listing. No store yet = one
+  // explicit click to stage files and open the selected browser's add-on page.
+  // The browser still requires approval; we never silently install an add-on.
+  install.addEventListener('click',async()=>{
+    install.disabled=true;
+    browser.disabled=true;
+    try {
+      if(storeLink){
+        if(!api()?.OpenBrowserExtensionStore)throw new Error(t('browserLinkError'));
+        await api().OpenBrowserExtensionStore(browser.value);
+        setMessage(el('extensionStoreStatus'),t('storeOpened'));
+      }else{
+        betaDetails.open=true;
+        prepare.disabled=true;
+        openExtensions.disabled=true;
+        await prepareFiles();
+        try {
+          await openExtensionManager();
+          setMessage(el('extensionStoreStatus'),t(browser.value==='firefox'?'betaOpenedFirefox':'betaOpened'));
+        }catch(e){
+          setMessage(el('extensionStoreStatus'),t('modeError')+(e?.message||String(e)),true);
+        }
+      }
+    }catch(e){
+      setMessage(el('extensionStoreStatus'),t('folderError')+(e?.message||String(e)),true);
+    }finally{
+      install.disabled=false;
+      browser.disabled=false;
+      prepare.disabled=false;
+      openExtensions.disabled=false;
+    }
   });
   prepare.addEventListener('click',async()=>{
     prepare.disabled=true;
-    const status=el('extensionFolderStatus');
-    if(!api()?.PrepareBrowserExtension){
-      setMessage(status,t('folderError')+t('browserLinkError'),true);
-    } else {
-      try {
-        const result=await api().PrepareBrowserExtension(browser.value);
-        folderResult=result;
-        showPreparedFolder(result.folder);
-      }catch(e){
-        setMessage(status,t('folderError')+(e?.message||String(e)),true);
-      }
-    }
-    prepare.disabled=false;
+    try {
+      await prepareFiles();
+    }catch(e){
+      setMessage(el('extensionFolderStatus'),t('folderError')+(e?.message||String(e)),true);
+    }finally{ prepare.disabled=false; }
+  });
+  openExtensions.addEventListener('click',async()=>{
+    openExtensions.disabled=true;
+    try{
+      await openExtensionManager();
+    }catch(e){
+      setMessage(el('extensionFolderStatus'),t('modeError')+(e?.message||String(e)),true);
+    }finally{ openExtensions.disabled=false; }
   });
   for(const radio of modes){
     radio.addEventListener('change',()=>{
