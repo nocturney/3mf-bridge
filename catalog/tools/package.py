@@ -71,10 +71,11 @@ def manifest_payload(root: Path):
 def write_zip_member(handle: zipfile.ZipFile, name: str, data: bytes):
     check.check_relative(name)
     info = zipfile.ZipInfo(name, date_time=_FIXED_ZIP_DATE)
-    info.compress_type = zipfile.ZIP_DEFLATED
+    # No zlib recompression: exact ZIP bytes are reproducible across OSes.
+    info.compress_type = zipfile.ZIP_STORED
     info.create_system = 3
     info.external_attr = 0o100644 << 16
-    handle.writestr(info, data, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
+    handle.writestr(info, data, compress_type=zipfile.ZIP_STORED)
 
 
 def validate_archive(path: Path) -> dict:
