@@ -12,6 +12,13 @@ Public, published releases will be listed here. Development-branch work and draf
 - Published development status; no current downloadable community build yet.
 - Simplified the release guidance for a small open-source project; signing is optional.
 
+## [0.4.0-beta.4.dev.3] — 2026-10-19 (development milestone, not released)
+
+- [Draft PR #13](https://github.com/nocturney/slicebridge/pull/13), commit [`4da9ba7`](https://github.com/nocturney/slicebridge/commit/4da9ba75102a36c272ab93551ae6ab47324a161e): add local printer-cover thumbnails to the actual converter target cards using the existing trusted Wails image reader. Only selected legacy adapters request local PNG files; icons remain as fallback. No third-party images redistributed.
+- Remove the extra community-themed slogan from the in-app banner, retaining the shorter brand headline.
+- Remove the small unwanted scrollbar below the empty 3MF drop area while preserving scrollability for queued files.
+- Change the native development build version to `0.4.0-beta.4.dev.3`; this remains **unmerged source code**, pending new Windows/macOS CI binaries, visual QA and a separately verified Pre-release.
+
 ## [0.4.0-beta.4.dev.2] — 2026-10-19 (development milestone, not released)
 
 - [Draft PR #13](https://github.com/nocturney/slicebridge/pull/13), commit [`84289a4`](https://github.com/nocturney/slicebridge/commit/84289a43759f820bc2a937f81069409282ea5336): prevent source queue/upload area clipping in short windows by preserving minimum queue height and allowing workspace scrolling.
