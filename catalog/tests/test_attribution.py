@@ -41,7 +41,7 @@ class AttributionEvidence(unittest.TestCase):
         from package import manifest_payload
         receipt, content = manifest_payload(self.root)
         self.assertIn("catalog/data/attribution.json", content)
-        self.assertEqual(len(receipt["files"]), 89)
+        self.assertEqual(len(receipt["files"]), 90)
         rights = json.loads(content["catalog/data/attribution.json"])
         self.assertEqual(len(rights["items"]), 8)
         self.assertFalse(any(x["third_party_profile_payloads_included"] for x in rights["items"]))

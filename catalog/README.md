@@ -28,6 +28,12 @@ because its source is official: it must pass compatibility and integrity gates.
 - data/attribution.json — credit and root-license evidence for all eight pinned
   repositories; bundled in metadata-only ZIP. This is not permission to mirror
   source profile files.
+- data/legacy-adapters.json — read-only mapping for existing Wails target keys
+  u1/c5/cc2/qidi to stable catalogue IDs and physical nozzle choices.
+  Includes Creator 5 source-nozzle remap; **does not activate any converter**.
+- [LEGACY-MAPPING.md](LEGACY-MAPPING.md) — backwards-compatibility limits,
+  preservation of existing custom filament/slicer/nozzle preferences, and
+  required future Wails migration and runtime checks.
 - [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) — readable credits and
   explicit distinctions between attribution, root repo licences and per-asset
   redistribution rights.
@@ -40,8 +46,10 @@ because its source is official: it must pass compatibility and integrity gates.
   Prusa INI section against the eight clean checked-out upstream repositories.
 - tools/package.py — creates a deterministic, SHA-256-verified metadata ZIP
   with no upstream raw profiles, slicer executables or G-code.
-- tests/test_catalog.py, tests/test_package.py and tests/test_prusa_ini.py — fixture, source-priority,
-  mixed-nozzle, inheritance and committed snapshot regression.
+- tools/legacy_adapters.py — validates old target keys and mapping to indexed
+  models; includes a read-only, lossless settings-migration preview for tests.
+- tests/ — source integrity, vendor priority, mixed nozzle/INI, rights,
+  artifact integrity, four legacy target IDs and settings-preservation fixtures.
 
 ## Meaning of validation states
 
@@ -91,8 +99,11 @@ and be at the commit in sources.lock.json. A normal rebuild rejects unexpected
 SHA updates. After reviewing an upstream change, use --update-lock to
 explicitly authorize an intentional new snapshot.
 
-Only catalogue-owned data/makers/*.json files are rewritten.
+Only catalogue-owned generated JSON files are rewritten by the importer.
 There are no user profiles, conversion settings or UI files in this branch.
+The adapter mapping refers to existing backend code on another branch:
+newly catalogued models are **catalog-only**; old configurations must remain
+unchanged until a separately tested Wails settings migration is implemented.
 After all OS-specific metadata integrity tests pass, GitHub Actions uploads
 one immutable, metadata-only ZIP and one SHA-256 checksum as a CI artifact.
 This is **not** a SliceBridge binary, a GitHub Release, an auto-update feed,

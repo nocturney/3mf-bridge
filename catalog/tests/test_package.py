@@ -42,6 +42,10 @@ class MetadataBundleTests(unittest.TestCase):
                                      for n in archive.namelist()))
                 self.assertIn("catalog/data/makers/snapmaker.json", archive.namelist())
                 self.assertIn("catalog/data/makers/flashforge.json", archive.namelist())
+                self.assertIn("catalog/data/legacy-adapters.json", archive.namelist())
+                self.assertEqual(json.loads(archive.read("catalog/data/legacy-adapters.json"))
+                                 ["registration_policy"],
+                                 "metadata_only_never_auto_enable_catalogued_models")
             self.assertIn(left["sha256"], (first.parent / (first.name + ".sha256")).read_text())
             with self.assertRaises(FileExistsError):
                 package.build_archive(self.root, root / "left")

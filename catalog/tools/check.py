@@ -8,6 +8,8 @@ import re
 import sys
 from pathlib import Path, PurePosixPath
 
+from legacy_adapters import validate_mapping as validate_legacy_adapter_mapping
+
 ORDER = {"manufacturer": 0, "orca": 1, "prusa": 2}
 VENDOR_PUBLISHERS = {"bambu", "qidi", "elegoo", "snapmaker", "flashforge", "prusa_official"}
 
@@ -236,6 +238,9 @@ def check_registry(root: Path) -> dict:
     ensure(total_verified == index["structurally_verified"],
            "registry validation count mismatch")
     ensure(index["conversion_tested"] == 0, "unearned runtime validation claim")
+    legacy = validate_legacy_adapter_mapping(root)
+    ensure(legacy["catalog_only_model_count"] == total_models - 4,
+           "catalog-only count must exclude exactly four legacy adapter IDs")
     actual_files = {p.relative_to(root / "data").as_posix() for p in
                     (root / "data"/"makers").glob("*.json")}
     ensure(actual_files == seen_files, "unindexed or missing data files")
