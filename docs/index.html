@@ -40,13 +40,16 @@
     .button:hover{transform:translateY(-2px)}
     .button.primary{background:var(--deep);color:white;border-color:var(--deep)}
     .button.secondary{background:#fff;color:var(--deep)}
-    .banner-frame{padding:18px 22px;background:#e8f7ef;border:1px solid var(--stroke);border-radius:26px;margin:28px auto 35px;box-shadow:0 20px 55px #193f3810;max-width:910px}
-    .banner-frame img{width:100%;max-width:784px;height:auto;display:block;margin:auto;object-fit:contain}
+    .banner-frame{padding:18px 22px;background:#e8f7ef;border:1px solid var(--stroke);border-radius:26px;margin:28px auto 35px;box-shadow:0 20px 55px #193f3810;max-width:910px;overflow:hidden}
+    .banner-frame img{width:100%;max-width:784px;height:auto;display:block;margin:auto;object-fit:contain;border-radius:18px}
     .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 30px}
     .step{background:#ffffffcf;border:1px solid var(--stroke);padding:24px;border-radius:20px;text-align:start}
     .num{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--foam);border-radius:11px;font-size:.91rem;font-weight:800;color:var(--forest)}
     .step h2{font-size:1.12rem;margin:15px 0 7px}
     .step p{font-size:.96rem;color:#4b6d62;margin:0}
+    .maker-note{border:1px solid var(--stroke);background:#fff;border-radius:24px;padding:21px 24px;margin:0 0 20px;text-align:start;color:#395e52}
+    .maker-note h2{font-size:1.1rem;margin:0 0 7px;color:var(--deep)}
+    .maker-note p{margin:0}
     .notice{border:1px solid #c6dfd1;background:#eef9f1;border-radius:15px;color:#39584c;padding:16px 19px;text-align:start;margin-bottom:36px;font-size:.92rem}
     .notice strong{color:var(--deep)}
     footer{border-top:1px solid var(--stroke);padding:24px 0 44px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:#537369;font-size:.9rem}
@@ -92,6 +95,7 @@
           <article class="step"><span class="num">02</span><h2>Choose your targets</h2><p>Select supported printers and their correct profiles.</p></article>
           <article class="step"><span class="num">03</span><h2>Continue slicing</h2><p>Review the result in your target slicer before printing.</p></article>
         </div>
+        <div class="maker-note"><h2>Why I'm building it</h2><p>There are plenty of 3D-printing tools out there. I wanted a bridge that fit the way I actually work — and I hope what started as a personal solution can help other makers too. <a href="press.html">See the media kit ↗</a></p></div>
         <aside class="notice"><strong>Development preview.</strong> SliceBridge is not yet ready for general release. Compatibility is limited to validated combinations, and physical printer/nozzle/material settings must always be checked. No public download is offered yet.</aside>
       </section>
       <section data-content="he" lang="he" dir="rtl" aria-label="איך זה עובד" hidden>
@@ -100,12 +104,13 @@
           <article class="step"><span class="num">02</span><h2>בוחרים מדפסות יעד</h2><p>משתמשים רק במדפסות ובפרופילים שנתמכים בפועל.</p></article>
           <article class="step"><span class="num">03</span><h2>ממשיכים בסלייסר</h2><p>בודקים את התוצאה בסלייסר היעד לפני הדפסה.</p></article>
         </div>
+        <div class="maker-note"><h2>למה התחלתי לבנות את זה?</h2><p>יש ברשת הרבה כלים להדפסת תלת־ממד. רציתי פתרון שמתאים באמת לצורת העבודה שלי, ואני מקווה שמה שהתחיל כצורך אישי יעזור בהמשך גם לאחרים. <a href="press.html?lang=he">לערכת המדיה ↗</a></p></div>
         <aside class="notice"><strong>גרסת פיתוח.</strong> SliceBridge עדיין אינה מוכנה להפצה כללית. התאימות מוגבלת לשילובים שנבדקו, ותמיד יש לבדוק מדפסת, דיזה, חומר והגדרות הדפסה. עדיין אין הורדה ציבורית.</aside>
       </section>
     </main>
     <footer>
       <span>© 2026 Velvet Factory · SliceBridge</span>
-      <span><a href="https://github.com/nocturney/slicebridge">GitHub</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/FAQ.md">FAQ / שאלות נפוצות</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/SUPPORT.md">Support / תמיכה</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/PRIVACY.md">Privacy / פרטיות</a></span>
+      <span><a href="https://github.com/nocturney/slicebridge">GitHub</a> · <a href="press.html">Media kit / ערכת מדיה</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/FAQ.md">FAQ / שאלות נפוצות</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/SUPPORT.md">Support / תמיכה</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/PRIVACY.md">Privacy / פרטיות</a></span>
     </footer>
   </div>
   <script>
