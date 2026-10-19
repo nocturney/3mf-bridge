@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Raise3D",
+  "models": [
+    {
+      "id": "raise3d-raise3d-pro3",
+      "manufacturer": "Raise3D",
+      "model": "Raise3D Pro3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Raise3D.json",
+            "sha256": "0370a2cc3b8e87214a419a18e3f87e5a288d21c9f2f7764f2ae4d1378a39ae23"
+          },
+          "model": {
+            "path": "machine/Raise3D Pro3.json",
+            "sha256": "a46ca0cf54f1844ce7f99f9a9634edf6541d901574b5012fe54c62b8afb46806",
+            "manufacturer_model_id": "Raise3D-Pro3"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "raise3d-raise3d-pro3-plus",
+      "manufacturer": "Raise3D",
+      "model": "Raise3D Pro3 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Raise3D.json",
+            "sha256": "0370a2cc3b8e87214a419a18e3f87e5a288d21c9f2f7764f2ae4d1378a39ae23"
+          },
+          "model": {
+            "path": "machine/Raise3D Pro3 Plus.json",
+            "sha256": "9b788b01845dc6948ad50aa68b92f2ea33ab78abfc648919ad5f992c15970233",
+            "manufacturer_model_id": "Raise3D-Pro3-Plus"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

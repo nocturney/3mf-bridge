@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "manufacturer": "OrcaArena",
+  "models": [
+    {
+      "id": "orcaarena-orca-arena-x1-carbon",
+      "manufacturer": "OrcaArena",
+      "model": "Orca Arena X1 Carbon",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/OrcaArena.json",
+            "sha256": "6e38932626c34f253093de4d5610e1a3db84645afa60884b482093bf62cb6733"
+          },
+          "model": {
+            "path": "machine/Orca Arena X1 Carbon.json",
+            "sha256": "81c7f8bfe8679c90e0907b446dfefd33c85c4085bffc7ef74b6b60168bd8c6be",
+            "manufacturer_model_id": "orca_arena_x1c"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "Orca Arena X1 Carbon 0.2 nozzle",
+                "path": "machine/Orca Arena X1 Carbon 0.2 nozzle.json",
+                "sha256": "f7f29d9eb2845d3a125e81b66cdefb721b63ce87486300edbf43bb41b5709034",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "b5d3e018e40ad2669bf68a766d2b51175c46a65de6ed4b5239dfa41501b5dba9"
+                  },
+                  {
+                    "name": "fdm_bbl_3dp_001_common",
+                    "path": "machine/fdm_bbl_3dp_001_common.json",
+                    "sha256": "886021ec52abb701df865a7e699da1875a0d94b6cd4b8f1ac772b25ae56a3268"
+                  },
+                  {
+                    "name": "Orca Arena X1 Carbon 0.4 nozzle",
+                    "path": "machine/Orca Arena X1 Carbon 0.4 nozzle.json",
+                    "sha256": "2ba6161391933e3c07c3627275e5c901f27732dbd9281744540fcfd852a6475f"
+                  },
+                  {
+                    "name": "Orca Arena X1 Carbon 0.2 nozzle",
+                    "path": "machine/Orca Arena X1 Carbon 0.2 nozzle.json",
+                    "sha256": "f7f29d9eb2845d3a125e81b66cdefb721b63ce87486300edbf43bb41b5709034"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.10mm Standard @Arena X1C 0.2 nozzle",
+                "path": "process/0.10mm Standard @Arena X1C 0.2 nozzle.json",
+                "sha256": "48b6ba9c53a84655451940d31d12303b5746859682cdf6a24d1c39444c20402c",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a713f377c4c292f46ca4a1981347de3967829ee2c0fd98cf2d7c34d271d8eba7"
+                  },
+                  {
+                    "name": "fdm_process_arena_common",
+                    "path": "process/fdm_process_arena_common.json",
+                    "sha256": "df3f875aeabf7463d1a94234103a5aff843e6a26b757562e234de18ae3058c10"
+                  },
+                  {
+                    "name": "fdm_process_arena_0.10_nozzle_0.2",
+                    "path": "process/fdm_process_arena_0.10_nozzle_0.2.json",
+                    "sha256": "e3e5cd6dd8450c16c389fbc5d57e1c2d0205a933c7460cd73c8deb4736086ed5"
+                  },
+                  {
+                    "name": "0.10mm Standard @Arena X1C 0.2 nozzle",
+                    "path": "process/0.10mm Standard @Arena X1C 0.2 nozzle.json",
+                    "sha256": "48b6ba9c53a84655451940d31d12303b5746859682cdf6a24d1c39444c20402c"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Arena PLA Basic @Arena X1C 0.2 nozzle",
+                "path": "filament/Arena PLA Basic @Arena X1C 0.2 nozzle.json",
+                "sha256": "93e57a39467152d3c7d88b4a630cd4ffe421da0b2d310a9bd34561938ebd1eca",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "5891fea86111c289760df5f87b1b582467a5b6ebf3bd08428cc1cd95acc34c69"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "0ddbc587fa1dc802735847f54043ccb060b2f5dad7ae6b7b1e34c08324ef3ef7"
+                  },
+                  {
+                    "name": "Arena PLA Basic @base",
+                    "path": "filament/Arena PLA Basic @base.json",
+                    "sha256": "f804f4d3d65f678e832508ffafd843f6e6712948d76f0ddf99f701e316fb709d"
+                  },
+                  {
+                    "name": "Arena PLA Basic @Arena X1C 0.2 nozzle",
+                    "path": "filament/Arena PLA Basic @Arena X1C 0.2 nozzle.json",
+                    "sha256": "93e57a39467152d3c7d88b4a630cd4ffe421da0b2d310a9bd34561938ebd1eca"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Orca Arena X1 Carbon 0.4 nozzle",
+                "path": "machine/Orca Arena X1 Carbon 0.4 nozzle.json",
+                "sha256": "2ba6161391933e3c07c3627275e5c901f27732dbd9281744540fcfd852a6475f",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "b5d3e018e40ad2669bf68a766d2b51175c46a65de6ed4b5239dfa41501b5dba9"
+                  },
+                  {
+                    "name": "fdm_bbl_3dp_001_common",
+                    "path": "machine/fdm_bbl_3dp_001_common.json",
+                    "sha256": "886021ec52abb701df865a7e699da1875a0d94b6cd4b8f1ac772b25ae56a3268"
+                  },
+                  {
+                    "name": "Orca Arena X1 Carbon 0.4 nozzle",
+                    "path": "machine/Orca Arena X1 Carbon 0.4 nozzle.json",
+                    "sha256": "2ba6161391933e3c07c3627275e5c901f27732dbd9281744540fcfd852a6475f"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @Arena X1C",
+                "path": "process/0.20mm Standard @Arena X1C.json",
+                "sha256": "2439714a7dcb4d5917cbacc0ec82dc46236f4e552091fa732ebd7298334fb67c",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a713f377c4c292f46ca4a1981347de3967829ee2c0fd98cf2d7c34d271d8eba7"
+                  },
+                  {
+                    "name": "fdm_process_arena_common",
+                    "path": "process/fdm_process_arena_common.json",
+                    "sha256": "df3f875aeabf7463d1a94234103a5aff843e6a26b757562e234de18ae3058c10"
+                  },
+                  {
+                    "name": "fdm_process_arena_0.20",
+                    "path": "process/fdm_process_arena_0.20.json",
+                    "sha256": "c0429f6acdf311473db518ba022e7f0271074791df5040663e326930c2f06fe6"
+                  },
+                  {
+                    "name": "0.20mm Standard @Arena X1C",
+                    "path": "process/0.20mm Standard @Arena X1C.json",
+                    "sha256": "2439714a7dcb4d5917cbacc0ec82dc46236f4e552091fa732ebd7298334fb67c"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Arena PLA Basic @Arena X1C",
+                "path": "filament/Arena PLA Basic @Arena X1C.json",
+                "sha256": "ad32f3049b8b12dfde917720cd83124cf935ba59bee753609622aa4f4edac89f",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "5891fea86111c289760df5f87b1b582467a5b6ebf3bd08428cc1cd95acc34c69"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "0ddbc587fa1dc802735847f54043ccb060b2f5dad7ae6b7b1e34c08324ef3ef7"
+                  },
+                  {
+                    "name": "Arena PLA Basic @base",
+                    "path": "filament/Arena PLA Basic @base.json",
+                    "sha256": "f804f4d3d65f678e832508ffafd843f6e6712948d76f0ddf99f701e316fb709d"
+                  },
+                  {
+                    "name": "Arena PLA Basic @Arena X1C",
+                    "path": "filament/Arena PLA Basic @Arena X1C.json",
+                    "sha256": "ad32f3049b8b12dfde917720cd83124cf935ba59bee753609622aa4f4edac89f"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Orca Arena X1 Carbon 0.6 nozzle",
+                "path": "machine/Orca Arena X1 Carbon 0.6 nozzle.json",
+                "sha256": "c1e5b1023c87df970c53fecd6da0d5aa43a1ed5a23dd91a8a5316996cbfa40c5",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "b5d3e018e40ad2669bf68a766d2b51175c46a65de6ed4b5239dfa41501b5dba9"
+                  },
+                  {
+                    "name": "fdm_bbl_3dp_001_common",
+                    "path": "machine/fdm_bbl_3dp_001_common.json",
+                    "sha256": "886021ec52abb701df865a7e699da1875a0d94b6cd4b8f1ac772b25ae56a3268"
+                  },
+                  {
+                    "name": "Orca Arena X1 Carbon 0.4 nozzle",
+                    "path": "machine/Orca Arena X1 Carbon 0.4 nozzle.json",
+                    "sha256": "2ba6161391933e3c07c3627275e5c901f27732dbd9281744540fcfd852a6475f"
+                  },
+                  {
+                    "name": "Orca Arena X1 Carbon 0.6 nozzle",
+                    "path": "machine/Orca Arena X1 Carbon 0.6 nozzle.json",
+                    "sha256": "c1e5b1023c87df970c53fecd6da0d5aa43a1ed5a23dd91a8a5316996cbfa40c5"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm Standard @Arena X1C 0.6 nozzle",
+                "path": "process/0.30mm Standard @Arena X1C 0.6 nozzle.json",
+                "sha256": "f005c7c033557b7c83666baec164b41e47320bdbdddf62c0e09171c2ac35fcfe",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a713f377c4c292f46ca4a1981347de3967829ee2c0fd98cf2d7c34d271d8eba7"
+                  },
+                  {
+                    "name": "fdm_process_arena_common",
+                    "path": "process/fdm_process_arena_common.json",
+                    "sha256": "df3f875aeabf7463d1a94234103a5aff843e6a26b757562e234de18ae3058c10"
+                  },
+                  {
+                    "name": "fdm_process_arena_0.30_nozzle_0.6",
+                    "path": "process/fdm_process_arena_0.30_nozzle_0.6.json",
+                    "sha256": "65989c88c80ee294a35a744d8706b3e33e686994a0548b246b47d41f7f471582"
+                  },
+                  {
+                    "name": "0.30mm Standard @Arena X1C 0.6 nozzle",
+                    "path": "process/0.30mm Standard @Arena X1C 0.6 nozzle.json",
+                    "sha256": "f005c7c033557b7c83666baec164b41e47320bdbdddf62c0e09171c2ac35fcfe"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Arena PLA Basic @Arena X1C",
+                "path": "filament/Arena PLA Basic @Arena X1C.json",
+                "sha256": "ad32f3049b8b12dfde917720cd83124cf935ba59bee753609622aa4f4edac89f",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "5891fea86111c289760df5f87b1b582467a5b6ebf3bd08428cc1cd95acc34c69"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "0ddbc587fa1dc802735847f54043ccb060b2f5dad7ae6b7b1e34c08324ef3ef7"
+                  },
+                  {
+                    "name": "Arena PLA Basic @base",
+                    "path": "filament/Arena PLA Basic @base.json",
+                    "sha256": "f804f4d3d65f678e832508ffafd843f6e6712948d76f0ddf99f701e316fb709d"
+                  },
+                  {
+                    "name": "Arena PLA Basic @Arena X1C",
+                    "path": "filament/Arena PLA Basic @Arena X1C.json",
+                    "sha256": "ad32f3049b8b12dfde917720cd83124cf935ba59bee753609622aa4f4edac89f"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Orca Arena X1 Carbon 0.8 nozzle",
+                "path": "machine/Orca Arena X1 Carbon 0.8 nozzle.json",
+                "sha256": "9625e384c5cd9d2401e297f4ec5abd5be32761b610b00b28d0e8635408414732",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "b5d3e018e40ad2669bf68a766d2b51175c46a65de6ed4b5239dfa41501b5dba9"
+                  },
+                  {
+                    "name": "fdm_bbl_3dp_001_common",
+                    "path": "machine/fdm_bbl_3dp_001_common.json",
+                    "sha256": "886021ec52abb701df865a7e699da1875a0d94b6cd4b8f1ac772b25ae56a3268"
+                  },
+                  {
+                    "name": "Orca Arena X1 Carbon 0.4 nozzle",
+                    "path": "machine/Orca Arena X1 Carbon 0.4 nozzle.json",
+                    "sha256": "2ba6161391933e3c07c3627275e5c901f27732dbd9281744540fcfd852a6475f"
+                  },
+                  {
+                    "name": "Orca Arena X1 Carbon 0.8 nozzle",
+                    "path": "machine/Orca Arena X1 Carbon 0.8 nozzle.json",
+                    "sha256": "9625e384c5cd9d2401e297f4ec5abd5be32761b610b00b28d0e8635408414732"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm Standard @Arena X1C 0.8 nozzle",
+                "path": "process/0.40mm Standard @Arena X1C 0.8 nozzle.json",
+                "sha256": "aeb7726a651203c37d954fbae44128640cc80729a6ade6e9d95080229de50a9b",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "a713f377c4c292f46ca4a1981347de3967829ee2c0fd98cf2d7c34d271d8eba7"
+                  },
+                  {
+                    "name": "fdm_process_arena_common",
+                    "path": "process/fdm_process_arena_common.json",
+                    "sha256": "df3f875aeabf7463d1a94234103a5aff843e6a26b757562e234de18ae3058c10"
+                  },
+                  {
+                    "name": "fdm_process_arena_0.40_nozzle_0.8",
+                    "path": "process/fdm_process_arena_0.40_nozzle_0.8.json",
+                    "sha256": "41bad4bc1431ed1165ec4b44d0cb673d6875ae37cfc81632e9a493c483639ee2"
+                  },
+                  {
+                    "name": "0.40mm Standard @Arena X1C 0.8 nozzle",
+                    "path": "process/0.40mm Standard @Arena X1C 0.8 nozzle.json",
+                    "sha256": "aeb7726a651203c37d954fbae44128640cc80729a6ade6e9d95080229de50a9b"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Arena PLA Basic @Arena X1C 0.8 nozzle",
+                "path": "filament/Arena PLA Basic @Arena X1C 0.8 nozzle.json",
+                "sha256": "c74a4e41fca7b3b6c58b52013e1b766c76523540d70ce53806f93f22583967bb",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "5891fea86111c289760df5f87b1b582467a5b6ebf3bd08428cc1cd95acc34c69"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "0ddbc587fa1dc802735847f54043ccb060b2f5dad7ae6b7b1e34c08324ef3ef7"
+                  },
+                  {
+                    "name": "Arena PLA Basic @base",
+                    "path": "filament/Arena PLA Basic @base.json",
+                    "sha256": "f804f4d3d65f678e832508ffafd843f6e6712948d76f0ddf99f701e316fb709d"
+                  },
+                  {
+                    "name": "Arena PLA Basic @Arena X1C 0.8 nozzle",
+                    "path": "filament/Arena PLA Basic @Arena X1C 0.8 nozzle.json",
+                    "sha256": "c74a4e41fca7b3b6c58b52013e1b766c76523540d70ce53806f93f22583967bb"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/OrcaArena.json",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/OrcaArena.json",
+          "machine": "Orca Arena X1 Carbon 0.2 nozzle",
+          "process": "0.10mm Standard @Arena X1C 0.2 nozzle",
+          "filament": "Arena PLA Basic @Arena X1C 0.2 nozzle"
+        },
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/OrcaArena.json",
+          "machine": "Orca Arena X1 Carbon 0.4 nozzle",
+          "process": "0.20mm Standard @Arena X1C",
+          "filament": "Arena PLA Basic @Arena X1C"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/OrcaArena.json",
+          "machine": "Orca Arena X1 Carbon 0.6 nozzle",
+          "process": "0.30mm Standard @Arena X1C 0.6 nozzle",
+          "filament": "Arena PLA Basic @Arena X1C"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/OrcaArena.json",
+          "machine": "Orca Arena X1 Carbon 0.8 nozzle",
+          "process": "0.40mm Standard @Arena X1C 0.8 nozzle",
+          "filament": "Arena PLA Basic @Arena X1C 0.8 nozzle"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

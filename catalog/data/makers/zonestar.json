@@ -1,0 +1,898 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Zonestar",
+  "models": [
+    {
+      "id": "zonestar-zonestar-z5",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z5",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z5+M2 HOTEND",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z5+M2 HOTEND",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z5+M2 HOTEND",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z5+M2 HOTEND"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar MULTI",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar MULTI",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar MULTI",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar MULTI"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Zonestar/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Zonestar/2.1.0.ini",
+          "machine": "Zonestar Z5+M2 HOTEND",
+          "process": "0.20mm @Zonestar MULTI",
+          "filament": "Generic PLA @Zonestar"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "zonestar-zonestar-z5x",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z5X",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z5X",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z5X",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z5X",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z5X",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z5X"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar SINGLE",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar SINGLE",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar SINGLE",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar SINGLE"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Zonestar/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Zonestar/2.1.0.ini",
+          "machine": "Zonestar Z5X",
+          "process": "0.20mm @Zonestar SINGLE",
+          "filament": "Generic PLA @Zonestar"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "zonestar-zonestar-z6",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z6",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z6",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z6",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z6",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z6",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z6"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar SINGLE",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar SINGLE",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar SINGLE",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar SINGLE"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Zonestar/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Zonestar/2.1.0.ini",
+          "machine": "Zonestar Z6",
+          "process": "0.20mm @Zonestar SINGLE",
+          "filament": "Generic PLA @Zonestar"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "zonestar-zonestar-z8",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z8",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z8",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z8+DDE",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z8+DDE",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z8+DDE",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z8+DDE"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar SINGLE",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar SINGLE",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar SINGLE",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar SINGLE"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic TPU @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic TPU @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic TPU @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic TPU @Zonestar"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z8+E4 HOTEND",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z8+E4 HOTEND",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z8+E4 HOTEND",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z8+E4 HOTEND"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar MULTI",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar MULTI",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar MULTI",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar MULTI"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z8+M3 HOTEND",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z8+M3 HOTEND",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z8+M3 HOTEND",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z8+M3 HOTEND"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar MULTI",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar MULTI",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar MULTI",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar MULTI"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z8+M4 HOTEND",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z8+M4 HOTEND",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z8+M4 HOTEND",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z8+M4 HOTEND"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar MULTI",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar MULTI",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar MULTI",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar MULTI"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Zonestar/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Zonestar/2.1.0.ini",
+          "machine": "Zonestar Z8+DDE",
+          "process": "0.20mm @Zonestar SINGLE",
+          "filament": "Generic TPU @Zonestar"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "zonestar-zonestar-z9",
+      "manufacturer": "Zonestar",
+      "model": "Zonestar Z9",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Zonestar/2.1.0.ini",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "model": {
+            "path": "Zonestar/2.1.0.ini",
+            "section": "printer_model:Z9",
+            "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z9+DDE",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z9+DDE",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z9+DDE",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z9+DDE"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar SINGLE",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar SINGLE",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar SINGLE",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar SINGLE"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic TPU @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic TPU @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic TPU @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic TPU @Zonestar"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z9+E4 HOTEND",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z9+E4 HOTEND",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z9+E4 HOTEND",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z9+E4 HOTEND"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar MULTI",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar MULTI",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar MULTI",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar MULTI"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z9+M3 HOTEND",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z9+M3 HOTEND",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z9+M3 HOTEND",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z9+M3 HOTEND"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar MULTI",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar MULTI",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar MULTI",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar MULTI"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Zonestar Z9+M4 HOTEND",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "printer:Zonestar Z9+M4 HOTEND",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Zonestar Z9+M4 HOTEND",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "printer:Zonestar Z9+M4 HOTEND"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm @Zonestar MULTI",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "print:0.20mm @Zonestar MULTI",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm @Zonestar MULTI",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "print:0.20mm @Zonestar MULTI"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Zonestar",
+                "path": "Zonestar/2.1.0.ini",
+                "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                "section": "filament:Generic PLA @Zonestar",
+                "inheritance": [
+                  {
+                    "name": "Generic PLA @Zonestar",
+                    "path": "Zonestar/2.1.0.ini",
+                    "sha256": "0de5b30d69144515506fed0a6d54aa3a92e90b0938bc2f38c46ee791a9d5a502",
+                    "section": "filament:Generic PLA @Zonestar"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Zonestar/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Zonestar/2.1.0.ini",
+          "machine": "Zonestar Z9+DDE",
+          "process": "0.20mm @Zonestar SINGLE",
+          "filament": "Generic TPU @Zonestar"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

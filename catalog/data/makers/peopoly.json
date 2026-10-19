@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Peopoly",
+  "models": [
+    {
+      "id": "peopoly-peopoly-magneto-x",
+      "manufacturer": "Peopoly",
+      "model": "Peopoly Magneto X",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Peopoly.json",
+            "sha256": "fc8a53ba45eb39d777c49053f8ce1a2503406f59b36ecd195a3c3e5fcc2ca281"
+          },
+          "model": {
+            "path": "machine/Peopoly Magneto X.json",
+            "sha256": "a1ff56596c1384bee561cb3e549506b36fae90ed7d33782ad8054947bda9fc84",
+            "manufacturer_model_id": "Peopoly-Magneto-X"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Peopoly Magneto X 0.4 nozzle",
+                "path": "machine/Peopoly Magneto X 0.4 nozzle.json",
+                "sha256": "0b03c68c7360324848db363d36bf27c0f0526d26391fe99ae1681cfe8b1ed52c",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "d454a84d1887ee08239932dfd198835640b0ad0508f9c8d66b5fa7de1d2746b4"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "36a867ea74eece0365abb4da6ab2cf9e5d212d4e23f490c075383a67b584821d"
+                  },
+                  {
+                    "name": "Peopoly Magneto X 0.4 nozzle",
+                    "path": "machine/Peopoly Magneto X 0.4 nozzle.json",
+                    "sha256": "0b03c68c7360324848db363d36bf27c0f0526d26391fe99ae1681cfe8b1ed52c"
+                  }
+                ]
+              },
+              "process": {
+                "name": "fdm_process_peopoly_common_0_2",
+                "path": "process/fdm_process_peopoly_common_0_2.json",
+                "sha256": "40b0cd969166f980cdb55cbb45dfaf0eb30efa8382b47aee11922016881f7c09",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "81ce6d9ad7c3b4e4d20ec4756e5786a39fcb27e0fc4d19649fa46b137236cc6d"
+                  },
+                  {
+                    "name": "fdm_process_peopoly_common",
+                    "path": "process/fdm_process_peopoly_common.json",
+                    "sha256": "5d34303a645d6dff2dff4343346ce2915c635202378edd4804fefaa1e81b2db3"
+                  },
+                  {
+                    "name": "fdm_process_peopoly_common_0_2",
+                    "path": "process/fdm_process_peopoly_common_0_2.json",
+                    "sha256": "40b0cd969166f980cdb55cbb45dfaf0eb30efa8382b47aee11922016881f7c09"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Peopoly",
+                "path": "filament/Generic PLA @Peopoly.json",
+                "sha256": "eb471281bc3356c10b9f8091dc7b4e093bb6b6c9fdc323ed17e3561b8b332e8d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c969a26ef2dd3dc603a9dd8efc0bd18f6c86b0b2c0d9a8ab91b3732aac6d3a3a"
+                  },
+                  {
+                    "name": "Generic PLA @Peopoly",
+                    "path": "filament/Generic PLA @Peopoly.json",
+                    "sha256": "eb471281bc3356c10b9f8091dc7b4e093bb6b6c9fdc323ed17e3561b8b332e8d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Peopoly Magneto X 0.6 nozzle",
+                "path": "machine/Peopoly Magneto X 0.6 nozzle.json",
+                "sha256": "482feff2f392dbb3501ddf61b2086ea3bb9b4d49920d5d71602051da5d0f37bd",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "d454a84d1887ee08239932dfd198835640b0ad0508f9c8d66b5fa7de1d2746b4"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "36a867ea74eece0365abb4da6ab2cf9e5d212d4e23f490c075383a67b584821d"
+                  },
+                  {
+                    "name": "Peopoly Magneto X 0.6 nozzle",
+                    "path": "machine/Peopoly Magneto X 0.6 nozzle.json",
+                    "sha256": "482feff2f392dbb3501ddf61b2086ea3bb9b4d49920d5d71602051da5d0f37bd"
+                  }
+                ]
+              },
+              "process": {
+                "name": "fdm_process_peopoly_common_0_2",
+                "path": "process/fdm_process_peopoly_common_0_2.json",
+                "sha256": "40b0cd969166f980cdb55cbb45dfaf0eb30efa8382b47aee11922016881f7c09",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "81ce6d9ad7c3b4e4d20ec4756e5786a39fcb27e0fc4d19649fa46b137236cc6d"
+                  },
+                  {
+                    "name": "fdm_process_peopoly_common",
+                    "path": "process/fdm_process_peopoly_common.json",
+                    "sha256": "5d34303a645d6dff2dff4343346ce2915c635202378edd4804fefaa1e81b2db3"
+                  },
+                  {
+                    "name": "fdm_process_peopoly_common_0_2",
+                    "path": "process/fdm_process_peopoly_common_0_2.json",
+                    "sha256": "40b0cd969166f980cdb55cbb45dfaf0eb30efa8382b47aee11922016881f7c09"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Peopoly",
+                "path": "filament/Generic PLA @Peopoly.json",
+                "sha256": "eb471281bc3356c10b9f8091dc7b4e093bb6b6c9fdc323ed17e3561b8b332e8d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c969a26ef2dd3dc603a9dd8efc0bd18f6c86b0b2c0d9a8ab91b3732aac6d3a3a"
+                  },
+                  {
+                    "name": "Generic PLA @Peopoly",
+                    "path": "filament/Generic PLA @Peopoly.json",
+                    "sha256": "eb471281bc3356c10b9f8091dc7b4e093bb6b6c9fdc323ed17e3561b8b332e8d"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "Peopoly Magneto X 0.8 nozzle",
+                "path": "machine/Peopoly Magneto X 0.8 nozzle.json",
+                "sha256": "2a7edc8d921a90a06068198f9d12853b58abe9d895c2578c2098c97acd0601b7",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "d454a84d1887ee08239932dfd198835640b0ad0508f9c8d66b5fa7de1d2746b4"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "36a867ea74eece0365abb4da6ab2cf9e5d212d4e23f490c075383a67b584821d"
+                  },
+                  {
+                    "name": "Peopoly Magneto X 0.8 nozzle",
+                    "path": "machine/Peopoly Magneto X 0.8 nozzle.json",
+                    "sha256": "2a7edc8d921a90a06068198f9d12853b58abe9d895c2578c2098c97acd0601b7"
+                  }
+                ]
+              },
+              "process": {
+                "name": "fdm_process_peopoly_common_0_2",
+                "path": "process/fdm_process_peopoly_common_0_2.json",
+                "sha256": "40b0cd969166f980cdb55cbb45dfaf0eb30efa8382b47aee11922016881f7c09",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "81ce6d9ad7c3b4e4d20ec4756e5786a39fcb27e0fc4d19649fa46b137236cc6d"
+                  },
+                  {
+                    "name": "fdm_process_peopoly_common",
+                    "path": "process/fdm_process_peopoly_common.json",
+                    "sha256": "5d34303a645d6dff2dff4343346ce2915c635202378edd4804fefaa1e81b2db3"
+                  },
+                  {
+                    "name": "fdm_process_peopoly_common_0_2",
+                    "path": "process/fdm_process_peopoly_common_0_2.json",
+                    "sha256": "40b0cd969166f980cdb55cbb45dfaf0eb30efa8382b47aee11922016881f7c09"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @Peopoly",
+                "path": "filament/Generic PLA @Peopoly.json",
+                "sha256": "eb471281bc3356c10b9f8091dc7b4e093bb6b6c9fdc323ed17e3561b8b332e8d",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "3340d58325edd81893ad8a37868405c1a85c595972709d1f9c50698c6cdf67a3"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "c969a26ef2dd3dc603a9dd8efc0bd18f6c86b0b2c0d9a8ab91b3732aac6d3a3a"
+                  },
+                  {
+                    "name": "Generic PLA @Peopoly",
+                    "path": "filament/Generic PLA @Peopoly.json",
+                    "sha256": "eb471281bc3356c10b9f8091dc7b4e093bb6b6c9fdc323ed17e3561b8b332e8d"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Peopoly.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Peopoly.json",
+          "machine": "Peopoly Magneto X 0.4 nozzle",
+          "process": "fdm_process_peopoly_common_0_2",
+          "filament": "Generic PLA @Peopoly"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Peopoly.json",
+          "machine": "Peopoly Magneto X 0.6 nozzle",
+          "process": "fdm_process_peopoly_common_0_2",
+          "filament": "Generic PLA @Peopoly"
+        },
+        "0.8": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Peopoly.json",
+          "machine": "Peopoly Magneto X 0.8 nozzle",
+          "process": "fdm_process_peopoly_common_0_2",
+          "filament": "Generic PLA @Peopoly"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

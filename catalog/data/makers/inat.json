@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "manufacturer": "INAT",
+  "models": [
+    {
+      "id": "inat-inat-proton-x-rail",
+      "manufacturer": "INAT",
+      "model": "INAT Proton X Rail",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "INAT/1.1.1.ini",
+            "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339"
+          },
+          "model": {
+            "path": "INAT/1.1.1.ini",
+            "section": "printer_model:PROTON_X_RAIL",
+            "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Proton X Rail",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "printer:Proton X Rail",
+                "inheritance": [
+                  {
+                    "name": "*proton_x_common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "printer:*proton_x_common*"
+                  },
+                  {
+                    "name": "Proton X Rail",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "printer:Proton X Rail"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.2mm Standard @PROTON_X",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "print:0.2mm Standard @PROTON_X",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*common 0.2mm Standard @INAT*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:*common 0.2mm Standard @INAT*"
+                  },
+                  {
+                    "name": "0.2mm Standard @PROTON_X",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:0.2mm Standard @PROTON_X"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @PROTON_X",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "filament:Generic PLA @PROTON_X",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*common PLA @INAT*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:*common PLA @INAT*"
+                  },
+                  {
+                    "name": "Generic PLA @PROTON_X",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:Generic PLA @PROTON_X"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "INAT/1.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "INAT/1.1.1.ini",
+          "machine": "Proton X Rail",
+          "process": "0.2mm Standard @PROTON_X",
+          "filament": "Generic PLA @PROTON_X"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "inat-inat-proton-x-rod",
+      "manufacturer": "INAT",
+      "model": "INAT Proton X Rod",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "INAT/1.1.1.ini",
+            "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339"
+          },
+          "model": {
+            "path": "INAT/1.1.1.ini",
+            "section": "printer_model:PROTON_X_ROD",
+            "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Proton X Rod",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "printer:Proton X Rod",
+                "inheritance": [
+                  {
+                    "name": "*proton_x_common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "printer:*proton_x_common*"
+                  },
+                  {
+                    "name": "Proton X Rod",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "printer:Proton X Rod"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.2mm Standard @PROTON_X",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "print:0.2mm Standard @PROTON_X",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*common 0.2mm Standard @INAT*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:*common 0.2mm Standard @INAT*"
+                  },
+                  {
+                    "name": "0.2mm Standard @PROTON_X",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:0.2mm Standard @PROTON_X"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @PROTON_X",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "filament:Generic PLA @PROTON_X",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*common PLA @INAT*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:*common PLA @INAT*"
+                  },
+                  {
+                    "name": "Generic PLA @PROTON_X",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:Generic PLA @PROTON_X"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "INAT/1.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "INAT/1.1.1.ini",
+          "machine": "Proton X Rod",
+          "process": "0.2mm Standard @PROTON_X",
+          "filament": "Generic PLA @PROTON_X"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "inat-inat-proton-xe-750",
+      "manufacturer": "INAT",
+      "model": "INAT Proton XE-750",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "INAT/1.1.1.ini",
+            "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339"
+          },
+          "model": {
+            "path": "INAT/1.1.1.ini",
+            "section": "printer_model:PROTON_XE750",
+            "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Proton XE-750",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "printer:Proton XE-750",
+                "inheritance": [
+                  {
+                    "name": "*proton_xe750_common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "printer:*proton_xe750_common*"
+                  },
+                  {
+                    "name": "Proton XE-750",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "printer:Proton XE-750"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.2mm Standard @PROTON_XE750",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "print:0.2mm Standard @PROTON_XE750",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*common 0.2mm Standard @INAT*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:*common 0.2mm Standard @INAT*"
+                  },
+                  {
+                    "name": "0.2mm Standard @PROTON_XE750",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "print:0.2mm Standard @PROTON_XE750"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @PROTON_XE750",
+                "path": "INAT/1.1.1.ini",
+                "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                "section": "filament:Generic PLA @PROTON_XE750",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*common PLA @INAT*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:*common PLA @INAT*"
+                  },
+                  {
+                    "name": "*start_end_gcode @PROTON_XE750*",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:*start_end_gcode @PROTON_XE750*"
+                  },
+                  {
+                    "name": "Generic PLA @PROTON_XE750",
+                    "path": "INAT/1.1.1.ini",
+                    "sha256": "707794c2984ca7fb2ae540de2507bce9b308609221b8c5f0830932e0929f1339",
+                    "section": "filament:Generic PLA @PROTON_XE750"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "INAT/1.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "INAT/1.1.1.ini",
+          "machine": "Proton XE-750",
+          "process": "0.2mm Standard @PROTON_XE750",
+          "filament": "Generic PLA @PROTON_XE750"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}
