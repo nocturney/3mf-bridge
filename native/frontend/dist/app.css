@@ -464,3 +464,63 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .integration-actions{align-items:center;justify-content:flex-end;padding:10px 18px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:610px){.integration-install-row{align-items:stretch}.integration-install-row select{flex:1 1 160px}.integration-install-row button{flex:1 1 175px}}
+
+/* My Printers: RTL/LTR-safe picker, with local installed-slicer cover art only. */
+.targets-actions{display:flex;align-items:center;gap:14px;white-space:nowrap}
+.target-option[hidden],.catalog-only-targets[hidden]{display:none!important}
+.catalog-only-targets{max-height:88px;overflow-y:auto;border-top:1px solid var(--stroke);
+  padding:8px 13px;background:#fbfaf4;scrollbar-gutter:stable}
+.catalog-only-target{display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:5px;border-bottom:1px solid #eee9db;padding:4px 2px;font-size:11px}
+.catalog-only-target:last-child{border-bottom:0}
+.catalog-only-target small,.catalog-only-label{color:#9a6b32}
+.my-printers-dialog{width:min(890px,calc(100vw - 30px));max-width:none;
+  border:1px solid var(--stroke);border-radius:12px}
+.my-printers-dialog .dialog-frame{max-height:min(810px,calc(100dvh - 34px));min-height:min(520px,calc(100dvh - 34px))}
+.my-printers-content{display:flex;flex-direction:column;gap:10px;padding:15px 20px;
+  min-height:0;flex:1}
+.selected-printer-overview{padding:11px 12px;border:1px solid var(--stroke);
+  background:#f4faf6;border-radius:9px;flex:none}
+.selected-printer-overview h3{font-size:12px;margin:0 0 8px}
+.selected-printer-summary{display:flex;flex-wrap:wrap;gap:7px;max-height:114px;overflow-y:auto}
+.selected-printer-pill{display:flex;flex-direction:column;gap:2px;border:1px solid #c9e5d7;
+  background:#fff;border-radius:7px;padding:5px 8px;max-width:270px;min-width:120px}
+.selected-printer-pill strong{font-size:11px;overflow-wrap:anywhere}
+.selected-printer-pill small{font-size:10px;color:#618477}
+.printer-search-field{margin:0;flex:none}
+.printer-search-field input{width:100%;min-height:40px;border:1px solid #bfd7cc;
+  background:#fff;border-radius:8px;color:var(--ink);padding:9px 13px}
+.catalog-search-count,.catalog-footnote{margin:0;color:#678077;font-size:11px;flex:none}
+.catalog-model-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;overflow-y:auto;min-height:160px;flex:1 1 260px;
+  overscroll-behavior:contain;align-content:start;padding:3px 4px 8px;scrollbar-gutter:stable}
+.catalog-model-card{display:flex;align-items:center;gap:9px;min-width:0;padding:9px;
+  background:#fff;border:1px solid #dceae2;border-radius:10px;cursor:pointer;min-height:91px}
+.catalog-model-card:hover{background:#f7fcf9;border-color:#96c9b3}
+.catalog-model-card.is-selected{border-color:#499887;background:#f1faf6;box-shadow:0 0 0 1px #49988715}
+.catalog-model-card:focus-within{outline:2px solid #5bbfa8;outline-offset:1px}
+.catalog-model-card input{width:17px;height:17px;accent-color:var(--brand);flex:none}
+.printer-avatar{width:78px;height:70px;flex:none;border:1px solid #d7e6de;border-radius:8px;
+  background:linear-gradient(150deg,#e3f3ec,#fafdfa);position:relative;overflow:hidden;
+  display:grid;place-items:center;color:#388c77}
+.printer-avatar .avatar-device{font-size:23px;opacity:.85}
+.printer-avatar .avatar-initials{font-size:9px;position:absolute;bottom:3px;right:5px;
+  color:#477e70;direction:ltr}
+.printer-avatar .printer-cover-photo{width:100%;height:100%;object-fit:contain;
+  display:block;position:absolute;inset:0;background:#fff}
+.catalog-model-copy{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;text-align:start}
+.catalog-model-copy strong{font-size:12px;color:var(--ink);overflow-wrap:anywhere}
+.catalog-model-copy small{font-size:10.5px;color:#688076}
+.catalog-model-copy .existing-adapter{color:#2d8664}
+.catalog-model-copy .catalog-only-label{color:#9b6e33}
+.catalog-model-copy .nozzle-list{direction:ltr;text-align:start;unicode-bidi:isolate;font-size:10px}
+.catalog-empty{grid-column:1/-1;text-align:center;color:#70847a;margin:25px 0}
+@media(max-width:760px){
+  .my-printers-dialog .dialog-frame{max-height:calc(100dvh - 24px)}
+  .catalog-model-list{grid-template-columns:1fr}
+  .my-printers-content{padding:12px}
+  .printer-avatar{width:72px;height:64px}
+  .topbar-actions #myPrintersBtn{padding-inline:6px}
+  .topbar-actions #myPrintersBtn span{font-size:10px}
+  .targets-actions{gap:7px}
+}

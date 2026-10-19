@@ -175,9 +175,11 @@ function languageSwitch(lang){
   try{localStorage.setItem('3mfBridgeLanguage',language);}catch{}
   renderCopy();renderQueue();renderTargets();renderResults();renderActionBar();renderUpdates();
   if(dom.settings.open){renderSettingsTabs();paintSettings();}
+  window.SliceBridgeMyPrinters?.render();
 }
 function getSelectedTargets(){
-  return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)')).map((e)=>e.value);
+  return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)'))
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden).map((e)=>e.value);
 }
 let completedBatchFiles=0;
 let progressPhase='idle';
@@ -218,6 +220,8 @@ function renderActionBar(){
   el('addFilesBtn').disabled=el('addFolderBtn').disabled=el('clearQueueBtn').disabled=busy;
   el('selectAllBtn').disabled=busy;
   el('settingsBtn').disabled=busy;
+  el('myPrintersBtn').disabled=busy||!window.SliceBridgeMyPrinters?.isReady();
+  el('manageTargetsBtn').disabled=busy||!window.SliceBridgeMyPrinters?.isReady();
   dom.folderBtn.disabled=busy||!(lastBatch?.successes>0);
   if(busy){
     dom.activityIcon.className='activity-icon busy';
@@ -267,10 +271,13 @@ function renderQueue(){
   renderActionBar();
 }
 function renderTargets(){
+  const selectedLegacy=window.SliceBridgeMyPrinters?.legacyTargets();
   for(const target of targetOrder){
     const data=available.find((a)=>a.target===target);
     const row=document.querySelector('[data-target-row="'+target+'"]');
     const checkbox=row.querySelector('input');
+    row.hidden=Array.isArray(selectedLegacy)&&!selectedLegacy.includes(target);
+    if(row.hidden)checkbox.checked=false;
     const summary=row.querySelector('[data-printer-summary]');
     checkbox.disabled=busy||(data&&!data.available);
     // A running job temporarily locks controls; it must never erase the
@@ -291,13 +298,25 @@ function renderTargets(){
       summary.title=text;
     }
   }
+  const catalogOnly=el('catalogOnlyTargets');
+  const missing=window.SliceBridgeMyPrinters?.selectedStatuses()
+    .filter((entry)=>entry.kind==='catalog_only')||[];
+  catalogOnly.hidden=!missing.length;
+  catalogOnly.replaceChildren();
+  for(const entry of missing){
+    const label=node('div','catalog-only-target');
+    label.append(node('strong','',window.SliceBridgePicker.title(entry.model)),
+      node('small','',language==='he'?'קטלוג בלבד · המרה אינה זמינה':'Catalog only · conversion unavailable'));
+    catalogOnly.append(label);
+  }
   const count=getSelectedTargets().length;
-  el('selectAllBtn').textContent=count===available.filter(v=>v.available).length?t('deselectAll'):t('selectAll');
+  const selectable=available.filter(v=>v.available&&(!Array.isArray(selectedLegacy)||selectedLegacy.includes(v.target)));
+  el('selectAllBtn').textContent=count===selectable.length?t('deselectAll'):t('selectAll');
   renderActionBar();
 }
 async function refreshAvailability(){
   if(!api())return;
-  try{available=await api().Availability();renderTargets();}
+  try{available=await api().Availability();window.SliceBridgeMyPrinters?.setAvailability(available);renderTargets();}
   catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
 }
 async function addFiles(infos){
@@ -655,7 +674,8 @@ async function openUpdate(){
   catch(e){updateError=e?.message||String(e);renderUpdates();}
 }
 function selectAll(){
-  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'));
+  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'))
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden);
   const allSelected=boxes.every((e)=>e.checked);
   for(const box of boxes)box.checked=!allSelected;
   memoryStatus=null;renderTargets();
@@ -702,6 +722,15 @@ function registerHandlers(){
   el('enBtn').addEventListener('click',()=>languageSwitch('en'));
   el('checkUpdatesBtn').addEventListener('click',checkUpdates);
   el('openUpdateBtn').addEventListener('click',openUpdate);
+  window.addEventListener('slicebridge:my-printers-changed',()=>{
+    const selected=window.SliceBridgeMyPrinters?.legacyTargets();
+    for(const key of targetOrder){
+      const checkbox=document.querySelector('[data-target-row="'+key+'"] input');
+      if(Array.isArray(selected))checkbox.checked=selected.includes(key)&&
+        available.some(item=>item.target===key&&item.available);
+    }
+    renderTargets();
+  });
   el('dismissUpdateBtn').addEventListener('click',()=>{
     updateResult=null;updateError='';renderUpdates();
   });
@@ -766,6 +795,7 @@ async function initialiseNative(){
   catch{installedVersion=null;}
   renderUpdates();
   await refreshAvailability();
+  await window.SliceBridgeMyPrinters?.init();
   renderCopy();renderTargets();renderQueue();renderResults();renderActionBar();
 }
 
