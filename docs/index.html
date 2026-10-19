@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#193F38">
+  <meta name="description" content="SliceBridge helps move Bambu Studio 3MF projects to supported printer slicers. A local-first desktop bridge for a mixed-printer world.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SliceBridge — Bridge your prints">
+  <meta property="og:description" content="One project. More printers. Fewer walls. A local-first 3MF bridge for supported slicers. In development.">
+  <meta property="og:image" content="https://nocturney.github.io/slicebridge/assets/approved-wave.png">
+  <meta property="og:url" content="https://nocturney.github.io/slicebridge/">
+  <link rel="canonical" href="https://nocturney.github.io/slicebridge/">
+  <link rel="icon" href="assets/approved-icon.png" type="image/png">
+  <title>SliceBridge — Bridge your prints</title>
+  <style>
+    :root{color-scheme:light;--deep:#193F38;--forest:#2F7F73;--mint:#5BBFA8;--light:#A9E5D0;--foam:#DFF6EE;--paper:#F8FCFA;--stroke:#D3E7DD}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 80% 4%,#dff6ee 0%,transparent 36%),linear-gradient(180deg,#f8fcfa,#eef7f2 85%);color:var(--deep);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.65}
+    [hidden]{display:none!important}
+    a{color:var(--forest)}
+    a:focus-visible,button:focus-visible{outline:3px solid #206d62;outline-offset:4px}
+    .wrap{width:min(1050px,calc(100% - 42px));margin-inline:auto}
+    .top{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:28px 0}
+    .brand{display:inline-flex;gap:13px;align-items:center;color:var(--deep);text-decoration:none;font-size:1.35rem;font-weight:780;letter-spacing:-.035em}
+    .brand img{width:52px;height:52px;border-radius:14px;object-fit:cover;box-shadow:0 5px 18px #193f381f}
+    .switch{display:inline-flex;align-items:center;border:1px solid var(--stroke);border-radius:30px;padding:4px;gap:4px;background:white}
+    .switch button{border:0;background:transparent;padding:8px 14px;border-radius:24px;cursor:pointer;color:#41645b;font:600 .9rem system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+    .switch button[aria-pressed="true"]{background:var(--deep);color:#fff}
+    .hero{padding:45px 0 25px;text-align:center}
+    .eyebrow{font-size:.78rem;letter-spacing:.15em;font-weight:800;text-transform:uppercase;color:var(--forest)}
+    h1{font-size:clamp(2.55rem,6vw,5.1rem);line-height:1.11;letter-spacing:-.055em;max-width:820px;margin:20px auto 18px}
+    [dir=rtl] h1{letter-spacing:-.025em}
+    .lead{font-size:clamp(1.05rem,2vw,1.27rem);max-width:735px;margin:0 auto 24px;color:#3c6155}
+    .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:30px 0 28px}
+    .button{border-radius:999px;min-height:49px;padding:11px 23px;text-decoration:none;font-weight:750;display:inline-flex;justify-content:center;align-items:center;border:1px solid #c6ddd2;transition:transform .12s ease,background .12s ease}
+    .button:hover{transform:translateY(-2px)}
+    .button.primary{background:var(--deep);color:white;border-color:var(--deep)}
+    .button.secondary{background:#fff;color:var(--deep)}
+    .banner-frame{padding:18px 22px;background:#e8f7ef;border:1px solid var(--stroke);border-radius:26px;margin:28px auto 35px;box-shadow:0 20px 55px #193f3810;max-width:910px}
+    .banner-frame img{width:100%;max-width:784px;height:auto;display:block;margin:auto;object-fit:contain}
+    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 30px}
+    .step{background:#ffffffcf;border:1px solid var(--stroke);padding:24px;border-radius:20px;text-align:start}
+    .num{display:inline-grid;place-items:center;width:34px;height:34px;background:var(--foam);border-radius:11px;font-size:.91rem;font-weight:800;color:var(--forest)}
+    .step h2{font-size:1.12rem;margin:15px 0 7px}
+    .step p{font-size:.96rem;color:#4b6d62;margin:0}
+    .notice{border:1px solid #c6dfd1;background:#eef9f1;border-radius:15px;color:#39584c;padding:16px 19px;text-align:start;margin-bottom:36px;font-size:.92rem}
+    .notice strong{color:var(--deep)}
+    footer{border-top:1px solid var(--stroke);padding:24px 0 44px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:#537369;font-size:.9rem}
+    footer a{text-decoration:none}
+    @media(max-width:680px){.top{padding:18px 0}.brand img{width:43px;height:43px}.brand{font-size:1.17rem}.switch button{padding:7px 11px}.hero{padding:25px 0 12px}.steps{grid-template-columns:1fr}.banner-frame{padding:10px 8px;border-radius:17px}.step{padding:18px}.wrap{width:min(100% - 28px,1050px)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="./" aria-label="SliceBridge home"><img src="assets/approved-icon.png" width="52" height="52" alt="">SliceBridge</a>
+      <nav class="switch" aria-label="Language / שפה">
+        <button type="button" data-toggle="en" aria-pressed="true">English</button>
+        <button type="button" data-toggle="he" aria-pressed="false" lang="he" dir="rtl">עברית</button>
+      </nav>
+    </header>
+    <main>
+      <section class="hero" data-content="en" lang="en">
+        <div class="eyebrow">Different slicers. A stronger community.</div>
+        <h1>One project.<br>More freedom to print.</h1>
+        <p class="lead">Bring Bambu Studio 3MF projects to supported printers and slicers. Convert locally using compatible profiles, keep the original, and finish in the slicer you already know.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/nocturney/slicebridge">Explore on GitHub ↗</a>
+          <a class="button secondary" href="https://github.com/nocturney/slicebridge/issues">Follow development</a>
+        </div>
+      </section>
+      <section class="hero" data-content="he" lang="he" dir="rtl" hidden>
+        <div class="eyebrow">סלייסרים שונים. קהילה אחת חזקה יותר.</div>
+        <h1>פרויקט אחד.<br>יותר חופש להדפיס.</h1>
+        <p class="lead">מעבירים פרויקטי 3MF של Bambu Studio למדפסות ולסלייסרים נתמכים. ממירים מקומית באמצעות פרופילים תואמים, שומרים על המקור וממשיכים בסלייסר המוכר.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/nocturney/slicebridge">לצפייה ב־GitHub ↗</a>
+          <a class="button secondary" href="https://github.com/nocturney/slicebridge/issues">מעקב אחר הפיתוח</a>
+        </div>
+      </section>
+      <figure class="banner-frame">
+        <img src="assets/approved-wave.png" width="784" height="132" alt="SliceBridge artwork: Different slicers. A stronger community.">
+      </figure>
+      <section data-content="en" lang="en" aria-label="How it works">
+        <div class="steps">
+          <article class="step"><span class="num">01</span><h2>Choose a project</h2><p>Start with a Bambu Studio 3MF file.</p></article>
+          <article class="step"><span class="num">02</span><h2>Choose your targets</h2><p>Select supported printers and their correct profiles.</p></article>
+          <article class="step"><span class="num">03</span><h2>Continue slicing</h2><p>Review the result in your target slicer before printing.</p></article>
+        </div>
+        <aside class="notice"><strong>Development preview.</strong> SliceBridge is not yet ready for general release. Compatibility is limited to validated combinations, and physical printer/nozzle/material settings must always be checked. No public download is offered yet.</aside>
+      </section>
+      <section data-content="he" lang="he" dir="rtl" aria-label="איך זה עובד" hidden>
+        <div class="steps">
+          <article class="step"><span class="num">01</span><h2>בוחרים פרויקט</h2><p>מתחילים מקובץ 3MF של Bambu Studio.</p></article>
+          <article class="step"><span class="num">02</span><h2>בוחרים מדפסות יעד</h2><p>משתמשים רק במדפסות ובפרופילים שנתמכים בפועל.</p></article>
+          <article class="step"><span class="num">03</span><h2>ממשיכים בסלייסר</h2><p>בודקים את התוצאה בסלייסר היעד לפני הדפסה.</p></article>
+        </div>
+        <aside class="notice"><strong>גרסת פיתוח.</strong> SliceBridge עדיין אינה מוכנה להפצה כללית. התאימות מוגבלת לשילובים שנבדקו, ותמיד יש לבדוק מדפסת, דיזה, חומר והגדרות הדפסה. עדיין אין הורדה ציבורית.</aside>
+      </section>
+    </main>
+    <footer>
+      <span>© 2026 Velvet Factory · SliceBridge</span>
+      <span><a href="https://github.com/nocturney/slicebridge">GitHub</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/SUPPORT.md">Support / תמיכה</a> · <a href="https://github.com/nocturney/slicebridge/blob/main/PRIVACY.md">Privacy / פרטיות</a></span>
+    </footer>
+  </div>
+  <script>
+    (() => {
+      const buttons = [...document.querySelectorAll('[data-toggle]')];
+      const sections = [...document.querySelectorAll('[data-content]')];
+      function applyLanguage(code) {
+        const language = code === 'he' ? 'he' : 'en';
+        document.documentElement.lang = language;
+        document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
+        buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.toggle === language)));
+        sections.forEach(section => { section.hidden = section.dataset.content !== language; });
+      }
+      buttons.forEach(button => button.addEventListener('click', () => {
+        const language = button.dataset.toggle;
+        applyLanguage(language);
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', language);
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
+      }));
+      const requested = new URLSearchParams(location.search).get('lang');
+      applyLanguage(requested === 'he' || requested === 'en' ? requested : (navigator.language.toLowerCase().startsWith('he') ? 'he' : 'en'));
+    })();
+  </script>
+</body>
+</html>
