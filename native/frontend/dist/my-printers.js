@@ -64,13 +64,14 @@ const coverObserver=typeof IntersectionObserver==='function'
   },{root:$('catalogModelList'),rootMargin:'160px'}):null;
 function paintCover(tile,uri){
   if(!uri||!uri.startsWith('data:image/png;base64,')||!tile)return;
+  if(tile.querySelector('img.printer-cover-photo'))return;
   const image=node('img','printer-cover-photo');
   image.src=uri;image.alt='';image.decoding='async';image.loading='lazy';
   image.onerror=()=>{image.remove();tile.classList.remove('has-cover');};
   tile.append(image);tile.classList.add('has-cover');
 }
 function refreshVisibleCovers(id,uri){
-  document.querySelectorAll('.printer-avatar[data-art-id]').forEach((slot)=>{
+  document.querySelectorAll('.printer-avatar[data-art-id], .target-printer-icon[data-art-id]').forEach((slot)=>{
     if(slot.dataset.artId===id&&!slot.querySelector('img'))paintCover(slot,uri);
   });
 }
@@ -97,6 +98,20 @@ function observeCover(tile,id){
   if(coverCache.has(id)){paintCover(tile,coverCache.get(id));return;}
   if(coverObserver)coverObserver.observe(tile);
   else queueCover(id); // older embedded WebViews
+}
+
+// Target cards share the existing vetted, local-only artwork loader.
+function loadTargetArtwork(){
+  if(!loaded||!catalog||!selected)return;
+  const chosen=new Set(selected.selectedIds||[]);
+  for(const model of catalog.models){
+    if(!model.legacyTarget||!chosen.has(model.id))continue;
+    const tile=document.querySelector('[data-target-row="'+model.legacyTarget+'"] .target-printer-icon');
+    if(!tile)continue;
+    tile.dataset.artId=model.id;
+    if(coverCache.has(model.id))paintCover(tile,coverCache.get(model.id));
+    else queueCover(model.id);
+  }
 }
 
 function legacyTargets(){
@@ -215,6 +230,7 @@ async function save(){
       throw Error('Saved printer selection was not confirmed');
     }
     selected=reply;
+    loadTargetArtwork();
     $('myPrintersDialog').close();
     window.dispatchEvent(new Event('slicebridge:my-printers-changed'));
   }catch(err){
@@ -240,6 +256,7 @@ async function init(){
       .sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));
     for(const maker of makers){const option=node('option','',maker);option.value=maker;filter.append(option);}
     loaded=true;
+    loadTargetArtwork();
     $('myPrintersBtn').disabled=false;
     window.dispatchEvent(new Event('slicebridge:my-printers-changed'));
     if(prefs.onboardingPending)open(true);

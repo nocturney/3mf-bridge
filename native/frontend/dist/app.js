@@ -243,10 +243,10 @@ function setActivity(title,detail,type=''){
 }
 function renderQueue(){
   dom.fileList.replaceChildren();
+  dom.fileList.hidden=files.length===0;
   dom.queueCount.textContent=String(files.length);
   el('clearQueueBtn').disabled=busy||!files.length;
   if(!files.length){
-    dom.fileList.append(node('p','empty-list',t('queueEmpty')));
     renderActionBar();
     return;
   }

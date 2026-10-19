@@ -1,5 +1,13 @@
 # Offline My Printers / Catalogue (Draft)
 
+## 0.4.0-beta.4.dev.3 — development (not released)
+
+- Display 44 px local printer photos in the **actual target-printer cards** via the existing, allowlisted `PrinterArtwork(modelID)` API. Only the user's selected legacy converter models are queried. Missing images use the app's existing icon; no external images are redistributed.
+- Remove the redundant second line of the desktop banner headline.
+- Suppress the small empty-queue scrollbar under the source 3MF dropzone while retaining real scrolling for queued files.
+- No changes to conversion adapters, printer profiles or stored customer preferences. Pending cross-platform CI and visual QA.
+
+
 ## 0.4.0-beta.4.dev.2 — 19 Oct 2026 (development, not released)
 
 - Addressed the QA screenshot showing the source file drop target **cut off** in the lower portion of the panel: ensure the workspace scrolls vertically when fixed banner/progress/toolbar space leaves insufficient height, and preserve at least 205 px for the input queue.

@@ -159,3 +159,40 @@ test('header always shows labels for printers, settings and MakerWorld, even bel
   assert.equal((doc.match(/id="myPrintersBtn"/g)||[]).length,1);
   assert.equal((doc.match(/id="settingsBtn"/g)||[]).length,1);
 });
+
+
+test('target printer cards reuse locally installed PNG covers with safe fallback',()=>{
+  const html=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const js=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  const backend=fs.readFileSync(path.resolve(__dirname,'../printer_artwork.go'),'utf8');
+  const expected=[['u1','snapmaker-u1'],['c5','flashforge-creator-5'],
+                  ['cc2','elegoo-centauri-carbon-2'],['qidi','qidi-x-plus-5']];
+  for(const [target,modelID] of expected){
+    const model=catalog.models.find(model=>model.id===modelID);
+    assert.ok(model);
+    assert.equal(model.legacyTarget,target);
+    assert.ok(model.localCoverCandidates.length>0);
+    assert.match(html,new RegExp('data-target-row="'+target+'"'));
+  }
+  assert.equal((html.match(/class="target-printer-icon"/g)||[]).length,4);
+  assert.match(js,/function loadTargetArtwork\(\)/);
+  assert.match(js,/!model\.legacyTarget\|\|!chosen\.has\(model\.id\)/);
+  assert.match(js,/querySelector\('\[data-target-row=/);
+  assert.match(js,/tile\.dataset\.artId=model\.id/);
+  assert.match(js,/queueCover\(model\.id\)/);
+  assert.match(js,/selected=reply;\s*loadTargetArtwork\(\)/);
+  assert.match(js,/loaded=true;\s*loadTargetArtwork\(\)/);
+  assert.match(js,/\.printer-avatar\[data-art-id\], \.target-printer-icon\[data-art-id\]/);
+  assert.match(js,/result\?\.provenance==='local_installed_slicer'/);
+  assert.doesNotMatch(js,/fetch\s*\(|XMLHttpRequest|https?:\/\//);
+  assert.match(css,/\.target-printer-icon \.printer-cover-photo\{/);
+  assert.match(css,/object-fit:contain/);
+  assert.match(backend,/func \(a \*App\) PrinterArtwork\(modelID string\)/);
+});
+
+test('brand banner keeps just the short first headline',()=>{
+  const html=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  assert.match(html,/DIFFERENT SLICERS\./);
+  assert.doesNotMatch(html,new RegExp(['A STRONGER','COMMUNITY'].join(' '),'i'));
+});
