@@ -13,6 +13,8 @@ Project-owned code contributions are intended to be accepted under **[GPL-3.0-on
 
 Code submissions remain subject to third-party clearance review; do not assume upstream files become freely redistributable because their source repositories are public. Consult [LICENSING.md](LICENSING.md) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
+For qualified testers, use the [limited beta guide](BETA_TESTING.md) and structured beta feedback form. Do not treat experimental pre-release artifacts as stable builds.
+
 Useful links: [roadmap / printer catalogue #7](https://github.com/nocturney/slicebridge/issues/7) · [support](SUPPORT.md) · [release checklist](DISTRIBUTION_CHECKLIST.md).
 
 <div dir="rtl" align="right" lang="he">

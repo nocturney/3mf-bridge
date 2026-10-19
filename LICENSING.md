@@ -12,6 +12,14 @@ The GPL gives recipients the rights to use, inspect, modify, and redistribute co
 - **Product identity and graphics:** the approved SliceBridge name, icon and banner identify the project. Copyright permission for project-owned artwork, to the extent controlled by contributors, does **not** by itself grant trademark rights or permission to falsely claim official affiliation/endorsement. [Trademark guidance](TRADEMARKS.md) applies.
 - **Other dependencies:** their own accompanying license terms and notices remain applicable. An exhaustive release-time dependency/asset notice inventory is still required; see [distribution checklist](DISTRIBUTION_CHECKLIST.md).
 
+## Prior snapshots
+
+The early Electron prototype on the public default branch previously carried an `ISC` declaration in `package.json`, despite lacking a root license file. The switch to GPL-3.0-only describes the licensing intent for the updated project; **do not assume that previously valid permissions granted for older snapshots can be revoked retroactively**, and do not assert that unknown third-party contributions have been relicensed.
+
+## Brand art clarification
+
+The approved brand images are included to present and build the official SliceBridge project. **Before third parties redistribute independent rebranded binaries with those images, verify the art copyright permission and trademark policy.** Project branding rights and contributor copyright ownership still require confirmation under the release checklist.
+
 ## Contributor policy
 
 Code contributions accepted into SliceBridge are intended to be distributed under **GPL-3.0-only**. By submitting, contributors should have the right to grant those rights, preserve existing notices, and identify imported third-party files and separate licenses. No CLA or assignment of ownership is implied by this document.

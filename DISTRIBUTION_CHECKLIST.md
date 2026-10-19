@@ -8,7 +8,7 @@
 - [ ] Confirm all SliceBridge-original copyright owners can license their contributions under GPL-3.0-only and retain original copyright notices.
 - [ ] Ensure code and metadata from all feature branches are reconciled to the same license during reviewed merges; do not misrepresent unmerged feature code as released.
 - [ ] Confirm compliance for the `BryanSmee/bl_to_std` GPL-3.0 component and any derivative/distributed binaries, including corresponding source and notices where required.
-- [ ] Audit all bundled third-party source, art, binaries, icons and scripts for licenses and required notices. Review development branch `THIRD_PARTY_NOTICES.md` and correct inherited `3MF Bridge` wording.
+- [ ] Audit all bundled third-party source, art, binaries, icons and scripts for licenses and required notices, including confirmation of rights for the approved SliceBridge artwork. Review development branch `THIRD_PARTY_NOTICES.md` and correct inherited `3MF Bridge` wording.
 - [ ] Ensure **vendor printer/material presets are not bundled or republished** without verified rights. Availability on a third-party public Git repository is not, by itself, permission to redistribute.
 - [ ] Confirm permission to use the approved SliceBridge artwork and the Velvet Factory name.
 
@@ -21,7 +21,14 @@
 - [ ] Test MakerWorld and browser-extension opt-in behavior without silently hijacking file/protocol associations.
 - [ ] Check security of untrusted 3MF inputs, external links, update mechanism, temporary output and permissions.
 
-## 3. Packaging and publishing
+## 3. Limited beta and community preparation
+
+- [x] Prepare [beta testing protocol](BETA_TESTING.md), GitHub beta feedback form and release notes template.
+- [x] Prepare reviewable dependency-update PR configuration (monthly npm and GitHub Actions); **no unattended merges**.
+- [ ] Identify limited beta testers and assign exact permitted build access; do not post an unreviewed installer as an open download.
+- [ ] Obtain structured per-printer import, Slice and optional controlled physical-print feedback; report unsupported/not-tested variants.
+
+## 4. Packaging and publishing
 
 - [ ] Sign Windows executable/installer as appropriate; sign and notarize macOS distribution, with Apple Silicon/Intel scope explained accurately.
 - [ ] Produce versioned archives with clear platform/architecture labels and SHA-256 checksums.
