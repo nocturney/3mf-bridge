@@ -52,3 +52,16 @@ test('results clear is manual and automatic, while JSON export is removed',()=>{
   assert.ok(app.includes(lang),'missing translation '+lang);
  }
 });
+
+test('MakerWorld connection labels are localized, not translation keys',()=>{
+ const page=read('frontend/dist/index.html');
+ const app=read('frontend/dist/app.js');
+ const integrations=read('frontend/dist/integrations.js');
+ assert.match(page,/data-i18n="makerworldSetup">MakerWorld Setup<\/span>/);
+ assert.match(app,/makerworldSetup:'חיבור ל־MakerWorld'/);
+ assert.match(app,/makerworldSetup:'MakerWorld Setup'/);
+ assert.match(integrations,/integrationTitle:'חיבור ל־MakerWorld'/);
+ assert.match(integrations,/integrationTitle:'MakerWorld Setup'/);
+ assert.doesNotMatch(page,/browserIntegration|Browser integration/);
+ assert.doesNotMatch(integrations,/browserIntegration|Browser integration/);
+});

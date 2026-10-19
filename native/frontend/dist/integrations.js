@@ -7,8 +7,7 @@
   if(!dialog)return;
   const translations={
     he:{
-      browserIntegration:'חיבור לדפדפן',
-      integrationTitle:'MakerWorld · חיבור לדפדפן',
+      integrationTitle:'חיבור ל־MakerWorld',
       integrationHint:'פתיחת פרויקטים מ־MakerWorld ישירות ב־SliceBridge, בלי להחליף את Bambu Studio.',
       extensionExplanation:'התוסף פועל רק באתר MakerWorld. הוא לא קורא סיסמאות או Cookies, ולא משנה קישורי Bambu במערכת.',
       interceptModesTitle:'בחר את ברירת המחדל בחלון התוסף בדפדפן',
@@ -30,8 +29,7 @@
       authHint:'אם MakerWorld מבקש התחברות או בדיקת אבטחה, השתמש בהורדת 3MF הרגילה באתר.'
     },
     en:{
-      browserIntegration:'Browser integration',
-      integrationTitle:'MakerWorld · Browser integration',
+      integrationTitle:'MakerWorld Setup',
       integrationHint:'Open MakerWorld projects in SliceBridge without replacing Bambu Studio.',
       extensionExplanation:'The extension runs only on MakerWorld. It does not read cookies or passwords or change Bambu system links.',
       interceptModesTitle:'Choose the default in the extension popup',

@@ -34,6 +34,7 @@ async function inspect(win){
       metaInFooter:!!e('footer .app-meta #installedVersion')&&!!e('footer .app-meta #checkUpdatesBtn'),
       hasJsonExport:!!e('#exportReportBtn'),
       integrationLabel:e('#integrationsBtn').textContent.trim(),
+      integrationButton:rect('#integrationsBtn'),
       progressPercent:e('#progressPercent').textContent,
       progressFill:rect('#progressFill'),progressTrack:rect('#progressTrack'),
       makerworldBadges:document.querySelectorAll('.makerworld-badge').length
@@ -61,7 +62,19 @@ async function main(){
   assert.equal(layout.brandImageLoaded,true,'new SliceBridge icon must render');
   assert.equal(layout.metaInFooter,true,'version and update button share bottom bar');
   assert.equal(layout.hasJsonExport,false,'old JSON export must be removed');
-  assert.equal(layout.integrationLabel,'MakerWorld','integration button should have a readable title');
+  assert.equal(layout.integrationLabel,'MakerWorld Setup','integration button should have a readable title');
+  assert.ok(layout.integrationButton.x>=0 && layout.integrationButton.x+layout.integrationButton.width<=layout.viewport.w+1,
+    'English integration button must fit the top bar');
+  await win.webContents.executeJavaScript("document.getElementById('heBtn').click()");
+  await sleep(80);
+  layout=await inspect(win);
+  assert.equal(layout.dir,'rtl','Hebrew language must use RTL');
+  assert.equal(layout.integrationLabel,'חיבור ל־MakerWorld','Hebrew integration label must be human readable');
+  assert.ok(layout.integrationButton.x>=0 && layout.integrationButton.x+layout.integrationButton.width<=layout.viewport.w+1,
+    'Hebrew integration button must fit the top bar');
+  await win.webContents.executeJavaScript("document.getElementById('enBtn').click()");
+  await sleep(80);
+  layout=await inspect(win);
   assert.ok(layout.workspace.height>250,'workspace must have useful height');
   assert.ok(layout.queue.height>40,'file list needs independent scroll container');
   await win.webContents.executeJavaScript("document.getElementById('integrationsBtn').click()");
