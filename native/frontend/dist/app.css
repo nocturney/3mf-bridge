@@ -428,3 +428,39 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   .progress-fill{transition:none}
   .progress-track.is-working .progress-fill{animation:none}
 }
+
+/* MakerWorld onboarding: three actionable steps, not static settings cards. */
+.integrations-dialog{width:min(690px,calc(100vw - 28px))}
+.integration-content{gap:12px;padding:14px 18px}
+.integration-step{border:1px solid #dae8df;background:#fbfefc;border-radius:11px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0}
+.integration-step-heading{display:flex;align-items:flex-start;gap:10px;min-width:0}
+.integration-step-heading>div{min-width:0}
+.integration-step-heading h3{font-size:14px;line-height:1.35;margin:0 0 3px;color:var(--ink)}
+.integration-step-heading p{font-size:11px;line-height:1.5;margin:0;color:var(--ink-muted)}
+.step-index{font:700 12px/1.35 ui-monospace,Consolas,monospace;background:#dff6ee;color:#2f7f73;border-radius:6px;padding:5px;flex:none}
+.integration-step .integration-state{align-self:stretch;font-weight:500;font-size:11px;line-height:1.5;padding:10px 12px}
+.integration-step .integration-state.ready{background:#eaf8ef;border-color:#b2debd}
+.integration-step .integration-state.missing{background:#fffaf0;border-color:#e7d6ad}
+.integration-step .mode-list{border:0;padding:0;margin:0;display:grid;gap:7px;width:100%}
+.mode-list .mode-option{display:flex;align-items:center;gap:11px;border:1px solid #d1e7dc;border-radius:9px;background:#fff;padding:9px 12px;cursor:pointer;min-height:52px}
+.mode-list .mode-option:hover{border-color:#7bb6a1;background:#f2faf6}
+.mode-list .mode-option:focus-within{outline:2px solid #5bbfa8;outline-offset:1px}
+.mode-list .mode-option:has(input:checked){border-color:#2f7f73;background:#e9f7f0;box-shadow:0 0 0 1px #2f7f7333}
+.mode-option input{accent-color:#2f7f73;width:16px;height:16px;margin:0;flex:none;cursor:pointer}
+.mode-option span{display:flex;flex-direction:column;gap:1px;min-width:0}
+.mode-option strong{font-size:12px;font-weight:700}
+.mode-option small{font-size:11px;color:#60786b;line-height:1.4}
+.integration-install-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;min-width:0;width:100%}
+.integration-install-row label{font-size:11px;font-weight:650}
+.integration-install-row select{border:1px solid #d1dfd6;border-radius:8px;background:#fff;color:var(--ink);min-height:36px;padding:7px 9px;font:inherit;max-width:100%}
+.integration-install-row button{white-space:normal}
+.integration-instructions{margin:0;padding-inline-start:22px;font-size:11px;color:#47685c;line-height:1.8}
+.integration-instructions code{display:inline-block;direction:ltr;unicode-bidi:isolate;padding:1px 5px;border-radius:4px;background:#eaf5ef;color:#193f38}
+.integration-feedback{font-size:11px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap;margin:0;color:#426959}
+.integration-feedback.error{color:#a34435}
+.integration-feedback:empty{display:none}
+.integration-caution{font-size:11px;line-height:1.5;color:#905819;margin:0}
+.integration-content>.integration-note{font-size:11px;line-height:1.5;margin:0}
+.integration-actions{align-items:center;justify-content:flex-end;padding:10px 18px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:610px){.integration-install-row{align-items:stretch}.integration-install-row select{flex:1 1 160px}.integration-install-row button{flex:1 1 175px}}

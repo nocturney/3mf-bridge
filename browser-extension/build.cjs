@@ -36,18 +36,21 @@ function packageBrowser(browser) {
     if (!sharedFiles.includes(name)) throw new Error('Unrecognized manifest resource: ' + name);
   }
   const target = path.join(outRoot, browser);
-  fs.rmSync(target, {recursive:true,force:true});
-  fs.mkdirSync(target, {recursive:true});
-  fs.copyFileSync(manifestSource, path.join(target, 'manifest.json'));
-  for (const name of sharedFiles) {
-    const source = path.join(shared, name);
-    if (!fs.existsSync(source)) throw new Error('Missing shared resource: ' + name);
-    fs.copyFileSync(source, path.join(target, name));
+  const embedded = path.join(root,'native','frontend','dist','extension-packages',browser);
+  for (const directory of [target, embedded]) {
+    fs.rmSync(directory, {recursive:true,force:true});
+    fs.mkdirSync(directory, {recursive:true});
+    fs.copyFileSync(manifestSource, path.join(directory, 'manifest.json'));
+    for (const name of sharedFiles) {
+      const source = path.join(shared, name);
+      if (!fs.existsSync(source)) throw new Error('Missing shared resource: ' + name);
+      fs.copyFileSync(source, path.join(directory, name));
+    }
+    for (const name of referenced) {
+      if (!fs.existsSync(path.join(directory, name))) throw new Error('Missing packaged resource: ' + name);
+    }
   }
-  for (const name of referenced) {
-    if (!fs.existsSync(path.join(target, name))) throw new Error('Missing packaged resource: ' + name);
-  }
-  return {browser, path:target, resources:sharedFiles.length};
+  return {browser, path:target, embedded, resources:sharedFiles.length};
 }
 
 if (require.main === module) {

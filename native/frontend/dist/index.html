@@ -204,20 +204,58 @@
       <button type="button" id="closeIntegrationsBtn" class="ghost-btn close-dialog" aria-label="Close">×</button>
     </header>
     <div class="dialog-scroll integration-content">
-      <div class="integration-state"><span id="browserLinkStatus" role="status" data-i18n="browserLinkUnknown">Checking native browser links…</span></div>
-      <p data-i18n="extensionExplanation">The browser extension works only on MakerWorld and asks your permission to intercept Bambu Studio links.</p>
-      <h3 data-i18n="interceptModesTitle">Choose the default in the browser extension</h3>
-      <div class="mode-list">
-        <div><strong data-i18n="interceptOff">Off</strong><small data-i18n="interceptOffDetail">Default. Bambu Studio opens normally.</small></div>
-        <div><strong data-i18n="interceptAsk">Ask every time</strong><small data-i18n="interceptAskDetail">Choose SliceBridge or Bambu Studio when opening a model.</small></div>
-        <div><strong data-i18n="interceptAlways">Always use SliceBridge</strong><small data-i18n="interceptAlwaysDetail">Route supported MakerWorld links to SliceBridge automatically.</small></div>
-      </div>
-      <p class="integration-note" data-i18n="modeScopeNote">Choose your mode in the extension's toolbar popup. Browser settings are separate from printer settings and are Off by default.</p>
+      <section class="integration-step" aria-labelledby="integrationStepOne">
+        <div class="integration-step-heading"><span class="step-index">01</span><div>
+          <h3 id="integrationStepOne" data-i18n="stepOneTitle">Enable app links</h3>
+          <p data-i18n="stepOneHint">Let Windows open SliceBridge when a browser sends a project.</p>
+        </div></div>
+        <div class="integration-state"><span id="browserLinkStatus" role="status" aria-live="polite">Checking browser links…</span></div>
+        <button type="button" id="enableLinksBtn" class="compact-btn secondary" data-i18n="enableBrowserLinks">Enable app links</button>
+      </section>
+
+      <section class="integration-step" aria-labelledby="integrationStepTwo">
+        <div class="integration-step-heading"><span class="step-index">02</span><div>
+          <h3 id="integrationStepTwo" data-i18n="stepTwoTitle">Add the browser extension</h3>
+          <p data-i18n="stepTwoHint">One-time setup in each browser. No GitHub download needed.</p>
+        </div></div>
+        <div class="integration-install-row">
+          <label for="browserTargetSelect" data-i18n="browserLabel">Browser</label>
+          <select id="browserTargetSelect" aria-label="Browser">
+            <option value="edge">Microsoft Edge</option>
+            <option value="chrome">Google Chrome</option>
+            <option value="brave">Brave</option>
+            <option value="firefox">Firefox (test)</option>
+          </select>
+          <button id="prepareExtensionBtn" class="compact-btn primary" type="button" data-i18n="prepareExtension">Open extension folder</button>
+        </div>
+        <ol class="integration-instructions">
+          <li><span data-i18n="installInstructionOne">Open this address in the browser:</span> <code id="browserSettingsAddress" dir="ltr">edge://extensions</code></li>
+          <li data-i18n="installInstructionTwo">Enable Developer mode, then choose Load unpacked.</li>
+          <li data-i18n="installInstructionThree">Select the folder opened by the button above. Pin the SliceBridge extension if helpful.</li>
+        </ol>
+        <p id="firefoxInstallWarning" class="integration-caution" data-i18n="firefoxInstallWarning" hidden>Firefox test extensions must be reloaded after restarting Firefox.</p>
+        <p id="extensionFolderStatus" class="integration-feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="integration-step" aria-labelledby="integrationStepThree">
+        <div class="integration-step-heading"><span class="step-index">03</span><div>
+          <h3 id="integrationStepThree" data-i18n="stepThreeTitle">Choose how MakerWorld opens</h3>
+          <p data-i18n="stepThreeHint">Select an option, then confirm it in the browser. The app cannot change extension settings silently.</p>
+        </div></div>
+        <fieldset class="mode-list">
+          <legend class="sr-only" data-i18n="stepThreeTitle">Choose how MakerWorld opens</legend>
+          <label class="mode-option"><input type="radio" name="makerworldMode" value="off"><span><strong data-i18n="interceptOff">Off</strong><small data-i18n="interceptOffDetail">Use Bambu Studio as usual.</small></span></label>
+          <label class="mode-option"><input type="radio" name="makerworldMode" value="ask"><span><strong data-i18n="interceptAsk">Ask every time</strong><small data-i18n="interceptAskDetail">Choose SliceBridge or Bambu for each project.</small></span></label>
+          <label class="mode-option"><input type="radio" name="makerworldMode" value="always"><span><strong data-i18n="interceptAlways">Always use SliceBridge</strong><small data-i18n="interceptAlwaysDetail">Open supported MakerWorld links in SliceBridge.</small></span></label>
+        </fieldset>
+        <button type="button" id="applyBrowserModeBtn" class="compact-btn primary" data-i18n="confirmInBrowser" disabled>Open browser to confirm</button>
+        <p id="modeStatus" class="integration-feedback" role="status" aria-live="polite"></p>
+      </section>
+      <p class="integration-note" data-i18n="modeScopeNote">The extension controls only supported MakerWorld links. Each browser stores its own choice; Bambu Studio's defaults stay unchanged.</p>
       <p id="integrationStatus" class="dialog-status" role="status"></p>
     </div>
     <footer class="dialog-actions integration-actions">
-      <button type="button" id="openExtensionGuideBtn" class="compact-btn secondary" data-i18n="openExtensionGuide">Install / configure extension</button>
-      <button type="button" id="enableLinksBtn" class="compact-btn primary" data-i18n="enableBrowserLinks">Enable browser links</button>
+      <button type="button" id="doneIntegrationsBtn" class="compact-btn secondary" data-i18n="done">Done</button>
     </footer>
   </div>
 </dialog>

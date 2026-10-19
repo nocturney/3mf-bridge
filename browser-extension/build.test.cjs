@@ -12,6 +12,8 @@ for(const browser of ['chromium','firefox']) {
     const result=packageBrowser(browser);
     const target=result.path;
     const manifest=JSON.parse(fs.readFileSync(path.join(target,'manifest.json'),'utf8'));
+    assert.ok(result.embedded.includes(path.join('native','frontend','dist','extension-packages')));
+    assert.deepEqual(fs.readdirSync(result.embedded).sort(),fs.readdirSync(target).sort());
     assert.equal(manifest.manifest_version,3);
     assert.deepEqual(manifest.permissions,['storage']);
     assert.equal((manifest.content_scripts||[]).length,1);

@@ -28,6 +28,12 @@ async function inspect(win){
       conversionDisabled:e('#convertBtn').disabled,
       integrationsModal:e('#integrationsDialog').open,
       integrationsStatus:e('#browserLinkStatus').textContent,
+      setupChoices:document.querySelectorAll('#integrationsDialog input[name=makerworldMode]').length,
+      selectedMode:document.querySelector('#integrationsDialog input[name=makerworldMode]:checked')?.value||'',
+      applyDisabled:e('#applyBrowserModeBtn').disabled,
+      preparedFolder:e('#extensionFolderStatus').textContent,
+      modeFeedback:e('#modeStatus').textContent,
+      browserAddress:e('#browserSettingsAddress').textContent,
       reportCards:document.querySelectorAll('.file-report').length,
       clearResultsDisabled:e('#clearResultsBtn').disabled,
       brandImageLoaded:e('.brand-mark').naturalWidth>0,
@@ -81,7 +87,25 @@ async function main(){
   await sleep(150);
   layout=await inspect(win);
   assert.equal(layout.integrationsModal,true,'MakerWorld onboarding modal must open');
-  assert.match(layout.integrationsStatus,/approval required/i,'consent requirement is visible');
+  assert.match(layout.integrationsStatus,/Action needed/i,'OS link status is actionable');
+  assert.equal(layout.setupChoices,3,'exactly three native mode options are clickable');
+  assert.equal(layout.selectedMode,'','native app must not fake browser current mode');
+  assert.equal(layout.applyDisabled,true,'browser confirmation requires a selection');
+  assert.equal(layout.browserAddress,'edge://extensions','local Edge instructions replace GitHub');
+  await win.webContents.executeJavaScript("document.getElementById('prepareExtensionBtn').click()");
+  await sleep(100);
+  layout=await inspect(win);
+  assert.match(layout.preparedFolder,/BrowserExtensions/,'native setup prepares local files');
+  await win.webContents.executeJavaScript("document.querySelector('input[name=makerworldMode][value=ask]').click()");
+  layout=await inspect(win);
+  assert.equal(layout.selectedMode,'ask','Ask is selectable in the app');
+  assert.equal(layout.applyDisabled,false,'selected mode enables browser confirmation');
+  await win.webContents.executeJavaScript("document.getElementById('applyBrowserModeBtn').click()");
+  await sleep(80);
+  layout=await inspect(win);
+  assert.match(layout.modeFeedback,/Confirm this choice/i,'browser approval is explicitly required');
+  await fs.mkdir(path.join(__dirname,'..','..','dist'),{recursive:true});
+  await fs.writeFile(path.join(__dirname,'..','..','dist','makerworld-wizard-desktop.png'),(await win.webContents.capturePage()).toPNG());
   await win.webContents.executeJavaScript("document.getElementById('closeIntegrationsBtn').click()");
   layout=await inspect(win);
   assert.equal(layout.integrationsModal,false,'MakerWorld modal must close');

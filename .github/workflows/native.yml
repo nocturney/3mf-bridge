@@ -6,6 +6,7 @@ on:
   pull_request:
     paths:
       - 'native/**'
+      - 'browser-extension/**'
       - 'engine/**'
       - 'third_party/**'
       - '.github/workflows/native.yml'
@@ -32,11 +33,17 @@ jobs:
         with:
           go-version-file: native/go.mod
           cache: false
+      - name: Stage bundled extensions from source
+        shell: pwsh
+        run: |
+          node ../browser-extension/build.cjs
+          $changed = git -C .. status --porcelain --untracked-files=all -- native/frontend/dist/extension-packages
+          if ($LASTEXITCODE -ne 0 -or $changed) { throw 'Embedded extension bytes differ from source; regenerate and commit' }
       - name: Test Go engine and native backend
         shell: pwsh
         run: go test -count=1 ./...
-      - name: Test update UI (English and Hebrew)
-        run: node --test tests/update-ui.test.js tests/brand-ui.test.js
+      - name: Test native UI and browser handoff
+        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js
       - name: Install stable Wails 2
         shell: pwsh
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
@@ -78,10 +85,14 @@ jobs:
         with:
           go-version-file: native/go.mod
           cache: false
+      - name: Stage bundled extensions from source
+        run: |
+          node ../browser-extension/build.cjs
+          test -z "$(git -C .. status --porcelain --untracked-files=all -- native/frontend/dist/extension-packages)"
       - name: Test Go engine and native backend
         run: go test -count=1 ./...
-      - name: Test update UI (English and Hebrew)
-        run: node --test tests/update-ui.test.js tests/brand-ui.test.js
+      - name: Test native UI and browser handoff
+        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js
       - name: Install stable Wails 2
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
       - name: Build macOS app using system WebKit

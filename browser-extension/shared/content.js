@@ -135,6 +135,111 @@
     popup=wrap;
     first.focus();
   }
+  // Setup deep link from the native wizard. We only show a request here:
+  // the extension setting changes AFTER a real user confirms in the browser.
+  // A copied MakerWorld URL cannot change storage without that confirmation.
+  function maybeOfferModeSetup() {
+    const match = /^#slicebridge-setup=(off|ask|always)$/.exec(location.hash);
+    if (!match) return;
+    const wanted = match[1];
+    const offer = () => {
+      if (popup) return;
+      try { history.replaceState(history.state, '', location.pathname + location.search); } catch {}
+      const he = /^he\b/i.test(document.documentElement.lang || '') ||
+        /^he\b/i.test(navigator.language || '');
+      const labels = he ? {
+        title:'הפעלת SliceBridge בדפדפן',
+        text:'האם לשמור בדפדפן זה את מצב הפתיחה של קישורי MakerWorld?',
+        off:'כבוי — Bambu Studio כרגיל', ask:'שאל בכל פעם',
+        always:'תמיד ב־SliceBridge', yes:'אשר ושמור בדפדפן',
+        no:'ביטול', saved:'הבחירה נשמרה בתוסף בדפדפן זה.',
+        error:'לא ניתן לשמור בתוסף. בדוק שהוא מותקן ופעיל.'
+      } : {
+        title:'SliceBridge browser setup',
+        text:'Save this MakerWorld opening preference in this browser?',
+        off:'Off — use Bambu Studio', ask:'Ask every time',
+        always:'Always use SliceBridge', yes:'Confirm and save in this browser',
+        no:'Cancel', saved:'Saved in the extension for this browser.',
+        error:'Could not save the extension preference. Check that it is enabled.'
+      };
+      const previous = document.activeElement;
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;background:#092c26a8;font-family:system-ui,sans-serif;';
+      const shadow = wrap.attachShadow({mode:'closed'});
+      const style = document.createElement('style');
+      style.textContent = `
+      *{box-sizing:border-box}section{width:min(92vw,450px);background:#f7fffb;color:#193f38;border:1px solid #96d4b5;border-radius:14px;padding:24px;box-shadow:0 18px 55px #0005}
+      h2{font-size:20px;line-height:1.2;margin:0 0 10px}p{font-size:14px;line-height:1.55;margin:0 0 16px}
+      .selected{font-weight:750;background:#e0f5eb;padding:11px;border-radius:7px;border:1px solid #b4deca}
+      nav{display:flex;gap:9px;flex-wrap:wrap}button{flex:1;min-height:42px;padding:9px 13px;border-radius:8px;border:1px solid #aacfc1;color:#193f38;background:white;font:600 13px system-ui;cursor:pointer}
+      button.primary{color:white;background:#2f7f73;border-color:#2f7f73}
+      button:focus-visible{outline:3px solid #5bbfa8}button:disabled{opacity:.55}
+      #status{font-size:12px;margin:9px 0 0;min-height:0}
+      `;
+      const section = document.createElement('section');
+      section.dir = he ? 'rtl' : 'ltr';
+      section.setAttribute('role','dialog');
+      section.setAttribute('aria-modal','true');
+      section.setAttribute('aria-labelledby','slicebridge-mode-title');
+      const title = document.createElement('h2');
+      title.id = 'slicebridge-mode-title';
+      title.textContent = labels.title;
+      const description = document.createElement('p');
+      description.textContent = labels.text;
+      const selected = document.createElement('p');
+      selected.className='selected';
+      selected.textContent=labels[wanted];
+      const status = document.createElement('p');
+      status.id='status';
+      status.setAttribute('role','status');
+      const nav = document.createElement('nav');
+      const approve = document.createElement('button');
+      approve.type='button'; approve.className='primary'; approve.textContent=labels.yes;
+      const cancel = document.createElement('button');
+      cancel.type='button'; cancel.textContent=labels.no;
+      const close = () => {
+        wrap.remove();popup=null;
+        if(previous?.isConnected && typeof previous.focus==='function')previous.focus();
+      };
+      cancel.addEventListener('click',close);
+      approve.addEventListener('click',async()=>{
+        approve.disabled=true;
+        try {
+          await ext.storage.local.set({makerworldMode:wanted});
+          mode=wanted;
+          status.textContent=labels.saved;
+          cancel.textContent=he?'סגור':'Close';
+          approve.hidden=true;
+          cancel.focus();
+        } catch {
+          status.textContent=labels.error;
+          approve.disabled=false;
+        }
+      });
+      nav.append(approve,cancel);
+      section.append(title,description,selected,nav,status);
+      shadow.append(style,section);
+      wrap.addEventListener('keydown',e=>{
+        if(e.key==='Escape'){e.preventDefault();close();return;}
+        if(e.key!=='Tab')return;
+        const buttons=[approve,cancel].filter(b=>!b.hidden&&!b.disabled);
+        if(!buttons.length){e.preventDefault();return;}
+        const active=shadow.activeElement;
+        if(e.shiftKey&&(active===buttons[0]||!buttons.includes(active))){
+          e.preventDefault();buttons[buttons.length-1].focus();
+        }else if(!e.shiftKey&&(active===buttons[buttons.length-1]||!buttons.includes(active))){
+          e.preventDefault();buttons[0].focus();
+        }
+      });
+      (document.body || document.documentElement).append(wrap);
+      popup=wrap;
+      approve.focus();
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded',offer,{once:true});
+    } else offer();
+  }
+  maybeOfferModeSetup();
   loadMode();
   // Works with ordinary anchor links and many dynamic anchors. If MakerWorld
   // uses direct JS protocol navigation without an anchor, let Bambu handle it.

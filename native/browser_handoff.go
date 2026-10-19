@@ -309,12 +309,10 @@ func download3MF(ctx context.Context, client *http.Client, link makerworld.Link,
 
 // Explicit per-user registration is available only on Windows, never
 // triggered automatically when the app is installed or started.
+// Legacy entrypoint for older frontends; use local setup, never GitHub source.
 func (a *App) OpenBrowserSetup() error {
-	if a.ctx == nil {
-		return errors.New("desktop not ready")
-	}
-	wailsruntime.BrowserOpenURL(a.ctx, "https://github.com/nocturney/3mf-bridge/tree/feature/browser-compat-and-icon/browser-extension")
-	return nil
+	_, err := a.PrepareBrowserExtension("edge")
+	return err
 }
 
 func (a *App) BrowserLinkStatus() (map[string]any, error) {

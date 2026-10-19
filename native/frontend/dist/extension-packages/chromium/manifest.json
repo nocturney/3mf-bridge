@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "SliceBridge for MakerWorld",
+  "version": "0.1.0",
+  "description": "Opt-in MakerWorld deep-link handoff to SliceBridge. Bambu Studio defaults are untouched.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://makerworld.com/*",
+        "https://*.makerworld.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "SliceBridge for MakerWorld",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon-16.png",
+      "32": "icon-32.png"
+    }
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  }
+}

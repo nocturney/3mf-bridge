@@ -40,6 +40,8 @@ const app={
   OpenUpdatePage:async()=>{},
   BrowserLinkStatus:async()=>({platform:'windows',registered:false}),
   EnableBrowserLink:async()=>{},
+  PrepareBrowserExtension:async(browser)=>({folder:'C:\\SliceBridge\\BrowserExtensions\\'+(browser==='firefox'?'firefox':'chromium'),kind:browser==='firefox'?'firefox':'chromium'}),
+  OpenMakerWorldMode:async(browser,mode)=>{if(!['edge','chrome','brave','firefox'].includes(browser)||!['off','ask','always'].includes(mode))throw new Error('Invalid browser or mode')},
   OpenBrowserSetup:async()=>{}
 };
 contextBridge.exposeInMainWorld('go',{main:{App:app}});
