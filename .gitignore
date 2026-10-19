@@ -2,3 +2,7 @@ node_modules/
 dist/
 out/
 *.log
+
+# Python test artifacts
+__pycache__/
+*.pyc
