@@ -4,6 +4,8 @@
 
 **Is SliceBridge available to download?** Not as a general release. Development and a draft beta exist, but a release must pass QA, privacy/security and distribution checks before a public download is offered.
 
+**Is SliceBridge open source?** Yes. Project-owned source is licensed under [GPL-3.0-only](LICENSE). Vendor presets and other third-party assets retain their own licenses. See [licensing scope](LICENSING.md).
+
 **Is it a slicer?** No. SliceBridge is intended to bridge supported Bambu Studio 3MF projects to compatible target slicers. You still review and slice in the target application before printing.
 
 **Does it support every 3D printer?** No. Printer catalogue inclusion and verified presets do not equal tested conversion support. Physical nozzle and material matching matters.
@@ -18,6 +20,7 @@
 
 <div dir="rtl" align="right" lang="he">
 <h2>עברית</h2>
+<p><strong>זה קוד פתוח?</strong> כן. קוד המקור המקורי מופץ תחת <a href="LICENSE" dir="ltr">GPL-3.0-only</a>. רישיונות צד שלישי ופרופילים של יצרנים נבחנים בנפרד; ראו <a href="LICENSING.md">היקף הרישיון</a>.</p>
 <p><strong>אפשר כבר להוריד את התוכנה?</strong> עדיין אין הפצה כללית. קיימים ענפי פיתוח וטיוטת בטא, אך נדרשות בדיקות QA ואישורי פרטיות, אבטחה ורישוי לפני הורדה ציבורית.</p>
 <p><strong>זה סלייסר חדש?</strong> לא. זהו גשר בין קובצי <span dir="ltr">3MF</span> של <span dir="ltr">Bambu Studio</span> לבין סלייסרים נתמכים. בודקים את התוצאה וחותכים בסלייסר היעד לפני הדפסה.</p>
 <p><strong>כל המדפסות נתמכות?</strong> לא. מדפסת שנמצאת בקטלוג אינה בהכרח מדפסת שההמרה אליה נבדקה. יש לבדוק גם דיזה וחומר.</p>
