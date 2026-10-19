@@ -12,6 +12,8 @@ GitHub Pages: https://nocturney.github.io/slicebridge/
 
 Keep this site isolated from the application's UI and its open development PRs.
 
+The repository's covered original code uses [GPL-3.0-only](../LICENSE); third-party and trademark scopes are described in [LICENSING.md](../LICENSING.md).
+
 ## Shareable media
 
 - `press.html`: accessible bilingual media page using the original approved icon and banner.

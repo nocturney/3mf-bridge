@@ -1,0 +1,40 @@
+name: License and project metadata
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  license-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Check SPDX, notices and release disclaimers
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          license_text = Path("LICENSE").read_text(encoding="utf-8")
+          assert "GNU GENERAL PUBLIC LICENSE" in license_text
+          assert "Version 3, 29 June 2007" in license_text
+          assert "END OF TERMS AND CONDITIONS" in license_text
+          package = json.loads(Path("package.json").read_text(encoding="utf-8"))
+          lock = json.loads(Path("package-lock.json").read_text(encoding="utf-8"))
+          assert package["license"] == "GPL-3.0-only"
+          assert lock["packages"][""]["license"] == "GPL-3.0-only"
+          required = ["LICENSING.md", "THIRD_PARTY_NOTICES.md", "TRADEMARKS.md", "DISTRIBUTION_CHECKLIST.md"]
+          for name in required:
+              assert Path(name).is_file(), "Missing license document: " + name
+          notices = Path("THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8")
+          assert "BryanSmee/bl_to_std" in notices
+          assert "NOT redistributed" in notices, "Vendor profile redistribution caveat missing"
+          checklist = Path("DISTRIBUTION_CHECKLIST.md").read_text(encoding="utf-8")
+          assert "Status: HOLD" in checklist, "Do not quietly remove release gate"
+          print("PASS: GPL-3.0-only metadata, notices and release gate")
+          PY

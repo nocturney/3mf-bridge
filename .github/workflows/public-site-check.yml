@@ -3,18 +3,8 @@ name: Public site smoke check
 on:
   push:
     branches: [main]
-    paths:
-      - "docs/**"
-      - "SUPPORT.md"
-      - "PRIVACY.md"
-      - ".github/workflows/public-site-check.yml"
   pull_request:
     branches: [main]
-    paths:
-      - "docs/**"
-      - "SUPPORT.md"
-      - "PRIVACY.md"
-      - ".github/workflows/public-site-check.yml"
 
 permissions:
   contents: read
