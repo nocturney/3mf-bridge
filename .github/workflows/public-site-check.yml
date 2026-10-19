@@ -31,6 +31,7 @@ jobs:
           from html.parser import HTMLParser
           from pathlib import Path
           import re
+          import struct
 
           class Check(HTMLParser):
               def __init__(self):
@@ -64,7 +65,13 @@ jobs:
               p = root / source
               assert p.is_file() and p.stat().st_size > 8, "Missing asset: " + source
               assert p.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), "Not a PNG: " + source
-          for page in ("PRIVACY.md", "SUPPORT.md", "SECURITY.md"):
+          image_meta = re.search(r'<meta property="og:image" content="([^"]+)"', html)
+          assert image_meta, "Open Graph preview missing"
+          assert image_meta.group(1) == "https://nocturney.github.io/slicebridge/assets/social-preview.png", "Incorrect social preview"
+          preview_bytes = (root / "assets" / "social-preview.png").read_bytes()
+          assert preview_bytes.startswith(b"\\x89PNG\\r\\n\\x1a\\n"), "Social preview not PNG"
+          assert struct.unpack(">II", preview_bytes[16:24]) == (1280, 640), "Social preview must be 1280x640"
+          for page in ("PRIVACY.md", "SUPPORT.md", "SECURITY.md", "FAQ.md"):
               assert Path(page).is_file(), "Missing public policy: " + page
           print("PASS: bilingual page, safety notice, links and approved PNG assets")
           PY
