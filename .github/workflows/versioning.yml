@@ -1,0 +1,37 @@
+name: Version and changelog contract
+
+on:
+  pull_request:
+    paths:
+      - VERSION
+      - CHANGELOG.md
+      - VERSIONING.md
+      - tools/check_versioning.py
+      - tests/test_versioning.py
+      - .github/workflows/versioning.yml
+  push:
+    branches: [main]
+    paths:
+      - VERSION
+      - CHANGELOG.md
+      - VERSIONING.md
+      - tools/check_versioning.py
+      - tests/test_versioning.py
+      - .github/workflows/versioning.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify version and milestone entry
+        run: |
+          python3 tools/check_versioning.py --repo .
+          python3 -m unittest discover -s tests -p 'test_versioning.py' -v

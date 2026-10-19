@@ -12,6 +12,11 @@ Public, published releases will be listed here. Development-branch work and draf
 - Published development status; no current downloadable community build yet.
 - Simplified the release guidance for a small open-source project; signing is optional.
 
+## [0.4.0-beta.4.dev.0] — 2026-10-19 (development milestone, not released)
+
+- Established a single tracked `VERSION`, a stage-by-stage changelog policy and an automated version/changelog contract check. This stage contains repository metadata only; it does not ship a new app binary.
+- Kept the existing `v0.4.0-beta.3` draft distinct from public releases and from the next development version.
+
 ## Draft artifacts (not released)
 
 - `v0.4.0-beta.3`: GitHub draft release. **Not published**; an older development preview, not a current community download.

@@ -24,5 +24,7 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 
 <sub><strong>In development / בפיתוח.</strong> Compatibility depends on installed printer profiles; not yet ready for general release. [Development branch](https://github.com/nocturney/slicebridge/tree/feature/browser-compat-and-icon) · [Printer catalogue roadmap](https://github.com/nocturney/slicebridge/issues/7).</sub>
 
-**Open source:** [GPL-3.0-only](LICENSE) for covered project-owned code · [License scope & rights](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md).  
+**Open source:** [GPL-3.0-only](LICENSE) for covered project-owned code · [License scope & rights](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md).
+
+**Development milestones:** [Current planned version](VERSION) · [Changelog](CHANGELOG.md) · [Versioning rules](VERSIONING.md). A development version does not mean there is a published app release.
 <div dir="rtl" align="right" lang="he">**קוד פתוח:** <a href="LICENSE" dir="ltr">GPL-3.0-only</a> · <a href="LICENSING.md">היקף הרישיון</a> · <a href="THIRD_PARTY_NOTICES.md">קרדיטים לצדדים שלישיים</a>.</div>
