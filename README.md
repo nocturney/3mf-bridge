@@ -17,6 +17,8 @@ A 3D project shouldn't have to be rebuilt for every printer. **SliceBridge** con
 <p>לא צריך להכין מחדש פרויקט תלת־ממדי לכל מדפסת. <strong><span dir="ltr">SliceBridge</span></strong> מגשר בין פרויקטי <span dir="ltr">3MF</span> של <span dir="ltr">Bambu Studio</span> לבין מדפסות וסלייסרים נתמכים. בוחרים מדפסות יעד, ממירים מקומית בעזרת פרופילים תואמים וממשיכים בסלייסר המוכר — בלי לשנות את קובץ המקור.</p>
 </div>
 
+**[Media kit / ערכת מדיה](https://nocturney.github.io/slicebridge/press.html)** · [Ready-to-use captions / נוסחים לפרסום](marketing/COPY.md)
+
 ---
 
 <sub><strong>In development / בפיתוח.</strong> Compatibility depends on installed printer profiles; not yet ready for general release. [Development branch](https://github.com/nocturney/slicebridge/tree/feature/browser-compat-and-icon) · [Printer catalogue roadmap](https://github.com/nocturney/slicebridge/issues/7).</sub>
