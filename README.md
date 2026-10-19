@@ -1,4 +1,4 @@
-![SliceBridge approved banner — Different slicers. A stronger community.](assets/slicebridge-approved-banner.png)
+![SliceBridge approved banner — Different slicers. A stronger community.](assets/slicebridge-readme-banner-rounded.svg)
 
 # SliceBridge
 
