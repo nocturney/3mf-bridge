@@ -2,7 +2,7 @@
 
 ## English
 
-**Is SliceBridge available to download?** Not as a general release. Development and a draft beta exist, but a release must pass QA, privacy/security and distribution checks before a public download is offered.
+**Is SliceBridge available to download?** Not yet. There's an old draft beta, but no current community download. A build will be linked from GitHub Releases once the application has been tested. Builds might be unsigned; OS warnings will be explained.
 
 **Is SliceBridge open source?** Yes. Project-owned source is licensed under [GPL-3.0-only](LICENSE). Vendor presets and other third-party assets retain their own licenses. See [licensing scope](LICENSING.md).
 
@@ -21,7 +21,7 @@
 <div dir="rtl" align="right" lang="he">
 <h2>עברית</h2>
 <p><strong>זה קוד פתוח?</strong> כן. קוד המקור המקורי מופץ תחת <a href="LICENSE" dir="ltr">GPL-3.0-only</a>. רישיונות צד שלישי ופרופילים של יצרנים נבחנים בנפרד; ראו <a href="LICENSING.md">היקף הרישיון</a>.</p>
-<p><strong>אפשר כבר להוריד את התוכנה?</strong> עדיין אין הפצה כללית. קיימים ענפי פיתוח וטיוטת בטא, אך נדרשות בדיקות QA ואישורי פרטיות, אבטחה ורישוי לפני הורדה ציבורית.</p>
+<p><strong>אפשר כבר להוריד את התוכנה?</strong> עדיין אין גרסה ציבורית עדכנית להורדה. טיוטת בטא ישנה קיימת, וכשהגרסה הנוכחית תיבדק נוכל לשתף אותה ב־GitHub Releases. ייתכן שהקבצים לא יהיו חתומים, ונסביר על אזהרות מערכת ההפעלה.</p>
 <p><strong>זה סלייסר חדש?</strong> לא. זהו גשר בין קובצי <span dir="ltr">3MF</span> של <span dir="ltr">Bambu Studio</span> לבין סלייסרים נתמכים. בודקים את התוצאה וחותכים בסלייסר היעד לפני הדפסה.</p>
 <p><strong>כל המדפסות נתמכות?</strong> לא. מדפסת שנמצאת בקטלוג אינה בהכרח מדפסת שההמרה אליה נבדקה. יש לבדוק גם דיזה וחומר.</p>
 <p><strong>מה קורה לקובץ המקורי?</strong> התכנון הוא להשאיר אותו ללא שינוי וליצור פלט נפרד לכל יעד. לפני הפצה תיבדק ההתנהגות הזו בפועל.</p>

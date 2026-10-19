@@ -10,7 +10,7 @@ The GPL gives recipients the rights to use, inspect, modify, and redistribute co
 - **Upstream third-party code:** stays under its own existing license and copyright, including the pinned `BryanSmee/bl_to_std` GPLv3 component used on the development branch. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Neither the SliceBridge name nor this `LICENSE` grants rights to another author's work.
 - **Printer/process/filament presets and other vendor data:** not redistributed by this repository under the intended model. A user-installed profile stays subject to its original terms, even when SliceBridge reads it locally. A public Git source is **not** a blanket redistribution grant.
 - **Product identity and graphics:** the approved SliceBridge name, icon and banner identify the project. Copyright permission for project-owned artwork, to the extent controlled by contributors, does **not** by itself grant trademark rights or permission to falsely claim official affiliation/endorsement. [Trademark guidance](TRADEMARKS.md) applies.
-- **Other dependencies:** their own accompanying license terms and notices remain applicable. An exhaustive release-time dependency/asset notice inventory is still required; see [distribution checklist](DISTRIBUTION_CHECKLIST.md).
+- **Other dependencies:** their own accompanying license terms and notices remain applicable. For distributed builds, preserve the relevant notices and GPL corresponding source; see [simple release notes](DISTRIBUTION_CHECKLIST.md).
 
 ## Prior snapshots
 
@@ -18,17 +18,19 @@ The early Electron prototype on the public default branch previously carried an 
 
 ## Brand art clarification
 
-The approved brand images are included to present and build the official SliceBridge project. **Before third parties redistribute independent rebranded binaries with those images, verify the art copyright permission and trademark policy.** Project branding rights and contributor copyright ownership still require confirmation under the release checklist.
+The approved brand images are included to present and build the official SliceBridge project. These images were approved for the official project presentation. Modified or third-party builds should avoid implying official endorsement; third-party artwork and marks retain their own rights.
 
 ## Contributor policy
 
 Code contributions accepted into SliceBridge are intended to be distributed under **GPL-3.0-only**. By submitting, contributors should have the right to grant those rights, preserve existing notices, and identify imported third-party files and separate licenses. No CLA or assignment of ownership is implied by this document.
 
-## Binary distribution is a separate gate
+## Sharing binaries
 
-Open-sourcing the repository **does not release a beta automatically**. Builds incorporating GPL-covered components must meet the relevant distribution/source obligations. Prepare version-matched corresponding source, submodule revisions, license/notices, build instructions and installation information as required; examine packaged vendor data and other dependencies; complete platform QA, security/privacy review and signing.
+GPLv3 allows community distribution, including experimental builds. When distributing GPL-covered binaries, provide the matching corresponding source and required upstream copyright/license notices; don't bundle proprietary vendor presets without permission. Explain tested platforms and limitations.
 
-Do **not** publish the existing draft `v0.4.0-beta.3` merely because the source has a license. See [release gate #11](https://github.com/nocturney/slicebridge/issues/11).
+**Signing and Apple notarization are optional**, not GPL requirements. Unsigned Windows builds may display publisher warnings; unnotarized macOS builds may be blocked by Gatekeeper and need explicit user action. See the [simple community release guide](DISTRIBUTION_CHECKLIST.md).
+
+The existing `v0.4.0-beta.3` draft is an old development preview, not a release based on the current app code.
 
 ### עברית
 <div dir="rtl" align="right" lang="he">

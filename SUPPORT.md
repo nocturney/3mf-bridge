@@ -1,6 +1,6 @@
 # Support / תמיכה
 
-**SliceBridge is in development and is not yet available as a supported general release.**
+**SliceBridge is a small open-source project in development.** Help and fixes are handled as time permits.
 
 ## English
 
@@ -15,7 +15,7 @@ Responses and fixes are best-effort; there is no SLA while the app is in develop
 
 <div dir="rtl" align="right" lang="he">
 <h2>עברית</h2>
-<p><strong>SliceBridge עדיין בפיתוח ואינה מוצר עם תמיכה רשמית להפצה כללית.</strong></p>
+<p><strong>SliceBridge הוא פרויקט קוד פתוח קטן שנמצא בפיתוח.</strong> אפשר לדווח על תקלות ולהציע שיפורים; הטיפול בהתאם לזמן הפנוי.</p>
 <ul dir="rtl">
 <li><a href="https://github.com/nocturney/slicebridge/issues/new?template=bug_report.yml">דיווח על תקלה או בעיית תאימות</a></li>
 <li><a href="https://github.com/nocturney/slicebridge/issues/new?template=feature_request.yml">הצעה לשיפור או יכולת חדשה</a></li>
