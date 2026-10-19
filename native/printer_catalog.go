@@ -24,11 +24,6 @@ var legacyCatalogIDs = map[string]string{
 	"qidi": "qidi-x-plus-5",
 }
 
-var defaultMyPrinterIDs = []string{
-	"snapmaker-u1", "flashforge-creator-5",
-	"elegoo-centauri-carbon-2", "qidi-x-plus-5",
-}
-
 type CatalogPrinter struct {
 	ID            string   `json:"id"`
 	Manufacturer  string   `json:"manufacturer"`
@@ -171,7 +166,7 @@ func loadMyPrinters(catalog PrinterCatalogReply) (MyPrintersReply, error) {
 	raw, err := os.ReadFile(path)
 	if errors.Is(err, os.ErrNotExist) {
 		return MyPrintersReply{
-			Version: 1, SelectedIDs: append([]string{}, defaultMyPrinterIDs...),
+			Version: 1, SelectedIDs: []string{},
 			OnboardingPending: true,
 		}, nil
 	}

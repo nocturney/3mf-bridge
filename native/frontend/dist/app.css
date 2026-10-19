@@ -524,3 +524,46 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   .topbar-actions #myPrintersBtn span{font-size:10px}
   .targets-actions{gap:7px}
 }
+
+/* Navigation and first-use picker refinement (0.4.0-beta.4 UI milestone). */
+.topbar-actions{min-width:0}
+.topbar .labeled-btn{white-space:nowrap;flex-shrink:0}
+@media(max-width:1160px){
+  /* Keep actions accessible by icon + tooltip, never clip Hebrew labels. */
+  .topbar .labeled-btn span{display:none}
+  .topbar .labeled-btn{width:38px;min-width:38px;padding-inline:8px}
+}
+.empty-target-notice{padding:13px 15px;margin:0;color:var(--ink-muted);font-size:12px;
+  line-height:1.6;overflow-wrap:anywhere}
+.empty-target-notice[hidden],#selectAllBtn[hidden]{display:none!important}
+.my-printers-dialog .dialog-frame{
+  min-height:0;max-height:calc(100dvh - 34px)
+}
+.my-printers-dialog.has-results .dialog-frame{
+  height:min(760px,calc(100dvh - 34px))
+}
+.selected-printer-overview.is-empty{padding:8px 12px}
+.selected-printer-overview.is-empty h3{margin:0}
+.selected-printer-summary[hidden]{display:none}
+.printer-filter-row{display:grid;grid-template-columns:minmax(155px,1fr) minmax(0,1.7fr);
+  gap:12px;align-items:end;flex:none}
+.printer-filter-row .field{margin:0;min-width:0;display:flex;flex-direction:column;gap:5px}
+.printer-filter-row .field>span{font-size:11px;font-weight:600;color:var(--ink-muted)}
+.printer-filter-row select,.printer-filter-row input{
+  width:100%;min-width:0;min-height:42px;padding:9px 10px;
+  border:1px solid #bfd7cc;background:#fff;border-radius:8px;color:var(--ink)
+}
+.catalog-picker-hint{
+  border:1px dashed #c2dacf;border-radius:10px;
+  padding:19px 16px;margin:0;text-align:center;font-size:12px;
+  color:#69857a;background:#fbfefc
+}
+.catalog-picker-hint[hidden],.catalog-model-list[hidden],
+.catalog-search-count[hidden],#myPrintersHiddenNote[hidden]{display:none!important}
+.catalog-model-list{max-height:475px;min-height:0}
+.my-printers-dialog:not(.has-results) .my-printers-content{flex:0 1 auto}
+.my-printers-dialog:not(.has-results) .dialog-frame{height:auto}
+@media(max-width:760px){
+  .printer-filter-row{grid-template-columns:1fr;gap:9px}
+  .my-printers-dialog.has-results .dialog-frame{height:calc(100dvh - 24px)}
+}

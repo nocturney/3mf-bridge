@@ -50,8 +50,8 @@ func TestMyPrintersOnboardingDefaultsAndAtomicSave(t *testing.T) {
 		t.Fatal(err)
 	}
 	if !fresh.OnboardingPending || fresh.Version != 1 ||
-		!reflect.DeepEqual(fresh.SelectedIDs, defaultMyPrinterIDs) {
-		t.Fatalf("old four printers not preserved on first boot: %+v", fresh)
+		!reflect.DeepEqual(fresh.SelectedIDs, []string{}) {
+		t.Fatalf("new installation must have no printers preselected: %+v", fresh)
 	}
 	path, err := myPrintersPath()
 	if err != nil {
@@ -78,7 +78,7 @@ func TestMyPrintersOnboardingDefaultsAndAtomicSave(t *testing.T) {
 	}
 	reloaded, err := app.GetMyPrinters()
 	if err != nil || len(reloaded.SelectedIDs) != 0 || reloaded.OnboardingPending {
-		t.Fatalf("empty selection reverted to four printers: %+v %v", reloaded, err)
+		t.Fatalf("explicitly empty selection was lost: %+v %v", reloaded, err)
 	}
 	raw, err := os.ReadFile(path)
 	if err != nil {

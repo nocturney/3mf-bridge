@@ -221,7 +221,6 @@ function renderActionBar(){
   el('selectAllBtn').disabled=busy;
   el('settingsBtn').disabled=busy;
   el('myPrintersBtn').disabled=busy||!window.SliceBridgeMyPrinters?.isReady();
-  el('manageTargetsBtn').disabled=busy||!window.SliceBridgeMyPrinters?.isReady();
   dom.folderBtn.disabled=busy||!(lastBatch?.successes>0);
   if(busy){
     dom.activityIcon.className='activity-icon busy';
@@ -311,6 +310,12 @@ function renderTargets(){
   }
   const count=getSelectedTargets().length;
   const selectable=available.filter(v=>v.available&&(!Array.isArray(selectedLegacy)||selectedLegacy.includes(v.target)));
+  el('selectAllBtn').hidden=selectable.length===0;
+  const noneChosen=Array.isArray(selectedLegacy)&&selectedLegacy.length===0;
+  el('emptyTargetNotice').hidden=!noneChosen;
+  el('emptyTargetNotice').textContent=language==='he'?
+    'לא נבחרו מדפסות יעד. אפשר להוסיף דרך סמל המדפסת בראש החלון.':
+    'No target printers selected. Use the printer icon at the top to add them.';
   el('selectAllBtn').textContent=count===selectable.length?t('deselectAll'):t('selectAll');
   renderActionBar();
 }
@@ -711,10 +716,6 @@ function registerHandlers(){
   });
   dom.settings.addEventListener('close',()=>{draftPrefs=null;choiceSequence++;});
   for(const target of targetOrder){
-    document.querySelector('[data-settings-target="'+target+'"]')
-      .addEventListener('click',(e)=>{
-        e.preventDefault();e.stopPropagation();openSettings(target);
-      });
     document.querySelector('[data-target-row="'+target+'"] input')
       .addEventListener('change',()=>{memoryStatus=null;renderTargets();});
   }

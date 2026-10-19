@@ -72,30 +72,27 @@
       <section class="panel targets-panel">
         <div class="panel-heading">
           <div class="panel-title"><span class="section-number">02</span><h2 data-i18n="targetsTitle">מדפסות יעד</h2></div>
-          <div class="targets-actions"><button id="manageTargetsBtn" type="button" class="text-btn" disabled>המדפסות שלי</button><button id="selectAllBtn" class="text-btn" type="button" data-i18n="selectAll">בחר הכול</button></div>
+          <div class="targets-actions"><button id="selectAllBtn" class="text-btn" type="button" data-i18n="selectAll">בחר הכול</button></div>
         </div>
         <div class="target-list" id="targetList">
           <label class="target-option" data-target-row="u1">
-            <input type="checkbox" value="u1" checked>
+            <input type="checkbox" value="u1">
             <span class="printer-label"><strong>Snapmaker U1</strong><small data-printer-summary="u1">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="u1" aria-label="Snapmaker U1 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="c5">
-            <input type="checkbox" value="c5" checked>
+            <input type="checkbox" value="c5">
             <span class="printer-label"><strong>Flashforge Creator 5</strong><small data-printer-summary="c5">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="c5" aria-label="Flashforge Creator 5 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="cc2">
-            <input type="checkbox" value="cc2" checked>
+            <input type="checkbox" value="cc2">
             <span class="printer-label"><strong>ELEGOO CC2</strong><small data-printer-summary="cc2">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="cc2" aria-label="ELEGOO CC2 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="qidi">
-            <input type="checkbox" value="qidi" checked>
+            <input type="checkbox" value="qidi">
             <span class="printer-label"><strong>QIDI Plus5</strong><small data-printer-summary="qidi">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="qidi" aria-label="QIDI Plus5 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
         </div>
+        <p id="emptyTargetNotice" class="empty-target-notice" hidden>אין מדפסות יעד שנבחרו. אפשר להוסיף דרך סמל המדפסת בראש החלון.</p>
         <div class="catalog-only-targets" id="catalogOnlyTargets" hidden></div>
       </section>
     </div>
@@ -160,14 +157,21 @@
       <button type="button" id="closeMyPrintersBtn" class="ghost-btn close-dialog" aria-label="Close">×</button>
     </header>
     <div class="dialog-scroll my-printers-content">
-      <div class="selected-printer-overview">
+      <div class="selected-printer-overview" id="selectedPrinterOverview">
         <h3 id="myPrintersSelectionCount">0 מדפסות נבחרו</h3>
         <div id="selectedPrinterSummary" class="selected-printer-summary"></div>
       </div>
-      <label class="field printer-search-field" for="printerCatalogSearch">
-        <span class="sr-only">Manufacturer or model</span>
-        <input id="printerCatalogSearch" type="search" maxlength="120" autocomplete="off" placeholder="חיפוש לפי יצרן או דגם">
-      </label>
+      <div class="printer-filter-row">
+        <label class="field manufacturer-filter-field" for="printerManufacturerFilter">
+          <span id="printerManufacturerLabel">יצרן</span>
+          <select id="printerManufacturerFilter" aria-label="בחירת יצרן"><option value="">בחר יצרן…</option></select>
+        </label>
+        <label class="field printer-search-field" for="printerCatalogSearch">
+          <span id="printerSearchLabel">או חיפוש דגם</span>
+          <input id="printerCatalogSearch" type="search" maxlength="120" autocomplete="off" placeholder="שם יצרן או דגם">
+        </label>
+      </div>
+      <p id="catalogPickerHint" class="catalog-picker-hint" role="status">בחר יצרן או חפש דגם כדי להציג מדפסות.</p>
       <p id="catalogSearchCount" class="catalog-search-count" role="status"></p>
       <div id="catalogModelList" class="catalog-model-list" role="group" aria-label="Catalogue models"></div>
       <p id="myPrintersHiddenNote" class="catalog-footnote"></p>

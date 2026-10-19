@@ -68,6 +68,7 @@ test('new picker UI has bilingual names, consent-based selection and no network 
   const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
   const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
   for(const id of ['myPrintersBtn','myPrintersDialog','printerCatalogSearch',
+                   'printerManufacturerFilter','catalogPickerHint',
                    'catalogModelList','saveMyPrintersBtn','cancelMyPrintersBtn']){
     assert.ok(doc.includes('id="'+id+'"'),id);
   }
@@ -79,4 +80,39 @@ test('new picker UI has bilingual names, consent-based selection and no network 
   assert.match(script,/קטלוג בלבד/);
   assert.match(script,/catalog only/i);
   assert.doesNotMatch(script,/fetch\s*\(|XMLHttpRequest|https?:\/\//);
+});
+
+
+test('first-run is empty; cards and installed cover images load only after user filters',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  const backend=fs.readFileSync(path.resolve(__dirname,'../printer_catalog.go'),'utf8');
+  const style=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  assert.match(backend,/Version: 1, SelectedIDs: \[\]string\{\}/);
+  for(const target of ['u1','c5','cc2','qidi']){
+    assert.doesNotMatch(doc,new RegExp('<input type="checkbox" value="'+target+'" checked>'));
+  }
+  assert.match(doc,/id="printerManufacturerFilter"/);
+  assert.match(doc,/id="catalogPickerHint"/);
+  assert.match(script,/const hasFilter=Boolean\(term\|\|manufacturer\)/);
+  assert.match(script,/const matches=hasFilter\?picker\.search/);
+  assert.match(script,/list\.hidden=!hasFilter/);
+  assert.match(script,/observeCover\(graphic,model\.id\)/);
+  assert.match(style,/\.catalog-model-list\[hidden\]/);
+});
+
+test('exactly one My Printers button and one Settings button, with responsive icons',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const js=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.js'),'utf8');
+  const pickerJS=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  assert.equal((doc.match(/id="myPrintersBtn"/g)||[]).length,1);
+  assert.equal((doc.match(/id="settingsBtn"/g)||[]).length,1);
+  assert.equal((doc.match(/id="manageTargetsBtn"/g)||[]).length,0);
+  assert.equal((doc.match(/data-settings-target="/g)||[]).length,0);
+  assert.doesNotMatch(js,/manageTargetsBtn|data-settings-target/);
+  assert.doesNotMatch(pickerJS,/manageTargetsBtn/);
+  assert.match(css,/@media\(max-width:1160px\)/);
+  assert.match(css,/\.topbar \.labeled-btn span\{display:none\}/);
+  assert.match(doc,/id="emptyTargetNotice"/);
 });

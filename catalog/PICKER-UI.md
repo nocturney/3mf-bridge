@@ -1,5 +1,13 @@
 # Offline My Printers / Catalogue (Draft)
 
+## 0.4.0-beta.4.dev.1 — 19 Oct 2026 (development, not released)
+
+- First-run setup starts with **zero preselected printers**. Existing saved `my-printers.json` remains authoritative and is never reset.
+- No model cards or local pictures appear until the user **chooses a manufacturer or searches**. Brand selection filters the existing offline catalogue; image bytes still load lazily from an installed slicer only when results are shown.
+- There is exactly **one My Printers entry** and **one Settings entry** in the top bar. Removed the duplicated target-panel picker link and per-printer gear shortcuts; per-printer preferences still live in the existing central Settings dialog.
+- At narrower window widths, top-bar labels collapse cleanly to accessible icons and tooltips instead of being clipped. When zero target printers are selected, the workspace explains where to add them.
+- Source of truth for release/version policy is tracked in separate [PR #23](https://github.com/nocturney/slicebridge/pull/23). This build milestone is part of [Draft PR #13](https://github.com/nocturney/slicebridge/pull/13) and is **not** a published GitHub Release or approved conversion update.
+
 The new native Wails picker consumes **603 printer identities**, but it does not
 install, download or redistribute vendor profiles, printer photos, logos or
 third-party slicers.
@@ -7,14 +15,15 @@ third-party slicers.
 ## User experience
 
 - First launch with no `my-printers.json`: show an explicit setup dialog with
-  the four legacy targets preselected. Closing without saving leaves onboarding
-  pending; the existing conversion preferences remain untouched.
+  **no printers selected**. Closing without saving leaves onboarding pending;
+  existing saved printer selections and conversion preferences remain untouched.
 - After saving: display only selected legacy target adapters on the conversion
   page; additional user-selected printers appear explicitly as **catalogue
   only — conversion not available**.
-- Search all models by manufacturer, model or alias. Limit the visible search
-  results to 80 at a time; guide the user to narrow searches rather than
-  rendering hundreds of cards at once.
+- On first open, show no cards or images. Choose a manufacturer or type a
+  manufacturer/model/alias search to reveal matching models; cap results at
+  80 cards. Manufacturer choices are populated from the indexed catalogue,
+  with no handpicked defaults or recommended printer models.
 - Bambu Lab models remain in the data snapshot but are **hidden from target
   selection and explicitly rejected by the save API**. MakerWorld/Bambu remain
   project source workflows; no Bambu target adapter is claimed.

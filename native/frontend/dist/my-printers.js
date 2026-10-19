@@ -8,7 +8,7 @@ const $ = (id)=>document.getElementById(id);
 const picker=window.SliceBridgePicker;
 const translations={
   he:{
-    title:'המדפסות שלי',welcome:'בואו נבחר מדפסות',welcomeBody:'בחר את המדפסות שלך. ארבע המדפסות המקוריות מופיעות ראשונות; פרופילים אחרים זמינים לעיון אך עדיין לא נתמכים להמרה.',
+    title:'המדפסות שלי',welcome:'בחירת מדפסות',welcomeBody:'לא נבחרה עדיין מדפסת. בחר יצרן או חפש דגם כדי להתחיל.',
     body:'בחר מדפסות לעבודה ולמעקב. הגדרות דיזה, סלייסר ופילמנט קיימות אינן משתנות.',
     search:'חיפוש לפי יצרן או דגם',save:'שמור מדפסות',cancel:'לא עכשיו',selected:'נבחרו {n} מדפסות',
     adapter:'מתאם המרה קיים',missing:'חסר פרופיל מקומי',ready:'מתאם קיים · זמין במחשב',
@@ -17,10 +17,11 @@ const translations={
     hidden:'Bambu Lab מוסתרת כרגע כמדפסת יעד. פרויקטי Bambu ו־MakerWorld עדיין נתמכים כמקור.',
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
     selection:'מדפסות שנבחרו',conversionOnly:'מתאם קיים אינו אישור להמרה: דרוש גם פרופיל סלייסר מותקן ובדיקת 3MF.',
-    allCatalog:'603 דגמים בקטלוג; רק ארבעה מתאמי המרה קיימים.'
+    allCatalog:'603 דגמים בקטלוג; רק ארבעה מתאמי המרה קיימים.',
+    manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',startHint:'בחר יצרן או חפש דגם כדי להציג מדפסות.',nothingSelected:'עדיין לא נבחרו מדפסות.'
   },
   en:{
-    title:'My printers',welcome:'Choose your printers',welcomeBody:'Choose your printers. Four existing converter adapters appear first. Other printers can be added to your collection but cannot convert yet.',
+    title:'My printers',welcome:'Choose printers',welcomeBody:'No printers are selected yet. Choose a manufacturer or search for a model to begin.',
     body:'Add or remove printers without changing your existing nozzle, slicer or filament preferences.',
     search:'Search manufacturer or model',save:'Save printers',cancel:'Not now',selected:'{n} printers selected',
     adapter:'Existing converter adapter',missing:'Local slicer profile missing',ready:'Adapter exists · installed profile found',
@@ -29,7 +30,8 @@ const translations={
     hidden:'Bambu Lab is hidden as a target for now. Bambu and MakerWorld projects remain usable as sources.',
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
     selection:'Selected printers',conversionOnly:'An adapter is not a conversion certification: an installed slicer profile and real 3MF testing are still needed.',
-    allCatalog:'603 indexed models; only four existing conversion adapters.'
+    allCatalog:'603 indexed models; only four existing conversion adapters.',
+    manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',startHint:'Choose a manufacturer or search to see models.',nothingSelected:'No printers selected yet.'
   }
 };
 let catalog=null,selected=null,draft=null,installed=[],firstRun=false,loaded=false,saving=false;
@@ -108,10 +110,13 @@ function syncCopy(){
   $('myPrintersBtn').title=t('title');
   $('myPrintersBtn').setAttribute('aria-label',t('title'));
   $('myPrintersBtn').querySelector('span').textContent=t('title');
-  $('manageTargetsBtn').textContent=t('title');
   $('myPrintersTitle').textContent=firstRun?t('welcome'):t('title');
   $('myPrintersIntro').textContent=firstRun?t('welcomeBody'):t('body');
   $('printerCatalogSearch').placeholder=t('search');
+  $('printerManufacturerLabel').textContent=t('manufacturer');
+  $('printerSearchLabel').textContent=t('searchByModel');
+  $('printerManufacturerFilter').querySelector('option[value=""]').textContent=t('chooseManufacturer');
+  $('catalogPickerHint').textContent=t('startHint');
   $('saveMyPrintersBtn').textContent=t('save');
   $('cancelMyPrintersBtn').textContent=t('cancel');
   $('myPrintersHiddenNote').textContent=t('hidden');
@@ -125,7 +130,9 @@ function render(){
   const selectionList=$('selectedPrinterSummary');
   selectionList.replaceChildren();
   const entries=picker.statuses(catalog.models,choice,installed);
-  if(!entries.length)selectionList.append(node('span','catalog-muted',t('none')));
+  $('selectedPrinterSummary').hidden=!entries.length;
+  $('selectedPrinterOverview').classList.toggle('is-empty',!entries.length);
+  if(!entries.length)selectionList.append(node('span','catalog-muted',t('nothingSelected')));
   for(const entry of entries){
     const pill=node('span','selected-printer-pill');
     const name=node('strong','',picker.title(entry.model));
@@ -133,11 +140,19 @@ function render(){
                       t(entry.kind==='catalog_only'?'catalogOnly':entry.kind==='ready'?'ready':'missing'));
     pill.append(name,detail);selectionList.append(pill);
   }
-  const term=$('printerCatalogSearch').value;
-  const matches=picker.search(catalog.models,term,choice,80);
+  const term=$('printerCatalogSearch').value.trim();
+  const manufacturer=$('printerManufacturerFilter').value;
+  const hasFilter=Boolean(term||manufacturer);
+  const source=manufacturer?catalog.models.filter(m=>m.manufacturer===manufacturer):catalog.models;
+  const matches=hasFilter?picker.search(source,term,choice,80):{models:[],total:0};
   const list=$('catalogModelList');
+  $('myPrintersDialog').classList.toggle('has-results',hasFilter);
+  $('catalogPickerHint').hidden=hasFilter;
+  $('catalogSearchCount').hidden=!hasFilter;
+  $('myPrintersHiddenNote').hidden=!term.toLocaleLowerCase().includes('bambu');
   if(coverObserver)coverObserver.disconnect();
   list.replaceChildren();
+  list.hidden=!hasFilter;
   for(const model of matches.models){
     const row=node('label','catalog-model-card');
     if(draft.has(model.id))row.classList.add('is-selected');
@@ -166,7 +181,7 @@ function render(){
     copy.append(meta);
     row.append(input,graphic,copy);list.append(row);
   }
-  if(!matches.models.length)list.append(node('p','catalog-empty',t('none')));
+  if(hasFilter&&!matches.models.length)list.append(node('p','catalog-empty',t('none')));
   $('catalogSearchCount').textContent=t('showing',{
     shown:matches.models.length,total:matches.total
   });
@@ -182,6 +197,7 @@ function open(onboarding=false){
   firstRun=Boolean(onboarding);
   draft=new Set(selected.selectedIds);
   $('printerCatalogSearch').value='';
+  $('printerManufacturerFilter').value='';
   $('myPrintersStatus').textContent='';
   render();
   $('myPrintersDialog').showModal();
@@ -215,25 +231,31 @@ async function init(){
     if(!list||list.kind!=='slicebridge-offline-printer-picker'||
        list.modelCount!==603||!Array.isArray(list.models)||
        !prefs||!Array.isArray(prefs.selectedIds))throw Error('Invalid offline catalog');
-    catalog=list;selected=prefs;loaded=true;
+    catalog=list;selected=prefs;
+    const filter=$('printerManufacturerFilter');
+    filter.replaceChildren();
+    const placeholder=node('option','',t('chooseManufacturer'));
+    placeholder.value='';filter.append(placeholder);
+    const makers=[...new Set(catalog.models.filter(m=>!picker.isHidden(m)).map(m=>m.manufacturer))]
+      .sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));
+    for(const maker of makers){const option=node('option','',maker);option.value=maker;filter.append(option);}
+    loaded=true;
     $('myPrintersBtn').disabled=false;
-    $('manageTargetsBtn').disabled=false;
     window.dispatchEvent(new Event('slicebridge:my-printers-changed'));
     if(prefs.onboardingPending)open(true);
   }catch(err){
     // Old converter stays usable if the optional catalogue cannot load.
     // Never overwrite malformed customer selection data.
     $('myPrintersBtn').disabled=true;
-    $('manageTargetsBtn').disabled=true;
     $('myPrintersBtn').title=t('error')+' '+String(err?.message||err);
   }
 }
 $('myPrintersBtn').addEventListener('click',()=>open(false));
-$('manageTargetsBtn').addEventListener('click',()=>open(false));
 $('cancelMyPrintersBtn').addEventListener('click',()=>$('myPrintersDialog').close());
 $('closeMyPrintersBtn').addEventListener('click',()=>$('myPrintersDialog').close());
 $('saveMyPrintersBtn').addEventListener('click',save);
 $('printerCatalogSearch').addEventListener('input',render);
+$('printerManufacturerFilter').addEventListener('change',render);
 $('myPrintersDialog').addEventListener('close',()=>{
   draft=null;
   firstRun=false;
