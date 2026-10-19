@@ -8,6 +8,10 @@ const read=(f)=>fs.readFileSync(path.join(base,f),'utf8');
 
 test('approved SliceBridge name and Mint/Forest identity are embedded',()=>{
  const page=read('frontend/dist/index.html');
+ const manifest=JSON.parse(read('wails.json'));
+ assert.equal(manifest.name,'SliceBridge');
+ assert.equal(manifest.outputfilename,'SliceBridge');
+ assert.equal(manifest.info.productName,'SliceBridge');
  const css=read('frontend/dist/app.css');
  const icon=read('frontend/dist/brand-icon.svg');
  assert.match(page,/<title>SliceBridge<\/title>/);
