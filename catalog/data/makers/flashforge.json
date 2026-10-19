@@ -3,9 +3,9 @@
   "manufacturer": "Flashforge",
   "models": [
     {
-      "id": "flashforge-flashforge-ad5x",
+      "id": "flashforge-ad5x",
       "manufacturer": "Flashforge",
-      "model": "Flashforge AD5X",
+      "model": "AD5X",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -803,9 +803,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-adventurer-3-series",
+      "id": "flashforge-adventurer-3-series",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Adventurer 3 Series",
+      "model": "Adventurer 3 Series",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -955,9 +955,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-adventurer-5m",
+      "id": "flashforge-adventurer-5m",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Adventurer 5M",
+      "model": "Adventurer 5M",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -1715,9 +1715,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-adventurer-5m-pro",
+      "id": "flashforge-adventurer-5m-pro",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Adventurer 5M Pro",
+      "model": "Adventurer 5M Pro",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -2475,9 +2475,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-adventurer-a5",
+      "id": "flashforge-adventurer-a5",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Adventurer A5",
+      "model": "Adventurer A5",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -3295,9 +3295,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-artemis",
+      "id": "flashforge-artemis",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Artemis",
+      "model": "Artemis",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -3421,9 +3421,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-creator-5",
+      "id": "flashforge-creator-5",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Creator 5",
+      "model": "Creator 5",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -3854,9 +3854,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-creator-5-pro",
+      "id": "flashforge-creator-5-pro",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Creator 5 Pro",
+      "model": "Creator 5 Pro",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -4287,9 +4287,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-guider-2s",
+      "id": "flashforge-guider-2s",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Guider 2s",
+      "model": "Guider 2s",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,
@@ -4490,9 +4490,9 @@
       "status": "structural_verified"
     },
     {
-      "id": "flashforge-flashforge-guider-3-ultra",
+      "id": "flashforge-guider-3-ultra",
       "manufacturer": "Flashforge",
-      "model": "Flashforge Guider 3 Ultra",
+      "model": "Guider 3 Ultra",
       "release_date": null,
       "release_date_evidence": null,
       "conversion_tested": false,

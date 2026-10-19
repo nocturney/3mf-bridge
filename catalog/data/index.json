@@ -185,7 +185,7 @@
       "path": "makers/flashforge.json",
       "models": 10,
       "structurally_verified": 10,
-      "sha256": "6a616ca2c01c90fceb3798ee1de88e378c4b7b5ca9e43a1de5a25f8781e88eb2"
+      "sha256": "ca1e028253dc26125c72f7422dd18c35560c5c957ad5cf7ccb5c4ef45eb5cd32"
     },
     {
       "manufacturer": "FlyingBear",

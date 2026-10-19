@@ -11,6 +11,7 @@ from collections import Counter, defaultdict
 from pathlib import Path, PurePosixPath
 
 from prusa_ini import validate_model as validate_ini_model
+from attribution import create_ledger
 
 SOURCES = (
     ("bambu", "manufacturer", "bambulab/BambuStudio", "resources/profiles"),
@@ -32,6 +33,7 @@ PREFIXES = {
     "ELEGOO": ("Elegoo ",),
     "Prusa Research": ("Original Prusa ", "Prusa "),
     "Snapmaker": ("Snapmaker ",),
+    "Flashforge": ("Flashforge ",),
 }
 HEADER = re.compile(r"^\s*\[([^]]+)\]\s*$")
 ATTR = re.compile(r"^\s*([a-zA-Z_]\w*)\s*=\s*(.*?)\s*$")
@@ -504,6 +506,9 @@ def build(sources_root: Path, target: Path, update_lock: bool = False):
     (target / "sources.lock.json").write_bytes(
         (json.dumps({"schema_version": 1, "sources": sources}, indent=2) + "\n").encode("utf-8")
     )
+    ledger = create_ledger(sources_root, sources)
+    (target / "data" / "attribution.json").write_bytes(
+        (json.dumps(ledger, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
     (target / "data"/"audit.json").write_bytes(
         (json.dumps({"schema_version": 1, "quarantined": len(quarantine),
                      "examples": quarantine[:120]}, indent=2, ensure_ascii=False) + "\n").encode("utf-8")

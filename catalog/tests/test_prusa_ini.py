@@ -170,8 +170,8 @@ class PinnedSourceSamples(unittest.TestCase):
     def test_flashforge_uses_vendor_when_complete_and_orca_for_creator5(self):
         root=Path(__file__).resolve().parents[1]/"data"/"makers"
         models=json.loads((root/"flashforge.json").read_text(encoding="utf8"))["models"]
-        ad5x=next(x for x in models if x["model"]=="Flashforge AD5X")
-        creator=next(x for x in models if x["model"]=="Flashforge Creator 5")
+        ad5x=next(x for x in models if x["model"]=="AD5X")
+        creator=next(x for x in models if x["model"]=="Creator 5")
         self.assertEqual(ad5x["preferred_profile"]["publisher"],"flashforge")
         self.assertEqual(creator["preferred_profile"]["publisher"],"orca")
         self.assertFalse(any(x["publisher"]=="flashforge" for x in creator["profile_sources"]))

@@ -44,7 +44,8 @@ def manifest_payload(root: Path):
     index = json.loads((root / "data" / "index.json").read_text(encoding="utf-8"))
     if index["conversion_tested"] != 0:
         raise ValueError("catalogue bundle cannot certify untested conversions")
-    paths = ["schema-v1.json", "sources.lock.json", "data/index.json", "data/audit.json"]
+    paths = ["schema-v1.json", "sources.lock.json", "data/index.json", "data/audit.json",
+             "data/attribution.json"]
     paths += ["data/" + item["path"] for item in index["maker_files"]]
     if len(set(paths)) != len(paths):
         raise ValueError("duplicate archive entry")

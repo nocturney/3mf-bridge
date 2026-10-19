@@ -72,6 +72,43 @@ def check_preset_reference(part: dict, kind: str):
             names.add(ancestor["name"])
 
 
+def check_attributions(root: Path, locked: dict[str, dict]):
+    ledger = load_json(root / "data" / "attribution.json")
+    ensure(ledger["schema_version"] == 1, "unsupported attribution schema")
+    ensure(ledger["default_action"].startswith("metadata_references_only"),
+           "upstream rights strategy unexpectedly changed")
+    items = ledger["items"]
+    ensure(len(items) == len(locked) and
+           {item["key"] for item in items} == set(locked), "attribution sources do not match lock")
+    for item in items:
+        source = locked[item["key"]]
+        ensure(item["commit"] == source["commit"] and
+               item["repository"] == source["repository"] and
+               item["pinned_repository_url"] ==
+               "https://github.com/" + source["repository"] + "/tree/" + source["commit"],
+               "outdated or falsified rights attribution reference")
+        ensure(item["individual_profile_licensing_reviewed"] is False and
+               item["third_party_profile_payloads_included"] is False and
+               item["third_party_profile_payloads_redistribution_cleared"] is False,
+               "unsafe third-party redistribution permission claim")
+        evidence = item["repository_root_license_evidence"]
+        if not evidence:
+            ensure(item["repository_root_license_observed"] == "no_repository_level_license_found",
+                   "root license undocumented")
+        elif len(evidence) == 1:
+            ensure(item["repository_root_license_observed"] == evidence[0]["license_id_observed"],
+                   "root license and its evidence disagree")
+        else:
+            ensure(item["repository_root_license_observed"] == "multiple_root_licenses_review_required",
+                   "multiple root license files not flagged for review")
+        for record in evidence:
+            check_relative(record["path"])
+            ensure(is_digest(record["sha256"]), "root license hash missing")
+            ensure(record["license_id_observed"] in ("AGPL-3.0", "unclassified"),
+                   "invalid root license identification")
+    return ledger
+
+
 def check_registry(root: Path) -> dict:
     index = load_json(root / "data"/"index.json")
     lock = load_json(root / "sources.lock.json")
@@ -89,6 +126,7 @@ def check_registry(root: Path) -> dict:
                "unknown source provider or distribution rights")
         ensure(re.fullmatch(r"[a-z0-9_-]+", item["key"]) is not None, "invalid source identifier")
         by_key[item["key"]] = item
+    check_attributions(root, by_key)
     ensure(index["manufacturers"] == len(index["maker_files"]),
            "incorrect manufacturer count")
     seen_files, seen_ids = set(), set()

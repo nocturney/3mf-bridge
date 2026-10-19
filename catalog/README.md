@@ -25,9 +25,17 @@ because its source is official: it must pass compatibility and integrity gates.
 - sources.lock.json — full 40-digit upstream Git commit IDs, not moving HEAD.
   Profile source hashes use canonical UTF-8/LF text to avoid OS checkout drift.
 - data/audit.json — quarantined source/model entries and error explanations.
+- data/attribution.json — credit and root-license evidence for all eight pinned
+  repositories; bundled in metadata-only ZIP. This is not permission to mirror
+  source profile files.
+- [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) — readable credits and
+  explicit distinctions between attribution, root repo licences and per-asset
+  redistribution rights.
 - schema-v1.json — published machine-readable registry format.
 - tools/build.py — Python stdlib source importer; rejects source revision drift.
 - tools/check.py — offline semantic and integrity validation.
+- tools/attribution.py — generates root-license evidence from the exact Git
+  upstream commit; missing licence files remain explicitly unresolved.
 - tools/attest_sources.py — checks every pinned profile path, file SHA and
   Prusa INI section against the eight clean checked-out upstream repositories.
 - tools/package.py — creates a deterministic, SHA-256-verified metadata ZIP
@@ -89,6 +97,12 @@ After all OS-specific metadata integrity tests pass, GitHub Actions uploads
 one immutable, metadata-only ZIP and one SHA-256 checksum as a CI artifact.
 This is **not** a SliceBridge binary, a GitHub Release, an auto-update feed,
 or a statement that any newly indexed printer can already convert 3MF.
+The ZIP includes a machine-readable third-party attribution ledger, not any
+third-party profile payload. Root AGPL-3.0 was observed in six repositories;
+Snapmaker/Orca_Presets and the Prusa non-Prusa-FFF community repository did
+not present a root licence at the pinned revision. Upstream data rights still
+require review before copying any files. Neither non-commercial distribution
+nor attribution alone waives those requirements.
 The archive packaging script refuses to overwrite existing output.
 
 ## Source lineage and redistribution
