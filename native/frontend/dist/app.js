@@ -179,7 +179,38 @@ function languageSwitch(lang){
 function getSelectedTargets(){
   return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)')).map((e)=>e.value);
 }
+let completedBatchFiles=0;
+let progressPhase='idle';
+let totalBatchFiles=0;
+// Progress is derived from completed source projects, not guessed elapsed time.
+// Native conversions use multiple targets concurrently within each file.
+function renderProgress(){
+  const text=el('progressDescription');
+  const percent=el('progressPercent');
+  const track=el('progressTrack');
+  const fill=el('progressFill');
+  if(!text||!percent||!track||!fill)return;
+  const total=Math.max(1,totalBatchFiles||progress?.fileCount||files.length||1);
+  const completed=Math.min(total,Math.max(0,completedBatchFiles));
+  const value=Math.min(100,Math.floor(100*completed/total));
+  const current=progress?.fileName || '';
+  const label=progressPhase==='working'
+    ? (language==='he'?'מעבד פרויקט':'Converting project')+' '+Math.min(total,completed+1)+'/'+total+(current?' · '+current:'')
+    :progressPhase==='done'
+      ? (language==='he'?'ההמרה הסתיימה':'Conversion finished')
+      :progressPhase==='error'
+        ? (language==='he'?'ההמרה הופסקה — בדוק תוצאות':'Conversion stopped — review results')
+        : (language==='he'?'ממתין להמרה':'Waiting for conversion');
+  text.textContent=label;
+  percent.textContent=value+'%';
+  fill.style.width=value+'%';
+  track.setAttribute('aria-valuenow',String(value));
+  track.setAttribute('aria-valuetext',label+', '+value+'%');
+  track.classList.toggle('is-working',progressPhase==='working');
+  track.classList.toggle('is-error',progressPhase==='error');
+}
 function renderActionBar(){
+  renderProgress();
   const selected=getSelectedTargets().length;
   const work=files.length*selected;
   dom.convertCount.textContent=work>0?'('+work+')':'';
@@ -433,6 +464,7 @@ function clearResults(){
   if(busy)return;
   lastBatch=null;
   progress=null;
+  completedBatchFiles=0;totalBatchFiles=0;progressPhase='idle';
   memoryStatus=null;
   dom.resultList.scrollTop=0;
   renderResults();
@@ -444,6 +476,7 @@ async function runBatch(){
   const targets=getSelectedTargets();
   if(!targets.length){setActivity(t('noTargets'),'','warning');return;}
   busy=true;progress=null;memoryStatus=null;lastBatch=null;
+  completedBatchFiles=0;totalBatchFiles=files.length;progressPhase='working';
   renderResults();renderQueue();renderTargets();renderActionBar();
   try{
     const response=await api().ConvertBatch({filePaths:files.map((f)=>f.path),targets});
@@ -451,6 +484,8 @@ async function runBatch(){
       setActivity(t('convertError'),response.error,'warning');
     }
     lastBatch=response;
+    completedBatchFiles=Math.min(totalBatchFiles,response.filesDone||0);
+    progressPhase=response.error?'error':'done';
     if(response.filesDone){
       setActivity(response.successes?t('finished'):t('failed'),
         response.successes?t('finishedHint',{success:response.successes,failed:response.failures}):t('failedHint'),
@@ -459,6 +494,7 @@ async function runBatch(){
     renderResults();
     el('resultsPanel').scrollTop=0;
   }catch(e){
+    progressPhase='error';
     setActivity(t('convertError'),e?.message||String(e),'warning');
   }finally{
     busy=false;progress=null;
@@ -703,7 +739,25 @@ async function initialiseNative(){
   }
   if(window.runtime?.EventsOn){
     window.runtime.EventsOn('bridge:batch-progress',(data)=>{
-      progress=data;renderActionBar();
+      if(!busy||!data)return;
+      progress=data;
+      totalBatchFiles=Math.max(1,data.fileCount||totalBatchFiles);
+      if(data.completed){
+        completedBatchFiles=Math.max(completedBatchFiles,data.fileIndex||0);
+      }else{
+        completedBatchFiles=Math.max(completedBatchFiles,(data.fileIndex||1)-1);
+      }
+      renderActionBar();
+    });
+    window.runtime.EventsOn('bridge:makerworld-imported',(event)=>{
+      const file=event?.file;
+      if(!file?.path)return;
+      file.makerworld=event.source||{kind:'makerworld',confidence:'high'};
+      addFiles([file]).catch((e)=>setActivity(t('addError'),String(e),'warning'));
+    });
+    window.runtime.EventsOn('bridge:makerworld-import-failed',(message)=>{
+      // Native backend deliberately returns sanitized messages without signed URLs.
+      setActivity('MakerWorld',String(message||'Import failed'),'warning');
     });
   }
   try{settings=await api().GetSettings();}

@@ -1,68 +1,64 @@
-// Rebuild deterministic SliceBridge icons from the vector master.
-// Run: npm i --no-save sharp && node native/branding/build-icons.cjs
-const fs = require('node:fs');
-const path = require('node:path');
-const crypto = require('node:crypto');
-
-const base = path.resolve(__dirname, '..');
-const sharp = require(process.env.SHARP_MODULE || 'sharp');
-const master = path.join(__dirname, 'slicebridge-symbol.svg');
-const bytes = fs.readFileSync(master);
-const sizes = [16, 24, 32, 48, 64, 128, 256];
-const iconsetSizes = [
-  ['icp4',16], ['icp5',32], ['icp6',64], ['ic07',128],
-  ['ic08',256], ['ic09',512], ['ic10',1024]
-];
-async function png(size) {
-  return sharp(bytes, { density: 256 }).resize(size, size, {
-    fit:'contain',kernel:'lanczos3'
-  }).png({compressionLevel:9}).toBuffer();
+// Produce all platform icons from the APPROVED Direction 1 presentation crop.
+// No tracing, redrawing or interpretation: resized pixels are from the photo.
+'use strict';
+const fs=require('node:fs');
+const path=require('node:path');
+const crypto=require('node:crypto');
+const sharp=require(process.env.SHARP_MODULE||'sharp');
+const native=path.resolve(__dirname,'..');
+const repo=path.resolve(native,'..');
+const input=path.join(__dirname,'direction1-reference','approved-icon.webp');
+const tile=fs.readFileSync(input);
+const sizes=[16,24,32,48,64,128,256];
+const chunks=[['icp4',16],['icp5',32],['icp6',64],['ic07',128],['ic08',256],['ic09',512],['ic10',1024]];
+function roundMask(size){
+ const round=Math.round(size*.23);
+ return Buffer.from('<svg width="'+size+'" height="'+size+'" xmlns="http://www.w3.org/2000/svg">'+
+   '<rect x="0" y="0" width="'+size+'" height="'+size+'" rx="'+round+'" ry="'+round+'" fill="#fff"/></svg>');
 }
-function ico(pngs) {
-  const header=Buffer.alloc(6 + pngs.length*16);
-  header.writeUInt16LE(0,0);header.writeUInt16LE(1,2);
-  header.writeUInt16LE(pngs.length,4);
-  let offset=header.length;
-  for (let i=0;i<pngs.length;i++) {
-    const size=sizes[i], entry=6+i*16;
-    header.writeUInt8(size===256?0:size,entry);
-    header.writeUInt8(size===256?0:size,entry+1);
-    header.writeUInt8(0,entry+2);header.writeUInt8(0,entry+3);
-    header.writeUInt16LE(1,entry+4);
-    header.writeUInt16LE(32,entry+6);
-    header.writeUInt32LE(pngs[i].length,entry+8);
-    header.writeUInt32LE(offset,entry+12);
-    offset+=pngs[i].length;
-  }
-  return Buffer.concat([header,...pngs]);
+async function png(size){
+ const src=await sharp(tile).resize(size,size,{fit:'fill',kernel:'lanczos3'}).ensureAlpha().png().toBuffer();
+ // Cut only the four corner pixels outside the approved rounded tile.
+ return sharp(src).composite([{input:roundMask(size),blend:'dest-in'}]).png({compressionLevel:9}).toBuffer();
 }
-function icns(entries) {
-  const blocks=entries.map(([tag, bytes])=>{
-    const header=Buffer.alloc(8);
-    header.write(tag,0,4,'ascii');
-    header.writeUInt32BE(bytes.length+8,4);
-    return Buffer.concat([header, bytes]);
-  });
-  const main=Buffer.alloc(8);
-  main.write('icns',0,4,'ascii');
-  main.writeUInt32BE(8+blocks.reduce((sum,b)=>sum+b.length,0),4);
-  return Buffer.concat([main,...blocks]);
+function ico(images){
+ const h=Buffer.alloc(6+images.length*16);
+ h.writeUInt16LE(1,2);h.writeUInt16LE(images.length,4);
+ let offset=h.length;
+ for(let i=0;i<images.length;i++){
+  const size=sizes[i],at=6+i*16;
+  h.writeUInt8(size===256?0:size,at);h.writeUInt8(size===256?0:size,at+1);
+  h.writeUInt16LE(1,at+4);h.writeUInt16LE(32,at+6);
+  h.writeUInt32LE(images[i].length,at+8);h.writeUInt32LE(offset,at+12);
+  offset+=images[i].length;
+ }
+ return Buffer.concat([h,...images]);
 }
-(async ()=>{
-  const commonSizes = await Promise.all(sizes.map(png));
-  const iconset=await Promise.all(iconsetSizes.map(async ([t,size])=>[t,await png(size)]));
-  const apppng=iconset.find(([_,b])=>b)[1]; // overwritten below with explicit 1024
-  const highRes=await png(1024);
-  const files = [
-    [path.join(base,'build','appicon.png'), highRes],
-    [path.join(base,'build','windows','icon.ico'), ico(commonSizes)],
-    [path.join(base,'build','darwin','icon.icns'), icns(iconset)],
-    [path.join(__dirname,'slicebridge-preview.png'),await png(512)],
-    [path.join(base,'frontend','dist','brand-icon.svg'),bytes]
-  ];
-  for(const [name,data] of files){
-    fs.mkdirSync(path.dirname(name),{recursive:true});
-    fs.writeFileSync(name,data);
-    console.log(path.relative(base,name),data.length,crypto.createHash('sha256').update(data).digest('hex').slice(0,14));
-  }
+function icns(images){
+ const entries=images.map(([tag,bytes])=>{
+  const h=Buffer.alloc(8);h.write(tag,0,4,'ascii');h.writeUInt32BE(bytes.length+8,4);
+  return Buffer.concat([h,bytes]);
+ });
+ const h=Buffer.alloc(8);h.write('icns',0,4,'ascii');
+ h.writeUInt32BE(8+entries.reduce((n,x)=>n+x.length,0),4);
+ return Buffer.concat([h,...entries]);
+}
+(async()=>{
+ const win=await Promise.all(sizes.map(png));
+ const mac=await Promise.all(chunks.map(async ([name,size])=>[name,await png(size)]));
+ const files=[
+  [path.join(native,'build','appicon.png'),await png(1024)],
+  [path.join(native,'build','windows','icon.ico'),ico(win)],
+  [path.join(native,'build','darwin','icon.icns'),icns(mac)],
+  [path.join(native,'frontend','dist','brand-icon.png'),await png(128)]
+ ];
+ for(const size of [16,32,48,128]){
+  files.push([path.join(repo,'browser-extension','shared','icon-'+size+'.png'),await png(size)]);
+ }
+ const wave=fs.readFileSync(path.join(__dirname,'direction1-reference','approved-wave.webp'));
+ files.push([path.join(native,'frontend','dist','slicebridge-banner.webp'),wave]);
+ for(const [file,bytes] of files){
+  fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,bytes);
+  console.log(path.relative(repo,file),bytes.length,crypto.createHash('sha256').update(bytes).digest('hex').slice(0,13));
+ }
 })().catch(e=>{console.error(e);process.exit(1);});

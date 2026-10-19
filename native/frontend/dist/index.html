@@ -7,6 +7,7 @@
   <title>SliceBridge</title>
   <link rel="stylesheet" href="./app.css">
   <script defer src="./app.js"></script>
+  <script defer src="./integrations.js"></script>
 </head>
 <body>
 <div class="shell" id="appShell">
@@ -20,6 +21,7 @@
     </div>
     <div class="topbar-actions">
       <button id="settingsBtn" type="button" class="ghost-btn labeled-btn" data-i18n-title="settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span data-i18n="settings">הגדרות</span></button>
+      <button id="integrationsBtn" type="button" class="ghost-btn labeled-btn" data-i18n-title="browserIntegration" title="MakerWorld integration"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="browserIntegration">MakerWorld</span></button>
       <div class="language-switch" role="group" aria-label="Language">
         <button id="heBtn" type="button" lang="he">עברית</button>
         <button id="enBtn" type="button" lang="en">EN</button>
@@ -125,6 +127,23 @@
       </button>
     </div>
   </footer>
+  <section class="brand-banner" aria-label="SliceBridge brand banner">
+    <div class="brand-banner-art" aria-hidden="true"></div>
+    <div class="brand-banner-content">
+      <strong>DIFFERENT SLICERS.<br>A STRONGER COMMUNITY.</strong>
+      <span class="brand-banner-rule" aria-hidden="true"></span>
+      <small>SliceBridge makes your 3D printing workflow more open, flexible, and connected.</small>
+    </div>
+  </section>
+  <section class="conversion-progress" role="group" aria-label="Conversion progress">
+    <div class="conversion-progress-labels">
+      <span id="progressDescription" data-i18n="progressIdle" role="status" aria-live="polite">Ready to convert</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div id="progressTrack" class="progress-track" role="progressbar" aria-label="Conversion progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+  </section>
 </div>
 
 <dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle">
@@ -173,6 +192,32 @@
     <footer class="dialog-actions">
       <button type="button" class="compact-btn secondary" id="cancelSettingsBtn" data-i18n="cancel">ביטול</button>
       <button type="button" class="compact-btn primary" id="saveSettingsBtn" data-i18n="saveSettings">שמור הגדרות</button>
+    </footer>
+  </div>
+</dialog>
+
+<dialog id="integrationsDialog" class="settings-dialog integrations-dialog" aria-labelledby="integrationsTitle">
+  <div class="dialog-frame">
+    <header class="dialog-header">
+      <div><h2 id="integrationsTitle" data-i18n="integrationTitle">MakerWorld · Browser integration</h2>
+        <p data-i18n="integrationHint">Open MakerWorld projects directly in SliceBridge without replacing Bambu Studio.</p></div>
+      <button type="button" id="closeIntegrationsBtn" class="ghost-btn close-dialog" aria-label="Close">×</button>
+    </header>
+    <div class="dialog-scroll integration-content">
+      <div class="integration-state"><span id="browserLinkStatus" role="status" data-i18n="browserLinkUnknown">Checking native browser links…</span></div>
+      <p data-i18n="extensionExplanation">The browser extension works only on MakerWorld and asks your permission to intercept Bambu Studio links.</p>
+      <h3 data-i18n="interceptModesTitle">Choose the default in the browser extension</h3>
+      <div class="mode-list">
+        <div><strong data-i18n="interceptOff">Off</strong><small data-i18n="interceptOffDetail">Default. Bambu Studio opens normally.</small></div>
+        <div><strong data-i18n="interceptAsk">Ask every time</strong><small data-i18n="interceptAskDetail">Choose SliceBridge or Bambu Studio when opening a model.</small></div>
+        <div><strong data-i18n="interceptAlways">Always use SliceBridge</strong><small data-i18n="interceptAlwaysDetail">Route supported MakerWorld links to SliceBridge automatically.</small></div>
+      </div>
+      <p class="integration-note" data-i18n="modeScopeNote">Choose your mode in the extension's toolbar popup. Browser settings are separate from printer settings and are Off by default.</p>
+      <p id="integrationStatus" class="dialog-status" role="status"></p>
+    </div>
+    <footer class="dialog-actions integration-actions">
+      <button type="button" id="openExtensionGuideBtn" class="compact-btn secondary" data-i18n="openExtensionGuide">Install / configure extension</button>
+      <button type="button" id="enableLinksBtn" class="compact-btn primary" data-i18n="enableBrowserLinks">Enable browser links</button>
     </footer>
   </div>
 </dialog>

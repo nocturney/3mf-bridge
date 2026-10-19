@@ -4,10 +4,12 @@ import (
 	"context"
 	"embed"
 	"fmt"
+	"os"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
+	"github.com/wailsapp/wails/v2/pkg/options/mac"
 )
 
 //go:embed all:frontend/dist
@@ -28,7 +30,22 @@ func main() {
 		MinHeight:        500,
 		BackgroundColour: &options.RGBA{R: 247, G: 246, B: 242, A: 255},
 		AssetServer:      &assetserver.Options{Assets: assets},
-		OnStartup:        app.startup,
+		OnStartup: func(ctx context.Context) {
+			app.startup(ctx)
+			externalBridge.setContext(ctx)
+			for _, raw := range os.Args[1:] {
+				externalBridge.acceptArg(raw)
+			}
+		},
+		Mac: &mac.Options{OnUrlOpen: externalBridge.acceptArg},
+		SingleInstanceLock: &options.SingleInstanceLock{
+			UniqueId: "velvetfactory-slicebridge",
+			OnSecondInstanceLaunch: func(info options.SecondInstanceData) {
+				for _, raw := range info.Args {
+					externalBridge.acceptArg(raw)
+				}
+			},
+		},
 		OnBeforeClose: func(_ context.Context) bool {
 			// Flush the final user-chosen size even if the 900ms JS debounce
 			// has not fired yet; never prevent the OS close command.
