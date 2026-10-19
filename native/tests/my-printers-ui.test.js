@@ -193,6 +193,6 @@ test('target printer cards reuse locally installed PNG covers with safe fallback
 
 test('brand banner keeps just the short first headline',()=>{
   const html=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
-  assert.match(html,/DIFFERENT SLICERS\./);
+  assert.match(html,/DIFFERENT SLICERS\.<br>ONE SIMPLE WORKFLOW\./);
   assert.doesNotMatch(html,new RegExp(['A STRONGER','COMMUNITY'].join(' '),'i'));
 });
