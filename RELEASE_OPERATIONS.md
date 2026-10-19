@@ -6,9 +6,9 @@ This process prepares verifiable release evidence WITHOUT publishing software. I
 
 ## Run in GitHub Actions
 
-Open [Actions → Release preflight (evidence only)](https://github.com/nocturney/slicebridge/actions/workflows/release-preflight.yml), choose Run workflow, and supply an immutable 40-character hexadecimal source SHA, NOT a branch or tag name.
+Open [Actions → Release preflight (evidence only)](https://github.com/nocturney/slicebridge/actions/workflows/release-preflight.yml), choose Run workflow **on main**. The source is pinned automatically to that run's immutable protected-main commit SHA; arbitrary user-provided Git refs are deliberately NOT accepted by the privileged manual workflow.
 
-Optionally supply the tag of an EXISTING draft release (for example v0.4.0-beta.3). This causes only READ-ONLY ZIP integrity, hash and embedded Go build-info checks. For the historical Beta 3 draft, the recorded build source commit is 5b9cd0a1f961a872f00d4d7e82ced567efd170ee. Only select that SHA when inspecting those specific assets.
+Optionally supply the tag of an EXISTING draft release (for example v0.4.0-beta.3). This causes only READ-ONLY ZIP integrity, hash and embedded Go build-info checks. The historical Beta 3 binaries were built from 5b9cd0a1f961a872f00d4d7e82ced567efd170ee, not current main: if you request that draft from today's main workflow, an embedded-source-SHA mismatch will be flagged, as intended. **To inspect the historical commit together with that draft, run the standalone script locally in a separately checked-out, verified historical commit** (or wait until corresponding approved code lands on protected main). The workflow never checks out arbitrary untrusted SHA inputs.
 
 The workflow uses contents: read. Draft binaries are fetched into an ephemeral CI directory and explicitly EXCLUDED from uploaded evidence artifacts. The job never creates GitHub Releases, pushes commits, changes branch protection, publishes binaries, or signs anything.
 

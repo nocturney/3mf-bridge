@@ -190,7 +190,7 @@ def sbom(deps, binary_deps, sha, when):
     components = []
     for (kind, name, ver), info in sorted(expanded.items()):
         ecosystem = "golang" if kind == "go" else "npm"
-        purl = "pkg:" + ecosystem + "/" + urllib.parse.quote(name, safe="/@") + "@" + urllib.parse.quote(ver, safe=".+-_")
+        purl = "pkg:" + ecosystem + "/" + urllib.parse.quote(name, safe="/") + "@" + urllib.parse.quote(ver, safe=".+-_")
         component = {"type": "library", "name": name, "version": ver, "purl": purl,
                      "properties": [{"name": "slicebridge:evidence", "value": e}
                                     for e in sorted(info["evidence"])]}

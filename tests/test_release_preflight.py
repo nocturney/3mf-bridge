@@ -28,7 +28,8 @@ class PreflightTests(unittest.TestCase):
         (self.repo / "package-lock.json").write_text(json.dumps({
             "lockfileVersion": 3,
             "packages": {"": {"name": "test", "license": "GPL-3.0-only"},
-                         "node_modules/example": {"version": "1.2.3", "license": "MIT"}}
+                         "node_modules/example": {"version": "1.2.3", "license": "MIT"},
+                         "node_modules/@scope/tool": {"version": "2.3.4", "license": "Apache-2.0"}}
         }), encoding="utf-8")
         (self.repo / "go.mod").write_text("module example.invalid/test\n\ngo 1.25\nrequire github.com/test/example v1.2.3\n")
         self.commit()
@@ -67,7 +68,8 @@ class PreflightTests(unittest.TestCase):
             self.assertIsNone(z.testzip())
         bom = json.loads((out1 / "manifest-sbom.cdx.json").read_text())
         self.assertEqual(bom["bomFormat"], "CycloneDX")
-        self.assertEqual(len(bom["components"]), 2)
+        self.assertEqual(len(bom["components"]), 3)
+        self.assertIn("pkg:npm/%40scope/tool@2.3.4", [c["purl"] for c in bom["components"]])
         self.assertIn("pkg:npm/example@1.2.3", [c["purl"] for c in bom["components"]])
         self.assertIn("pkg:golang/github.com/test/example@v1.2.3", [c["purl"] for c in bom["components"]])
         report = json.loads((out1 / "release-evidence.json").read_text())
