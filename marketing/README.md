@@ -23,7 +23,7 @@ This kit documents **pre-release** communications. It is not a download/release 
 **On-site gallery:** [Press & media page](../docs/press.html) after publishing on GitHub Pages. Editable, ready-to-copy posts: [COPY.md](COPY.md).
 
 ## Accurate origin and attribution
-- Present SliceBridge as an **AI-assisted adaptation/assembly of existing tools and solutions**, not a new technology invented from scratch or a dramatic personal founder story.
+- Present SliceBridge as an **AI-assisted adaptation/assembly of existing tools and solutions**, not a new technology invented from scratch or an invented origin narrative.
 - Preserve separate credit and licensing requirements for upstream components. Marketing copy never substitutes for [third-party notices](../THIRD_PARTY_NOTICES.md).
 
 ## Safe messages while release is on hold
