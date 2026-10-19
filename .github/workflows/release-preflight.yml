@@ -1,7 +1,8 @@
 name: Release preflight (evidence only)
 
-# Never create, sign, push, publish or deploy software releases.
-# Manual evidence runs are restricted to protected main's immutable trigger commit.
+# Does NOT create, sign, push, publish or upload any GitHub Release.
+# Manual runs use the protected main branch's immutable trigger commit only.
+# Private/draft Release binaries require a separately authenticated LOCAL audit.
 on:
   pull_request:
     branches: [main]
@@ -18,11 +19,6 @@ on:
       - ".github/workflows/release-preflight.yml"
       - "RELEASE_OPERATIONS.md"
   workflow_dispatch:
-    inputs:
-      draft_tag:
-        description: "Optional existing DRAFT release tag for read-only binary checks"
-        type: string
-        required: false
 
 permissions:
   contents: read
@@ -53,38 +49,20 @@ jobs:
     needs: self-test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout protected main at this workflow's immutable trigger commit
+      - name: Checkout protected main at immutable trigger commit
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - name: Validate optional draft tag
-        env:
-          DRAFT_TAG: ${{ inputs.draft_tag }}
-        run: |
-          python3 - <<'PY'
-          import os, re
-          tag = os.environ.get("DRAFT_TAG", "")
-          assert not tag or re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_.-]{0,127}", tag), "Invalid draft tag"
-          PY
-      - name: Optionally download existing draft assets for READ-ONLY inspection
-        if: inputs.draft_tag != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-          DRAFT_TAG: ${{ inputs.draft_tag }}
-        run: |
-          mkdir -p draft-assets
-          gh release download "$DRAFT_TAG" --repo "$GITHUB_REPOSITORY" --dir draft-assets
-      - name: Generate pinned main source ZIP, manifest SBOM and checksums
+      - name: Create source archive, preliminary SBOM and SHA256SUMS
         env:
           SOURCE_SHA: ${{ github.sha }}
         run: |
-          args=(--repo . --out "$RUNNER_TEMP/slicebridge-evidence" --source-sha "$SOURCE_SHA")
-          if [ -d draft-assets ]; then
-            args+=(--assets-dir draft-assets)
-          fi
-          python3 tools/release_preflight.py "${args[@]}"
+          python3 tools/release_preflight.py \
+            --repo . \
+            --out "$RUNNER_TEMP/slicebridge-evidence" \
+            --source-sha "$SOURCE_SHA"
           cat "$RUNNER_TEMP/slicebridge-evidence/release-evidence.json"
-      - name: Store source/evidence ONLY (draft binaries excluded)
+      - name: Store source/evidence artifact only
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: slicebridge-preflight-${{ github.run_id }}

@@ -6,11 +6,11 @@ This process prepares verifiable release evidence WITHOUT publishing software. I
 
 ## Run in GitHub Actions
 
-Open [Actions → Release preflight (evidence only)](https://github.com/nocturney/slicebridge/actions/workflows/release-preflight.yml), choose Run workflow **on main**. The source is pinned automatically to that run's immutable protected-main commit SHA; arbitrary user-provided Git refs are deliberately NOT accepted by the privileged manual workflow.
+Open [Actions → Release preflight (evidence only)](https://github.com/nocturney/slicebridge/actions/workflows/release-preflight.yml) and choose Run workflow **on main**. The source is pinned automatically to that run's immutable protected-main commit SHA. Arbitrary user-provided Git refs are deliberately NOT accepted by the privileged manual workflow.
 
-Optionally supply the tag of an EXISTING draft release (for example v0.4.0-beta.3). This causes only READ-ONLY ZIP integrity, hash and embedded Go build-info checks. The historical Beta 3 binaries were built from 5b9cd0a1f961a872f00d4d7e82ced567efd170ee, not current main: if you request that draft from today's main workflow, an embedded-source-SHA mismatch will be flagged, as intended. **To inspect the historical commit together with that draft, run the standalone script locally in a separately checked-out, verified historical commit** (or wait until corresponding approved code lands on protected main). The workflow never checks out arbitrary untrusted SHA inputs.
+**Private/Draft assets are not available to the GitHub Actions read-only token.** Therefore the hosted workflow generates source, manifest and checksums ONLY; it does not claim to inspect private draft assets. Existing draft ZIPs can be checked with the same script LOCALLY, using an already authorized GitHub account and a clean checkout of the matching historical commit. For Beta 3, the historical source SHA is 5b9cd0a1f961a872f00d4d7e82ced567efd170ee.
 
-The workflow uses contents: read. Draft binaries are fetched into an ephemeral CI directory and explicitly EXCLUDED from uploaded evidence artifacts. The job never creates GitHub Releases, pushes commits, changes branch protection, publishes binaries, or signs anything.
+The hosted workflow uses contents: read. It never downloads private draft files, creates GitHub Releases, pushes commits, changes branch protection, publishes binaries or signs anything.
 
 ## Outputs of a manual run
 
@@ -20,7 +20,7 @@ The workflow uses contents: read. Draft binaries are fetched into an ephemeral C
 | manifest-sbom.cdx.json | CycloneDX 1.5 **preliminary** manifest SBOM from package-lock and go.mod, plus available embedded Go build metadata |
 | release-evidence.json | Exact source commit, tracked source trees, dependency counts, archive integrity, explicit remaining release blockers |
 | SHA256SUMS.txt | SHA-256 hashes of each file in the evidence artifact |
-| DRAFT_ASSET_SHA256SUMS.txt | Only with draft downloads; records hashes of existing draft files, which are NOT republished |
+| DRAFT_ASSET_SHA256SUMS.txt | Created by the LOCAL script only if an --assets-dir was supplied; draft ZIPs are never republished |
 
 The source ZIP sorts Git-tracked paths and uses fixed timestamps for byte-identical reproducibility at the same pinned commit. The script fails on wrong or dirty source checkouts, missing or mismatched submodules, duplicate/malicious archive names and bad ZIP CRC.
 
