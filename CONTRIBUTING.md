@@ -9,7 +9,9 @@ Thanks for helping build a more open workflow across printer ecosystems. The pro
 5. **Keep security and privacy in mind:** never commit tokens, customer files or private paths. Follow [SECURITY.md](SECURITY.md) for vulnerability reports.
 6. **Document user-visible changes:** update relevant release notes, support documentation and translated text.
 
-Code submissions remain subject to the repository's licensing and third-party clearance review; do not assume upstream files become freely redistributable because their source repositories are public.
+Project-owned code contributions are intended to be accepted under **[GPL-3.0-only](LICENSE)**, without a copyright assignment or CLA. By submitting, contributors represent that they have the right to grant the necessary licenses. Identify source and original licenses for reused code or assets. Contributors keep their own copyright; GPL-3.0-only applies where they can grant it.
+
+Code submissions remain subject to third-party clearance review; do not assume upstream files become freely redistributable because their source repositories are public. Consult [LICENSING.md](LICENSING.md) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 Useful links: [roadmap / printer catalogue #7](https://github.com/nocturney/slicebridge/issues/7) · [support](SUPPORT.md) · [release checklist](DISTRIBUTION_CHECKLIST.md).
 

@@ -4,6 +4,8 @@ Public, published releases will be listed here. Development-branch work and draf
 
 ## Unreleased
 
+- Prepared an open-source GPL-3.0-only license for project-owned code and synchronized prototype npm license metadata.
+- Documented separate third-party, vendor-profile and trademark scopes without claiming ownership of upstream works.
 - Established the SliceBridge product name and a concise bilingual README.
 - Published a pre-release landing page in English and Hebrew using the approved Mint / Forest artwork.
 - Added GitHub project metadata, reporting and documentation conventions.

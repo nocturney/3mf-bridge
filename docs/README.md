@@ -11,3 +11,5 @@ This directory is a small pre-release website for SliceBridge, published via Git
 GitHub Pages: https://nocturney.github.io/slicebridge/
 
 Keep this site isolated from the application's UI and its open development PRs.
+
+The repository's covered original code uses [GPL-3.0-only](../LICENSE); third-party and trademark scopes are described in [LICENSING.md](../LICENSING.md).

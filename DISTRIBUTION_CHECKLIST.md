@@ -4,7 +4,9 @@
 
 ## 1. Rights and attribution
 
-- [ ] Review the project's **intended source-code license** and determine who can grant those rights. The current default branch had no `LICENSE` at the time this checklist was created; a development branch contains the text of **GPL-3.0**. Those facts must be reconciled before distribution. This file does not choose or grant a license.
+- [x] The owner selected **open-source distribution**. A consistent **GPL-3.0-only** code license and matching prototype npm metadata are proposed in the licensing PR, matching the pre-existing development branch license. **This does not validate ownership of every upstream asset.**
+- [ ] Confirm all SliceBridge-original copyright owners can license their contributions under GPL-3.0-only and retain original copyright notices.
+- [ ] Ensure code and metadata from all feature branches are reconciled to the same license during reviewed merges; do not misrepresent unmerged feature code as released.
 - [ ] Confirm compliance for the `BryanSmee/bl_to_std` GPL-3.0 component and any derivative/distributed binaries, including corresponding source and notices where required.
 - [ ] Audit all bundled third-party source, art, binaries, icons and scripts for licenses and required notices. Review development branch `THIRD_PARTY_NOTICES.md` and correct inherited `3MF Bridge` wording.
 - [ ] Ensure **vendor printer/material presets are not bundled or republished** without verified rights. Availability on a third-party public Git repository is not, by itself, permission to redistribute.
