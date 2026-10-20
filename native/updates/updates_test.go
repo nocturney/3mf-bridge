@@ -137,3 +137,16 @@ func TestSliceBridgeReleaseArtifactsMatchAfterRename(t *testing.T) {
 		}
 	}
 }
+
+func TestPublicSliceBridgeReleaseURLs(t *testing.T) {
+	if Repository != "nocturney/slicebridge" {
+		t.Fatalf("outdated updater repository %q", Repository)
+	}
+	if APIURL != "https://api.github.com/repos/nocturney/slicebridge/releases?per_page=50" {
+		t.Fatalf("outdated API URL: %s", APIURL)
+	}
+	if ReleasesURL != "https://github.com/nocturney/slicebridge/releases" ||
+		BuildsURL != "https://github.com/nocturney/slicebridge/actions/workflows/native.yml" {
+		t.Fatalf("outdated release links: %s %s", ReleasesURL, BuildsURL)
+	}
+}
