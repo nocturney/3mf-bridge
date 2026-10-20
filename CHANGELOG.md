@@ -12,6 +12,14 @@ Public, published releases will be listed here. Development-branch work and draf
 - Published development status; no current downloadable community build yet.
 - Simplified the release guidance for a small open-source project; signing is optional.
 
+## [0.4.0-beta.4.dev.6] — 2026-10-20 (development milestone, not released)
+
+- Correct the `dev.5` source-panel overexpansion: **one or two files no longer push the selected target-printer cards out of view**. The file panel now sizes itself by the number of rows rather than reserving a fixed minimum height of 390 pixels.
+- Keep the source list readable (wrapped filenames, folder, size and remove button), cap only *long* queues at a 196 px internal scroll area, and remove the duplicated selected-file heading and footnote while files are queued. The source heading already shows the count.
+- Reclaim vertical space in shorter desktop windows by compacting the header/action/banner/progress rows without removing the fixed banner or changing printer cards, and preserve existing saved window sizes. Fresh-install default remains 1280×900.
+- Renderer regression checks now explicitly verify that **both the source file(s) and the target-printer cards are visible without workspace scrolling** at a normal desktop viewport, including the two-file case; retain overflow QA for larger queues and narrow windows.
+- App code is in [Draft PR #13](https://github.com/nocturney/slicebridge/pull/13). This milestone alone does not constitute a published Release or independent Wails visual approval.
+
 ## [0.4.0-beta.4.dev.5] — 2026-10-20 (development milestone, not released)
 
 - Make attached source files **actually readable in the main desktop converter**, after feedback that a selected 3MF appeared only as a cut-off thin strip: expand the queue panel whenever it has files, provide at least 145 px of scrollable file list, show a selected-files heading and count, and wrap long project filenames across up to two lines while preserving path and size information.
