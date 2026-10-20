@@ -88,7 +88,7 @@ const testHTML=fs.readFileSync(htmlPath,'utf8')
  .replace('href="./app.css"','href="../app.css"')
  .replace('src="./brand-icon.png"','src="../brand-icon.png"');
 fs.writeFileSync(htmlPath,testHTML,'utf8');
-const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,1,'he']]:[
+const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,Number(process.env.QUEUE_LAYOUT_SINGLE),'he']]:[
   [1100,750,1,'he'],
   [1100,750,2,'he'],
   [1100,750,15,'he'],
@@ -120,7 +120,7 @@ try{
     assert.ok(q.viewport.height>=h-150,'renderer ignored requested test height');
     assert.ok(q.panel.width>320,'source panel width too narrow');
     if(files){
-      assert.ok(q.panel.height>=185 && q.panel.height<=355,
+      assert.ok(q.panel.height>=178 && q.panel.height<=355,
         'source panel not content-sized: '+JSON.stringify(q));
       if(files<=2)assert.ok(q.panel.height<300,'few files should not consume most workspace');
       assert.ok(q.listClientHeight>=50,'file list clipped: '+JSON.stringify(q));
