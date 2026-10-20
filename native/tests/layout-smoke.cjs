@@ -37,7 +37,9 @@ async function inspect(win){
       reportCards:document.querySelectorAll('.file-report').length,
       clearResultsDisabled:e('#clearResultsBtn').disabled,
       brandImageLoaded:e('.brand-mark').naturalWidth>0,
-      metaInFooter:!!e('footer .app-meta #installedVersion')&&!!e('footer .app-meta #checkUpdatesBtn'),
+      metaInAbout:!!e('#aboutDialog #installedVersion')&&!!e('#aboutDialog #checkUpdatesBtn'),
+      metaInFooter:!!e('footer #installedVersion')||!!e('footer #checkUpdatesBtn'),
+      aboutButton:rect('#aboutBtn'),
       hasJsonExport:!!e('#exportReportBtn'),
       integrationLabel:e('#integrationsBtn').textContent.trim(),
       integrationButton:rect('#integrationsBtn'),
@@ -66,7 +68,17 @@ async function main(){
   assert.ok(Math.abs(layout.banner.bottom-layout.progressBar.y)<2,'progress must sit directly below banner');
   assert.ok(Math.abs(layout.progressBar.bottom-layout.viewport.h)<2,'progress must align with bottom of window');
   assert.equal(layout.brandImageLoaded,true,'new SliceBridge icon must render');
-  assert.equal(layout.metaInFooter,true,'version and update button share bottom bar');
+  assert.equal(layout.metaInAbout,true,'installed version and update check should be in About');
+  assert.equal(layout.metaInFooter,false,'footer should have no duplicated version/update controls');
+  assert.ok(layout.aboutButton.x>=0 && layout.aboutButton.x+layout.aboutButton.width<=layout.viewport.w+1,
+    'About button must fit in the top bar');
+  await win.webContents.executeJavaScript("document.getElementById('aboutBtn').click()");
+  await sleep(60);
+  assert.equal(await win.webContents.executeJavaScript("document.getElementById('aboutDialog').open"),true,
+    'About modal must open');
+  assert.equal(await win.webContents.executeJavaScript("document.getElementById('installedVersion').textContent"),
+    'v0.4.0-beta.3','About must show installed native version');
+  await win.webContents.executeJavaScript("document.getElementById('closeAboutBtn').click()");
   assert.equal(layout.hasJsonExport,false,'old JSON export must be removed');
   assert.equal(layout.integrationLabel,'MakerWorld Setup','integration button should have a readable title');
   assert.ok(layout.integrationButton.x>=0 && layout.integrationButton.x+layout.integrationButton.width<=layout.viewport.w+1,

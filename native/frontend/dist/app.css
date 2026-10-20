@@ -911,3 +911,40 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   .brand-banner{padding:5px 24px}
   .brand-banner-content small{display:none}
 }
+
+
+/* Simple About: one home for installed version, updates, GPL and credits. */
+.about-dialog{width:min(560px,calc(100vw - 28px))}
+.about-dialog .dialog-header{padding-bottom:10px}
+.about-content{display:flex;flex-direction:column;gap:12px;padding-block:10px 14px}
+.about-identity{display:flex;align-items:center;gap:12px;direction:ltr}
+.about-identity img{border-radius:12px;flex:none;background:#e8f6ef}
+.about-identity strong{font-size:22px;font-weight:800;letter-spacing:-.4px;color:var(--brand-dark)}
+.about-card{border:1px solid var(--stroke);background:#fbfefc;border-radius:10px;padding:13px 14px}
+.about-card h3{font-size:12px;color:var(--ink);margin:0 0 7px}
+.about-card p{margin:0;color:var(--ink-muted);font-size:12px;line-height:1.55}
+.about-version-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.about-version-row .version-label{display:block;font-size:13px;font-weight:700;color:var(--brand-dark);direction:ltr;text-align:start}
+.about-dialog .update-check-btn{white-space:normal;min-height:33px;border:1px solid var(--stroke);background:#fff;font-size:11px}
+.about-dialog .update-check-btn svg{width:15px;height:15px}
+.about-dialog .update-notice{padding:10px;margin-top:10px;border:1px solid #b9dcd3;border-radius:8px;gap:8px}
+.about-dialog .about-credits-title{margin-top:13px}
+.about-credit-list{margin:3px 0 0;padding-inline-start:18px;color:var(--ink-muted);font-size:11px;line-height:1.55}
+.about-credit-list li+li{margin-top:4px}
+.about-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.about-card .about-controls{margin-top:13px}
+.about-controls .compact-btn{font-size:11px;min-height:32px;white-space:normal;text-align:center}
+.about-links .compact-btn{flex:1 1 145px}
+.about-legal-text{white-space:pre-wrap;overflow-wrap:anywhere;direction:ltr;text-align:left;
+  border:1px solid #d8e6de;border-radius:8px;background:#f4f8f5;color:#29483e;
+  font:11px/1.5 ui-monospace,Consolas,monospace;max-height:205px;overflow-y:auto;
+  padding:11px;margin:12px 0 0;user-select:text}
+.about-legal-text[hidden]{display:none}
+.about-card .about-status,.about-status{color:var(--bad);font-size:11px;min-height:0;margin:0}
+.about-status:empty{display:none}
+.about-disclaimer{margin:0;color:var(--ink-muted);font-size:11px;line-height:1.55}
+@media(max-width:500px){
+  .about-content{padding-inline:13px}
+  .about-dialog .dialog-header{padding-inline:13px}
+  .about-dialog .dialog-actions{padding-inline:13px}
+}
