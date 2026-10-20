@@ -51,6 +51,11 @@ jobs:
         run: go test -count=1 ./...
       - name: Test native UI and browser handoff
         run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js tests/my-printers-ui.test.js
+      - name: Verify short-window frontend interactions (headless Chrome)
+        shell: pwsh
+        run: |
+          node tests/source-queue-layout-qa.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Source panel is obscured or compact layout regressed' }
       - name: Install stable Wails 2
         shell: pwsh
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0

@@ -52,6 +52,10 @@ const fixtureScript=[
   "  function rect(q){const r=document.querySelector(q).getBoundingClientRect();",
   "    return {x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom};}",
   "  function report(){",
+  "    const add=document.getElementById('addFilesBtn');",
+  "    add.scrollIntoView({block:'center'});",
+  "    const a=add.getBoundingClientRect();",
+  "    const hit=document.elementFromPoint(a.x+a.width/2,a.y+a.height/2);",
   "    const out={",
   "      viewport:{width:innerWidth,height:innerHeight},",
   "      language:document.documentElement.lang,",
@@ -71,6 +75,7 @@ const fixtureScript=[
   "      scrollableFiles:list.scrollHeight-list.clientHeight,",
   "      listClientHeight:list.clientHeight,",
   "      scrollableWorkspace:document.querySelector('.workspace').scrollHeight-document.querySelector('.workspace').clientHeight,",
+  "      addButtonClickable:add.contains(hit),",
   "      docOverflow:document.documentElement.scrollHeight-innerHeight",
   "    };",
   "    document.documentElement.setAttribute('data-layout-qa',encodeURIComponent(JSON.stringify(out)));",
@@ -99,6 +104,13 @@ const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,Number(process.env.QUEUE
   [1280,900,12,'en'],
   [780,580,1,'he'],
   [780,580,8,'en'],
+  [746,620,2,'he'],
+  [820,620,2,'he'],
+  [960,620,2,'en'],
+  [900,620,2,'he'],
+  [900,620,2,'en'],
+  [720,500,2,'he'],
+  [720,500,2,'en'],
   [1100,750,0,'he']
 ];
 try{
@@ -121,8 +133,11 @@ try{
       'fixed banner text is clipped in this viewport: '+JSON.stringify(q));
     // Headless Edge macOS reserves ~130 px for its virtual browser chrome.
     assert.ok(q.viewport.width>=w-20,'renderer ignored requested test width');
-    assert.ok(q.viewport.height>=h-150,'renderer ignored requested test height');
+    // Headless Chrome reserves 151px for its virtual frame on Windows.
+    assert.ok(q.viewport.height>=h-160,'renderer ignored requested test height');
     assert.ok(q.panel.width>320,'source panel width too narrow');
+    assert.ok(q.addButtonClickable,
+      'Add files button is intercepted by another panel at '+w+'x'+h+': '+JSON.stringify(q));
     if(files){
       assert.ok(q.panel.height>=178 && q.panel.height<=355,
         'source panel not content-sized: '+JSON.stringify(q));

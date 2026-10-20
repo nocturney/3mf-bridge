@@ -948,3 +948,18 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   .about-dialog .dialog-header{padding-inline:13px}
   .about-dialog .dialog-actions{padding-inline:13px}
 }
+
+/* Keep source and results independently clickable in short desktop windows. */
+@media (min-width:746px) and (max-width:960px) { .workspace { grid-template-columns:minmax(360px,43%) minmax(0,1fr); } }
+@media (max-width:745px) { .workspace { grid-auto-rows:max-content;align-content:start; } .results-panel { align-self:start;height:auto; } }
+
+
+/* WCAG AA: readable secondary copy and section markers within Mint-Forest. */
+:root { --ink-muted:#526B61; }
+.section-number { color:#266A5F; }
+.file-badge { color:#266A5F; }
+.panel-bottom { color:#526B61; }
+
+
+/* Picker text AA contrast: selected model metadata and first-use helper. */
+.selected-printer-pill small,.catalog-picker-hint { color:#526B61; }
