@@ -754,3 +754,90 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .integration-install-help{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
 .integration-install-help button{font-size:11px;flex:1 1 165px}
 .integration-beta-details .integration-instructions{margin-bottom:9px}
+
+/* dev.5 — the source queue owns real vertical space once files are selected.
+   The old grid's 205px minimum left almost no space after fixed controls.
+   Scroll the workspace for short windows; scroll the file list for many files. */
+.workspace{
+  grid-template-columns:minmax(360px,43%) minmax(0,1fr);
+  overflow-y:auto;
+  overflow-x:hidden;
+  align-content:start;
+  scrollbar-gutter:stable;
+}
+.left-column{
+  display:flex;
+  flex-direction:column;
+  align-self:start;
+  min-height:0;
+  gap:12px;
+}
+.queue-panel{
+  flex:none;
+  height:224px;
+  min-height:224px;
+}
+.queue-panel.has-files{
+  height:clamp(390px,49dvh,490px);
+  min-height:390px;
+}
+.queue-panel.has-files .panel-heading{min-height:44px;padding-block:9px}
+.queue-panel.has-files .queue-toolbar{padding-block:6px 4px}
+.queue-panel.has-files .dropzone{
+  min-height:39px;
+  padding:6px 10px;
+  margin-block:3px 4px;
+  display:flex; /* Restore drop affordance even on short windows. */
+}
+.queue-panel.has-files .panel-bottom{padding-block:5px}
+.queue-files-heading{
+  display:flex;align-items:center;justify-content:space-between;
+  flex:none;gap:8px;
+  min-height:27px;padding:4px 13px;
+  background:#f4faf7;border-block:1px solid #e7f0ea;
+  color:#42685b;font-size:11px;font-weight:650;
+}
+.queue-files-heading[hidden]{display:none!important}
+.queue-files-heading .count-chip{padding:1px 7px;font-size:10px}
+.queue-panel .queue-list{
+  min-height:0;
+  max-height:none;
+  flex:1 1 0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-gutter:stable;
+  padding:4px 13px 8px;
+}
+.queue-panel.has-files .queue-list{min-height:145px}
+.queue-panel .queue-list[hidden]{display:none!important}
+.queue-item{min-height:56px;align-items:center}
+.queue-file-details strong{
+  white-space:normal;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  overflow-wrap:anywhere;
+  line-height:1.35;
+  max-height:2.7em;
+  direction:ltr;text-align:start;
+}
+.queue-file-details small{margin-top:3px}
+.targets-panel{
+  height:auto;
+  flex:none;
+}
+.targets-panel .target-list{
+  flex:0 1 auto;
+  max-height:310px;
+}
+@media(max-width:960px){
+  .workspace{grid-template-columns:minmax(0,1fr)}
+  .left-column{gap:12px}
+  .results-panel{min-height:285px;height:auto}
+  .results-scroll{min-height:205px}
+}
+@media(max-height:700px){
+  .queue-panel.has-files .dropzone{display:flex}
+  .queue-panel.has-files .panel-bottom{display:block}
+}

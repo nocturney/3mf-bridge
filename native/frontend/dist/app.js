@@ -8,7 +8,7 @@ const translations = {
     dismiss:'סגירה',workspaceTitle:'סביבת המרה',
     workspaceSubtitle:'המרת פרויקטים לכמה מדפסות, בלי לשנות את המקור.',
     localOnly:'עיבוד מקומי בלבד',queueTitle:'קובצי מקור',clear:'ניקוי',
-    addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',
+    addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',queuedFiles:'קבצים שנבחרו',
     dropHint:'גרור קובצי 3MF או תיקייה לכאן',queueFootnote:'עד 200 קובצי 3MF, כולל תיקיות משנה.',
     targetsTitle:'מדפסות יעד',selectAll:'בחר הכול',deselectAll:'בטל בחירה',
     resultsTitle:'תוצאות המרה',emptyTitle:'מוכן להמרה',
@@ -64,7 +64,7 @@ const translations = {
     dismiss:'Dismiss',workspaceTitle:'Conversion workspace',
     workspaceSubtitle:'Convert projects for multiple printers without altering your originals.',
     localOnly:'Completely local',queueTitle:'Source projects',clear:'Clear',
-    addFiles:'Add files',addFolder:'Add folder',
+    addFiles:'Add files',addFolder:'Add folder',queuedFiles:'Selected source files',
     dropHint:'Drop 3MF files or folders here',queueFootnote:'Up to 200 projects, including subfolders.',
     targetsTitle:'Target printers',selectAll:'Select all',deselectAll:'Clear selection',
     resultsTitle:'Conversion results',emptyTitle:'Ready to convert',
@@ -243,7 +243,12 @@ function setActivity(title,detail,type=''){
 }
 function renderQueue(){
   dom.fileList.replaceChildren();
-  dom.fileList.hidden=files.length===0;
+  const hasFiles=files.length>0;
+  dom.fileList.hidden=!hasFiles;
+  dom.fileList.parentElement.classList.toggle('has-files',hasFiles);
+  el('queuedFilesLabel').hidden=!hasFiles;
+  el('queueFilesShownCount').textContent=hasFiles?String(files.length):'';
+  dom.fileList.setAttribute('aria-label',t('queuedFiles'));
   dom.queueCount.textContent=String(files.length);
   el('clearQueueBtn').disabled=busy||!files.length;
   if(!files.length){

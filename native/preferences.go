@@ -32,7 +32,9 @@ func defaultSettings() Settings {
 	for t := range outputs {
 		m[t] = PrinterSettings{Nozzle: "auto", Slicer: "auto", Filaments: map[string]string{}}
 	}
-	return Settings{Version: 1, Printers: m, Window: WindowSettings{Width: 1100, Height: 750}}
+	// New installs start with enough room for a readable source-file queue.
+	// loadSettings still honors every already-saved user window dimension.
+	return Settings{Version: 1, Printers: m, Window: WindowSettings{Width: 1280, Height: 900}}
 }
 func settingsPath() (string, error) {
 	if v := os.Getenv("BRIDGE_SETTINGS_FILE"); v != "" {

@@ -69,3 +69,7 @@ test('MakerWorld connection labels are localized, not translation keys',()=>{
 // Existing native CI invokes this suite explicitly; include the opt-in
 // browser installation flow regressions without changing protected workflows.
 require('./extension-install-ui.test.js');
+
+// The native CI invokes this suite explicitly; keep the source queue geometry
+// regressions in that fixed list without changing a protected GitHub workflow.
+require('./source-queue-ui.test.js');
