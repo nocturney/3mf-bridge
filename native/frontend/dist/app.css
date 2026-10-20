@@ -889,14 +889,25 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 /* Small desktop windows retain the persistent banner/progress, but give the
    work area room for source files AND target printer cards before scrolling. */
 @media (min-width:741px) and (max-height:825px){
-  .shell{grid-template-rows:52px auto minmax(0,1fr) 66px 58px 36px}
+  .shell{grid-template-rows:52px auto minmax(0,1fr) 62px 82px 34px}
   .shell:has(.update-notice:not([hidden])){
-    grid-template-rows:52px auto auto minmax(0,1fr) 66px 58px 36px;
+    grid-template-rows:52px auto auto minmax(0,1fr) 62px 82px 34px;
   }
   .sectionbar{min-height:60px;padding:7px 17px}
   .sectionbar h1{font-size:19px}
   .workspace{padding-bottom:7px}
-  .actionbar{min-height:66px;padding:6px 16px}
-  .brand-banner{padding:6px 24px}
+  .actionbar{min-height:62px;padding:6px 16px}
+  .brand-banner{padding:4px 24px}
   .conversion-progress{padding:3px 16px}
+}
+
+/* Very short saved windows keep the full headline, omitting only the tiny
+   descriptive tagline so the source list and printer cards remain above fold. */
+@media (min-width:741px) and (max-height:760px){
+  .shell{grid-template-rows:52px auto minmax(0,1fr) 62px 58px 34px}
+  .shell:has(.update-notice:not([hidden])){
+    grid-template-rows:52px auto auto minmax(0,1fr) 62px 58px 34px;
+  }
+  .brand-banner{padding:5px 24px}
+  .brand-banner-content small{display:none}
 }
