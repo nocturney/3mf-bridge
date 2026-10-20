@@ -1,6 +1,6 @@
 # Changelog
 
-Public, published releases will be listed here. Development-branch work and draft releases do not count as publicly available versions.
+Published development builds are listed under [GitHub Releases](https://github.com/nocturney/slicebridge/releases). They are experimental pre-releases, not stable versions. Unmerged branch work is not considered released.
 
 ## Unreleased
 
@@ -9,11 +9,12 @@ Public, published releases will be listed here. Development-branch work and draf
 - Established the SliceBridge product name and a concise bilingual README.
 - Published a pre-release landing page in English and Hebrew using the approved Mint / Forest artwork.
 - Added GitHub project metadata, reporting and documentation conventions.
-- Published development status; no current downloadable community build yet.
+- Published experimental Windows and macOS development builds on GitHub Releases.
 - Simplified the release guidance for a small open-source project; signing is optional.
 
-## Draft artifacts (not released)
+## Published development builds
 
-- `v0.4.0-beta.3`: GitHub draft release. **Not published**; an older development preview, not a current community download.
+- [Development releases](https://github.com/nocturney/slicebridge/releases), including `v0.4.0-beta.4.dev.*`: experimental downloads for community testing.
+- `v0.4.0-beta.3`: an older published development preview; not a stable version.
 
 See [the simple community release guide](DISTRIBUTION_CHECKLIST.md) when sharing a future build.
