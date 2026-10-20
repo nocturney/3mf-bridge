@@ -10,9 +10,9 @@ import (
 )
 
 // appVersion identifies the installed development build or published Release.
-// Development snapshots increment .dev.N; they are NOT published releases.
+// Development snapshots increment .dev.N and may be published as prereleases.
 // CI may stamp buildCommit (the originating GitHub commit) via -ldflags.
-var appVersion = "0.4.0-beta.4.dev.6"
+var appVersion = "0.4.0-beta.4.dev.7"
 var buildCommit = ""
 
 type AppVersion struct {
