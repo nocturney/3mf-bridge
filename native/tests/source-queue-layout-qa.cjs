@@ -100,6 +100,7 @@ fs.writeFileSync(htmlPath,testHTML,'utf8');
 const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,Number(process.env.QUEUE_LAYOUT_SINGLE),'he']]:[
   [1100,750,1,'he'],
   [1100,750,2,'he'],
+  [1100,750,2,'en'],
   [1100,750,15,'he'],
   [1280,900,1,'he'],
   [1280,900,2,'en'],
@@ -107,8 +108,15 @@ const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,Number(process.env.QUEUE
   [780,580,1,'he'],
   [780,580,8,'en'],
   [746,620,2,'he'],
+  [746,620,2,'en'],
+  [760,620,2,'he'],
+  [760,620,2,'en'],
   [820,620,2,'he'],
+  [820,620,2,'en'],
+  [960,620,2,'he'],
   [960,620,2,'en'],
+  [900,830,2,'he'],
+  [900,830,2,'en'],
   [900,620,2,'he'],
   [900,620,2,'en'],
   [720,500,2,'he'],
@@ -133,14 +141,15 @@ try{
     assert.equal(q.language,lang);
     assert.ok(q.bannerText.y>=q.banner.y-2 && q.bannerText.bottom<=q.banner.bottom+2,
       'fixed banner text is clipped in this viewport: '+JSON.stringify(q));
-    // Headless Edge macOS reserves ~130 px for its virtual browser chrome.
+    // Use the actual Chromium viewport; its virtual chrome may reduce height.
     assert.ok(q.viewport.width>=w-20,'renderer ignored requested test width');
-    // Browser chrome changes the requested height; judge measured actual geometry.
-    assert.ok(q.viewport.height>0,'browser returned an empty viewport');
+    assert.ok(q.viewport.height>0 && q.viewport.height<=h+2,
+      'renderer ignored requested compact-window height: '+JSON.stringify(q.viewport));
     assert.ok(q.panel.width>320,'source panel width too narrow');
-    const overlapW=Math.max(0,Math.min(q.panel.x+q.panel.width,q.results.x+q.results.width)-Math.max(q.panel.x,q.results.x));
-    const overlapH=Math.max(0,Math.min(q.panel.bottom,q.results.bottom)-Math.max(q.panel.y,q.results.y));
-    assert.ok(overlapW*overlapH<=2,'results panel overlaps source panel: '+JSON.stringify(q));
+    const overlap=(a,b)=>Math.max(0,Math.min(a.x+a.width,b.x+b.width)-Math.max(a.x,b.x)) *
+      Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.y,b.y));
+    assert.ok(overlap(q.panel,q.results)<=2,'results panel overlaps source panel: '+JSON.stringify(q));
+    assert.ok(overlap(q.targets,q.results)<=2,'results panel overlaps target printers: '+JSON.stringify(q));
     assert.ok(q.results.width>=300 && q.resultsOverflowX<=2,
       'results text area is cramped or horizontally clipped: '+JSON.stringify(q));
     assert.ok(q.addButtonClickable,
