@@ -56,7 +56,8 @@ const fixtureScript=[
   "      viewport:{width:innerWidth,height:innerHeight},",
   "      language:document.documentElement.lang,",
   "      files:count,",
-  "      panel:rect('.queue-panel'),",
+  "      panel:rect('.queue-panel'),
+      targets:rect('.targets-panel'),",
   "      list:rect('.queue-list'),",
   "      heading:rect('.queue-files-heading'),",
   "      first:count?rect('.queue-item'):null,",
@@ -89,8 +90,10 @@ const testHTML=fs.readFileSync(htmlPath,'utf8')
 fs.writeFileSync(htmlPath,testHTML,'utf8');
 const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,1,'he']]:[
   [1100,750,1,'he'],
+  [1100,750,2,'he'],
   [1100,750,15,'he'],
   [1280,900,1,'he'],
+  [1280,900,2,'en'],
   [1280,900,12,'en'],
   [780,580,1,'he'],
   [780,580,8,'en'],
@@ -117,20 +120,28 @@ try{
     assert.ok(q.viewport.height>=h-150,'renderer ignored requested test height');
     assert.ok(q.panel.width>320,'source panel width too narrow');
     if(files){
-      assert.ok(q.panel.height>=389,'source panel collapses: '+JSON.stringify(q));
-      assert.ok(q.listClientHeight>=144,'file list clipped: '+JSON.stringify(q));
+      assert.ok(q.panel.height>=185 && q.panel.height<=355,
+        'source panel not content-sized: '+JSON.stringify(q));
+      if(files<=2)assert.ok(q.panel.height<300,'few files should not consume most workspace');
+      assert.ok(q.listClientHeight>=50,'file list clipped: '+JSON.stringify(q));
       assert.ok(q.first.y>=q.list.y-2,'first row above scroll frame');
       assert.ok(q.first.bottom<=q.list.bottom+2,'first row below scroll frame');
       assert.ok(q.footnote.bottom<=q.panel.bottom+2,'queue footnote outside panel');
       assert.equal(q.listOverflow,'auto');
       if(files>=8)assert.ok(q.scrollableFiles>100,'long file list fails to scroll');
+      if(files<=2 && q.viewport.width>=1000 && q.viewport.height>=720){
+        assert.ok(q.targets.bottom<=q.workspace.bottom+2,
+          'target-printer panel hidden below workspace with few source files: '+JSON.stringify(q));
+        assert.ok(q.scrollableWorkspace<=2,
+          'unexpected workspace scrolling for few files in normal desktop window: '+JSON.stringify(q));
+      }
     }else{
       assert.ok(q.panel.height<300,'empty queue should stay compact');
     }
     assert.ok(q.docOverflow<=1,'document itself scrolled (should scroll workspace)');
     if(h<=580&&files)assert.ok(q.scrollableWorkspace>100,'compact view missing workspace scroll');
     console.log('QUEUE_RENDER_PASS',w+'x'+h,'actual='+q.viewport.width+'x'+q.viewport.height,lang,'files='+files,
-      'panel='+Math.round(q.panel.height),
+      'panel='+Math.round(q.panel.height),'targetsBottom='+Math.round(q.targets.bottom),'workspaceBottom='+Math.round(q.workspace.bottom),
       'list='+q.listClientHeight,'listScroll='+q.scrollableFiles,
       'workspaceScroll='+q.scrollableWorkspace);
   }
