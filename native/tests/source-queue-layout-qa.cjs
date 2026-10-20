@@ -58,6 +58,8 @@ const fixtureScript=[
   "      files:count,",
   "      panel:rect('.queue-panel'),",
   "      targets:rect('.targets-panel'),",
+  "      banner:rect('.brand-banner'),",
+  "      bannerText:rect('.brand-banner-content'),",
   "      list:rect('.queue-list'),",
   "      heading:rect('.queue-files-heading'),",
   "      first:count?rect('.queue-item'):null,",
@@ -115,6 +117,8 @@ try{
     if(!m)throw Error('No computed-geometry report: '+p.stdout.slice(-1000)+' '+p.stderr.slice(-1000));
     const q=JSON.parse(decodeURIComponent(m[1]));
     assert.equal(q.language,lang);
+    assert.ok(q.bannerText.y>=q.banner.y-2 && q.bannerText.bottom<=q.banner.bottom+2,
+      'fixed banner text is clipped in this viewport: '+JSON.stringify(q));
     // Headless Edge macOS reserves ~130 px for its virtual browser chrome.
     assert.ok(q.viewport.width>=w-20,'renderer ignored requested test width');
     assert.ok(q.viewport.height>=h-150,'renderer ignored requested test height');
