@@ -111,6 +111,12 @@ const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,Number(process.env.QUEUE
   [746,620,2,'en'],
   [760,620,2,'he'],
   [760,620,2,'en'],
+  // On Windows headless Chrome reserves 16px of outer width.
+  // These two widths exercise the *actual* 745/746px responsive boundary.
+  [761,620,2,'he'],
+  [761,620,2,'en'],
+  [762,620,2,'he'],
+  [762,620,2,'en'],
   [820,620,2,'he'],
   [820,620,2,'en'],
   [960,620,2,'he'],
@@ -143,7 +149,9 @@ try{
       'fixed banner text is clipped in this viewport: '+JSON.stringify(q));
     // Use the actual Chromium viewport; its virtual chrome may reduce height.
     assert.ok(q.viewport.width>=w-20,'renderer ignored requested test width');
-    assert.ok(q.viewport.height>0 && q.viewport.height<=h+2,
+    // Headless Chrome may reserve 151px for window decorations. Reject render
+    // heights outside that measured tolerance in either direction.
+    assert.ok(q.viewport.height>=h-160 && q.viewport.height<=h+2,
       'renderer ignored requested compact-window height: '+JSON.stringify(q.viewport));
     assert.ok(q.panel.width>320,'source panel width too narrow');
     const overlap=(a,b)=>Math.max(0,Math.min(a.x+a.width,b.x+b.width)-Math.max(a.x,b.x)) *
@@ -152,6 +160,10 @@ try{
     assert.ok(overlap(q.targets,q.results)<=2,'results panel overlaps target printers: '+JSON.stringify(q));
     assert.ok(q.results.width>=300 && q.resultsOverflowX<=2,
       'results text area is cramped or horizontally clipped: '+JSON.stringify(q));
+    if(q.viewport.width>=746){
+      assert.ok(lang==='he' ? q.panel.x>q.results.x : q.panel.x<q.results.x,
+        'source/results order does not respect reading direction: '+JSON.stringify(q));
+    }
     assert.ok(q.addButtonClickable,
       'Add files button is intercepted by another panel at '+w+'x'+h+': '+JSON.stringify(q));
     if(files){
