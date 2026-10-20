@@ -53,9 +53,6 @@ const fixtureScript=[
   "    return {x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom};}",
   "  function report(){",
   "    const add=document.getElementById('addFilesBtn');",
-  "    add.scrollIntoView({block:'center'});",
-  "    const a=add.getBoundingClientRect();",
-  "    const hit=document.elementFromPoint(a.x+a.width/2,a.y+a.height/2);",
   "    const out={",
   "      viewport:{width:innerWidth,height:innerHeight},",
   "      language:document.documentElement.lang,",
@@ -75,9 +72,14 @@ const fixtureScript=[
   "      scrollableFiles:list.scrollHeight-list.clientHeight,",
   "      listClientHeight:list.clientHeight,",
   "      scrollableWorkspace:document.querySelector('.workspace').scrollHeight-document.querySelector('.workspace').clientHeight,",
-  "      addButtonClickable:add.contains(hit),",
+  "      resultsOverflowX:document.querySelector('.results-panel').scrollWidth-document.querySelector('.results-panel').clientWidth,",
   "      docOverflow:document.documentElement.scrollHeight-innerHeight",
   "    };",
+  "    // Record original panel geometry before changing scroll position.",
+  "    add.scrollIntoView({block:'center'});",
+  "    const a=add.getBoundingClientRect();",
+  "    const hit=document.elementFromPoint(a.x+a.width/2,a.y+a.height/2);",
+  "    out.addButtonClickable=add.contains(hit);",
   "    document.documentElement.setAttribute('data-layout-qa',encodeURIComponent(JSON.stringify(out)));",
   "  }",
   "  setTimeout(report,180);",
@@ -133,9 +135,14 @@ try{
       'fixed banner text is clipped in this viewport: '+JSON.stringify(q));
     // Headless Edge macOS reserves ~130 px for its virtual browser chrome.
     assert.ok(q.viewport.width>=w-20,'renderer ignored requested test width');
-    // Headless Chrome reserves 151px for its virtual frame on Windows.
-    assert.ok(q.viewport.height>=h-160,'renderer ignored requested test height');
+    // Browser chrome changes the requested height; judge measured actual geometry.
+    assert.ok(q.viewport.height>0,'browser returned an empty viewport');
     assert.ok(q.panel.width>320,'source panel width too narrow');
+    const overlapW=Math.max(0,Math.min(q.panel.x+q.panel.width,q.results.x+q.results.width)-Math.max(q.panel.x,q.results.x));
+    const overlapH=Math.max(0,Math.min(q.panel.bottom,q.results.bottom)-Math.max(q.panel.y,q.results.y));
+    assert.ok(overlapW*overlapH<=2,'results panel overlaps source panel: '+JSON.stringify(q));
+    assert.ok(q.results.width>=300 && q.resultsOverflowX<=2,
+      'results text area is cramped or horizontally clipped: '+JSON.stringify(q));
     assert.ok(q.addButtonClickable,
       'Add files button is intercepted by another panel at '+w+'x'+h+': '+JSON.stringify(q));
     if(files){

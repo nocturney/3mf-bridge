@@ -1,7 +1,7 @@
 :root{
   color-scheme:light;
   --bg:#F5FAF7;--panel:#fff;--muted-panel:#F3FAF6;--stroke:#D5E6DD;
-  --ink:#193F38;--ink-muted:#638178;--brand:#2F7F73;--brand-dark:#193F38;
+  --ink:#193F38;--ink-muted:#526B61;--brand:#2F7F73;--brand-dark:#193F38;
   --light-brand:#DFF6EE;--good:#237c4d;--bad:#b34940;--warning:#926123;
   --radius:11px;--shadow:0 1px 2px #17332b10,0 5px 16px #17332b09;
 }
@@ -955,7 +955,7 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 
 
 /* WCAG AA: readable secondary copy and section markers within Mint-Forest. */
-:root { --ink-muted:#526B61; }
+
 .section-number { color:#266A5F; }
 .file-badge { color:#266A5F; }
 .panel-bottom { color:#526B61; }
