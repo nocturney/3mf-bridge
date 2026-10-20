@@ -25,15 +25,17 @@ test('approved SliceBridge name and Mint/Forest identity are embedded',()=>{
  assert.doesNotMatch(page,/class="brand-mark"[^>]*>3<\/div>/);
 });
 
-test('version and check button are colocated in the bottom action bar',()=>{
+test('version and check button live in About, not the busy footer',()=>{
  const page=read('frontend/dist/index.html');
- const footer=page.slice(page.indexOf('<footer class="actionbar">'));
- const header=page.slice(0,page.indexOf('<footer class="actionbar">'));
- assert.match(footer,/class="app-meta"/);
- assert.match(footer,/id="installedVersion"/);
- assert.match(footer,/id="checkUpdatesBtn"/);
- assert.doesNotMatch(header,/id="checkUpdatesBtn"/);
- assert.doesNotMatch(header,/id="installedVersion"/);
+ const footerStart=page.indexOf('<footer class="actionbar">');
+ const footer=page.slice(footerStart,page.indexOf('</footer>',footerStart));
+ const about=page.slice(page.indexOf('<dialog id="aboutDialog"'));
+ assert.match(about,/id="installedVersion"/);
+ assert.match(about,/id="checkUpdatesBtn"/);
+ assert.match(about,/id="updateNotice"/);
+ assert.doesNotMatch(footer,/id="installedVersion"|id="checkUpdatesBtn"/);
+ assert.match(page,/id="aboutBtn"/);
+ assert.equal((page.match(/id="installedVersion"/g)||[]).length,1);
  assert.equal((page.match(/id="checkUpdatesBtn"/g)||[]).length,1);
  assert.equal((page.match(/id="settingsBtn"/g)||[]).length,1);
 });
