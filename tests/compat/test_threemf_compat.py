@@ -299,6 +299,56 @@ class FixtureTests(Base):
         self.assertEqual(report["facts"]["source_channels"], [1, 2, 3])
 
 
+class NestedRealWorldPackageTests(Base):
+    def nested(self):
+        entries=dict(self.source())
+        actual=entries["3D/3dmodel.model"]
+        entries["3D/Objects/object_1.model"]=actual
+        entries["3D/3dmodel.model"]=(
+            b'<model xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">'
+            b'<resources/><build/></model>')
+        entries["3D/_rels/3dmodel.model.rels"]=(
+            b'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            b'<Relationship Id="child" Target="/3D/Objects/object_1.model" '
+            b'Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"/>'
+            b'</Relationships>')
+        return entries
+
+    def test_child_model_geometry_is_counted(self):
+        source=self.nested()
+        src=self.write("src.3mf",source)
+        source_package=qa.Package(src)
+        paths=qa.model_parts(source_package)
+        self.assertEqual(paths, ["3D/3dmodel.model","3D/Objects/object_1.model"])
+        self.assertGreater(qa.geometry(source_package,paths)["triangles"],0)
+        report=self.pair(source,self.clean(source))
+        self.assertTrue(report["ok"],failed(report))
+        self.assertEqual(statuses(report)["geometry_counts"],"pass")
+
+    def test_unreferenced_gcode_mime_default_is_not_slice_cache(self):
+        out=self.clean(self.source())
+        out["[Content_Types].xml"]=out["[Content_Types].xml"].replace(
+            b"</Types>", b'<Default Extension="gcode" ContentType="text/x.gcode"/></Types>')
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["no_sliced_gcode"],"pass")
+
+    def test_explicit_gcode_part_reference_is_rejected(self):
+        out=self.clean(self.source())
+        out["_rels/.rels"]=out["_rels/.rels"].replace(
+            b"</Relationships>",
+            b'<Relationship Id="bad" Target="/Metadata/plate_1.gcode" '
+            b'Type="http://example.com/sliced-cache"/></Relationships>')
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["no_sliced_gcode"],"fail")
+
+    def test_missing_nested_model_fails_even_when_root_shell_exists(self):
+        entries=self.nested()
+        del entries["3D/Objects/object_1.model"]
+        with self.assertRaisesRegex(qa.InputError,"model relationship target missing"):
+            qa.compare(self.write("src.3mf",entries),
+                       self.write("out.3mf",self.clean(self.source())))
+
+
 class CliTests(Base):
     def run_cli(self, *args):
         buffer = io.StringIO()
