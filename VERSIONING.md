@@ -7,7 +7,7 @@ Small, predictable development milestones. A source VERSION bump does not publis
 - `VERSION` is the intended **next app/development build version**. It follows [Semantic Versioning](https://semver.org/); during beta work, use `0.4.0-beta.4.dev.N`, incrementing `N` for each completed, separately reviewable development stage.
 - `CHANGELOG.md` is the timeline. Keep `Unreleased` for pending changes and create or update a heading for the matching `VERSION` at each finished, pushed milestone. Include a link to the PR/commit and state if tests are pending.
 - The existing `package.json` version `1.0.0` describes the older Electron prototype package, **not a publicly shipped SliceBridge desktop version**. Don't silently equate it with Wails builds.
-- The Wails native app has already been merged into main. VERSION records the planned next build (currently 0.4.0-beta.4.dev.8) and does not alter previous binaries. CI must stamp and check version and source commit at release time.
+- The Wails native app has been merged into main. Each development source milestone synchronizes root `VERSION` with native `appVersion` (checked by `tests/test_versioning.py`). This does not alter previous published binaries. New release artifacts must still embed and verify the exact source commit at packaging time.
 - v0.4.0-beta.4.dev.7 is the latest published pre-release as of 2026-10-21. dev.8 is a planned, unpublished build; v0.4.0-beta.3 is an older published pre-release, not stable.
 
 ## One stage = a pushed commit + a changelog note

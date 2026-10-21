@@ -33,4 +33,5 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 **Open source:** [GPL-3.0-only](LICENSE) for covered project-owned code · [License scope & rights](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md).
 
 **Development milestones:** [Current planned version](VERSION) · [Changelog](CHANGELOG.md) · [Versioning rules](VERSIONING.md). A development version does not mean there is a published app release.
+<div dir="rtl" align="right" lang="he"><p><strong>אבני דרך בפיתוח:</strong> <a href="VERSION">הגרסה המתוכננת</a> · <a href="CHANGELOG.md">יומן שינויים</a> · <a href="VERSIONING.md">כללי גרסאות</a>. סימון גרסת פיתוח לא אומר שפורסמה תוכנה להורדה.</p></div>
 <div dir="rtl" align="right" lang="he">**קוד פתוח:** <a href="LICENSE" dir="ltr">GPL-3.0-only</a> · <a href="LICENSING.md">היקף הרישיון</a> · <a href="THIRD_PARTY_NOTICES.md">קרדיטים לצדדים שלישיים</a>.</div>

@@ -1,5 +1,6 @@
 """Validate the version/changelog contract without a release or internet access."""
 from __future__ import annotations
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -13,6 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 class VersionContract(unittest.TestCase):
     def test_current_commit_milestone_consistent(self):
         self.assertEqual(validate(ROOT), "0.4.0-beta.4.dev.8")
+
+    def test_native_app_version_matches_root_version(self):
+        source = (ROOT / "native" / "updates_bridge.go").read_text(encoding="utf-8")
+        match = re.search(r'(?m)^var appVersion\s*=\s*"([^"]+)"', source)
+        self.assertIsNotNone(match, "native appVersion must be discoverable")
+        self.assertEqual(match.group(1), validate(ROOT), "About/GetVersion must match VERSION")
 
     def test_invalid_versions_and_changelog_mismatches_fail(self):
         with tempfile.TemporaryDirectory() as tmp:
