@@ -11,26 +11,20 @@ const translations={
     title:'המדפסות שלי',welcome:'בחירת מדפסות',welcomeBody:'לא נבחרה עדיין מדפסת. בחר יצרן או חפש דגם כדי להתחיל.',
     body:'בחר מדפסות לעבודה ולמעקב. הגדרות דיזה, סלייסר ופילמנט קיימות אינן משתנות.',
     search:'חיפוש לפי יצרן או דגם',save:'שמור מדפסות',cancel:'לא עכשיו',selected:'נבחרו {n} מדפסות',
-    adapter:'מתאם המרה קיים',missing:'חסר פרופיל מקומי',ready:'מתאם קיים · זמין במחשב',
-    catalogOnly:'קטלוג בלבד · המרה עדיין לא נתמכת',nozzle:'דיזות',none:'לא נמצאו דגמים',
+    nozzle:'דיזות',none:'לא נמצאו דגמים',
     showing:'מציג {shown} מתוך {total} דגמים · צמצם את החיפוש להצגת דגמים נוספים',
     hidden:'Bambu Lab מוסתרת כרגע כמדפסת יעד. פרויקטי Bambu ו־MakerWorld עדיין נתמכים כמקור.',
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
-    selection:'מדפסות שנבחרו',conversionOnly:'מתאם קיים אינו אישור להמרה: דרוש גם פרופיל סלייסר מותקן ובדיקת 3MF.',
-    allCatalog:'603 דגמים בקטלוג; רק ארבעה מתאמי המרה קיימים.',
     manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',startHint:'בחר יצרן או חפש דגם כדי להציג מדפסות.',nothingSelected:'עדיין לא נבחרו מדפסות.'
   },
   en:{
     title:'My printers',welcome:'Choose printers',welcomeBody:'No printers are selected yet. Choose a manufacturer or search for a model to begin.',
     body:'Add or remove printers without changing your existing nozzle, slicer or filament preferences.',
     search:'Search manufacturer or model',save:'Save printers',cancel:'Not now',selected:'{n} printers selected',
-    adapter:'Existing converter adapter',missing:'Local slicer profile missing',ready:'Adapter exists · installed profile found',
-    catalogOnly:'Catalog only · conversion not supported yet',nozzle:'Nozzles',none:'No models matched',
+    nozzle:'Nozzles',none:'No models matched',
     showing:'Showing {shown} of {total} models · narrow the search to find more',
     hidden:'Bambu Lab is hidden as a target for now. Bambu and MakerWorld projects remain usable as sources.',
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
-    selection:'Selected printers',conversionOnly:'An adapter is not a conversion certification: an installed slicer profile and real 3MF testing are still needed.',
-    allCatalog:'603 indexed models; only four existing conversion adapters.',
     manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',startHint:'Choose a manufacturer or search to see models.',nothingSelected:'No printers selected yet.'
   }
 };
@@ -135,7 +129,6 @@ function syncCopy(){
   $('saveMyPrintersBtn').textContent=t('save');
   $('cancelMyPrintersBtn').textContent=t('cancel');
   $('myPrintersHiddenNote').textContent=t('hidden');
-  $('myPrintersScope').textContent=t('conversionOnly');
 }
 function render(){
   syncCopy();
@@ -151,9 +144,7 @@ function render(){
   for(const entry of entries){
     const pill=node('span','selected-printer-pill');
     const name=node('strong','',picker.title(entry.model));
-    const detail=node('small',entry.kind==='catalog_only'?'catalog-only-label':'',
-                      t(entry.kind==='catalog_only'?'catalogOnly':entry.kind==='ready'?'ready':'missing'));
-    pill.append(name,detail);selectionList.append(pill);
+    pill.append(name);selectionList.append(pill);
   }
   const term=$('printerCatalogSearch').value.trim();
   const manufacturer=$('printerManufacturerFilter').value;
@@ -189,11 +180,8 @@ function render(){
     // No third-party images are bundled or remotely fetched.
     const copy=node('span','catalog-model-copy');
     copy.append(node('strong','',model.model),node('small','',model.manufacturer));
-    const meta=node('small','model-status'+(model.legacyTarget?' existing-adapter':' catalog-only-label'),
-      t(model.legacyTarget?'adapter':'catalogOnly'));
     const nozzles=(model.nozzles||[]).join(' / ');
     if(nozzles)copy.append(node('small','nozzle-list',t('nozzle')+': '+nozzles+' mm'));
-    copy.append(meta);
     row.append(input,graphic,copy);list.append(row);
   }
   if(hasFilter&&!matches.models.length)list.append(node('p','catalog-empty',t('none')));
