@@ -308,3 +308,18 @@ test('unknown launch dates stay unknown and popular brands lead undated fallback
   assert.equal(picker.releaseDate({manufacturer:'QIDI',model:'Plus5',releaseDate:'2025-12-01'}),'2025-12-01');
   assert.equal(picker.releaseDate({manufacturer:'QIDI',model:'Plus5',releaseDate:'yesterday'}),'2026-08-05');
 });
+
+test('four installed Creator 5 Pro nozzle variants have distinct selectable names',()=>{
+  const variants=['0.25','0.4','0.6','0.8'].map((nozzle,i)=>({
+    id:'orca-flashforge-creator-5-pro-'+i+'-'+String(i).repeat(10),
+    vendor:'Flashforge',model:'Creator 5 Pro',
+    title:'Flashforge Creator 5 Pro '+nozzle+' nozzle',nozzle,physicalTools:4,
+  }));
+  const items=picker.supportedModels(catalog.models,[],variants,false);
+  assert.equal(items.length,4);
+  assert.equal(new Set(items.map(x=>x.model)).size,4);
+  for(const v of variants){
+    const item=items.find(x=>x.id===v.id);
+    assert.ok(item&&item.model.includes(v.nozzle+' nozzle'),v.nozzle);
+  }
+});

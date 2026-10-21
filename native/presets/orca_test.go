@@ -112,11 +112,11 @@ func TestUnsupportedOrMissingProfilesAreRejectedWithReasons(t *testing.T) {
 	}{
 		"default process file missing": {
 			func(f map[string]map[string]any) { delete(f, acmeProcess) },
-			"default process preset",
+			"no installed compatible process",
 		},
 		"process does not list machine": {
 			func(f map[string]map[string]any) { f[acmeProcess]["compatible_printers"] = []any{"Other"} },
-			"does not list this machine",
+			"no installed compatible process",
 		},
 		"no PLA lists machine": {
 			func(f map[string]map[string]any) { f[acmeFilament]["compatible_printers"] = []any{"Other"} },
@@ -186,5 +186,120 @@ func TestOrcaPrefixIsFilesystemSafeAndStable(t *testing.T) {
 	long := OrcaPrefix("orca-" + strings.Repeat("abc-", 20) + "0123456789")
 	if len(long) > len("ORCA-")+24 || strings.ContainsAny(long, "abcdefghijklmnopqrstuvwxyz/\\:") {
 		t.Fatalf("prefix not bounded or safe: %q", long)
+	}
+}
+
+// This mirrors the four installed Flash Studio machine variants, including the
+// vendor's incorrect AD5M process defaults for 0.4/0.6/0.8. The fixture uses
+// standalone mock machine/filament/process data; no vendor files are copied.
+func TestFlashforgeCreator5ProRecoversAllFourInstalledNozzleProfiles(t *testing.T) {
+	files := map[string]map[string]any{}
+	nozzles := []struct {
+		diameter, layer, preferred, selected string
+	}{
+		{"0.25", "0.12", "0.12mm Standard @FF C5 0.25 nozzle", "0.12mm Standard @FF C5 0.25 nozzle"},
+		{"0.4", "0.20", "0.20mm Standard @AD5M Pro 0.4", "0.20mm Standard @FF C5"},
+		{"0.6", "0.30", "0.20mm Standard @AD5M Pro 0.4", "0.30mm Standard @FF C5 0.6 nozzle"},
+		{"0.8", "0.40", "0.20mm Standard @AD5M Pro 0.4", "0.40mm Standard @FF C5 0.8 nozzle"},
+	}
+	for _, v := range nozzles {
+		machine := "Flashforge Creator 5 Pro " + v.diameter + " nozzle"
+		files["machine/"+machine+".json"] = map[string]any{
+			"name": machine, "printer_model": "Flashforge Creator 5 Pro", "printer_technology": "FFF",
+			"nozzle_diameter":     []any{v.diameter, v.diameter, v.diameter, v.diameter},
+			"machine_start_gcode": "G28", "machine_end_gcode": "M104 S0",
+			"default_print_profile":    v.preferred,
+			"default_filament_profile": []any{"Generic PLA @FF C5P " + v.diameter},
+		}
+		files["process/"+v.selected+".json"] = map[string]any{
+			"name": v.selected, "compatible_printers": []any{machine}, "layer_height": v.layer,
+			"wall_loops": "3",
+		}
+		files["filament/Generic PLA @FF C5P "+v.diameter+".json"] = map[string]any{
+			"name": "Generic PLA @FF C5P " + v.diameter, "compatible_printers": []any{machine},
+			"filament_type": []any{"PLA"}, "nozzle_temperature": []any{"210"},
+			"filament_flow_ratio": []any{"0.98"},
+		}
+	}
+	// Known wrong default exists, but belongs to another model and MUST
+	// never be used for Creator 5 Pro.
+	files["process/0.20mm Standard @AD5M Pro 0.4.json"] = map[string]any{
+		"compatible_printers": []any{"Flashforge Adventurer 5M Pro 0.4"},
+		"layer_height":        "0.20", "wall_loops": "3",
+	}
+	root := writeOrcaTree(t, "Flashforge", files)
+	discovery := discoverFrom(root)
+	if len(discovery.Targets) != 4 || len(discovery.Rejected) != 0 {
+		t.Fatalf("expected four valid C5 Pro profiles, got %+v", discovery)
+	}
+	nozzleToID := map[string]string{}
+	for _, target := range discovery.Targets {
+		nozzleToID[target.Nozzle] = target.ID
+		if target.Model != "Flashforge Creator 5 Pro" || target.PhysicalTools != 4 || target.Title != target.Machine {
+			t.Fatalf("C5 Pro model/tool data lost: %+v", target)
+		}
+		bundle, err := resolveOrca([]slicerLocation{{id: "flash", name: "Flash Studio", root: root}}, target.ID)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if bundle.Nozzle != target.Nozzle || bundle.Profile.ProjectSettings["printer_model"] != "Flashforge Creator 5 Pro" {
+			t.Fatalf("bad resolved bundle: %+v", bundle)
+		}
+		if bundle.Profile.ProjectSettings["print_settings_id"] == "0.20mm Standard @AD5M Pro 0.4" {
+			t.Fatal("incompatible AD5M default must not be selected")
+		}
+	}
+	for _, v := range nozzles {
+		if nozzleToID[v.diameter] == "" {
+			t.Fatalf("missing nozzle %s: %+v", v.diameter, discovery.Targets)
+		}
+		bundle, _ := resolveOrca([]slicerLocation{{id: "flash", name: "Flash Studio", root: root}}, nozzleToID[v.diameter])
+		if bundle.Profile.ProjectSettings["print_settings_id"] != v.selected {
+			t.Fatalf("nozzle %s: got process %v, want %s", v.diameter, bundle.Profile.ProjectSettings["print_settings_id"], v.selected)
+		}
+	}
+}
+
+func TestOrcaFallbackRequiresExplicitCompatibilityAndSaneLayerHeight(t *testing.T) {
+	files := acmeSample()
+	files[acmeMachine]["default_print_profile"] = "Nonexistent vendor typo"
+	files["process/0.20mm for Other.json"] = map[string]any{
+		"compatible_printers": []any{"Other machine"}, "layer_height": "0.2",
+	}
+	files["process/0.40mm Bad Layer.json"] = map[string]any{
+		"compatible_printers": []any{"Acme Mini 0.4 nozzle"}, "layer_height": "0.40",
+	}
+	files["process/0.20mm Standard Alternate.json"] = map[string]any{
+		"compatible_printers": []any{"Acme Mini 0.4 nozzle"}, "layer_height": "0.2",
+	}
+	d := discoverFrom(writeOrcaTree(t, "Acme", files))
+	if len(d.Targets) != 1 || len(d.Rejected) != 0 {
+		t.Fatalf("valid fallback dropped: %+v", d)
+	}
+	// Remove both compatible profiles: an incompatible process must never
+	// silently stand in for another printer.
+	delete(files, "process/0.20mm Standard Alternate.json")
+	delete(files, acmeProcess)
+	d = discoverFrom(writeOrcaTree(t, "Acme", files))
+	if len(d.Targets) != 0 || len(d.Rejected) != 1 {
+		t.Fatalf("unsafe fallback enabled target: %+v", d)
+	}
+	if !strings.Contains(d.Rejected[0].Reason, "no installed compatible process") {
+		t.Fatalf("unexpected rejection: %+v", d.Rejected)
+	}
+}
+
+func TestOrcaProcessSelectionDeterministicWithoutDefault(t *testing.T) {
+	files := acmeSample()
+	delete(files[acmeMachine], "default_print_profile")
+	files["process/0.32mm Draft.json"] = map[string]any{
+		"compatible_printers": []any{"Acme Mini 0.4 nozzle"}, "layer_height": "0.32",
+	}
+	files["process/0.18mm Standard.json"] = map[string]any{
+		"compatible_printers": []any{"Acme Mini 0.4 nozzle"}, "layer_height": "0.18",
+	}
+	d := discoverFrom(writeOrcaTree(t, "Acme", files))
+	if len(d.Targets) != 1 {
+		t.Fatalf("machine without default but with valid process hidden: %+v", d)
 	}
 }
