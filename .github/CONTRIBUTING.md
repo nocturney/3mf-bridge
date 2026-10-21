@@ -7,7 +7,7 @@ SliceBridge is a small open-source community project. Bug reports, suggestions, 
 3. If you add printer support, say which slicer, printer and nozzle/material combinations you actually checked. A catalogue entry is not proof of working conversion.
 4. Don't publish private customer models, passwords or vendor profile files without permission. Use synthetic test files when possible.
 
-Original code contributions are intended to be shared under [GPL-3.0-only](LICENSE); you keep your own copyright, and any third-party code retains its original license. See [third-party notices](THIRD_PARTY_NOTICES.md).
+Original code contributions are intended to be shared under [GPL-3.0-only](../LICENSE); you keep your own copyright, and any third-party code retains its original license. See [third-party notices](../docs/legal/THIRD_PARTY_NOTICES.md).
 
 <div dir="rtl" align="right" lang="he">
 <h2>תרומה לפרויקט</h2>

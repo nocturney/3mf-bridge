@@ -8,7 +8,7 @@ const assert = require('node:assert/strict');
 const { execFile } = require('node:child_process');
 const { promisify } = require('node:util');
 const run = promisify(execFile);
-const { loadTargetBundle } = require('../slicer-profiles');
+const { loadTargetBundle } = require('../desktop/electron/slicer-profiles');
 
 const exe = path.join(__dirname, '..', 'bin', 'bridge-core.exe');
 

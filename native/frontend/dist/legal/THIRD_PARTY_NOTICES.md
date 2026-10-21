@@ -38,7 +38,7 @@ The approved SliceBridge icon/banner are included as project identity materials 
 - No PolyForm Noncommercial code used during research is claimed to be incorporated in this project; validate that statement again as new PRs are integrated.
 - A profile being readable from a local slicer does not establish that redistribution would be allowed.
 
-See [LICENSING.md](LICENSING.md) and [DISTRIBUTION_CHECKLIST.md](DISTRIBUTION_CHECKLIST.md) before any public build.
+See [LICENSING.md](LICENSING.md) and [DISTRIBUTION_CHECKLIST.md](../release/DISTRIBUTION_CHECKLIST.md) before any public build.
 
 ## Panda2Prusa — Python Bambu-to-PrusaSlicer converter (vendored, MIT)
 

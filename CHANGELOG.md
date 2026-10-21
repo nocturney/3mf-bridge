@@ -147,4 +147,4 @@ Historical dev.0 through dev.6 headings describe the state at the time they were
 - [Development releases](https://github.com/nocturney/slicebridge/releases), including `v0.4.0-beta.4.dev.*`: experimental downloads for community testing.
 - `v0.4.0-beta.3`: an older published development preview; not a stable version.
 
-See [the simple community release guide](DISTRIBUTION_CHECKLIST.md) when sharing a future build.
+See [the simple community release guide](docs/release/DISTRIBUTION_CHECKLIST.md) when sharing a future build.

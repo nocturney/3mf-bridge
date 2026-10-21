@@ -56,4 +56,4 @@ BrowserWindow.prototype.show = function () {
   });
 };
 
-require('../main.js');
+require('../desktop/electron/main.js');

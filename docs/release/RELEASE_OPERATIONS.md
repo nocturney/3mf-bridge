@@ -1,6 +1,6 @@
 # SliceBridge — optional release helper
 
-The script [`tools/release_preflight.py`](tools/release_preflight.py) is an **optional convenience**, not a release-approval system. It can assemble a ZIP of Git-tracked source (including initialized pinned submodules), a preliminary dependency list in CycloneDX format and SHA-256 checksums.
+The script [`tools/release_preflight.py`](../../tools/release_preflight.py) is an **optional convenience**, not a release-approval system. It can assemble a ZIP of Git-tracked source (including initialized pinned submodules), a preliminary dependency list in CycloneDX format and SHA-256 checksums.
 
 ## In GitHub Actions
 

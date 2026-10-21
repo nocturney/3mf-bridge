@@ -122,7 +122,7 @@ function parseEngineReply(stdout) {
 async function inspectSourceNozzle(filePath) {
   const executable = app.isPackaged
     ? path.join(process.resourcesPath, 'bin', 'bridge-core.exe')
-    : path.join(__dirname, 'bin', 'bridge-core.exe');
+    : path.join(__dirname, '..', '..', 'bin', 'bridge-core.exe');
   try {
     const { stdout } = await runExecutable(executable, [
       '--inspect-nozzle', '--source', filePath
@@ -141,7 +141,7 @@ async function inspectSourceNozzle(filePath) {
 async function convertWithVerifiedEngine(filePath, outputPath, target, sourceNozzle = '0.4') {
   const executable = app.isPackaged
     ? path.join(process.resourcesPath, 'bin', 'bridge-core.exe')
-    : path.join(__dirname, 'bin', 'bridge-core.exe');
+    : path.join(__dirname, '..', '..', 'bin', 'bridge-core.exe');
 
   try {
     await fs.access(executable);
