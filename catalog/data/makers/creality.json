@@ -26923,8 +26923,8 @@
       "id": "creality-creality-k1",
       "manufacturer": "Creality",
       "model": "Creality K1",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2023-04-09",
+      "release_date_evidence": "https://www.creality.com/blog/creality-unveils-revolutionary-k1-series-and-celebrates-milestone-9th-anniversary",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -27202,8 +27202,8 @@
       "id": "creality-creality-k1-max",
       "manufacturer": "Creality",
       "model": "Creality K1 Max",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2023-04-09",
+      "release_date_evidence": "https://www.creality.com/blog/creality-unveils-revolutionary-k1-series-and-celebrates-milestone-9th-anniversary",
       "conversion_tested": false,
       "profile_sources": [
         {

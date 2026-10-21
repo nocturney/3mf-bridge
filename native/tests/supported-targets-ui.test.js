@@ -40,9 +40,9 @@ test('catalogue-only models never become destinations, even when every adapter i
 
 test('each supported item has exactly the documented fields and no status, tag or path data',()=>{
   const [first]=picker.supportedModels(catalog.models,availabilityAll(),[orca],true);
-  assert.deepEqual(Object.keys(first).sort(),['aliases','id','legacyTarget','manufacturer','model','releaseDate']);
+  assert.deepEqual(Object.keys(first).sort(),['aliases','id','legacyTarget','manufacturer','model','nozzle','releaseDate','slicer']);
   for(const item of picker.supportedModels(catalog.models,availabilityAll(),[orca],true)){
-    assert.deepEqual(Object.keys(item).sort(),['aliases','id','legacyTarget','manufacturer','model','releaseDate'],item.id);
+    assert.deepEqual(Object.keys(item).sort(),['aliases','id','legacyTarget','manufacturer','model','nozzle','releaseDate','slicer'],item.id);
     assert.ok(Array.isArray(item.aliases));
     for(const value of [item.manufacturer,item.model,...item.aliases]){
       assert.equal(typeof value,'string');
@@ -53,7 +53,7 @@ test('each supported item has exactly the documented fields and no status, tag o
 
 test('installed Orca targets outside the 603-model catalogue are listed by backend id',()=>{
   const items=plain(picker.supportedModels(catalog.models,[],[orca],false));
-  assert.deepEqual(items,[{id:orcaId,manufacturer:'Anker',model:'Make M5',aliases:[],legacyTarget:null,releaseDate:null}]);
+  assert.deepEqual(items,[{id:orcaId,manufacturer:'Anker',model:'Make M5',aliases:[],legacyTarget:null,nozzle:'0.4',slicer:null,releaseDate:null}]);
   assert.equal(catalog.models.some(model=>model.id===orcaId),false);
 });
 
@@ -116,7 +116,8 @@ test('Bambu is never a destination, whether built in, by vendor code or by title
 
 test('PrusaSlicer project is listed only when the engine probe is available',()=>{
   const on=picker.supportedModels(catalog.models,[],[],true);
-  assert.deepEqual(plain(on),[{id:'prusa-project',manufacturer:'PrusaSlicer',model:'Generic project',aliases:[],legacyTarget:null,releaseDate:null}]);
+  // PrusaSlicer is a generic export target, not a physical maker.
+  assert.deepEqual(plain(on),[{id:'prusa-project',manufacturer:'Generic',model:'PrusaSlicer project',aliases:['Generic project'],legacyTarget:null,nozzle:null,slicer:null,releaseDate:null}]);
   for(const value of [false,undefined,'true',1,null]){
     assert.deepEqual(picker.supportedModels(catalog.models,[],[],value),[],String(value));
   }
@@ -268,11 +269,12 @@ test('integrated manufacturers appear ahead of alphabetical others, with one dis
   const items=[
     {manufacturer:'Zortrax'},{manufacturer:'QIDI'},{manufacturer:'Anycubic'},
     {manufacturer:'Flashforge'},{manufacturer:'Snapmaker'},{manufacturer:'Creality'},
-    {manufacturer:'PrusaSlicer'},{manufacturer:'ELEGOO'}
+    {manufacturer:'Prusa'},{manufacturer:'ELEGOO'},{manufacturer:'Elegoo'},{manufacturer:'Qidi'},
+    {manufacturer:'Generic'}
   ];
   const grouped=picker.manufacturerGroups(items);
-  assert.deepEqual(grouped.preferred,['Anycubic','Creality','ELEGOO','Flashforge','PrusaSlicer','QIDI','Snapmaker']);
-  assert.deepEqual(grouped.others,['Zortrax']);
+  assert.deepEqual(grouped.preferred,['Anycubic','Creality','ELEGOO','Flashforge','Prusa Research','QIDI','Snapmaker']);
+  assert.deepEqual(grouped.others,['Generic','Zortrax']);
   assert.deepEqual(picker.manufacturerGroups([]),{preferred:[],others:[]});
 });
 
@@ -309,7 +311,7 @@ test('unknown launch dates stay unknown and popular brands lead undated fallback
   assert.equal(picker.releaseDate({manufacturer:'QIDI',model:'Plus5',releaseDate:'yesterday'}),'2026-08-05');
 });
 
-test('four installed Creator 5 Pro nozzle variants have distinct selectable names',()=>{
+test('four installed Creator 5 Pro nozzle variants share one card with distinct variant labels',()=>{
   const variants=['0.25','0.4','0.6','0.8'].map((nozzle,i)=>({
     id:'orca-flashforge-creator-5-pro-'+i+'-'+String(i).repeat(10),
     vendor:'Flashforge',model:'Creator 5 Pro',
@@ -317,9 +319,12 @@ test('four installed Creator 5 Pro nozzle variants have distinct selectable name
   }));
   const items=picker.supportedModels(catalog.models,[],variants,false);
   assert.equal(items.length,4);
-  assert.equal(new Set(items.map(x=>x.model)).size,4);
-  for(const v of variants){
-    const item=items.find(x=>x.id===v.id);
-    assert.ok(item&&item.model.includes(v.nozzle+' nozzle'),v.nozzle);
-  }
+  assert.equal(new Set(items.map(picker.variantText)).size,4);
+  const [group]=picker.groupDestinations(items);
+  assert.equal(picker.groupDestinations(items).length,1);
+  assert.equal(group.model,'Creator 5 Pro');
+  assert.deepEqual(group.ids,variants.map(v=>v.id));
+  assert.deepEqual(group.variants.map(v=>v.nozzle),['0.25','0.4','0.6','0.8']);
+  // The default ticked target is the 0.4 mm variant; every variant keeps its own ID.
+  assert.equal(group.id,variants[1].id);
 });

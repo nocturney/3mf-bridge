@@ -6,8 +6,8 @@
       "id": "prusa-prusa-core-one",
       "manufacturer": "Prusa",
       "model": "Prusa CORE One",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2024-11-19",
+      "release_date_evidence": "https://cdn.prusa3d.com/article/meet-the-prusa-core-one-josef-prusa-announces-a-new-3d-printer-as-the-foundation-of-a-new-product-line_239457/",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -2720,8 +2720,8 @@
       "id": "prusa-prusa-mini",
       "manufacturer": "Prusa",
       "model": "Prusa MINI",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2019-10-12",
+      "release_date_evidence": "https://blog.prusa3d.com/original-prusa-mini-is-here-smart-and-compact-3d-printer_30887/",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -3996,8 +3996,8 @@
       "id": "prusa-prusa-mk4",
       "manufacturer": "Prusa",
       "model": "Prusa MK4",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2023-03-29",
+      "release_date_evidence": "https://cdn.prusa3d.com/article/prusa-research-introduces-a-new-3d-printer-the-mk4-promises-fast-printing-and-high-quality-printing-for-everyone-_234221",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -4849,8 +4849,8 @@
       "id": "prusa-prusa-mk4s",
       "manufacturer": "Prusa",
       "model": "Prusa MK4S",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2024-08-12",
+      "release_date_evidence": "https://blog.prusa3d.com/the-original-prusa-mk4s-is-here_100605/",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -5893,8 +5893,8 @@
       "id": "prusa-prusa-xl",
       "manufacturer": "Prusa",
       "model": "Prusa XL",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2021-11-18",
+      "release_date_evidence": "https://blog.prusa3d.com/original-prusa-xl-first-look_58312/",
       "conversion_tested": false,
       "profile_sources": [
         {

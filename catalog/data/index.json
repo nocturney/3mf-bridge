@@ -115,7 +115,7 @@
       "path": "makers/creality.json",
       "models": 74,
       "structurally_verified": 72,
-      "sha256": "7d2a1424d5cd4cbb17aaebf4ddcb55c1f0ecbeebf16d1e6c53abe277d162880d"
+      "sha256": "ebe1d54c6146cc24ec279e807c92e15014d89c6061f70ce78f15004c7fbd4c91"
     },
     {
       "manufacturer": "Cubicon",
@@ -185,7 +185,7 @@
       "path": "makers/flashforge.json",
       "models": 10,
       "structurally_verified": 10,
-      "sha256": "ca1e028253dc26125c72f7422dd18c35560c5c957ad5cf7ccb5c4ef45eb5cd32"
+      "sha256": "b673593d40ed55959886c714d5e1ed1046e9f61c991bb24c8d79b4b06d410242"
     },
     {
       "manufacturer": "FlyingBear",
@@ -381,7 +381,7 @@
       "path": "makers/prusa.json",
       "models": 18,
       "structurally_verified": 18,
-      "sha256": "45ecceb42ac92fcbf36f667935ed2210e40b0aede10f55c3993de8fe4314187d"
+      "sha256": "c02d6c48314c561115f35fb00922c44abd6ac169f279789ecf984e445a2a95c7"
     },
     {
       "manufacturer": "Prusa Research",

@@ -420,6 +420,7 @@ async function refreshInstalledTargets(){
   }
   renderInstalledTargets();
   renderTargets();
+  window.SliceBridgeMyPrinters?.refreshDestinationArt?.();
 }
 // The PrusaSlicer row is shown only when the backend file probe finds the
 // sidecar and My Printers selects it. A failed probe offers no target.
@@ -936,4 +937,6 @@ async function initialiseNative(){
 
 registerHandlers();
 renderCopy();renderQueue();renderResults();renderActionBar();renderUpdates();
-initialiseNative();
+// Run after all deferred frontend modules register their APIs. Fast native RPCs
+// must not race my-printers.js loading and silently skip its initialisation.
+setTimeout(initialiseNative,0);
