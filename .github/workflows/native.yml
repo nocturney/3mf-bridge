@@ -25,7 +25,7 @@ jobs:
         working-directory: native
     steps:
       - name: Checkout converter and pinned submodule
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: true
       - name: Go toolchain
@@ -89,7 +89,7 @@ jobs:
         working-directory: native
     steps:
       - name: Checkout converter and pinned submodule
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: true
       - name: Go toolchain
