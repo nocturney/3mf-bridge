@@ -77,8 +77,10 @@ test('new picker UI has bilingual names, consent-based selection and no network 
   assert.match(script,/SaveMyPrinters/);
   assert.match(script,/GetMyPrinters/);
   assert.match(script,/PrinterCatalog/);
-  assert.match(script,/קטלוג בלבד/);
-  assert.match(script,/catalog only/i);
+  assert.doesNotMatch(script,/קטלוג בלבד|מתאם המרה קיים|catalog only|adapter exists/i);
+  assert.doesNotMatch(doc,/id="myPrintersScope"/);
+  assert.match(script,/pill\.append\(name\);selectionList\.append\(pill\)/);
+  assert.doesNotMatch(script,/copy\.append\(meta\)/);
   assert.doesNotMatch(script,/fetch\s*\(|XMLHttpRequest|https?:\/\//);
 });
 
