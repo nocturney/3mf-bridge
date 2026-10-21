@@ -26,8 +26,8 @@ SliceBridge ממיר פרויקטי 3MF הניתנים לעריכה מ-Bambu Stu
 
 ---
 
-**Download:** [GitHub Releases](https://github.com/nocturney/slicebridge/releases) for Windows and macOS (Apple Silicon). Extract the entire archive.
-**הורדה:** [GitHub Releases](https://github.com/nocturney/slicebridge/releases) עבור Windows ו-macOS (Apple Silicon). יש לחלץ את הארכיון כולו.
+**Download:** [GitHub Releases](https://github.com/nocturney/slicebridge/releases) — one `SliceBridge.exe` for Windows; on Apple Silicon, unzip and open `SliceBridge.app`.
+**הורדה:** [GitHub Releases](https://github.com/nocturney/slicebridge/releases) — ב־Windows קובץ `SliceBridge.exe` אחד; ב־Mac מחלצים ופותחים את `SliceBridge.app`.
 
 **Source:** [GitHub](https://github.com/nocturney/slicebridge) · **License:** [GPL-3.0-only](LICENSE)
 **קוד:** [GitHub](https://github.com/nocturney/slicebridge) · **רישיון:** [GPL-3.0-only](LICENSE)

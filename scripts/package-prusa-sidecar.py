@@ -27,11 +27,13 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import os
 import re
 import shutil
 import subprocess
+import struct
 import sys
 import tempfile
 import zipfile
@@ -53,6 +55,12 @@ MIN_PYTHON = (3, 11)
 WIN_APP_EXE = "SliceBridge.exe"
 MAC_APP = "SliceBridge.app"
 PLATFORMS = ("windows", "macos")
+# Appended to the Windows PE after Wails builds it. The PE loader ignores the
+# overlay; SliceBridge validates and extracts this exact payload when needed.
+PACK_MAGIC = b"SLICEBRIDGE_PRUSA_V1"
+PACK_TRAILER_SIZE = len(PACK_MAGIC) + 8 + 32
+PACK_MAX_BYTES = 128 << 20
+PACK_NAMES = ("slicebridge-prusa-engine.exe", LICENSE_NAME)
 
 
 class Failure(Exception):
@@ -311,12 +319,106 @@ def cmd_build(args):
     return 0
 
 
+def make_windows_bundle(sidecar, license_file):
+    output = io.BytesIO()
+    with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_STORED) as archive:
+        for name, source in ((SIDECAR + ".exe", sidecar), (LICENSE_NAME, license_file)):
+            info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_STORED
+            archive.writestr(info, source.read_bytes())
+    result = output.getvalue()
+    if not result or len(result) > PACK_MAX_BYTES:
+        raise CheckFailed("Windows Prusa bundle is missing or oversized")
+    return result
+
+
+def inspect_windows_bundle(app, expected_engine_sha=None):
+    """Verify exact packed bytes, overlay SHA, ZIP CRC, and the upstream MIT license."""
+    with app.open("rb") as handle:
+        if handle.read(2) != b"MZ":
+            raise CheckFailed("Windows portable app is not a PE executable")
+        handle.seek(0, os.SEEK_END)
+        size = handle.tell()
+        if size < PACK_TRAILER_SIZE:
+            raise CheckFailed("Windows app has no embedded Prusa bundle")
+        handle.seek(size - PACK_TRAILER_SIZE)
+        trailer = handle.read(PACK_TRAILER_SIZE)
+        if not trailer.startswith(PACK_MAGIC):
+            raise CheckFailed("Windows app has no embedded Prusa bundle")
+        offset = len(PACK_MAGIC)
+        length = struct.unpack("<Q", trailer[offset:offset+8])[0]
+        if not 0 < length <= PACK_MAX_BYTES or length > size - PACK_TRAILER_SIZE:
+            raise CheckFailed("Windows embedded engine length is invalid")
+        handle.seek(size - PACK_TRAILER_SIZE - length)
+        payload = handle.read(length)
+    digest = hashlib.sha256(payload).digest()
+    if digest != trailer[-32:]:
+        raise CheckFailed("Windows embedded engine SHA-256 mismatch")
+    try:
+        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+            if sorted(archive.namelist()) != sorted(PACK_NAMES):
+                raise CheckFailed("Windows embedded archive must contain only engine and license")
+            if archive.testzip() is not None:
+                raise CheckFailed("Windows embedded engine ZIP CRC failed")
+            engine = archive.read(SIDECAR + ".exe")
+            license_text = archive.read(LICENSE_NAME).decode("utf-8", "replace")
+    except zipfile.BadZipFile as error:
+        raise CheckFailed("Windows embedded archive is invalid: " + str(error))
+    if not engine.startswith(b"MZ"):
+        raise CheckFailed("embedded Prusa sidecar is not a PE executable")
+    check_mit(license_text, "Windows embedded MIT license")
+    engine_digest = hashlib.sha256(engine).hexdigest()
+    if expected_engine_sha and engine_digest != expected_engine_sha:
+        raise CheckFailed("Windows embedded engine differs from its build manifest")
+    return {"payloadSha256": digest.hex(), "engineSha256": engine_digest,
+            "payloadBytes": len(payload), "exeBytes": app.stat().st_size, "engine": engine}
+
+
+def cmd_pack_windows(args):
+    if host_platform() != "windows":
+        raise Failure("Windows PE packing must run on the Windows build host")
+    sidecar, license_file, manifest = dist_artifacts(resolve(args.dist_dir), "windows")
+    app = resolve(args.bin_dir) / WIN_APP_EXE
+    refuse_symlinks(app)
+    if not app.is_file():
+        raise Failure("build the Windows Wails app before embedding the Prusa engine")
+    with app.open("rb") as handle:
+        if handle.read(2) != b"MZ":
+            raise CheckFailed("the Wails Windows executable is not a PE file")
+        if app.stat().st_size >= PACK_TRAILER_SIZE:
+            handle.seek(-PACK_TRAILER_SIZE, os.SEEK_END)
+            if handle.read(len(PACK_MAGIC)) == PACK_MAGIC:
+                raise CheckFailed("Windows app already has a Prusa payload; never append twice")
+    payload = make_windows_bundle(sidecar, license_file)
+    tmp = app.with_name(app.name + ".packing")
+    refuse_symlinks(tmp)
+    if tmp.exists():
+        raise CheckFailed("stale Windows packing staging file exists")
+    try:
+        with app.open("rb") as inp, tmp.open("xb") as out:
+            shutil.copyfileobj(inp, out, length=1 << 20)
+            out.write(payload)
+            out.write(PACK_MAGIC)
+            out.write(struct.pack("<Q", len(payload)))
+            out.write(hashlib.sha256(payload).digest())
+        os.chmod(tmp, app.stat().st_mode)
+        os.replace(tmp, app)
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+    info = inspect_windows_bundle(app, manifest["sha256"])
+    print(json.dumps({k:v for k,v in info.items() if k!="engine"}, indent=2))
+    return 0
+
+
 def cmd_stage(args):
     platform = choose_platform(args.platform)
     if platform not in PLATFORMS:
         raise Failure(f"unknown platform {platform}")
     bin_dir = resolve(args.bin_dir)
     sidecar, license_file, _ = dist_artifacts(resolve(args.dist_dir), platform)
+    if platform == "windows":
+        raise Failure("Windows users need one EXE. Use pack-windows instead of stage.")
     target, app = staged_targets(bin_dir, platform, create=True)
     staged_sidecar = install_file(sidecar, target / exe_name(platform), 0o755)
     staged_license = install_file(license_file, target / LICENSE_NAME, 0o644)
@@ -336,6 +438,18 @@ def cmd_verify(args):
     bin_dir = resolve(args.bin_dir)
     dist = resolve(args.dist_dir)
     sidecar_built, _, manifest = dist_artifacts(dist, platform)
+    if platform == "windows":
+        packed_app = bin_dir / WIN_APP_EXE
+        info = inspect_windows_bundle(packed_app, manifest["sha256"])
+        if args.smoke:
+            if host_platform() != platform:
+                raise Failure("--smoke must run on Windows for a Windows bundle")
+            with tempfile.TemporaryDirectory(prefix="slicebridge-embedded-prusa-smoke-") as folder:
+                extracted = Path(folder) / (SIDECAR + ".exe")
+                extracted.write_bytes(info["engine"])
+                smoke_convert(extracted, folder)
+        print(json.dumps({k:v for k,v in info.items() if k!="engine"}, indent=2))
+        return 0
     target, app = staged_targets(bin_dir, platform)
     staged_sidecar = target / exe_name(platform)
     staged_license = target / LICENSE_NAME
@@ -425,6 +539,11 @@ def build_parser():
     build.add_argument("--skip-smoke", action="store_true", help="skip the fixture conversion")
     build.add_argument("--keep-work", action="store_true", help="keep the PyInstaller work directory")
     build.set_defaults(func=cmd_build)
+
+    pack = commands.add_parser("pack-windows", help="Embed Python Prusa engine inside one Windows SliceBridge.exe")
+    pack.add_argument("--bin-dir", required=True, help="native/build/bin for the Wails output")
+    pack.add_argument("--dist-dir", default=str(DIST_DIR))
+    pack.set_defaults(func=cmd_pack_windows)
 
     for name, func in (("stage", cmd_stage), ("verify", cmd_verify)):
         sub = commands.add_parser(name)
