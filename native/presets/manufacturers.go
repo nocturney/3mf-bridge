@@ -58,6 +58,21 @@ var manufacturerSlicerSpecs = []manufacturerSlicerSpec{
 	{id: "qidi-studio", name: "QIDIStudio", manufacturers: []string{"QIDI"}, profiles: true, windows: []windowsInstall{{folder: []string{"QIDIStudio"}, exe: "QIDIStudio.exe"}}, bundles: []string{"QIDIStudio.app"}},
 	{id: "snapmaker-orca", name: "Snapmaker Orca", manufacturers: []string{"Snapmaker"}, profiles: true, windows: []windowsInstall{{folder: []string{"Snapmaker_Orca"}, exe: "snapmaker-orca.exe"}}, bundles: []string{"Snapmaker Orca.app"}},
 	{id: "flash-studio", name: "Flash Studio", manufacturers: []string{"Flashforge"}, profiles: true, windows: []windowsInstall{{folder: []string{"Flashforge", "Flash Studio Desktop"}, exe: "flash studio.exe"}}, bundles: []string{"Flash Studio.app", "Flash Studio Desktop.app"}},
+	{id: "creality-print", name: "Creality Print", manufacturers: []string{"Creality"}, windows: []windowsInstall{{folder: []string{"Creality", "CrealityPrint"}, exe: "CrealityPrint.exe"}, {folder: []string{"CrealityPrint"}, exe: "CrealityPrint.exe"}, {folder: []string{"Creality Print"}, exe: "CrealityPrint.exe"}}, bundles: []string{"CrealityPrint.app", "Creality Print.app"}},
+	{id: "anycubic-slicer-next", name: "Anycubic Slicer Next", manufacturers: []string{"Anycubic"}, windows: []windowsInstall{{folder: []string{"AnycubicSlicerNext"}, exe: "AnycubicSlicerNext.exe"}, {folder: []string{"Anycubic Slicer Next"}, exe: "AnycubicSlicerNext.exe"}, {folder: []string{"Anycubic", "Anycubic Slicer Next"}, exe: "Anycubic Slicer Next.exe"}}, bundles: []string{"AnycubicSlicerNext.app", "Anycubic Slicer Next.app"}},
+	{id: "sovol-slicer", name: "Sovol Slicer", manufacturers: []string{"Sovol"}, windows: []windowsInstall{{folder: []string{"SovolSlicer"}, exe: "SovolSlicer.exe"}, {folder: []string{"Sovol Slicer"}, exe: "Sovol Slicer.exe"}}, bundles: []string{"SovolSlicer.app", "Sovol Slicer.app"}},
+	{id: "flsun-slicer", name: "FLSUN Slicer", manufacturers: []string{"FLSun"}, windows: []windowsInstall{{folder: []string{"FLSUN Slicer"}, exe: "FLSUN Slicer.exe"}, {folder: []string{"FLSUNSlicer"}, exe: "FLSUNSlicer.exe"}}, bundles: []string{"FLSUN Slicer.app", "FLSUNSlicer.app"}},
+	{id: "flashprint", name: "FlashPrint", manufacturers: []string{"Flashforge"}, windows: []windowsInstall{{folder: []string{"Flashforge", "FlashPrint 5"}, exe: "FlashPrint.exe"}, {folder: []string{"FlashPrint 5"}, exe: "FlashPrint.exe"}, {folder: []string{"FlashPrint"}, exe: "FlashPrint.exe"}}, bundles: []string{"FlashPrint.app", "FlashPrint 5.app"}},
+	{id: "qidi-slicer", name: "QIDISlicer", manufacturers: []string{"QIDI"}, windows: []windowsInstall{{folder: []string{"QIDISlicer"}, exe: "QIDISlicer.exe"}}, bundles: []string{"QIDISlicer.app"}},
+	{id: "snapmaker-luban", name: "Snapmaker Luban", manufacturers: []string{"Snapmaker"}, windows: []windowsInstall{{folder: []string{"Snapmaker Luban"}, exe: "Snapmaker Luban.exe"}, {folder: []string{"SnapmakerLuban"}, exe: "Snapmaker Luban.exe"}}, bundles: []string{"Snapmaker Luban.app"}},
+	{id: "ankermake-studio", name: "AnkerMake Studio", manufacturers: []string{"Anker"}, windows: []windowsInstall{{folder: []string{"AnkerMake Studio"}, exe: "AnkerMake Studio.exe"}, {folder: []string{"AnkerMakeStudio"}, exe: "AnkerMake Studio.exe"}}, bundles: []string{"AnkerMake Studio.app"}},
+	{id: "artillery-slicer", name: "Artillery Slicer", manufacturers: []string{"Artillery"}, windows: []windowsInstall{{folder: []string{"Artillery Slicer"}, exe: "Artillery Slicer.exe"}, {folder: []string{"ArtillerySlicer"}, exe: "ArtillerySlicer.exe"}}, bundles: []string{"Artillery Slicer.app", "ArtillerySlicer.app"}},
+	{id: "voxelmaker", name: "VoxelMaker", manufacturers: []string{"Voxelab"}, windows: []windowsInstall{{folder: []string{"VoxelMaker"}, exe: "VoxelMaker.exe"}, {folder: []string{"Voxelab", "VoxelMaker"}, exe: "VoxelMaker.exe"}}, bundles: []string{"VoxelMaker.app"}},
+	{id: "ratos-slicer", name: "RatOS Slicer", manufacturers: []string{"RatRig"}, windows: []windowsInstall{{folder: []string{"RatOS Slicer"}, exe: "RatOS Slicer.exe"}, {folder: []string{"RatOSSlicer"}, exe: "RatOSSlicer.exe"}}, bundles: []string{"RatOS Slicer.app", "RatOSSlicer.app"}},
+	{id: "lulzbot-cura", name: "Cura LulzBot Edition", manufacturers: []string{"LulzBot"}, windows: []windowsInstall{{folder: []string{"Cura LulzBot Edition"}, exe: "CuraLE.exe"}, {folder: []string{"Cura LulzBot Edition"}, exe: "Cura.exe"}}, bundles: []string{"Cura LulzBot Edition.app"}},
+	{id: "creality-slicer", name: "Creality Slicer", manufacturers: []string{"Creality"}, windows: []windowsInstall{{folder: []string{"Creality Slicer"}, exe: "Creality Slicer.exe"}}, bundles: []string{"Creality Slicer.app"}},
+	{id: "anycubic-slicer", name: "Anycubic Slicer", manufacturers: []string{"Anycubic"}, windows: []windowsInstall{{folder: []string{"AnycubicSlicer"}, exe: "AnycubicSlicer.exe"}, {folder: []string{"Anycubic Slicer"}, exe: "Anycubic Slicer.exe"}}, bundles: []string{"AnycubicSlicer.app", "Anycubic Slicer.app"}},
+	{id: "dremel-digilab", name: "Dremel DigiLab 3D Slicer", manufacturers: []string{"Dremel"}, windows: []windowsInstall{{folder: []string{"Dremel DigiLab 3D Slicer"}, exe: "Dremel DigiLab 3D Slicer.exe"}}, bundles: []string{"Dremel DigiLab 3D Slicer.app"}},
 }
 
 // manufacturerCandidate is one trusted location to test. base is the trusted
@@ -243,7 +258,7 @@ func localVendorNames(fsys manufacturerFS, base string, parts []string) ([]strin
 }
 
 // excludedVendors never appear as manufacturers of a generic Orca-family app.
-var excludedVendors = map[string]bool{"Bambu Lab": true, "Custom": true}
+var excludedVendors = map[string]bool{"Bambu Lab": true, "Custom": true, "UltiMaker": true, "Raise3D": true}
 
 // catalogKey folds a manufacturer or folder name to lowercase letters and
 // digits, so "PrusaResearch" and "Prusa Research" compare equal.
