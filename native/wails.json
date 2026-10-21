@@ -1,0 +1,22 @@
+{
+  "name": "SliceBridge",
+  "outputfilename": "SliceBridge",
+  "frontend": {
+    "dir": "frontend",
+    "install": "",
+    "build": ""
+  },
+  "wailsjsdir": "frontend",
+  "assetdir": "frontend/dist",
+  "author": {
+    "name": "Velvet Factory",
+    "email": ""
+  },
+  "info": {
+    "companyName": "Velvet Factory",
+    "productName": "SliceBridge",
+    "productVersion": "0.4.0",
+    "copyright": "Copyright 2026 Velvet Factory",
+    "comments": "Native 3MF project bridge (Beta 3)"
+  }
+}

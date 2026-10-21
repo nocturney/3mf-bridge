@@ -1,0 +1,276 @@
+package main
+
+import (
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	"github.com/nocturney/3mf-bridge/native/presets"
+)
+
+func withFreshSettings(t *testing.T) {
+	t.Helper()
+	t.Setenv("BRIDGE_SETTINGS_FILE", filepath.Join(t.TempDir(), "configuration", "settings.json"))
+}
+func TestSavedPrinterSettingsRoundTrip(t *testing.T) {
+	withFreshSettings(t)
+	app := &App{}
+	value, err := app.GetSettings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if value.Printers["cc2"].Nozzle != "auto" {
+		t.Fatalf("defaults not automatic: %+v", value)
+	}
+	custom := PrinterSettings{Nozzle: "0.6", Slicer: "auto", Filaments: map[string]string{}}
+	saved, err := app.SavePrinterSettings("cc2", custom)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if saved.Printers["cc2"].Nozzle != "0.6" {
+		t.Fatalf("not persisted: %+v", saved)
+	}
+	onDisk, err := loadSettings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if onDisk.Printers["cc2"].Nozzle != "0.6" {
+		t.Fatalf("not on disk: %+v", onDisk)
+	}
+	if _, err = app.SavePrinterSettings("c5", PrinterSettings{Nozzle: "0.2", Slicer: "auto"}); err == nil {
+		t.Fatal("unsupported physical nozzle accepted")
+	}
+	if _, err = app.SavePrinterSettings("cc2", PrinterSettings{Nozzle: "0.6", Slicer: "other-executable"}); err == nil {
+		t.Fatal("untrusted slicer selection accepted")
+	}
+	after, err := loadSettings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if after.Printers["cc2"].Nozzle != "0.6" {
+		t.Fatal("invalid update damaged saved settings")
+	}
+}
+func TestSettingsWindowSizePreservedWhenPrinterSaved(t *testing.T) {
+	withFreshSettings(t)
+	cfg := defaultSettings()
+	cfg.Window = WindowSettings{Width: 1430, Height: 890}
+	if err := writeSettings(cfg); err != nil {
+		t.Fatal(err)
+	}
+	app := &App{}
+	if _, err := app.SavePrinterSettings("u1", PrinterSettings{Nozzle: "auto", Slicer: "auto"}); err != nil {
+		t.Fatal(err)
+	}
+	got, err := loadSettings()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got.Window != cfg.Window {
+		t.Fatalf("window bounds lost %+v", got.Window)
+	}
+}
+func TestFolderQueueAndGeneratedOutputs(t *testing.T) {
+	root := t.TempDir()
+	nested := filepath.Join(root, "subfolder")
+	if err := os.MkdirAll(nested, 0700); err != nil {
+		t.Fatal(err)
+	}
+	data, err := os.ReadFile(filepath.Join("..", "tests", "fixtures", "bambu-one-color.3mf"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, name := range []string{"alpha.3mf", "subfolder/beta.3mf", "subfolder/U1-skip.3mf"} {
+		target := filepath.Join(root, filepath.FromSlash(name))
+		if err := os.WriteFile(target, data, 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	list, err := collectInputs([]string{root})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(list) != 2 {
+		t.Fatalf("folder expansion expected 2 unconverted files, got %+v", list)
+	}
+	once, err := collectInputs([]string{list[0].Path, list[0].Path})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(once) != 1 {
+		t.Fatalf("duplicates were not removed: %+v", once)
+	}
+	manual, err := collectInputs([]string{filepath.Join(nested, "U1-skip.3mf")})
+	if err != nil || len(manual) != 1 {
+		t.Fatalf("manually-selected previous output should remain allowed: %v %+v", err, manual)
+	}
+}
+func TestActualNozzlePreferenceControlsOutput(t *testing.T) {
+	withFreshSettings(t)
+	source := loadFixture(t, "bambu-nozzle-0.6.3mf")
+	a := &App{}
+	pref := PrinterSettings{Nozzle: "0.4", Slicer: "auto", Filaments: map[string]string{}}
+	if _, err := a.SavePrinterSettings("u1", pref); err != nil {
+		t.Fatal(err)
+	}
+	report := a.ConvertBatch(BatchRequest{FilePaths: []string{source}, Targets: []string{"u1"}})
+	if report.Successes != 1 || report.Failures != 0 {
+		t.Fatalf("batch failed %+v", report)
+	}
+	r := report.Files[0].Results[0]
+	if r.Report["source_nozzle"] != "0.6" || r.Report["target_nozzle"] != "0.4" || r.Report["nozzle_selected_by_user"] != true {
+		t.Fatalf("physical nozzle preference ignored: %+v", r.Report)
+	}
+	if _, err := os.Stat(r.OutputPath); err != nil {
+		t.Fatal(err)
+	}
+	if len(a.generated) != 1 {
+		t.Fatal("generated output is not registered for safe opening")
+	}
+	if err := a.OpenInSlicer("cc2", r.OutputPath); err == nil {
+		t.Fatal("cross-printer opening was accepted")
+	}
+	if err := a.OpenInSlicer("u1", source); err == nil {
+		t.Fatal("arbitrary source project opening was accepted")
+	}
+}
+func TestBatchContinuesAcrossSourceFailures(t *testing.T) {
+	withFreshSettings(t)
+	valid := loadFixture(t, "bambu-one-color.3mf")
+	invalid := filepath.Join(t.TempDir(), "not-a-project.3mf")
+	if err := os.WriteFile(invalid, []byte("no 3mf model"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	a := &App{}
+	result := a.ConvertBatch(BatchRequest{FilePaths: []string{invalid, valid}, Targets: []string{"u1"}})
+	if result.Successes != 1 || result.Failures != 1 || result.FilesDone != 2 {
+		t.Fatalf("batch should continue and report partial success: %+v", result)
+	}
+	if len(result.Files[0].Failures) != 1 || len(result.Files[1].Results) != 1 {
+		t.Fatalf("per-file report incomplete: %+v", result)
+	}
+	if result.Files[1].Source.Objects < 1 {
+		t.Fatalf("source object count not inspected: %+v", result.Files[1].Source)
+	}
+}
+func TestInstalledPreferencesAndFourWayBatch(t *testing.T) {
+	if os.Getenv("BRIDGE_TEST_INSTALLED") != "1" {
+		t.Skip("requires installed target slicers")
+	}
+	withFreshSettings(t)
+	for _, target := range []string{"u1", "c5", "cc2", "qidi"} {
+		names, err := presets.FilamentPresets(target, "0.4", "auto", "PLA")
+		if err != nil {
+			t.Errorf("%s list presets: %v", target, err)
+			continue
+		}
+		if len(names) == 0 {
+			t.Errorf("%s missing real PLA filament options", target)
+			continue
+		}
+		if _, err := (&App{}).SavePrinterSettings(target, PrinterSettings{Nozzle: "0.4", Slicer: "auto", Filaments: map[string]string{"PLA": names[0]}}); err != nil {
+			t.Errorf("%s save native preset %q: %v", target, names[0], err)
+		}
+	}
+	paths := []string{loadFixture(t, "bambu-one-color.3mf"), loadFixture(t, "bambu-nozzle-0.2.3mf")}
+	result := (&App{}).ConvertBatch(BatchRequest{FilePaths: paths, Targets: []string{"u1", "c5", "cc2", "qidi"}})
+	if result.Successes != 8 || result.Failures != 0 {
+		t.Fatalf("batch with saved presets failed: %+v", result)
+	}
+	for _, f := range result.Files {
+		for _, r := range f.Results {
+			if r.Report["target_nozzle"] != "0.4" {
+				t.Errorf("%s output got nozzle %v not saved 0.4", r.Target, r.Report["target_nozzle"])
+			}
+		}
+	}
+}
+
+func TestInvalidSettingsRecoveryBacksUpOriginalOnlyWithConsent(t *testing.T) {
+	withFreshSettings(t)
+	path, err := settingsPath()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+		t.Fatal(err)
+	}
+	original := []byte("{ definitely not JSON }")
+	if err := os.WriteFile(path, original, 0600); err != nil {
+		t.Fatal(err)
+	}
+	app := &App{}
+	if _, err := app.GetSettings(); err == nil {
+		t.Fatal("invalid settings should fail closed")
+	}
+	if _, err := app.RecoverInvalidSettings(false); err == nil {
+		t.Fatal("recovery without user confirmation was accepted")
+	}
+	if unchanged, err := os.ReadFile(path); err != nil || string(unchanged) != string(original) {
+		t.Fatalf("declined recovery modified settings: %s, %v", unchanged, err)
+	}
+	recovered, err := app.RecoverInvalidSettings(true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if recovered.BackupPath == "" {
+		t.Fatal("original file backup path not returned")
+	}
+	backupBytes, err := os.ReadFile(recovered.BackupPath)
+	if err != nil || string(backupBytes) != string(original) {
+		t.Fatalf("invalid settings not preserved: %s, %v", backupBytes, err)
+	}
+	if recovered.Settings.Version != 1 || recovered.Settings.Printers["u1"].Nozzle != "auto" {
+		t.Fatalf("unexpected recovery settings: %+v", recovered.Settings)
+	}
+	if _, err := app.SavePrinterSettings("u1", PrinterSettings{Nozzle: "0.4", Slicer: "auto"}); err != nil {
+		t.Fatalf("settings unusable after recovery: %v", err)
+	}
+	valid, err := app.RecoverInvalidSettings(true)
+	if err != nil || valid.BackupPath != "" {
+		t.Fatalf("valid settings must not be reset or backed up: %+v %v", valid, err)
+	}
+}
+
+func TestFutureSettingsSchemaRecoveryPreservesOriginal(t *testing.T) {
+	withFreshSettings(t)
+	blob := []byte("{\"version\":99,\"printers\":{}}")
+	path, err := settingsPath()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, blob, 0600); err != nil {
+		t.Fatal(err)
+	}
+	app := &App{}
+	if _, err := app.GetSettings(); err == nil {
+		t.Fatal("unsupported future schema should not be silently reset")
+	}
+	res, err := app.RecoverInvalidSettings(true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got, err := os.ReadFile(res.BackupPath)
+	if err != nil || string(got) != string(blob) || res.Settings.Version != 1 {
+		t.Fatalf("future-schema backup lost: %+v %s %v", res, got, err)
+	}
+}
+
+func TestAutoNozzleRejectsSavedFilamentPreset(t *testing.T) {
+	withFreshSettings(t)
+	app := &App{}
+	_, err := app.SavePrinterSettings("u1", PrinterSettings{
+		Nozzle: "auto", Slicer: "auto", Filaments: map[string]string{"PLA": "PLA @U1 0.4 nozzle"},
+	})
+	if err == nil || !strings.Contains(err.Error(), "fixed physical nozzle") {
+		t.Fatalf("ambiguous nozzle/preset combination accepted: %v", err)
+	}
+	got, err := app.GetSettings()
+	if err != nil || len(got.Printers["u1"].Filaments) != 0 {
+		t.Fatalf("invalid preset was persisted: %+v %v", got, err)
+	}
+}

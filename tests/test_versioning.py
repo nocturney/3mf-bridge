@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class VersionContract(unittest.TestCase):
     def test_current_commit_milestone_consistent(self):
-        self.assertEqual(validate(ROOT), "0.4.0-beta.4.dev.6")
+        self.assertEqual(validate(ROOT), "0.4.0-beta.4.dev.8")
 
     def test_invalid_versions_and_changelog_mismatches_fail(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -1,14 +1,14 @@
 # SliceBridge versioning and changelog
 
-Small, predictable development milestones. No public release is implied.
+Small, predictable development milestones. A source VERSION bump does not publish a release.
 
 ## Source of truth
 
 - `VERSION` is the intended **next app/development build version**. It follows [Semantic Versioning](https://semver.org/); during beta work, use `0.4.0-beta.4.dev.N`, incrementing `N` for each completed, separately reviewable development stage.
 - `CHANGELOG.md` is the timeline. Keep `Unreleased` for pending changes and create or update a heading for the matching `VERSION` at each finished, pushed milestone. Include a link to the PR/commit and state if tests are pending.
 - The existing `package.json` version `1.0.0` describes the older Electron prototype package, **not a publicly shipped SliceBridge desktop version**. Don't silently equate it with Wails builds.
-- Wails currently has a hard-coded `appVersion` in its unmerged development branch. Until the runtime branch is integrated, `VERSION` on the documentation/main branch is a planned next build, **not the version embedded in an old binary**. Future Wails CI must stamp the exact source `VERSION` into `main.appVersion` using existing Go ldflags, then verify the binary readback alongside the source commit.
-- `v0.4.0-beta.3` is an existing **draft, unpublished** GitHub Release; it is not the current downloadable community build.
+- The Wails native app has already been merged into main. VERSION records the planned next build (currently 0.4.0-beta.4.dev.8) and does not alter previous binaries. CI must stamp and check version and source commit at release time.
+- v0.4.0-beta.4.dev.7 is the latest published pre-release as of 2026-10-21. dev.8 is a planned, unpublished build; v0.4.0-beta.3 is an older published pre-release, not stable.
 
 ## One stage = a pushed commit + a changelog note
 

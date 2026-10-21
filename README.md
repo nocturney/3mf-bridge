@@ -1,4 +1,4 @@
-![SliceBridge approved banner — Different slicers. A stronger community.](assets/slicebridge-approved-banner.png)
+![SliceBridge approved banner — Different slicers. One simple workflow.](assets/slicebridge-readme-banner-rounded.svg)
 
 # SliceBridge
 
@@ -22,7 +22,7 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 
 ---
 
-<sub><strong>In development / בפיתוח.</strong> Compatibility depends on installed printer profiles; not yet ready for general release. [Development branch](https://github.com/nocturney/slicebridge/tree/feature/browser-compat-and-icon) · [Printer catalogue roadmap](https://github.com/nocturney/slicebridge/issues/7).</sub>
+<sub><strong>Development builds available / גרסאות פיתוח להורדה:</strong> [GitHub Releases](https://github.com/nocturney/slicebridge/releases). Experimental builds, not stable releases; some are unsigned. Check printer and slicer settings before printing. [Development branch](https://github.com/nocturney/slicebridge/tree/feature/browser-compat-and-icon) · [Printer catalogue roadmap](https://github.com/nocturney/slicebridge/issues/7).</sub>
 
 **Open source:** [GPL-3.0-only](LICENSE) for covered project-owned code · [License scope & rights](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md).
 

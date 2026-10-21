@@ -1,0 +1,738 @@
+'use strict';
+
+// A native desktop surface: no automatic window resizing, no page navigation,
+// local-only file handling, and a persisted per-printer hardware profile.
+const translations = {
+  he: {
+    brandTagline:'מחברים בין סלייסרים',settings:'הגדרות',checkUpdates:'בדיקת עדכונים',
+    dismiss:'סגירה',workspaceTitle:'סביבת המרה',
+    workspaceSubtitle:'המרת פרויקטים לכמה מדפסות, בלי לשנות את המקור.',
+    localOnly:'עיבוד מקומי בלבד',queueTitle:'קובצי מקור',clear:'ניקוי',
+    addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',
+    dropHint:'גרור קובצי 3MF או תיקייה לכאן',queueFootnote:'עד 200 קובצי 3MF, כולל תיקיות משנה.',
+    targetsTitle:'מדפסות יעד',selectAll:'בחר הכול',deselectAll:'בטל בחירה',
+    resultsTitle:'תוצאות המרה',emptyTitle:'מוכן להמרה',
+    emptyDescription:'הוסף פרויקטים, בחר מדפסות והפעל המרה. דו״ח מפורט יוצג כאן לכל מדפסת.',
+    clearResults:'נקה תוצאות',validateHint:'חובה לבצע Slice מחדש לפני הדפסה',
+    idle:'ממתין לקבצים',idleHint:'בחר קבצים ומדפסות כדי להתחיל',
+    ready:'מוכן להמרה',readyHint:'{files} קבצים × {printers} מדפסות',
+    converting:'ממיר פרויקטים…',convertingFile:'קובץ {index} מתוך {total}: {name}',
+    finished:'ההמרה הושלמה',finishedHint:'{success} הצלחות, {failed} כישלונות',
+    failed:'ההמרה נכשלה',failedHint:'לא נוצרו קובצי פלט',
+    openFolder:'פתח תיקיית פלט',convert:'המרה',
+    settingsTitle:'הגדרות מדפסות',
+    settingsHint:'העדפות נשמרות במחשב ומיושמות על המרות חדשות.',
+    physicalNozzle:'דיזה המותקנת במדפסת',
+    nozzleHint:'דיזה קבועה משתמשת בפרופיל הדיזה הפיזית, גם כשהמקור הוכן עם דיזה אחרת.',
+    preferredSlicer:'סלייסר מועדף',slicerHint:'בחירה מבין סלייסרים מקומיים עם פרופילי יצרן.',
+    filamentPreferences:'פרופילי פילמנט מועדפים',
+    filamentHint:'אפשר לשמור פרופיל מותקן שונה לכל סוג חומר. Auto משתמש בברירת המחדל של היצרן.',
+    material:'סוג חומר',preferredFilament:'פרופיל מותקן',cancel:'ביטול',
+    saveSettings:'שמור הגדרות',saved:'ההגדרות נשמרו בהצלחה.',
+    autoNozzle:'אוטומטי — התאמה לקובץ המקור',
+    autoSlicer:'אוטומטי — סלייסר זמין',
+    autoFilament:'אוטומטי — פרופיל יצרן',
+    noNativeProfiles:'לא נמצאו פרופילי פילמנט תואמים.',
+    autoPresetHint:'לבחירת פרופיל פילמנט מסוים, יש לבחור קודם דיזה פיזית קבועה.',
+    autoPresetWarning:'נשמר פרופיל פילמנט לדיזה אוטומטית. בחר דיזה קבועה וערוך את הפרופיל לפני השמירה.',
+    recoverSettingsQuestion:'קובץ ההגדרות אינו תקין. לשמור עותק גיבוי של הקובץ המקורי ולחזור להגדרות ברירת מחדל?',
+    recoveredSettings:'ההגדרות שוחזרו לברירת המחדל.',
+    backupSaved:'הגיבוי המקורי נשמר כאן: {path}',
+    unsupportedPrinter:'סלייסר לא זמין',openSlicer:'פתח בסלייסר',
+    details:'פרטי המרה',source:'מקור',target:'יעד',nozzle:'דיזה',
+    materialSlots:'סלילי חומר',plates:'משטחים',objects:'אובייקטים',
+    instances:'מופעים',triangles:'משולשים',geometry:'גיאומטריה',
+    geometryPreserved:'נשמרה במלואה',nativeProfile:'פרופיל סלייסר',
+    materials:'חומרים וצבעים',parameters:'פרמטרים שנשמרו',
+    overridden:'פרופילי חומר מותאמים',none:'ללא',unknown:'לא צוין',
+    cacheRemoved:'קובצי Slice ישנים שהוסרו',
+    sourceAssumed:'קוטר דיזת המקור לא זוהה — הונחה 0.4 מ״מ.',
+    switchedNozzle:'בוצעה התאמת קוטר דיזה לפי הגדרות המדפסת.',
+    summarySuccess:'הומר בהצלחה',summaryFailure:'נכשל',
+    noSource:'הוסף לפחות קובץ אחד.',noTargets:'בחר מדפסת יעד אחת לפחות.',
+    fileLimit:'מותר להוסיף לכל היותר 200 קבצים.',queueEmpty:'עדיין אין קבצים בתור.',
+    afterSlice:'יש לבדוק חומרים, דיזה ותמיכות ולבצע Slice מחדש.',
+    close:'סגירה',settingsError:'שגיאה בהגדרות',
+    addError:'לא ניתן להוסיף קבצים',convertError:'המרה נכשלה',
+    launchError:'לא ניתן לפתוח את הסלייסר',
+    noUpdate:'לא נבדקו עדכונים',
+    checkingUpdates:'בודק עדכונים ב־GitHub…',updateAvailable:'גרסה חדשה זמינה: {v}',
+    latestInstalled:'הגרסה המותקנת מעודכנת.',
+    noPublishedReleases:'עדיין לא פורסמו Releases. אפשר לראות בניות Beta.',
+    platformUnavailable:'גרסה {v} קיימת, אך לא למחשב זה.',
+    unsupportedPlatform:'אין עדכונים זמינים למערכת זו.',authRequired:'מאגר פרטי — נדרש GitHub CLI מחובר.',
+    updateError:'בדיקת עדכונים נכשלה',openRelease:'פתיחת Release',
+    openReleases:'צפייה בגרסאות',openPreviewBuilds:'צפייה בבניות Beta'
+  },
+  en: {
+    brandTagline:'Bridge your prints',settings:'Settings',checkUpdates:'Check for updates',
+    dismiss:'Dismiss',workspaceTitle:'Conversion workspace',
+    workspaceSubtitle:'Convert projects for multiple printers without altering your originals.',
+    localOnly:'Completely local',queueTitle:'Source projects',clear:'Clear',
+    addFiles:'Add files',addFolder:'Add folder',
+    dropHint:'Drop 3MF files or folders here',queueFootnote:'Up to 200 projects, including subfolders.',
+    targetsTitle:'Target printers',selectAll:'Select all',deselectAll:'Clear selection',
+    resultsTitle:'Conversion results',emptyTitle:'Ready to convert',
+    emptyDescription:'Add projects, select printers and convert. Each output gets its own detailed report.',
+    clearResults:'Clear results',validateHint:'Always re-slice before printing',
+    idle:'Waiting for projects',idleHint:'Add projects and select printers to start',
+    ready:'Ready to convert',readyHint:'{files} projects × {printers} printers',
+    converting:'Converting projects…',convertingFile:'Project {index} of {total}: {name}',
+    finished:'Conversion completed',finishedHint:'{success} successful, {failed} failed',
+    failed:'Conversion failed',failedHint:'No output projects created',
+    openFolder:'Open output folder',convert:'Convert',
+    settingsTitle:'Printer settings',
+    settingsHint:'Preferences are stored on this computer and applied to future conversions.',
+    physicalNozzle:'Physically installed nozzle',
+    nozzleHint:'A fixed nozzle uses its native machine preset even if the source project has a different nozzle.',
+    preferredSlicer:'Preferred slicer',slicerHint:'Only local installed slicers with verified manufacturer profiles.',
+    filamentPreferences:'Preferred filament presets',
+    filamentHint:'Save a different installed preset per material type. Auto uses the manufacturer default.',
+    material:'Material type',preferredFilament:'Installed filament preset',cancel:'Cancel',
+    saveSettings:'Save settings',saved:'Preferences saved.',
+    autoNozzle:'Automatic — match source project',
+    autoSlicer:'Automatic — available slicer',
+    autoFilament:'Automatic — native manufacturer default',
+    noNativeProfiles:'No compatible installed filament presets found.',
+    autoPresetHint:'Choose a fixed physical nozzle before selecting a specific filament preset.',
+    autoPresetWarning:'A filament preset is saved with Auto nozzle. Choose a fixed nozzle and review the preset before saving.',
+    recoverSettingsQuestion:'Settings cannot be loaded. Back up the original settings file and restore defaults?',
+    recoveredSettings:'Default settings restored.',
+    backupSaved:'Original settings saved at: {path}',
+    unsupportedPrinter:'Slicer unavailable',openSlicer:'Open in slicer',
+    details:'Conversion details',source:'Source',target:'Target',nozzle:'Nozzle',
+    materialSlots:'Material slots',plates:'Plates',objects:'Objects',
+    instances:'Instances',triangles:'Triangles',geometry:'Geometry',
+    geometryPreserved:'Fully preserved',nativeProfile:'Slicer profile',
+    materials:'Materials and colors',parameters:'Preserved settings',
+    overridden:'Custom material presets',none:'None',unknown:'Not specified',
+    cacheRemoved:'Stale sliced files removed',
+    sourceAssumed:'No source nozzle specified — 0.4 mm assumed.',
+    switchedNozzle:'Nozzle diameter was adapted to match the saved target configuration.',
+    summarySuccess:'Converted',summaryFailure:'Failed',
+    noSource:'Add at least one source project.',noTargets:'Select one or more printers.',
+    fileLimit:'You can queue a maximum of 200 projects.',queueEmpty:'No files in the queue yet.',
+    afterSlice:'Review materials, nozzle and supports; re-slice before printing.',
+    close:'Close',settingsError:'Settings error',
+    addError:'Could not add projects',convertError:'Conversion failed',
+    launchError:'Could not launch the slicer',
+    noUpdate:'Updates have not been checked',
+    checkingUpdates:'Checking GitHub Releases…',updateAvailable:'New version available: {v}',
+    latestInstalled:'You have the latest published version.',
+    noPublishedReleases:'No GitHub Releases yet. You can view beta builds.',
+    platformUnavailable:'Version {v} exists, but not for this platform.',
+    unsupportedPlatform:'No update package exists for this platform.',authRequired:'Private repo — connect GitHub CLI.',
+    updateError:'Update check failed',openRelease:'Open release',
+    openReleases:'View releases',openPreviewBuilds:'View beta builds'
+  }
+};
+const printerNames = Object.freeze({u1:'Snapmaker U1',c5:'Flashforge Creator 5',cc2:'ELEGOO CC2',qidi:'QIDI Plus5'});
+const nozzleChoices = Object.freeze({u1:['0.2','0.4','0.6','0.8'],c5:['0.25','0.4','0.6','0.8'],cc2:['0.2','0.4','0.6','0.8'],qidi:['0.2','0.4','0.6','0.8']});
+const targetOrder = ['u1','c5','cc2','qidi'];
+const el = (id) => document.getElementById(id);
+const dom = {
+  fileList:el('fileList'),queueCount:el('queueCount'),resultList:el('resultList'),
+  reportCounts:el('reportCounts'),convertBtn:el('convertBtn'),convertCount:el('convertCount'),
+  activityText:el('activityText'),activityDetail:el('activityDetail'),
+  activityIcon:el('activityIcon'),folderBtn:el('openFolderBtn'),settings:el('settingsDialog')
+};
+let language = /^he\b/i.test(navigator.language||'')?'he':'en';
+try { const saved=localStorage.getItem('3mfBridgeLanguage');if(saved==='he'||saved==='en')language=saved; } catch{}
+let files=[];
+let available=[];
+let settings=null;
+let busy=false;
+let lastBatch=null;
+let progress=null;
+let currentTarget='u1';
+let currentMaterial='PLA';
+let draftPrefs=null;
+let formChoices=null;
+let installedVersion=null;
+let updateResult=null;
+let updateError='';
+let updateChecking=false;
+let memoryStatus=null;
+const api = () => window.go?.main?.App || null;
+
+function t(key,params={}){
+  let value=translations[language][key]||key;
+  for(const [k,v] of Object.entries(params)){value=value.replaceAll('{'+k+'}',String(v));}
+  return value;
+}
+function node(tag,cls,text){
+  const n=document.createElement(tag);
+  if(cls)n.className=cls;
+  if(text!==undefined&&text!==null)n.textContent=String(text);
+  return n;
+}
+function btn(text,cls,action){
+  const b=node('button',cls,text);b.type='button';b.addEventListener('click',action);return b;
+}
+function renderCopy(){
+  document.documentElement.lang=language;
+  document.documentElement.dir=language==='he'?'rtl':'ltr';
+  document.body.dir=document.documentElement.dir;
+  document.querySelectorAll('[data-i18n]').forEach((elem)=>{elem.textContent=t(elem.dataset.i18n);});
+  document.querySelectorAll('[data-i18n-title]').forEach((elem)=>{elem.title=t(elem.dataset.i18nTitle);elem.setAttribute('aria-label',t(elem.dataset.i18nTitle));});
+  el('heBtn').classList.toggle('active',language==='he');
+  el('enBtn').classList.toggle('active',language==='en');
+  el('heBtn').setAttribute('aria-pressed',language==='he');
+  el('enBtn').setAttribute('aria-pressed',language==='en');
+}
+function languageSwitch(lang){
+  language=lang;
+  try{localStorage.setItem('3mfBridgeLanguage',language);}catch{}
+  renderCopy();renderQueue();renderTargets();renderResults();renderActionBar();renderUpdates();
+  if(dom.settings.open){renderSettingsTabs();paintSettings();}
+}
+function getSelectedTargets(){
+  return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)')).map((e)=>e.value);
+}
+function renderActionBar(){
+  const selected=getSelectedTargets().length;
+  const work=files.length*selected;
+  dom.convertCount.textContent=work>0?'('+work+')':'';
+  dom.convertBtn.disabled=busy||!work;
+  el('addFilesBtn').disabled=el('addFolderBtn').disabled=el('clearQueueBtn').disabled=busy;
+  el('selectAllBtn').disabled=busy;
+  el('settingsBtn').disabled=busy;
+  dom.folderBtn.disabled=busy||!(lastBatch?.successes>0);
+  if(busy){
+    dom.activityIcon.className='activity-icon busy';
+    dom.activityText.textContent=t('converting');
+    dom.activityDetail.textContent=progress?t('convertingFile',{index:progress.fileIndex,total:progress.fileCount,name:progress.fileName}):'…';
+    return;
+  }
+  if(memoryStatus){
+    dom.activityIcon.className='activity-icon '+(memoryStatus.type||'');
+    dom.activityText.textContent=memoryStatus.title;
+    dom.activityDetail.textContent=memoryStatus.detail||'';
+    return;
+  }
+  dom.activityIcon.className='activity-icon';
+  dom.activityText.textContent=work?t('ready'):t('idle');
+  dom.activityDetail.textContent=work?t('readyHint',{files:files.length,printers:selected}):t('idleHint');
+}
+function setActivity(title,detail,type=''){
+  memoryStatus={title,detail,type};renderActionBar();
+}
+function renderQueue(){
+  dom.fileList.replaceChildren();
+  dom.queueCount.textContent=String(files.length);
+  el('clearQueueBtn').disabled=busy||!files.length;
+  if(!files.length){
+    dom.fileList.append(node('p','empty-list',t('queueEmpty')));
+    renderActionBar();
+    return;
+  }
+  const fragment=document.createDocumentFragment();
+  files.forEach((file,index)=>{
+    const item=node('div','queue-item');item.setAttribute('role','listitem');
+    const badge=node('div','file-badge','3MF');
+    const info=node('div','queue-file-details');
+    const name=node('strong','',file.name);name.title=file.path;
+    const location=node('small','',file.folder+' · '+file.sizeLabel);location.title=file.folder;
+    info.append(name,location);
+    const remove=btn('×','remove-file-btn',()=>{
+      if(busy)return;files.splice(index,1);memoryStatus=null;renderQueue();
+    });
+    remove.title=language==='he'?'הסר מהתור':'Remove from queue';remove.disabled=busy;
+    item.append(badge,info,remove);fragment.append(item);
+  });
+  dom.fileList.append(fragment);
+  renderActionBar();
+}
+function renderTargets(){
+  for(const target of targetOrder){
+    const data=available.find((a)=>a.target===target);
+    const row=document.querySelector('[data-target-row="'+target+'"]');
+    const checkbox=row.querySelector('input');
+    const summary=row.querySelector('[data-printer-summary]');
+    checkbox.disabled=busy||(data&&!data.available);
+    // A running job temporarily locks controls; it must never erase the
+    // selected targets for the next conversion.
+    if(data&&!data.available)checkbox.checked=false;
+    if(data&&!data.available){
+      row.classList.add('unavailable');
+      summary.textContent=t('unsupportedPrinter');
+      summary.title=data.error||'';
+    }else{
+      row.classList.remove('unavailable');
+      const pref=settings?.printers?.[target];
+      let text=(pref?.nozzle&&pref.nozzle!=='auto'?pref.nozzle+' mm':t('autoNozzle'));
+      if(pref?.slicer&&pref.slicer!=='auto')text+=' · '+pref.slicer;
+      const materialCount=Object.values(pref?.filaments||{}).filter(Boolean).length;
+      if(materialCount>0)text+=' · '+materialCount+' '+(language==='he'?'פרופילים':'presets');
+      summary.textContent=text;
+      summary.title=text;
+    }
+  }
+  const count=getSelectedTargets().length;
+  el('selectAllBtn').textContent=count===available.filter(v=>v.available).length?t('deselectAll'):t('selectAll');
+  renderActionBar();
+}
+async function refreshAvailability(){
+  if(!api())return;
+  try{available=await api().Availability();renderTargets();}
+  catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
+}
+async function addFiles(infos){
+  if(!infos?.length)return;
+  const known=new Set(files.map((f)=>f.path.toLowerCase()));
+  const next=files.slice();
+  for(const info of infos){
+    if(!known.has(info.path.toLowerCase())){
+      if(next.length>=200){setActivity(t('addError'),t('fileLimit'),'warning');return;}
+      known.add(info.path.toLowerCase());
+      next.push(info);
+    }
+  }
+  if(next.length===files.length)return;
+  files=next;
+  memoryStatus=null;
+  clearResults();
+  renderQueue();
+}
+async function pickFiles(){
+  if(busy||!api())return;
+  try{await addFiles(await api().SelectFiles(language));}
+  catch(e){setActivity(t('addError'),e?.message||String(e),'warning');}
+}
+async function pickFolder(){
+  if(busy||!api())return;
+  try{await addFiles(await api().SelectFolder(language));}
+  catch(e){setActivity(t('addError'),e?.message||String(e),'warning');}
+}
+async function dropped(paths){
+  if(busy||!api()||!paths?.length)return;
+  try{await addFiles(await api().CollectInputs(paths));}
+  catch(e){setActivity(t('addError'),e?.message||String(e),'warning');}
+}
+
+function addMetric(parent,label,value,full=false){
+  const container=node('div',full?'detail-full':'');
+  container.append(node('span','detail-key',label),node('span','detail-value',value));
+  parent.append(container);
+}
+function filamentColors(filaments){
+  const wrapper=node('div','color-list');
+  for(const filament of filaments||[]){
+    const token=node('span','color-token');
+    const dot=node('i','color-dot');
+    if(/^#[0-9a-fA-F]{6}$/.test(filament.color||''))dot.style.backgroundColor=filament.color;
+    token.append(dot,node('span','',filament.type+' · '+filament.color));
+    wrapper.append(token);
+  }
+  return wrapper;
+}
+function resultLine(parent,result,source){
+  const row=node('div','result-row');
+  const top=node('div','result-head');
+  const content=node('div','result-content');
+  const title=node('strong','',printerNames[result.target]||result.target);
+  const subtitle=node('div','result-path',result.ok?result.outputName:result.error);
+  subtitle.title=result.ok?result.outputPath:result.error;
+  content.append(title,subtitle);
+  const status=node('span','status-pill '+(result.ok?'good':'bad'),result.ok?t('summarySuccess'):t('summaryFailure'));
+  top.append(content,status);row.append(top);
+  if(result.ok){
+    const actions=node('div','result-actions');
+    actions.append(btn(t('openSlicer')+' ↗','open-slicer',async ()=>{
+      if(busy)return;
+      try{await api().OpenInSlicer(result.target,result.outputPath);}
+      catch(e){setActivity(t('launchError'),e?.message||String(e),'warning');}
+    }));
+    const details=node('details','report-details');
+    const heading=node('summary','',t('details'));
+    const grid=node('div','detail-grid');
+    const report=result.report||{};
+    addMetric(grid,t('source')+' '+t('nozzle'),(source.nozzle||'?')+' mm');
+    addMetric(grid,t('target')+' '+t('nozzle'),(report.target_nozzle||'?')+' mm');
+    addMetric(grid,t('materialSlots'),(report.source_filament_slots??(source.filaments||[]).length)+' → '+(report.target_filament_slots||'?'));
+    addMetric(grid,t('triangles'),report.geometry_triangles??t('unknown'));
+    addMetric(grid,t('objects'),(source.objects||'?')+' → '+(report.target_objects||'?'));
+    addMetric(grid,t('instances'),(source.instances||'?')+' → '+(report.target_instances||'?'));
+    addMetric(grid,t('plates'),(source.plates||'?')+' → '+(report.target_plates||'?'));
+    addMetric(grid,t('geometry'),t('geometryPreserved'));
+    addMetric(grid,t('cacheRemoved'),report.removed_slice_cache_entries??0);
+    addMetric(grid,t('parameters'),(report.preserved_print_keys||[]).length);
+    addMetric(grid,t('nativeProfile'),report.native_slicer||t('unknown'),true);
+    const overridden=Object.entries(report.native_filament_overrides||{}).filter(([,p])=>p);
+    addMetric(grid,t('overridden'),overridden.length?overridden.map(([m,p])=>m+': '+p).join(' · '):t('none'),true);
+    if(source.filaments?.length){
+      const colors=node('div','detail-full');
+      colors.append(node('span','detail-key',t('materials')),filamentColors(source.filaments));
+      grid.append(colors);
+    }
+    if(source.nozzleAssumed){
+      grid.append(node('div','detail-full warning-line',t('sourceAssumed')));
+    }else if(report.nozzle_remapped){
+      grid.append(node('div','detail-full warning-line',t('switchedNozzle')));
+    }
+    details.append(heading,grid);
+    actions.append(details);
+    row.append(actions);
+  }else{
+    row.append(node('div','error-line',(result.code?result.code+': ':'')+(result.error||t('summaryFailure'))));
+  }
+  parent.append(row);
+}
+function renderResults(){
+  dom.resultList.replaceChildren();
+  el('clearResultsBtn').disabled=busy||!lastBatch;
+  dom.reportCounts.replaceChildren();
+  if(!lastBatch){
+    const empty=node('div','empty-state');
+    empty.append(
+      node('div','empty-icon','↗'),
+      node('h3','',t('emptyTitle')),
+      node('p','',t('emptyDescription'))
+    );
+    dom.resultList.append(empty);return;
+  }
+  dom.reportCounts.append(
+    node('span','passed','✓ '+lastBatch.successes),
+    node('span','failed','× '+lastBatch.failures)
+  );
+  const fragment=document.createDocumentFragment();
+  for(const file of lastBatch.files||[]){
+    const block=node('article','file-report');
+    const head=node('header','file-report-heading');
+    const name=node('strong','',file.source.name);
+    name.title=file.source.path;
+    const done=node('span','file-report-meta',
+      file.results.length+' / '+(file.results.length+file.failures.length));
+    head.append(name,done);block.append(head);
+    if(file.source.nozzle){
+      const metrics=node('div','source-metrics');
+      const types=[...new Set((file.source.filaments||[]).map((f)=>f.type))].join(', ');
+      metrics.append(
+        node('span','',t('source')+': '+file.source.nozzle+' mm'),
+        node('span','',types||t('unknown')),
+        node('span','',t('objects')+': '+(file.source.objects||'?')),
+        node('span','',t('plates')+': '+(file.source.plates||'?'))
+      );
+      block.append(metrics);
+    }
+    for(const entry of [...file.results,...file.failures]){
+      resultLine(block,entry,file.source);
+    }
+    if(file.error)block.append(node('p','warning-line',file.error));
+    fragment.append(block);
+  }
+  dom.resultList.append(fragment);
+}
+function clearResults(){
+  if(busy)return;
+  lastBatch=null;
+  progress=null;
+  memoryStatus=null;
+  dom.resultList.scrollTop=0;
+  renderResults();
+  renderActionBar();
+}
+async function runBatch(){
+  if(busy)return;
+  if(files.length===0){setActivity(t('noSource'),'','warning');return;}
+  const targets=getSelectedTargets();
+  if(!targets.length){setActivity(t('noTargets'),'','warning');return;}
+  busy=true;progress=null;memoryStatus=null;lastBatch=null;
+  renderResults();renderQueue();renderTargets();renderActionBar();
+  try{
+    const response=await api().ConvertBatch({filePaths:files.map((f)=>f.path),targets});
+    if(response.error){
+      setActivity(t('convertError'),response.error,'warning');
+    }
+    lastBatch=response;
+    if(response.filesDone){
+      setActivity(response.successes?t('finished'):t('failed'),
+        response.successes?t('finishedHint',{success:response.successes,failed:response.failures}):t('failedHint'),
+        response.successes?'':'warning');
+    }
+    renderResults();
+    el('resultsPanel').scrollTop=0;
+  }catch(e){
+    setActivity(t('convertError'),e?.message||String(e),'warning');
+  }finally{
+    busy=false;progress=null;
+    renderResults();renderQueue();renderTargets();renderActionBar();
+  }
+}
+async function openFolder(){
+  try{await api().OpenOutputFolder();}
+  catch(e){setActivity(t('launchError'),e?.message||String(e),'warning');}
+}
+
+function fillSelect(element,items,selected){
+  element.replaceChildren();
+  for(const option of items){
+    const entry=node('option','',option.label);
+    entry.value=option.value;
+    if(option.disabled)entry.disabled=true;
+    element.append(entry);
+  }
+  element.value=selected;
+  if(element.selectedIndex<0&&element.options.length>0)element.selectedIndex=0;
+}
+function renderSettingsTabs(){
+  const tabs=el('settingsTabs');
+  tabs.replaceChildren();
+  for(const target of targetOrder){
+    const button=btn(printerNames[target],target===currentTarget?'active':'',async ()=>{
+      if(currentTarget===target)return;
+      currentTarget=target;
+      currentMaterial='PLA';
+      draftPrefs=structuredClone(settings?.printers?.[target]||{nozzle:'auto',slicer:'auto',filaments:{}});
+      if(!draftPrefs.filaments)draftPrefs.filaments={};
+      renderSettingsTabs();
+      await paintSettings();
+    });
+    button.setAttribute('aria-pressed',target===currentTarget);
+    tabs.append(button);
+  }
+}
+async function promptForSettingsRecovery(error) {
+  setActivity(t('settingsError'),error?.message||String(error),'warning');
+  // Never reset damaged/future-version settings without an explicit choice.
+  if(!api()?.RecoverInvalidSettings||!window.confirm(t('recoverSettingsQuestion')))return null;
+  try{
+    const recovered=await api().RecoverInvalidSettings(true);
+    setActivity(t('recoveredSettings'),recovered.backupPath?t('backupSaved',{path:recovered.backupPath}):'');
+    return recovered.settings;
+  }catch(e){
+    setActivity(t('settingsError'),e?.message||String(e),'warning');
+    return null;
+  }
+}
+async function openSettings(target){
+  if(busy||!api())return;
+  currentTarget=target||'u1';
+  currentMaterial='PLA';
+  try{settings=await api().GetSettings();}
+  catch(e){
+    settings=await promptForSettingsRecovery(e);
+    if(!settings)return;
+  }
+  draftPrefs=structuredClone(settings.printers[currentTarget]||{nozzle:'auto',slicer:'auto',filaments:{}});
+  if(!draftPrefs.filaments)draftPrefs.filaments={};
+  renderSettingsTabs();
+  dom.settings.showModal();
+  await paintSettings();
+}
+let choiceSequence=0;
+async function paintSettings(){
+  if(!draftPrefs)return;
+  const nozzle=el('settingsNozzle');
+  const slicer=el('settingsSlicer');
+  const material=el('settingsMaterial');
+  const filaments=el('settingsFilament');
+  el('settingsStatus').textContent='';
+  fillSelect(nozzle,[
+    {value:'auto',label:t('autoNozzle')},
+    ...nozzleChoices[currentTarget].map((n)=>({value:n,label:n+' mm'}))
+  ],draftPrefs.nozzle||'auto');
+  material.value=currentMaterial;
+  slicer.disabled=true;filaments.disabled=true;
+  const seq=++choiceSequence;
+  const effectiveNozzle=draftPrefs.nozzle==='auto'?'0.4':draftPrefs.nozzle;
+  try{
+    const options=await api().PrinterOptions(currentTarget,effectiveNozzle,draftPrefs.slicer||'auto',currentMaterial);
+    if(seq!==choiceSequence||!dom.settings.open)return;
+    formChoices=options;
+    fillSelect(slicer,[
+      {value:'auto',label:t('autoSlicer')},
+      ...(options.slicers||[]).map((s)=>({
+        value:s.id,label:s.name+(s.installed?'':' — '+t('unsupportedPrinter')),
+        disabled:!s.installed
+      }))
+    ],draftPrefs.slicer||'auto');
+    slicer.disabled=false;
+    const autoNozzle=!draftPrefs.nozzle||draftPrefs.nozzle==='auto';
+    fillSelect(filaments,[
+      {value:'auto',label:t('autoFilament')},
+      ...(!autoNozzle?(options.filaments||[]):[]).map((n)=>({value:n,label:n}))
+    ],autoNozzle?'auto':draftPrefs.filaments[currentMaterial]||'auto');
+    filaments.disabled=autoNozzle;
+    if(autoNozzle){
+      el('settingsStatus').textContent=Object.values(draftPrefs.filaments||{}).some(Boolean)
+        ?t('autoPresetWarning'):t('autoPresetHint');
+    }else if(options.error)el('settingsStatus').textContent=options.error;
+    else if(!options.filaments?.length)el('settingsStatus').textContent=t('noNativeProfiles');
+  }catch(e){
+    if(seq!==choiceSequence)return;
+    fillSelect(slicer,[{value:'auto',label:t('autoSlicer')}],draftPrefs.slicer||'auto');
+    fillSelect(filaments,[{value:'auto',label:t('autoFilament')}],draftPrefs.filaments[currentMaterial]||'auto');
+    slicer.disabled=false;filaments.disabled=false;
+    el('settingsStatus').textContent=e?.message||String(e);
+  }
+}
+async function saveSettings(){
+  if(!draftPrefs||!api())return;
+  const button=el('saveSettingsBtn');button.disabled=true;
+  try{
+    const nozzle=el('settingsNozzle').value;
+    const slicer=el('settingsSlicer').value;
+    draftPrefs.nozzle=nozzle;
+    draftPrefs.slicer=slicer;
+    if((!nozzle||nozzle==='auto')&&Object.values(draftPrefs.filaments||{}).some(Boolean)){
+      el('settingsStatus').textContent=t('autoPresetWarning');
+      return;
+    }
+    const next=await api().SavePrinterSettings(currentTarget,draftPrefs);
+    settings=next;
+    renderTargets();
+    dom.settings.close();
+    setActivity(t('saved'),printerNames[currentTarget]);
+  }catch(e){
+    el('settingsStatus').textContent=e?.message||String(e);
+  }finally{button.disabled=false;}
+}
+
+function renderUpdates(){
+  const banner=el('updateNotice');
+  const open=el('openUpdateBtn');
+  const status=el('updateStatus');
+  el('installedVersion').textContent=installedVersion?'v'+installedVersion.version:'';
+  if(installedVersion?.commit)el('installedVersion').title=installedVersion.commit;
+  el('checkUpdatesBtn').disabled=updateChecking;
+  open.hidden=true;open.dataset.kind='';open.dataset.tag='';
+  status.removeAttribute('data-status');
+  if(updateChecking){banner.hidden=false;status.textContent=t('checkingUpdates');return;}
+  if(updateError){
+    banner.hidden=false;status.textContent=t('updateError')+': '+updateError;status.dataset.status='error';return;
+  }
+  if(!updateResult){banner.hidden=true;return;}
+  banner.hidden=false;
+  status.dataset.status=updateResult.status;
+  switch(updateResult.status){
+    case 'update_available':
+      status.textContent=t('updateAvailable',{v:updateResult.latestVersion});
+      open.hidden=false;open.textContent=t('openRelease');open.dataset.kind='release';
+      open.dataset.tag=updateResult.releaseTag||'';break;
+    case 'up_to_date':status.textContent=t('latestInstalled');break;
+    case 'no_releases':
+      status.textContent=t('noPublishedReleases');open.hidden=false;
+      open.textContent=t('openPreviewBuilds');open.dataset.kind='builds';break;
+    case 'platform_unavailable':
+      status.textContent=t('platformUnavailable',{v:updateResult.latestVersion});open.hidden=false;
+      open.textContent=t('openReleases');open.dataset.kind='releases';break;
+    case 'authentication_required':
+      status.textContent=t('authRequired');open.hidden=false;
+      open.textContent=t('openReleases');open.dataset.kind='releases';break;
+    default:status.textContent=t('unsupportedPlatform');
+  }
+}
+async function checkUpdates(){
+  if(updateChecking||!api()?.CheckForUpdates)return;
+  updateChecking=true;updateResult=null;updateError='';renderUpdates();
+  try{updateResult=await api().CheckForUpdates();}
+  catch(e){updateError=e?.message||String(e);}
+  finally{updateChecking=false;renderUpdates();}
+}
+async function openUpdate(){
+  const button=el('openUpdateBtn');
+  if(!button.dataset.kind)return;
+  try{await api().OpenUpdatePage(button.dataset.kind,button.dataset.tag||'');}
+  catch(e){updateError=e?.message||String(e);renderUpdates();}
+}
+function selectAll(){
+  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'));
+  const allSelected=boxes.every((e)=>e.checked);
+  for(const box of boxes)box.checked=!allSelected;
+  memoryStatus=null;renderTargets();
+}
+function registerHandlers(){
+  el('addFilesBtn').addEventListener('click',pickFiles);
+  el('addFolderBtn').addEventListener('click',pickFolder);
+  el('clearQueueBtn').addEventListener('click',()=>{
+    if(busy)return;files=[];memoryStatus=null;renderQueue();
+  });
+  el('selectAllBtn').addEventListener('click',selectAll);
+  el('convertBtn').addEventListener('click',runBatch);
+  el('openFolderBtn').addEventListener('click',openFolder);
+  el('clearResultsBtn').addEventListener('click',()=>{if(!busy)clearResults();});
+  el('settingsBtn').addEventListener('click',()=>openSettings('u1'));
+  el('closeSettingsBtn').addEventListener('click',()=>dom.settings.close());
+  el('cancelSettingsBtn').addEventListener('click',()=>dom.settings.close());
+  el('saveSettingsBtn').addEventListener('click',saveSettings);
+  el('settingsNozzle').addEventListener('change',async (e)=>{
+    draftPrefs.nozzle=e.target.value;await paintSettings();
+  });
+  el('settingsSlicer').addEventListener('change',async (e)=>{
+    draftPrefs.slicer=e.target.value;await paintSettings();
+  });
+  el('settingsMaterial').addEventListener('change',async (e)=>{
+    currentMaterial=e.target.value;await paintSettings();
+  });
+  el('settingsFilament').addEventListener('change',(e)=>{
+    const profile=e.target.value;
+    if(profile==='auto')delete draftPrefs.filaments[currentMaterial];
+    else draftPrefs.filaments[currentMaterial]=profile;
+    el('settingsStatus').textContent='';
+  });
+  dom.settings.addEventListener('close',()=>{draftPrefs=null;choiceSequence++;});
+  for(const target of targetOrder){
+    document.querySelector('[data-settings-target="'+target+'"]')
+      .addEventListener('click',(e)=>{
+        e.preventDefault();e.stopPropagation();openSettings(target);
+      });
+    document.querySelector('[data-target-row="'+target+'"] input')
+      .addEventListener('change',()=>{memoryStatus=null;renderTargets();});
+  }
+  el('heBtn').addEventListener('click',()=>languageSwitch('he'));
+  el('enBtn').addEventListener('click',()=>languageSwitch('en'));
+  el('checkUpdatesBtn').addEventListener('click',checkUpdates);
+  el('openUpdateBtn').addEventListener('click',openUpdate);
+  el('dismissUpdateBtn').addEventListener('click',()=>{
+    updateResult=null;updateError='';renderUpdates();
+  });
+  const drop=el('dropzone');
+  drop.addEventListener('keydown',(e)=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();pickFiles();}
+  });
+  document.addEventListener('dragover',(e)=>e.preventDefault());
+  document.addEventListener('drop',(e)=>e.preventDefault());
+  document.addEventListener('keydown',(e)=>{
+    if(dom.settings.open||busy)return;
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='o'){
+      e.preventDefault();if(e.shiftKey)pickFolder();else pickFiles();
+    }else if((e.ctrlKey||e.metaKey)&&e.key===','){
+      e.preventDefault();openSettings('u1');
+    }
+  });
+  // A real desktop window: user-controlled size, no auto-fit or re-centering.
+  // Persist only after resize settles, not on every layout/language change.
+  let resizeTimer;
+  window.addEventListener('resize',()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(()=>{
+      if(api()?.RememberWindowSize)api().RememberWindowSize().catch(()=>{});
+    },900);
+  });
+}
+async function initialiseNative(){
+  for(let n=0;n<80&&!api();n++)await new Promise((resolve)=>setTimeout(resolve,75));
+  if(!api()){
+    setActivity(t('convertError'),t('unsupportedPlatform'),'warning');return;
+  }
+  if(window.runtime?.OnFileDrop){
+    window.runtime.OnFileDrop((_x,_y,paths)=>dropped(paths),true);
+  }
+  if(window.runtime?.EventsOn){
+    window.runtime.EventsOn('bridge:batch-progress',(data)=>{
+      progress=data;renderActionBar();
+    });
+  }
+  try{settings=await api().GetSettings();}
+  catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
+  try{installedVersion=await api().GetVersion();}
+  catch{installedVersion=null;}
+  renderUpdates();
+  await refreshAvailability();
+  renderCopy();renderTargets();renderQueue();renderResults();renderActionBar();
+}
+
+registerHandlers();
+renderCopy();renderQueue();renderResults();renderActionBar();renderUpdates();
+initialiseNative();

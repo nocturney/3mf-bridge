@@ -1,21 +1,29 @@
 {
   "name": "3mf-bridge",
-  "version": "1.0.0",
-  "description": "Small desktop bridge for converting Bambu 3MF projects to target printer profiles",
+  "version": "0.3.0-beta.2",
+  "private": true,
+  "description": "Local desktop bridge for Bambu 3MF projects; verified U1 beta adapter",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "postinstall": "node node_modules/electron/install.js",
+    "test": "node --test tests/ipc.test.js tests/window-sizing.test.js tests/slicer-profiles.test.js",
+    "test:installed": "node tests/smoke-installed-targets.js",
+    "test:desktop": "electron tests/electron-fit-smoke.js",
+    "package:win": "node scripts/package-win.js"
   },
   "keywords": [
     "3mf",
     "electron",
     "bambu",
+    "snapmaker",
     "converter"
   ],
   "author": "",
   "license": "GPL-3.0-only",
   "type": "commonjs",
   "devDependencies": {
+    "@electron/packager": "^20.3.0",
     "electron": "^44.8.0"
   }
 }

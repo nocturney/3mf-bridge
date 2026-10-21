@@ -1,0 +1,3 @@
+[submodule "third_party/bl2std"]
+	path = third_party/bl2std
+	url = https://github.com/BryanSmee/bl_to_std.git

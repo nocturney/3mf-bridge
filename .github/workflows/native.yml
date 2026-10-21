@@ -1,0 +1,102 @@
+name: Native WebView Windows and macOS
+
+on:
+  push:
+    branches: [feature/native-webview-shell, feature/native-workflow-ux, feature/slicebridge-brand]
+  pull_request:
+    paths:
+      - 'native/**'
+      - 'engine/**'
+      - 'third_party/**'
+      - '.github/workflows/native.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-native:
+    name: Windows native WebView2
+    runs-on: windows-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: native
+    steps:
+      - name: Checkout converter and pinned submodule
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Go toolchain
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: native/go.mod
+          cache: false
+      - name: Test Go engine and native backend
+        shell: pwsh
+        run: go test -count=1 ./...
+      - name: Test update UI (English and Hebrew)
+        run: node --test tests/update-ui.test.js tests/brand-ui.test.js
+      - name: Install stable Wails 2
+        shell: pwsh
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
+      - name: Build native Windows single exe
+        shell: pwsh
+        run: |
+          $sha = git rev-parse HEAD
+          & "$env:USERPROFILE\go\bin\wails.exe" build -s -ldflags "-X main.buildCommit=$sha"
+      - name: Verify standalone binary and archive
+        shell: pwsh
+        run: |
+          $exe = 'build/bin/SliceBridge.exe'
+          if (!(Test-Path $exe)) { throw 'Native binary missing' }
+          $size = (Get-Item $exe).Length
+          Write-Output "Native Windows exe bytes: $size"
+          if ($size -gt 35000000) { throw 'Native binary unexpectedly large' }
+          Compress-Archive -LiteralPath $exe -DestinationPath 'build/bin/SliceBridge-Windows.zip' -CompressionLevel Optimal -Force
+      - name: Upload Windows native beta
+        uses: actions/upload-artifact@v4
+        with:
+          name: slicebridge-windows
+          path: native/build/bin/SliceBridge-Windows.zip
+          retention-days: 14
+
+  macos-native:
+    name: macOS native WebKit (Apple Silicon)
+    runs-on: macos-15
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: native
+    steps:
+      - name: Checkout converter and pinned submodule
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Go toolchain
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: native/go.mod
+          cache: false
+      - name: Test Go engine and native backend
+        run: go test -count=1 ./...
+      - name: Test update UI (English and Hebrew)
+        run: node --test tests/update-ui.test.js tests/brand-ui.test.js
+      - name: Install stable Wails 2
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
+      - name: Build macOS app using system WebKit
+        run: |
+          sha=$(git rev-parse HEAD)
+          "$(go env GOPATH)/bin/wails" build -s -ldflags "-X main.buildCommit=$sha"
+      - name: Check native app size and package
+        run: |
+          APP='build/bin/SliceBridge.app'
+          test -d "$APP"
+          du -sh "$APP"
+          ditto -c -k --sequesterRsrc --keepParent "$APP" build/bin/SliceBridge-macOS-Apple-Silicon.zip
+      - name: Upload macOS native beta (ad-hoc signed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: slicebridge-macos-apple-silicon-adhoc
+          path: native/build/bin/SliceBridge-macOS-Apple-Silicon.zip
+          retention-days: 14
