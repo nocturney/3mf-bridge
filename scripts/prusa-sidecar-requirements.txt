@@ -1,0 +1,6 @@
+# Build-time requirements for scripts/package-prusa-sidecar.py (Python 3.11+).
+# The sidecar bundles the lxml runtime; PyInstaller is pinned exactly so the
+# packaging result is repeatable. scripts/package-prusa-sidecar.py reads the
+# pyinstaller pin from this file and refuses to build with any other version.
+pyinstaller==6.22.3
+lxml>=5

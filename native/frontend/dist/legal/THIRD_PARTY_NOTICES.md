@@ -40,6 +40,14 @@ The approved SliceBridge icon/banner are included as project identity materials 
 
 See [LICENSING.md](LICENSING.md) and [DISTRIBUTION_CHECKLIST.md](DISTRIBUTION_CHECKLIST.md) before any public build.
 
+## Panda2Prusa — Python Bambu-to-PrusaSlicer converter (vendored, MIT)
+
+- Project: [CupsOhJoe/Panda2Prusa](https://github.com/CupsOhJoe/Panda2Prusa)
+- Pinned upstream commit: `95e4d82d22142295e52913a10b07e054458a8e4e`
+- License: MIT, Copyright (c) 2026 Joseph (CupsOhJoe). Full text, unchanged, in `third_party/panda2prusa/LICENSE`
+- Vendored as unmodified source files (not a submodule) under `third_party/panda2prusa/panda2prusa/`. SliceBridge's own runner, tests and notes sit beside them; see `third_party/panda2prusa/README-SLICEBRIDGE.md`
+- Runtime dependency `lxml` (BSD-3-Clause) is required by this component. Record it in the SBOM for any shipped binary
+
 ## Wails v2 — native application framework
 
 Project: https://github.com/wailsapp/wails

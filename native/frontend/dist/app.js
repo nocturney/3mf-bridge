@@ -63,7 +63,9 @@ const translations = {
     platformUnavailable:'גרסה {v} קיימת, אך לא למחשב זה.',
     unsupportedPlatform:'אין עדכונים זמינים למערכת זו.',authRequired:'מאגר פרטי — נדרש GitHub CLI מחובר.',
     updateError:'בדיקת עדכונים נכשלה',openRelease:'פתיחת Release',
-    openReleases:'צפייה בגרסאות',openPreviewBuilds:'צפייה בבניות Beta'
+    openReleases:'צפייה בגרסאות',openPreviewBuilds:'צפייה בבניות Beta',
+    prusaProjectName:'פרויקט PrusaSlicer',prusaProjectSummary:'כללי · בחירת מדפסת ב־PrusaSlicer',
+    prusaGenericReview:'פרויקט PrusaSlicer כללי: יש לבחור את המדפסת המדויקת ב־PrusaSlicer ולבדוק את כל ערוצי החומר לפני חיתוך והדפסה.'
   },
   en: {
     brandTagline:'Bridge your prints',settings:'Settings',makerworldSetup:'MakerWorld Setup',checkUpdates:'Check for updates',
@@ -125,17 +127,25 @@ const translations = {
     platformUnavailable:'Version {v} exists, but not for this platform.',
     unsupportedPlatform:'No update package exists for this platform.',authRequired:'Private repo — connect GitHub CLI.',
     updateError:'Update check failed',openRelease:'Open release',
-    openReleases:'View releases',openPreviewBuilds:'View beta builds'
+    openReleases:'View releases',openPreviewBuilds:'View beta builds',
+    prusaProjectName:'PrusaSlicer project',prusaProjectSummary:'Generic · choose printer in PrusaSlicer',
+    prusaGenericReview:'Generic PrusaSlicer project: choose the exact printer in PrusaSlicer and review every material slot before slicing or printing.'
   }
 };
 const printerNames = Object.freeze({u1:'Snapmaker U1',c5:'Flashforge Creator 5',cc2:'ELEGOO CC2',qidi:'QIDI Plus5'});
+// Fixed generic target. It is listed only when the sidecar file probe succeeds.
+const prusaTargetId='prusa-project';
 const nozzleChoices = Object.freeze({u1:['0.2','0.4','0.6','0.8'],c5:['0.25','0.4','0.6','0.8'],cc2:['0.2','0.4','0.6','0.8'],qidi:['0.2','0.4','0.6','0.8']});
 const targetOrder = ['u1','c5','cc2','qidi'];
 // Installed Orca-family machines, as listed by the backend. Only rows the
 // backend resolved completely are present; the picker never invents one.
 let installedTargets=[];
 let installedRows=[];
-function targetDisplayName(id){return printerNames[id]||installedTargets.find((item)=>item.id===id)?.title||id;}
+function targetDisplayName(id){
+  if(id===prusaTargetId)return t('prusaProjectName');
+  return printerNames[id]||installedTargets.find((item)=>item.id===id)?.title||id;
+}
+function prusaCheckbox(){return document.querySelector('[data-prusa-target] input');}
 const el = (id) => document.getElementById(id);
 const dom = {
   fileList:el('fileList'),queueCount:el('queueCount'),resultList:el('resultList'),
@@ -337,10 +347,12 @@ function renderTargets(){
   el('emptyTargetNotice').textContent=language==='he'?
     'לא נבחרו מדפסות יעד. אפשר להוסיף דרך סמל המדפסת בראש החלון.':
     'No target printers selected. Use the printer icon at the top to add them.';
-  // The select-all label tracks only the built-in rows; installed rows are separate.
-  const installedChecked=installedRows.filter((entry)=>entry.checkbox.checked).length;
+  // The select-all label tracks only the built-in rows; installed and PrusaSlicer rows are separate.
+  const prusaChecked=prusaCheckbox()?.checked?1:0;
+  const installedChecked=installedRows.filter((entry)=>entry.checkbox.checked).length+prusaChecked;
   el('selectAllBtn').textContent=count-installedChecked===selectable.length?t('deselectAll'):t('selectAll');
   for(const entry of installedRows)entry.checkbox.disabled=busy;
+  if(prusaCheckbox())prusaCheckbox().disabled=busy;
   renderActionBar();
 }
 async function refreshAvailability(){
@@ -385,6 +397,18 @@ async function refreshInstalledTargets(){
     setActivity(t('settingsError'),e?.message||String(e),'warning');
   }
   renderInstalledTargets();
+  renderTargets();
+}
+// The PrusaSlicer row is shown only when the backend file probe finds the
+// sidecar. A failed probe hides it; it never offers a target it cannot run.
+async function refreshPrusaEngine(){
+  const row=document.querySelector('[data-prusa-target]');
+  if(!row||!api()?.PrusaEngineStatus)return;
+  let available=false;
+  try{available=Boolean((await api().PrusaEngineStatus())?.available);}
+  catch{available=false;}
+  row.hidden=!available;
+  if(!available&&prusaCheckbox())prusaCheckbox().checked=false;
   renderTargets();
 }
 async function addFiles(infos){
@@ -497,6 +521,9 @@ function resultLine(parent,result,source){
     if(report.user_slot_mapping_required){
       grid.append(node('div','detail-full warning-line',
         t('virtualSlotsReview',{n:report.virtual_filament_slots,physical:report.physical_toolheads})));
+    }
+    if(report.printer_profile_generic){
+      grid.append(node('div','detail-full warning-line',t('prusaGenericReview')));
     }
     details.append(heading,grid);
     actions.append(details);
@@ -770,9 +797,9 @@ async function openUpdate(){
   catch(e){updateError=e?.message||String(e);renderUpdates();}
 }
 function selectAll(){
-  // Built-in rows only: installed Orca rows are chosen individually.
+  // Built-in rows only: installed Orca and PrusaSlicer rows are chosen individually.
   const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'))
-    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden && !e.closest?.('[data-installed-target]'));
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden && !e.closest?.('[data-installed-target]') && !e.closest?.('[data-prusa-target]'));
   const allSelected=boxes.every((e)=>e.checked);
   for(const box of boxes)box.checked=!allSelected;
   memoryStatus=null;renderTargets();
@@ -889,6 +916,7 @@ async function initialiseNative(){
   renderUpdates();
   await refreshAvailability();
   await refreshInstalledTargets();
+  await refreshPrusaEngine();
   await window.SliceBridgeMyPrinters?.init();
   renderCopy();renderTargets();renderQueue();renderResults();renderActionBar();
 }

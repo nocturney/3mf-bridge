@@ -75,7 +75,7 @@ func collectInputs(paths []string) ([]FileInfo, error) {
 	add := func(name string, fromFolder bool) error {
 		if fromFolder {
 			upper := strings.ToUpper(filepath.Base(name))
-			for _, prefix := range []string{"U1-", "C5-", "CC2-", "QIDI-", "ORCA-"} {
+			for _, prefix := range []string{"U1-", "C5-", "CC2-", "QIDI-", "ORCA-", "PRUSA-"} {
 				if strings.HasPrefix(upper, prefix) {
 					return nil
 				}
@@ -259,6 +259,11 @@ func sourceSummary(path string) (SourceSummary, error) {
 func (a *App) InspectFile(path string) (SourceSummary, error) { return sourceSummary(path) }
 
 func configuredConvert(source, target, sourceNozzle string, preference PrinterSettings) ConvertResult {
+	// The generic PrusaSlicer project has no per-printer settings entry, so the
+	// preference argument is intentionally ignored for it.
+	if target == prusaTargetID {
+		return prusaConvert(source)
+	}
 	if presets.IsOrcaTargetID(target) {
 		return installedConvert(source, target)
 	}
@@ -349,10 +354,10 @@ func writeConversion(result ConvertResult, source, slicer string, overrides map[
 		}
 		conversion, err := convert(out)
 		if err != nil {
-			if bridge.ErrorCode(err) == "OUTPUT_EXISTS" {
+			if conversionErrorCode(err) == "OUTPUT_EXISTS" {
 				continue
 			}
-			result.Code = bridge.ErrorCode(err)
+			result.Code = conversionErrorCode(err)
 			result.Error = err.Error()
 			return result
 		}
@@ -364,9 +369,12 @@ func writeConversion(result ConvertResult, source, slicer string, overrides map[
 			conversion["target_objects"] = objects
 			conversion["target_instances"] = instances
 		}
+		// Callers that already measured the output (the PrusaSlicer path reads
+		// its own slot count) keep their values; the Bambu-based reader is
+		// not applied to foreign output formats.
 		if targetInspection, scanErr := converter.Inspect(out); scanErr == nil {
-			conversion["target_plates"] = targetInspection.Plates
-			conversion["target_filament_slots"] = len(targetInspection.Filaments)
+			setIfAbsent(conversion, "target_plates", targetInspection.Plates)
+			setIfAbsent(conversion, "target_filament_slots", len(targetInspection.Filaments))
 		}
 		result.OK = true
 		result.OutputPath = out
@@ -377,6 +385,22 @@ func writeConversion(result ConvertResult, source, slicer string, overrides map[
 	result.Code = "OUTPUT_COLLISIONS"
 	result.Error = "Too many same-name outputs"
 	return result
+}
+
+// conversionErrorCode prefers a code carried by a native engine error and falls
+// back to the bridge codes used by the built-in and installed-profile paths.
+func conversionErrorCode(err error) string {
+	var coded interface{ conversionCode() string }
+	if errors.As(err, &coded) {
+		return coded.conversionCode()
+	}
+	return bridge.ErrorCode(err)
+}
+
+func setIfAbsent(report map[string]any, key string, value any) {
+	if _, exists := report[key]; !exists {
+		report[key] = value
+	}
 }
 
 // tempOrcaBundle writes one resolved installed profile to a private temp file.
@@ -406,7 +430,7 @@ func validateTargets(targets []string) error {
 	seen := map[string]bool{}
 	for _, t := range targets {
 		_, builtIn := outputs[t]
-		if (!builtIn && !presets.IsOrcaTargetID(t)) || seen[t] {
+		if (!builtIn && !presets.IsOrcaTargetID(t) && t != prusaTargetID) || seen[t] {
 			return fmt.Errorf("invalid or repeated target %q", t)
 		}
 		seen[t] = true
@@ -528,6 +552,9 @@ func (a *App) OpenInSlicer(target, outputPath string) error {
 	}
 	if f.Path != outputPath {
 		return fmt.Errorf("invalid output path")
+	}
+	if target == prusaTargetID {
+		return launchPrusaSlicer(outputPath)
 	}
 	settings, err := a.GetSettings()
 	if err != nil {
