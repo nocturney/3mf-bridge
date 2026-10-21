@@ -22,6 +22,7 @@ import tempfile
 import unittest
 import warnings
 import zipfile
+from types import SimpleNamespace
 from unittest import mock
 
 import slicebridge_runner as runner
@@ -97,6 +98,25 @@ NO_BUILD_MODEL = (
     "<resources/><build/></model>"
 )
 DOCTYPE_MODEL = '<!DOCTYPE model [<!ENTITY leak SYSTEM "file:///etc/hosts">]>' + NO_BUILD_MODEL
+# Five source filament slots. Slots 1 and 2 share a colour. Slot 1 is used by the body,
+# slot 3 by the clip, and slots 2, 4 and 5 by no object.
+SOURCE_COLORS = ["#FF0000", "#FF0000", "#00AA00", "#0000FF", "#FFFFFF"]
+SOURCE_TYPES = ["PLA", "PLA", "PETG", "ABS", "PLA"]
+PROJECT_SETTINGS = json.dumps({"filament_colour": SOURCE_COLORS, "filament_type": SOURCE_TYPES})
+EXPECTED_SLOTS = [
+    {"id": 1, "color": "#FF0000", "material": "PLA"},
+    {"id": 2, "color": "#FF0000", "material": "PLA"},
+    {"id": 3, "color": "#00AA00", "material": "PETG"},
+    {"id": 4, "color": "#0000FF", "material": "ABS"},
+    {"id": 5, "color": "#FFFFFF", "material": "PLA"},
+]
+CONTENT_TYPES_BASE = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">\n'
+    ' <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>\n'
+    ' <Default Extension="model" ContentType="application/vnd.ms-package.3dmanufacturing-3dmodel+xml"/>\n'
+    "</Types>\n"
+)
 
 
 def _write_3mf(path, entries):
@@ -108,12 +128,25 @@ def _write_3mf(path, entries):
                 zf.writestr(name, data)
 
 
-def _synthetic_3mf(path, model=MULTIPART_MODEL, settings=MODEL_SETTINGS):
+def _synthetic_3mf(path, model=MULTIPART_MODEL, settings=MODEL_SETTINGS, project=PROJECT_SETTINGS):
     entries = [(runner.MODEL_PART, model.encode("utf-8"))]
     if settings is not None:
         entries.append(("Metadata/model_settings.config", settings.encode("utf-8")))
+    if project is not None:
+        entries.append(("Metadata/project_settings.config", project.encode("utf-8")))
     _write_3mf(path, entries)
     return path
+
+
+def _rewrite(src, dst, replace=None, extra=()):
+    """Copy a zip, replacing entry bytes by name and appending ``extra`` entries."""
+    replace = replace or {}
+    with zipfile.ZipFile(src) as zin, zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED) as zout:
+        for info in zin.infolist():
+            zout.writestr(info.filename, replace.get(info.filename, zin.read(info)))
+        for name, data in extra:
+            zout.writestr(name, data)
+    return dst
 
 
 def _sha(path):
@@ -132,6 +165,35 @@ class _TempCase(unittest.TestCase):
         self.source = _synthetic_3mf(os.path.join(self.tmp, "in.3mf"))
         self.output = os.path.join(self.tmp, "out.3mf")
 
+
+class SourceFilamentSlotTests(unittest.TestCase):
+    """Slot derivation from the source lists. No lxml needed."""
+
+    def test_all_source_slots_kept_in_order(self):
+        project = SimpleNamespace(filament_colors=SOURCE_COLORS, filament_types=SOURCE_TYPES)
+        self.assertEqual(runner._source_filament_slots(project), EXPECTED_SLOTS)
+        self.assertEqual(runner._filament_warnings(EXPECTED_SLOTS), [])
+
+    def test_unreadable_colour_and_missing_material_recorded_as_null(self):
+        project = SimpleNamespace(filament_colors=["#ff8800", "", "red", "#00FF0080"], filament_types=["PLA"])
+        self.assertEqual(
+            runner._source_filament_slots(project),
+            [
+                {"id": 1, "color": "#FF8800", "material": "PLA"},
+                {"id": 2, "color": None, "material": None},
+                {"id": 3, "color": None, "material": None},
+                {"id": 4, "color": None, "material": None},
+            ],
+        )
+        warnings = runner._filament_warnings(runner._source_filament_slots(project))
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("2, 3, 4", warnings[0])
+
+    def test_no_filament_lists_gives_empty_record_with_warning(self):
+        project = SimpleNamespace(filament_colors=[], filament_types=[])
+        slots = runner._source_filament_slots(project)
+        self.assertEqual(slots, [])
+        self.assertEqual(len(runner._filament_warnings(slots)), 1)
 
 
 class RefusalTests(_TempCase):
@@ -375,6 +437,103 @@ class ConversionTests(_TempCase):
         self.assertEqual(ctx.exception.code, "NO_GEOMETRY")
         self.assertFalse(os.path.lexists(empty_plate))
 
+    def test_all_five_source_slots_recorded_as_backup_only(self):
+        before = _sha(self.source)
+        payload = runner.run_conversion(self.source, self.output)
+        self.assertEqual(_sha(self.source), before)
+        self.assertEqual(payload["slot_count"], 5)
+        self.assertTrue(payload["verified"]["filament_slots_preserved"])
+        self.assertTrue(any("Printer profile compatibility" in w for w in payload["warnings"]))
+        self.assertTrue(any(runner.AUX_PART in w and "not a PrusaSlicer" in w for w in payload["warnings"]))
+
+        with zipfile.ZipFile(self.output) as zf:
+            names = zf.namelist()
+            record = json.loads(zf.read(runner.AUX_PART).decode("utf-8"))
+            content_types = runner._parse_xml(zf.read(runner.CONTENT_TYPES_PART))
+            config = runner._parse_xml(zf.read(runner.CONFIG_PART))
+        self.assertEqual(record, {"schemaVersion": 1, "source": "bambu-orca", "slots": EXPECTED_SLOTS})
+        self.assertNotIn(runner.PRINTER_CONFIG_PART, names)
+        overrides = [
+            (el.get("PartName"), el.get("ContentType"))
+            for el in content_types.iter(runner._q(runner.OPC_NS, "Override"))
+        ]
+        self.assertEqual(overrides, [("/" + runner.AUX_PART, "application/json")])
+        # Object and volume extruders still point at the source slots 1 and 3.
+        self.assertEqual(
+            sorted(runner._meta_value(v, "extruder") for v in config.find("object").findall("volume")), ["1", "3"]
+        )
+
+    def test_repack_keeps_every_entry_byte_and_timestamp(self):
+        stamp = (2021, 3, 4, 5, 6, 8)
+        entries = [
+            (runner.CONTENT_TYPES_PART, CONTENT_TYPES_BASE.encode("utf-8"), zipfile.ZIP_DEFLATED),
+            (runner.MODEL_PART, MULTIPART_MODEL.encode("utf-8"), zipfile.ZIP_DEFLATED),
+            ("Metadata/Slic3r_PE_model.config", MODEL_SETTINGS.encode("utf-8"), zipfile.ZIP_DEFLATED),
+            ("Metadata/thumbnail.png", bytes(range(256)) * 512, zipfile.ZIP_STORED),
+        ]
+        src = os.path.join(self.tmp, "converted.3mf")
+        dst = os.path.join(self.tmp, "repacked.3mf")
+        with zipfile.ZipFile(src, "w") as zf:
+            for name, data, method in entries:
+                info = zipfile.ZipInfo(name, date_time=stamp)
+                info.compress_type = method
+                zf.writestr(info, data)
+
+        runner._write_with_source_filaments(src, dst, EXPECTED_SLOTS)
+
+        with zipfile.ZipFile(src) as before, zipfile.ZipFile(dst) as after:
+            self.assertEqual(after.namelist(), [*before.namelist(), runner.AUX_PART])
+            for name, data, method in entries:
+                info = after.getinfo(name)
+                self.assertEqual(info.date_time, stamp, name)
+                self.assertEqual(info.compress_type, method, name)
+                if name != runner.CONTENT_TYPES_PART:
+                    self.assertEqual(after.read(name), data, name)
+            self.assertEqual(after.getinfo(runner.AUX_PART).compress_type, zipfile.ZIP_DEFLATED)
+            self.assertIsNone(after.testzip())
+
+    def test_verify_rejects_altered_slot_record(self):
+        runner.run_conversion(self.source, self.output)
+        expected = self._expected()
+        wrong = [dict(slot) for slot in EXPECTED_SLOTS]
+        wrong[1]["color"] = "#00FF00"  # same-colour duplicate changed, so the record no longer matches
+        altered = _rewrite(
+            self.output,
+            os.path.join(self.tmp, "altered.3mf"),
+            replace={runner.AUX_PART: json.dumps(runner._aux_document(wrong)).encode("utf-8")},
+        )
+        with self.assertRaises(runner.SliceBridgeError) as ctx:
+            runner._verify_output(altered, expected)
+        self.assertEqual(ctx.exception.code, "METADATA_MISMATCH")
+
+    def test_verify_rejects_missing_content_type_override(self):
+        runner.run_conversion(self.source, self.output)
+        unregistered = _rewrite(
+            self.output,
+            os.path.join(self.tmp, "unregistered.3mf"),
+            replace={runner.CONTENT_TYPES_PART: CONTENT_TYPES_BASE.encode("utf-8")},
+        )
+        with self.assertRaises(runner.SliceBridgeError) as ctx:
+            runner._verify_output(unregistered, self._expected())
+        self.assertEqual(ctx.exception.code, "OUTPUT_INVALID")
+
+    def test_verify_rejects_printer_config_injection(self):
+        runner.run_conversion(self.source, self.output)
+        injected = _rewrite(
+            self.output,
+            os.path.join(self.tmp, "injected.3mf"),
+            extra=[(runner.PRINTER_CONFIG_PART, b"<config/>")],
+        )
+        with self.assertRaises(runner.SliceBridgeError) as ctx:
+            runner._verify_output(injected, self._expected())
+        self.assertEqual(ctx.exception.code, "OUTPUT_INVALID")
+
+    def _expected(self):
+        project = runner.read_bambu_3mf(self.source)
+        expected = runner._expected(project, None)
+        expected["filament_slots"] = runner._source_filament_slots(project)
+        return expected
+
     @unittest.skipUnless(FIXTURES, f"no fixtures found in {FIXTURE_DIR}")
     def test_repository_fixtures_convert_and_verify(self):
         for fixture in FIXTURES:
@@ -392,6 +551,8 @@ class VendorTests(unittest.TestCase):
         for rel, expected in UPSTREAM_BLOBS.items():
             with open(os.path.join(HERE, rel), "rb") as fh:
                 data = fh.read()
+            if os.name == "nt":  # a Windows checkout may use CRLF; git blob ids are LF
+                data = data.replace(b"\r\n", b"\n")
             blob = hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
             self.assertEqual(blob, expected, rel)
 
