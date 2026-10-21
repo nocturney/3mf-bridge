@@ -1,0 +1,523 @@
+package main
+
+import (
+	"archive/zip"
+	"encoding/json"
+	"encoding/xml"
+	"errors"
+	"fmt"
+	"io"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"runtime"
+	"sort"
+	"strings"
+	"sync"
+	"time"
+
+	"github.com/BryanSmee/bl_to_std/pkg/converter"
+	"github.com/nocturney/3mf-bridge/engine/bridge"
+	"github.com/nocturney/3mf-bridge/native/presets"
+	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
+)
+
+const maxBatchFiles = 200
+
+type SourceSummary struct {
+	Path          string               `json:"path"`
+	Name          string               `json:"name"`
+	Nozzle        string               `json:"nozzle"`
+	NozzleAssumed bool                 `json:"nozzleAssumed"`
+	Plates        int                  `json:"plates"`
+	Objects       int                  `json:"objects"`
+	Instances     int                  `json:"instances"`
+	Filaments     []converter.Filament `json:"filaments"`
+}
+type BatchRequest struct {
+	FilePaths []string `json:"filePaths"`
+	Targets   []string `json:"targets"`
+}
+type FileBatchResult struct {
+	Source   SourceSummary   `json:"source"`
+	Results  []ConvertResult `json:"results"`
+	Failures []ConvertResult `json:"failures"`
+	Error    string          `json:"error,omitempty"`
+}
+type BatchReply struct {
+	StartedAt  string            `json:"startedAt"`
+	FinishedAt string            `json:"finishedAt"`
+	Files      []FileBatchResult `json:"files"`
+	FilesDone  int               `json:"filesDone"`
+	Successes  int               `json:"successes"`
+	Failures   int               `json:"failures"`
+	Error      string            `json:"error,omitempty"`
+}
+type BatchProgress struct {
+	FileIndex int    `json:"fileIndex"`
+	FileCount int    `json:"fileCount"`
+	FileName  string `json:"fileName"`
+	Completed bool   `json:"completed"`
+}
+
+// CollectInputs expands files and folders from the native picker or OS drop.
+// Symlink directories are not traversed and previously generated output files
+// are not requeued when a whole source folder is dropped.
+func collectInputs(paths []string) ([]FileInfo, error) {
+	if len(paths) == 0 {
+		return []FileInfo{}, nil
+	}
+	if len(paths) > maxBatchFiles {
+		return nil, fmt.Errorf("too many dropped items (limit %d)", maxBatchFiles)
+	}
+	collected := []FileInfo{}
+	seen := map[string]bool{}
+	add := func(name string, fromFolder bool) error {
+		if fromFolder {
+			upper := strings.ToUpper(filepath.Base(name))
+			for _, prefix := range []string{"U1-", "C5-", "CC2-", "QIDI-"} {
+				if strings.HasPrefix(upper, prefix) {
+					return nil
+				}
+			}
+		}
+		if !strings.EqualFold(filepath.Ext(name), ".3mf") {
+			return nil
+		}
+		info, err := fileInfo(name)
+		if err != nil {
+			return err
+		}
+		key := info.Path
+		if runtime.GOOS == "windows" {
+			key = strings.ToLower(key)
+		}
+		if seen[key] {
+			return nil
+		}
+		if len(collected) >= maxBatchFiles {
+			return fmt.Errorf("a maximum of %d projects may be queued", maxBatchFiles)
+		}
+		seen[key] = true
+		collected = append(collected, *info)
+		return nil
+	}
+	for _, item := range paths {
+		abs, err := filepath.Abs(item)
+		if err != nil {
+			return nil, err
+		}
+		stat, err := os.Lstat(abs)
+		if err != nil {
+			return nil, err
+		}
+		if stat.Mode()&os.ModeSymlink != 0 {
+			return nil, fmt.Errorf("symlink inputs are not accepted: %s", abs)
+		}
+		if stat.IsDir() {
+			err = filepath.WalkDir(abs, func(name string, entry os.DirEntry, entryErr error) error {
+				if entryErr != nil {
+					return entryErr
+				}
+				if entry.Type()&os.ModeSymlink != 0 {
+					return nil
+				}
+				if entry.IsDir() {
+					if name != abs && strings.HasPrefix(entry.Name(), ".") {
+						return filepath.SkipDir
+					}
+					return nil
+				}
+				return add(name, true)
+			})
+			if err != nil {
+				return nil, err
+			}
+		} else {
+			if !strings.EqualFold(filepath.Ext(abs), ".3mf") {
+				return nil, fmt.Errorf("only .3mf files may be added")
+			}
+			if err = add(abs, false); err != nil {
+				return nil, err
+			}
+		}
+	}
+	sort.Slice(collected, func(i, j int) bool { return strings.ToLower(collected[i].Path) < strings.ToLower(collected[j].Path) })
+	return collected, nil
+}
+func (a *App) CollectInputs(paths []string) ([]FileInfo, error) { return collectInputs(paths) }
+func (a *App) SelectFiles(lang string) ([]FileInfo, error) {
+	if a.ctx == nil {
+		return nil, fmt.Errorf("desktop window not ready")
+	}
+	title := "Add Bambu 3MF projects"
+	if lang == "he" {
+		title = "הוספת פרויקטים של Bambu 3MF"
+	}
+	paths, err := wailsruntime.OpenMultipleFilesDialog(a.ctx, wailsruntime.OpenDialogOptions{
+		Title: title, Filters: []wailsruntime.FileFilter{{DisplayName: "3MF (*.3mf)", Pattern: "*.3mf"}},
+	})
+	if err != nil {
+		return nil, err
+	}
+	return collectInputs(paths)
+}
+func (a *App) SelectFolder(lang string) ([]FileInfo, error) {
+	if a.ctx == nil {
+		return nil, fmt.Errorf("desktop window not ready")
+	}
+	title := "Add all 3MF projects in folder"
+	if lang == "he" {
+		title = "הוספת כל קובצי 3MF מהתיקייה"
+	}
+	folder, err := wailsruntime.OpenDirectoryDialog(a.ctx, wailsruntime.OpenDialogOptions{Title: title})
+	if err != nil {
+		return nil, err
+	}
+	if folder == "" {
+		return []FileInfo{}, nil
+	}
+	return collectInputs([]string{folder})
+}
+
+func inspectModelCount(path string) (objects, instances int, err error) {
+	f, err := zip.OpenReader(path)
+	if err != nil {
+		return 0, 0, err
+	}
+	defer f.Close()
+	found := false
+	for _, item := range f.File {
+		if !strings.HasPrefix(item.Name, "3D/") || !strings.HasSuffix(strings.ToLower(item.Name), ".model") {
+			continue
+		}
+		if item.UncompressedSize64 > 64<<20 {
+			return 0, 0, fmt.Errorf("source model XML too large")
+		}
+		reader, err := item.Open()
+		if err != nil {
+			return 0, 0, err
+		}
+		decoder := xml.NewDecoder(io.LimitReader(reader, 64<<20))
+		for {
+			tok, readErr := decoder.Token()
+			if readErr == io.EOF {
+				break
+			}
+			if readErr != nil {
+				reader.Close()
+				return 0, 0, readErr
+			}
+			elem, ok := tok.(xml.StartElement)
+			if !ok {
+				continue
+			}
+			switch elem.Name.Local {
+			case "object":
+				objects++
+			case "item":
+				instances++
+			}
+			if objects > 100000 || instances > 100000 {
+				reader.Close()
+				return 0, 0, fmt.Errorf("unusual model object count")
+			}
+		}
+		reader.Close()
+		found = true
+	}
+	if !found {
+		return 0, 0, fmt.Errorf("no 3D model XML found")
+	}
+	return objects, instances, nil
+}
+func sourceSummary(path string) (SourceSummary, error) {
+	s := SourceSummary{Path: path, Name: filepath.Base(path)}
+	if _, err := fileInfo(path); err != nil {
+		return s, err
+	}
+	nozzle, err := bridge.InspectNozzle(path)
+	if err != nil {
+		return s, err
+	}
+	insp, err := converter.Inspect(path)
+	if err != nil {
+		return s, err
+	}
+	objects, instances, err := inspectModelCount(path)
+	if err != nil {
+		return s, err
+	}
+	s.Nozzle, _ = nozzle["source_nozzle"].(string)
+	s.NozzleAssumed, _ = nozzle["source_nozzle_assumed"].(bool)
+	s.Plates = insp.Plates
+	s.Objects = objects
+	s.Instances = instances
+	s.Filaments = insp.Filaments
+	return s, nil
+}
+func (a *App) InspectFile(path string) (SourceSummary, error) { return sourceSummary(path) }
+
+func configuredConvert(source, target, sourceNozzle string, preference PrinterSettings) ConvertResult {
+	result := ConvertResult{Target: target, Prefix: outputs[target]}
+	dir := filepath.Dir(source)
+	basename := filepath.Base(source)
+	stem := strings.TrimSuffix(basename, filepath.Ext(basename))
+	preferred := preference.Nozzle
+	if preferred == "auto" {
+		preferred = ""
+	}
+	nativeNozzle := sourceNozzle
+	if preferred != "" {
+		nativeNozzle = preferred
+	}
+	_, _, _, _, vErr := presets.Variant(target, nativeNozzle)
+	if vErr != nil {
+		result.Code = "TARGET_NOZZLE_UNAVAILABLE"
+		result.Error = vErr.Error()
+		return result
+	}
+	if target == "c5" && nativeNozzle == "0.2" {
+		nativeNozzle = "0.25"
+	}
+	useBuiltin := target == "u1" && nativeNozzle == "0.4" && preference.Slicer == "auto" && len(preference.Filaments) == 0
+	usedSlicer := "Built-in Snapmaker U1 template"
+	profileFile := ""
+	if !useBuiltin {
+		bundle, err := presets.LoadConfigured(target, nativeNozzle, preference.Slicer, preference.Filaments)
+		if err != nil {
+			result.Code = "TARGET_PROFILE_INVALID"
+			result.Error = err.Error()
+			return result
+		}
+		usedSlicer = bundle.Slicer
+		f, cleanup, err := tempVendorBundle(bundle)
+		if err != nil {
+			result.Code = "TARGET_PROFILE_INVALID"
+			result.Error = err.Error()
+			return result
+		}
+		defer cleanup()
+		profileFile = f
+	}
+	for attempt := 1; attempt <= 100; attempt++ {
+		filename := result.Prefix + "-" + basename
+		if attempt > 1 {
+			filename = fmt.Sprintf("%s-%s-%d%s", result.Prefix, stem, attempt, filepath.Ext(basename))
+		}
+		out := filepath.Join(dir, filename)
+		if _, err := os.Stat(out); err == nil {
+			continue
+		} else if !errors.Is(err, os.ErrNotExist) {
+			result.Code = "OUTPUT_INVALID"
+			result.Error = err.Error()
+			return result
+		}
+		conversion, err := bridge.ConvertWithTargetNozzle(source, out, target, profileFile, preferred)
+		if err != nil {
+			if bridge.ErrorCode(err) == "OUTPUT_EXISTS" {
+				continue
+			}
+			result.Code = bridge.ErrorCode(err)
+			result.Error = err.Error()
+			return result
+		}
+		conversion["native_slicer"] = usedSlicer
+		conversion["native_filament_overrides"] = preference.Filaments
+		// Reinspect the written project so reports show real target-side
+		// object/plate counts instead of assuming they equal the source.
+		if objects, instances, scanErr := inspectModelCount(out); scanErr == nil {
+			conversion["target_objects"] = objects
+			conversion["target_instances"] = instances
+		}
+		if targetInspection, scanErr := converter.Inspect(out); scanErr == nil {
+			conversion["target_plates"] = targetInspection.Plates
+			conversion["target_filament_slots"] = len(targetInspection.Filaments)
+		}
+		result.OK = true
+		result.OutputPath = out
+		result.OutputName = filename
+		result.Report = conversion
+		return result
+	}
+	result.Code = "OUTPUT_COLLISIONS"
+	result.Error = "Too many same-name outputs"
+	return result
+}
+func validateTargets(targets []string) error {
+	if len(targets) == 0 || len(targets) > 4 {
+		return fmt.Errorf("select between 1 and 4 printers")
+	}
+	seen := map[string]bool{}
+	for _, t := range targets {
+		if _, ok := outputs[t]; !ok || seen[t] {
+			return fmt.Errorf("invalid or repeated target %q", t)
+		}
+		seen[t] = true
+	}
+	return nil
+}
+func (a *App) emitProgress(progress BatchProgress) {
+	if a.ctx != nil {
+		wailsruntime.EventsEmit(a.ctx, "bridge:batch-progress", progress)
+	}
+}
+func (a *App) ConvertBatch(request BatchRequest) BatchReply {
+	report := BatchReply{StartedAt: time.Now().UTC().Format(time.RFC3339), Files: []FileBatchResult{}}
+	if err := validateTargets(request.Targets); err != nil {
+		report.Error = err.Error()
+		return report
+	}
+	if len(request.FilePaths) == 0 || len(request.FilePaths) > maxBatchFiles {
+		report.Error = fmt.Sprintf("select between 1 and %d projects", maxBatchFiles)
+		return report
+	}
+	settings, err := a.GetSettings()
+	if err != nil {
+		report.Error = err.Error()
+		return report
+	}
+	seen := map[string]bool{}
+	validated := []string{}
+	for _, path := range request.FilePaths {
+		file, err := fileInfo(path)
+		if err != nil {
+			report.Error = err.Error()
+			return report
+		}
+		key := file.Path
+		if runtime.GOOS == "windows" {
+			key = strings.ToLower(key)
+		}
+		if seen[key] {
+			report.Error = "repeated project path in batch"
+			return report
+		}
+		seen[key] = true
+		validated = append(validated, file.Path)
+	}
+	// Bound conversions: one source project at a time, with at most four
+	// concurrent printer targets. Prevent large queues from exhausting RAM.
+	for index, source := range validated {
+		a.emitProgress(BatchProgress{FileIndex: index + 1, FileCount: len(validated), FileName: filepath.Base(source)})
+		entry := FileBatchResult{
+			Source:  SourceSummary{Path: source, Name: filepath.Base(source)},
+			Results: []ConvertResult{}, Failures: []ConvertResult{},
+		}
+		summary, err := sourceSummary(source)
+		if err != nil {
+			entry.Error = err.Error()
+			report.Failures += len(request.Targets)
+			for _, target := range request.Targets {
+				entry.Failures = append(entry.Failures, ConvertResult{Target: target, Code: "SOURCE_INVALID", Error: err.Error()})
+			}
+		} else {
+			entry.Source = summary
+			results := make([]ConvertResult, len(request.Targets))
+			var wg sync.WaitGroup
+			for i, target := range request.Targets {
+				wg.Add(1)
+				go func(index int, t string) {
+					defer wg.Done()
+					results[index] = configuredConvert(source, t, summary.Nozzle, settings.Printers[t])
+				}(i, target)
+			}
+			wg.Wait()
+			for _, result := range results {
+				if result.OK {
+					entry.Results = append(entry.Results, result)
+					report.Successes++
+					a.mutex.Lock()
+					if a.generated == nil {
+						a.generated = map[string]string{}
+					}
+					a.generated[result.OutputPath] = result.Target
+					a.lastFolder = filepath.Dir(result.OutputPath)
+					a.mutex.Unlock()
+				} else {
+					entry.Failures = append(entry.Failures, result)
+					report.Failures++
+				}
+			}
+		}
+		report.Files = append(report.Files, entry)
+		report.FilesDone++
+		a.emitProgress(BatchProgress{FileIndex: index + 1, FileCount: len(validated), FileName: filepath.Base(source), Completed: true})
+	}
+	report.FinishedAt = time.Now().UTC().Format(time.RFC3339)
+	a.mutex.Lock()
+	a.latestBatch = report
+	a.mutex.Unlock()
+	return report
+}
+
+func (a *App) OpenInSlicer(target, outputPath string) error {
+	a.mutex.Lock()
+	actual := a.generated[outputPath]
+	a.mutex.Unlock()
+	if target == "" || target != actual {
+		return fmt.Errorf("file was not generated for this printer in the current session")
+	}
+	f, err := fileInfo(outputPath)
+	if err != nil {
+		return err
+	}
+	if f.Path != outputPath {
+		return fmt.Errorf("invalid output path")
+	}
+	settings, err := a.GetSettings()
+	if err != nil {
+		return err
+	}
+	_, exe, slicer, err := presets.ResolveSlicer(target, settings.Printers[target].Slicer)
+	if err != nil {
+		return err
+	}
+	if exe == "" {
+		return fmt.Errorf("%s executable is not available on this computer", slicer)
+	}
+	if info, err := os.Stat(exe); err != nil || (runtime.GOOS == "darwin" && !info.IsDir()) || (runtime.GOOS == "windows" && info.IsDir()) {
+		return fmt.Errorf("%s executable is missing", slicer)
+	}
+	if runtime.GOOS == "darwin" {
+		return exec.Command("open", "-a", exe, outputPath).Start()
+	}
+	return exec.Command(exe, outputPath).Start()
+}
+func (a *App) ExportLastReport(lang string) (string, error) {
+	if a.ctx == nil {
+		return "", fmt.Errorf("desktop window not ready")
+	}
+	a.mutex.Lock()
+	report := a.latestBatch
+	a.mutex.Unlock()
+	if report.FilesDone == 0 {
+		return "", fmt.Errorf("there is no conversion report to export")
+	}
+	title := "Save 3MF Bridge conversion report"
+	if lang == "he" {
+		title = "שמירת דו״ח המרה"
+	}
+	dest, err := wailsruntime.SaveFileDialog(a.ctx, wailsruntime.SaveDialogOptions{
+		Title:           title,
+		DefaultFilename: "3MF-Bridge-report.json",
+		Filters:         []wailsruntime.FileFilter{{DisplayName: "JSON (*.json)", Pattern: "*.json"}},
+	})
+	if err != nil {
+		return "", err
+	}
+	if dest == "" {
+		return "", nil
+	}
+	if filepath.Ext(dest) != ".json" {
+		return "", fmt.Errorf("report file must use .json extension")
+	}
+	b, err := json.MarshalIndent(report, "", "  ")
+	if err != nil {
+		return "", err
+	}
+	if err = os.WriteFile(dest, append(b, '\n'), 0600); err != nil {
+		return "", err
+	}
+	return dest, nil
+}

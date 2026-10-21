@@ -38,6 +38,13 @@ func Convert(source, destination, target string) (map[string]any, error) {
 // ConvertWithProfile uses manufacturer slicer presets for C5/CC2/QIDI.
 // A missing or mismatched installed profile fails closed.
 func ConvertWithProfile(source, destination, target, profileFile string) (map[string]any, error) {
+	return ConvertWithTargetNozzle(source, destination, target, profileFile, "")
+}
+
+// ConvertWithTargetNozzle allows the operator to choose the target's actual
+// installed physical nozzle. The default retains historical source matching;
+// an explicit target selection is validated against manufacturer sizes.
+func ConvertWithTargetNozzle(source, destination, target, profileFile, requestedNozzle string) (map[string]any, error) {
 	target = strings.ToLower(target)
 	if targetModels[target] == "" {
 		return nil, fail("TARGET_NOT_VALIDATED", "unknown target %q", target)
@@ -65,9 +72,14 @@ func ConvertWithProfile(source, destination, target, profileFile string) (map[st
 	if err != nil {
 		return nil, fail("SOURCE_NOZZLE_INVALID", "%v", err)
 	}
-	targetNozzle, err := targetNozzleForSource(target, sourceNozzle.Nozzle)
-	if err != nil {
-		return nil, fail("TARGET_NOZZLE_UNAVAILABLE", "%v", err)
+	targetNozzle := requestedNozzle
+	if targetNozzle == "" {
+		targetNozzle, err = targetNozzleForSource(target, sourceNozzle.Nozzle)
+		if err != nil {
+			return nil, fail("TARGET_NOZZLE_UNAVAILABLE", "%v", err)
+		}
+	} else if !validTargetNozzle(target, targetNozzle) {
+		return nil, fail("TARGET_NOZZLE_UNAVAILABLE", "target %s does not support physical nozzle %q", target, requestedNozzle)
 	}
 	if (target != "u1" || targetNozzle != "0.4") && profileFile == "" {
 		return nil, fail("TARGET_PROFILE_REQUIRED", "installed %s %smm slicer nozzle profile is required", target, targetNozzle)
@@ -186,6 +198,7 @@ func ConvertWithProfile(source, destination, target, profileFile string) (map[st
 		"source_nozzle_assumed":       sourceNozzle.Assumed,
 		"target_nozzle":               targetNozzle,
 		"nozzle_remapped":             sourceNozzle.Nozzle != targetNozzle,
+		"nozzle_selected_by_user":    requestedNozzle != "",
 		"source_filament_slots":       len(insp.Filaments),
 		"geometry_vertices":           after.vertices,
 		"geometry_triangles":          after.triangles,
