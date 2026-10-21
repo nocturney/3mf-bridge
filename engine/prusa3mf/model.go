@@ -269,9 +269,11 @@ func (m *modelReader) triangle(el xml.StartElement, obj *object) error {
 			return fail("SOURCE_INVALID", "triangle of object %d is missing %s", obj.id, key)
 		}
 		n, err := strconv.Atoi(s)
-		if err != nil || n < 0 || n >= len(obj.vertices) {
+		if err != nil || n < 0 || n > 2147483647 || n >= len(obj.vertices) {
 			return fail("SOURCE_INVALID", "triangle of object %d references vertex %q outside the mesh", obj.id, s)
 		}
+		// The 3MF writer uses int32 indices; reject oversized values instead
+		// of allowing architecture-dependent truncation on 64-bit hosts.
 		t.v[i] = int32(n)
 	}
 	if code, ok := attr(el, "paint_color"); ok {
