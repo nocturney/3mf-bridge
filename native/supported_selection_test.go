@@ -73,16 +73,18 @@ func TestNewSelectionAcceptsOnlyWorkingDestinations(t *testing.T) {
 	}
 }
 
-func TestNewSelectionRejectsIndexOnlyBambuAndMalformedIDs(t *testing.T) {
+func TestNewSelectionRejectsBambuUnknownAndMalformedIDs(t *testing.T) {
 	withFreshSettings(t)
 	stubInstalledOrca(t, readyOrca)
 	app := &App{}
-	// Index-only model without an adapter, Bambu (source-only), a bare adapter
-	// key, an unknown ID, malformed installed-looking IDs, and empty input.
+	// Bambu (source-only), a bare adapter key, a bare manufacturer slug, an unknown
+	// ID, malformed installed-looking IDs, and empty input.
 	for _, id := range []string{
-		"prusa-prusa-mk4",
 		"bambu-lab-p1s",
 		"u1",
+		"prusa",
+		"creality",
+		"creality-unknown-printer",
 		"unknown-printer",
 		"orca-../x",
 		"Snapmaker-U1",
@@ -134,7 +136,7 @@ func TestNewSelectionRejectsDuplicatesAndOverLimit(t *testing.T) {
 	}
 }
 
-func TestOldCatalogueOnlySelectionLoadsWithoutCorruption(t *testing.T) {
+func TestOldCatalogueSelectionKeepsKnownModelsAndDropsBambuAndUnknown(t *testing.T) {
 	withFreshSettings(t)
 	stubInstalledOrca(t)
 	raw := `{"version":1,"selectedIds":["snapmaker-u1","prusa-prusa-mk4","bambu-lab-p1s","unknown-printer","qidi-x-plus-5"]}`
@@ -142,8 +144,8 @@ func TestOldCatalogueOnlySelectionLoadsWithoutCorruption(t *testing.T) {
 	app := &App{}
 	got, err := app.GetMyPrinters()
 	if err != nil || got.OnboardingPending ||
-		!reflect.DeepEqual(got.SelectedIDs, []string{"snapmaker-u1", "qidi-x-plus-5"}) {
-		t.Fatalf("old catalogue-only selection not hidden cleanly: %+v %v", got, err)
+		!reflect.DeepEqual(got.SelectedIDs, []string{"snapmaker-u1", "prusa-prusa-mk4", "qidi-x-plus-5"}) {
+		t.Fatalf("known catalogue selection not kept or Bambu/unknown not dropped: %+v %v", got, err)
 	}
 	after, err := os.ReadFile(path)
 	if err != nil || string(after) != raw {

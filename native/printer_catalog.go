@@ -171,9 +171,23 @@ func myPrintersPath() (string, error) {
 var discoverInstalledOrca = presets.DiscoverOrca
 var resolveInstalledOrca = presets.ResolveOrcaBundle
 
-// validateNewSelection accepts only working destinations for new saves: the four
-// original adapters, the generic PrusaSlicer engine, and installed Orca targets
-// that resolve right now. Index-only catalogue models are never selectable.
+// catalogueSelectable reports whether a catalogue ID may sit in My Printers as
+// user-owned inventory. Every known catalogue model qualifies except Bambu Lab,
+// which is source-only. Being selectable never makes an ID a conversion target:
+// batch and single conversion keep their own gates (outputs, IsOrcaTargetID,
+// prusaTargetID), and none of them read this list.
+func catalogueSelectable(catalog PrinterCatalogReply, id string) bool {
+	for _, item := range catalog.Models {
+		if item.ID == id {
+			return !strings.EqualFold(item.Manufacturer, "Bambu Lab")
+		}
+	}
+	return false
+}
+
+// validateNewSelection accepts the IDs a user may save: any known catalogue model
+// except Bambu Lab, the generic PrusaSlicer engine, and installed Orca targets
+// that resolve right now. Unknown, malformed, duplicate and Bambu IDs are rejected.
 func validateNewSelection(ids []string, catalog PrinterCatalogReply) error {
 	if len(ids) > maxMyPrinters {
 		return fmt.Errorf("at most %d printers can be selected", maxMyPrinters)
@@ -191,32 +205,21 @@ func validateNewSelection(ids []string, catalog PrinterCatalogReply) error {
 			if _, err := resolveInstalledOrca(id); err != nil {
 				return fmt.Errorf("installed printer profile is not ready")
 			}
-		case !isLegacyAdapterModel(catalog, id):
-			// Bambu and other index-only models stay out of the destination list.
-			return fmt.Errorf("printer is not available as a conversion target")
+		case !catalogueSelectable(catalog, id):
+			return fmt.Errorf("printer is not in the offline catalogue")
 		}
 	}
 	return nil
 }
 
-// isLegacyAdapterModel reports whether a catalogue ID is one of the four original
-// conversion adapters. Index-only entries, including Bambu, return false.
-func isLegacyAdapterModel(catalog PrinterCatalogReply, id string) bool {
-	for _, item := range catalog.Models {
-		if item.ID == id {
-			return item.LegacyTarget != nil
-		}
-	}
-	return false
-}
-
-// usableSavedSelection keeps the saved IDs that are still working targets, in
-// saved order. Index-only entries from older versions, unknown IDs and installed
-// profiles that have since disappeared are dropped from the reply only. Reads
-// never rewrite the file. Malformed or duplicate IDs remain corruption.
-func usableSavedSelection(ids []string, catalog PrinterCatalogReply, installed map[string]bool) ([]string, error) {
+// keptSavedSelection returns the saved IDs to show, in saved order. Known
+// catalogue models stay. Installed Orca targets stay only while installed, and
+// the generic engine stays. Unknown IDs, Bambu entries and missing Orca profiles
+// are dropped from the reply only; reads never rewrite the file. Malformed or
+// duplicate IDs remain corruption.
+func keptSavedSelection(ids []string, catalog PrinterCatalogReply, installed map[string]bool) ([]string, error) {
 	seen := make(map[string]bool, len(ids))
-	usable := []string{}
+	kept := []string{}
 	for _, id := range ids {
 		if !catalogIDPattern.MatchString(id) || seen[id] {
 			return nil, fmt.Errorf("invalid or duplicate printer selection")
@@ -224,16 +227,16 @@ func usableSavedSelection(ids []string, catalog PrinterCatalogReply, installed m
 		seen[id] = true
 		switch {
 		case id == prusaTargetID:
-			usable = append(usable, id)
+			kept = append(kept, id)
 		case presets.IsOrcaTargetID(id):
 			if installed[id] {
-				usable = append(usable, id)
+				kept = append(kept, id)
 			}
-		case isLegacyAdapterModel(catalog, id):
-			usable = append(usable, id)
+		case catalogueSelectable(catalog, id):
+			kept = append(kept, id)
 		}
 	}
-	return usable, nil
+	return kept, nil
 }
 
 // installedOrcaIDs scans installed Orca targets only when a saved selection names
@@ -279,11 +282,11 @@ func loadMyPrinters(catalog PrinterCatalogReply) (MyPrintersReply, error) {
 	if len(cfg.SelectedIDs) > maxMyPrinters {
 		return MyPrintersReply{}, fmt.Errorf("saved printer selections invalid: at most %d printers", maxMyPrinters)
 	}
-	usable, err := usableSavedSelection(cfg.SelectedIDs, catalog, installedOrcaIDs(cfg.SelectedIDs))
+	kept, err := keptSavedSelection(cfg.SelectedIDs, catalog, installedOrcaIDs(cfg.SelectedIDs))
 	if err != nil {
 		return MyPrintersReply{}, fmt.Errorf("saved printer selections invalid: %w", err)
 	}
-	return MyPrintersReply{Version: 1, SelectedIDs: usable}, nil
+	return MyPrintersReply{Version: 1, SelectedIDs: kept}, nil
 }
 
 func (a *App) GetMyPrinters() (MyPrintersReply, error) {
