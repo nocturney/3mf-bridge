@@ -6,6 +6,12 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.15] - 2026-10-21 (development build; see GitHub Releases)
+
+- In My Printers, show the principal slicer-integration manufacturers first, a disabled visual separator, and other detected manufacturers alphabetically. Existing selections stay first in saved order.
+- Sort other printer choices by verified public launch date newest-first when known; undated choices follow, with familiar integrated manufacturers before alphabetic fallback. No release dates are invented from model names.
+- Show the launch month/year only when sourced. All target enablement, physical nozzle handling and conversion adapters remain unchanged in this UI-only build.
+
 ## [0.4.0-beta.4.dev.14] - 2026-10-21 (development build; see GitHub Releases)
 
 - Windows portable download is one `SliceBridge.exe` with the Prusa conversion engine embedded. No external helper executable, Python installation or installer is required; the verified engine extracts automatically to a per-user cache.

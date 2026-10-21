@@ -40,9 +40,9 @@ test('catalogue-only models never become destinations, even when every adapter i
 
 test('each supported item has exactly the documented fields and no status, tag or path data',()=>{
   const [first]=picker.supportedModels(catalog.models,availabilityAll(),[orca],true);
-  assert.deepEqual(Object.keys(first).sort(),['aliases','id','legacyTarget','manufacturer','model']);
+  assert.deepEqual(Object.keys(first).sort(),['aliases','id','legacyTarget','manufacturer','model','releaseDate']);
   for(const item of picker.supportedModels(catalog.models,availabilityAll(),[orca],true)){
-    assert.deepEqual(Object.keys(item).sort(),['aliases','id','legacyTarget','manufacturer','model'],item.id);
+    assert.deepEqual(Object.keys(item).sort(),['aliases','id','legacyTarget','manufacturer','model','releaseDate'],item.id);
     assert.ok(Array.isArray(item.aliases));
     for(const value of [item.manufacturer,item.model,...item.aliases]){
       assert.equal(typeof value,'string');
@@ -53,7 +53,7 @@ test('each supported item has exactly the documented fields and no status, tag o
 
 test('installed Orca targets outside the 603-model catalogue are listed by backend id',()=>{
   const items=plain(picker.supportedModels(catalog.models,[],[orca],false));
-  assert.deepEqual(items,[{id:orcaId,manufacturer:'Anker',model:'Make M5',aliases:[],legacyTarget:null}]);
+  assert.deepEqual(items,[{id:orcaId,manufacturer:'Anker',model:'Make M5',aliases:[],legacyTarget:null,releaseDate:null}]);
   assert.equal(catalog.models.some(model=>model.id===orcaId),false);
 });
 
@@ -116,7 +116,7 @@ test('Bambu is never a destination, whether built in, by vendor code or by title
 
 test('PrusaSlicer project is listed only when the engine probe is available',()=>{
   const on=picker.supportedModels(catalog.models,[],[],true);
-  assert.deepEqual(plain(on),[{id:'prusa-project',manufacturer:'PrusaSlicer',model:'Generic project',aliases:[],legacyTarget:null}]);
+  assert.deepEqual(plain(on),[{id:'prusa-project',manufacturer:'PrusaSlicer',model:'Generic project',aliases:[],legacyTarget:null,releaseDate:null}]);
   for(const value of [false,undefined,'true',1,null]){
     assert.deepEqual(picker.supportedModels(catalog.models,[],[],value),[],String(value));
   }
@@ -222,8 +222,10 @@ test('manufacturer dropdown offers only makers of supported destinations',async(
   const h=loadMyPrinters({});
   h.api.setSupportedTargets({available:availabilityAll({c5:false,cc2:false,qidi:false}),installedTargets:[orca],prusaAvailable:false});
   await h.api.init();
-  const makers=h.dom('printerManufacturerFilter').children.map(option=>option.value);
-  assert.deepEqual(makers,['','Anker','Snapmaker']);
+  const options=h.dom('printerManufacturerFilter').children;
+  assert.deepEqual(options.map(option=>option.value),['','Snapmaker','','Anker']);
+  assert.equal(options[2].disabled,true,'separator must not be a selectable maker');
+  assert.match(options[2].textContent,/─/);
 });
 
 test('losing availability trims an open draft and removes the destination everywhere',async()=>{
@@ -260,4 +262,49 @@ test('the 32-printer limit holds in the dialog, not only in the saved file',asyn
   assert.equal(card(many[32].id).checked,false);
   assert.equal(h.dom('myPrintersStatus').textContent,'You can select up to 32 printers.');
   assert.equal(h.dom('myPrintersSelectionCount').textContent,'32 printers selected');
+});
+
+test('integrated manufacturers appear ahead of alphabetical others, with one disabled separator',()=>{
+  const items=[
+    {manufacturer:'Zortrax'},{manufacturer:'QIDI'},{manufacturer:'Anycubic'},
+    {manufacturer:'Flashforge'},{manufacturer:'Snapmaker'},{manufacturer:'Creality'},
+    {manufacturer:'PrusaSlicer'},{manufacturer:'ELEGOO'}
+  ];
+  const grouped=picker.manufacturerGroups(items);
+  assert.deepEqual(grouped.preferred,['Anycubic','Creality','ELEGOO','Flashforge','PrusaSlicer','QIDI','Snapmaker']);
+  assert.deepEqual(grouped.others,['Zortrax']);
+  assert.deepEqual(picker.manufacturerGroups([]),{preferred:[],others:[]});
+});
+
+test('unselected printers sort by verified launch date, selected first in saved order',()=>{
+  const targets=[
+    {id:'orca-zzzzz-unknown-1111111111',vendor:'Zzzzz',model:'Unknown One',title:'Unknown One'},
+    {id:'orca-qidi-plus5-2222222222',vendor:'QIDI',model:'Plus5',title:'QIDI Plus5'},
+    {id:'orca-flashforge-creator-5-pro-3333333333',vendor:'Flashforge',model:'Creator 5 Pro',title:'Flashforge Creator 5 Pro'},
+    {id:'orca-snapmaker-u1-4444444444',vendor:'Snapmaker',model:'U1',title:'Snapmaker U1'},
+    {id:'orca-anycubic-old-5555555555',vendor:'Anycubic',model:'Unknown Two',title:'Unknown Two'},
+  ];
+  const items=picker.supportedModels(catalog.models,[],targets,false);
+  const order=picker.search(items,'').models.map(item=>item.id);
+  assert.deepEqual(order,[
+    'orca-qidi-plus5-2222222222','orca-flashforge-creator-5-pro-3333333333',
+    'orca-snapmaker-u1-4444444444','orca-anycubic-old-5555555555',
+    'orca-zzzzz-unknown-1111111111'
+  ]);
+  assert.equal(items.find(x=>x.id==='orca-qidi-plus5-2222222222').releaseDate,'2026-08-05');
+  assert.equal(items.find(x=>x.id==='orca-zzzzz-unknown-1111111111').releaseDate,null);
+  const selected=['orca-zzzzz-unknown-1111111111','orca-snapmaker-u1-4444444444'];
+  assert.deepEqual(picker.search(items,'',selected).models.map(item=>item.id).slice(0,2),selected);
+});
+
+test('unknown launch dates stay unknown and popular brands lead undated fallbacks',()=>{
+  const list=[
+    {id:'z',manufacturer:'Acme',model:'Mystery M300',aliases:[]},
+    {id:'s',manufacturer:'Snapmaker',model:'Unknown New X',aliases:[]},
+    {id:'p',manufacturer:'Prusa',model:'No Public Date',aliases:[]},
+  ];
+  assert.equal(picker.releaseDate(list[0]),null);
+  assert.deepEqual(picker.search(list,'').models.map(x=>x.id),['p','s','z']);
+  assert.equal(picker.releaseDate({manufacturer:'QIDI',model:'Plus5',releaseDate:'2025-12-01'}),'2025-12-01');
+  assert.equal(picker.releaseDate({manufacturer:'QIDI',model:'Plus5',releaseDate:'yesterday'}),'2026-08-05');
 });
