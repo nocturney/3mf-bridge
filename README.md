@@ -24,7 +24,7 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 - The 603-model catalogue is for discovery and selection, not 603 validated conversions.
 - SliceBridge does not map a specific Prusa printer and filament profile automatically, and it does not support every slicer.
 - Slicer detection finds installed slicer software. It does not certify each printer model.
-- Physical print validation is not claimed for every target. Check printer and slicer settings before printing.
+- **Support policy:** A conversion is supported when its implementation exists and passes software conversion tests, even without a physical test print. Physical printing is an additional validation step, not a prerequisite. Check printer and slicer settings before printing.
 
 **MakerWorld connection:** SliceBridge provides a user-confirmed, guided beta extension setup; no browser-store extension is officially published yet. [Installation instructions](browser-extension/INSTALLATION.md).
 
@@ -46,7 +46,7 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 <li>קטלוג 603 הדגמים מיועד לגילוי ולבחירה, ולא ל-603 המרות שאומתו.</li>
 <li><span dir="ltr">SliceBridge</span> אינו ממפה אוטומטית פרופיל מדפסת וחומר ספציפי של <span dir="ltr">Prusa</span>, ואינו תומך בכל הסלייסרים.</li>
 <li>זיהוי סלייסרים מוצא תוכנות שמותקנות במחשב. הוא אינו מאשר כל דגם מדפסת.</li>
-<li>לא נטען שנבדקה הדפסה פיזית בכל יעד. בדקו את הגדרות המדפסת והסלייסר לפני הדפסה.</li>
+<li><strong>הגדרת תמיכה:</strong> המרה שמומשה בקוד ועברה בדיקות המרה בתוכנה נחשבת נתמכת, גם אם עדיין לא בוצעה הדפסה פיזית. הדפסת ניסיון היא אימות נוסף, לא תנאי לתמיכה. בדקו את הגדרות המדפסת והסלייסר לפני הדפסה.</li>
 </ul>
 <p><strong>חיבור MakerWorld:</strong> התקנת תוסף בטא מודרכת באישור המשתמש בלבד. התוסף עדיין אינו בחנות דפדפן רשמית. <a href="browser-extension/INSTALLATION.md">מדריך התקנה</a>.</p>
 </div>
