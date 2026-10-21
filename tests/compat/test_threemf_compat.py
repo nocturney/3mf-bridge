@@ -7,6 +7,7 @@ only read, never written.
 import contextlib
 import hashlib
 import io
+import json
 import os
 import tempfile
 import unittest
@@ -347,6 +348,46 @@ class NestedRealWorldPackageTests(Base):
         with self.assertRaisesRegex(qa.InputError,"model relationship target missing"):
             qa.compare(self.write("src.3mf",entries),
                        self.write("out.3mf",self.clean(self.source())))
+
+
+class PrusaMetadataOnlyTests(Base):
+    def generic_prusa(self, slots=None):
+        if slots is None:
+            slots=[{"id":i + 1, "color":c, "material":t}
+                   for i, (c, t) in enumerate(zip(COLORS, TYPES))]
+        entries=syn.prusa_package(COLORS, TYPES, extruder=5, paints=PAINTS)
+        entries.pop("Metadata/Slic3r_PE.config", None)
+        entries["Metadata/SliceBridge_source_filaments.json"]=json.dumps(
+            {"schemaVersion":1, "source":"bambu-orca", "slots":slots}).encode()
+        return entries
+
+    def test_metadata_only_prusa_palette_is_preserved_without_native_preset_claim(self):
+        report=self.pair(self.source(), self.generic_prusa())
+        self.assertTrue(report["ok"], failed(report))
+        self.assertEqual(statuses(report)["palette_slots"], "pass")
+        self.assertEqual(statuses(report)["virtual_channels"], "pass")
+        self.assertEqual(statuses(report)["paint_state"], "skip")
+        self.assertEqual(statuses(report)["process_intent"], "skip")
+        self.assertEqual(statuses(report)["machine_scripts_not_carried"], "skip")
+        self.assertIn("metadata only", report["facts"]["output_palette_basis"])
+
+    def test_metadata_only_prusa_palette_drop_fails(self):
+        out=self.generic_prusa()
+        record=json.loads(out["Metadata/SliceBridge_source_filaments.json"])
+        record["slots"].pop()
+        out["Metadata/SliceBridge_source_filaments.json"]=json.dumps(record).encode()
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["palette_slots"], "fail")
+        self.assertEqual(statuses(report)["virtual_channels"], "fail")
+
+    def test_duplicate_slot_id_fails_explicitly(self):
+        out=self.generic_prusa()
+        record=json.loads(out["Metadata/SliceBridge_source_filaments.json"])
+        record["slots"][3]["id"]=3
+        out["Metadata/SliceBridge_source_filaments.json"]=json.dumps(record).encode()
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["output_palette"], "fail")
+        self.assertEqual(statuses(report)["palette_slots"], "fail")
 
 
 class CliTests(Base):

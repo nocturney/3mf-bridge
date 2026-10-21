@@ -286,6 +286,30 @@ def palette(pkg, family):
             return None
     else:
         raw = pkg.files.get("Metadata/Slic3r_PE.config")
+        if raw is None and "Metadata/SliceBridge_source_filaments.json" in pkg.files:
+            # Panda2Prusa's generic project cannot install native Prusa filament
+            # presets. It preserves the source identity in a separate metadata
+            # document; compare that record, without calling it a native preset.
+            data = pkg.json_config("Metadata/SliceBridge_source_filaments.json")
+            slots = data.get("slots") if data is not None else None
+            if data.get("schemaVersion") != 1 or not isinstance(slots, list):
+                raise InputError("invalid SliceBridge source-filament metadata")
+            if not slots:
+                return None
+            if len(slots) > 256:
+                raise InputError("too many SliceBridge source-filament slots")
+            ordered = []
+            for slot in slots:
+                if not isinstance(slot, dict) or not isinstance(slot.get("id"), int):
+                    raise InputError("malformed SliceBridge source-filament slot")
+                if not isinstance(slot.get("color"), str) or not isinstance(slot.get("material"), str):
+                    raise InputError("missing SliceBridge source-filament colour or material")
+                ordered.append((slot["id"], slot["color"], slot["material"]))
+            ordered.sort(key=lambda row: row[0])
+            if [row[0] for row in ordered] != list(range(1, len(ordered) + 1)):
+                raise InputError("non-contiguous SliceBridge source-filament slot IDs")
+            return [(colour.strip().upper(), material.strip().upper())
+                    for _, colour, material in ordered]
         if raw is None:
             return None
         text = raw.decode("utf-8", "replace")
@@ -471,6 +495,13 @@ def compare(source, output, family="auto", expect_model=None,
     if src_cfg is None:
         add("machine_scripts_not_carried", "skip", "JSON project layout not used by this family")
         add("process_intent", "skip", "JSON project layout not used by this family")
+    elif out_family == "prusa":
+        # Panda2Prusa emits a generic project without Bambu/Orca JSON settings.
+        # JSON-process comparisons cannot be asserted against absent fields.
+        add("machine_scripts_not_carried", "skip",
+            "cross-family Prusa output has no JSON printer-script settings")
+        add("process_intent", "skip",
+            "cross-family Prusa output has no comparable JSON process settings")
     else:
         detail = "output project settings missing"
         try:
@@ -508,6 +539,10 @@ def compare(source, output, family="auto", expect_model=None,
         "output_sha256": _file_sha256(output),
         "source_palette": src_pal,
         "output_palette": out_pal,
+        "output_palette_basis": ("SliceBridge source-slot metadata only; not PrusaSlicer native presets"
+                                if out_family == "prusa" and
+                                "Metadata/SliceBridge_source_filaments.json" in out.files and
+                                "Metadata/Slic3r_PE.config" not in out.files else "native or JSON profile"),
         "source_channels": sorted(src_channels),
         "source_object_extruders": src_ext,
     }
