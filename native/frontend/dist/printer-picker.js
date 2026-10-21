@@ -85,6 +85,8 @@
   function manufacturerGroups(items){
     const labels=new Map();
     for(const item of items||[]){
+      // A generic PrusaSlicer export is a usable destination, not a manufacturer.
+      if(item?.id===prusaTargetId)continue;
       const name=clean(item?.manufacturer);
       if(!name)continue;
       const key=makerKey(name);

@@ -26,14 +26,18 @@ test('Bambu printer destination stays hidden in normal list and even when search
   assert.ok(catalog.models.some(x=>x.manufacturer==='Bambu Lab'));
 });
 
-test('search works for brand, model and legacy aliases, without inventing release dates',()=>{
+test('search works for brand, model and legacy aliases, without inventing unverified dates',()=>{
   const u1=picker.search(catalog.models,'snapmaker u1').models;
   assert.ok(u1.some(x=>x.id==='snapmaker-u1'));
   const c5=picker.search(catalog.models,'Creator 5').models;
   assert.ok(c5.some(x=>x.id==='flashforge-creator-5'));
   const cc2=picker.search(catalog.models,'ELEGOO CC2').models;
   assert.ok(cc2.some(x=>x.id==='elegoo-centauri-carbon-2'));
-  assert.ok(catalog.models.every(x=>x.releaseDate===null));
+  // A few officially evidenced launches are dated; unknown models stay unknown.
+  assert.ok(catalog.models.some(x=>x.releaseDate!==null));
+  for(const id of ['snapmaker-u1','flashforge-creator-5','elegoo-centauri-carbon-2']){
+    assert.equal(catalog.models.find(x=>x.id===id).releaseDate,null,id);
+  }
   assert.equal(picker.search(catalog.models,'nonexistent printer 999999').total,0);
 });
 
@@ -259,4 +263,12 @@ test('installed Orca profiles join the target list via backend-issued IDs only',
   assert.match(backend,/func IsOrcaTargetID\(id string\) bool/);
   assert.match(batch,/presets\.IsOrcaTargetID\(target\)/);
   assert.match(batch,/presets\.ResolveOrcaBundle\(target\)/);
+});
+
+test('native bootstrap waits for all deferred My Printers modules to register',()=>{
+  const html=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const app=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.js'),'utf8');
+  assert.ok(html.indexOf('src="./app.js"')<html.indexOf('src="./my-printers.js"'));
+  assert.match(app,/setTimeout\(initialiseNative,0\);/);
+  assert.doesNotMatch(app,/^initialiseNative\(\);/m);
 });

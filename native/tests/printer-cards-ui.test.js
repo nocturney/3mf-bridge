@@ -74,7 +74,7 @@ test('maker spellings collapse to one canonical maker and one dropdown entry',()
   assert.equal(new Set([...preferred,...others].map(name=>name.toLowerCase())).size,
                preferred.length+others.length);
   // PrusaSlicer is a generic export target, never a physical maker.
-  assert.equal([...preferred,...others].some(name=>/prusaslicer/i.test(name)),false);
+  assert.equal([...preferred,...others].some(name=>/prusaslicer|generic/i.test(name)),false);
   assert.equal(items.find(item=>item.id==='prusa-project').manufacturer,'Generic');
   assert.equal(picker.makerLabel('Prusa'),'Prusa Research');
   assert.equal(picker.makerLabel(' prusa research '),'Prusa Research');
@@ -89,7 +89,7 @@ test('integrated makers lead the dropdown, then one divider, then the rest alpha
   await h.api.init();
   const options=h.dom('printerManufacturerFilter').children.map(option=>[option.value,option.disabled===true]);
   const values=options.map(([value])=>value);
-  assert.deepEqual(values,['','ELEGOO','Flashforge','QIDI','Snapmaker','','Generic','Zortrax']);
+  assert.deepEqual(values,['','ELEGOO','Flashforge','QIDI','Snapmaker','','Zortrax']);
   assert.deepEqual(options.filter(([,disabled])=>disabled).map(([value])=>value),['']);
   assert.equal(values.filter(value=>value==='ELEGOO').length,1);
 });

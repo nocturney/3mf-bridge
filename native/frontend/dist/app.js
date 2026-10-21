@@ -937,4 +937,6 @@ async function initialiseNative(){
 
 registerHandlers();
 renderCopy();renderQueue();renderResults();renderActionBar();renderUpdates();
-initialiseNative();
+// Run after all deferred frontend modules register their APIs. Fast native RPCs
+// must not race my-printers.js loading and silently skip its initialisation.
+setTimeout(initialiseNative,0);
