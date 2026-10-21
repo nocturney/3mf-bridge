@@ -131,6 +131,11 @@ const translations = {
 const printerNames = Object.freeze({u1:'Snapmaker U1',c5:'Flashforge Creator 5',cc2:'ELEGOO CC2',qidi:'QIDI Plus5'});
 const nozzleChoices = Object.freeze({u1:['0.2','0.4','0.6','0.8'],c5:['0.25','0.4','0.6','0.8'],cc2:['0.2','0.4','0.6','0.8'],qidi:['0.2','0.4','0.6','0.8']});
 const targetOrder = ['u1','c5','cc2','qidi'];
+// Installed Orca-family machines, as listed by the backend. Only rows the
+// backend resolved completely are present; the picker never invents one.
+let installedTargets=[];
+let installedRows=[];
+function targetDisplayName(id){return printerNames[id]||installedTargets.find((item)=>item.id===id)?.title||id;}
 const el = (id) => document.getElementById(id);
 const dom = {
   fileList:el('fileList'),queueCount:el('queueCount'),resultList:el('resultList'),
@@ -185,7 +190,7 @@ function renderCopy(){
 function languageSwitch(lang){
   language=lang;
   try{localStorage.setItem('3mfBridgeLanguage',language);}catch{}
-  renderCopy();renderQueue();renderTargets();renderResults();renderActionBar();renderUpdates();
+  renderCopy();renderQueue();renderInstalledTargets();renderTargets();renderResults();renderActionBar();renderUpdates();
   if(dom.settings.open){renderSettingsTabs();paintSettings();}
   window.SliceBridgeMyPrinters?.render();
 }
@@ -327,18 +332,60 @@ function renderTargets(){
   const count=getSelectedTargets().length;
   const selectable=available.filter(v=>v.available&&(!Array.isArray(selectedLegacy)||selectedLegacy.includes(v.target)));
   el('selectAllBtn').hidden=selectable.length===0;
-  const noneChosen=Array.isArray(selectedLegacy)&&selectedLegacy.length===0;
+  const noneChosen=Array.isArray(selectedLegacy)&&selectedLegacy.length===0&&count===0;
   el('emptyTargetNotice').hidden=!noneChosen;
   el('emptyTargetNotice').textContent=language==='he'?
     'לא נבחרו מדפסות יעד. אפשר להוסיף דרך סמל המדפסת בראש החלון.':
     'No target printers selected. Use the printer icon at the top to add them.';
-  el('selectAllBtn').textContent=count===selectable.length?t('deselectAll'):t('selectAll');
+  // The select-all label tracks only the built-in rows; installed rows are separate.
+  const installedChecked=installedRows.filter((entry)=>entry.checkbox.checked).length;
+  el('selectAllBtn').textContent=count-installedChecked===selectable.length?t('deselectAll'):t('selectAll');
+  for(const entry of installedRows)entry.checkbox.disabled=busy;
   renderActionBar();
 }
 async function refreshAvailability(){
   if(!api())return;
   try{available=await api().Availability();window.SliceBridgeMyPrinters?.setAvailability(available);renderTargets();}
   catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
+}
+// Installed rows are rebuilt only when the backend list changes; checked state survives.
+function renderInstalledTargets(){
+  const list=el('targetList');
+  if(!list)return;
+  const checked=new Set(installedRows.filter((entry)=>entry.checkbox.checked).map((entry)=>entry.id));
+  for(const entry of installedRows)entry.row.remove();
+  installedRows=[];
+  for(const target of installedTargets){
+    const row=node('label','target-option installed-target');
+    row.dataset.installedTarget=target.id;
+    const checkbox=node('input');
+    checkbox.type='checkbox';
+    checkbox.value=target.id;
+    checkbox.checked=checked.has(target.id);
+    checkbox.disabled=busy;
+    const icon=node('span','target-printer-icon','▣');
+    icon.setAttribute('aria-hidden','true');
+    const label=node('span','printer-label');
+    const physical=language==='he'?'כלים פיזיים':(target.physicalTools===1?'physical tool':'physical tools');
+    const summary=target.nozzle+' mm · '+target.physicalTools+' '+physical;
+    label.append(node('strong','',target.title||target.model),node('small','',summary));
+    row.title=(target.title||target.model)+' · '+summary;
+    row.append(checkbox,icon,label);
+    list.append(row);
+    installedRows.push({id:target.id,row,checkbox});
+  }
+}
+async function refreshInstalledTargets(){
+  if(!api()?.InstalledOrcaTargets)return;
+  try{
+    const reply=await api().InstalledOrcaTargets();
+    installedTargets=Array.isArray(reply?.targets)?reply.targets:[];
+  }catch(e){
+    installedTargets=[];
+    setActivity(t('settingsError'),e?.message||String(e),'warning');
+  }
+  renderInstalledTargets();
+  renderTargets();
 }
 async function addFiles(infos){
   if(!infos?.length)return;
@@ -407,7 +454,7 @@ function resultLine(parent,result,source){
   const row=node('div','result-row');
   const top=node('div','result-head');
   const content=node('div','result-content');
-  const title=node('strong','',printerNames[result.target]||result.target);
+  const title=node('strong','',targetDisplayName(result.target));
   const subtitle=node('div','result-path',result.ok?result.outputName:result.error);
   subtitle.title=result.ok?result.outputPath:result.error;
   content.append(title,subtitle);
@@ -723,8 +770,9 @@ async function openUpdate(){
   catch(e){updateError=e?.message||String(e);renderUpdates();}
 }
 function selectAll(){
+  // Built-in rows only: installed Orca rows are chosen individually.
   const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'))
-    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden);
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden && !e.closest?.('[data-installed-target]'));
   const allSelected=boxes.every((e)=>e.checked);
   for(const box of boxes)box.checked=!allSelected;
   memoryStatus=null;renderTargets();
@@ -840,6 +888,7 @@ async function initialiseNative(){
   catch{installedVersion=null;}
   renderUpdates();
   await refreshAvailability();
+  await refreshInstalledTargets();
   await window.SliceBridgeMyPrinters?.init();
   renderCopy();renderTargets();renderQueue();renderResults();renderActionBar();
 }

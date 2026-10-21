@@ -83,19 +83,9 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 		return nil, fail("TARGET_NOT_VALIDATED", "unknown target %q", target)
 	}
 
-	src, err := filepath.Abs(source)
+	src, dst, err := resolvePaths(source, destination)
 	if err != nil {
-		return nil, fail("SOURCE_INVALID", "%v", err)
-	}
-	dst, err := filepath.Abs(destination)
-	if err != nil {
-		return nil, fail("OUTPUT_INVALID", "%v", err)
-	}
-	if strings.EqualFold(src, dst) {
-		return nil, fail("SOURCE_EQUALS_OUTPUT", "source and destination cannot be the same file")
-	}
-	if !strings.EqualFold(filepath.Ext(src), ".3mf") || !strings.EqualFold(filepath.Ext(dst), ".3mf") {
-		return nil, fail("EXTENSION_INVALID", "input and output must have .3mf extensions")
+		return nil, err
 	}
 	before, err := inspectPackage(src)
 	if err != nil {
@@ -155,6 +145,66 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 	if base == nil {
 		return nil, fail("ENGINE_INVALID", "target base profile missing")
 	}
+	return publishConversion(conversionPlan{
+		source: src, destination: dst, target: target,
+		// targetModels["u1"] is "Snapmaker U1", the built-in U1 identity too.
+		expectedModel: targetModels[target],
+		base:          base, filaments: insp.Filaments, slots: slots, mapping: mapping,
+		before: before, physicalTools: 4, sourceNozzle: sourceNozzle,
+		targetNozzle: targetNozzle, requestedNozzle: requestedNozzle,
+	})
+}
+
+// conversionPlan is the resolved input to the shared publish path. The legacy
+// targets and installed Orca-family bundles differ only in how it is built.
+type conversionPlan struct {
+	source, destination, target, expectedModel string
+	base                                      *printer.Profile
+	filaments                                 []converter.Filament
+	slots                                     []converter.Slot
+	mapping                                   map[int]int
+	before                                    packageFacts
+	physicalTools                             int
+	sourceNozzle                              NozzleInfo
+	targetNozzle, requestedNozzle             string
+}
+
+// resolvePaths applies the same path and extension rules to every engine.
+func resolvePaths(source, destination string) (string, string, error) {
+	src, err := filepath.Abs(source)
+	if err != nil {
+		return "", "", fail("SOURCE_INVALID", "%v", err)
+	}
+	dst, err := filepath.Abs(destination)
+	if err != nil {
+		return "", "", fail("OUTPUT_INVALID", "%v", err)
+	}
+	if strings.EqualFold(src, dst) {
+		return "", "", fail("SOURCE_EQUALS_OUTPUT", "source and destination cannot be the same file")
+	}
+	if !strings.EqualFold(filepath.Ext(src), ".3mf") || !strings.EqualFold(filepath.Ext(dst), ".3mf") {
+		return "", "", fail("EXTENSION_INVALID", "input and output must have .3mf extensions")
+	}
+	return src, dst, nil
+}
+
+// physicalToolPhrase keeps the historical four-tool warning text unchanged.
+func physicalToolPhrase(count int) string {
+	switch count {
+	case 1:
+		return "one physical tool"
+	case 4:
+		return "four physical tools"
+	}
+	return fmt.Sprintf("%d physical tools", count)
+}
+
+// publishConversion merges the resolved profile into the source project,
+// verifies the sanitized output and publishes it without overwriting.
+func publishConversion(plan conversionPlan) (map[string]any, error) {
+	src, dst := plan.source, plan.destination
+	base, slots, mapping := plan.base, plan.slots, plan.mapping
+	before := plan.before
 	// FilamentSlots controls the 3MF PROJECT palette length in bl2std. It is
 	// NOT a claim that the target printer has this many physical extruders.
 	if len(slots) > base.FilamentSlots {
@@ -164,7 +214,7 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 	if err != nil {
 		return nil, fail("SOURCE_INVALID", "%v", err)
 	}
-	for _, filament := range insp.Filaments {
+	for _, filament := range plan.filaments {
 		if _, supported := merged.FilamentProfiles[filament.Type]; !supported {
 			return nil, fail("MATERIAL_REVIEW_REQUIRED", "unsupported material %q in source slot %d; refusing silent PLA substitution", filament.Type, filament.ID)
 		}
@@ -208,12 +258,8 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 	if after.sliceCaches != 0 {
 		return nil, fail("STALE_GCODE", "converted project still contains sliced machine code")
 	}
-	expectedModel := "Snapmaker U1"
-	if target != "u1" {
-		expectedModel = targetModels[target]
-	}
-	if after.printerModel != expectedModel {
-		return nil, fail("TARGET_IDENTITY_INVALID", "converted project has unexpected printer model %q (expected %q)", after.printerModel, expectedModel)
+	if after.printerModel != plan.expectedModel {
+		return nil, fail("TARGET_IDENTITY_INVALID", "converted project has unexpected printer model %q (expected %q)", after.printerModel, plan.expectedModel)
 	}
 	// A hard link in the same directory publishes atomically without replacing
 	// an existing output. This protects the source and all previous conversions.
@@ -225,29 +271,29 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 	}
 	sort.Strings(preserved)
 	warnings := []string{
-		fmt.Sprintf("Open this project in the target slicer for %s and re-slice before printing.", expectedModel),
+		fmt.Sprintf("Open this project in the target slicer for %s and re-slice before printing.", plan.expectedModel),
 		"Review material slots, supports, nozzle and user print parameters; printer-specific firmware scripts come from the installed target profile.",
 	}
-	if len(slots) > 4 {
+	if len(slots) > plan.physicalTools {
 		warnings = append(warnings, fmt.Sprintf(
-			"All %d original color/material slots are preserved as separate virtual project filaments. The printer has four physical tools: resolve any merges/removals and verify profiles inside the slicer before slicing or printing.", len(slots)))
+			"All %d original color/material slots are preserved as separate virtual project filaments. The printer has %s: resolve any merges/removals and verify profiles inside the slicer before slicing or printing.", len(slots), physicalToolPhrase(plan.physicalTools)))
 	}
 	return map[string]any{
 		"ok":                          true,
-		"target":                      target,
+		"target":                      plan.target,
 		"output":                      dst,
 		"engine":                      "bl2std",
-		"source_nozzle":               sourceNozzle.Nozzle,
-		"source_nozzle_source":        sourceNozzle.Source,
-		"source_nozzle_assumed":       sourceNozzle.Assumed,
-		"target_nozzle":               targetNozzle,
-		"nozzle_remapped":             sourceNozzle.Nozzle != targetNozzle,
-		"nozzle_selected_by_user":     requestedNozzle != "",
-		"source_filament_slots":       len(insp.Filaments),
+		"source_nozzle":               plan.sourceNozzle.Nozzle,
+		"source_nozzle_source":        plan.sourceNozzle.Source,
+		"source_nozzle_assumed":       plan.sourceNozzle.Assumed,
+		"target_nozzle":               plan.targetNozzle,
+		"nozzle_remapped":             plan.sourceNozzle.Nozzle != plan.targetNozzle,
+		"nozzle_selected_by_user":     plan.requestedNozzle != "",
+		"source_filament_slots":       len(plan.filaments),
 		"target_filament_slots_used":  len(slots),
 		"virtual_filament_slots":      len(slots),
-		"physical_toolheads":          4,
-		"user_slot_mapping_required":  len(slots) > 4,
+		"physical_toolheads":          plan.physicalTools,
+		"user_slot_mapping_required":  len(slots) > plan.physicalTools,
 		"source_to_target_slot_map":   mapping,
 		"geometry_vertices":           after.vertices,
 		"geometry_triangles":          after.triangles,

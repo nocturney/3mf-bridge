@@ -2,6 +2,7 @@ package main
 
 import (
 	"archive/zip"
+	"encoding/json"
 	"encoding/xml"
 	"errors"
 	"fmt"
@@ -74,7 +75,7 @@ func collectInputs(paths []string) ([]FileInfo, error) {
 	add := func(name string, fromFolder bool) error {
 		if fromFolder {
 			upper := strings.ToUpper(filepath.Base(name))
-			for _, prefix := range []string{"U1-", "C5-", "CC2-", "QIDI-"} {
+			for _, prefix := range []string{"U1-", "C5-", "CC2-", "QIDI-", "ORCA-"} {
 				if strings.HasPrefix(upper, prefix) {
 					return nil
 				}
@@ -258,10 +259,10 @@ func sourceSummary(path string) (SourceSummary, error) {
 func (a *App) InspectFile(path string) (SourceSummary, error) { return sourceSummary(path) }
 
 func configuredConvert(source, target, sourceNozzle string, preference PrinterSettings) ConvertResult {
+	if presets.IsOrcaTargetID(target) {
+		return installedConvert(source, target)
+	}
 	result := ConvertResult{Target: target, Prefix: outputs[target]}
-	dir := filepath.Dir(source)
-	basename := filepath.Base(source)
-	stem := strings.TrimSuffix(basename, filepath.Ext(basename))
 	preferred := preference.Nozzle
 	if preferred == "auto" {
 		preferred = ""
@@ -299,6 +300,40 @@ func configuredConvert(source, target, sourceNozzle string, preference PrinterSe
 		defer cleanup()
 		profileFile = f
 	}
+	return writeConversion(result, source, usedSlicer, preference.Filaments, func(out string) (map[string]any, error) {
+		return bridge.ConvertWithTargetNozzle(source, out, target, profileFile, preferred)
+	})
+}
+
+// installedConvert converts through an installed Orca-family machine profile.
+// The profile itself fixes nozzle, tool count and model, so the per-printer
+// preferences of the built-in targets intentionally do not apply.
+func installedConvert(source, target string) ConvertResult {
+	result := ConvertResult{Target: target, Prefix: presets.OrcaPrefix(target)}
+	bundle, err := presets.ResolveOrcaBundle(target)
+	if err != nil {
+		result.Code = "TARGET_PROFILE_INVALID"
+		result.Error = err.Error()
+		return result
+	}
+	profileFile, cleanup, err := tempOrcaBundle(bundle)
+	if err != nil {
+		result.Code = "TARGET_PROFILE_INVALID"
+		result.Error = err.Error()
+		return result
+	}
+	defer cleanup()
+	return writeConversion(result, source, bundle.Slicer, map[string]string{}, func(out string) (map[string]any, error) {
+		return bridge.ConvertWithOrcaBundle(source, out, profileFile)
+	})
+}
+
+// writeConversion publishes into the first free same-name output and enriches
+// the report with target-side counts. Built-in and installed targets share it.
+func writeConversion(result ConvertResult, source, slicer string, overrides map[string]string, convert func(out string) (map[string]any, error)) ConvertResult {
+	dir := filepath.Dir(source)
+	basename := filepath.Base(source)
+	stem := strings.TrimSuffix(basename, filepath.Ext(basename))
 	for attempt := 1; attempt <= 100; attempt++ {
 		filename := result.Prefix + "-" + basename
 		if attempt > 1 {
@@ -312,7 +347,7 @@ func configuredConvert(source, target, sourceNozzle string, preference PrinterSe
 			result.Error = err.Error()
 			return result
 		}
-		conversion, err := bridge.ConvertWithTargetNozzle(source, out, target, profileFile, preferred)
+		conversion, err := convert(out)
 		if err != nil {
 			if bridge.ErrorCode(err) == "OUTPUT_EXISTS" {
 				continue
@@ -321,8 +356,8 @@ func configuredConvert(source, target, sourceNozzle string, preference PrinterSe
 			result.Error = err.Error()
 			return result
 		}
-		conversion["native_slicer"] = usedSlicer
-		conversion["native_filament_overrides"] = preference.Filaments
+		conversion["native_slicer"] = slicer
+		conversion["native_filament_overrides"] = overrides
 		// Reinspect the written project so reports show real target-side
 		// object/plate counts instead of assuming they equal the source.
 		if objects, instances, scanErr := inspectModelCount(out); scanErr == nil {
@@ -343,13 +378,35 @@ func configuredConvert(source, target, sourceNozzle string, preference PrinterSe
 	result.Error = "Too many same-name outputs"
 	return result
 }
+
+// tempOrcaBundle writes one resolved installed profile to a private temp file.
+func tempOrcaBundle(bundle *presets.OrcaBundle) (string, func(), error) {
+	dir, err := os.MkdirTemp("", "3mf-bridge-installed-profile-")
+	if err != nil {
+		return "", nil, err
+	}
+	cleanup := func() { _ = os.RemoveAll(dir) }
+	data, err := json.Marshal(bundle)
+	if err != nil {
+		cleanup()
+		return "", nil, err
+	}
+	file := filepath.Join(dir, "installed-profile.json")
+	if err := os.WriteFile(file, data, 0600); err != nil {
+		cleanup()
+		return "", nil, err
+	}
+	return file, cleanup, nil
+}
+
 func validateTargets(targets []string) error {
 	if len(targets) == 0 || len(targets) > 4 {
 		return fmt.Errorf("select between 1 and 4 printers")
 	}
 	seen := map[string]bool{}
 	for _, t := range targets {
-		if _, ok := outputs[t]; !ok || seen[t] {
+		_, builtIn := outputs[t]
+		if (!builtIn && !presets.IsOrcaTargetID(t)) || seen[t] {
 			return fmt.Errorf("invalid or repeated target %q", t)
 		}
 		seen[t] = true
@@ -456,6 +513,9 @@ func (a *App) OpenInSlicer(target, outputPath string) error {
 	a.mutex.Unlock()
 	if target == "" || target != actual {
 		return fmt.Errorf("file was not generated for this printer in the current session")
+	}
+	if presets.IsOrcaTargetID(target) {
+		return fmt.Errorf("outputs for installed Orca profiles cannot be opened from here yet")
 	}
 	f, err := fileInfo(outputPath)
 	if err != nil {
