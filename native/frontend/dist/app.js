@@ -86,7 +86,7 @@ const translations = {
     settingsHint:'Preferences are stored on this computer and applied to future conversions.',
     physicalNozzle:'Physically installed nozzle',
     nozzleHint:'A fixed nozzle uses its native machine preset even if the source project has a different nozzle.',
-    preferredSlicer:'Preferred slicer',slicerHint:'Only local installed slicers with verified manufacturer profiles.',
+    preferredSlicer:'Preferred slicer',slicerHint:'Choose from slicers with locally installed profiles.',
     filamentPreferences:'Preferred filament presets',
     filamentHint:'Save a different installed preset per material type. Auto uses the manufacturer default.',
     material:'Material type',preferredFilament:'Installed filament preset',cancel:'Cancel',
@@ -321,8 +321,7 @@ function renderTargets(){
   catalogOnly.replaceChildren();
   for(const entry of missing){
     const label=node('div','catalog-only-target');
-    label.append(node('strong','',window.SliceBridgePicker.title(entry.model)),
-      node('small','',language==='he'?'קטלוג בלבד · המרה אינה זמינה':'Catalog only · conversion unavailable'));
+    label.append(node('strong','',window.SliceBridgePicker.title(entry.model)));
     catalogOnly.append(label);
   }
   const count=getSelectedTargets().length;
