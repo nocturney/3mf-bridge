@@ -315,6 +315,15 @@ func (a *App) OpenBrowserSetup() error {
 	return err
 }
 
+// Keep the registration command identical to what the Windows status check
+// expects. Go's %q escapes path separators, which reg.exe stores literally.
+func windowsProtocolCommand(executable string) string {
+	return "\"" + executable + "\" \"%1\""
+}
+func windowsProtocolRegistered(regOutput []byte, executable string) bool {
+	return strings.Contains(strings.ToLower(string(regOutput)), strings.ToLower(windowsProtocolCommand(executable)))
+}
+
 func (a *App) BrowserLinkStatus() (map[string]any, error) {
 	if runtime.GOOS != "windows" {
 		return map[string]any{"platform": runtime.GOOS, "registered": runtime.GOOS == "darwin"}, nil
@@ -325,7 +334,7 @@ func (a *App) BrowserLinkStatus() (map[string]any, error) {
 	}
 	path := "HKCU\\Software\\Classes\\slicebridge\\shell\\open\\command"
 	out, err := exec.Command("reg.exe", "query", path, "/ve").CombinedOutput()
-	registered := err == nil && strings.Contains(strings.ToLower(string(out)), strings.ToLower(executable))
+	registered := err == nil && windowsProtocolRegistered(out, executable)
 	return map[string]any{"platform": "windows", "registered": registered}, nil
 }
 func (a *App) EnableBrowserLink() (map[string]any, error) {
@@ -350,7 +359,7 @@ func (a *App) EnableBrowserLink() (map[string]any, error) {
 	if err != nil {
 		return nil, err
 	}
-	command := fmt.Sprintf("%q \"%%1\"", exe)
+	command := windowsProtocolCommand(exe)
 	root := "HKCU\\Software\\Classes\\slicebridge"
 	entries := [][]string{
 		{"add", root, "/ve", "/d", "URL:SliceBridge model link", "/f"},

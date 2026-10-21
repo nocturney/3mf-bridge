@@ -98,6 +98,21 @@ func TestDownloadRejectsFailedAuthAndHTML(t *testing.T) {
 		}
 	}
 }
+func TestWindowsBrowserLinkCommandRoundTrip(t *testing.T) {
+	exe := `C:\Program Files\SliceBridge\SliceBridge.exe`
+	want := `"C:\Program Files\SliceBridge\SliceBridge.exe" "%1"`
+	if got := windowsProtocolCommand(exe); got != want {
+		t.Fatalf("Windows protocol command does not preserve executable path: got %q, want %q", got, want)
+	}
+	out := []byte("    (Default)    REG_SZ    " + want + "\r\n")
+	if !windowsProtocolRegistered(out, exe) {
+		t.Fatalf("Windows registration status does not recognize its own saved command")
+	}
+	if windowsProtocolRegistered(out, `C:\Other\SliceBridge.exe`) {
+		t.Fatal("wrong executable must not report registered")
+	}
+}
+
 func TestURLSanitizerRejectsUntrustedDestinations(t *testing.T) {
 	for _, raw := range []string{
 		"http://makerworld.com/a", "https://evil.test/a", "https://makerworld.com.evil.test/a",
