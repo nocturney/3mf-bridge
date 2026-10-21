@@ -130,7 +130,10 @@ class Model:
                 triangles = []
                 for tri in descendants(mesh[0], "triangle"):
                     corners = [int(tri.get(k)) for k in ("v1", "v2", "v3")]
-                    paint = next((tri.get(a) for a in PAINT_ATTRS if tri.get(a) is not None), "")
+                    # Prusa writes the paint attribute in the slic3rpe XML
+                    # namespace; Bambu writes an unqualified paint_color.
+                    paint = next((value for key, value in tri.attrib.items()
+                                  if local(key) in PAINT_ATTRS), "")
                     triangles.append((corners, paint))
                 entry["mesh"] = {"vertices": vertices, "triangles": triangles}
             for comp in descendants(obj, "component"):
@@ -160,12 +163,12 @@ class Model:
     def mesh_records(self):
         """Every mesh triangle as (object-local key, paint), independent of build placement."""
         records = collections.Counter()
-        for oid, entry in self.objects.items():
-            if entry["mesh"]:
-                verts = entry["mesh"]["vertices"]
-                for corners, paint in entry["mesh"]["triangles"]:
-                    key = tuple(sorted(verts[c] for c in corners))
-                    records[(key, paint)] += 1
+        # A Bambu project can store geometry behind component transforms;
+        # Panda2Prusa flattens those transforms into a new mesh. Compare
+        # placed, world-space triangles rather than raw object-local vertices.
+        for oid, transform in self.items:
+            for key, paint in self.local_triangles(oid, transform):
+                records[(key, paint)] += 1
         return records
 
     def signature(self, oid):
@@ -234,6 +237,15 @@ def source_palette(package):
 
 def output_palette(package):
     """Ordered filament colours from the Prusa config (INI), falling back to a JSON project config."""
+    if package.has("Metadata/SliceBridge_source_filaments.json"):
+        # Panda2Prusa intentionally does not install or forge a Prusa
+        # filament preset. SliceBridge retains the exact source slot list
+        # in an auxiliary 3MF part for lossless reference and manual mapping.
+        data = package.json_config("Metadata/SliceBridge_source_filaments.json")
+        slots = data.get("slots")
+        if data.get("schemaVersion") == 1 and isinstance(slots, list):
+            if [slot.get("id") for slot in slots] == list(range(1, len(slots) + 1)):
+                return [str(slot.get("color", "")).strip().upper() for slot in slots]
     if package.has("Metadata/Slic3r_PE.config"):
         match = re.search(r"^\s*filament_colour\s*=\s*(.*?)\s*$", package.text("Metadata/Slic3r_PE.config"), re.M)
         if match:
