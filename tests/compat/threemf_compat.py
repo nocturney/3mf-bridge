@@ -15,6 +15,7 @@ import argparse
 import hashlib
 import json
 import os
+import posixpath
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -154,19 +155,56 @@ def detect_family(pkg):
 
 
 def model_parts(pkg):
-    """Return the 3D model part names referenced from _rels/.rels, validating the package shell."""
+    """Find root and child 3D model parts by their OPC model relationships.
+
+    Real Bambu Studio / MakerWorld projects commonly keep actual triangle mesh
+    in 3D/Objects/*.model, linked from 3D/_rels/3dmodel.model.rels; counting
+    only the root 3D/3dmodel.model silently records zero triangles.
+    """
     if "[Content_Types].xml" not in pkg.files:
         raise InputError("missing [Content_Types].xml")
     pkg.xml("[Content_Types].xml")
-    parts = []
+    pending=[]
     for rel in pkg.xml("_rels/.rels"):
         if _local(rel.tag) == "Relationship" and rel.get("Type", "").endswith(MODEL_REL_SUFFIX):
-            target = rel.get("Target", "").lstrip("/")
-            if target not in pkg.files:
-                raise InputError(f"model relationship target missing: {target}")
-            parts.append(target)
-    if not parts:
+            if rel.get("TargetMode", "").lower() == "external":
+                raise InputError("external model relationship is not allowed")
+            pending.append((None, rel.get("Target", "")))
+    if not pending:
         raise InputError("no 3D model relationship in _rels/.rels")
+    parts=[]
+    seen=set()
+    while pending:
+        parent,target=pending.pop(0)
+        if not target or ("?" in target) or ("#" in target) or "\\" in target:
+            raise InputError("invalid model relationship target")
+        if target.startswith("/"):
+            name=posixpath.normpath(target.lstrip("/"))
+        else:
+            name=posixpath.normpath(posixpath.join(
+                posixpath.dirname(parent) if parent else "", target))
+        if not name.startswith("3D/") or name=="3D/" or name.startswith("../") or ".." in name.split("/"):
+            raise InputError(f"unsafe model relationship target: {target}")
+        if not name.lower().endswith(".model"):
+            raise InputError(f"non-model 3D relationship target: {target}")
+        if name not in pkg.files:
+            raise InputError(f"model relationship target missing: {name}")
+        if name in seen:
+            continue
+        seen.add(name)
+        parts.append(name)
+        if len(parts)>512:
+            raise InputError("too many related 3D model parts")
+        relfile=posixpath.join(posixpath.dirname(name), "_rels",
+                               posixpath.basename(name)+".rels")
+        if relfile not in pkg.files:
+            continue
+        for rel in pkg.xml(relfile):
+            if _local(rel.tag)!="Relationship" or not rel.get("Type", "").endswith(MODEL_REL_SUFFIX):
+                continue
+            if rel.get("TargetMode", "").lower()=="external":
+                raise InputError("external model relationship is not allowed")
+            pending.append((name,rel.get("Target","")))
     return parts
 
 
@@ -340,11 +378,27 @@ def compare(source, output, family="auto", expect_model=None,
         if out_geo is not None:
             add("output_geometry_parse", "pass", f"{out_geo['vertices']} vertices, {out_geo['triangles']} triangles")
 
+    # An unused Default Extension="gcode" in [Content_Types].xml does
+    # not mean there is a slice cache. Only a real part, an explicit part
+    # Override or a relationship to G-code is evidence of a retained slice.
     gcode = [n for n in out.files if n.lower().endswith(GCODE_SUFFIXES)]
-    gcode += [n for n in ("_rels/.rels", "[Content_Types].xml")
-              if n in out.files and re.search(rb"\.gcode", out.files[n], re.I)]
+    for relfile in (n for n in out.files if n.endswith(".rels")):
+        try:
+            root=out.xml(relfile)
+        except InputError as exc:
+            add("no_sliced_gcode", "fail", str(exc))
+            continue
+        for rel in root:
+            if (_local(rel.tag)=="Relationship" and
+                re.search(r"\.gcode(?:\.md5)?(?:$|[?#])", rel.get("Target",""), re.I)):
+                gcode.append(f"{relfile}: {rel.get('Target')}")
+    if "[Content_Types].xml" in out.files:
+        for child in out.xml("[Content_Types].xml"):
+            if _local(child.tag)=="Override" and child.get("PartName","").lower().endswith(GCODE_SUFFIXES):
+                gcode.append(f"content type override: {child.get('PartName')}")
     add("no_sliced_gcode", "fail" if gcode else "pass",
-        f"output carries slice cache: {sorted(set(gcode))}" if gcode else "no sliced G-code entries or references")
+        f"output carries slice cache: {sorted(set(gcode))}" if gcode else
+        "no sliced G-code entries, part overrides or relationships")
 
     if out_geo is None:
         add("geometry_counts", "fail", "output geometry unavailable")

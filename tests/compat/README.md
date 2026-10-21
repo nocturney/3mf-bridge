@@ -25,7 +25,7 @@ path before the run; the check fails if the conversion replaced it.
 | `source_zip_sanity`, `output_zip_sanity` | Readable ZIP, no duplicate or unsafe names, no encryption | Yes |
 | `output_components` | `[Content_Types].xml`, `_rels/.rels`, and a 3D model relationship whose target exists | Yes |
 | `no_sliced_gcode` | No `*.gcode` / `*.gcode.md5` entries or references | Yes |
-| `geometry_counts`, `geometry_hash` | Vertex/triangle counts; order-independent hash of canonical triangles | Yes |
+| `geometry_counts`, `geometry_hash` | Vertex/triangle counts across the root model **and referenced child `.model` parts**; order-independent hash of canonical triangles | Yes |
 | `paint_state` | Per-triangle paint code multiset (triangle identity = sorted vertex coordinates) | Only same codec (Orca/Bambu share one) |
 | `palette_slots` | Ordered (colour, material) per slot; duplicates kept as separate slots | Yes |
 | `virtual_channels` | Channels used by objects and paint (incl. fifth) still exist with the same identity | Paint channels only for Orca/Bambu |
