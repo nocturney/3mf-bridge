@@ -120,6 +120,8 @@ jobs:
           APP='build/bin/SliceBridge.app'
           test -d "$APP"
           du -sh "$APP"
+          # Verify the packaged macOS app advertises our opt-in URL scheme.
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleURLTypes:0:CFBundleURLSchemes:0' "$APP/Contents/Info.plist")" = slicebridge
           ditto -c -k --sequesterRsrc --keepParent "$APP" build/bin/SliceBridge-macOS-Apple-Silicon.zip
       - name: Upload macOS native beta (ad-hoc signed)
         uses: actions/upload-artifact@v4
