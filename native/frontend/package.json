@@ -1,0 +1,8 @@
+{
+  "name": "3mf-bridge-native-ui",
+  "private": true,
+  "version": "0.4.0",
+  "scripts": {
+    "build": "node -e \"console.log('Static UI: no build required')\""
+  }
+}
