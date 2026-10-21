@@ -75,6 +75,7 @@ func readSource(path string) (*project, error) {
 		objects:       doc.objects,
 		items:         doc.items,
 		channels:      channels,
+		paints:        doc.paints,
 		sourcePrinter: ps.printerModel,
 		dropped:       a.droppedNames(modelName),
 	}

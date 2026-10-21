@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"sort"
 	"strings"
 )
 
@@ -34,6 +33,7 @@ type ChannelReport struct {
 var fixedWarnings = []string{
 	"Print, printer and process settings were not transferred; choose a PrusaSlicer printer profile and re-slice before printing.",
 	"Source firmware start and end scripts were not copied.",
+	"Source filament colours and materials are recorded as slicebridge_ metadata only; no PrusaSlicer filament presets were set.",
 }
 
 // Convert reads the Bambu/Orca project at src and publishes a PrusaSlicer 3MF
@@ -114,21 +114,22 @@ func buildReport(output string, p *project) Report {
 		BuildItems:     len(p.items),
 		DroppedEntries: p.dropped,
 	}
-	painted := make(map[int]bool)
+	var used uint32
 	for _, obj := range p.objects {
 		r.Vertices += len(obj.vertices)
 		r.Triangles += len(obj.triangles)
 		for _, t := range obj.triangles {
-			if t.channel != 0 {
+			if channels := p.paints[t.paint].channels; channels != 0 {
 				r.PaintedTriangles++
-				painted[int(t.channel)] = true
+				used |= channels
 			}
 		}
 	}
-	for ch := range painted {
-		r.PaintChannels = append(r.PaintChannels, ch)
+	for ch := 1; ch <= maxPaintState; ch++ {
+		if used&(1<<ch) != 0 {
+			r.PaintChannels = append(r.PaintChannels, ch)
+		}
 	}
-	sort.Ints(r.PaintChannels)
 
 	seen := make(map[string]bool)
 	gaps := 0

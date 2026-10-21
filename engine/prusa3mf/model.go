@@ -26,11 +26,11 @@ var validUnits = map[string]bool{
 	"inch": true, "foot": true, "meter": true,
 }
 
-// triangle keeps indices as int32 and the painted channel as a byte so that
-// multi-million-triangle models stay within a predictable memory budget.
+// triangle keeps indices as int32 and the paint as an index into the model's
+// paint table, so multi-million-triangle models stay within a predictable memory budget.
 type triangle struct {
-	v       [3]int32
-	channel uint8 // 1-based filament channel; 0 = unpainted
+	v     [3]int32
+	paint uint32 // index into modelDoc.paints; 0 = unpainted
 }
 
 type object struct {
@@ -54,6 +54,7 @@ type modelDoc struct {
 	objects []*object
 	byID    map[int]*object
 	items   []buildItem
+	paints  []paintCode // paints[0] is the empty code (unpainted)
 }
 
 type modelReader struct {
@@ -61,6 +62,7 @@ type modelReader struct {
 	depth      int
 	prusaPaint bool // also accept slic3rpe:mmu_segmentation; used only to verify our own output
 	doc        modelDoc
+	paintIndex map[string]uint32
 	totalVerts int
 	totalTris  int
 }
@@ -72,6 +74,8 @@ func parseModel(data []byte, prusaPaint bool) (*modelDoc, error) {
 	m := &modelReader{dec: xml.NewDecoder(bytes.NewReader(data)), prusaPaint: prusaPaint}
 	m.doc.unit = "millimeter"
 	m.doc.byID = make(map[int]*object)
+	m.doc.paints = []paintCode{{}}
+	m.paintIndex = map[string]uint32{"": 0}
 	if err := m.root(); err != nil {
 		return nil, err
 	}
@@ -277,11 +281,11 @@ func (m *modelReader) triangle(el xml.StartElement, obj *object) error {
 		t.v[i] = int32(n)
 	}
 	if code, ok := attr(el, "paint_color"); ok {
-		channel, err := decodePaint(code)
+		idx, err := m.paintIndexOf(code)
 		if err != nil {
 			return err
 		}
-		t.channel = uint8(channel)
+		t.paint = idx
 	}
 	if m.totalTris >= maxTriangles {
 		return fail("ARCHIVE_LIMIT", "model has more than %d triangles", maxTriangles)
@@ -289,6 +293,22 @@ func (m *modelReader) triangle(el xml.StartElement, obj *object) error {
 	obj.triangles = append(obj.triangles, t)
 	m.totalTris++
 	return m.dec.Skip()
+}
+
+// paintIndexOf validates each distinct paint code once and returns its index in
+// the paint table.
+func (m *modelReader) paintIndexOf(code string) (uint32, error) {
+	if idx, ok := m.paintIndex[code]; ok {
+		return idx, nil
+	}
+	channels, err := decodePaint(code)
+	if err != nil {
+		return 0, err
+	}
+	m.doc.paints = append(m.doc.paints, paintCode{code: code, channels: channels})
+	idx := uint32(len(m.doc.paints) - 1)
+	m.paintIndex[code] = idx
+	return idx, nil
 }
 
 func (m *modelReader) item(el xml.StartElement) error {

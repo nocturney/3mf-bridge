@@ -2,7 +2,7 @@
 // packages using only the Go standard library.
 //
 // Supported: single-mesh objects, build-item transforms, per-triangle paint
-// written with single-level codes (channels 1-18), object and volume extruder
+// (TriangleSelector trees using channels 1-18, copied unchanged), object and volume extruder
 // assignments, and the complete numbered filament table, including duplicate
 // and sparse channels, which are preserved rather than compacted. Anything
 // outside that scope fails with a stable error code (see ErrorCode).

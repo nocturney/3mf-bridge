@@ -9,11 +9,7 @@ import (
 
 // maxChannelID caps the numbered filament table. Channels are preserved exactly
 // as numbered; this only bounds hostile or accidental palettes.
-const (
-	maxChannelID     = 64
-	placeholderColor = "#FFFFFF"
-	placeholderType  = "PLA"
-)
+const maxChannelID = 64
 
 var (
 	colorPattern = regexp.MustCompile(`^#[0-9A-Fa-f]{6}$`)
@@ -217,7 +213,7 @@ func buildChannels(slice []filamentEntry, ps projectSettings) ([]channel, error)
 	for id := 1; id <= maxID; id++ {
 		e, ok := entries[id]
 		if !ok {
-			table = append(table, channel{id: id, color: placeholderColor, typ: placeholderType, placeholder: true})
+			table = append(table, channel{id: id, placeholder: true})
 			continue
 		}
 		if !colorPattern.MatchString(e.color) {

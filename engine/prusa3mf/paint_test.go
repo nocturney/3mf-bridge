@@ -1,20 +1,31 @@
 package prusa3mf
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
-// TestDecodePaintRepositoryFixtureCodes pins the two codes that the repository
-// fixture uses: "4" is channel 1 and "2C" is channel 5.
-func TestDecodePaintRepositoryFixtureCodes(t *testing.T) {
-	cases := map[string]int{
+// channelMask is the decodePaint result for the given channels.
+func channelMask(channels ...int) uint32 {
+	var mask uint32
+	for _, ch := range channels {
+		mask |= 1 << ch
+	}
+	return mask
+}
+
+// TestDecodePaintSingleLevelCodes pins the one-level codes and the fixture's "2C".
+func TestDecodePaintSingleLevelCodes(t *testing.T) {
+	cases := map[string]uint32{
 		"":   0,
 		"0":  0,
-		"4":  1,
-		"8":  2,
-		"C":  3,
-		"1C": 4,
-		"2C": 5,
-		"2c": 5,
-		"FC": 18,
+		"4":  channelMask(1),
+		"8":  channelMask(2),
+		"0C": channelMask(3),
+		"1C": channelMask(4),
+		"2C": channelMask(5),
+		"2c": channelMask(5),
+		"FC": channelMask(18),
 	}
 	for code, want := range cases {
 		got, err := decodePaint(code)
@@ -22,42 +33,52 @@ func TestDecodePaintRepositoryFixtureCodes(t *testing.T) {
 			t.Fatalf("decodePaint(%q) error: %v", code, err)
 		}
 		if got != want {
-			t.Fatalf("decodePaint(%q) = %d, want %d", code, got, want)
+			t.Fatalf("decodePaint(%q) = %b, want %b", code, got, want)
 		}
 	}
 }
 
-func TestPaintCodecRoundTrip(t *testing.T) {
-	for channel := 1; channel <= maxPaintChannel; channel++ {
-		code, err := encodePaint(channel)
-		if err != nil {
-			t.Fatalf("encodePaint(%d) error: %v", channel, err)
-		}
+// TestDecodePaintNestedTrees uses codes generated from the bitstream grammar in
+// Panda2Prusa's paint.py and checked with its decoder. Split trees must decode to
+// the same channels, and the writer keeps the codes byte for byte.
+func TestDecodePaintNestedTrees(t *testing.T) {
+	cases := map[string]uint32{
+		// Two-way split into two leaves.
+		"841": channelMask(1, 2),
+		// Three-way split; the state 0 leaf names no channel.
+		"0CFC2C906": channelMask(3, 5, 18),
+		// Four-way split with a nested three-way split.
+		"84C04201CF": channelMask(1, 2, 4, 7),
+	}
+	for code, want := range cases {
 		got, err := decodePaint(code)
-		if err != nil || got != channel {
-			t.Fatalf("round trip of channel %d via %q gave %d (%v)", channel, code, got, err)
+		if err != nil {
+			t.Fatalf("decodePaint(%q) error: %v", code, err)
 		}
-	}
-	if code, err := encodePaint(0); err != nil || code != "" {
-		t.Fatalf("encodePaint(0) = %q, %v; want empty", code, err)
+		if got != want {
+			t.Fatalf("decodePaint(%q) = %b, want %b", code, got, want)
+		}
 	}
 }
 
-func TestPaintCodecRefusesUnsupportedForms(t *testing.T) {
-	for _, code := range []string{
-		"1", "2", "3", "5", "7", // split trees from brush painting
-		"10", "C0", "0C", // two characters that are not channel 4+ forms
-		"2C2", "8C4", // three or more characters
-		"G", "ZZ", // not hexadecimal
-	} {
+func TestDecodePaintRefusesMalformedCodes(t *testing.T) {
+	// Split nodes whose children are missing, a state 3 leaf without its
+	// extension, and a split node whose children run out.
+	truncated := []string{"1", "2", "3", "5", "7", "81", "C", "2C2"}
+	// Non-zero bits after the root node.
+	trailing := []string{"10", "C0", "40", "1C0", "8410", "8C4", "84C04201C"}
+	// Not hexadecimal, and longer than the allowed bound.
+	invalid := []string{"G", "ZZ", strings.Repeat("0", maxPaintCodeLen+1)}
+	for _, code := range append(append(truncated, trailing...), invalid...) {
 		if _, err := decodePaint(code); ErrorCode(err) != "UNSUPPORTED_PAINT" {
 			t.Fatalf("decodePaint(%q) code = %s (%v), want UNSUPPORTED_PAINT", code, ErrorCode(err), err)
 		}
 	}
 }
 
-func TestEncodePaintRefusesChannelBeyondLimit(t *testing.T) {
-	if _, err := encodePaint(maxPaintChannel + 1); ErrorCode(err) != "UNSUPPORTED_PAINT_CHANNEL" {
-		t.Fatalf("code = %s (%v), want UNSUPPORTED_PAINT_CHANNEL", ErrorCode(err), err)
+func TestDecodePaintAcceptsLongestAllowedCode(t *testing.T) {
+	got, err := decodePaint(strings.Repeat("0", maxPaintCodeLen))
+	if err != nil || got != 0 {
+		t.Fatalf("decodePaint(longest allowed) = %b, %v; want 0, nil", got, err)
 	}
 }

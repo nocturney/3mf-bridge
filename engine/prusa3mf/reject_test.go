@@ -23,11 +23,18 @@ func TestRefusedPackagesFailWithStableCodes(t *testing.T) {
 		want string
 		edit func(f map[string][]byte)
 	}{
-		{"paint split tree", "UNSUPPORTED_PAINT", func(f map[string][]byte) {
+		{"truncated paint split tree", "UNSUPPORTED_PAINT", func(f map[string][]byte) {
 			f[modelPart] = []byte(tetraModel(defaultBuild, "1"))
 		}},
+		{"paint with bits after the root node", "UNSUPPORTED_PAINT", func(f map[string][]byte) {
+			f[modelPart] = []byte(tetraModel(defaultBuild, "8410"))
+		}},
 		{"paint channel beyond table", "CHANNEL_NOT_IN_SOURCE", func(f map[string][]byte) {
-			f[modelPart] = []byte(tetraModel(defaultBuild, "C"))
+			f[modelPart] = []byte(tetraModel(defaultBuild, "0C"))
+		}},
+		{"nested paint names a placeholder gap", "CHANNEL_NOT_IN_SOURCE", func(f map[string][]byte) {
+			f[sliceInfoPart] = []byte(sliceInfo(filament(1, "PLA", "#FF0000"), filament(3, "PLA", "#0000FF")))
+			f[modelPart] = []byte(tetraModel(defaultBuild, "841"))
 		}},
 		{"paint on placeholder gap", "CHANNEL_NOT_IN_SOURCE", func(f map[string][]byte) {
 			f[sliceInfoPart] = []byte(sliceInfo(filament(1, "PLA", "#FF0000"), filament(3, "PLA", "#0000FF")))

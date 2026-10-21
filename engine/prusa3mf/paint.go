@@ -1,52 +1,113 @@
 package prusa3mf
 
-import "fmt"
+// maxPaintState is the highest filament state a paint leaf can name. States 0
+// to 2 use two bits; state 3 is an escape followed by a four-bit extension, so
+// the largest encodable state is 3 + 15.
+const maxPaintState = 18
 
-// maxPaintChannel is the highest filament channel a single-level paint code names.
-const maxPaintChannel = 18
+// maxPaintCodeLen bounds one paint_color value. The tree walk recurses once per
+// split node, so the bound also bounds recursion depth.
+const maxPaintCodeLen = 4096
 
-// Paint codes are the per-triangle segmentation values written as paint_color
-// by Bambu/Orca and as slic3rpe:mmu_segmentation by PrusaSlicer. Only these
-// single-level forms are accepted:
-//
-//	""  or "0"          not painted
-//	"4", "8", "C"       channels 1, 2, 3 (one nibble: channel << 2)
-//	"1C" through "FC"   channels 4 through 18 (high nibble = channel-3, then the
-//	                    marker nibble C)
-//
-// Any other code, including multi-level split trees from brush painting, is
-// refused with UNSUPPORTED_PAINT. The one-nibble forms and the fixture's "2C"
-// (channel 5) are the basis of this reading. The two-character form for
-// channels 4 and above has not been checked against a PrusaSlicer-written file.
-func decodePaint(code string) (int, error) {
-	switch len(code) {
-	case 0:
-		return 0, nil
-	case 1:
-		if v, ok := hexNibble(code[0]); ok && v&0x3 == 0 {
-			return int(v >> 2), nil
-		}
-	case 2:
-		high, okHigh := hexNibble(code[0])
-		low, okLow := hexNibble(code[1])
-		if okHigh && okLow && low == 0xC && high != 0 {
-			return 3 + int(high), nil
-		}
-	}
-	return 0, fail("UNSUPPORTED_PAINT", "paint_color %q is not a supported single-level segmentation code", code)
+// paintCode is one distinct paint_color value and the filament channels it names.
+type paintCode struct {
+	code     string
+	channels uint32 // bit N set when a leaf paints channel N
 }
 
-// encodePaint is the inverse of decodePaint for channels 0 through maxPaintChannel.
-func encodePaint(channel int) (string, error) {
-	switch {
-	case channel == 0:
-		return "", nil
-	case channel >= 1 && channel <= 3:
-		return fmt.Sprintf("%X", channel<<2), nil
-	case channel > 3 && channel <= maxPaintChannel:
-		return fmt.Sprintf("%XC", channel-3), nil
+// decodePaint validates a paint_color value and returns the channels its leaves
+// name. The value is a TriangleSelector bitstream, the format Bambu Studio forked
+// from PrusaSlicer, read as in Panda2Prusa's paint.py: hex digits form a bit
+// stream read from the last character backwards, least significant bit first.
+//
+// A node is a leaf (split bits 00, then state:2, plus a four-bit extension when
+// state is 3) or a split (split bits 1 to 3, a side index, then split+1 child
+// nodes). Bits after the root node must be zero. Leaves with state 0 mean "use
+// the volume's extruder", so they name no channel and are not in the mask.
+//
+// Nothing is remapped: the writer emits the original code unchanged.
+func decodePaint(code string) (uint32, error) {
+	if code == "" {
+		return 0, nil
 	}
-	return "", fail("UNSUPPORTED_PAINT_CHANNEL", "filament channel %d cannot be painted; the limit is %d", channel, maxPaintChannel)
+	if len(code) > maxPaintCodeLen {
+		return 0, fail("UNSUPPORTED_PAINT", "paint_color is longer than %d characters", maxPaintCodeLen)
+	}
+	bits := make([]uint8, 0, 4*len(code))
+	for i := len(code) - 1; i >= 0; i-- {
+		v, ok := hexNibble(code[i])
+		if !ok {
+			return 0, fail("UNSUPPORTED_PAINT", "paint_color %q contains a non-hexadecimal character", code)
+		}
+		for b := 0; b < 4; b++ {
+			bits = append(bits, (v>>b)&1)
+		}
+	}
+	r := &paintReader{bits: bits}
+	if !r.node() {
+		return 0, fail("UNSUPPORTED_PAINT", "paint_color %q is truncated", code)
+	}
+	for _, b := range r.bits[r.pos:] {
+		if b != 0 {
+			return 0, fail("UNSUPPORTED_PAINT", "paint_color %q has data after its root node", code)
+		}
+	}
+	return r.channels, nil
+}
+
+// paintReader walks a paint bitstream. Every method reports false when the
+// stream ends early, so truncated codes are refused rather than read as zeros.
+type paintReader struct {
+	bits     []uint8
+	pos      int
+	channels uint32
+}
+
+// take reads n bits, least significant first.
+func (r *paintReader) take(n int) (int, bool) {
+	if r.pos+n > len(r.bits) {
+		return 0, false
+	}
+	v := 0
+	for i := 0; i < n; i++ {
+		v |= int(r.bits[r.pos+i]) << i
+	}
+	r.pos += n
+	return v, true
+}
+
+// node reads one leaf, or one split node together with all of its children.
+func (r *paintReader) node() bool {
+	split, ok := r.take(2)
+	if !ok {
+		return false
+	}
+	if split == 0 {
+		state, ok := r.take(2)
+		if !ok {
+			return false
+		}
+		if state == 3 {
+			ext, ok := r.take(4)
+			if !ok {
+				return false
+			}
+			state = ext + 3
+		}
+		if state != 0 {
+			r.channels |= 1 << state
+		}
+		return true
+	}
+	if _, ok := r.take(2); !ok { // special side index
+		return false
+	}
+	for i := 0; i <= split; i++ {
+		if !r.node() {
+			return false
+		}
+	}
+	return true
 }
 
 func hexNibble(c byte) (byte, bool) {

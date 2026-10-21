@@ -30,10 +30,7 @@ const (
 // encodeOutput builds the PrusaSlicer package in memory. Parts are written in
 // a fixed order and without timestamps, so identical input gives identical bytes.
 func encodeOutput(p *project) ([]byte, error) {
-	model, err := modelXML(p)
-	if err != nil {
-		return nil, err
-	}
+	model := modelXML(p)
 	parts := []struct {
 		name string
 		body string
@@ -63,10 +60,13 @@ func encodeOutput(p *project) ([]byte, error) {
 
 // modelXML writes geometry, paint and build items. Vertices stay in object
 // space and each build item carries its transform, so geometry is unchanged.
-func modelXML(p *project) (string, error) {
+// Paint codes are copied exactly as read, so nested split trees keep their bits.
+func modelXML(p *project) string {
 	var b strings.Builder
 	b.WriteString(xmlHeader)
 	fmt.Fprintf(&b, "<model unit=\"%s\" xml:lang=\"en-US\" xmlns=\"%s\" xmlns:slic3rpe=\"%s\">\n", p.unit, coreNS, slic3rpeNS)
+	b.WriteString(" <metadata name=\"slic3rpe:Version3mf\">1</metadata>\n")
+	b.WriteString(" <metadata name=\"slic3rpe:MmPaintingVersion\">1</metadata>\n")
 	b.WriteString(" <metadata name=\"Application\">SliceBridge prusa3mf</metadata>\n")
 	b.WriteString(" <resources>\n")
 	for _, obj := range p.objects {
@@ -77,12 +77,8 @@ func modelXML(p *project) (string, error) {
 		b.WriteString("    </vertices>\n    <triangles>\n")
 		for _, t := range obj.triangles {
 			fmt.Fprintf(&b, "     <triangle v1=\"%d\" v2=\"%d\" v3=\"%d\"", t.v[0], t.v[1], t.v[2])
-			if t.channel != 0 {
-				code, err := encodePaint(int(t.channel))
-				if err != nil {
-					return "", err
-				}
-				fmt.Fprintf(&b, " slic3rpe:mmu_segmentation=\"%s\"", code)
+			if t.paint != 0 {
+				fmt.Fprintf(&b, " slic3rpe:mmu_segmentation=\"%s\"", p.paints[t.paint].code)
 			}
 			b.WriteString("/>\n")
 		}
@@ -100,7 +96,7 @@ func modelXML(p *project) (string, error) {
 		b.WriteString("/>\n")
 	}
 	b.WriteString(" </build>\n</model>\n")
-	return b.String(), nil
+	return b.String()
 }
 
 // modelConfigXML carries object and volume extruder assignments, names and the
@@ -140,9 +136,12 @@ func modelConfigXML(p *project) string {
 	return b.String()
 }
 
-// prusaConfig writes the filament table in PrusaSlicer's "; key = value" form.
-// Print, printer and process settings are not transferred, so no printer
-// firmware or scripts are written here.
+// prusaConfig records the source filament table under slicebridge_ keys. These
+// are not PrusaSlicer settings: no filament_colour, filament_type or printer
+// preset is written, because the source palette has not been checked against
+// PrusaSlicer's own loader. Placeholder gaps have empty colour and material
+// entries, so no value is invented for them. Print, printer and process settings
+// are not transferred, so no printer firmware or scripts are written here.
 func prusaConfig(p *project) string {
 	var colours, types, gaps []string
 	for _, c := range p.channels {
@@ -156,12 +155,13 @@ func prusaConfig(p *project) string {
 	b.WriteString("; generated_by = SliceBridge prusa3mf\n")
 	b.WriteString("; source_format = Bambu/Orca 3MF\n")
 	if p.sourcePrinter != "" {
-		fmt.Fprintf(&b, "; source_printer_model = %s\n", p.sourcePrinter)
+		fmt.Fprintf(&b, "; slicebridge_source_printer_model = %s\n", p.sourcePrinter)
 	}
-	fmt.Fprintf(&b, "; filament_colour = %s\n", strings.Join(colours, ";"))
-	fmt.Fprintf(&b, "; filament_type = %s\n", strings.Join(types, ";"))
+	fmt.Fprintf(&b, "; slicebridge_source_filament_colour = %s\n", strings.Join(colours, ";"))
+	fmt.Fprintf(&b, "; slicebridge_source_filament_type = %s\n", strings.Join(types, ";"))
 	fmt.Fprintf(&b, "; slicebridge_placeholder_channels = %s\n", strings.Join(gaps, ";"))
 	fmt.Fprintf(&b, "; slicebridge_dropped_entries = %d\n", len(p.dropped))
+	b.WriteString("; slicebridge_filament_presets = not set; choose PrusaSlicer filaments by hand\n")
 	b.WriteString("; slicebridge_settings = not transferred; re-slice with a PrusaSlicer printer profile\n")
 	return b.String()
 }

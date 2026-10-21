@@ -12,6 +12,7 @@ type project struct {
 	objects       []*object
 	items         []buildItem
 	channels      []channel
+	paints        []paintCode
 	sourcePrinter string
 	dropped       []string
 	warnings      []string
@@ -58,8 +59,16 @@ func (p *project) bind(doc *modelDoc, settings map[int]objectSettings) error {
 		if err := p.checkChannel(obj.volumeExtruder, "volume of object", obj.id); err != nil {
 			return err
 		}
+		// A paint code can name several channels, so every channel it uses is checked.
+		var used uint32
 		for _, t := range obj.triangles {
-			if err := p.checkChannel(int(t.channel), "painted triangle in object", obj.id); err != nil {
+			used |= p.paints[t.paint].channels
+		}
+		for ch := 1; ch <= maxPaintState; ch++ {
+			if used&(1<<ch) == 0 {
+				continue
+			}
+			if err := p.checkChannel(ch, "painted triangle in object", obj.id); err != nil {
 				return err
 			}
 		}

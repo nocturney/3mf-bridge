@@ -84,8 +84,8 @@ func compareModel(doc *modelDoc, p *project) error {
 			if g.v != w.v {
 				return fmt.Errorf("object %d triangle %d indices changed", want.id, j)
 			}
-			if g.channel != w.channel {
-				return fmt.Errorf("object %d triangle %d paint channel %d, want %d", want.id, j, g.channel, w.channel)
+			if gc, wc := doc.paints[g.paint].code, p.paints[w.paint].code; gc != wc {
+				return fmt.Errorf("object %d triangle %d paint %q, want %q", want.id, j, gc, wc)
 			}
 		}
 	}
@@ -153,10 +153,10 @@ func compareFilaments(data []byte, p *project) error {
 	var colours, types string
 	for _, line := range strings.Split(string(data), "\n") {
 		switch {
-		case strings.HasPrefix(line, "; filament_colour = "):
-			colours = strings.TrimPrefix(line, "; filament_colour = ")
-		case strings.HasPrefix(line, "; filament_type = "):
-			types = strings.TrimPrefix(line, "; filament_type = ")
+		case strings.HasPrefix(line, "; slicebridge_source_filament_colour = "):
+			colours = strings.TrimPrefix(line, "; slicebridge_source_filament_colour = ")
+		case strings.HasPrefix(line, "; slicebridge_source_filament_type = "):
+			types = strings.TrimPrefix(line, "; slicebridge_source_filament_type = ")
 		}
 	}
 	var wantColours, wantTypes []string
@@ -165,7 +165,7 @@ func compareFilaments(data []byte, p *project) error {
 		wantTypes = append(wantTypes, c.typ)
 	}
 	if colours != strings.Join(wantColours, ";") || types != strings.Join(wantTypes, ";") {
-		return fmt.Errorf("filament table in %s does not match the source channels", prusaConfigPart)
+		return fmt.Errorf("source filament table in %s does not match the source channels", prusaConfigPart)
 	}
 	return nil
 }

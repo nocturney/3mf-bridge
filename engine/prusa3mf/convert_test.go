@@ -169,12 +169,12 @@ func TestConvertFixture(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	gotChannels := []uint8{}
+	gotCodes := []string{}
 	for _, tri := range doc.objects[0].triangles {
-		gotChannels = append(gotChannels, tri.channel)
+		gotCodes = append(gotCodes, doc.paints[tri.paint].code)
 	}
-	if fmt.Sprint(gotChannels) != "[5 1 1 1]" {
-		t.Fatalf("triangle channels = %v, want [5 1 1 1]", gotChannels)
+	if fmt.Sprint(gotCodes) != "[2C 4 4 4]" {
+		t.Fatalf("triangle paint codes = %v, want [2C 4 4 4]", gotCodes)
 	}
 	model := string(out[modelPart])
 	if !strings.Contains(model, `slic3rpe:mmu_segmentation="2C"`) || !strings.Contains(model, `slic3rpe:mmu_segmentation="4"`) {
@@ -185,7 +185,7 @@ func TestConvertFixture(t *testing.T) {
 		t.Fatalf("object extruder 5 not written:\n%s", modelConfig)
 	}
 	filamentCfg := string(out[prusaConfigPart])
-	if !strings.Contains(filamentCfg, "; filament_colour = #FF0000;#00FF00;#0000FF;#FFFF00;#FFFFFF\n") {
+	if !strings.Contains(filamentCfg, "; slicebridge_source_filament_colour = #FF0000;#00FF00;#0000FF;#FFFF00;#FFFFFF\n") {
 		t.Fatalf("filament colours not preserved in order:\n%s", filamentCfg)
 	}
 	for name, body := range out {
@@ -255,8 +255,8 @@ func TestConvertPreservesSparseAndDuplicateChannels(t *testing.T) {
 	out := readOutput(t, dst)
 	filamentCfg := string(out[prusaConfigPart])
 	for _, want := range []string{
-		"; filament_colour = #FF0000;#FFFFFF;#00FF00;#FFFFFF;#FFFFFF;#FFFFFF;#FF0000\n",
-		"; filament_type = PLA;PLA;PETG;PLA;PLA;PLA;PLA\n",
+		"; slicebridge_source_filament_colour = #FF0000;;#00FF00;;;;#FF0000\n",
+		"; slicebridge_source_filament_type = PLA;;PETG;;;;PLA\n",
 		"; slicebridge_placeholder_channels = 2;4;5;6\n",
 	} {
 		if !strings.Contains(filamentCfg, want) {
@@ -265,6 +265,37 @@ func TestConvertPreservesSparseAndDuplicateChannels(t *testing.T) {
 	}
 	if !strings.Contains(string(out[prusaModelConfigPart]), `<metadata type="object" key="extruder" value="7"/>`) {
 		t.Fatal("object extruder 7 not written")
+	}
+}
+
+// TestConvertPreservesNestedPaint checks that split-tree paint codes reach the
+// output unchanged, including the state 0 leaf and the state 18 extension.
+func TestConvertPreservesNestedPaint(t *testing.T) {
+	files := basePackage()
+	nested := []string{"841", "0CFC2C906", "84C04201CF", "4"}
+	files[modelPart] = []byte(tetraModel(defaultBuild, nested...))
+	var filaments []string
+	for id := 1; id <= 18; id++ {
+		filaments = append(filaments, filament(id, "PLA", fmt.Sprintf("#%06X", id)))
+	}
+	files[sliceInfoPart] = []byte(sliceInfo(filaments...))
+	dst := filepath.Join(t.TempDir(), "nested.3mf")
+
+	report, err := Convert(writePackage(t, files), dst)
+	if err != nil {
+		t.Fatalf("Convert failed with %s: %v", ErrorCode(err), err)
+	}
+	if fmt.Sprint(report.PaintChannels) != "[1 2 3 4 5 7 18]" || report.PaintedTriangles != 4 {
+		t.Fatalf("paint = %d triangles on channels %v, want 4 on [1 2 3 4 5 7 18]", report.PaintedTriangles, report.PaintChannels)
+	}
+	model := string(readOutput(t, dst)[modelPart])
+	for _, code := range nested {
+		if want := fmt.Sprintf(`slic3rpe:mmu_segmentation="%s"`, code); !strings.Contains(model, want) {
+			t.Fatalf("paint %q not written unchanged:\n%s", code, model)
+		}
+	}
+	if !strings.Contains(model, `name="slic3rpe:MmPaintingVersion">1<`) {
+		t.Fatalf("output lacks the Prusa paint version metadata:\n%s", model)
 	}
 }
 
