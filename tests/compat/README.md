@@ -27,7 +27,7 @@ path before the run; the check fails if the conversion replaced it.
 | `no_sliced_gcode` | No `*.gcode` / `*.gcode.md5` entries or references | Yes |
 | `geometry_counts`, `geometry_hash` | Vertex/triangle counts across the root model **and referenced child `.model` parts**; order-independent hash of canonical triangles | Yes |
 | `paint_state` | Per-triangle paint code multiset (triangle identity = sorted vertex coordinates) | Only same codec (Orca/Bambu share one) |
-| `palette_slots` | Ordered (colour, material) per slot; duplicates kept as separate slots | Yes |
+| `palette_slots` | Ordered (colour, material) per slot; duplicates kept separate. Generic Panda2Prusa outputs preserve source slots in SliceBridge JSON metadata, **not** native Prusa filament presets. | Yes |
 | `virtual_channels` | Channels used by objects and paint (incl. fifth) still exist with the same identity | Paint channels only for Orca/Bambu |
 | `object_extruder_mapping` | Ordered object extruder values | Yes (same metadata idea) |
 | `machine_scripts_not_carried` | Source `*_gcode` printer scripts are not copied | JSON layout only |
