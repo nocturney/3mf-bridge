@@ -141,7 +141,7 @@ const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,Number(process.env.QUEUE
 // launch failure is not a layout failure: report it and try another installed
 // Chromium binary instead of silently dropping any viewport/assertions.
 let selectedBrowser=0;
-function renderWithChromium(args,url,scenario){
+function renderWithChromium(args,url,scenario,requestedWidth,requestedHeight){
   const failures=[];
   for(let i=selectedBrowser;i<browsers.length;i++){
     const browser=browsers[i];
@@ -149,16 +149,27 @@ function renderWithChromium(args,url,scenario){
     const p=spawnSync(browser,[...args,'--user-data-dir='+profile,url],{
       encoding:'utf8',timeout:30000,maxBuffer:8*1024*1024
     });
+    let geometry=null, renderProblem=null;
     if(p.status===0){
-      if(i!==selectedBrowser||!fs.existsSync(path.join(browserProfileRoot,'.selected'))){
-        console.log('CHROMIUM_QA_SELECTED',path.basename(browser));
-        fs.writeFileSync(path.join(browserProfileRoot,'.selected'),String(i));
+      const match=(p.stdout||'').match(/data-layout-qa="([^"]+)"/);
+      try{if(match)geometry=JSON.parse(decodeURIComponent(match[1]));}
+      catch(e){renderProblem='invalid geometry report: '+e.message;}
+      if(!geometry)renderProblem=renderProblem||'no geometry report';
+      else if(geometry.viewport.width<requestedWidth-20 ||
+              geometry.viewport.height<requestedHeight-160 ||
+              geometry.viewport.height>requestedHeight+2)
+        renderProblem='renderer ignored requested viewport: '+JSON.stringify(geometry.viewport);
+      if(!renderProblem){
+        if(i!==selectedBrowser||!fs.existsSync(path.join(browserProfileRoot,'.selected'))){
+          console.log('CHROMIUM_QA_SELECTED',path.basename(browser));
+          fs.writeFileSync(path.join(browserProfileRoot,'.selected'),String(i));
+        }
+        selectedBrowser=i;
+        return p;
       }
-      selectedBrowser=i;
-      return p;
     }
     const failure={
-      scenario,browser,status:p.status,signal:p.signal,
+      scenario,browser,status:p.status,signal:p.signal,renderProblem,
       error:p.error?{code:p.error.code,message:p.error.message}:null,
       stderr:(p.stderr||'').slice(-1200),
       stdout:(p.stdout||'').slice(-600)
@@ -173,11 +184,13 @@ try{
     const url=pathToFileURL(htmlPath).href+'?files='+files+'&lang='+lang;
     const args=[
       '--headless=new','--disable-gpu','--disable-extensions',
+      '--disable-background-networking','--disable-background-mode',
+      '--disable-component-update','--disable-sync',
       '--no-first-run','--no-default-browser-check','--no-sandbox',
       '--window-size='+w+','+h,
       '--virtual-time-budget=2500','--dump-dom'
     ];
-    const p=renderWithChromium(args,url,w+'x'+h+' '+lang+' files='+files);
+    const p=renderWithChromium(args,url,w+'x'+h+' '+lang+' files='+files,w,h);
     const m=p.stdout.match(/data-layout-qa="([^"]+)"/);
     if(!m)throw Error('No computed-geometry report: '+p.stdout.slice(-1000)+' '+p.stderr.slice(-1000));
     const q=JSON.parse(decodeURIComponent(m[1]));
