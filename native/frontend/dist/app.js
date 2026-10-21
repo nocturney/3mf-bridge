@@ -420,6 +420,7 @@ async function refreshInstalledTargets(){
   }
   renderInstalledTargets();
   renderTargets();
+  window.SliceBridgeMyPrinters?.refreshDestinationArt?.();
 }
 // The PrusaSlicer row is shown only when the backend file probe finds the
 // sidecar and My Printers selects it. A failed probe offers no target.

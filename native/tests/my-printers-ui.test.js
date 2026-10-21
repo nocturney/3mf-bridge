@@ -116,7 +116,10 @@ test('new picker UI has bilingual names, consent-based selection and no network 
   assert.doesNotMatch(doc,/id="myPrintersScope"/);
   assert.match(script,/pill\.append\(name\);selectionList\.append\(pill\)/);
   assert.doesNotMatch(script,/copy\.append\(meta\)/);
-  assert.doesNotMatch(script,/fetch\s*\(|XMLHttpRequest|https?:\/\//);
+  // The only fetch is the optional bundled manifest; no remote images or sources.
+  assert.equal((script.match(/fetch\s*\(/g)||[]).length,1);
+  assert.match(script,/fetch\('\.\/printer-image-manifest\.json'/);
+  assert.doesNotMatch(script,/XMLHttpRequest|https?:\/\//);
 });
 
 
@@ -133,9 +136,9 @@ test('first-run displays available destinations immediately, without requiring a
   assert.match(doc,/id="catalogPickerHint"/);
   assert.match(script,/const hasFilter=Boolean\(term\|\|manufacturer\)/);
   assert.match(script,/const showList=hasFilter\|\|supported\.length>0/);
-  assert.match(script,/const matches=showList\?picker\.search/);
+  assert.match(script,/const matches=showList\?picker\.searchGroups/);
   assert.match(script,/list\.hidden=!showList/);
-  assert.match(script,/observeCover\(graphic,model\.id\)/);
+  assert.match(script,/observeArtwork\(graphic,group\)/);
   assert.match(style,/\.catalog-model-list\[hidden\]/);
 });
 
@@ -218,15 +221,16 @@ test('target printer cards reuse locally installed PNG covers with safe fallback
   assert.equal((html.match(/class="target-printer-icon"/g)||[]).length,
                (html.match(/class="target-option"/g)||[]).length);
   assert.match(js,/function loadTargetArtwork\(\)/);
-  assert.match(js,/!model\.legacyTarget\|\|!chosen\.has\(model\.id\)/);
-  assert.match(js,/querySelector\('\[data-target-row=/);
-  assert.match(js,/tile\.dataset\.artId=model\.id/);
-  assert.match(js,/queueCover\(model\.id\)/);
+  assert.match(js,/if\(!chosen\.has\(item\.id\)\)continue;/);
+  assert.match(js,/document\.querySelector\(selector\)/);
+  assert.match(js,/data-target-row="'\+item\.legacyTarget/);
+  assert.match(js,/tile\.dataset\.artKey=group\.key/);
+  assert.match(js,/else queueArtwork\(group\)/);
   assert.match(js,/selected=reply;\s*loadTargetArtwork\(\)/);
   assert.match(js,/loaded=true;\s*loadTargetArtwork\(\)/);
-  assert.match(js,/\.printer-avatar\[data-art-id\], \.target-printer-icon\[data-art-id\]/);
   assert.match(js,/result\?\.provenance==='local_installed_slicer'/);
-  assert.doesNotMatch(js,/fetch\s*\(|XMLHttpRequest|https?:\/\//);
+  assert.equal((js.match(/fetch\s*\(/g)||[]).length,1);
+  assert.doesNotMatch(js,/XMLHttpRequest|https?:\/\//);
   assert.match(css,/\.target-printer-icon \.printer-cover-photo\{/);
   assert.match(css,/object-fit:contain/);
   assert.match(backend,/func \(a \*App\) PrinterArtwork\(modelID string\)/);
