@@ -138,8 +138,10 @@ test('target printers are accessible two-column selectable cards with a narrow o
   assert.match(refinement,/\.target-list\{\s*display:grid;\s*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
   assert.match(refinement,/\.target-option:has\(input:checked\)/);
   assert.match(refinement,/@media\(max-width:480px\)\{\s*\.target-list\{grid-template-columns:1fr\}/);
-  assert.equal((doc.match(/class="target-option"/g)||[]).length,4);
-  assert.equal((doc.match(/class="target-printer-icon" aria-hidden="true"/g)||[]).length,4);
+  // Four built-in printer cards; the hidden PrusaSlicer project card is extra.
+  assert.equal((doc.match(/class="target-option" data-target-row="/g)||[]).length,4);
+  assert.equal((doc.match(/class="target-printer-icon" aria-hidden="true"/g)||[]).length,
+               (doc.match(/class="target-option"/g)||[]).length);
   for(const key of ['u1','c5','cc2','qidi']){
     assert.match(doc,new RegExp('<input type="checkbox" value="'+key+'"'));
     assert.match(doc,new RegExp('data-printer-summary="'+key+'"'));
@@ -177,7 +179,8 @@ test('target printer cards reuse locally installed PNG covers with safe fallback
     assert.ok(model.localCoverCandidates.length>0);
     assert.match(html,new RegExp('data-target-row="'+target+'"'));
   }
-  assert.equal((html.match(/class="target-printer-icon"/g)||[]).length,4);
+  assert.equal((html.match(/class="target-printer-icon"/g)||[]).length,
+               (html.match(/class="target-option"/g)||[]).length);
   assert.match(js,/function loadTargetArtwork\(\)/);
   assert.match(js,/!model\.legacyTarget\|\|!chosen\.has\(model\.id\)/);
   assert.match(js,/querySelector\('\[data-target-row=/);
