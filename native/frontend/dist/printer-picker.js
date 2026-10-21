@@ -1,9 +1,13 @@
 /* Pure, offline-first destination lookup. No image downloads, DOM injection or IO.
- * supportedModels() is the only destination list the My Printers UI may show:
- * built-in models whose adapter is available, installed Orca targets the backend
- * resolved completely, and the PrusaSlicer project item when its engine is ready.
- * groupDestinations() folds those target IDs into one card per physical model;
- * the IDs themselves (nozzle, slicer, built-in adapter) are never merged or replaced.
+ * Two lists, never mixed up:
+ * - catalogItems(): every non-Bambu catalogue model plus installed Orca targets and the
+ *   PrusaSlicer project item. This is what My Printers lets the user select. Each item
+ *   has a `ready` flag saying whether it is a working conversion destination.
+ * - supportedModels(): only the ready items (built-in adapters that are available,
+ *   installed Orca targets resolved completely, PrusaSlicer when its engine is ready).
+ *   Conversion reads this list only. Catalogue membership never implies readiness.
+ * groupDestinations() folds target IDs into one card per physical model; the IDs
+ * themselves (nozzle, slicer, built-in adapter, catalogue ID) are never merged or replaced.
  */
 (function(root,factory){
   const api=factory();
@@ -16,6 +20,8 @@
   // Same shape the Go backend issues (presets.IsOrcaTargetID). Anything else is not a destination.
   const orcaTargetPattern=/^orca-[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{10}$/;
   const limit=80;
+  // Upper bound for one list render. The full non-Bambu catalogue fits, so nothing is cut off.
+  const maxRender=1000;
   const maxSelected=32;
   // Canonical maker keys (casefolded) of integrated and mainstream makers. Detection
   // alone does not claim a working conversion adapter. All other makers remain
@@ -122,9 +128,12 @@
       id:target.id,manufacturer:makerLabel(vendor),model,aliases:[],legacyTarget:null,
       nozzle:nozzleOf(target),slicer:clean(target.slicer)||null,
     };
-    return {...item,releaseDate:releaseDate(item)};
+    return {...item,releaseDate:releaseDate(item),ready:true};
   }
-  function supportedModels(models,availability,installedTargets,prusaAvailable){
+  // Every destination the My Printers list can show. `ready` is true only for a working
+  // conversion target: an available built-in adapter, a resolved Orca target, or PrusaSlicer
+  // when its engine is ready. Other catalogue models are selectable but never conversion targets.
+  function catalogItems(models,availability,installedTargets,prusaAvailable){
     const usable=new Set((Array.isArray(availability)?availability:[])
       .filter(item=>item?.available===true&&typeof item.target==='string')
       .map(item=>item.target));
@@ -135,17 +144,20 @@
     };
     for(const model of Array.isArray(models)?models:[]){
       if(!model||typeof model.id!=='string'||isHidden(model))continue;
-      if(!Object.prototype.hasOwnProperty.call(legacyOrder,model.legacyTarget))continue;
-      if(!usable.has(model.legacyTarget))continue;
+      const legacy=Object.prototype.hasOwnProperty.call(legacyOrder,model.legacyTarget)?model.legacyTarget:null;
+      const manufacturer=makerLabel(model.manufacturer);
       const item={
         id:model.id,
-        manufacturer:makerLabel(model.manufacturer),
-        model:clean(model.model),
+        manufacturer,
+        // "Creality CR-10 S" under maker "Creality" is the model "CR-10 S", as for installed targets.
+        model:withoutMakerPrefix(clean(model.model),manufacturer)||clean(model.model),
         aliases:(Array.isArray(model.aliases)?model.aliases:[])
           .filter(alias=>typeof alias==='string').map(alias=>clean(alias)).filter(Boolean),
-        legacyTarget:model.legacyTarget,
+        legacyTarget:legacy,
         nozzle:null,
         slicer:null,
+        releaseDate:typeof model.releaseDate==='string'?model.releaseDate:null,
+        ready:legacy!==null&&usable.has(legacy),
       };
       add({...item,releaseDate:releaseDate(item)});
     }
@@ -153,12 +165,14 @@
       if(!target||typeof target.id!=='string'||!orcaTargetPattern.test(target.id))continue;
       add(dynamicItem(target));
     }
-    if(prusaAvailable===true){
-      // Generic export target: not a physical maker, so it is never a dropdown brand.
-      add({id:prusaTargetId,manufacturer:'Generic',model:'PrusaSlicer project',aliases:['Generic project'],
-           legacyTarget:null,nozzle:null,slicer:null,releaseDate:null});
-    }
+    // Generic export target: not a physical maker, so it is never a dropdown brand.
+    add({id:prusaTargetId,manufacturer:'Generic',model:'PrusaSlicer project',aliases:['Generic project'],
+         legacyTarget:null,nozzle:null,slicer:null,releaseDate:null,ready:prusaAvailable===true});
     return items;
+  }
+  // Conversion destinations only: the ready subset of catalogItems().
+  function supportedModels(models,availability,installedTargets,prusaAvailable){
+    return catalogItems(models,availability,installedTargets,prusaAvailable).filter(item=>item.ready);
   }
   // One card per physical model. Variants keep their own IDs; nothing is merged or replaced.
   function nozzleNumber(item){
@@ -166,11 +180,16 @@
     return Number.isFinite(value)?value:Number.POSITIVE_INFINITY;
   }
   function variantOrder(left,right){
+    if(Boolean(left.ready)!==Boolean(right.ready))return left.ready?-1:1;
     if(Boolean(left.legacyTarget)!==Boolean(right.legacyTarget))return left.legacyTarget?-1:1;
     const byNozzle=nozzleNumber(left)-nozzleNumber(right);
     if(byNozzle&&Number.isFinite(byNozzle))return byNozzle;
     const bySlicer=String(left.slicer||'').localeCompare(String(right.slicer||''),'en',{sensitivity:'base'});
     return bySlicer||String(left.id).localeCompare(String(right.id),'en');
+  }
+  // Newest verified or catalogued date among a card's variants; null when every date is unknown.
+  function latestDate(variants){
+    return variants.map(v=>v.releaseDate).filter(Boolean).sort().at(-1)||null;
   }
   function groupDestinations(items){
     const byKey=new Map();
@@ -183,25 +202,28 @@
     const groups=[];
     for(const [key,variants] of byKey){
       variants.sort(variantOrder);
-      // Default when a card is ticked: the built-in adapter, else the 0.4 mm variant, else the first.
-      const preferred=variants.find(v=>v.legacyTarget)||variants.find(v=>v.nozzle==='0.4')||variants[0];
+      // Default when a card is ticked: the built-in adapter, else a ready 0.4 mm variant,
+      // else any ready variant, else the catalogue ID alone.
+      const preferred=variants.find(v=>v.ready&&v.legacyTarget)||variants.find(v=>v.ready&&v.nozzle==='0.4')||
+                      variants.find(v=>v.ready)||variants[0];
       const first=variants[0];
       groups.push({
         key,
         id:preferred.id,
         ids:variants.map(v=>v.id),
         variants,
+        ready:variants.some(v=>v.ready),
         manufacturer:first.manufacturer,
         model:first.model,
         aliases:[...new Set(variants.flatMap(v=>v.aliases||[]))],
         legacyTarget:variants.find(v=>v.legacyTarget)?.legacyTarget||null,
-        releaseDate:variants.map(v=>v.releaseDate).find(Boolean)||null,
+        releaseDate:latestDate(variants),
       });
     }
     return groups;
   }
-  // Maker-level sort: selected cards in saved order, then dated launches newest first,
-  // then unknown dates with built-in adapters, then integrated makers, then alphabetical.
+  // Card order: saved selections first (saved order), then maker A-Z, then release date newest
+  // first within the maker, undated models after dated ones, alphabetical by model.
   function rankOf(entry,order){
     let best=Number.POSITIVE_INFINITY;
     for(const id of entry.ids||[entry.id]){
@@ -217,19 +239,14 @@
       if(!Number.isFinite(rrank))return -1;
       return lrank-rrank;
     }
+    const byMaker=String(left.manufacturer).localeCompare(String(right.manufacturer),'en',{sensitivity:'base'});
+    if(byMaker)return byMaker;
     const ldate=releaseDate(left),rdate=releaseDate(right);
     if(ldate!==rdate){
       if(!ldate)return 1;
       if(!rdate)return -1;
       return rdate.localeCompare(ldate);
     }
-    const lad=Boolean(left.legacyTarget),rad=Boolean(right.legacyTarget);
-    if(lad!==rad)return lad?-1:1;
-    const lp=primaryMakers.has(makerKey(left.manufacturer));
-    const rp=primaryMakers.has(makerKey(right.manufacturer));
-    if(lp!==rp)return lp?-1:1;
-    const byMaker=String(left.manufacturer).localeCompare(String(right.manufacturer),'en',{sensitivity:'base'});
-    if(byMaker)return byMaker;
     const byModel=String(left.model).localeCompare(String(right.model),'en',{numeric:true,sensitivity:'base'});
     return byModel||String(left.id).localeCompare(String(right.id),'en');
   }
@@ -243,7 +260,7 @@
         .join(' ').toLocaleLowerCase().includes(input);
     });
     matches.sort((left,right)=>compareEntries(left,right,order));
-    const count=Math.max(1,Math.min(100,Number(maxResults)||limit));
+    const count=Math.max(1,Math.min(maxRender,Number(maxResults)||limit));
     return {total:matches.length,models:matches.slice(0,count)};
   }
   // Cards: one entry per physical model, with all its target IDs in .ids.
@@ -255,23 +272,33 @@
     const entries=(items||[]).map(item=>({...item,ids:[item.id],aliases:item.aliases||[]}));
     return matchEntries(entries,query,selectedIds,maxResults);
   }
-  // Saved IDs that are no longer supported (stale catalogue entries, an uninstalled
-  // Orca target) are dropped here, so they are never shown or sent back on save.
-  function selectedTargetIds(items,selectedIds){
-    const supported=new Set((items||[]).map(item=>item.id));
+  // Saved IDs that are not in the given list (a stale catalogue entry, an uninstalled Orca
+  // target) are dropped, de-duplicated and capped at maxSelected, keeping saved order.
+  function knownIds(known,selectedIds){
     const out=[],seen=new Set();
     for(const id of Array.isArray(selectedIds)?selectedIds:[]){
-      if(typeof id!=='string'||!supported.has(id)||seen.has(id))continue;
+      if(typeof id!=='string'||!known.has(id)||seen.has(id))continue;
       seen.add(id);out.push(id);
     }
     return out.slice(0,maxSelected);
+  }
+  // Conversion IDs only: saved IDs that are ready targets in `items` (pass supportedModels()).
+  // A saved catalogue-only model is never a conversion destination, even if it is in the list.
+  function selectedTargetIds(items,selectedIds){
+    const ready=new Set((items||[]).filter(item=>item?.ready===true).map(item=>item.id));
+    return knownIds(ready,selectedIds);
+  }
+  // Every saved ID the My Printers list can show (pass catalogItems()). Used only to seed
+  // the selection dialog, so catalogue membership is kept without implying readiness.
+  function allSavedIds(items,selectedIds){
+    return knownIds(new Set((items||[]).map(item=>item?.id)),selectedIds);
   }
   function legacyTargetsFor(items,selectedIds){
     const chosen=new Set(selectedTargetIds(items,selectedIds));
     return (items||[]).filter(item=>chosen.has(item.id)&&item.legacyTarget)
       .map(item=>item.legacyTarget);
   }
-  return {supportedModels,search,searchGroups,groupDestinations,isHidden,title,releaseDate,
+  return {catalogItems,supportedModels,search,searchGroups,groupDestinations,isHidden,title,releaseDate,
           manufacturerGroups,physicalKey,lookupKeys,makerKey,makerLabel,variantText,
-          selectedTargetIds,legacyTargetsFor,maxSelected};
+          selectedTargetIds,allSavedIds,legacyTargetsFor,maxSelected,maxRender};
 });

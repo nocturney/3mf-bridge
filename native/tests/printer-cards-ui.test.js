@@ -89,8 +89,15 @@ test('integrated makers lead the dropdown, then one divider, then the rest alpha
   await h.api.init();
   const options=h.dom('printerManufacturerFilter').children.map(option=>[option.value,option.disabled===true]);
   const values=options.map(([value])=>value);
-  assert.deepEqual(values,['','ELEGOO','Flashforge','QIDI','Snapmaker','','Zortrax']);
+  // The full catalogue's makers: mainstream first, one divider, then everyone else A-Z.
+  const makers=values.slice(1),divider=makers.indexOf('');
+  assert.equal(values[0],'');
+  assert.deepEqual(makers.slice(0,divider),['Anycubic','Creality','ELEGOO','Flashforge','FLSun','Prusa Research','QIDI','Snapmaker','Sovol']);
+  assert.equal(makers.filter(value=>value==='').length,1);
   assert.deepEqual(options.filter(([,disabled])=>disabled).map(([value])=>value),['']);
+  const others=makers.slice(divider+1);
+  assert.ok(others.includes('Afinia')&&others.includes('Zortrax'));
+  assert.deepEqual(others,[...others].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
   assert.equal(values.filter(value=>value==='ELEGOO').length,1);
 });
 
@@ -194,7 +201,8 @@ test('card text never shows a release date, in English or Hebrew',async()=>{
   h.dom('myPrintersBtn').fire('click');
   const text=textOf(h.dom('catalogModelList'));
   assert.ok(text.includes('Creator 5 Pro'));
-  assert.doesNotMatch(text,/\b(?:19|20)\d{2}\b/);
+  // Model names may carry a year ("Ender-5 Pro (2019)"); release dates may not appear as text.
+  assert.doesNotMatch(text,/\b\d{4}-\d{2}(?:-\d{2})?\b/);
   assert.doesNotMatch(text,/Launched|השקה/);
   assert.doesNotMatch(script,/model-launch-date|Launched:|השקה:/);
   assert.equal(h.dom('catalogModelList').querySelectorAll('.model-launch-date').length,0);

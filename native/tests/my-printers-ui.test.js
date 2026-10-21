@@ -85,9 +85,9 @@ test('the main list and the picker share one destination set through setSupporte
 
 test('saved selections are never shown as unsupported and are not sent back when stale',()=>{
   const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
-  assert.match(script,/const requested=\[\.\.\.draft\]\.filter\(id=>supported\.some\(item=>item\.id===id\)\);/);
+  assert.match(script,/const requested=\[\.\.\.draft\]\.filter\(id=>listed\.some\(item=>item\.id===id\)\);/);
   assert.match(script,/function selectedTargetIds\(\)\{\s*return loaded\?picker\.selectedTargetIds\(supported,selected\.selectedIds\):\[\];\s*\}/);
-  assert.match(script,/if\(!loaded\|\|!draft\|\|saving\|\|!supported\.length\)return;/);
+  assert.match(script,/if\(!loaded\|\|!draft\|\|saving\|\|!listed\.length\)return;/);
 });
 
 test('broad list capped at 80 and selected first; text cannot execute JS',()=>{
@@ -138,9 +138,8 @@ test('first-run displays available destinations immediately, without requiring a
   }
   assert.match(doc,/id="printerManufacturerFilter"/);
   assert.match(doc,/id="catalogPickerHint"/);
-  assert.match(script,/const hasFilter=Boolean\(term\|\|manufacturer\)/);
-  assert.match(script,/const showList=hasFilter\|\|supported\.length>0/);
-  assert.match(script,/const matches=showList\?picker\.searchGroups/);
+  assert.match(script,/const showList=!empty;/);
+  assert.match(script,/const matches=showList\?picker\.searchGroups\(source,term,choice,picker\.maxRender\)/);
   assert.match(script,/list\.hidden=!showList/);
   assert.match(script,/observeArtwork\(graphic,group\)/);
   assert.match(style,/\.catalog-model-list\[hidden\]/);

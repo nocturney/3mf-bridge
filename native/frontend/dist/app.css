@@ -477,7 +477,7 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .selected-printer-overview{padding:11px 12px;border:1px solid var(--stroke);
   background:#f4faf6;border-radius:9px;flex:none}
 .selected-printer-overview h3{font-size:12px;margin:0 0 8px}
-.selected-printer-summary{display:flex;flex-wrap:wrap;gap:7px;max-height:114px;overflow-y:auto}
+.selected-printer-summary{display:flex;flex-wrap:wrap;gap:7px;max-height:min(160px,26dvh);overflow-y:auto}
 .selected-printer-pill{display:flex;flex-direction:column;gap:2px;border:1px solid #c9e5d7;
   background:#fff;border-radius:7px;padding:5px 8px;max-width:270px;min-width:120px}
 .selected-printer-pill strong{font-size:11px;overflow-wrap:anywhere}
@@ -487,19 +487,23 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   background:#fff;border-radius:8px;color:var(--ink);padding:9px 13px}
 .catalog-search-count,.catalog-footnote{margin:0;color:#678077;font-size:11px;flex:none}
 .catalog-model-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:9px;overflow-y:auto;min-height:160px;flex:1 1 260px;
+  grid-auto-rows:auto;gap:9px;overflow-y:auto;min-height:160px;flex:1 1 0;
   overscroll-behavior:contain;align-content:start;padding:3px 4px 8px;scrollbar-gutter:stable}
-.catalog-model-card{display:flex;align-items:center;gap:9px;min-width:0;padding:9px;
-  background:#fff;border:1px solid #dceae2;border-radius:10px;cursor:pointer;min-height:91px}
+/* Intrinsic card: the nozzle/slicer row takes whatever height its labels need. Nothing is clipped. */
+.catalog-model-card{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;
+  column-gap:9px;row-gap:7px;min-width:0;padding:9px;
+  background:#fff;border:1px solid #dceae2;border-radius:10px;cursor:pointer}
 .catalog-model-card:hover{background:#f7fcf9;border-color:#96c9b3}
 .catalog-model-card.is-selected{border-color:#499887;background:#f1faf6;box-shadow:0 0 0 1px #49988715}
 .catalog-model-card:focus-within{outline:2px solid #5bbfa8;outline-offset:1px}
-.catalog-model-card{flex-wrap:wrap}
 .catalog-model-card input{width:17px;height:17px;accent-color:var(--brand);flex:none}
-.catalog-model-main{display:flex;align-items:center;gap:9px;min-width:0;flex:1;cursor:pointer}
-.catalog-variant-list{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;padding-inline-start:26px}
-.catalog-variant{display:flex;align-items:center;gap:4px;font-size:11px;color:#3f5a50;
+.catalog-model-main{grid-column:2;grid-row:1;display:flex;align-items:center;gap:9px;min-width:0;cursor:pointer}
+.catalog-model-card>input{grid-column:1;grid-row:1}
+.catalog-variant-list{grid-column:1/-1;grid-row:2;display:flex;flex-wrap:wrap;align-items:flex-start;
+  gap:6px;min-width:0;padding-inline-start:26px}
+.catalog-variant{display:flex;align-items:center;gap:4px;max-width:100%;min-width:0;font-size:11px;color:#3f5a50;
   border:1px solid #d7e6de;border-radius:6px;padding:3px 7px;background:#fff;cursor:pointer}
+.catalog-variant span{min-width:0;overflow-wrap:anywhere;direction:ltr;unicode-bidi:isolate}
 .catalog-variant input{width:14px;height:14px;accent-color:var(--brand);margin:0}
 .printer-avatar{width:78px;height:70px;flex:none;border:1px solid #d7e6de;border-radius:8px;
   background:linear-gradient(150deg,#e3f3ec,#fafdfa);position:relative;overflow:hidden;
@@ -562,7 +566,7 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 }
 .catalog-picker-hint[hidden],.catalog-model-list[hidden],
 .catalog-search-count[hidden],#myPrintersHiddenNote[hidden]{display:none!important}
-.catalog-model-list{max-height:475px;min-height:0}
+.catalog-model-list{min-height:0}
 .my-printers-dialog:not(.has-results) .my-printers-content{flex:0 1 auto}
 .my-printers-dialog:not(.has-results) .dialog-frame{height:auto}
 @media(max-width:760px){

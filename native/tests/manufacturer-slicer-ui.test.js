@@ -9,6 +9,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const picker=require('../frontend/dist/printer-picker.js');
 const {loadMyPrinters,availabilityAll,catalog}=require('./my-printers-harness.js');
+const tick=()=>new Promise(resolve=>setImmediate(resolve));
 
 const dist=path.resolve(__dirname,'../frontend/dist');
 const script=fs.readFileSync(path.join(dist,'my-printers.js'),'utf8');
@@ -35,26 +36,42 @@ test('no installed-slicer context line remains in either language or in styling'
   assert.doesNotMatch(script,/installed-slicer/);
 });
 
-test('an installed slicer alone is not conversion support: no card, maker or message',async()=>{
+test('an installed slicer alone is not conversion support: nothing is ready, and the list is the catalogue',async()=>{
   const h=loadMyPrinters({ManufacturerSlicers:()=>installedSlicers});
   h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
   await h.api.init();
   assert.equal(h.api.isReady(),true);
   assert.equal(h.calls.includes('ManufacturerSlicers'),false);
+  assert.deepEqual(h.plain(h.api.selectedTargetIds()),[]);
   h.dom('myPrintersBtn').fire('click');
-  assert.equal(h.dom('catalogModelList').children.length,0);
-  assert.deepEqual(h.dom('printerManufacturerFilter').children.map(option=>option.value),['']);
-  assert.equal(h.dom('catalogPickerHint').textContent,'No destinations are available on this computer yet.');
+  // Catalogue models stay selectable; the slicer adds no maker or card of its own.
+  const {preferred,others}=picker.manufacturerGroups(picker.catalogItems(catalog.models,[],[],false));
+  const makers=h.dom('printerManufacturerFilter').children.map(option=>option.value).filter(Boolean);
+  assert.deepEqual(makers,[...preferred,'',...others].filter(Boolean));
+  assert.equal(h.dom('catalogModelList').children.length,picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false)).length);
 });
 
-test('an installed slicer does not add makers that have no available adapter',async()=>{
-  const h=loadMyPrinters({ManufacturerSlicers:()=>installedSlicers});
+test('an installed slicer never makes a catalogue model a conversion target',async()=>{
+  let sent=null;
+  const h=loadMyPrinters({
+    ManufacturerSlicers:()=>installedSlicers,
+    SaveMyPrinters:(requested)=>{sent=requested;return {selectedIds:requested,onboardingPending:false};},
+  });
   h.api.setSupportedTargets({available:availabilityAll({u1:true,c5:false,cc2:false,qidi:false}),installedTargets:[],prusaAvailable:false});
   await h.api.init();
-  const makers=h.dom('printerManufacturerFilter').children.map(option=>option.value);
-  assert.deepEqual(makers,['','Snapmaker']);
-  assert.equal(makers.includes('Creality'),false);
-  assert.equal(makers.includes('Prusa'),false);
+  const creality=catalog.models.find(model=>model.manufacturer==='Creality');
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('printerCatalogSearch').value=creality.model;
+  h.dom('printerCatalogSearch').fire('input');
+  const card=h.dom('catalogModelList').children.find(entry=>entry.children[0].value===creality.id);
+  card.children[0].checked=true;
+  card.children[0].fire('change');
+  h.dom('saveMyPrintersBtn').fire('click');
+  await tick();
+  assert.deepEqual(h.plain(sent),[creality.id]);
+  assert.equal(h.api.isSelectedTarget(creality.id),false);
+  assert.deepEqual(h.plain(h.api.selectedTargetIds()),[]);
+  assert.deepEqual(h.plain(h.api.legacyTargets()),[]);
 });
 
 test('a backend slicer list cannot create a destination the availability check did not admit',()=>{
