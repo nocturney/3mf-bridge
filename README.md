@@ -9,7 +9,7 @@
 <a id="english"></a>
 ## English
 
-SliceBridge converts editable 3MF projects from Bambu Studio, Orca-family slicers and MakerWorld into formats for printers with available local slicer profiles, and into PrusaSlicer projects. Conversion runs locally, original files are never modified, and painted colors and material slots are kept. Batch conversion is supported.
+SliceBridge converts editable 3MF projects from Bambu Studio, Orca-family slicers and MakerWorld into formats for printers with available local slicer profiles, and into PrusaSlicer projects. Conversion runs locally, original files are never modified, and coloring and material assignments are preserved. Batch conversion is supported.
 
 **Workflow:** add 3MF files → choose a destination → convert → open the result in your slicer and check the settings before slicing.
 
@@ -18,7 +18,7 @@ SliceBridge converts editable 3MF projects from Bambu Studio, Orca-family slicer
 
 ## עברית
 
-SliceBridge ממיר פרויקטי 3MF הניתנים לעריכה מ-Bambu Studio, מסלייסרים ממשפחת Orca ומ-MakerWorld, למדפסות שיש להן פרופילי סלייסר מקומיים זמינים, ולפרויקטי PrusaSlicer. ההמרה מתבצעת מקומית, קובצי המקור אינם משתנים, וצבעי הצביעה וחריצי החומר נשמרים. ניתן להמיר באצווה.
+SliceBridge ממיר פרויקטי 3MF הניתנים לעריכה מ-Bambu Studio, מסלייסרים ממשפחת Orca ומ-MakerWorld, למדפסות שיש להן פרופילי סלייסר מקומיים זמינים, ולפרויקטי PrusaSlicer. ההמרה מתבצעת מקומית, קובצי המקור אינם משתנים, והצביעה ושיוכי החומרים נשמרים. ניתן להמיר באצווה.
 
 **זרימת עבודה:** הוספת קובצי 3MF ← בחירת יעד ← המרה ← פתיחת התוצאה בסלייסר ובדיקת ההגדרות לפני slicing.
 
