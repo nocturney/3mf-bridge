@@ -516,6 +516,7 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .catalog-model-copy .existing-adapter{color:#2d8664}
 .catalog-model-copy .catalog-only-label{color:#9b6e33}
 .catalog-model-copy .nozzle-list{direction:ltr;text-align:start;unicode-bidi:isolate;font-size:10px}
+.catalog-model-copy .installed-slicer-line{color:#526B61;font-size:10px;overflow-wrap:anywhere;unicode-bidi:plaintext}
 .catalog-empty{grid-column:1/-1;text-align:center;color:#70847a;margin:25px 0}
 @media(max-width:760px){
   .my-printers-dialog .dialog-frame{max-height:calc(100dvh - 24px)}

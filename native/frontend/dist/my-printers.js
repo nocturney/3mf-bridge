@@ -15,7 +15,8 @@ const translations={
     showing:'מציג {shown} מתוך {total} דגמים · צמצם את החיפוש להצגת דגמים נוספים',
     hidden:'Bambu Lab מוסתרת כרגע כמדפסת יעד. פרויקטי Bambu ו־MakerWorld עדיין נתמכים כמקור.',
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
-    manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',startHint:'בחר יצרן או חפש דגם כדי להציג מדפסות.',nothingSelected:'עדיין לא נבחרו מדפסות.'
+    manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',startHint:'בחר יצרן או חפש דגם כדי להציג מדפסות.',nothingSelected:'עדיין לא נבחרו מדפסות.',
+    slicerInstalled:'סלייסר מותקן: {names}',slicersInstalled:'סלייסרים מותקנים: {names}'
   },
   en:{
     title:'My printers',welcome:'Choose printers',welcomeBody:'No printers are selected yet. Choose a manufacturer or search for a model to begin.',
@@ -25,10 +26,13 @@ const translations={
     showing:'Showing {shown} of {total} models · narrow the search to find more',
     hidden:'Bambu Lab is hidden as a target for now. Bambu and MakerWorld projects remain usable as sources.',
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
-    manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',startHint:'Choose a manufacturer or search to see models.',nothingSelected:'No printers selected yet.'
+    manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',startHint:'Choose a manufacturer or search to see models.',nothingSelected:'No printers selected yet.',
+    slicerInstalled:'Installed slicer: {names}',slicersInstalled:'Installed slicers: {names}'
   }
 };
-let catalog=null,selected=null,draft=null,installed=[],firstRun=false,loaded=false,saving=false;
+let catalog=null,selected=null,draft=null,installed=[],manufacturerSlicers=[],firstRun=false,loaded=false,saving=false;
+// Optional discovery must never hold up the printer list; a slow call is dropped.
+const SLICER_LOOKUP_MS=2000;
 
 const t=(key,variables={})=>{
   const lang=document.documentElement.lang==='en'?'en':'he';
@@ -43,6 +47,37 @@ const node=(tag,cls,text)=>{
   return out;
 };
 const api=()=>window.go?.main?.App;
+
+// Pure. Returns installed slicers whose backend-issued manufacturer list names
+// this exact maker (trimmed, case-insensitive full match, never substring).
+// Entries with installed!==true, empty or wildcard lists attach to nothing, so a
+// generic install never appears on every catalogue printer.
+function slicersForManufacturer(slicers,manufacturer){
+  const wanted=String(manufacturer??'').trim().toLocaleLowerCase();
+  if(!wanted||!Array.isArray(slicers))return [];
+  const seen=new Set(),matches=[];
+  for(const item of slicers){
+    if(!item||item.installed!==true||typeof item.id!=='string'||!item.id||seen.has(item.id))continue;
+    if(typeof item.name!=='string'||!Array.isArray(item.manufacturers))continue;
+    const name=item.name.trim().slice(0,80);
+    if(!name)continue;
+    const listed=item.manufacturers.some(maker=>
+      typeof maker==='string'&&maker.trim().toLocaleLowerCase()===wanted);
+    if(!listed)continue;
+    seen.add(item.id);matches.push({id:item.id,name});
+  }
+  return matches;
+}
+// Missing method, rejection, bad shape or timeout all degrade to "no slicers".
+function loadManufacturerSlicers(){
+  const lookup=Promise.resolve()
+    .then(()=>api()?.ManufacturerSlicers?.())
+    .then(reply=>Array.isArray(reply)?reply:[])
+    .catch(()=>[]);
+  let timer=null;
+  const timeout=new Promise(resolve=>{timer=setTimeout(()=>resolve([]),SLICER_LOOKUP_MS);});
+  return Promise.race([lookup,timeout]).finally(()=>clearTimeout(timer));
+}
 
 // Artwork stays entirely local. Only the model ID is sent to Wails; the Go
 // backend reads a bounded PNG inside an installed slicer profiles directory.
@@ -182,6 +217,10 @@ function render(){
     copy.append(node('strong','',model.model),node('small','',model.manufacturer));
     const nozzles=(model.nozzles||[]).join(' / ');
     if(nozzles)copy.append(node('small','nozzle-list',t('nozzle')+': '+nozzles+' mm'));
+    // Plain context only: names installed slicers listed for this exact maker.
+    const slicerNames=slicersForManufacturer(manufacturerSlicers,model.manufacturer).map(s=>s.name);
+    if(slicerNames.length)copy.append(node('small','installed-slicer-line',
+      t(slicerNames.length>1?'slicersInstalled':'slicerInstalled',{names:slicerNames.join(', ')})));
     row.append(input,graphic,copy);list.append(row);
   }
   if(hasFilter&&!matches.models.length)list.append(node('p','catalog-empty',t('none')));
@@ -231,11 +270,13 @@ async function save(){
 async function init(){
   if(!picker||!api()?.PrinterCatalog||!api()?.GetMyPrinters)return;
   try{
-    const [list,prefs]=await Promise.all([api().PrinterCatalog(),api().GetMyPrinters()]);
+    const [list,prefs,slicers]=await Promise.all([
+      api().PrinterCatalog(),api().GetMyPrinters(),loadManufacturerSlicers()
+    ]);
     if(!list||list.kind!=='slicebridge-offline-printer-picker'||
        list.modelCount!==603||!Array.isArray(list.models)||
        !prefs||!Array.isArray(prefs.selectedIds))throw Error('Invalid offline catalog');
-    catalog=list;selected=prefs;
+    catalog=list;selected=prefs;manufacturerSlicers=slicers;
     const filter=$('printerManufacturerFilter');
     filter.replaceChildren();
     const placeholder=node('option','',t('chooseManufacturer'));
@@ -267,6 +308,7 @@ $('myPrintersDialog').addEventListener('close',()=>{
 });
 window.SliceBridgeMyPrinters={
   init,setAvailability,legacyTargets,selectedStatuses,render,
+  slicersForManufacturer,
   isReady:()=>loaded,
 };
 })();
