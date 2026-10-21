@@ -359,6 +359,7 @@ function checkScenario(scenario,report){
 const workDir=fs.mkdtempSync(path.join(os.tmpdir(),'slicebridge-picker-ci-'));
 const profileRoot=fs.mkdtempSync(path.join(os.tmpdir(),'slicebridge-chromium-'));
 let failed=0;
+const successfulRenderers=new Set();
 try{
   for(const scenario of scenarios){
     const htmlPath=path.join(workDir,scenario.name+'.html');
@@ -370,6 +371,7 @@ try{
       for(const failure of result.failures)console.log('   - '+JSON.stringify(failure));
       continue;
     }
+    successfulRenderers.add(path.basename(result.browser));
     const problems=checkScenario(scenario,result.report);
     const q=result.report;
     // Optional visual evidence: one PNG per layout. Off in CI unless the directory is given.
@@ -403,4 +405,4 @@ if(failed){
   console.log(failed+' of '+scenarios.length+' My Printers layout scenario(s) failed');
   process.exit(1);
 }
-console.log('all '+scenarios.length+' My Printers layout scenarios passed in '+path.basename(browsers[0]));
+console.log('all '+scenarios.length+' My Printers layout scenarios passed in '+[...successfulRenderers].join(', '));
