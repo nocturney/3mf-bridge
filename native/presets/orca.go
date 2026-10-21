@@ -70,6 +70,7 @@ type OrcaBundle struct {
 type orcaCandidate struct {
 	target OrcaTarget
 	bundle OrcaBundle
+	root   string // installed resource root that owns the machine file; never serialized
 }
 
 // IsOrcaTargetID reports whether an ID has the shape produced by this package.
@@ -135,18 +136,51 @@ func discoverOrca(locations []slicerLocation) OrcaDiscovery {
 	return discovery
 }
 
+// OrcaArtworkSource tells the backend where one re-resolved target's vendor
+// resources live. It is never sent to the frontend and never accepted as input.
+type OrcaArtworkSource struct {
+	Root   string
+	Vendor string
+	Model  string
+}
+
+// ResolveOrcaArtworkSource re-resolves an ID from disk, exactly like
+// ResolveOrcaBundle, and returns its installation root plus exact printer_model.
+func ResolveOrcaArtworkSource(id string) (OrcaArtworkSource, error) {
+	return resolveOrcaArtworkSource(installedOrcaLocations(), id)
+}
+
+func resolveOrcaArtworkSource(locations []slicerLocation, id string) (OrcaArtworkSource, error) {
+	candidate, err := findOrcaCandidate(locations, id)
+	if err != nil {
+		return OrcaArtworkSource{}, err
+	}
+	return OrcaArtworkSource{
+		Root: candidate.root, Vendor: candidate.target.Vendor, Model: candidate.target.Model,
+	}, nil
+}
+
 func resolveOrca(locations []slicerLocation, id string) (*OrcaBundle, error) {
+	candidate, err := findOrcaCandidate(locations, id)
+	if err != nil {
+		return nil, err
+	}
+	bundle := candidate.bundle
+	return &bundle, nil
+}
+
+// findOrcaCandidate scans every location afresh and matches the ID exactly.
+func findOrcaCandidate(locations []slicerLocation, id string) (orcaCandidate, error) {
 	if !IsOrcaTargetID(id) {
-		return nil, fmt.Errorf("invalid installed profile identifier")
+		return orcaCandidate{}, fmt.Errorf("invalid installed profile identifier")
 	}
 	candidates, _ := scanOrca(locations)
 	for _, candidate := range candidates {
 		if candidate.target.ID == id {
-			bundle := candidate.bundle
-			return &bundle, nil
+			return candidate, nil
 		}
 	}
-	return nil, fmt.Errorf("installed profile is not available or no longer resolves completely")
+	return orcaCandidate{}, fmt.Errorf("installed profile is not available or no longer resolves completely")
 }
 
 func scanOrca(locations []slicerLocation) ([]orcaCandidate, []OrcaRejection) {
@@ -316,6 +350,7 @@ func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string,
 			Nozzle: nozzle, PhysicalTools: tools, Materials: materialNames,
 		},
 		bundle: bundle,
+		root:   loc.root,
 	}, nil
 }
 

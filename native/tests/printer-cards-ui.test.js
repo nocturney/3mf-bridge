@@ -215,64 +215,94 @@ test('a card with no bundled or installed artwork says so, and never borrows ano
   }
 });
 
-test('bundled manifest images attach to the exact physical model only',async()=>{
-  const manifest={
-    'Flashforge|Creator 5 Pro':'printer-images/flashforge-creator-5-pro.png',
-    'Flashforge|Creator 5':'printer-images/flashforge-creator-5.png',
-    'Flashforge|Creator 5 Pro Max':'printer-images/not-a-model.png',
-    'Flashforge|Bad':'../escape.png',
-    'Flashforge|Scheme':'javascript:alert(1).png',
-  };
-  const fetch=async()=>({ok:true,json:async()=>manifest});
-  const h=loadWithGlobals({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})},{fetch});
+// Installed covers are asked for by target ID, and each one is only ever attached to its own model.
+const installedCover=(dataUri)=>({found:true,provenance:'local_installed_slicer',dataUri});
+const proCover='data:image/png;base64,AAAA';
+const c5Cover='data:image/png;base64,BBBB';
+const avatarOf=(h,model)=>cardFor(h,model).children[1].children[0];
+
+test('installed cover lookups run once per slicer, not once per nozzle',async()=>{
+  const asked=[];
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtworkForInstalledTarget:(id)=>{
+      asked.push(id);
+      // The second slicer has a cover; four nozzle profiles in the first slicer do not.
+      return id===proVariants[4].id?installedCover(proCover):{found:false};
+    },
+  });
   h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
   await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('printerCatalogSearch').value='Creator 5 Pro';
+  h.dom('printerCatalogSearch').fire('input');
   await flush();
+  assert.deepEqual(asked,[proVariants[0].id,proVariants[4].id]);
+  assert.equal(avatarOf(h,'Creator 5 Pro').querySelector('img.printer-cover-photo').src,proCover);
+});
+
+test('catalogue cover fast path skips installed Orca target rescans',async()=>{
+  const asked=[],catalogAsked=[];
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtworkForInstalledTarget:(id)=>{asked.push(id);return {found:false};},
+    PrinterArtwork:(id)=>{
+      catalogAsked.push(id);
+      return id==='flashforge-creator-5-pro'?installedCover(proCover):{found:false};
+    },
+  });
+  h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('printerCatalogSearch').value='Creator 5 Pro';
+  h.dom('printerCatalogSearch').fire('input');
+  await flush();
+  assert.deepEqual(asked,[]);
+  assert.ok(catalogAsked.includes('flashforge-creator-5-pro'));
+  assert.equal(avatarOf(h,'Creator 5 Pro').querySelector('img.printer-cover-photo').src,proCover);
+});
+
+test('installed covers attach to their own model; the exact catalogue cover is the only fallback',async()=>{
+  const asked=[],catalogAsked=[];
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtworkForInstalledTarget:(id)=>{asked.push(id);return installedCover(proCover);},
+    PrinterArtwork:(id)=>{
+      catalogAsked.push(id);
+      return id==='flashforge-creator-5'?installedCover(c5Cover):{found:false};
+    },
+  });
+  h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
+  await h.api.init();
   h.dom('myPrintersBtn').fire('click');
   h.dom('printerCatalogSearch').value='Creator 5';
   h.dom('printerCatalogSearch').fire('input');
   await flush();
-  const proImg=cardFor(h,'Creator 5 Pro').children[1].children[0].querySelector('img.printer-cover-photo');
-  assert.ok(proImg,'Creator 5 Pro card should show its own bundled image');
-  assert.equal(proImg.src,'./printer-images/flashforge-creator-5-pro.png');
-  // Each card gets only the image its own key maps to.
-  assert.equal(cardFor(h,'Creator 5 Pro').children[1].children[0].querySelector('img.printer-cover-photo').src,
-               './printer-images/flashforge-creator-5-pro.png');
-  assert.equal(cardFor(h,'Creator 5').children[1].children[0].querySelector('img.printer-cover-photo').src,
-               './printer-images/flashforge-creator-5.png');
-  assert.equal(h.dom('catalogModelList').children.length,2);
+  // The Pro cover never reaches the Creator 5 card, and the Creator 5 card gets its own catalogue cover.
+  assert.equal(avatarOf(h,'Creator 5 Pro').querySelector('img.printer-cover-photo').src,proCover);
+  assert.equal(avatarOf(h,'Creator 5').querySelector('img.printer-cover-photo').src,c5Cover);
+  assert.ok(asked.every(id=>/^orca-/.test(id)));
+  assert.ok(catalogAsked.includes('flashforge-creator-5'));
+  assert.ok(catalogAsked.includes('flashforge-creator-5-pro'));
 });
 
-test('the bundled manifest is optional: a missing or malformed file leaves the UI working',async()=>{
-  const missing=loadWithGlobals({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})},
-    {fetch:async()=>{throw Error('offline');}});
-  missing.api.setSupportedTargets({available:availabilityAll(),installedTargets:[],prusaAvailable:false});
-  await missing.api.init();
-  assert.equal(missing.api.isReady(),true);
-  const notJson=loadWithGlobals({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})},
-    {fetch:async()=>({ok:true,json:async()=>{throw SyntaxError('<html>');}})});
-  notJson.api.setSupportedTargets({available:availabilityAll(),installedTargets:[],prusaAvailable:false});
-  await notJson.api.init();
-  assert.equal(notJson.api.isReady(),true);
-});
-
-test('the installed PNG cover of a catalogue model is used only for that model',async()=>{
-  const requested=[];
-  const PrinterArtwork=(id)=>{
-    requested.push(id);
-    return id==='flashforge-creator-5-pro'
-      ?{found:true,provenance:'local_installed_slicer',dataUri:'data:image/png;base64,AAAA'}
-      :{found:false};
-  };
-  const h=loadWithGlobals({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),PrinterArtwork});
+test('a refused or failed artwork request leaves an honest unavailable card and makes no network read',async()=>{
+  const fetches=[];
+  const fetch=async(url)=>{fetches.push(url);throw Error('offline');};
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtworkForInstalledTarget:()=>{throw Error('installed printer profile is not ready');},
+    PrinterArtwork:()=>({found:true,provenance:'remote',dataUri:'https://example.test/cover.png'}),
+  },{fetch});
   h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
   await h.api.init();
   h.dom('myPrintersBtn').fire('click');
   h.dom('printerCatalogSearch').value='Creator 5';
   h.dom('printerCatalogSearch').fire('input');
   await flush();
-  const proImg=cardFor(h,'Creator 5 Pro').children[1].children[0].querySelector('img.printer-cover-photo');
-  assert.equal(proImg.src,'data:image/png;base64,AAAA');
-  assert.equal(cardFor(h,'Creator 5').children[1].children[0].querySelector('img.printer-cover-photo'),null);
-  assert.ok(requested.includes('flashforge-creator-5-pro'));
+  assert.deepEqual(fetches,[]);
+  for(const model of ['Creator 5','Creator 5 Pro']){
+    assert.equal(avatarOf(h,model).classList.contains('is-unavailable'),true,model);
+    assert.equal(avatarOf(h,model).querySelector('img.printer-cover-photo'),null,model);
+  }
 });
