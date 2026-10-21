@@ -4,7 +4,14 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 ## Unreleased
 
-- No changes recorded since the dev.8 source snapshot.
+- Future development changes will be listed here.
+
+## [0.4.0-beta.4.dev.9] — 2026-10-21 (development milestone; release status: see GitHub Releases)
+
+- Improved Windows and macOS slicer discovery through [PR #29](https://github.com/nocturney/slicebridge/pull/29): system-wide and per-user application folders, shared trusted profile location resolver, no automatic edits to saved slicer or filament settings.
+- Added strictly lossless consolidation of redundant source material slots through [PR #30](https://github.com/nocturney/slicebridge/pull/30): more than four declared Bambu filament IDs may map into four hardware slots only when excess IDs have exactly the same color and material. Distinct colors, distinct materials and mixed source nozzle sizes remain guarded; no silent nearest-color mapping.
+- New Go and bilingual UI regression tests; both original PRs passed GitHub Windows and macOS native build/test checks. On an isolated Windows Chris test environment at merged source d7df76902f201692bbc48ea180047ce19b2150f3, all eight actual installed-profile conversions for two test projects across Snapmaker U1, Flashforge Creator 5, ELEGOO CC2 and QIDI Plus5 passed. This is backend integration QA, **not** a full graphical slicer-launch or physical print validation.
+- Source projects, existing per-printer profiles and user settings remain unchanged. The 603-model catalogue still has only four implemented converter adapters.
 
 ## [0.4.0-beta.4.dev.8] — 2026-10-21 (published experimental pre-release)
 
