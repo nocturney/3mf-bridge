@@ -23,10 +23,20 @@ const prusaOKReply = `{"ok":true,"engine":"panda2prusa"}`
 // validPrusaEntries is a minimal PrusaSlicer-style project with one slot per
 // comma-free colour entry in slotColours (for example "#FF0000;#00FF00").
 func validPrusaEntries(slotColours string) map[string]string {
+	colours := strings.Split(slotColours, ";")
+	slots := make([]map[string]any, 0, len(colours))
+	for i, colour := range colours {
+		slots = append(slots, map[string]any{
+			"id": i + 1, "color": colour, "material": "PLA",
+		})
+	}
+	record, _ := json.Marshal(map[string]any{
+		"schemaVersion": 1, "source": "bambu-orca", "slots": slots,
+	})
 	return map[string]string{
-		"[Content_Types].xml":       prusaTestContentTypes,
-		"3D/3dmodel.model":          prusaTestModel,
-		"Metadata/Slic3r_PE.config": "; filament_colour = " + slotColours + "\n",
+		"[Content_Types].xml":                          prusaTestContentTypes,
+		"3D/3dmodel.model":                             prusaTestModel,
+		"Metadata/SliceBridge_source_filaments.json": string(record),
 	}
 }
 
@@ -293,7 +303,7 @@ func TestPrusaInvalidOutputIsRejectedBeforeSuccess(t *testing.T) {
 	noGeometry := validPrusaEntries("#FF0000;#00FF00")
 	noGeometry["3D/3dmodel.model"] = `<model><resources/></model>`
 	noSlots := validPrusaEntries("#FF0000;#00FF00")
-	delete(noSlots, "Metadata/Slic3r_PE.config")
+	delete(noSlots, "Metadata/SliceBridge_source_filaments.json")
 	stale := validPrusaEntries("#FF0000;#00FF00")
 	stale["Metadata/plate_1.gcode"] = "G28"
 	unsafe := validPrusaEntries("#FF0000;#00FF00")
@@ -396,22 +406,24 @@ func TestPrusaSourceAndOutputMustDiffer(t *testing.T) {
 	}
 }
 
-func TestPrusaFilamentCountingAndPreservationRule(t *testing.T) {
+func TestPrusaSourceSlotRecordAndPreservationRule(t *testing.T) {
 	cases := []struct {
 		config string
 		slots  int
-		found  bool
+		valid  bool
 	}{
-		{"; filament_colour = #FF0000;#00FF00;#0000FF\n", 3, true},
-		{`filament_colour = "#FFFFFF"` + "\n", 1, true},
-		{"; filament_colour = \n", 0, true},
-		{"; nozzle_diameter = 0.4\n", 0, false},
-		{"; filament_colour_extra = #000000\n", 0, false},
+		{`{"schemaVersion":1,"source":"bambu-orca","slots":[{"id":1,"color":"#FF0000","material":"PLA"},{"id":2,"color":"#FF0000","material":"PLA"},{"id":3,"color":"#00FF00","material":"PETG"}]}`, 3, true},
+		{`{"schemaVersion":1,"source":"bambu-orca","slots":[{"id":1,"color":null,"material":null}]}`, 1, true},
+		{`{"schemaVersion":1,"source":"bambu-orca","slots":[]}`, 0, false},
+		{`{"schemaVersion":2,"source":"bambu-orca","slots":[{"id":1}]}`, 0, false},
+		{`{"schemaVersion":1,"source":"bambu-orca","slots":[{"id":1},{"id":1}]}`, 0, false},
+		{`{"schemaVersion":1,"source":"bambu-orca","slots":[{"id":2}]}`, 0, false},
+		{`{"schemaVersion":1,"source":"bambu-orca","slots":[}`, 0, false},
 	}
 	for _, tc := range cases {
-		slots, found := countPrusaFilaments([]byte(tc.config))
-		if slots != tc.slots || found != tc.found {
-			t.Fatalf("countPrusaFilaments(%q) = %d,%v want %d,%v", tc.config, slots, found, tc.slots, tc.found)
+		slots, err := countPreservedSourceSlots([]byte(tc.config))
+		if (err == nil) != tc.valid || (tc.valid && slots != tc.slots) {
+			t.Fatalf("countPreservedSourceSlots(%q) = %d,%v want slots=%d valid=%v", tc.config, slots, err, tc.slots, tc.valid)
 		}
 	}
 	if err := requirePreservedSlots(2, 1); err == nil || conversionErrorCode(err) != "PRUSA_SLOTS_NOT_PRESERVED" {
