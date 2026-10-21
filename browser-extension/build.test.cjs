@@ -19,6 +19,11 @@ for(const browser of ['chromium','firefox']) {
     assert.equal((manifest.content_scripts||[]).length,1);
     assert.ok(manifest.content_scripts[0].matches.every(m=>m.startsWith('https://')&&m.includes('makerworld.com/')));
     assert.equal(manifest.action.default_popup,'popup.html');
+    // A staged browser package must carry the exact reviewed shared content script.
+    assert.deepEqual(fs.readFileSync(path.join(target,'content.js')),
+      fs.readFileSync(path.join(__dirname,'shared','content.js')));
+    assert.deepEqual(fs.readFileSync(path.join(result.embedded,'content.js')),
+      fs.readFileSync(path.join(__dirname,'shared','content.js')));
     for(const name of ['content.js','popup.html','popup.css','popup.js',...icons.map(n=>'icon-'+n+'.png')]){
       assert.ok(fs.statSync(path.join(target,name)).size>0,name);
     }
