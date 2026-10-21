@@ -15,7 +15,7 @@ func TestAboutLegalDocumentsAreEmbeddedAndMatchRepository(t *testing.T) {
 		expected string
 	}{
 		{"license", filepath.Join("..", "LICENSE"), "GNU GENERAL PUBLIC LICENSE"},
-		{"credits", filepath.Join("..", "THIRD_PARTY_NOTICES.md"), "bl2std"},
+		{"credits", filepath.Join("..", "docs", "legal", "THIRD_PARTY_NOTICES.md"), "bl2std"},
 	} {
 		got, err := app.GetAboutLegalText(item.kind)
 		if err != nil {

@@ -1,7 +1,5 @@
 # Source review paths. Listing an owner does not replace independent QA.
 /* @nocturney
 /LICENSE @nocturney
-/LICENSING.md @nocturney
-/THIRD_PARTY_NOTICES.md @nocturney
-/TRADEMARKS.md @nocturney
+/docs/legal/ @nocturney
 /docs/assets/ @nocturney

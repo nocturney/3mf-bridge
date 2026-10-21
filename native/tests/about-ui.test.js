@@ -144,7 +144,7 @@ test('Developer mode is a compact separate About card with a pressed toggle and 
 
 test('the bundled GPL and notices are exact copies of project files', () => {
   const license = fs.readFileSync(path.join(base, '..', 'LICENSE'));
-  const credits = fs.readFileSync(path.join(base, '..', 'THIRD_PARTY_NOTICES.md'));
+  const credits = fs.readFileSync(path.join(base, '..', 'docs', 'legal', 'THIRD_PARTY_NOTICES.md'));
   assert.deepEqual(fs.readFileSync(path.join(base, 'frontend/dist/legal/LICENSE.txt')), license);
   assert.deepEqual(fs.readFileSync(path.join(base, 'frontend/dist/legal/THIRD_PARTY_NOTICES.md')), credits);
   assert.match(credits.toString('utf8'), /Wails v2/);

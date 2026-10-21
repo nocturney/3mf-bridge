@@ -3,7 +3,7 @@
 ## Version [number] — [date]
 
 **Downloads:** [Windows / macOS files]  
-**Source:** [link to the source commit / matching source archive] · [GPL-3.0-only](LICENSE)
+**Source:** [link to the source commit / matching source archive] · [GPL-3.0-only](../../LICENSE)
 
 **What's new:** [One or two sentences.]
 
@@ -15,4 +15,4 @@
 
 **Problems?** [Open an issue](https://github.com/nocturney/slicebridge/issues/new/choose).
 
-Keep the relevant [third-party notices](THIRD_PARTY_NOTICES.md) and GPL corresponding-source information with distributed binaries.
+Keep the relevant [third-party notices](../legal/THIRD_PARTY_NOTICES.md) and GPL corresponding-source information with distributed binaries.

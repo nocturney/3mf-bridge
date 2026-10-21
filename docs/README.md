@@ -12,4 +12,15 @@ GitHub Pages: https://nocturney.github.io/slicebridge/
 
 Keep this site isolated from the application's UI and its open development PRs.
 
-The repository's covered original code uses [GPL-3.0-only](../LICENSE); third-party and trademark scopes are described in [LICENSING.md](../LICENSING.md).
+The repository's covered original code uses [GPL-3.0-only](../LICENSE); third-party and trademark scopes are described in [LICENSING.md](legal/LICENSING.md).
+
+## Project documents
+
+Everything under `docs/` is published by GitHub Pages, so only add files here that are meant to be public.
+
+- `legal/`: licensing scope, privacy, trademarks, third-party notices and license audits.
+- `release/`: distribution checklist, release operations and preflight, versioning, and the release-notes template.
+- `help/`: FAQ.
+- `community/`: beta testing guide.
+
+GitHub reads the policy files `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `SECURITY.md` and `SUPPORT.md` from [`.github/`](../.github/), so they live there.

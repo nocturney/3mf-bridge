@@ -30,4 +30,4 @@ Tracking: [legal/license #9](https://github.com/nocturney/slicebridge/issues/9) 
 
 ## Go/Wails follow-up (19 October 2026)
 
-Examined 32 manifest entries, including 30 external version-specific module ZIPs with candidate license files and two local replacements. The preliminary classifications and remaining limitations are in [GO_LICENSE_AUDIT.md](GO_LICENSE_AUDIT.md). Draft ZIP inspection and approved artwork hash inventory are in [RELEASE_PREFLIGHT.md](RELEASE_PREFLIGHT.md).
+Examined 32 manifest entries, including 30 external version-specific module ZIPs with candidate license files and two local replacements. The preliminary classifications and remaining limitations are in [GO_LICENSE_AUDIT.md](GO_LICENSE_AUDIT.md). Draft ZIP inspection and approved artwork hash inventory are in [RELEASE_PREFLIGHT.md](../release/RELEASE_PREFLIGHT.md).

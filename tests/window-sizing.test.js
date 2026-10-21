@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { fitContentToDisplay, MIN_ZOOM } = require('../window-sizing');
+const { fitContentToDisplay, MIN_ZOOM } = require('../desktop/electron/window-sizing');
 
 test('ordinary monitor opens at exactly the CSS content dimensions', () => {
   const fit = fitContentToDisplay({
@@ -71,7 +71,7 @@ test('invalid sizes fail without sizing an Electron window', () => {
 test('desktop layout uses side-by-side panels and leaves mobile layout intact', async () => {
   const fs = require('node:fs/promises');
   const path = require('node:path');
-  const html = await fs.readFile(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const html = await fs.readFile(path.join(__dirname, '..', 'desktop', 'electron', 'index.html'), 'utf8');
   assert.match(html, /@media \(min-width: 840px\)/);
   assert.match(html, /grid-template-columns: minmax\(0, 1fr\) minmax\(0, 1fr\)/);
   assert.match(html, /@media \(max-width: 720px\)/);

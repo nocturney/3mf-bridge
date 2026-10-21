@@ -4,7 +4,7 @@
 
 **Is SliceBridge available to download?** Yes — [experimental development builds for Windows and macOS](https://github.com/nocturney/slicebridge/releases) are published as GitHub pre-releases. They are for testing, not stable releases. They may be unsigned and trigger operating-system warnings. Each release describes its tested features and limitations.
 
-**Is SliceBridge open source?** Yes. Project-owned source is licensed under [GPL-3.0-only](LICENSE). Vendor presets and other third-party assets retain their own licenses. See [licensing scope](LICENSING.md).
+**Is SliceBridge open source?** Yes. Project-owned source is licensed under [GPL-3.0-only](../../LICENSE). Vendor presets and other third-party assets retain their own licenses. See [licensing scope](../legal/LICENSING.md).
 
 **Is it a slicer?** No. SliceBridge is intended to bridge supported Bambu Studio 3MF projects to compatible target slicers. You still review and slice in the target application before printing.
 
@@ -14,18 +14,18 @@
 
 **Does SliceBridge bundle manufacturers' profiles?** The intended model is to use compatible profiles already installed on the user's machine, with manufacturer-native verified sources preferred where available. Redistribution of third-party profiles requires separate rights clearance.
 
-**Does it upload my model?** The conversion design is local-first; however, a full application and extension privacy review is pending. See [Privacy](PRIVACY.md).
+**Does it upload my model?** The conversion design is local-first; however, a full application and extension privacy review is pending. See [Privacy](../legal/PRIVACY.md).
 
-**Where do I report a problem?** See [Support](SUPPORT.md). For security vulnerabilities use [private reporting](SECURITY.md).
+**Where do I report a problem?** See [Support](../../.github/SUPPORT.md). For security vulnerabilities use [private reporting](../../.github/SECURITY.md).
 
 <div dir="rtl" align="right" lang="he">
 <h2>עברית</h2>
-<p><strong>זה קוד פתוח?</strong> כן. קוד המקור המקורי מופץ תחת <a href="LICENSE" dir="ltr">GPL-3.0-only</a>. רישיונות צד שלישי ופרופילים של יצרנים נבחנים בנפרד; ראו <a href="LICENSING.md">היקף הרישיון</a>.</p>
+<p><strong>זה קוד פתוח?</strong> כן. קוד המקור המקורי מופץ תחת <a href="../../LICENSE" dir="ltr">GPL-3.0-only</a>. רישיונות צד שלישי ופרופילים של יצרנים נבחנים בנפרד; ראו <a href="../legal/LICENSING.md">היקף הרישיון</a>.</p>
 <p><strong>אפשר כבר להוריד את התוכנה?</strong> כן. <a href="https://github.com/nocturney/slicebridge/releases">גרסאות פיתוח ניסיוניות ל־Windows ול־macOS</a> זמינות ב־GitHub. הן מיועדות לבדיקה ואינן גרסאות יציבות. ייתכנו אזהרות מערכת הפעלה בגלל קבצים לא חתומים. בדף כל גרסה מפורט מה נבדק ומה עדיין דורש בדיקה.</p>
 <p><strong>זה סלייסר חדש?</strong> לא. זהו גשר בין קובצי <span dir="ltr">3MF</span> של <span dir="ltr">Bambu Studio</span> לבין סלייסרים נתמכים. בודקים את התוצאה וחותכים בסלייסר היעד לפני הדפסה.</p>
 <p><strong>כל המדפסות נתמכות?</strong> לא. מדפסת שנמצאת בקטלוג אינה בהכרח מדפסת שההמרה אליה נבדקה. יש לבדוק גם דיזה וחומר.</p>
 <p><strong>מה קורה לקובץ המקורי?</strong> התכנון הוא להשאיר אותו ללא שינוי וליצור פלט נפרד לכל יעד. לפני הפצה תיבדק ההתנהגות הזו בפועל.</p>
 <p><strong>האם פרופילים של יצרנים מגיעים עם התוכנה?</strong> הכוונה היא להשתמש בפרופילים תואמים שכבר מותקנים אצל המשתמש, תוך העדפה לפרופילי יצרן מאומתים. הפצה מחדש של פרופילים מחייבת בדיקת זכויות נפרדת.</p>
-<p><strong>הקבצים נשלחים לענן?</strong> המרת הקבצים מתוכננת לפעול מקומית. בדיקת הפרטיות המלאה של התוכנה והתוסף עדיין פתוחה. <a href="PRIVACY.md">מידע על פרטיות</a>.</p>
-<p><strong>איך מדווחים על תקלה?</strong> דרך <a href="SUPPORT.md">עמוד התמיכה</a>. פגיעויות אבטחה יש לדווח <a href="SECURITY.md">באופן פרטי</a>.</p>
+<p><strong>הקבצים נשלחים לענן?</strong> המרת הקבצים מתוכננת לפעול מקומית. בדיקת הפרטיות המלאה של התוכנה והתוסף עדיין פתוחה. <a href="../legal/PRIVACY.md">מידע על פרטיות</a>.</p>
+<p><strong>איך מדווחים על תקלה?</strong> דרך <a href="../../.github/SUPPORT.md">עמוד התמיכה</a>. פגיעויות אבטחה יש לדווח <a href="../../.github/SECURITY.md">באופן פרטי</a>.</p>
 </div>
