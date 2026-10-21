@@ -30,52 +30,37 @@ func ErrorCode(err error) string {
 	return "CONVERSION_FAILED"
 }
 
-// sourceSlotPlan preserves distinct color/material assignments. More than four
-// Bambu source IDs can be converted only when the extra IDs are EXACT matches
-// of another source color and material, never by nearest-color substitution.
-// Projects with <= four IDs retain their established, injective mapping.
-func sourceSlotPlan(filaments []converter.Filament, maxSlots int) ([]converter.Slot, map[int]int, []converter.Filament, int, error) {
-    if len(filaments) == 0 || maxSlots <= 0 {
-        return nil, nil, nil, 0, fmt.Errorf("source has no usable material slots")
+// maxVirtualFilaments caps hostile/accidental oversized palettes, not a
+// physical hardware limit. The target slicer owns final spool/tool choices.
+const maxVirtualFilaments = 64
+
+// sourceSlotPlan represents every source filament ID as its own virtual slot,
+// even if two source IDs have the same color and material. No automatic color
+// folding, material substitution or spool decisions take place here.
+func sourceSlotPlan(filaments []converter.Filament) ([]converter.Slot, map[int]int, error) {
+    if len(filaments) == 0 || len(filaments) > maxVirtualFilaments {
+        return nil, nil, fmt.Errorf("source has %d filament slots (allowed 1..%d)", len(filaments), maxVirtualFilaments)
     }
-    type identity struct {
-        color string
-        material string
-    }
-    slots := make([]converter.Slot, 0, maxSlots)
-    mapped := make(map[int]int, len(filaments))
-    unique := make([]converter.Filament, 0, maxSlots)
-    seen := make(map[identity]int)
-    compact := len(filaments) > maxSlots
+    slots := make([]converter.Slot, 0, len(filaments))
+    mapping := make(map[int]int, len(filaments))
     for _, filament := range filaments {
         if filament.ID <= 0 {
-            return nil, nil, nil, 0, fmt.Errorf("invalid source filament ID %d", filament.ID)
+            return nil, nil, fmt.Errorf("invalid source filament ID %d", filament.ID)
         }
-        if _, duplicate := mapped[filament.ID]; duplicate {
-            return nil, nil, nil, 0, fmt.Errorf("repeated source filament ID %d", filament.ID)
+        if _, duplicated := mapping[filament.ID]; duplicated {
+            return nil, nil, fmt.Errorf("duplicate source filament ID %d", filament.ID)
         }
-        key := identity{color: strings.ToUpper(filament.Color), material: filament.Type}
-        if compact {
-            if slot, exists := seen[key]; exists {
-                mapped[filament.ID] = slot
-                continue
-            }
+        if filament.Color == "" || filament.Type == "" {
+            return nil, nil, fmt.Errorf("missing source color/material in filament %d", filament.ID)
         }
-        if len(slots) >= maxSlots {
-            return nil, nil, nil, 0, fmt.Errorf(
-                "source has %d slots with more than %d distinct color/material combinations; refusing to merge different materials or colors",
-                len(filaments), maxSlots)
-        }
-        slot := len(slots)+1
-        seen[key] = slot
-        mapped[filament.ID] = slot
+        mapping[filament.ID] = len(slots)+1
         slots = append(slots, converter.Slot{
-            Color: filament.Color, Type: filament.Type,
+            Color: filament.Color,
+            Type: filament.Type,
             Support: converter.IsSupportType(filament.Type, ""),
         })
-        unique = append(unique, filament)
     }
-    return slots, mapped, unique, len(filaments)-len(unique), nil
+    return slots, mapping, nil
 }
 
 // Convert keeps the original validated U1 entrypoint for compatibility.
@@ -139,9 +124,9 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 	if len(insp.Filaments) == 0 {
 		return nil, fail("NO_FILAMENTS", "source contains no usable filament data")
 	}
-	slots, mapping, uniqueFilaments, folded, err := sourceSlotPlan(insp.Filaments, 4)
+	slots, mapping, err := sourceSlotPlan(insp.Filaments)
 	if err != nil {
-		return nil, fail("COLOR_MAPPING_REVIEW_REQUIRED", "%v", err)
+		return nil, fail("SOURCE_FILAMENTS_INVALID", "%v", err)
 	}
 	var base *printer.Profile
 	var bundle *targetBundle
@@ -157,13 +142,23 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 			return nil, fail("TARGET_NOZZLE_MISMATCH",
 				"requested %s nozzle %s mm but profile bundle is %s mm", target, targetNozzle, bundle.Nozzle)
 		}
-		if err = bindNativeFilamentSettings(bundle, uniqueFilaments); err != nil {
+		// The vendor profile's four physical tools remain unchanged. Extra
+		// slots are virtual project filaments for manual slicer review.
+		if len(slots) > bundle.Profile.FilamentSlots {
+			bundle.Profile.FilamentSlots = len(slots)
+		}
+		if err = bindNativeFilamentSettings(bundle, insp.Filaments); err != nil {
 			return nil, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", target, err)
 		}
 		base = &bundle.Profile
 	}
 	if base == nil {
 		return nil, fail("ENGINE_INVALID", "target base profile missing")
+	}
+	// FilamentSlots controls the 3MF PROJECT palette length in bl2std. It is
+	// NOT a claim that the target printer has this many physical extruders.
+	if len(slots) > base.FilamentSlots {
+		base.FilamentSlots = len(slots)
 	}
 	merged, preserved, err := preservedProfile(src, base)
 	if err != nil {
@@ -233,9 +228,9 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 		fmt.Sprintf("Open this project in the target slicer for %s and re-slice before printing.", expectedModel),
 		"Review material slots, supports, nozzle and user print parameters; printer-specific firmware scripts come from the installed target profile.",
 	}
-	if folded > 0 {
+	if len(slots) > 4 {
 		warnings = append(warnings, fmt.Sprintf(
-			"%d redundant source filament slots were coalesced because their colors and material types match exactly; review spool assignments.", folded))
+			"All %d original color/material slots are preserved as separate virtual project filaments. The printer has four physical tools: resolve any merges/removals and verify profiles inside the slicer before slicing or printing.", len(slots)))
 	}
 	return map[string]any{
 		"ok":                          true,
@@ -249,8 +244,10 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 		"nozzle_remapped":             sourceNozzle.Nozzle != targetNozzle,
 		"nozzle_selected_by_user":    requestedNozzle != "",
 		"source_filament_slots":       len(insp.Filaments),
-		"target_filament_slots_used":   len(slots),
-		"identical_source_slots_coalesced": folded,
+		"target_filament_slots_used":  len(slots),
+		"virtual_filament_slots":       len(slots),
+		"physical_toolheads":           4,
+		"user_slot_mapping_required":   len(slots) > 4,
 		"source_to_target_slot_map":    mapping,
 		"geometry_vertices":           after.vertices,
 		"geometry_triangles":          after.triangles,

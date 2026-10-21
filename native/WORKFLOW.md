@@ -46,6 +46,20 @@ The native desktop workflow now supports:
   Chromium runtime. The output remains a single Windows executable or
   compact signed-local macOS app bundle.
 
+### More source colors than physical tools (development behavior)
+
+When a Bambu project has five or more original color/material slots, keep
+all source channels independent in the converted 3MF project, along with
+their color names/types and painted/object filament assignments. The
+target hardware still has four physical toolheads. SliceBridge cannot
+decide which channels should merge: this is an explicit user decision
+in the destination slicer. Mark the output for user mapping review, never
+start a physical print and never silently map a fifth color onto another.
+Valid installed vendor presets are still required for each material; do
+not silently substitute a wrong temperature/material profile.
+A successful structural round-trip of virtual 3MF slots is not proof
+every slicer UI will retain extra channels after importing it.
+
 ### QA
 
 Windows:

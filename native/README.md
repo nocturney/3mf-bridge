@@ -30,6 +30,14 @@ only shipped UI languages. Toggle between them in the top bar; Hebrew is RTL.
 - Detects material or profile mismatches and fails that target instead of
   issuing fake output; checks mesh integrity, removes stale sliced G-code,
   and uses atomic no-overwrite publishing (source project is unchanged).
+- For projects with more than four Bambu source color/material channels,
+  preserve **every original virtual filament**, its material type, its color
+  and its painted/object assignments in the converted 3MF. This is NOT
+  permission to print with more tools than the printer physically has:
+  users choose merges/removals and verify settings in the destination slicer.
+  The app never combines slots automatically, even if colors match.
+  Native vendor materials still require compatible installed profiles;
+  some slicer builds may limit imported virtual slots to physical tools.
 - Source file picker, native drag/drop, output-folder opener, independent
   per-target successes/errors, source/target nozzle in completion report.
 
