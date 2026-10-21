@@ -10,7 +10,7 @@ const html = fs.readFileSync(path.join(base, 'frontend/dist/index.html'), 'utf8'
 const source = fs.readFileSync(path.join(base, 'frontend/dist/about.js'), 'utf8');
 const css = fs.readFileSync(path.join(base, 'frontend/dist/app.css'), 'utf8');
 
-function harness() {
+function harness({developerMode = false, setFails = false} = {}) {
   const elements = new Map();
   function node(id) {
     if (elements.has(id)) return elements.get(id);
@@ -30,7 +30,8 @@ function harness() {
     'doneAboutBtn', 'viewLicenseBtn', 'viewCreditsBtn',
     'aboutLegalText', 'aboutLegalStatus', 'aboutLinkStatus',
     'aboutSourceBtn', 'aboutReleasesBtn', 'heBtn', 'enBtn',
-    'aboutTitle', 'aboutVersionHeading'
+    'aboutTitle', 'aboutVersionHeading', 'developerModeBtn',
+    'developerModeState', 'developerModeStatus'
   ];
   for (const id of ids) node(id);
   for (const [id, kind] of [
@@ -40,7 +41,8 @@ function harness() {
   ]) node(id).dataset.aboutI18n = kind;
   node('aboutDialog').querySelectorAll = selector => selector === '[data-about-i18n]'
     ? ids.map(node).filter(e => e.dataset.aboutI18n) : [];
-  const visited = [], opened = [];
+  const visited = [], opened = [], dispatched = [];
+  let nativeDeveloperMode = developerMode;
   const api = {
     GetAboutLegalText: async kind => {
       visited.push(kind);
@@ -48,16 +50,24 @@ function harness() {
         ? 'GNU GENERAL PUBLIC LICENSE\nVersion 3'
         : '# Third-party notices\nbl2std\nWails v2';
     },
-    OpenAboutPage: async kind => { opened.push(kind); }
+    OpenAboutPage: async kind => { opened.push(kind); },
+    GetDeveloperMode: async () => nativeDeveloperMode,
+    SetDeveloperMode: async enabled => {
+      if (setFails) throw new Error('denied');
+      nativeDeveloperMode = enabled;
+      return enabled;
+    }
   };
   const document = {
     getElementById: node,
-    documentElement: {lang: 'en'}
+    documentElement: {lang: 'en'},
+    dispatchEvent: event => { dispatched.push(event); }
   };
-  vm.runInNewContext(source, {document, window: {go: {main: {App: api}}}},
+  class CustomEvent { constructor(type, init) { this.type = type; this.detail = init?.detail; } }
+  vm.runInNewContext(source, {document, CustomEvent, window: {go: {main: {App: api}}}},
     {filename: 'about.js'});
   const click = id => node(id).handlers.click();
-  return {node, document, visited, opened, click};
+  return {node, document, visited, opened, dispatched, click};
 }
 
 test('About owns the single installed version and manual update controls', () => {
@@ -117,6 +127,19 @@ test('GitHub actions delegate to allowlisted native methods only', async () => {
   await h.click('aboutReleasesBtn');
   assert.deepEqual(h.opened, ['source', 'releases']);
   assert.deepEqual(h.visited, []);
+});
+
+test('Developer mode is a compact separate About card with a pressed toggle and advanced-only warning', () => {
+  const card = html.slice(html.indexOf('<section class="about-card" aria-labelledby="developerModeHeading"'));
+  const section = card.slice(0, card.indexOf('</section>'));
+  assert.match(section, /<button id="developerModeBtn" type="button" class="compact-btn secondary" aria-pressed="false">/);
+  assert.match(section, /data-about-i18n="devWarning"/);
+  assert.match(section, /id="developerModeStatus"/);
+  assert.equal((html.match(/id="developerModeBtn"/g) || []).length, 1);
+  assert.ok(html.indexOf('id="developerModeBtn"') < html.indexOf('id="aboutLicenseHeading"'));
+  for (const key of ['devTitle', 'devWarning', 'devButton', 'devOn', 'devOff', 'devError']) {
+    assert.match(source, new RegExp(key + ':'));
+  }
 });
 
 test('the bundled GPL and notices are exact copies of project files', () => {

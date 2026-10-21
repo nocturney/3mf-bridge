@@ -964,3 +964,9 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 
 /* Picker text AA contrast: selected model metadata and first-use helper. */
 .selected-printer-pill small,.catalog-picker-hint { color:#526B61; }
+
+/* MakerWorld topbar gate: locked until Developer Mode is enabled in About. */
+#integrationsBtn:disabled { opacity:.42; filter:grayscale(1); pointer-events:none; }
+.topbar-gate { display:inline-flex; position:relative; border-radius:9px; }
+.topbar-gate:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
+.topbar-gate:focus-visible::after { content:attr(title); position:absolute; top:calc(100% + 7px); inset-inline-end:0; z-index:30; width:max-content; max-width:240px; padding:6px 9px; border-radius:7px; background:var(--ink); color:#fff; font-size:11px; line-height:1.45; white-space:normal; pointer-events:none; }

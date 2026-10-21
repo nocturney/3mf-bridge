@@ -44,6 +44,11 @@ func (b *BrowserBridge) setContext(ctx context.Context) {
 	}
 }
 func (b *BrowserBridge) acceptArg(arg string) {
+	// A browser extension installed earlier can still send MakerWorld URIs.
+	// Ignore them unless Developer Mode is explicitly enabled.
+	if checkDeveloperMode() != nil {
+		return
+	}
 	if !strings.HasPrefix(strings.ToLower(arg), "slicebridge://") {
 		return
 	}
@@ -63,6 +68,10 @@ func (b *BrowserBridge) acceptArg(arg string) {
 	b.handle(arg)
 }
 func (b *BrowserBridge) handle(raw string) {
+	// Re-check here too: URIs queued before startup must not download after a disable.
+	if checkDeveloperMode() != nil {
+		return
+	}
 	b.mu.Lock()
 	ctx := b.ctx
 	if ctx == nil {
@@ -311,6 +320,9 @@ func download3MF(ctx context.Context, client *http.Client, link makerworld.Link,
 // triggered automatically when the app is installed or started.
 // Legacy entrypoint for older frontends; use local setup, never GitHub source.
 func (a *App) OpenBrowserSetup() error {
+	if err := a.requireDeveloperMode(); err != nil {
+		return err
+	}
 	_, err := a.PrepareBrowserExtension("edge")
 	return err
 }
@@ -338,6 +350,9 @@ func (a *App) BrowserLinkStatus() (map[string]any, error) {
 	return map[string]any{"platform": "windows", "registered": registered}, nil
 }
 func (a *App) EnableBrowserLink() (map[string]any, error) {
+	if err := a.requireDeveloperMode(); err != nil {
+		return nil, err
+	}
 	if runtime.GOOS != "windows" {
 		return a.BrowserLinkStatus()
 	}

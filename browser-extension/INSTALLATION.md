@@ -4,7 +4,9 @@
 
 ## For a normal user
 
-In the SliceBridge desktop app, open **MakerWorld Setup**, choose your browser (Edge, Chrome, Brave or Firefox), and use the installation button. Until store approval, it runs a **guided beta installation**: it prepares the bundled local extension folder and opens the selected browser's extension-management screen. The browser still requires an explicit manual approval. Firefox beta extensions are temporary and must be reloaded after restarting Firefox.
+The manual beta installer is greyed out by default. It becomes available only after you explicitly turn on **Developer Mode** in the SliceBridge **About** window. Most users should not attempt this manual installation; it requires advanced browser setup.
+
+Once Developer Mode is on, in the SliceBridge desktop app, open **MakerWorld Setup**, choose your browser (Edge, Chrome, Brave or Firefox), and use the installation button. Until store approval, it runs a **guided beta installation**: it prepares the bundled local extension folder and opens the selected browser's extension-management screen. The browser still requires an explicit manual approval. Firefox beta extensions are temporary and must be reloaded after restarting Firefox.
 
 Once the extension is officially listed, the *same button* becomes **Install from browser store**. No Developer mode, ZIP download or manually loaded folder will be part of the normal store flow. The user confirms installation directly in the browser.
 

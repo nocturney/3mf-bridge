@@ -26,7 +26,7 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 - Slicer detection finds installed slicer software. It does not certify each printer model.
 - **Support policy:** A conversion is supported when its implementation exists and passes software conversion tests, even without a physical test print. Physical printing is an additional validation step, not a prerequisite. Check printer and slicer settings before printing.
 
-**MakerWorld connection:** SliceBridge provides a user-confirmed, guided beta extension setup; no browser-store extension is officially published yet. [Installation instructions](browser-extension/INSTALLATION.md).
+**MakerWorld connection:** Files downloaded from MakerWorld and manual 3MF import work as usual. The manual MakerWorld beta extension installer is greyed out for normal users; it becomes available only after you explicitly turn on Developer Mode in **About**. Most users should not attempt an unpacked extension install. The browser-store extension is not officially listed, and the beta manual install requires advanced browser setup (for example in Chrome). [Installation instructions](browser-extension/INSTALLATION.md).
 
 <a id="hebrew"></a>
 <div dir="rtl" align="right" lang="he">
@@ -48,7 +48,7 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 <li>זיהוי סלייסרים מוצא תוכנות שמותקנות במחשב. הוא אינו מאשר כל דגם מדפסת.</li>
 <li><strong>הגדרת תמיכה:</strong> המרה שמומשה בקוד ועברה בדיקות המרה בתוכנה נחשבת נתמכת, גם אם עדיין לא בוצעה הדפסה פיזית. הדפסת ניסיון היא אימות נוסף, לא תנאי לתמיכה. בדקו את הגדרות המדפסת והסלייסר לפני הדפסה.</li>
 </ul>
-<p><strong>חיבור MakerWorld:</strong> התקנת תוסף בטא מודרכת באישור המשתמש בלבד. התוסף עדיין אינו בחנות דפדפן רשמית. <a href="browser-extension/INSTALLATION.md">מדריך התקנה</a>.</p>
+<p><strong>חיבור MakerWorld:</strong> קבצים שהורדתם מ-<span dir="ltr">MakerWorld</span> ופתיחת קובץ <span dir="ltr">3MF</span> ידנית פועלים כרגיל. מתקין התוסף הידני לבטא של <span dir="ltr">MakerWorld</span> מסומן באפור ואינו פעיל למשתמשים רגילים; הוא זמין רק לאחר הפעלה מפורשת של <strong>מצב מפתח</strong> (<span dir="ltr">Developer Mode</span>) בחלון <strong>אודות</strong>. רוב המשתמשים לא צריכים לנסות להתקין תוסף מתיקייה לא ארוזה. התוסף לדפדפן עדיין אינו רשום בחנות דפדפן רשמית, והתקנת הבטא הידנית דורשת ידע מתקדם בדפדפן (למשל <span dir="ltr">Chrome</span>). <a href="browser-extension/INSTALLATION.md">מדריך התקנה</a>.</p>
 </div>
 
 ---

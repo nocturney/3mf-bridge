@@ -23,9 +23,10 @@ type WindowSettings struct {
 	Height int `json:"height"`
 }
 type Settings struct {
-	Version  int                        `json:"version"`
-	Printers map[string]PrinterSettings `json:"printers"`
-	Window   WindowSettings             `json:"window"`
+	Version       int                        `json:"version"`
+	Printers      map[string]PrinterSettings `json:"printers"`
+	Window        WindowSettings             `json:"window"`
+	DeveloperMode bool                       `json:"developerMode"`
 }
 
 type SettingsRecovery struct {
@@ -113,6 +114,8 @@ func loadSettings() (Settings, error) {
 	if current.Window.Height >= 500 && current.Window.Height <= 1400 {
 		defaults.Window.Height = current.Window.Height
 	}
+	// Absent from older files, so it decodes to false and stays disabled.
+	defaults.DeveloperMode = current.DeveloperMode
 	return defaults, nil
 }
 func writeSettings(settings Settings) error {
@@ -261,6 +264,57 @@ func (a *App) GetSettings() (Settings, error) {
 	a.settingsMu.Lock()
 	defer a.settingsMu.Unlock()
 	return loadSettings()
+}
+
+var errDeveloperModeOff = errors.New("Developer Mode is off: enable it in About before using browser extension setup")
+
+// checkDeveloperMode fails closed: missing, corrupt or unreadable settings count
+// as disabled. It does not take settingsMu, so the URI bridge can call it.
+// writeSettings replaces the file atomically, so a read never sees a partial file.
+func checkDeveloperMode() error {
+	current, err := loadSettings()
+	if err != nil {
+		return fmt.Errorf("Developer Mode could not be verified: %w", err)
+	}
+	if !current.DeveloperMode {
+		return errDeveloperModeOff
+	}
+	return nil
+}
+
+// requireDeveloperMode must be the first statement of every browser, OS
+// registration or extension-file action, before any context or platform check.
+func (a *App) requireDeveloperMode() error {
+	a.settingsMu.Lock()
+	defer a.settingsMu.Unlock()
+	return checkDeveloperMode()
+}
+
+// GetDeveloperMode reports the saved local Developer Mode preference.
+func (a *App) GetDeveloperMode() (bool, error) {
+	a.settingsMu.Lock()
+	defer a.settingsMu.Unlock()
+	current, err := loadSettings()
+	if err != nil {
+		return false, err
+	}
+	return current.DeveloperMode, nil
+}
+
+// SetDeveloperMode persists the preference. A corrupt settings file is never
+// overwritten: the load error is returned and nothing is written.
+func (a *App) SetDeveloperMode(enabled bool) (bool, error) {
+	a.settingsMu.Lock()
+	defer a.settingsMu.Unlock()
+	current, err := loadSettings()
+	if err != nil {
+		return false, err
+	}
+	current.DeveloperMode = enabled
+	if err = writeSettings(current); err != nil {
+		return false, err
+	}
+	return enabled, nil
 }
 func (a *App) SavePrinterSettings(target string, pref PrinterSettings) (Settings, error) {
 	if err := validateSettings(target, pref, true); err != nil {
