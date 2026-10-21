@@ -24,6 +24,10 @@
       offline:'פרטי הרישוי והקרדיטים זמינים גם ללא חיבור לאינטרנט. בדיקת עדכונים וקישורים ל־GitHub דורשים חיבור.',
       close:'סגירה', loading:'טוען מסמך מקומי…',
       unavailable:'המידע אינו זמין כרגע.', linkError:'לא ניתן לפתוח את הקישור.',
+      devTitle:'מצב מפתחים',
+      devWarning:'התקנה ידנית של תוסף לא ארוז עלולה להיות מסובכת. התוסף אינו מופיע בחנות. מיועד למשתמשים מתקדמים בלבד.',
+      devButton:'מצב מפתחים', devOn:'פעיל', devOff:'כבוי',
+      devError:'לא ניתן לשנות את מצב המפתחים כרגע.',
     },
     en: {
       open:'About', title:'About SliceBridge',
@@ -41,6 +45,10 @@
       offline:'License and credit information works offline. Update checks and GitHub links need internet.',
       close:'Close', loading:'Reading bundled document…',
       unavailable:'This information is not available.', linkError:'Could not open the link.',
+      devTitle:'Developer mode',
+      devWarning:'Manual unpacked extension setup can be tricky. The extension is not listed in a store. For advanced users only.',
+      devButton:'Developer mode', devOn:'On', devOff:'Off',
+      devError:'Could not change developer mode right now.',
     }
   };
 
@@ -51,6 +59,22 @@
   const legalStatus = el('aboutLegalStatus');
   const linkStatus = el('aboutLinkStatus');
   let shownDocument = null;
+  const developerBtn = el('developerModeBtn');
+  const developerState = el('developerModeState');
+  const developerStatus = el('developerModeStatus');
+  // Native state is the only source of truth; anything but an explicit true is locked.
+  let developerMode = false;
+  let developerSettled = false;
+
+  function renderDeveloperMode() {
+    developerBtn.setAttribute('aria-pressed', String(developerMode));
+    developerState.textContent = t(developerMode ? 'devOn' : 'devOff');
+  }
+
+  function publishDeveloperMode() {
+    renderDeveloperMode();
+    document.dispatchEvent(new CustomEvent('slicebridge:developer-mode', {detail: {enabled: developerMode}}));
+  }
 
   function render() {
     dialog.dir = lang() === 'he' ? 'rtl' : 'ltr';
@@ -63,6 +87,7 @@
     for (const [kind, id] of [['license', 'viewLicenseBtn'], ['credits', 'viewCreditsBtn']]) {
       el(id).textContent = shownDocument === kind ? t('hideDocument') : t(kind === 'license' ? 'fullLicense' : 'fullCredits');
     }
+    renderDeveloperMode();
   }
 
   function close() {
@@ -108,10 +133,46 @@
     }
   }
 
+  // The Wails bridge can initialise after this script runs; wait briefly, then fail closed.
+  async function loadDeveloperMode() {
+    for (let i = 0; i < 30 && !api()?.GetDeveloperMode; i++) {
+      await new Promise(resolve => setTimeout(resolve, 70));
+    }
+    let enabled = false;
+    try {
+      enabled = (await api().GetDeveloperMode()) === true;
+    } catch {
+      enabled = false;
+    }
+    if (!developerSettled) {
+      developerMode = enabled;
+      renderDeveloperMode();
+    }
+  }
+
+  async function toggleDeveloperMode() {
+    developerSettled = true;
+    developerStatus.textContent = '';
+    developerBtn.disabled = true;
+    const requested = !developerMode;
+    try {
+      if (!api()?.SetDeveloperMode) throw new Error('Unavailable');
+      developerMode = (await api().SetDeveloperMode(requested)) === true;
+      if (developerMode !== requested) developerStatus.textContent = t('devError');
+    } catch {
+      developerMode = false;
+      developerStatus.textContent = t('devError');
+    } finally {
+      developerBtn.disabled = false;
+      publishDeveloperMode();
+    }
+  }
+
   el('aboutBtn').addEventListener('click', () => {
     render();
     if (!dialog.open) dialog.showModal();
   });
+  developerBtn.addEventListener('click', toggleDeveloperMode);
   el('closeAboutBtn').addEventListener('click', close);
   el('doneAboutBtn').addEventListener('click', close);
   el('viewLicenseBtn').addEventListener('click', () => showDocument('license'));
@@ -130,4 +191,5 @@
     el(code + 'Btn').addEventListener('click', render);
   }
   render();
+  loadDeveloperMode();
 })();
