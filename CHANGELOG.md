@@ -6,6 +6,13 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.12] — 2026-10-21 (development milestone; release status: see GitHub Releases)
+
+- The manual MakerWorld beta extension installer is greyed out for normal users. It becomes available only after an explicit Developer Mode opt-in in About. Normal users should not attempt an unpacked extension install.
+- README (English and Hebrew) and the extension installation guide state that the browser-store extension is not officially listed, and that the beta manual install requires advanced browser setup.
+- Files downloaded from MakerWorld and manual 3MF import are unchanged.
+- Native development version set to `0.4.0-beta.4.dev.12`.
+
 ## [0.4.0-beta.4.dev.11] — 2026-10-21 (development milestone; release status: see GitHub Releases)
 
 - Removed labels through [PR #34](https://github.com/nocturney/slicebridge/pull/34).
