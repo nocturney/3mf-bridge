@@ -197,8 +197,10 @@ func TestCorruptMyPrinterSelectionNotOverwritten(t *testing.T) {
 	if err = os.WriteFile(path, []byte(`{"version":1,"selectedIds":["bambu-lab-p1s"]}`), 0600); err != nil {
 		t.Fatal(err)
 	}
-	if _, err = app.GetMyPrinters(); err == nil {
-		t.Fatal("Bambu selection incorrectly granted as adapter")
+	// An old Bambu entry is hidden from the reply, never granted as an adapter.
+	hidden, err := app.GetMyPrinters()
+	if err != nil || len(hidden.SelectedIDs) != 0 {
+		t.Fatalf("Bambu selection incorrectly granted as adapter: %+v %v", hidden, err)
 	}
 }
 

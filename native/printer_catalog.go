@@ -166,31 +166,89 @@ func myPrintersPath() (string, error) {
 	return filepath.Join(filepath.Dir(oldSettingsPath), "my-printers.json"), nil
 }
 
-func validateMyPrinterIDs(ids []string, catalog PrinterCatalogReply) error {
+// Injectable for tests. Production reads only locally installed Orca presets,
+// through the same resolver conversion uses before it reads a target.
+var discoverInstalledOrca = presets.DiscoverOrca
+var resolveInstalledOrca = presets.ResolveOrcaBundle
+
+// validateNewSelection accepts only working destinations for new saves: the four
+// original adapters, the generic PrusaSlicer engine, and installed Orca targets
+// that resolve right now. Index-only catalogue models are never selectable.
+func validateNewSelection(ids []string, catalog PrinterCatalogReply) error {
 	if len(ids) > maxMyPrinters {
 		return fmt.Errorf("at most %d printers can be selected", maxMyPrinters)
-	}
-	known := make(map[string]CatalogPrinter, len(catalog.Models))
-	for _, item := range catalog.Models {
-		known[item.ID] = item
 	}
 	seen := make(map[string]bool, len(ids))
 	for _, id := range ids {
 		if !catalogIDPattern.MatchString(id) || seen[id] {
 			return fmt.Errorf("invalid or duplicate printer selection")
 		}
-		item, exists := known[id]
-		if !exists {
-			return fmt.Errorf("unknown printer ID")
-		}
-		// Bambu stays in metadata for future non-MakerWorld conversion adapters.
-		// Never expose it as a selectable destination in this rollout.
-		if strings.EqualFold(item.Manufacturer, "Bambu Lab") {
-			return fmt.Errorf("Bambu is not available as a conversion target yet")
-		}
 		seen[id] = true
+		switch {
+		case id == prusaTargetID:
+			// Generic engine: readiness is reported by PrusaEngineStatus.
+		case presets.IsOrcaTargetID(id):
+			if _, err := resolveInstalledOrca(id); err != nil {
+				return fmt.Errorf("installed printer profile is not ready")
+			}
+		case !isLegacyAdapterModel(catalog, id):
+			// Bambu and other index-only models stay out of the destination list.
+			return fmt.Errorf("printer is not available as a conversion target")
+		}
 	}
 	return nil
+}
+
+// isLegacyAdapterModel reports whether a catalogue ID is one of the four original
+// conversion adapters. Index-only entries, including Bambu, return false.
+func isLegacyAdapterModel(catalog PrinterCatalogReply, id string) bool {
+	for _, item := range catalog.Models {
+		if item.ID == id {
+			return item.LegacyTarget != nil
+		}
+	}
+	return false
+}
+
+// usableSavedSelection keeps the saved IDs that are still working targets, in
+// saved order. Index-only entries from older versions, unknown IDs and installed
+// profiles that have since disappeared are dropped from the reply only. Reads
+// never rewrite the file. Malformed or duplicate IDs remain corruption.
+func usableSavedSelection(ids []string, catalog PrinterCatalogReply, installed map[string]bool) ([]string, error) {
+	seen := make(map[string]bool, len(ids))
+	usable := []string{}
+	for _, id := range ids {
+		if !catalogIDPattern.MatchString(id) || seen[id] {
+			return nil, fmt.Errorf("invalid or duplicate printer selection")
+		}
+		seen[id] = true
+		switch {
+		case id == prusaTargetID:
+			usable = append(usable, id)
+		case presets.IsOrcaTargetID(id):
+			if installed[id] {
+				usable = append(usable, id)
+			}
+		case isLegacyAdapterModel(catalog, id):
+			usable = append(usable, id)
+		}
+	}
+	return usable, nil
+}
+
+// installedOrcaIDs scans installed Orca targets only when a saved selection names
+// one, so ordinary reads never touch the slicer folders.
+func installedOrcaIDs(ids []string) map[string]bool {
+	installed := map[string]bool{}
+	for _, id := range ids {
+		if presets.IsOrcaTargetID(id) {
+			for _, target := range discoverInstalledOrca().Targets {
+				installed[target.ID] = true
+			}
+			break
+		}
+	}
+	return installed
 }
 
 func loadMyPrinters(catalog PrinterCatalogReply) (MyPrintersReply, error) {
@@ -218,10 +276,14 @@ func loadMyPrinters(catalog PrinterCatalogReply) (MyPrintersReply, error) {
 	if cfg.Version != 1 || cfg.SelectedIDs == nil {
 		return MyPrintersReply{}, fmt.Errorf("unrecognized saved printer selection version")
 	}
-	if err = validateMyPrinterIDs(cfg.SelectedIDs, catalog); err != nil {
+	if len(cfg.SelectedIDs) > maxMyPrinters {
+		return MyPrintersReply{}, fmt.Errorf("saved printer selections invalid: at most %d printers", maxMyPrinters)
+	}
+	usable, err := usableSavedSelection(cfg.SelectedIDs, catalog, installedOrcaIDs(cfg.SelectedIDs))
+	if err != nil {
 		return MyPrintersReply{}, fmt.Errorf("saved printer selections invalid: %w", err)
 	}
-	return MyPrintersReply{Version: 1, SelectedIDs: append([]string{}, cfg.SelectedIDs...)}, nil
+	return MyPrintersReply{Version: 1, SelectedIDs: usable}, nil
 }
 
 func (a *App) GetMyPrinters() (MyPrintersReply, error) {
@@ -241,7 +303,7 @@ func (a *App) SaveMyPrinters(ids []string) (MyPrintersReply, error) {
 	if err != nil {
 		return MyPrintersReply{}, err
 	}
-	if err = validateMyPrinterIDs(ids, catalog); err != nil {
+	if err = validateNewSelection(ids, catalog); err != nil {
 		return MyPrintersReply{}, err
 	}
 	// Corrupt state is never overwritten: the user can repair/recover it.
