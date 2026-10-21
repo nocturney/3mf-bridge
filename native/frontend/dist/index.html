@@ -74,22 +74,22 @@
           <div class="targets-actions"><button id="selectAllBtn" class="text-btn" type="button" data-i18n="selectAll">בחר הכול</button></div>
         </div>
         <div class="target-list" id="targetList">
-          <label class="target-option" data-target-row="u1">
+          <label class="target-option" data-target-row="u1" hidden>
             <input type="checkbox" value="u1">
             <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>Snapmaker U1</strong><small data-printer-summary="u1">—</small></span>
           </label>
-          <label class="target-option" data-target-row="c5">
+          <label class="target-option" data-target-row="c5" hidden>
             <input type="checkbox" value="c5">
             <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>Flashforge Creator 5</strong><small data-printer-summary="c5">—</small></span>
           </label>
-          <label class="target-option" data-target-row="cc2">
+          <label class="target-option" data-target-row="cc2" hidden>
             <input type="checkbox" value="cc2">
             <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>ELEGOO CC2</strong><small data-printer-summary="cc2">—</small></span>
           </label>
-          <label class="target-option" data-target-row="qidi">
+          <label class="target-option" data-target-row="qidi" hidden>
             <input type="checkbox" value="qidi">
             <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>QIDI Plus5</strong><small data-printer-summary="qidi">—</small></span>
@@ -101,7 +101,6 @@
           </label>
         </div>
         <p id="emptyTargetNotice" class="empty-target-notice" hidden>אין מדפסות יעד שנבחרו. אפשר להוסיף דרך סמל המדפסת בראש החלון.</p>
-        <div class="catalog-only-targets" id="catalogOnlyTargets" hidden></div>
       </section>
     </div>
 
@@ -181,7 +180,6 @@
       <p id="catalogPickerHint" class="catalog-picker-hint" role="status">בחר יצרן או חפש דגם כדי להציג מדפסות.</p>
       <p id="catalogSearchCount" class="catalog-search-count" role="status"></p>
       <div id="catalogModelList" class="catalog-model-list" role="group" aria-label="Catalogue models"></div>
-      <p id="myPrintersHiddenNote" class="catalog-footnote"></p>
       <p id="myPrintersStatus" class="dialog-status" role="alert"></p>
     </div>
     <footer class="dialog-actions">
