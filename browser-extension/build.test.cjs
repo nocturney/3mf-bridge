@@ -17,7 +17,11 @@ for(const browser of ['chromium','firefox']) {
     assert.equal(manifest.manifest_version,3);
     assert.deepEqual(manifest.permissions,['storage']);
     assert.equal((manifest.content_scripts||[]).length,1);
-    assert.ok(manifest.content_scripts[0].matches.every(m=>m.startsWith('https://')&&m.includes('makerworld.com/')));
+    // Require an exact host allowlist, not an unsafe URL substring match.
+    assert.deepEqual([...manifest.content_scripts[0].matches].sort(),[
+      'https://makerworld.com/*',
+      'https://*.makerworld.com/*'
+    ].sort());
     assert.equal(manifest.action.default_popup,'popup.html');
     // A staged browser package must carry the exact reviewed shared content script.
     assert.deepEqual(fs.readFileSync(path.join(target,'content.js')),
