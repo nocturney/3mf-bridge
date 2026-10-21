@@ -37,18 +37,53 @@ test('search works for brand, model and legacy aliases, without inventing releas
   assert.equal(picker.search(catalog.models,'nonexistent printer 999999').total,0);
 });
 
-test('selected legacy adapters and unrelated index-only printers stay separate',()=>{
+test('only supported destinations are offered: catalogue-only and unavailable adapters have no state',()=>{
+  const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
   const u1=catalog.models.find(x=>x.id==='snapmaker-u1');
   const c5=catalog.models.find(x=>x.id==='flashforge-creator-5');
   const other=catalog.models.find(x=>!x.legacyTarget && !picker.isHidden(x));
-  const chosen=[other.id,c5.id,u1.id];
-  assert.deepEqual(picker.selectedAdapterTargets(catalog.models,chosen),['c5','u1']);
-  const result=picker.statuses(catalog.models,chosen,[
-    {target:'c5',available:false,error:'Flash Studio not installed'},
-    {target:'u1',available:true}
-  ]);
-  assert.deepEqual(result.map(x=>x.kind),['catalog_only','missing_local_profile','ready']);
-  assert.deepEqual(result.map(x=>x.canConvert),[false,false,true]);
+  const availability=[{target:'c5',available:false,error:'Flash Studio not installed'},{target:'u1',available:true}];
+  const items=picker.supportedModels(catalog.models,availability,[],false);
+  assert.deepEqual(items.map(x=>x.id),[u1.id]);
+  assert.equal(items.some(x=>x.id===other.id||x.id===c5.id),false);
+  assert.deepEqual(picker.legacyTargetsFor(items,[other.id,c5.id,u1.id]),['u1']);
+  // The retired status vocabulary never reappears in the UI copy or the helper.
+  assert.doesNotMatch(script,/catalog_only|missing_local_profile|selectedStatuses|statuses\(/);
+  assert.doesNotMatch(fs.readFileSync(path.resolve(__dirname,'../frontend/dist/printer-picker.js'),'utf8'),/statuses|selectedAdapterTargets/);
+});
+
+test('main list has no catalogue-only section and built-in rows start hidden until selected',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const app=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.js'),'utf8');
+  const style=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  assert.doesNotMatch(doc,/catalogOnlyTargets|catalog-only/);
+  assert.doesNotMatch(app,/catalogOnly|catalog-only|selectedStatuses|classList\.add\('unavailable'\)/);
+  for(const target of ['u1','c5','cc2','qidi']){
+    assert.match(doc,new RegExp('<label class="target-option" data-target-row="'+target+'" hidden>'));
+  }
+  assert.match(app,/function builtInVisible\(target\)/);
+  assert.match(app,/data\?\.available===true&&Boolean\(window\.SliceBridgeMyPrinters\?\.isSelectedTarget\(target\)\)/);
+  assert.match(style,/\.target-option\[hidden\]\{display:none!important\}/);
+});
+
+test('the main list and the picker share one destination set through setSupportedTargets',()=>{
+  const app=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.js'),'utf8');
+  assert.match(app,/function publishSupportedTargets\(\)\{\s*window\.SliceBridgeMyPrinters\?\.setSupportedTargets\(\{available,installedTargets,prusaAvailable\}\);/);
+  assert.match(app,/available=Array\.isArray\(reply\)\?reply:\[\];/);
+  assert.match(app,/installedTargets=Array\.isArray\(reply\?\.targets\)\?reply\.targets:\[\];/);
+  // Handed over once after all probes, and before My Printers reads its inputs in init().
+  assert.match(app,/await refreshPrusaEngine\(\);[\s\S]*?publishSupportedTargets\(\);\s*await window\.SliceBridgeMyPrinters\?\.init\(\);/);
+  assert.match(app,/prusaAvailable=Boolean\(\(await api\(\)\?\.PrusaEngineStatus\?\.\(\)\)\?\.available\)/);
+  assert.match(app,/window\.addEventListener\('slicebridge:my-printers-changed',\(\)=>renderTargets\(\)\)/);
+  assert.match(app,/row\.hidden=!isSelectedDestination\(target\.id\)/);
+  assert.match(app,/setRowVisible\(entry\.row,entry\.checkbox,isSelectedDestination\(entry\.id\)\)/);
+});
+
+test('saved selections are never shown as unsupported and are not sent back when stale',()=>{
+  const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  assert.match(script,/const requested=\[\.\.\.draft\]\.filter\(id=>supported\.some\(item=>item\.id===id\)\);/);
+  assert.match(script,/function selectedTargetIds\(\)\{\s*return loaded\?picker\.selectedTargetIds\(supported,selected\.selectedIds\):\[\];\s*\}/);
+  assert.match(script,/if\(!loaded\|\|!draft\|\|saving\|\|!supported\.length\)return;/);
 });
 
 test('broad list capped at 80 and selected first; text cannot execute JS',()=>{
@@ -85,7 +120,7 @@ test('new picker UI has bilingual names, consent-based selection and no network 
 });
 
 
-test('first-run is empty; cards and installed cover images load only after user filters',()=>{
+test('first-run displays available destinations immediately, without requiring a filter',()=>{
   const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
   const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
   const backend=fs.readFileSync(path.resolve(__dirname,'../printer_catalog.go'),'utf8');
@@ -97,8 +132,9 @@ test('first-run is empty; cards and installed cover images load only after user 
   assert.match(doc,/id="printerManufacturerFilter"/);
   assert.match(doc,/id="catalogPickerHint"/);
   assert.match(script,/const hasFilter=Boolean\(term\|\|manufacturer\)/);
-  assert.match(script,/const matches=hasFilter\?picker\.search/);
-  assert.match(script,/list\.hidden=!hasFilter/);
+  assert.match(script,/const showList=hasFilter\|\|supported\.length>0/);
+  assert.match(script,/const matches=showList\?picker\.search/);
+  assert.match(script,/list\.hidden=!showList/);
   assert.match(script,/observeCover\(graphic,model\.id\)/);
   assert.match(style,/\.catalog-model-list\[hidden\]/);
 });

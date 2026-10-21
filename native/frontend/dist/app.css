@@ -159,7 +159,6 @@ button:focus-visible,select:focus-visible,input:focus-visible,.dropzone:focus-vi
   border:1px solid #e4eae7;border-radius:7px;background:#fff;color:#647c73;font-size:16px
 }
 .printer-gear:hover:not(:disabled){background:var(--light-brand);color:var(--brand)}
-.target-option.unavailable .printer-label{opacity:.58}
 .results-panel{height:100%}
 .report-counts{justify-content:flex-end;gap:7px;color:var(--ink-muted)}
 .report-counts span{font-size:10px;border-radius:999px;padding:4px 8px;background:#f2f5f3}
@@ -467,15 +466,9 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:610px){.integration-install-row{align-items:stretch}.integration-install-row select{flex:1 1 160px}.integration-install-row button{flex:1 1 175px}}
 
-/* My Printers: RTL/LTR-safe picker, with local installed-slicer cover art only. */
+/* My Printers: RTL/LTR-safe picker, with local artwork for built-in models only. */
 .targets-actions{display:flex;align-items:center;gap:14px;white-space:nowrap}
-.target-option[hidden],.catalog-only-targets[hidden]{display:none!important}
-.catalog-only-targets{max-height:88px;overflow-y:auto;border-top:1px solid var(--stroke);
-  padding:8px 13px;background:#fbfaf4;scrollbar-gutter:stable}
-.catalog-only-target{display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:5px;border-bottom:1px solid #eee9db;padding:4px 2px;font-size:11px}
-.catalog-only-target:last-child{border-bottom:0}
-.catalog-only-target small,.catalog-only-label{color:#9a6b32}
+.target-option[hidden]{display:none!important}
 .my-printers-dialog{width:min(890px,calc(100vw - 30px));max-width:none;
   border:1px solid var(--stroke);border-radius:12px}
 .my-printers-dialog .dialog-frame{max-height:min(810px,calc(100dvh - 34px));min-height:min(520px,calc(100dvh - 34px))}
@@ -513,10 +506,6 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .catalog-model-copy{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;text-align:start}
 .catalog-model-copy strong{font-size:12px;color:var(--ink);overflow-wrap:anywhere}
 .catalog-model-copy small{font-size:10.5px;color:#688076}
-.catalog-model-copy .existing-adapter{color:#2d8664}
-.catalog-model-copy .catalog-only-label{color:#9b6e33}
-.catalog-model-copy .nozzle-list{direction:ltr;text-align:start;unicode-bidi:isolate;font-size:10px}
-.catalog-model-copy .installed-slicer-line{color:#526B61;font-size:10px;overflow-wrap:anywhere;unicode-bidi:plaintext}
 .catalog-empty{grid-column:1/-1;text-align:center;color:#70847a;margin:25px 0}
 @media(max-width:760px){
   .my-printers-dialog .dialog-frame{max-height:calc(100dvh - 24px)}
@@ -644,8 +633,7 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   -webkit-line-clamp:2;
   overflow:hidden;
 }
-.target-option.unavailable{opacity:.64}
-.target-option[hidden],.catalog-only-targets[hidden]{display:none!important}
+.target-option[hidden]{display:none!important}
 /* Reset older height/width layout overrides that turned cards back into rows. */
 @media(max-height:750px){
   .left-column{grid-template-rows:minmax(205px,auto) auto}
