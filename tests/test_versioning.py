@@ -1,5 +1,6 @@
 """Validate the version/changelog contract without a release or internet access."""
 from __future__ import annotations
+import json
 import re
 import tempfile
 import unittest
@@ -20,6 +21,13 @@ class VersionContract(unittest.TestCase):
         match = re.search(r'(?m)^var appVersion\s*=\s*"([^"]+)"', source)
         self.assertIsNotNone(match, "native appVersion must be discoverable")
         self.assertEqual(match.group(1), validate(ROOT), "About/GetVersion must match VERSION")
+
+    def test_wails_bundle_metadata_matches_version_family(self):
+        config = json.loads((ROOT / "native" / "wails.json").read_text(encoding="utf-8"))
+        info = config["info"]
+        self.assertEqual(info["productVersion"], validate(ROOT).split("-")[0])
+        self.assertNotRegex(info.get("comments", ""), r"(?i)\bbeta\s*\d+\b",
+                            "Wails bundle description must not advertise an obsolete beta")
 
     def test_invalid_versions_and_changelog_mismatches_fail(self):
         with tempfile.TemporaryDirectory() as tmp:

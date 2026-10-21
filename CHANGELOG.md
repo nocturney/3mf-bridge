@@ -17,6 +17,7 @@ Published development builds are listed under [GitHub Releases](https://github.c
 - This is a planned next source/build number, not an available download. The latest published pre-release is [v0.4.0-beta.4.dev.7](https://github.com/nocturney/slicebridge/releases/tag/v0.4.0-beta.4.dev.7), built from source 986161df3cdc9485e71bda2bbcd9a4bcd877dab7 on October 20, 2026.
 - PRs #1–#6 and #8 are merged into `main`, and PR #13's My Printers/UI updates reached `main` through #6. The result includes four conversion targets and a separate 603-model reference catalogue (not 603 conversion adapters). Code integration does not automatically publish an installer.
 - This milestone is tracked in [PR #23](https://github.com/nocturney/slicebridge/pull/23); local version tests passed, while CI must pass again on the exact final head. Source `native/updates_bridge.go` now reports `dev.8`, with a contract test guarding drift from `VERSION`.
+- Corrected the desktop packaging description, which still said “Beta 3” in macOS Finder; the native About panel retains the exact dev.8 build version and the OS bundle version remains numeric 0.4.0.
 - Future dev.8 binaries require an approved source SHA, matching Windows/macOS builds, GPL and notices, and SHA256 checksums. VERSION alone cannot publish a stable release.
 
 Historical dev.0 through dev.6 headings describe the state at the time they were written. All dev.1 through dev.6 packages were subsequently published as experimental pre-releases; the actual GitHub Releases list is authoritative.
