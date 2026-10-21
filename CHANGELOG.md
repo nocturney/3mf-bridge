@@ -4,6 +4,10 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 ## Unreleased
 
+- No changes recorded since the dev.8 source snapshot.
+
+## [0.4.0-beta.4.dev.8] — 2026-10-21 (published experimental pre-release)
+
 - Prepared an open-source GPL-3.0-only license for project-owned code and synchronized prototype npm license metadata.
 - Documented separate third-party, vendor-profile and trademark scopes without claiming ownership of upstream works.
 - Established the SliceBridge product name and a concise bilingual README.
@@ -12,13 +16,11 @@ Published development builds are listed under [GitHub Releases](https://github.c
 - Published experimental Windows and macOS development builds on GitHub Releases.
 - Simplified the release guidance for a small open-source project; signing is optional.
 
-## [0.4.0-beta.4.dev.8] — 2026-10-21 (planned next development milestone, NOT RELEASED)
-
-- This is a planned next source/build number, not an available download. The latest published pre-release is [v0.4.0-beta.4.dev.7](https://github.com/nocturney/slicebridge/releases/tag/v0.4.0-beta.4.dev.7), built from source 986161df3cdc9485e71bda2bbcd9a4bcd877dab7 on October 20, 2026.
+- Published [v0.4.0-beta.4.dev.8](https://github.com/nocturney/slicebridge/releases/tag/v0.4.0-beta.4.dev.8) as an experimental Windows/macOS Apple Silicon pre-release built from exact merged source `87de87cfbcbc40813e11e9e1c7322f084fed7f8f`, with GPL license, third-party notices, corresponding source archive and SHA-256 checksums. It is not stable.
 - PRs #1–#6 and #8 are merged into `main`, and PR #13's My Printers/UI updates reached `main` through #6. The result includes four conversion targets and a separate 603-model reference catalogue (not 603 conversion adapters). Code integration does not automatically publish an installer.
-- This milestone is tracked in [PR #23](https://github.com/nocturney/slicebridge/pull/23); local version tests passed, while CI must pass again on the exact final head. Source `native/updates_bridge.go` now reports `dev.8`, with a contract test guarding drift from `VERSION`.
+- Version metadata was merged through [PR #23](https://github.com/nocturney/slicebridge/pull/23); GitHub native Windows/macOS CI and release-preflight checks passed on the exact released source commit. Source `native/updates_bridge.go` reports `dev.8`, with regression tests guarding drift from `VERSION`.
 - Corrected the desktop packaging description, which still said “Beta 3” in macOS Finder; the native About panel retains the exact dev.8 build version and the OS bundle version remains numeric 0.4.0.
-- Future dev.8 binaries require an approved source SHA, matching Windows/macOS builds, GPL and notices, and SHA256 checksums. VERSION alone cannot publish a stable release.
+- The released binaries embed the same tagged source commit and passed ZIP integrity and bounded application-launch smoke checks on both platforms. No full slicer, printer, Chromium-extension, or macOS URL-handler takeover acceptance test is claimed.
 
 Historical dev.0 through dev.6 headings describe the state at the time they were written. All dev.1 through dev.6 packages were subsequently published as experimental pre-releases; the actual GitHub Releases list is authoritative.
 
