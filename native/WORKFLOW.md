@@ -1,4 +1,4 @@
-## SliceBridge Native — experimental dev.9 (0.4.0-beta.4.dev.9)
+## SliceBridge Native — experimental dev.10 (0.4.0-beta.4.dev.10)
 
 The native desktop workflow now supports:
 1. **Saved per-printer preferences**: actual physical target nozzle
