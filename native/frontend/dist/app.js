@@ -33,6 +33,11 @@ const translations = {
     autoSlicer:'אוטומטי — סלייסר זמין',
     autoFilament:'אוטומטי — פרופיל יצרן',
     noNativeProfiles:'לא נמצאו פרופילי פילמנט תואמים.',
+    autoPresetHint:'לבחירת פרופיל פילמנט מסוים, יש לבחור קודם דיזה פיזית קבועה.',
+    autoPresetWarning:'נשמר פרופיל פילמנט לדיזה אוטומטית. בחר דיזה קבועה וערוך את הפרופיל לפני השמירה.',
+    recoverSettingsQuestion:'קובץ ההגדרות אינו תקין. לשמור עותק גיבוי של הקובץ המקורי ולחזור להגדרות ברירת מחדל?',
+    recoveredSettings:'ההגדרות שוחזרו לברירת המחדל.',
+    backupSaved:'הגיבוי המקורי נשמר כאן: {path}',
     unsupportedPrinter:'סלייסר לא זמין',openSlicer:'פתח בסלייסר',
     details:'פרטי המרה',source:'מקור',target:'יעד',nozzle:'דיזה',
     materialSlots:'סלילי חומר',plates:'משטחים',objects:'אובייקטים',
@@ -90,6 +95,11 @@ const translations = {
     autoSlicer:'Automatic — available slicer',
     autoFilament:'Automatic — native manufacturer default',
     noNativeProfiles:'No compatible installed filament presets found.',
+    autoPresetHint:'Choose a fixed physical nozzle before selecting a specific filament preset.',
+    autoPresetWarning:'A filament preset is saved with Auto nozzle. Choose a fixed nozzle and review the preset before saving.',
+    recoverSettingsQuestion:'Settings cannot be loaded. Back up the original settings file and restore defaults?',
+    recoveredSettings:'Default settings restored.',
+    backupSaved:'Original settings saved at: {path}',
     unsupportedPrinter:'Slicer unavailable',openSlicer:'Open in slicer',
     details:'Conversion details',source:'Source',target:'Target',nozzle:'Nozzle',
     materialSlots:'Material slots',plates:'Plates',objects:'Objects',
@@ -476,12 +486,28 @@ function renderSettingsTabs(){
     tabs.append(button);
   }
 }
+async function promptForSettingsRecovery(error) {
+  setActivity(t('settingsError'),error?.message||String(error),'warning');
+  // Never reset damaged/future-version settings without an explicit choice.
+  if(!api()?.RecoverInvalidSettings||!window.confirm(t('recoverSettingsQuestion')))return null;
+  try{
+    const recovered=await api().RecoverInvalidSettings(true);
+    setActivity(t('recoveredSettings'),recovered.backupPath?t('backupSaved',{path:recovered.backupPath}):'');
+    return recovered.settings;
+  }catch(e){
+    setActivity(t('settingsError'),e?.message||String(e),'warning');
+    return null;
+  }
+}
 async function openSettings(target){
   if(busy||!api())return;
   currentTarget=target||'u1';
   currentMaterial='PLA';
   try{settings=await api().GetSettings();}
-  catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');return;}
+  catch(e){
+    settings=await promptForSettingsRecovery(e);
+    if(!settings)return;
+  }
   draftPrefs=structuredClone(settings.printers[currentTarget]||{nozzle:'auto',slicer:'auto',filaments:{}});
   if(!draftPrefs.filaments)draftPrefs.filaments={};
   renderSettingsTabs();
@@ -516,12 +542,16 @@ async function paintSettings(){
       }))
     ],draftPrefs.slicer||'auto');
     slicer.disabled=false;
+    const autoNozzle=!draftPrefs.nozzle||draftPrefs.nozzle==='auto';
     fillSelect(filaments,[
       {value:'auto',label:t('autoFilament')},
-      ...(options.filaments||[]).map((n)=>({value:n,label:n}))
-    ],draftPrefs.filaments[currentMaterial]||'auto');
-    filaments.disabled=false;
-    if(options.error)el('settingsStatus').textContent=options.error;
+      ...(!autoNozzle?(options.filaments||[]):[]).map((n)=>({value:n,label:n}))
+    ],autoNozzle?'auto':draftPrefs.filaments[currentMaterial]||'auto');
+    filaments.disabled=autoNozzle;
+    if(autoNozzle){
+      el('settingsStatus').textContent=Object.values(draftPrefs.filaments||{}).some(Boolean)
+        ?t('autoPresetWarning'):t('autoPresetHint');
+    }else if(options.error)el('settingsStatus').textContent=options.error;
     else if(!options.filaments?.length)el('settingsStatus').textContent=t('noNativeProfiles');
   }catch(e){
     if(seq!==choiceSequence)return;
@@ -539,6 +569,10 @@ async function saveSettings(){
     const slicer=el('settingsSlicer').value;
     draftPrefs.nozzle=nozzle;
     draftPrefs.slicer=slicer;
+    if((!nozzle||nozzle==='auto')&&Object.values(draftPrefs.filaments||{}).some(Boolean)){
+      el('settingsStatus').textContent=t('autoPresetWarning');
+      return;
+    }
     const next=await api().SavePrinterSettings(currentTarget,draftPrefs);
     settings=next;
     renderTargets();

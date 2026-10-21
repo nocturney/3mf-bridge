@@ -113,7 +113,7 @@ function setupUI() {
     structuredClone
   };
   vm.runInNewContext(source, context, {filename: 'native-app.js'});
-  return {elements, rows, app, sent};
+  return {elements, rows, app, sent, win};
 }
 
 async function settle() {
@@ -167,4 +167,25 @@ test('authentication and offline errors do not automatically download or install
   elements.dismissUpdateBtn.handlers.click();
   assert.equal(elements.updateNotice.hidden, true);
   assert.equal(sent.length, 1);
+});
+
+test('invalid preferences require explicit recovery and preserve backup location', async () => {
+  const {elements, app, win} = setupUI();
+  await settle();
+  app.GetSettings = async () => { throw new Error('invalid settings JSON'); };
+  let recovered = 0;
+  win.confirm = () => false;
+  app.RecoverInvalidSettings = async () => {
+    recovered++;
+    return {settings: {printers: {}}, backupPath: '/backup/settings.invalid.bak'};
+  };
+  await elements.settingsBtn.handlers.click();
+  assert.equal(recovered, 0, 'declining confirmation must not recover');
+  assert.equal(elements.settingsDialog.open, false);
+
+  win.confirm = () => true;
+  await elements.settingsBtn.handlers.click();
+  assert.equal(recovered, 1);
+  assert.equal(elements.settingsDialog.open, true);
+  assert.match(elements.activityDetail.textContent, /backup\/settings\.invalid\.bak/);
 });
