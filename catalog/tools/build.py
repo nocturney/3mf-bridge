@@ -372,6 +372,22 @@ def scan_prusa(source: dict, checkout: Path):
                                       "model": name, "problem": str(exc)}}
 
 
+def carry_release_evidence(models, makers_dir: Path):
+    """Keep source-cited release dates from the committed maker files across rebuilds.
+
+    Upstream profile repositories do not carry release dates, so the maker
+    files are the only record of them and must survive regeneration.
+    """
+    cited = {}
+    for file in makers_dir.glob("*.json"):
+        for item in json.loads(file.read_text(encoding="utf-8"))["models"]:
+            if item.get("release_date"):
+                cited[item["id"]] = (item["release_date"], item["release_date_evidence"])
+    for model in models:
+        if model["id"] in cited:
+            model["release_date"], model["release_date_evidence"] = cited[model["id"]]
+
+
 def combine(incoming):
     models, quarantine = {}, []
     for item in incoming:
@@ -471,6 +487,7 @@ def build(sources_root: Path, target: Path, update_lock: bool = False):
         ingester = scan_prusa if key.startswith("prusa_") else scan_orca_json
         incoming.extend(ingester(source, checkout))
     models, quarantine = combine(incoming)
+    carry_release_evidence(models, target / "data" / "makers")
     grouped = defaultdict(list)
     for model in models:
         grouped[model["manufacturer"]].append(model)

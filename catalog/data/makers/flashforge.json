@@ -958,8 +958,8 @@
       "id": "flashforge-adventurer-5m",
       "manufacturer": "Flashforge",
       "model": "Adventurer 5M",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2023-09-01",
+      "release_date_evidence": "https://www.aap.com.au/aapreleases/cision20230901ae92939/",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -1718,8 +1718,8 @@
       "id": "flashforge-adventurer-5m-pro",
       "manufacturer": "Flashforge",
       "model": "Adventurer 5M Pro",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2023-09-01",
+      "release_date_evidence": "https://www.aap.com.au/aapreleases/cision20230901ae92939/",
       "conversion_tested": false,
       "profile_sources": [
         {
