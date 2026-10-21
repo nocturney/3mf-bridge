@@ -6,8 +6,8 @@
       "id": "prusa-prusa-core-one",
       "manufacturer": "Prusa",
       "model": "Prusa CORE One",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2024-11-19",
+      "release_date_evidence": "https://cdn.prusa3d.com/article/meet-the-prusa-core-one-josef-prusa-announces-a-new-3d-printer-as-the-foundation-of-a-new-product-line_239457/",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -3996,8 +3996,8 @@
       "id": "prusa-prusa-mk4",
       "manufacturer": "Prusa",
       "model": "Prusa MK4",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2023-03-29",
+      "release_date_evidence": "https://cdn.prusa3d.com/article/prusa-research-introduces-a-new-3d-printer-the-mk4-promises-fast-printing-and-high-quality-printing-for-everyone-_234221",
       "conversion_tested": false,
       "profile_sources": [
         {

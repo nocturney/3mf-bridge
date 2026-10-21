@@ -133,6 +133,21 @@ class CatalogFixtures(unittest.TestCase):
         self.assertIsNone(items[0]["release_date"])
         self.assertFalse(items[0]["conversion_tested"])
 
+    def test_cited_release_dates_survive_rebuild(self):
+        url = "https://www.example.com/press-release"
+        with tempfile.TemporaryDirectory() as tmp:
+            makers = Path(tmp)
+            (makers / "x.json").write_text(json.dumps({"models": [
+                {"id": "acme-one", "release_date": "2024-01-02", "release_date_evidence": url},
+                {"id": "acme-two", "release_date": None, "release_date_evidence": None},
+            ]}), encoding="utf-8")
+            models = [{"id": "acme-one", "release_date": None, "release_date_evidence": None},
+                      {"id": "acme-two", "release_date": None, "release_date_evidence": None}]
+            build.carry_release_evidence(models, makers)
+        self.assertEqual(models[0]["release_date"], "2024-01-02")
+        self.assertEqual(models[0]["release_date_evidence"], url)
+        self.assertIsNone(models[1]["release_date"])
+
 
 class SavedSnapshot(unittest.TestCase):
     def test_committed_registry_integrity(self):
