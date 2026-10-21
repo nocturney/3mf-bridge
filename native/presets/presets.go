@@ -102,39 +102,13 @@ func Variant(target, source string) (string, string, string, map[string]string, 
 	}
 	return nozzle, machine, process, materials, nil
 }
+// Candidates and ResolveSlicer use the same ordered location inventory.
 func Candidates(target string) []string {
-	if e := os.Getenv("BRIDGE_SLICER_PROFILE_" + strings.ToUpper(target)); e != "" {
-		return []string{e}
-	}
-	if runtime.GOOS == "windows" {
-		pf := os.Getenv("ProgramFiles")
-		if pf == "" {
-			pf = `C:\Program Files`
-		}
-		switch target {
-		case "u1":
-			return []string{filepath.Join(pf, "Snapmaker_Orca", "resources", "profiles")}
-		case "c5":
-			return []string{filepath.Join(pf, "Flashforge", "Flash Studio Desktop", "resources", "profiles")}
-		case "cc2":
-			return []string{filepath.Join(pf, "ElegooSlicer", "resources", "profiles")}
-		case "qidi":
-			return []string{filepath.Join(pf, "OrcaSlicer", "resources", "profiles"), filepath.Join(pf, "QIDIStudio", "resources", "profiles")}
-		}
-	}
-	if runtime.GOOS == "darwin" {
-		switch target {
-		case "u1":
-			return []string{"/Applications/Snapmaker Orca.app/Contents/Resources/profiles"}
-		case "c5":
-			return []string{"/Applications/Flash Studio.app/Contents/Resources/profiles"}
-		case "cc2":
-			return []string{"/Applications/ElegooSlicer.app/Contents/Resources/profiles"}
-		case "qidi":
-			return []string{"/Applications/QIDIStudio.app/Contents/Resources/profiles", "/Applications/OrcaSlicer.app/Contents/Resources/profiles"}
-		}
-	}
-	return nil
+    paths := []string{}
+    for _, loc := range slicerLocations(target) {
+        paths = append(paths, loc.root)
+    }
+    return paths
 }
 func FindRoot(target string) (string, error) {
 	spec, ok := Specs[target]
