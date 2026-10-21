@@ -6,6 +6,15 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.17] - 2026-10-21 (development build; see GitHub Releases)
+
+- My Printers now shows one card per physical printer model, with each installed nozzle/slicer profile available as a distinct selectable variant. Existing printer choices, engine target identifiers and source-to-slicer conversion routes are retained.
+- Deduplicate manufacturer spelling aliases in the picker, keep integrated makers first, and offer the generic PrusaSlicer export without presenting it as a printer manufacturer.
+- Resolve printer pictures by exact physical model using existing local slicer cover assets and, where redistribution rights are known, a small bundled photo. Display an explicit unavailable state instead of misleading artwork.
+- Keep official launch-announcement dates only as internal model-ordering metadata; remove dates from printer cards. Source-backed dates are recorded for a limited set of popular models, with unknown dates left unknown.
+- Fix a frontend startup race and expand Windows/macOS UI and catalogue regression coverage. No printer profiles, existing conversion adapters, or saved configurations are reset.
+
+
 ## [0.4.0-beta.4.dev.16] - 2026-10-21 (development build; see GitHub Releases)
 
 - Restore Orca-family printer nozzle profiles hidden because the slicer's declared default process was missing, misspelled, or intended for another printer. Select a locally installed process only if it explicitly lists the exact machine, flattens successfully, and has an appropriate layer height.
