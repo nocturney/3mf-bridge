@@ -6,6 +6,12 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.13] - 2026-10-21 (development build; see GitHub Releases)
+
+- Show only available conversion destinations in My Printers and the main target list.
+- Include resolved local Orca targets and PrusaSlicer projects; hide unsupported catalogue entries and unavailable options.
+- Keep older saved selections readable when a profile is no longer installed.
+
 ## [0.4.0-beta.4.dev.12] — 2026-10-21 (development milestone; release status: see GitHub Releases)
 
 - The manual MakerWorld beta extension installer is greyed out for normal users. It becomes available only after an explicit Developer Mode opt-in in About. Normal users should not attempt an unpacked extension install.
