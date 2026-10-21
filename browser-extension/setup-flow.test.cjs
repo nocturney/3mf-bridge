@@ -10,6 +10,7 @@ const source=fs.readFileSync(path.join(__dirname,'shared','content.js'),'utf8');
 function simulate(hash, hostname='makerworld.com') {
   const elements=[];
   const writes=[];
+  const storageReads=[];
   const historyUpdates=[];
   const extensions={makerworldMode:'off'};
   const window={};
@@ -38,7 +39,7 @@ function simulate(hash, hostname='makerworld.com') {
     createElement,addEventListener(){}
   };
   const storage={
-    get:async()=>({...extensions}),
+    get:async (...args)=>{ storageReads.push(args.length); return {...extensions}; },
     async set(value){writes.push(value);Object.assign(extensions,value)}
   };
   const context={
@@ -49,7 +50,7 @@ function simulate(hash, hostname='makerworld.com') {
   };
   vm.runInNewContext(source,context,{filename:'content.js'});
   return {
-    writes,historyUpdates,elements,extensions,
+    writes,historyUpdates,elements,extensions,storageReads,
     button(text){return elements.find(x=>x.tag==='button'&&x.textContent===text)}
   };
 }
@@ -83,4 +84,10 @@ test('untrusted mode and hosts never present a setup prompt',()=>{
     assert.deepEqual(app.writes,[]);
     assert.equal(app.button('Confirm and save in this browser'),undefined);
   }
+});
+
+test('Firefox promise-only storage read never passes an unsupported callback',async()=>{
+  const app=simulate('');
+  await Promise.resolve();
+  assert.deepEqual(app.storageReads,[1]);
 });

@@ -13,18 +13,17 @@
   function saveMode(next) {
     if (!modes.has(next)) return;
     mode = next;
-    try { ext?.storage?.local?.set({ makerworldMode: next }); } catch {}
+    try { const task = ext?.storage?.local?.set({ makerworldMode: next }); task?.catch?.(() => {}); } catch {}
   }
   function loadMode() {
     const store = ext?.storage?.local;
     if (!store) return;
     try {
-      const maybe = store.get({ makerworldMode: 'off' }, value => {
-        if (!maybe?.then) mode = modes.has(value?.makerworldMode) ? value.makerworldMode : 'off';
-      });
-      if (maybe?.then) maybe.then(value => {
+      // Firefox and modern Chromium MV3 share a Promise-based storage API.
+      // Do not pass a callback to Firefox: it may reject the second argument.
+      Promise.resolve(store.get({ makerworldMode: 'off' })).then(value => {
         mode = modes.has(value?.makerworldMode) ? value.makerworldMode : 'off';
-      }).catch(() => {});
+      }).catch(() => { mode = 'off'; });
       ext.storage.onChanged?.addListener((changes, area) => {
         if (area === 'local' && changes.makerworldMode)
           mode = modes.has(changes.makerworldMode.newValue) ? changes.makerworldMode.newValue : 'off';
