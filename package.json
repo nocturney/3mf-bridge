@@ -3,7 +3,7 @@
   "version": "0.3.0-beta.2",
   "private": true,
   "description": "Local desktop bridge for Bambu 3MF projects; verified U1 beta adapter",
-  "main": "main.js",
+  "main": "desktop/electron/main.js",
   "scripts": {
     "start": "electron .",
     "postinstall": "node node_modules/electron/install.js",

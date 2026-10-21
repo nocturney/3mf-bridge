@@ -63,4 +63,4 @@
 - Ensure GPL-covered combined works have their corresponding source and installation/build information available as required.
 - Do not republish manufacturer profiles merely because they are installed on a tester's machine or publicly hosted elsewhere.
 
-[General licensing](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md) · [Distribution checklist](DISTRIBUTION_CHECKLIST.md)
+[General licensing](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md) · [Distribution checklist](../release/DISTRIBUTION_CHECKLIST.md)

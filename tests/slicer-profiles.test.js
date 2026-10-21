@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const os = require('node:os');
 const path = require('node:path');
-const { PROFILES, resolveVariant, loadTargetBundle } = require('../slicer-profiles');
+const { PROFILES, resolveVariant, loadTargetBundle } = require('../desktop/electron/slicer-profiles');
 
 async function writeJson(root, type, name, object) {
   const destination = path.join(root, type, name + '.json');
