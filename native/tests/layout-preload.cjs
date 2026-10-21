@@ -2,13 +2,14 @@ const {contextBridge}=require('electron');
 const printerList=['u1','c5','cc2','qidi'];
 const names={u1:'Snapmaker U1',c5:'Flashforge Creator 5',cc2:'ELEGOO CC2',qidi:'QIDI Plus5'};
 let saved={version:1,printers:Object.fromEntries(printerList.map(t=>[t,{nozzle:'auto',slicer:'auto',filaments:{}}])),window:{width:1100,height:750}};
+let pickCount=0;
 const mockFiles=Array.from({length:32},(_,i)=>({path:'C:\\models\\project-'+String(i+1).padStart(2,'0')+'.3mf',name:'project-'+String(i+1).padStart(2,'0')+'.3mf',folder:'C:\\models',size:1048576,sizeLabel:'1.0 MB'}));
 const app={
   GetSettings:async()=>saved,
   SavePrinterSettings:async(target,prefs)=>{saved.printers[target]=prefs;return saved;},
   Availability:async()=>printerList.map(target=>({target,name:names[target],available:true,slicer:'Installed slicer'})),
-  GetVersion:async()=>({version:'0.4.0-beta.2',platform:'windows-amd64'}),
-  SelectFiles:async()=>mockFiles,
+  GetVersion:async()=>({version:'0.4.0-beta.3',platform:'windows-amd64'}),
+  SelectFiles:async()=>{pickCount++;return pickCount===1?mockFiles:[{path:'C:\\models\\new-project.3mf',name:'new-project.3mf',folder:'C:\\models',size:500,sizeLabel:'500 B'}];},
   SelectFolder:async()=>mockFiles,
   PrinterOptions:async(target,nozzle,slicer,material)=>({
     nozzles:['0.2','0.4','0.6','0.8'],
@@ -33,7 +34,6 @@ const app={
   }),
   OpenInSlicer:async()=>{},
   OpenOutputFolder:async()=>{},
-  ExportLastReport:async()=>{},
   RememberWindowSize:async()=>{},
   CheckForUpdates:async()=>({status:'up_to_date'}),
   OpenUpdatePage:async()=>{}

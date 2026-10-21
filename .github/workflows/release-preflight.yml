@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+          submodules: true
       - name: Test source archive, SBOM and malicious ZIP handling
         run: python3 -m unittest discover -s tests -p 'test_release_preflight.py' -v
       - name: Smoke exact source snapshot
@@ -53,6 +54,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+          submodules: true
       - name: Create source archive, preliminary SBOM and SHA256SUMS
         env:
           SOURCE_SHA: ${{ github.sha }}

@@ -2,7 +2,7 @@ name: Native WebView Windows and macOS
 
 on:
   push:
-    branches: [feature/native-webview-shell]
+    branches: [feature/native-webview-shell, feature/native-workflow-ux, feature/slicebridge-brand]
   pull_request:
     paths:
       - 'native/**'
@@ -36,7 +36,7 @@ jobs:
         shell: pwsh
         run: go test -count=1 ./...
       - name: Test update UI (English and Hebrew)
-        run: node --test tests/update-ui.test.js
+        run: node --test tests/update-ui.test.js tests/brand-ui.test.js
       - name: Install stable Wails 2
         shell: pwsh
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
@@ -48,17 +48,17 @@ jobs:
       - name: Verify standalone binary and archive
         shell: pwsh
         run: |
-          $exe = 'build/bin/3MF Bridge.exe'
+          $exe = 'build/bin/SliceBridge.exe'
           if (!(Test-Path $exe)) { throw 'Native binary missing' }
           $size = (Get-Item $exe).Length
           Write-Output "Native Windows exe bytes: $size"
           if ($size -gt 35000000) { throw 'Native binary unexpectedly large' }
-          Compress-Archive -LiteralPath $exe -DestinationPath 'build/bin/3MF-Bridge-Windows-native.zip' -CompressionLevel Optimal -Force
+          Compress-Archive -LiteralPath $exe -DestinationPath 'build/bin/SliceBridge-Windows.zip' -CompressionLevel Optimal -Force
       - name: Upload Windows native beta
         uses: actions/upload-artifact@v4
         with:
-          name: 3mf-bridge-windows-native
-          path: native/build/bin/3MF-Bridge-Windows-native.zip
+          name: slicebridge-windows
+          path: native/build/bin/SliceBridge-Windows.zip
           retention-days: 14
 
   macos-native:
@@ -81,7 +81,7 @@ jobs:
       - name: Test Go engine and native backend
         run: go test -count=1 ./...
       - name: Test update UI (English and Hebrew)
-        run: node --test tests/update-ui.test.js
+        run: node --test tests/update-ui.test.js tests/brand-ui.test.js
       - name: Install stable Wails 2
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
       - name: Build macOS app using system WebKit
@@ -90,13 +90,13 @@ jobs:
           "$(go env GOPATH)/bin/wails" build -s -ldflags "-X main.buildCommit=$sha"
       - name: Check native app size and package
         run: |
-          APP='build/bin/3mf-bridge-native.app'
+          APP='build/bin/SliceBridge.app'
           test -d "$APP"
           du -sh "$APP"
-          ditto -c -k --sequesterRsrc --keepParent "$APP" build/bin/3MF-Bridge-macOS-Apple-Silicon.zip
+          ditto -c -k --sequesterRsrc --keepParent "$APP" build/bin/SliceBridge-macOS-Apple-Silicon.zip
       - name: Upload macOS native beta (ad-hoc signed)
         uses: actions/upload-artifact@v4
         with:
-          name: 3mf-bridge-macos-apple-silicon-adhoc
-          path: native/build/bin/3MF-Bridge-macOS-Apple-Silicon.zip
+          name: slicebridge-macos-apple-silicon-adhoc
+          path: native/build/bin/SliceBridge-macOS-Apple-Silicon.zip
           retention-days: 14

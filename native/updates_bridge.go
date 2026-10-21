@@ -11,7 +11,7 @@ import (
 
 // appVersion is the installed version. Increment for each published Release.
 // CI may stamp buildCommit (the originating GitHub commit) via -ldflags.
-var appVersion = "0.4.0-beta.2"
+var appVersion = "0.4.0-beta.3"
 var buildCommit = ""
 
 type AppVersion struct {

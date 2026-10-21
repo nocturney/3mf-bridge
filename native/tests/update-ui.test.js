@@ -38,12 +38,12 @@ function setupUI() {
     'convertCount', 'activityText', 'activityDetail', 'activityIcon',
     'openFolderBtn', 'settingsDialog', 'clearQueueBtn', 'addFilesBtn',
     'addFolderBtn', 'selectAllBtn', 'settingsBtn', 'resultsPanel',
-    'reportToolbar', 'installedVersion', 'checkUpdatesBtn',
+    'clearResultsBtn', 'installedVersion', 'checkUpdatesBtn',
     'updateNotice', 'updateStatus', 'openUpdateBtn', 'dismissUpdateBtn',
     'heBtn', 'enBtn', 'settingsTabs', 'settingsNozzle', 'settingsSlicer',
     'settingsMaterial', 'settingsFilament', 'settingsStatus',
     'closeSettingsBtn', 'cancelSettingsBtn', 'saveSettingsBtn',
-    'exportReportBtn', 'dropzone', 'targetList'
+    'dropzone', 'targetList'
   ];
   const elements = Object.fromEntries(ids.map((id) => [id, element(id)]));
   const targets = ['u1', 'c5', 'cc2', 'qidi'];
@@ -68,11 +68,11 @@ function setupUI() {
       target, name: target, available: true, slicer: 'installed'
     })),
     GetVersion: async () => ({
-      version: '0.4.0-beta.2', commit: 'abc123', platform: 'windows-amd64'
+      version: '0.4.0-beta.3', commit: 'abc123', platform: 'windows-amd64'
     }),
     CheckForUpdates: async () => ({
-      status: 'update_available', latestVersion: '0.4.0-beta.3',
-      releaseTag: 'v0.4.0-beta.3', assetName: '3MF-Bridge-Windows-native.zip'
+      status: 'update_available', latestVersion: '0.4.0-beta.4',
+      releaseTag: 'v0.4.0-beta.4', assetName: '3MF-Bridge-Windows-native.zip'
     }),
     OpenUpdatePage: async (kind, tag) => {sent.push({kind, tag});}
   };
@@ -124,14 +124,14 @@ async function settle() {
 test('check updates offers native-trusted release page and translates into Hebrew', async () => {
   const {elements, sent} = setupUI();
   await settle();
-  assert.equal(elements.installedVersion.textContent, 'v0.4.0-beta.2');
+  assert.equal(elements.installedVersion.textContent, 'v0.4.0-beta.3');
   await elements.checkUpdatesBtn.handlers.click();
   assert.equal(elements.updateStatus.dataset.status, 'update_available');
-  assert.match(elements.updateStatus.textContent, /0.4.0-beta.3/);
+  assert.match(elements.updateStatus.textContent, /0.4.0-beta.4/);
   assert.equal(elements.updateNotice.hidden, false);
   assert.equal(elements.openUpdateBtn.hidden, false);
   await elements.openUpdateBtn.handlers.click();
-  assert.deepEqual(sent, [{kind: 'release', tag: 'v0.4.0-beta.3'}]);
+  assert.deepEqual(sent, [{kind: 'release', tag: 'v0.4.0-beta.4'}]);
   elements.heBtn.handlers.click();
   assert.equal(elements.updateStatus.dataset.status, 'update_available');
   assert.match(elements.updateStatus.textContent, /גרסה חדשה/);

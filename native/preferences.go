@@ -48,7 +48,7 @@ func settingsPath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(dir, "Velvet Factory", "3MF Bridge", "settings.json"), nil
+	return filepath.Join(dir, "Velvet Factory", "SliceBridge", "settings.json"), nil
 }
 func loadSettings() (Settings, error) {
 	defaults := defaultSettings()
@@ -58,7 +58,21 @@ func loadSettings() (Settings, error) {
 	}
 	b, err := os.ReadFile(file)
 	if errors.Is(err, os.ErrNotExist) {
-		return defaults, nil
+		// Preserve existing nozzle, filament and window preferences when
+		// upgrading from the original 3MF Bridge name. Never overwrite
+		// the original: the new path is written on the next setting save.
+		if os.Getenv("BRIDGE_SETTINGS_FILE") != "" {
+			return defaults, nil
+		}
+		root, dirErr := os.UserConfigDir()
+		if dirErr != nil {
+			return defaults, dirErr
+		}
+		legacy := filepath.Join(root, "Velvet Factory", "3MF Bridge", "settings.json")
+		b, err = os.ReadFile(legacy)
+		if errors.Is(err, os.ErrNotExist) {
+			return defaults, nil
+		}
 	}
 	if err != nil {
 		return defaults, err

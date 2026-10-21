@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' asset:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: asset:; connect-src 'self' ws:; object-src 'none'">
-  <title>3MF Bridge</title>
+  <title>SliceBridge</title>
   <link rel="stylesheet" href="./app.css">
   <script defer src="./app.js"></script>
 </head>
@@ -12,21 +12,14 @@
 <div class="shell" id="appShell">
   <header class="topbar">
     <div class="brand">
-      <div class="brand-mark" aria-hidden="true">3</div>
+      <img class="brand-mark" src="./brand-icon.svg" width="35" height="35" alt="">
       <div class="brand-copy">
-        <strong>3MF Bridge</strong>
+        <strong>Slice<span class="brand-accent">Bridge</span></strong>
         <span data-i18n="brandTagline">Bambu → Native 3MF</span>
       </div>
-      <span class="version-label" id="installedVersion" title="Version"></span>
     </div>
     <div class="topbar-actions">
-      <button id="checkUpdatesBtn" type="button" class="ghost-btn" data-i18n-title="checkUpdates" title="בדיקת עדכונים" aria-label="Check for updates">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.7 9a7.5 7.5 0 0 1 12.7-2L20 12M4 12l1.6 4a7.5 7.5 0 0 0 12.7-1"/></svg>
-      </button>
-      <button id="settingsBtn" type="button" class="ghost-btn labeled-btn">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 2-.1-.1a1.7 1.7 0 0 0-1.9-.3l-.2.1V21h-3v-2.3a1.7 1.7 0 0 0-1.7 0L9 19.7l-2-2 1.1-1.9a1.7 1.7 0 0 0 0-1.7L6 13v-3l2.1-1.1a1.7 1.7 0 0 0 0-1.7L7 5.3l2-2 1.9 1.1a1.7 1.7 0 0 0 1.7 0L13 2h3v2.4l.2.1a1.7 1.7 0 0 0 1.9-.3l.1-.1 2 2-.1.1a1.7 1.7 0 0 0-.3 1.9l.1.2H22v3l-2.3.4a1.7 1.7 0 0 0 0 1.7z" transform="translate(-2 0) scale(.9)"/></svg>
-        <span data-i18n="settings">הגדרות</span>
-      </button>
+      <button id="settingsBtn" type="button" class="ghost-btn labeled-btn" data-i18n-title="settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span data-i18n="settings">הגדרות</span></button>
       <div class="language-switch" role="group" aria-label="Language">
         <button id="heBtn" type="button" lang="he">עברית</button>
         <button id="enBtn" type="button" lang="en">EN</button>
@@ -80,22 +73,22 @@
           <label class="target-option" data-target-row="u1">
             <input type="checkbox" value="u1" checked>
             <span class="printer-label"><strong>Snapmaker U1</strong><small data-printer-summary="u1">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="u1" aria-label="Snapmaker U1 settings" title="Settings">⚙</button>
+            <button type="button" class="printer-gear" data-settings-target="u1" aria-label="Snapmaker U1 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="c5">
             <input type="checkbox" value="c5" checked>
             <span class="printer-label"><strong>Flashforge Creator 5</strong><small data-printer-summary="c5">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="c5" aria-label="Flashforge Creator 5 settings" title="Settings">⚙</button>
+            <button type="button" class="printer-gear" data-settings-target="c5" aria-label="Flashforge Creator 5 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="cc2">
             <input type="checkbox" value="cc2" checked>
             <span class="printer-label"><strong>ELEGOO CC2</strong><small data-printer-summary="cc2">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="cc2" aria-label="ELEGOO CC2 settings" title="Settings">⚙</button>
+            <button type="button" class="printer-gear" data-settings-target="cc2" aria-label="ELEGOO CC2 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="qidi">
             <input type="checkbox" value="qidi" checked>
             <span class="printer-label"><strong>QIDI Plus5</strong><small data-printer-summary="qidi">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="qidi" aria-label="QIDI Plus5 settings" title="Settings">⚙</button>
+            <button type="button" class="printer-gear" data-settings-target="qidi" aria-label="QIDI Plus5 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
         </div>
       </section>
@@ -104,7 +97,7 @@
     <section class="panel results-panel" id="resultsPanel">
       <div class="panel-heading">
         <div class="panel-title"><span class="section-number">03</span><h2 data-i18n="resultsTitle">תוצאות ודוח המרה</h2></div>
-        <div class="report-counts" id="reportCounts"></div>
+        <div class="report-header-actions"><div class="report-counts" id="reportCounts"></div><button id="clearResultsBtn" type="button" class="text-btn clear-results-btn" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v6M14 11v6"/></svg><span data-i18n="clearResults">נקה תוצאות</span></button></div>
       </div>
       <div class="results-scroll" id="resultList" role="region" aria-label="Conversion results">
         <div class="empty-state">
@@ -112,12 +105,6 @@
           <h3 data-i18n="emptyTitle">מוכן להמרה</h3>
           <p data-i18n="emptyDescription">הוסף פרויקטים, בחר מדפסות והפעל המרה. התוצאות וההגדרות שנשמרו יופיעו כאן.</p>
         </div>
-      </div>
-      <div class="report-toolbar" id="reportToolbar" hidden>
-        <button id="exportReportBtn" type="button" class="text-btn">
-          <span aria-hidden="true">⇩</span> <span data-i18n="exportReport">שמירת דו״ח JSON</span>
-        </button>
-        <span class="report-security" data-i18n="validateHint">נדרש Slice מחדש לפני הדפסה</span>
       </div>
     </section>
   </main>
@@ -130,6 +117,7 @@
         <small id="activityDetail" data-i18n="idleHint">בחר קבצים ומדפסות כדי להתחיל</small>
       </div>
     </div>
+    <div class="app-meta" aria-label="Application version and updates"><span class="version-label" id="installedVersion" title="Version"></span><button id="checkUpdatesBtn" type="button" class="update-check-btn" data-i18n-title="checkUpdates" title="Check for updates"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 10a7 7 0 0 1 12-3l3 5M4 12l3 5a7 7 0 0 0 12-3"/></svg><span data-i18n="checkUpdates">בדיקת עדכונים</span></button></div>
     <div class="action-buttons">
       <button id="openFolderBtn" class="compact-btn secondary" type="button" disabled data-i18n="openFolder">פתח תיקיית פלט</button>
       <button id="convertBtn" class="compact-btn primary convert-button" type="button" disabled>

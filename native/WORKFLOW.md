@@ -1,4 +1,4 @@
-## Native workflow Beta 2 (0.4.0-beta.2)
+## SliceBridge Native Beta 3 (0.4.0-beta.3)
 
 The native desktop workflow now supports:
 1. **Saved per-printer preferences**: actual physical target nozzle

@@ -1,4 +1,4 @@
-# 3MF Bridge Native (Wails / Go)
+# SliceBridge Native (Wails / Go)
 
 3MF Bridge Native replaces Electron with native OS webviews:
 - Windows 10/11: Microsoft Edge WebView2 Runtime (installed in Windows 11 and verified on Chris)
@@ -84,8 +84,8 @@ go test ./...
 wails build -s
 ```
 
-Binaries will be in `native/build/bin`: Windows `3MF Bridge.exe`,
-macOS `3MF Bridge.app`. The macOS application may need signing and
+Binaries will be in `native/build/bin`: Windows `SliceBridge.exe`,
+macOS `SliceBridge.app`. The macOS application may need signing and
 notarization before distributing to other users. Do not ship an unsigned
 Mac app as a fully public installer.
 

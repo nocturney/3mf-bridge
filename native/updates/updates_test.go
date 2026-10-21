@@ -122,3 +122,18 @@ func TestAuthenticatedGitHubJSONReusesReleaseRules(t *testing.T) {
 		t.Fatalf("no private releases: %+v %v", empty, err)
 	}
 }
+
+func TestSliceBridgeReleaseArtifactsMatchAfterRename(t *testing.T) {
+	body := `[{"tag_name":"v0.4.0-beta.4","assets":[
+ {"name":"SliceBridge-Windows.zip"},
+ {"name":"SliceBridge-macOS-Apple-Silicon.zip"}]}]`
+	for _, tc := range []struct{ goos, arch, name string }{
+		{"windows", "amd64", "SliceBridge-Windows.zip"},
+		{"darwin", "arm64", "SliceBridge-macOS-Apple-Silicon.zip"},
+	} {
+		result, err := fakeGitHub(t, body, 200, "0.4.0-beta.3", tc.goos, tc.arch)
+		if err != nil || result.Status != "update_available" || result.AssetName != tc.name {
+			t.Fatalf("%s: wrong branding asset: %+v %v", tc.goos, result, err)
+		}
+	}
+}

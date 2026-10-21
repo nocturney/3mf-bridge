@@ -17,11 +17,11 @@ func main() {
 	app := &App{}
 	preferences, prefErr := loadSettings()
 	if prefErr != nil {
-		fmt.Println("3MF Bridge: could not restore settings:", prefErr)
+		fmt.Println("SliceBridge: could not restore settings:", prefErr)
 		preferences = defaultSettings()
 	}
 	err := wails.Run(&options.App{
-		Title:            "3MF Bridge",
+		Title:            "SliceBridge",
 		Width:            preferences.Window.Width,
 		Height:           preferences.Window.Height,
 		MinWidth:         720,
@@ -39,6 +39,6 @@ func main() {
 		DragAndDrop: &options.DragAndDrop{EnableFileDrop: true, DisableWebViewDrop: true},
 	})
 	if err != nil {
-		fmt.Println("3MF Bridge:", err)
+		fmt.Println("SliceBridge:", err)
 	}
 }

@@ -25,14 +25,18 @@ async function inspect(win){
       modal:e('#settingsDialog').open,
       modalHeight:e('#settingsDialog').getBoundingClientRect().height,
       conversionDisabled:e('#convertBtn').disabled,
-      reportCards:document.querySelectorAll('.file-report').length
+      reportCards:document.querySelectorAll('.file-report').length,
+      clearResultsDisabled:e('#clearResultsBtn').disabled,
+      brandImageLoaded:e('.brand-mark').naturalWidth>0,
+      metaInFooter:!!e('footer .app-meta #installedVersion')&&!!e('footer .app-meta #checkUpdatesBtn'),
+      hasJsonExport:!!e('#exportReportBtn')
     };
   })()`);
 }
 async function main(){
   await app.whenReady();
   const win=new BrowserWindow({
-    width:1100,height:750,show:false,backgroundColor:'#f0f2f4',
+    width:1100,height:750,show:false,backgroundColor:'#F5FAF7',
     webPreferences:{preload:path.join(__dirname,'layout-preload.cjs'),contextIsolation:true,nodeIntegration:false}
   });
   const failures=[];
@@ -46,6 +50,9 @@ async function main(){
   assert.equal(layout.bodyScroll,0,'body scroll at desktop size');
   assert.ok(layout.footer.bottom<=layout.viewport.h+1 &&layout.footer.bottom>=layout.viewport.h-1,
     'fixed actionbar must align to bottom of the window');
+  assert.equal(layout.brandImageLoaded,true,'new SliceBridge icon must render');
+  assert.equal(layout.metaInFooter,true,'version and update button share bottom bar');
+  assert.equal(layout.hasJsonExport,false,'old JSON export must be removed');
   assert.ok(layout.workspace.height>250,'workspace must have useful height');
   assert.ok(layout.queue.height>40,'file list needs independent scroll container');
 
@@ -82,6 +89,24 @@ async function main(){
   await fs.mkdir(path.join(__dirname,'..','..','dist'),{recursive:true});
   const image=await win.webContents.capturePage();
   await fs.writeFile(path.join(__dirname,'..','..','dist','native-workflow-desktop.png'),image.toPNG());
+
+  // Manual clearing must preserve the source queue and disable stale open actions.
+  await win.webContents.executeJavaScript("document.getElementById('clearResultsBtn').click()");
+  layout=await inspect(win);
+  assert.equal(layout.reportCards,0,'manual clearing empties results');
+  assert.equal(layout.queueCount,'32','manual clearing preserves the file queue');
+  assert.equal(layout.clearResultsDisabled,true,'clear button is disabled when empty');
+  await win.webContents.executeJavaScript("document.getElementById('convertBtn').click()");
+  await sleep(500);
+  layout=await inspect(win);
+  assert.equal(layout.reportCards,32,'conversion can run again after clearing');
+  // Adding a truly new file resets old reports automatically; not the queue.
+  await win.webContents.executeJavaScript("document.getElementById('addFilesBtn').click()");
+  await sleep(250);
+  layout=await inspect(win);
+  assert.equal(layout.queueCount,'33','new source joins the queue');
+  assert.equal(layout.reportCards,0,'new source must clear stale previous results');
+  assert.equal(layout.clearResultsDisabled,true,'no stale clear-results button');
 
   win.setContentSize(780,580);
   await sleep(180);
