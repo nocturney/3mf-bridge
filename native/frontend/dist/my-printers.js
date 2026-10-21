@@ -2,8 +2,8 @@
  * Only supported destinations are listed (see SliceBridgePicker.supportedModels).
  * One card per physical model; its nozzle/slicer variants keep their own target IDs.
  * No other conversion target is activated by browsing this catalogue.
- * No third-party image download or cross-origin source profile fetch. The only
- * network read is the optional bundled printer-image-manifest.json from this app.
+ * No network reads for artwork: pictures come only from installed slicers, asked
+ * through the backend. No bundled photos, manifests or cross-origin fetches.
  */
 (function(){
 'use strict';
@@ -53,14 +53,15 @@ const node=(tag,cls,text)=>{
 };
 const api=()=>window.go?.main?.App;
 
-// Artwork is resolved per physical model, never per nozzle. Order: the installed
-// slicer's own cover for a matching catalogue model, then the bundled manifest.
-// A card with neither shows "Image unavailable" rather than another model's picture.
+// Artwork is resolved per physical model, never per nozzle. Order: each installed
+// target's own cover (its exact printer_model in its own slicer install), then the
+// exact catalogue model's local cover. A card with neither shows "Image unavailable"
+// rather than another model's picture. Nothing is bundled or downloaded.
 const artCache=new Map(),artQueued=new Set(),artQueue=[],artGroups=new Map();
 // Avatars in the dialog and icons in the main list are painted from separate registries,
 // so a dialog re-render never strips artwork from destination rows still resolving.
 const slotRegistry={dialog:new Map(),target:new Map()}; // scope -> physical key -> Set of slots
-const imageManifest=new Map(); // physical key -> bundled relative path
+const installedTargetPattern=/^orca-[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{10}$/;
 let artRunning=0;
 let artObserver=typeof IntersectionObserver==='function'
   ?new IntersectionObserver(entries=>{
@@ -92,12 +93,11 @@ function paintSlot(slot,art){
 }
 // Keys a group answers to: its own physical key plus known catalogue aliases.
 function artKeysFor(group){return picker.lookupKeys(group);}
-function manifestSourceFor(group){
-  for(const key of artKeysFor(group)){
-    const src=imageManifest.get(key);
-    if(src)return {src};
-  }
-  return null;
+// Only installed Orca-family targets of this physical model, in nozzle order.
+function installedTargetIdsFor(group){
+  return group.variants
+    .filter(variant=>!variant.legacyTarget&&installedTargetPattern.test(variant.id))
+    .map(variant=>variant.id);
 }
 function catalogIdsFor(group){
   const ids=[];
@@ -106,15 +106,23 @@ function catalogIdsFor(group){
   }
   return ids;
 }
+// Asks the backend for one picture. Only a validated PNG from an installed slicer is accepted.
+async function backendArtwork(method,argument){
+  const result=await Promise.resolve().then(()=>api()?.[method]?.(argument)).catch(()=>null);
+  return result?.found&&result?.provenance==='local_installed_slicer'&&
+    typeof result.dataUri==='string'&&result.dataUri.length<800000&&
+    result.dataUri.startsWith('data:image/png;base64,')?result.dataUri:null;
+}
 async function resolveArtwork(group){
-  for(const id of catalogIdsFor(group)){
-    const result=await Promise.resolve().then(()=>api()?.PrinterArtwork?.(id)).catch(()=>null);
-    const uri=result?.found&&result?.provenance==='local_installed_slicer'&&
-      typeof result.dataUri==='string'&&result.dataUri.length<800000&&
-      result.dataUri.startsWith('data:image/png;base64,')?result.dataUri:null;
+  for(const id of installedTargetIdsFor(group)){
+    const uri=await backendArtwork('PrinterArtworkForInstalledTarget',id);
     if(uri)return {src:uri};
   }
-  return manifestSourceFor(group);
+  for(const id of catalogIdsFor(group)){
+    const uri=await backendArtwork('PrinterArtwork',id);
+    if(uri)return {src:uri};
+  }
+  return null;
 }
 function pumpArtwork(){
   while(artRunning<4&&artQueue.length){
@@ -142,25 +150,6 @@ function observeArtwork(slot,group){
   else queueArtwork(group); // older embedded WebViews
 }
 
-// Bundled manifest: keys are "Manufacturer|Physical model", values are relative
-// image paths inside this app bundle. Absent or malformed files are ignored.
-const safeImagePath=/^[A-Za-z0-9][\w .()-]*(?:\/[\w .()-]+)*\.(?:png|jpe?g|webp)$/i;
-async function loadImageManifest(){
-  if(typeof fetch!=='function')return;
-  try{
-    const reply=await fetch('./printer-image-manifest.json',{cache:'no-store'});
-    if(!reply.ok)return;
-    const raw=await reply.json();
-    if(!raw||typeof raw!=='object'||Array.isArray(raw))return;
-    for(const [key,path] of Object.entries(raw)){
-      const parts=key.split('|');
-      if(parts.length!==2||typeof path!=='string'||path.length>200||path.includes('..')||!safeImagePath.test(path))continue;
-      imageManifest.set(picker.physicalKey(parts[0],parts[1]),'./'+path.split('/').map(encodeURIComponent).join('/'));
-    }
-  }catch{
-    // Optional file: until it exists, cards use local covers or the unavailable caption.
-  }
-}
 function buildCatalogIndex(){
   catalogIndex=new Map();
   for(const model of catalog?.models??[]){
@@ -416,7 +405,6 @@ async function save(){
 }
 async function init(){
   if(!picker||!api()?.PrinterCatalog||!api()?.GetMyPrinters)return;
-  const manifestReady=loadImageManifest();
   try{
     const [list,prefs]=await Promise.all([api().PrinterCatalog(),api().GetMyPrinters()]);
     if(!list||list.kind!=='slicebridge-offline-printer-picker'||
@@ -431,13 +419,6 @@ async function init(){
     $('myPrintersBtn').disabled=false;
     window.dispatchEvent(new Event(changedEvent));
     if(prefs.onboardingPending)open(true);
-    // The manifest may arrive after first paint. Only misses are retried.
-    manifestReady.then(()=>{
-      if(!loaded)return;
-      for(const [key,art] of [...artCache])if(!art)artCache.delete(key);
-      loadTargetArtwork();
-      if($('myPrintersDialog')?.open)render();
-    });
   }catch(err){
     // Old converter stays usable if the optional catalogue cannot load.
     // Never overwrite malformed customer selection data.

@@ -120,9 +120,9 @@ test('new picker UI has bilingual names, consent-based selection and no network 
   assert.doesNotMatch(doc,/id="myPrintersScope"/);
   assert.match(script,/pill\.append\(name\);selectionList\.append\(pill\)/);
   assert.doesNotMatch(script,/copy\.append\(meta\)/);
-  // The only fetch is the optional bundled manifest; no remote images or sources.
-  assert.equal((script.match(/fetch\s*\(/g)||[]).length,1);
-  assert.match(script,/fetch\('\.\/printer-image-manifest\.json'/);
+  // No network reads at all: artwork comes from installed slicers via the backend only.
+  assert.equal((script.match(/fetch\s*\(/g)||[]).length,0);
+  assert.doesNotMatch(script,/printer-image-manifest|printer-images|imageManifest/);
   assert.doesNotMatch(script,/XMLHttpRequest|https?:\/\//);
 });
 
@@ -233,11 +233,19 @@ test('target printer cards reuse locally installed PNG covers with safe fallback
   assert.match(js,/selected=reply;\s*loadTargetArtwork\(\)/);
   assert.match(js,/loaded=true;\s*loadTargetArtwork\(\)/);
   assert.match(js,/result\?\.provenance==='local_installed_slicer'/);
-  assert.equal((js.match(/fetch\s*\(/g)||[]).length,1);
+  assert.equal((js.match(/fetch\s*\(/g)||[]).length,0);
   assert.doesNotMatch(js,/XMLHttpRequest|https?:\/\//);
   assert.match(css,/\.target-printer-icon \.printer-cover-photo\{/);
   assert.match(css,/object-fit:contain/);
   assert.match(backend,/func \(a \*App\) PrinterArtwork\(modelID string\)/);
+  assert.match(backend,/func \(a \*App\) PrinterArtworkForInstalledTarget\(targetID string\)/);
+  assert.match(js,/PrinterArtworkForInstalledTarget/);
+});
+
+test('bundled photo and manifest artifacts are gone from the app',()=>{
+  const dist=path.resolve(__dirname,'../frontend/dist');
+  assert.equal(fs.existsSync(path.join(dist,'printer-image-manifest.json')),false);
+  assert.equal(fs.existsSync(path.join(dist,'printer-images')),false);
 });
 
 test('brand banner keeps just the short first headline',()=>{

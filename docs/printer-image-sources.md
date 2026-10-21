@@ -1,69 +1,82 @@
 # Printer image sources and licence record
 
-Internal record. Audit date: 2026-10-21. Base commit: `5cf7d5d`.
+Internal record. Last updated: 2026-10-21, base commit `eb38540`.
 
-This file records provenance and licensing for printer images considered for
-`native/frontend/dist/printer-images/`, and the manifest at
-`native/frontend/dist/printer-image-manifest.json`. It is not user-facing.
+SliceBridge bundles **no printer photographs, manifests or manufacturer
+artwork**. This file records that policy and how printer pictures are sourced.
+It is not user-facing.
 
-## Rules applied
+## Current policy
 
-- Only images whose redistribution right can be verified are bundled.
-- Images must depict the exact physical model, not a sibling variant.
-- No product photos are generated or invented.
-- When licence or provenance cannot be verified, the image is left unavailable.
-- Manufacturer and retailer photos are treated as copyrighted unless the
-  manufacturer publishes an explicit licence for them.
-- The existing product rule in `catalog/PICKER-UI.md` still holds: no
-  external images are redistributed by default. This record is the only
-  exception path, and it applies per image.
+- Printer pictures come only from slicers already installed on the user's
+  computer. SliceBridge reads the cover PNG that the installed slicer ships for
+  the exact physical model, and passes it to the UI as a bounded
+  `data:image/png` value.
+- SliceBridge never downloads pictures, never fetches a remote image URL and
+  never reads an image path supplied by the frontend.
+- A card with no installed cover shows the app's neutral "Image unavailable"
+  caption. It never borrows another model's picture.
 
-## Bundled images
+## How a cover is chosen
 
-| Manifest key | File | Source | Licence | Dimensions / size | Identity check |
-|---|---|---|---|---|---|
-| `snapmaker|u1` | `printer-images/snapmaker-u1.jpg` | Unsplash, "Photo by Snapmaker 3D Printer" (Snapmaker's account, as listed on Unsplash) | Unsplash License (free to use, no attribution required; verify current terms at unsplash.com/license before any commercial sale of an unmodified copy) | 800×533 JPEG, q78, 103,562 bytes | Visual check: white enclosed printer with a "snapmaker" logo and a four-tube toolchanger feed, consistent with U1. Not confirmed against a spec sheet. |
+Two backend methods in `native/printer_artwork.go` supply pictures:
 
-Source page: https://unsplash.com/photos/3d-printer-with-filament-spools-and-printed-objects-IBffrp08OIo
-Original download: 1000×667 JPEG, SHA-256 `45195e45aaf0f6bc3ebf04dfee3b963316419683750c34e0e7a858eed977b12d`
-Bundled file SHA-256: `1bc4bd241a870499ac06a46e54ca4728afd2b17bc8fcb02bb699b34ed94d2f9a`
+1. `PrinterArtworkForInstalledTarget(targetID)` is used for installed
+   Orca-family targets. The ID is re-resolved against freshly discovered
+   machine profiles. The cover is `<Vendor>/<printer_model>_cover.png`, read
+   first from the target's own installation and then, for that exact file
+   only, from other allowlisted installations.
+2. `PrinterArtwork(catalogID)` is kept for the four legacy converter models and
+   offline catalogue entries. It uses the catalogue's exact
+   `localCoverCandidates` hints.
 
-Known limits of this image:
+Matching is exact. There is no substring or fuzzy matching, so "Creator 5" never
+borrows the "Creator 5 Pro" cover, and the reverse is also true. Bambu
+installations are not read.
 
-- It is a lifestyle shot in a workshop, not a clean studio product photo.
-- Incidental third-party content is visible: a "Carlos 3D" neon sign and
-  workshop items. No people are visible.
-- Model identity rests on visual inspection and the uploader's description.
-  Confirm it against Snapmaker's official U1 product page before release.
-- WebP was not used: the available macOS `sips` tool cannot write WebP.
-  The file is a JPEG, and the manifest path matches it.
+Every returned picture must pass these checks:
 
-## Audited and not bundled
+- the path is a single vendor folder plus one `_cover.png` file name, with no
+  `..`, separators, drive letters or control characters;
+- the file is a regular file, not a symlink, and its resolved location stays
+  inside its allowlisted installed root;
+- size is at most 512 KiB;
+- the PNG signature is present and the decoded size is 32–2048 px per side,
+  with at most 4 million pixels;
+- SVG, JPEG and other formats are refused even when they are renamed.
 
-| Manifest key | Model | Result | Reason |
-|---|---|---|---|
-| `elegoo|centauri carbon 2` | ELEGOO Centauri Carbon 2 | Unavailable | Search found only retailer and press-site product images with no licence. The All3DP CC BY 4.0 licence covers article text, not images. Needs permission from Elegoo. |
-| `flashforge|creator 5` | Flashforge Creator 5 | Not audited | Not searched individually; no candidate found. |
-| `flashforge|creator 5 pro` | Flashforge Creator 5 Pro | Unavailable | No Wikimedia Commons file found. Vendor, retailer and review-site photos are copyrighted; a review site carries a photographer copyright notice. |
-| `qidi|x-plus 5` | QIDI X-Plus 5 | Unavailable | No open licence found. QIDI's product photos carry no licence. Needs permission from QIDI. |
-| `snapmaker|u1` | Snapmaker U1 | Bundled (above) | Unsplash License, visual identity check. |
+The reply carries only `found`, `dataUri` and `provenance`. No installation path
+or profile bytes reach the frontend.
 
-Popular integrated models outside the five requested were not audited
-individually. None is bundled.
+## Naming evidence
 
-## Repository assets reviewed
+The `<Vendor>/<printer_model>_cover.png` convention matches the observed
+installed-OrcaSlicer files listed in `catalog/PICKER-UI.md`:
 
-- Repository brand and identity images (`native/frontend/dist/brand-icon.*`,
-  `slicebridge-banner.png`, `extension-packages/*`) are SliceBridge's own
-  project identity. They depict no printer.
-- Vendor profile cover PNGs are read only from locally installed slicer
-  resource roots at runtime, by `native/printer_artwork.go`. They are not
-  bundled and not redistributed.
-- No printer photograph exists in the repository.
+- `Snapmaker/Snapmaker U1_cover.png`
+- `Flashforge/Flashforge Creator 5_cover.png`
+- `Elegoo/Elegoo Centauri Carbon 2_cover.png`
+- `X 5 Series/X-Plus 5_cover.png`
 
-## Runtime notes
+These were not re-checked against a live installation in this change. Windows
+and macOS slicer builds may differ, so a missing file falls back to the neutral
+caption rather than to a guess.
 
-- `native/printer_artwork.go` serves installed-slicer covers only. It does not
-  read this manifest. Wiring the manifest into the UI is outside this record.
-- Keys follow `manufacturer|physical model`, lowercased, trimmed, with
-  internal spaces kept. For example, `snapmaker|u1`.
+## Removed in this change
+
+| Former artifact | Reason |
+|---|---|
+| `native/frontend/dist/printer-images/snapmaker-u1.jpg` | Unsplash photo of a workshop scene. Its identity rested on visual inspection, not a spec sheet, and it was a third-party photograph. |
+| `native/frontend/dist/printer-image-manifest.json` | It pointed the UI at the bundled photo. The UI no longer fetches any manifest. |
+
+The JPEG and manifest remain in git history at `eb38540` and earlier. Removing
+them from history, if that is wanted, is a separate decision.
+
+## Rules that still apply
+
+- Only images whose redistribution right can be verified may be bundled. This
+  change bundles none, so no new rights review is needed.
+- Manufacturer and retailer photos are copyrighted unless the manufacturer
+  publishes an explicit licence. Adding one would need its own record here.
+- Pictures must show the exact physical model, not a sibling variant.
+- No product images are generated or invented.
