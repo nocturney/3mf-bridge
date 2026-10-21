@@ -145,9 +145,20 @@ function refreshManufacturerOptions(){
   filter.replaceChildren();
   const placeholder=node('option','',t('chooseManufacturer'));
   placeholder.value='';filter.append(placeholder);
-  const makers=[...new Set(supported.map(item=>item.manufacturer).filter(Boolean))]
-    .sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));
-  for(const maker of makers){const option=node('option','',maker);option.value=maker;filter.append(option);}
+  const {preferred,others}=picker.manufacturerGroups(supported);
+  const makers=[...preferred,...others];
+  for(const maker of preferred){
+    const option=node('option','',maker);option.value=maker;filter.append(option);
+  }
+  if(preferred.length&&others.length){
+    const divider=node('option','','────────────');
+    divider.value='';divider.disabled=true;
+    divider.setAttribute('aria-hidden','true');
+    filter.append(divider);
+  }
+  for(const maker of others){
+    const option=node('option','',maker);option.value=maker;filter.append(option);
+  }
   filter.value=makers.includes(previous)?previous:'';
 }
 function render(){
@@ -206,6 +217,11 @@ function render(){
     // No third-party images are bundled or remotely fetched.
     const copy=node('span','catalog-model-copy');
     copy.append(node('strong','',model.model),node('small','',model.manufacturer));
+    // Show month/year only where an independent launch source is known.
+    if(model.releaseDate){
+      const label=document.documentElement.lang==='en'?'Launched: ':'השקה: ';
+      copy.append(node('small','model-launch-date',label+model.releaseDate.slice(0,7)));
+    }
     row.append(input,graphic,copy);list.append(row);
   }
   if(showList&&!matches.models.length)list.append(node('p','catalog-empty',t('none')));
