@@ -6,7 +6,7 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
-## [0.4.0-beta.4.dev.11] — 2026-10-21 (development milestone; not released yet, see GitHub Releases)
+## [0.4.0-beta.4.dev.11] — 2026-10-21 (development milestone; release status: see GitHub Releases)
 
 - Removed labels through [PR #34](https://github.com/nocturney/slicebridge/pull/34).
 - Added a source family detector through [PR #35](https://github.com/nocturney/slicebridge/pull/35) to identify the slicer family of a source project.
@@ -14,9 +14,9 @@ Published development builds are listed under [GitHub Releases](https://github.c
 - Added generic Orca-family conversion through [PR #37](https://github.com/nocturney/slicebridge/pull/37). It uses a locally installed machine, process and filament profile set that matches. No other Orca profile combination is inferred.
 - Added generic PrusaSlicer project output through [PR #39](https://github.com/nocturney/slicebridge/pull/39), using the bundled MIT-licensed Python converter Panda2Prusa. The output is a PrusaSlicer 3MF project. You choose the printer and filament profile in PrusaSlicer; SliceBridge does not map a specific Prusa printer and filament profile automatically.
 - Bambu Studio and MakerWorld remain source formats; Bambu Lab is not a conversion target. The 603-model catalogue is for discovery and selection, not 603 validated conversions. The four historical targets are unchanged.
-- Planned for the next PR: manufacturer slicer autodiscovery for popular brands in My Printers. It detects installed slicers only. It does not certify each printer model or add universal conversion. Not part of this entry until merged.
+- Added local installation discovery for 22 desktop slicers from popular manufacturers on Windows and macOS, including Creality, Anycubic, Prusa, QIDI, ELEGOO, Flashforge, Snapmaker, Sovol, FLSun and other catalogue makers. UltiMaker and Raise3D were excluded at the owner's request. My Printers shows detected application names without certification badges. Presence alone never enables per-model conversion; detection does not modify slicers or profiles. [PR #40](https://github.com/nocturney/slicebridge/pull/40).
 - Physical print validation is not claimed for this milestone. Check printer and slicer settings before printing.
-- Native development version set to `0.4.0-beta.4.dev.11`. A GitHub Release and tag will be created only after independent QA and the build are complete.
+- Native development version set to `0.4.0-beta.4.dev.11`. The published build, if available, is listed under GitHub Releases and must match the tagged source commit.
 
 ## [0.4.0-beta.4.dev.10] — 2026-10-21 (development milestone; release status: see GitHub Releases)
 
