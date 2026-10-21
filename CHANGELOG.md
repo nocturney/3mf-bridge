@@ -6,6 +6,13 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.10] — 2026-10-21 (development milestone; release status: see GitHub Releases)
+
+- Corrected the dev.9 palette behavior at user request through [PR #32](https://github.com/nocturney/slicebridge/pull/32): every source color/material filament ID remains a **separate virtual project slot** in converted 3MF, even when the printer has only four physical tools. No implicit merging of identical or distinct source colors/materials. Users make any necessary merges/removals inside the destination slicer before printing.
+- Preserved per-triangle paint and per-object filament references, source material labels and colors, printer-specific manufacturer profile safety checks, native settings isolation and G-code-cache sanitation. Output highlights extra virtual channels for manual review; local vendor filament presets remain required.
+- Regression QA: source project with five independent colors was converted to all four existing printer targets with installed vendor profiles in an isolated Windows host; archive readback confirmed five palette entries, original painting/object assignments and no stale machine code. Extra tests cover a fifth PETG material, duplicate colors that must stay separate, six virtual slots and source immutability. All exact-head Windows/macOS CI checks passed on PR #32. Target-slicer GUI round-trip of extra virtual slots and physical print validation are **not claimed**.
+- The published [dev.9](https://github.com/nocturney/slicebridge/releases/tag/v0.4.0-beta.4.dev.9) binaries were built **before** PR #32 merged and retain the earlier slot-coalescing behavior. Do not use dev.9 for the new all-channels-preserved behavior. dev.10 is the first development version intended to contain it; exact download/release status is shown on GitHub Releases.
+
 ## [0.4.0-beta.4.dev.9] — 2026-10-21 (development milestone; release status: see GitHub Releases)
 
 - Improved Windows and macOS slicer discovery through [PR #29](https://github.com/nocturney/slicebridge/pull/29): system-wide and per-user application folders, shared trusted profile location resolver, no automatic edits to saved slicer or filament settings.
