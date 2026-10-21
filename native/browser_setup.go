@@ -88,6 +88,9 @@ func prepareExtensionFiles(base, kind string) (string, error) {
 // directory. The browser still requires a user gesture to load it. Firefox
 // development loading is temporary; signed store releases are a separate task.
 func (a *App) PrepareBrowserExtension(browser string) (map[string]string, error) {
+	if err := a.requireDeveloperMode(); err != nil {
+		return nil, err
+	}
 	kind, err := browserExtensionKind(strings.ToLower(strings.TrimSpace(browser)))
 	if err != nil {
 		return nil, err
@@ -221,6 +224,9 @@ func (a *App) launchTrustedBrowserURL(browser, targetURL string) error {
 // OpenBrowserExtensionsPage opens only the selected browser's own extensions
 // manager, as an explicit user action. No extension is installed silently.
 func (a *App) OpenBrowserExtensionsPage(browser string) error {
+	if err := a.requireDeveloperMode(); err != nil {
+		return err
+	}
 	browser = strings.ToLower(strings.TrimSpace(browser))
 	page, err := browserExtensionsPage(browser)
 	if err != nil { return err }
@@ -230,6 +236,9 @@ func (a *App) OpenBrowserExtensionsPage(browser string) error {
 // OpenBrowserExtensionStore is enabled only after an approved listing URL has
 // been added to the pinned allowlist in a code-reviewed, versioned release.
 func (a *App) OpenBrowserExtensionStore(browser string) error {
+	if err := a.requireDeveloperMode(); err != nil {
+		return err
+	}
 	browser = strings.ToLower(strings.TrimSpace(browser))
 	page, err := verifiedExtensionStoreURL(browser)
 	if err != nil { return err }
@@ -240,6 +249,9 @@ func (a *App) OpenBrowserExtensionStore(browser string) error {
 // Clicking a mode opens the exact selected browser; only the extension
 // confirmation (not this app) persists a MakerWorld preference.
 func (a *App) OpenMakerWorldMode(browser, mode string) error {
+	if err := a.requireDeveloperMode(); err != nil {
+		return err
+	}
 	page, err := makerWorldSetupURL(mode)
 	if err != nil { return err }
 	browser = strings.ToLower(strings.TrimSpace(browser))
