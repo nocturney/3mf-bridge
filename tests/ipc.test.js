@@ -86,9 +86,12 @@ const fixture = path.join(__dirname, 'fixtures', 'bambu-one-color.3mf');
 
 test('renderer script parses and copy-only conversion is absent', async () => {
   const html = await fs.readFile(path.join(__dirname, '..', 'index.html'), 'utf8');
-  const script = html.match(/<script>([\s\S]*?)<\/script>/);
-  assert.ok(script, 'renderer script exists');
-  assert.doesNotThrow(() => new vm.Script(script[1]));
+  // The fixture is project-owned static HTML; locate its literal inline
+  // script rather than treating a regexp as an HTML sanitizer.
+  const start = html.indexOf('<script>');
+  const end = html.indexOf('</script>', start + '<script>'.length);
+  assert.ok(start !== -1 && end > start, 'renderer script exists');
+  assert.doesNotThrow(() => new vm.Script(html.slice(start + '<script>'.length, end)));
   const main = await fs.readFile(path.join(__dirname, '..', 'main.js'), 'utf8');
   assert.ok(!main.includes('fs.copyFile(filePath, outputPath)'), 'must not fake conversion');
 });

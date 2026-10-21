@@ -119,7 +119,7 @@ function setupUI() {
     structuredClone
   };
   vm.runInNewContext(source, context, {filename: 'native-app.js'});
-  return {elements, rows, app, sent, context};
+  return {elements, rows, app, sent, context, win};
 }
 
 async function settle() {
@@ -196,4 +196,25 @@ test('conversion progress counts completed files only, never fabricated intermed
   set('done',3,3);
   assert.equal(elements.progressPercent.textContent,'100%');
   assert.match(elements.progressDescription.textContent,/finished/i);
+});
+
+test('invalid preferences require explicit recovery and preserve backup location', async () => {
+  const {elements, app, win} = setupUI();
+  await settle();
+  app.GetSettings = async () => { throw new Error('invalid settings JSON'); };
+  let recovered = 0;
+  win.confirm = () => false;
+  app.RecoverInvalidSettings = async () => {
+    recovered++;
+    return {settings: {printers: {}}, backupPath: '/backup/settings.invalid.bak'};
+  };
+  await elements.settingsBtn.handlers.click();
+  assert.equal(recovered, 0, 'declining confirmation must not recover');
+  assert.equal(elements.settingsDialog.open, false);
+
+  win.confirm = () => true;
+  await elements.settingsBtn.handlers.click();
+  assert.equal(recovered, 1);
+  assert.equal(elements.settingsDialog.open, true);
+  assert.match(elements.activityDetail.textContent, /backup\/settings\.invalid\.bak/);
 });
