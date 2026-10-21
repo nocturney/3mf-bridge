@@ -15,6 +15,16 @@ const builtIn={u1:'snapmaker-u1',c5:'flashforge-creator-5',cc2:'elegoo-centauri-
 const targets=['u1','c5','cc2','qidi'];
 
 async function settle(){for(let i=0;i<30;i++)await new Promise(resolve=>setImmediate(resolve));}
+// The production app starts initializeNative() on a zero-delay timer after
+// deferred frontend modules register. Repeated setImmediate calls can finish
+// before that timer runs (especially on Windows), so UI tests must wait for the
+// actual backend/selection handshake, not an arbitrary number of event ticks.
+async function ready(app){
+  for(let attempt=0;attempt<100&&!app.window.SliceBridgeMyPrinters?.isReady();attempt++)
+    await new Promise(resolve=>setTimeout(resolve,2));
+  assert.equal(app.window.SliceBridgeMyPrinters?.isReady(),true,'native My Printers initialization did not finish');
+  await settle();
+}
 
 // index.html's target list as shipped: built-in rows and the PrusaSlicer row, all hidden.
 function seedTargetList(document){
@@ -82,7 +92,7 @@ test('built-in, installed and PrusaSlicer rows appear only when My Printers sele
     PrusaEngineStatus:()=>({available:true,engine:'prusa-slicer'}),
     GetMyPrinters:()=>({selectedIds:[builtIn.u1,builtIn.c5,orcaId,'prusa-project','orca-stale-0123456789'],onboardingPending:false}),
   });
-  await settle();
+  await ready(app);
   const {rows}=app;
   assert.equal(visible(rows.u1),true);
   assert.equal(checked(rows.u1),true);
@@ -112,7 +122,7 @@ test('a PrusaSlicer row stays hidden without a probe, even when the saved select
     GetMyPrinters:()=>({selectedIds:['prusa-project'],onboardingPending:false}),
     PrusaEngineStatus:()=>({available:false,engine:'prusa-slicer'}),
   });
-  await settle();
+  await ready(app);
   assert.equal(visible(app.rows.prusa),false);
   assert.equal(checked(app.rows.prusa),false);
 });
@@ -124,7 +134,7 @@ test('saving in My Printers hides and unchecks deselected rows and keeps the oth
     GetMyPrinters:()=>({selectedIds:[builtIn.u1,orcaId,'prusa-project'],onboardingPending:false}),
     SaveMyPrinters:(requested)=>({selectedIds:requested,onboardingPending:false}),
   });
-  await settle();
+  await ready(app);
   // The user unchecks the Orca row on the main list; that choice is kept until the next save.
   const orcaRow=app.document.querySelectorAll('[data-installed-target="'+orcaId+'"]')[0];
   orcaRow.querySelector('input').checked=false;
@@ -150,7 +160,7 @@ test('a destination newly selected in My Printers appears checked after save',as
     GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
     SaveMyPrinters:(requested)=>({selectedIds:requested,onboardingPending:false}),
   });
-  await settle();
+  await ready(app);
   assert.equal(visible(app.rows.cc2),false);
   assert.equal(app.dom('emptyTargetNotice').hidden,false);
   app.dom('myPrintersBtn').fire('click');
@@ -175,7 +185,7 @@ test('select-all and conversion honour only visible, enabled rows',async()=>{
     SelectFiles:()=>[{path:'C:/models/a.3mf',name:'a.3mf',folder:'C:/models',sizeLabel:'1 KB'}],
     ConvertBatch:(request)=>{sent.push(request.targets);return {filesDone:1,successes:0,failures:0,files:[]};},
   });
-  await settle();
+  await ready(app);
   // Select all toggles only the visible built-in rows; hidden rows are never touched.
   app.dom('selectAllBtn').fire('click');
   assert.equal(checked(app.rows.u1),false);
@@ -195,9 +205,20 @@ test('select-all and conversion honour only visible, enabled rows',async()=>{
   assert.deepEqual([...sent[0]].sort(),['c5','u1',orcaId].sort());
 });
 
+test('readiness handshake waits for a delayed native response',async()=>{
+  const app=startApp({
+    GetMyPrinters:()=>new Promise(resolve=>setTimeout(
+      ()=>resolve({selectedIds:[builtIn.c5],onboardingPending:false}),45)),
+  });
+  assert.equal(app.window.SliceBridgeMyPrinters?.isReady(),false);
+  await ready(app);
+  assert.equal(visible(app.rows.c5),true);
+  assert.equal(checked(app.rows.c5),true);
+});
+
 test('with no selection the main list says so and conversion stays disabled',async()=>{
   const app=startApp({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
-  await settle();
+  await ready(app);
   assert.equal(app.dom('emptyTargetNotice').hidden,false);
   assert.equal(app.dom('convertBtn').disabled,true);
   assert.equal(app.dom('selectAllBtn').hidden,true);
