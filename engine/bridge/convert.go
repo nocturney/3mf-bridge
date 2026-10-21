@@ -38,29 +38,29 @@ const maxVirtualFilaments = 64
 // even if two source IDs have the same color and material. No automatic color
 // folding, material substitution or spool decisions take place here.
 func sourceSlotPlan(filaments []converter.Filament) ([]converter.Slot, map[int]int, error) {
-    if len(filaments) == 0 || len(filaments) > maxVirtualFilaments {
-        return nil, nil, fmt.Errorf("source has %d filament slots (allowed 1..%d)", len(filaments), maxVirtualFilaments)
-    }
-    slots := make([]converter.Slot, 0, len(filaments))
-    mapping := make(map[int]int, len(filaments))
-    for _, filament := range filaments {
-        if filament.ID <= 0 {
-            return nil, nil, fmt.Errorf("invalid source filament ID %d", filament.ID)
-        }
-        if _, duplicated := mapping[filament.ID]; duplicated {
-            return nil, nil, fmt.Errorf("duplicate source filament ID %d", filament.ID)
-        }
-        if filament.Color == "" || filament.Type == "" {
-            return nil, nil, fmt.Errorf("missing source color/material in filament %d", filament.ID)
-        }
-        mapping[filament.ID] = len(slots)+1
-        slots = append(slots, converter.Slot{
-            Color: filament.Color,
-            Type: filament.Type,
-            Support: converter.IsSupportType(filament.Type, ""),
-        })
-    }
-    return slots, mapping, nil
+	if len(filaments) == 0 || len(filaments) > maxVirtualFilaments {
+		return nil, nil, fmt.Errorf("source has %d filament slots (allowed 1..%d)", len(filaments), maxVirtualFilaments)
+	}
+	slots := make([]converter.Slot, 0, len(filaments))
+	mapping := make(map[int]int, len(filaments))
+	for _, filament := range filaments {
+		if filament.ID <= 0 {
+			return nil, nil, fmt.Errorf("invalid source filament ID %d", filament.ID)
+		}
+		if _, duplicated := mapping[filament.ID]; duplicated {
+			return nil, nil, fmt.Errorf("duplicate source filament ID %d", filament.ID)
+		}
+		if filament.Color == "" || filament.Type == "" {
+			return nil, nil, fmt.Errorf("missing source color/material in filament %d", filament.ID)
+		}
+		mapping[filament.ID] = len(slots) + 1
+		slots = append(slots, converter.Slot{
+			Color:   filament.Color,
+			Type:    filament.Type,
+			Support: converter.IsSupportType(filament.Type, ""),
+		})
+	}
+	return slots, mapping, nil
 }
 
 // Convert keeps the original validated U1 entrypoint for compatibility.
@@ -242,13 +242,13 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 		"source_nozzle_assumed":       sourceNozzle.Assumed,
 		"target_nozzle":               targetNozzle,
 		"nozzle_remapped":             sourceNozzle.Nozzle != targetNozzle,
-		"nozzle_selected_by_user":    requestedNozzle != "",
+		"nozzle_selected_by_user":     requestedNozzle != "",
 		"source_filament_slots":       len(insp.Filaments),
 		"target_filament_slots_used":  len(slots),
-		"virtual_filament_slots":       len(slots),
-		"physical_toolheads":           4,
-		"user_slot_mapping_required":   len(slots) > 4,
-		"source_to_target_slot_map":    mapping,
+		"virtual_filament_slots":      len(slots),
+		"physical_toolheads":          4,
+		"user_slot_mapping_required":  len(slots) > 4,
+		"source_to_target_slot_map":   mapping,
 		"geometry_vertices":           after.vertices,
 		"geometry_triangles":          after.triangles,
 		"removed_slice_cache_entries": removed,

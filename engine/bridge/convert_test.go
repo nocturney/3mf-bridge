@@ -1,10 +1,10 @@
 package bridge
 
 import (
-	"github.com/BryanSmee/bl_to_std/pkg/converter"
 	"archive/zip"
 	"bytes"
 	"encoding/json"
+	"github.com/BryanSmee/bl_to_std/pkg/converter"
 	"io"
 	"os"
 	"path/filepath"
@@ -164,7 +164,9 @@ func TestConvertSixDistinctSlotsAsVirtualFilaments(t *testing.T) {
 	out := filepath.Join(dir, "U1-six-source.3mf")
 	fixture(t, input, 6)
 	result, err := Convert(input, out, "u1")
-	if err != nil { t.Fatal(err) }
+	if err != nil {
+		t.Fatal(err)
+	}
 	if result["virtual_filament_slots"] != 6 || result["physical_toolheads"] != 4 {
 		t.Fatalf("six source filaments were silently reduced: %+v", result)
 	}
