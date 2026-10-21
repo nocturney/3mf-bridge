@@ -2720,8 +2720,8 @@
       "id": "prusa-prusa-mini",
       "manufacturer": "Prusa",
       "model": "Prusa MINI",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2019-10-12",
+      "release_date_evidence": "https://blog.prusa3d.com/original-prusa-mini-is-here-smart-and-compact-3d-printer_30887/",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -4849,8 +4849,8 @@
       "id": "prusa-prusa-mk4s",
       "manufacturer": "Prusa",
       "model": "Prusa MK4S",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2024-08-12",
+      "release_date_evidence": "https://blog.prusa3d.com/the-original-prusa-mk4s-is-here_100605/",
       "conversion_tested": false,
       "profile_sources": [
         {
@@ -5893,8 +5893,8 @@
       "id": "prusa-prusa-xl",
       "manufacturer": "Prusa",
       "model": "Prusa XL",
-      "release_date": null,
-      "release_date_evidence": null,
+      "release_date": "2021-11-18",
+      "release_date_evidence": "https://blog.prusa3d.com/original-prusa-xl-first-look_58312/",
       "conversion_tested": false,
       "profile_sources": [
         {

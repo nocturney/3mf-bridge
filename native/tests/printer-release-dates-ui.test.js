@@ -42,6 +42,17 @@ test('model list stays sorted by manufacturer, model, then id', () => {
  }
 });
 
+test('Prusa blog dates are pinned to the exact catalogue identities', () => {
+ const byId = Object.fromEntries(catalog.models.map((m) => [m.id, m]));
+ assert.equal(byId['prusa-prusa-mini'].releaseDate, '2019-10-12');
+ assert.equal(byId['prusa-prusa-mk4s'].releaseDate, '2024-08-12');
+ assert.equal(byId['prusa-prusa-xl'].releaseDate, '2021-11-18');
+ // MK3S+ and MINI+ share profile groups with their base models; no exact identity to date.
+ for (const id of ['prusa-research-i3-mk3s-mk3s', 'prusa-research-mini-mini']) {
+  if (byId[id]) assert.equal(byId[id].releaseDate, null, `${id} must stay null for the shared group`);
+ }
+});
+
 test('release dates are not inferred for models without evidence', () => {
  const byId = Object.fromEntries(catalog.models.map((m) => [m.id, m]));
  for (const id of ['qidi-x-max-3', 'sovol-sv08', 'snapmaker-u1', 'anycubic-kobra-3']) {

@@ -157,6 +157,24 @@ class SavedSnapshot(unittest.TestCase):
         self.assertGreater(result["structurally_verified"], 200)
         self.assertGreater(result["manufacturers"], 30)
 
+    def test_prusa_blog_release_dates_pinned_to_exact_identities(self):
+        prusa = json.loads((Path(__file__).resolve().parents[1]/"data"/"makers"/"prusa.json")
+                           .read_text(encoding="utf-8"))
+        dated = {m["id"]: (m["release_date"], m["release_date_evidence"])
+                 for m in prusa["models"] if m["release_date"]}
+        self.assertEqual(dated["prusa-prusa-mini"],
+                         ("2019-10-12", "https://blog.prusa3d.com/original-prusa-mini-is-here-smart-and-compact-3d-printer_30887/"))
+        self.assertEqual(dated["prusa-prusa-mk4s"],
+                         ("2024-08-12", "https://blog.prusa3d.com/the-original-prusa-mk4s-is-here_100605/"))
+        self.assertEqual(dated["prusa-prusa-xl"],
+                         ("2021-11-18", "https://blog.prusa3d.com/original-prusa-xl-first-look_58312/"))
+        # Profile groups shared with base models must not carry a "+" variant date.
+        profile_groups = json.loads((Path(__file__).resolve().parents[1]/"data"/"makers"/"prusa-research.json")
+                                    .read_text(encoding="utf-8"))
+        shared = {m["id"]: m["release_date"] for m in profile_groups["models"]
+                  if m["id"] in ("prusa-research-i3-mk3s-mk3s", "prusa-research-mini-mini")}
+        self.assertEqual(shared, {"prusa-research-i3-mk3s-mk3s": None, "prusa-research-mini-mini": None})
+
     def test_existing_target_machines_have_official_profile_candidates(self):
         root = Path(__file__).resolve().parents[1] / "data"/"makers"
         for brand, model, publisher in (
