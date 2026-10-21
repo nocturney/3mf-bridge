@@ -53,10 +53,10 @@ const node=(tag,cls,text)=>{
 };
 const api=()=>window.go?.main?.App;
 
-// Artwork is resolved per physical model, never per nozzle. Order: each installed
-// target's own cover (its exact printer_model in its own slicer install), then the
-// exact catalogue model's local cover. A card with neither shows "Image unavailable"
-// rather than another model's picture. Nothing is bundled or downloaded.
+// Artwork is resolved per physical model, never per nozzle. Exact catalogue
+// covers are checked first (still sourced from installed slicers, without scans).
+// Only misses resolve an installed target once per slicer, not once per nozzle.
+// Missing images show "Image unavailable"; nothing is bundled or downloaded.
 const artCache=new Map(),artQueued=new Set(),artQueue=[],artGroups=new Map();
 // Avatars in the dialog and icons in the main list are painted from separate registries,
 // so a dialog re-render never strips artwork from destination rows still resolving.
@@ -93,11 +93,17 @@ function paintSlot(slot,art){
 }
 // Keys a group answers to: its own physical key plus known catalogue aliases.
 function artKeysFor(group){return picker.lookupKeys(group);}
-// Only installed Orca-family targets of this physical model, in nozzle order.
+// A physical printer shares a cover across nozzle diameters in one slicer.
+// Resolve one representative per slicer, avoiding repeated full preset scans.
 function installedTargetIdsFor(group){
-  return group.variants
-    .filter(variant=>!variant.legacyTarget&&installedTargetPattern.test(variant.id))
-    .map(variant=>variant.id);
+  const seenSlicers=new Set(), ids=[];
+  for(const variant of group.variants){
+    if(variant.legacyTarget||!installedTargetPattern.test(variant.id))continue;
+    const slicer=String(variant.slicer||variant.id).trim().toLocaleLowerCase('en');
+    if(seenSlicers.has(slicer))continue;
+    seenSlicers.add(slicer);ids.push(variant.id);
+  }
+  return ids;
 }
 function catalogIdsFor(group){
   const ids=[];
@@ -114,12 +120,14 @@ async function backendArtwork(method,argument){
     result.dataUri.startsWith('data:image/png;base64,')?result.dataUri:null;
 }
 async function resolveArtwork(group){
-  for(const id of installedTargetIdsFor(group)){
-    const uri=await backendArtwork('PrinterArtworkForInstalledTarget',id);
-    if(uri)return {src:uri};
-  }
+  // Fast path: catalogue exact names read the same installed slicer resources.
   for(const id of catalogIdsFor(group)){
     const uri=await backendArtwork('PrinterArtwork',id);
+    if(uri)return {src:uri};
+  }
+  // Newly discovered dynamic Orca models may not have catalogue cover hints.
+  for(const id of installedTargetIdsFor(group)){
+    const uri=await backendArtwork('PrinterArtworkForInstalledTarget',id);
     if(uri)return {src:uri};
   }
   return null;

@@ -221,26 +221,44 @@ const proCover='data:image/png;base64,AAAA';
 const c5Cover='data:image/png;base64,BBBB';
 const avatarOf=(h,model)=>cardFor(h,model).children[1].children[0];
 
-test('every nozzle and slicer variant of an installed model asks for its own cover, in variant order',async()=>{
+test('installed cover lookups run once per slicer, not once per nozzle',async()=>{
   const asked=[];
   const h=loadWithGlobals({
     GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
     PrinterArtworkForInstalledTarget:(id)=>{
       asked.push(id);
-      // Only the last variant in nozzle order has a picture, so every earlier one must be asked first.
-      return id===proVariants[3].id?installedCover(proCover):{found:false};
+      // The second slicer has a cover; four nozzle profiles in the first slicer do not.
+      return id===proVariants[4].id?installedCover(proCover):{found:false};
     },
   });
   h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
   await h.api.init();
-  const [proGroup]=picker.groupDestinations(picker.supportedModels(catalog.models,[],proVariants,false))
-    .filter(group=>group.model==='Creator 5 Pro');
   h.dom('myPrintersBtn').fire('click');
   h.dom('printerCatalogSearch').value='Creator 5 Pro';
   h.dom('printerCatalogSearch').fire('input');
   await flush();
-  assert.deepEqual(asked,proGroup.ids.slice(0,asked.length));
-  assert.ok(asked.length>=4,'the first real cover must not be assumed to be the only one');
+  assert.deepEqual(asked,[proVariants[0].id,proVariants[4].id]);
+  assert.equal(avatarOf(h,'Creator 5 Pro').querySelector('img.printer-cover-photo').src,proCover);
+});
+
+test('catalogue cover fast path skips installed Orca target rescans',async()=>{
+  const asked=[],catalogAsked=[];
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtworkForInstalledTarget:(id)=>{asked.push(id);return {found:false};},
+    PrinterArtwork:(id)=>{
+      catalogAsked.push(id);
+      return id==='flashforge-creator-5-pro'?installedCover(proCover):{found:false};
+    },
+  });
+  h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('printerCatalogSearch').value='Creator 5 Pro';
+  h.dom('printerCatalogSearch').fire('input');
+  await flush();
+  assert.deepEqual(asked,[]);
+  assert.ok(catalogAsked.includes('flashforge-creator-5-pro'));
   assert.equal(avatarOf(h,'Creator 5 Pro').querySelector('img.printer-cover-photo').src,proCover);
 });
 
@@ -265,7 +283,7 @@ test('installed covers attach to their own model; the exact catalogue cover is t
   assert.equal(avatarOf(h,'Creator 5').querySelector('img.printer-cover-photo').src,c5Cover);
   assert.ok(asked.every(id=>/^orca-/.test(id)));
   assert.ok(catalogAsked.includes('flashforge-creator-5'));
-  assert.ok(!catalogAsked.includes('flashforge-creator-5-pro'));
+  assert.ok(catalogAsked.includes('flashforge-creator-5-pro'));
 });
 
 test('a refused or failed artwork request leaves an honest unavailable card and makes no network read',async()=>{

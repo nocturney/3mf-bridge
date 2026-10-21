@@ -19,7 +19,7 @@ It is not user-facing.
 
 ## How a cover is chosen
 
-Two backend methods in `native/printer_artwork.go` supply pictures:
+The UI first checks exact catalogue covers, then one installed target per slicer family when necessary (never every nozzle). Two backend methods in `native/printer_artwork.go` supply pictures:
 
 1. `PrinterArtworkForInstalledTarget(targetID)` is used for installed
    Orca-family targets. The ID is re-resolved against freshly discovered
@@ -58,9 +58,14 @@ installed-OrcaSlicer files listed in `catalog/PICKER-UI.md`:
 - `Elegoo/Elegoo Centauri Carbon 2_cover.png`
 - `X 5 Series/X-Plus 5_cover.png`
 
-These were not re-checked against a live installation in this change. Windows
-and macOS slicer builds may differ, so a missing file falls back to the neutral
-caption rather than to a guess.
+Read-only checks of installed slicer resource directories on 2026-10-21
+confirmed these names on both a Windows workstation (Chris) and a Mac
+(MacMiniOffice). Additional verified exact-model files include
+`Flashforge/Flashforge Creator 5 Pro_cover.png` and
+`Elegoo/Elegoo Centauri Carbon_cover.png`. QIDIStudio also ships
+`X 5 Series/X-Plus 5_cover.png`. No photos or profiles were copied from
+those installations. Other OS/version combinations may differ; missing
+files fall back to the neutral caption, never to an approximate match.
 
 ## Removed in this change
 
