@@ -39,7 +39,7 @@ function setupUI() {
     'convertCount', 'activityText', 'activityDetail', 'activityIcon',
     'openFolderBtn', 'settingsDialog', 'clearQueueBtn', 'addFilesBtn',
     'addFolderBtn', 'selectAllBtn', 'settingsBtn', 'myPrintersBtn',
-    'emptyTargetNotice', 'catalogOnlyTargets', 'resultsPanel',
+    'emptyTargetNotice', 'resultsPanel',
     'clearResultsBtn', 'installedVersion', 'checkUpdatesBtn',
     'updateNotice', 'updateStatus', 'openUpdateBtn', 'dismissUpdateBtn',
     'heBtn', 'enBtn', 'settingsTabs', 'settingsNozzle', 'settingsSlicer',

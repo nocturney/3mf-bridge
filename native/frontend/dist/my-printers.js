@@ -1,4 +1,5 @@
 /* SliceBridge My Printers: offline snapshot + explicit, separate local selection.
+ * Only supported destinations are listed (see SliceBridgePicker.supportedModels).
  * No other conversion target is activated by browsing this catalogue.
  * No third-party image download or cross-origin source profile fetch.
  */
@@ -11,28 +12,27 @@ const translations={
     title:'המדפסות שלי',welcome:'בחירת מדפסות',welcomeBody:'לא נבחרה עדיין מדפסת. בחר יצרן או חפש דגם כדי להתחיל.',
     body:'בחר מדפסות לעבודה ולמעקב. הגדרות דיזה, סלייסר ופילמנט קיימות אינן משתנות.',
     search:'חיפוש לפי יצרן או דגם',save:'שמור מדפסות',cancel:'לא עכשיו',selected:'נבחרו {n} מדפסות',
-    nozzle:'דיזות',none:'לא נמצאו דגמים',
+    none:'לא נמצאו דגמים',
     showing:'מציג {shown} מתוך {total} דגמים · צמצם את החיפוש להצגת דגמים נוספים',
-    hidden:'Bambu Lab מוסתרת כרגע כמדפסת יעד. פרויקטי Bambu ו־MakerWorld עדיין נתמכים כמקור.',
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
-    manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',startHint:'בחר יצרן או חפש דגם כדי להציג מדפסות.',nothingSelected:'עדיין לא נבחרו מדפסות.',
-    slicerInstalled:'סלייסר מותקן: {names}',slicersInstalled:'סלייסרים מותקנים: {names}'
+    manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',startHint:'בחר יצרן או חפש דגם כדי להציג מדפסות.',
+    noSupported:'עדיין אין יעדים זמינים במחשב זה.',nothingSelected:'עדיין לא נבחרו מדפסות.'
   },
   en:{
     title:'My printers',welcome:'Choose printers',welcomeBody:'No printers are selected yet. Choose a manufacturer or search for a model to begin.',
     body:'Add or remove printers without changing your existing nozzle, slicer or filament preferences.',
     search:'Search manufacturer or model',save:'Save printers',cancel:'Not now',selected:'{n} printers selected',
-    nozzle:'Nozzles',none:'No models matched',
+    none:'No models matched',
     showing:'Showing {shown} of {total} models · narrow the search to find more',
-    hidden:'Bambu Lab is hidden as a target for now. Bambu and MakerWorld projects remain usable as sources.',
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
-    manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',startHint:'Choose a manufacturer or search to see models.',nothingSelected:'No printers selected yet.',
-    slicerInstalled:'Installed slicer: {names}',slicersInstalled:'Installed slicers: {names}'
+    manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',startHint:'Choose a manufacturer or search to see models.',
+    noSupported:'No destinations are available on this computer yet.',nothingSelected:'No printers selected yet.'
   }
 };
-let catalog=null,selected=null,draft=null,installed=[],manufacturerSlicers=[],firstRun=false,loaded=false,saving=false;
-// Optional discovery must never hold up the printer list; a slow call is dropped.
-const SLICER_LOOKUP_MS=2000;
+const changedEvent='slicebridge:my-printers-changed';
+let catalog=null,selected=null,draft=null,firstRun=false,loaded=false,saving=false;
+// Destination inputs, pushed in by the app shell through setSupportedTargets().
+let availability=[],installed=[],prusaAvailable=false,supported=[];
 
 const t=(key,variables={})=>{
   const lang=document.documentElement.lang==='en'?'en':'he';
@@ -48,39 +48,9 @@ const node=(tag,cls,text)=>{
 };
 const api=()=>window.go?.main?.App;
 
-// Pure. Returns installed slicers whose backend-issued manufacturer list names
-// this exact maker (trimmed, case-insensitive full match, never substring).
-// Entries with installed!==true, empty or wildcard lists attach to nothing, so a
-// generic install never appears on every catalogue printer.
-function slicersForManufacturer(slicers,manufacturer){
-  const wanted=String(manufacturer??'').trim().toLocaleLowerCase();
-  if(!wanted||!Array.isArray(slicers))return [];
-  const seen=new Set(),matches=[];
-  for(const item of slicers){
-    if(!item||item.installed!==true||typeof item.id!=='string'||!item.id||seen.has(item.id))continue;
-    if(typeof item.name!=='string'||!Array.isArray(item.manufacturers))continue;
-    const name=item.name.trim().slice(0,80);
-    if(!name)continue;
-    const listed=item.manufacturers.some(maker=>
-      typeof maker==='string'&&maker.trim().toLocaleLowerCase()===wanted);
-    if(!listed)continue;
-    seen.add(item.id);matches.push({id:item.id,name});
-  }
-  return matches;
-}
-// Missing method, rejection, bad shape or timeout all degrade to "no slicers".
-function loadManufacturerSlicers(){
-  const lookup=Promise.resolve()
-    .then(()=>api()?.ManufacturerSlicers?.())
-    .then(reply=>Array.isArray(reply)?reply:[])
-    .catch(()=>[]);
-  let timer=null;
-  const timeout=new Promise(resolve=>{timer=setTimeout(()=>resolve([]),SLICER_LOOKUP_MS);});
-  return Promise.race([lookup,timeout]).finally(()=>clearTimeout(timer));
-}
-
 // Artwork stays entirely local. Only the model ID is sent to Wails; the Go
 // backend reads a bounded PNG inside an installed slicer profiles directory.
+// Only built-in models have artwork; installed Orca and PrusaSlicer items use the fallback avatar.
 const coverCache=new Map(),coverQueued=new Set(),coverJobs=[];
 let coverRunning=0;
 const coverObserver=typeof IntersectionObserver==='function'
@@ -131,9 +101,9 @@ function observeCover(tile,id){
 
 // Target cards share the existing vetted, local-only artwork loader.
 function loadTargetArtwork(){
-  if(!loaded||!catalog||!selected)return;
-  const chosen=new Set(selected.selectedIds||[]);
-  for(const model of catalog.models){
+  if(!loaded)return;
+  const chosen=new Set(selectedTargetIds());
+  for(const model of supported){
     if(!model.legacyTarget||!chosen.has(model.id))continue;
     const tile=document.querySelector('[data-target-row="'+model.legacyTarget+'"] .target-printer-icon');
     if(!tile)continue;
@@ -143,12 +113,18 @@ function loadTargetArtwork(){
   }
 }
 
-function legacyTargets(){
-  if(!loaded)return null;
-  return picker.selectedAdapterTargets(catalog.models,selected.selectedIds);
+// Saved printers that are currently supported and selected, in saved order.
+function selectedTargetIds(){
+  return loaded?picker.selectedTargetIds(supported,selected.selectedIds):[];
 }
-function selectedStatuses(){
-  return !loaded?[]:picker.statuses(catalog.models,selected.selectedIds,installed);
+// Accepts a destination ID or a built-in key ("u1"), so the app shell can ask by either.
+function isSelectedTarget(targetId){
+  if(!loaded||typeof targetId!=='string')return false;
+  const item=supported.find(entry=>entry.id===targetId||entry.legacyTarget===targetId);
+  return Boolean(item)&&selectedTargetIds().includes(item.id);
+}
+function legacyTargets(){
+  return loaded?picker.legacyTargetsFor(supported,selected.selectedIds):[];
 }
 function syncCopy(){
   $('myPrintersBtn').title=t('title');
@@ -160,49 +136,63 @@ function syncCopy(){
   $('printerManufacturerLabel').textContent=t('manufacturer');
   $('printerSearchLabel').textContent=t('searchByModel');
   $('printerManufacturerFilter').querySelector('option[value=""]').textContent=t('chooseManufacturer');
-  $('catalogPickerHint').textContent=t('startHint');
   $('saveMyPrintersBtn').textContent=t('save');
   $('cancelMyPrintersBtn').textContent=t('cancel');
-  $('myPrintersHiddenNote').textContent=t('hidden');
+}
+function refreshManufacturerOptions(){
+  const filter=$('printerManufacturerFilter');
+  const previous=filter.value;
+  filter.replaceChildren();
+  const placeholder=node('option','',t('chooseManufacturer'));
+  placeholder.value='';filter.append(placeholder);
+  const makers=[...new Set(supported.map(item=>item.manufacturer).filter(Boolean))]
+    .sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));
+  for(const maker of makers){const option=node('option','',maker);option.value=maker;filter.append(option);}
+  filter.value=makers.includes(previous)?previous:'';
 }
 function render(){
   syncCopy();
   if(!loaded||!draft)return;
   const choice=[...draft];
+  const empty=!supported.length;
   $('myPrintersSelectionCount').textContent=t('selected',{n:choice.length});
   const selectionList=$('selectedPrinterSummary');
   selectionList.replaceChildren();
-  const entries=picker.statuses(catalog.models,choice,installed);
+  const entries=supported.filter(item=>draft.has(item.id));
   $('selectedPrinterSummary').hidden=!entries.length;
   $('selectedPrinterOverview').classList.toggle('is-empty',!entries.length);
   if(!entries.length)selectionList.append(node('span','catalog-muted',t('nothingSelected')));
   for(const entry of entries){
     const pill=node('span','selected-printer-pill');
-    const name=node('strong','',picker.title(entry.model));
+    const name=node('strong','',picker.title(entry));
     pill.append(name);selectionList.append(pill);
   }
   const term=$('printerCatalogSearch').value.trim();
   const manufacturer=$('printerManufacturerFilter').value;
   const hasFilter=Boolean(term||manufacturer);
-  const source=manufacturer?catalog.models.filter(m=>m.manufacturer===manufacturer):catalog.models;
-  const matches=hasFilter?picker.search(source,term,choice,80):{models:[],total:0};
+  const showList=hasFilter||supported.length>0;
+  const source=manufacturer?supported.filter(m=>m.manufacturer===manufacturer):supported;
+  const matches=showList?picker.search(source,term,choice,80):{models:[],total:0};
   const list=$('catalogModelList');
-  $('myPrintersDialog').classList.toggle('has-results',hasFilter);
-  $('catalogPickerHint').hidden=hasFilter;
-  $('catalogSearchCount').hidden=!hasFilter;
-  $('myPrintersHiddenNote').hidden=!term.toLocaleLowerCase().includes('bambu');
+  $('printerCatalogSearch').disabled=empty;
+  $('printerManufacturerFilter').disabled=empty;
+  $('myPrintersDialog').classList.toggle('has-results',showList);
+  $('catalogPickerHint').textContent=empty?t('noSupported'):t('startHint');
+  $('catalogPickerHint').hidden=showList;
+  // No result counts or unsupported-model classifications unless the list is truncated.
+  $('catalogSearchCount').hidden=matches.total<=matches.models.length;
   if(coverObserver)coverObserver.disconnect();
   list.replaceChildren();
-  list.hidden=!hasFilter;
+  list.hidden=!showList;
   for(const model of matches.models){
     const row=node('label','catalog-model-card');
     if(draft.has(model.id))row.classList.add('is-selected');
     const input=node('input');
     input.type='checkbox';input.value=model.id;input.checked=draft.has(model.id);
-    input.disabled=saving||(!input.checked&&draft.size>=32);
+    input.disabled=saving||(!input.checked&&draft.size>=picker.maxSelected);
     input.setAttribute('aria-label',picker.title(model));
     input.addEventListener('change',()=>{
-      if(input.checked && draft.size>=32){input.checked=false;$('myPrintersStatus').textContent=t('limit');return;}
+      if(input.checked && draft.size>=picker.maxSelected){input.checked=false;$('myPrintersStatus').textContent=t('limit');return;}
       if(input.checked)draft.add(model.id);else draft.delete(model.id);
       $('myPrintersStatus').textContent='';
       render();
@@ -211,33 +201,42 @@ function render(){
     graphic.setAttribute('aria-hidden','true');
     graphic.append(node('span','avatar-device','▣'),node('span','avatar-initials',
       String(model.manufacturer||'?').slice(0,2).toLocaleUpperCase()));
-    observeCover(graphic,model.id);
+    // Local artwork is looked up for recognised built-in models only.
+    if(model.legacyTarget)observeCover(graphic,model.id);
     // No third-party images are bundled or remotely fetched.
     const copy=node('span','catalog-model-copy');
     copy.append(node('strong','',model.model),node('small','',model.manufacturer));
-    const nozzles=(model.nozzles||[]).join(' / ');
-    if(nozzles)copy.append(node('small','nozzle-list',t('nozzle')+': '+nozzles+' mm'));
-    // Plain context only: names installed slicers listed for this exact maker.
-    const slicerNames=slicersForManufacturer(manufacturerSlicers,model.manufacturer).map(s=>s.name);
-    if(slicerNames.length)copy.append(node('small','installed-slicer-line',
-      t(slicerNames.length>1?'slicersInstalled':'slicerInstalled',{names:slicerNames.join(', ')})));
     row.append(input,graphic,copy);list.append(row);
   }
-  if(hasFilter&&!matches.models.length)list.append(node('p','catalog-empty',t('none')));
+  if(showList&&!matches.models.length)list.append(node('p','catalog-empty',t('none')));
   $('catalogSearchCount').textContent=t('showing',{
     shown:matches.models.length,total:matches.total
   });
-  $('saveMyPrintersBtn').disabled=saving;
+  $('saveMyPrintersBtn').disabled=saving||empty;
 }
-function setAvailability(next){
-  installed=Array.isArray(next)?next:[];
-  if(loaded&&$('myPrintersDialog')?.open)render();
+// Called by the app shell whenever Availability, installed Orca targets or the
+// PrusaSlicer probe change. Rebuilds the supported list; a stale draft is trimmed.
+function setSupportedTargets(next={}){
+  availability=Array.isArray(next.available)?next.available:[];
+  installed=Array.isArray(next.installedTargets)?next.installedTargets:[];
+  prusaAvailable=next.prusaAvailable===true;
+  recomputeSupported();
+  if(draft)draft=new Set([...draft].filter(id=>supported.some(item=>item.id===id)));
+  if(loaded){
+    refreshManufacturerOptions();
+    loadTargetArtwork();
+  }
+  if($('myPrintersDialog')?.open)render();
+  window.dispatchEvent(new Event(changedEvent));
+}
+function recomputeSupported(){
+  supported=picker?picker.supportedModels(catalog?catalog.models:[],availability,installed,prusaAvailable):[];
 }
 function open(onboarding=false){
   if(!loaded||saving)return;
   if($('myPrintersDialog').open)return;
   firstRun=Boolean(onboarding);
-  draft=new Set(selected.selectedIds);
+  draft=new Set(selectedTargetIds());
   $('printerCatalogSearch').value='';
   $('printerManufacturerFilter').value='';
   $('myPrintersStatus').textContent='';
@@ -246,12 +245,13 @@ function open(onboarding=false){
   $('printerCatalogSearch').focus();
 }
 async function save(){
-  if(!loaded||!draft||saving)return;
+  if(!loaded||!draft||saving||!supported.length)return;
   saving=true;
   $('saveMyPrintersBtn').disabled=true;
   $('myPrintersStatus').textContent='';
   try{
-    const requested=[...draft];
+    // Only supported, selected IDs are sent. Stale saved IDs are not sent back.
+    const requested=[...draft].filter(id=>supported.some(item=>item.id===id));
     const reply=await api().SaveMyPrinters(requested);
     if(!reply||reply.onboardingPending||!Array.isArray(reply.selectedIds)){
       throw Error('Saved printer selection was not confirmed');
@@ -259,7 +259,7 @@ async function save(){
     selected=reply;
     loadTargetArtwork();
     $('myPrintersDialog').close();
-    window.dispatchEvent(new Event('slicebridge:my-printers-changed'));
+    window.dispatchEvent(new Event(changedEvent));
   }catch(err){
     $('myPrintersStatus').textContent=t('error')+' '+String(err?.message||err);
   }finally{
@@ -270,24 +270,17 @@ async function save(){
 async function init(){
   if(!picker||!api()?.PrinterCatalog||!api()?.GetMyPrinters)return;
   try{
-    const [list,prefs,slicers]=await Promise.all([
-      api().PrinterCatalog(),api().GetMyPrinters(),loadManufacturerSlicers()
-    ]);
+    const [list,prefs]=await Promise.all([api().PrinterCatalog(),api().GetMyPrinters()]);
     if(!list||list.kind!=='slicebridge-offline-printer-picker'||
        list.modelCount!==603||!Array.isArray(list.models)||
        !prefs||!Array.isArray(prefs.selectedIds))throw Error('Invalid offline catalog');
-    catalog=list;selected=prefs;manufacturerSlicers=slicers;
-    const filter=$('printerManufacturerFilter');
-    filter.replaceChildren();
-    const placeholder=node('option','',t('chooseManufacturer'));
-    placeholder.value='';filter.append(placeholder);
-    const makers=[...new Set(catalog.models.filter(m=>!picker.isHidden(m)).map(m=>m.manufacturer))]
-      .sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));
-    for(const maker of makers){const option=node('option','',maker);option.value=maker;filter.append(option);}
+    catalog=list;selected=prefs;
+    recomputeSupported();
+    refreshManufacturerOptions();
     loaded=true;
     loadTargetArtwork();
     $('myPrintersBtn').disabled=false;
-    window.dispatchEvent(new Event('slicebridge:my-printers-changed'));
+    window.dispatchEvent(new Event(changedEvent));
     if(prefs.onboardingPending)open(true);
   }catch(err){
     // Old converter stays usable if the optional catalogue cannot load.
@@ -307,8 +300,7 @@ $('myPrintersDialog').addEventListener('close',()=>{
   firstRun=false;
 });
 window.SliceBridgeMyPrinters={
-  init,setAvailability,legacyTargets,selectedStatuses,render,
-  slicersForManufacturer,
+  init,setSupportedTargets,selectedTargetIds,isSelectedTarget,legacyTargets,render,
   isReady:()=>loaded,
 };
 })();

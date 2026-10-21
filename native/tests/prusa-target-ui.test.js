@@ -62,24 +62,29 @@ test('translation dictionaries keep matching key sets',()=>{
   assert.deepEqual(Object.keys(dictionary.he).sort(),Object.keys(dictionary.en).sort());
 });
 
-test('the PrusaSlicer checkbox is probed through the backend and hidden on failure',()=>{
+test('the PrusaSlicer row is probed through the backend and shown only when probed and selected',()=>{
   assert.match(app,/async function refreshPrusaEngine\(\)/);
-  assert.match(app,/api\(\)\.PrusaEngineStatus\(\)/);
-  assert.match(app,/row\.hidden=!available;/);
-  assert.match(app,/catch\{available=false;\}/);
+  assert.match(app,/prusaAvailable=Boolean\(\(await api\(\)\?\.PrusaEngineStatus\?\.\(\)\)\?\.available\);/);
+  assert.match(app,/catch\{prusaAvailable=false;\}/);
   assert.match(app,/await refreshPrusaEngine\(\);/);
+  assert.match(app,/const visible=prusaAvailable&&isSelectedDestination\(prusaTargetId\);/);
+  assert.match(app,/setRowVisible\(prusaRow,box,visible\);/);
 });
 
 test('select-all never silently includes the PrusaSlicer row',()=>{
   const selectAll=app.slice(app.indexOf('function selectAll()'),app.indexOf('function registerHandlers'));
-  assert.match(selectAll,/\[data-prusa-target\]/);
+  // Built-in rows carry data-target-row; the PrusaSlicer row does not.
+  assert.match(selectAll,/#targetList \[data-target-row\] input\[type=checkbox\]/);
+  assert.doesNotMatch(selectAll.replace(/\/\/.*$/gm,''),/prusa/i);
 });
 
-test('select-all label counts the PrusaSlicer checkbox as a separate row',()=>{
-  const render=app.slice(app.indexOf('function renderTargets()'),app.indexOf('async function refreshAvailability'));
-  assert.match(render,/const prusaChecked=prusaCheckbox\(\)\?\.checked\?1:0;/);
-  assert.match(render,/installedRows\.filter\(\(entry\)=>entry\.checkbox\.checked\)\.length\+prusaChecked/);
-  assert.match(render,/if\(prusaCheckbox\(\)\)prusaCheckbox\(\)\.disabled=busy;/);
+test('select-all label counts only the visible built-in rows, never the PrusaSlicer row',()=>{
+  const render=app.slice(app.indexOf('function renderTargets()'),app.indexOf('// Publishes the destination inputs'));
+  assert.match(render,/const shown=builtIns\.filter\(\(entry\)=>builtInVisible\(entry\.target\)\);/);
+  assert.match(render,/const checkedShown=shown\.filter\(\(entry\)=>entry\.checkbox\.checked\)\.length;/);
+  assert.match(render,/el\('selectAllBtn'\)\.textContent=checkedShown===shown\.length\?t\('deselectAll'\):t\('selectAll'\);/);
+  assert.doesNotMatch(render,/prusaChecked/);
+  assert.match(render,/box\.disabled=busy\|\|!visible;/);
 });
 
 test('results name the target and surface the generic-printer review note',()=>{

@@ -141,6 +141,7 @@ const targetOrder = ['u1','c5','cc2','qidi'];
 // backend resolved completely are present; the picker never invents one.
 let installedTargets=[];
 let installedRows=[];
+let prusaAvailable=false;
 function targetDisplayName(id){
   if(id===prusaTargetId)return t('prusaProjectName');
   return printerNames[id]||installedTargets.find((item)=>item.id===id)?.title||id;
@@ -204,9 +205,10 @@ function languageSwitch(lang){
   if(dom.settings.open){renderSettingsTabs();paintSettings();}
   window.SliceBridgeMyPrinters?.render();
 }
+// Only visible rows convert. Rows are hidden until My Printers selects a supported destination.
 function getSelectedTargets(){
   return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)'))
-    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden).map((e)=>e.value);
+    .filter((e)=>!e.closest?.('.target-option')?.hidden).map((e)=>e.value);
 }
 let completedBatchFiles=0;
 let progressPhase='idle';
@@ -301,80 +303,100 @@ function renderQueue(){
   dom.fileList.append(fragment);
   renderActionBar();
 }
+// A destination is shown only when My Printers selects it. Built-in rows also need
+// a passing Availability result; an unavailable adapter's row stays hidden.
+function builtInVisible(target){
+  const data=available.find((a)=>a.target===target);
+  return data?.available===true&&Boolean(window.SliceBridgeMyPrinters?.isSelectedTarget(target));
+}
+function isSelectedDestination(id){
+  return Boolean(window.SliceBridgeMyPrinters?.isSelectedTarget(id));
+}
+// Rows that become visible start checked, as a newly chosen printer should.
+// Rows that stay visible keep their state; hidden rows are always unchecked.
+function setRowVisible(row,checkbox,visible){
+  const wasHidden=row.hidden;
+  row.hidden=!visible;
+  if(!visible)checkbox.checked=false;
+  else if(wasHidden)checkbox.checked=true;
+}
 function renderTargets(){
-  const selectedLegacy=window.SliceBridgeMyPrinters?.legacyTargets();
-  for(const target of targetOrder){
-    const data=available.find((a)=>a.target===target);
+  const builtIns=targetOrder.map((target)=>{
     const row=document.querySelector('[data-target-row="'+target+'"]');
-    const checkbox=row.querySelector('input');
-    row.hidden=Array.isArray(selectedLegacy)&&!selectedLegacy.includes(target);
-    if(row.hidden)checkbox.checked=false;
-    const summary=row.querySelector('[data-printer-summary]');
-    checkbox.disabled=busy||(data&&!data.available);
+    return {target,row,checkbox:row.querySelector('input')};
+  });
+  for(const {target,row,checkbox} of builtIns){
+    const visible=builtInVisible(target);
+    setRowVisible(row,checkbox,visible);
     // A running job temporarily locks controls; it must never erase the
     // selected targets for the next conversion.
-    if(data&&!data.available)checkbox.checked=false;
-    if(data&&!data.available){
-      row.classList.add('unavailable');
-      summary.textContent=t('unsupportedPrinter');
-      summary.title=data.error||'';
-    }else{
-      row.classList.remove('unavailable');
-      const pref=settings?.printers?.[target];
-      let text=(pref?.nozzle&&pref.nozzle!=='auto'?pref.nozzle+' mm':t('autoNozzle'));
-      if(pref?.slicer&&pref.slicer!=='auto')text+=' · '+pref.slicer;
-      const materialCount=Object.values(pref?.filaments||{}).filter(Boolean).length;
-      if(materialCount>0)text+=' · '+materialCount+' '+(language==='he'?'פרופילים':'presets');
-      summary.textContent=text;
-      summary.title=text;
-    }
+    checkbox.disabled=busy||!visible;
+    if(!visible)continue;
+    const summary=row.querySelector('[data-printer-summary]');
+    const pref=settings?.printers?.[target];
+    let text=(pref?.nozzle&&pref.nozzle!=='auto'?pref.nozzle+' mm':t('autoNozzle'));
+    if(pref?.slicer&&pref.slicer!=='auto')text+=' · '+pref.slicer;
+    const materialCount=Object.values(pref?.filaments||{}).filter(Boolean).length;
+    if(materialCount>0)text+=' · '+materialCount+' '+(language==='he'?'פרופילים':'presets');
+    summary.textContent=text;
+    summary.title=text;
   }
-  const catalogOnly=el('catalogOnlyTargets');
-  const missing=window.SliceBridgeMyPrinters?.selectedStatuses()
-    .filter((entry)=>entry.kind==='catalog_only')||[];
-  catalogOnly.hidden=!missing.length;
-  catalogOnly.replaceChildren();
-  for(const entry of missing){
-    const label=node('div','catalog-only-target');
-    label.append(node('strong','',window.SliceBridgePicker.title(entry.model)));
-    catalogOnly.append(label);
+  for(const entry of installedRows){
+    setRowVisible(entry.row,entry.checkbox,isSelectedDestination(entry.id));
+    entry.checkbox.disabled=busy||entry.row.hidden;
   }
-  const count=getSelectedTargets().length;
-  const selectable=available.filter(v=>v.available&&(!Array.isArray(selectedLegacy)||selectedLegacy.includes(v.target)));
-  el('selectAllBtn').hidden=selectable.length===0;
-  const noneChosen=Array.isArray(selectedLegacy)&&selectedLegacy.length===0&&count===0;
-  el('emptyTargetNotice').hidden=!noneChosen;
+  const prusaRow=document.querySelector('[data-prusa-target]');
+  if(prusaRow){
+    const box=prusaCheckbox();
+    const visible=prusaAvailable&&isSelectedDestination(prusaTargetId);
+    setRowVisible(prusaRow,box,visible);
+    box.disabled=busy||!visible;
+  }
+  const shown=builtIns.filter((entry)=>builtInVisible(entry.target));
+  const checkedShown=shown.filter((entry)=>entry.checkbox.checked).length;
+  el('selectAllBtn').hidden=shown.length===0;
+  el('selectAllBtn').textContent=checkedShown===shown.length?t('deselectAll'):t('selectAll');
+  // Shown only once My Printers is ready and nothing is selected for conversion.
+  const myPrintersReady=Boolean(window.SliceBridgeMyPrinters?.isReady());
+  const none=myPrintersReady&&window.SliceBridgeMyPrinters.selectedTargetIds().length===0;
+  el('emptyTargetNotice').hidden=!none;
   el('emptyTargetNotice').textContent=language==='he'?
     'לא נבחרו מדפסות יעד. אפשר להוסיף דרך סמל המדפסת בראש החלון.':
     'No target printers selected. Use the printer icon at the top to add them.';
-  // The select-all label tracks only the built-in rows; installed and PrusaSlicer rows are separate.
-  const prusaChecked=prusaCheckbox()?.checked?1:0;
-  const installedChecked=installedRows.filter((entry)=>entry.checkbox.checked).length+prusaChecked;
-  el('selectAllBtn').textContent=count-installedChecked===selectable.length?t('deselectAll'):t('selectAll');
-  for(const entry of installedRows)entry.checkbox.disabled=busy;
-  if(prusaCheckbox())prusaCheckbox().disabled=busy;
   renderActionBar();
+}
+// Publishes the destination inputs to My Printers, which owns the supported list.
+function publishSupportedTargets(){
+  window.SliceBridgeMyPrinters?.setSupportedTargets({available,installedTargets,prusaAvailable});
 }
 async function refreshAvailability(){
   if(!api())return;
-  try{available=await api().Availability();window.SliceBridgeMyPrinters?.setAvailability(available);renderTargets();}
+  try{
+    const reply=await api().Availability();
+    available=Array.isArray(reply)?reply:[];
+  }
   catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
 }
 // Installed rows are rebuilt only when the backend list changes; checked state survives.
+// Each row starts hidden unless My Printers selects it (see renderTargets).
 function renderInstalledTargets(){
   const list=el('targetList');
   if(!list)return;
   const checked=new Set(installedRows.filter((entry)=>entry.checkbox.checked).map((entry)=>entry.id));
   for(const entry of installedRows)entry.row.remove();
   installedRows=[];
+  const seen=new Set();
   for(const target of installedTargets){
+    if(typeof target?.id!=='string'||seen.has(target.id))continue;
+    seen.add(target.id);
     const row=node('label','target-option installed-target');
     row.dataset.installedTarget=target.id;
+    row.hidden=!isSelectedDestination(target.id);
     const checkbox=node('input');
     checkbox.type='checkbox';
     checkbox.value=target.id;
-    checkbox.checked=checked.has(target.id);
-    checkbox.disabled=busy;
+    checkbox.checked=checked.has(target.id)&&!row.hidden;
+    checkbox.disabled=busy||row.hidden;
     const icon=node('span','target-printer-icon','▣');
     icon.setAttribute('aria-hidden','true');
     const label=node('span','printer-label');
@@ -400,16 +422,10 @@ async function refreshInstalledTargets(){
   renderTargets();
 }
 // The PrusaSlicer row is shown only when the backend file probe finds the
-// sidecar. A failed probe hides it; it never offers a target it cannot run.
+// sidecar and My Printers selects it. A failed probe offers no target.
 async function refreshPrusaEngine(){
-  const row=document.querySelector('[data-prusa-target]');
-  if(!row||!api()?.PrusaEngineStatus)return;
-  let available=false;
-  try{available=Boolean((await api().PrusaEngineStatus())?.available);}
-  catch{available=false;}
-  row.hidden=!available;
-  if(!available&&prusaCheckbox())prusaCheckbox().checked=false;
-  renderTargets();
+  try{prusaAvailable=Boolean((await api()?.PrusaEngineStatus?.())?.available);}
+  catch{prusaAvailable=false;}
 }
 async function addFiles(infos){
   if(!infos?.length)return;
@@ -797,9 +813,9 @@ async function openUpdate(){
   catch(e){updateError=e?.message||String(e);renderUpdates();}
 }
 function selectAll(){
-  // Built-in rows only: installed Orca and PrusaSlicer rows are chosen individually.
-  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'))
-    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden && !e.closest?.('[data-installed-target]') && !e.closest?.('[data-prusa-target]'));
+  // Visible built-in rows only: installed Orca and PrusaSlicer rows are chosen individually.
+  const boxes=Array.from(document.querySelectorAll('#targetList [data-target-row] input[type=checkbox]:not(:disabled)'))
+    .filter((e)=>!e.closest('.target-option').hidden);
   const allSelected=boxes.every((e)=>e.checked);
   for(const box of boxes)box.checked=!allSelected;
   memoryStatus=null;renderTargets();
@@ -842,15 +858,9 @@ function registerHandlers(){
   el('enBtn').addEventListener('click',()=>languageSwitch('en'));
   el('checkUpdatesBtn').addEventListener('click',checkUpdates);
   el('openUpdateBtn').addEventListener('click',openUpdate);
-  window.addEventListener('slicebridge:my-printers-changed',()=>{
-    const selected=window.SliceBridgeMyPrinters?.legacyTargets();
-    for(const key of targetOrder){
-      const checkbox=document.querySelector('[data-target-row="'+key+'"] input');
-      if(Array.isArray(selected))checkbox.checked=selected.includes(key)&&
-        available.some(item=>item.target===key&&item.available);
-    }
-    renderTargets();
-  });
+  // My Printers changed (saved, or availability/installed targets refreshed):
+  // rows follow the supported selection, newly chosen rows start checked.
+  window.addEventListener('slicebridge:my-printers-changed',()=>renderTargets());
   el('dismissUpdateBtn').addEventListener('click',()=>{
     updateResult=null;updateError='';renderUpdates();
   });
@@ -917,6 +927,9 @@ async function initialiseNative(){
   await refreshAvailability();
   await refreshInstalledTargets();
   await refreshPrusaEngine();
+  // My Printers builds its supported list from these inputs, so they are handed
+  // over once, after every probe and before its own init reads them.
+  publishSupportedTargets();
   await window.SliceBridgeMyPrinters?.init();
   renderCopy();renderTargets();renderQueue();renderResults();renderActionBar();
 }
