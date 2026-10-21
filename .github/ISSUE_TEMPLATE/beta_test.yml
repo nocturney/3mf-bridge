@@ -1,0 +1,22 @@
+name: Community test report / בדיקת משתמש
+description: Tell us what worked or didn't with a SliceBridge build.
+title: "[Test] "
+labels: ["beta-feedback"]
+body:
+  - type: textarea
+    id: result
+    attributes:
+      label: What worked or failed? / מה עבד ומה לא?
+      description: Describe the steps and result in Hebrew or English.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Version, OS, printer and slicer (if known)
+      placeholder: e.g. Windows, Snapmaker U1, OrcaSlicer, SliceBridge commit/version
+  - type: textarea
+    id: notes
+    attributes:
+      label: Extra details (optional)
+      description: Screenshots and logs are welcome, but not private models, customer files or passwords.

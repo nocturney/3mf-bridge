@@ -1,0 +1,63 @@
+name: Bug / compatibility report
+description: Report a reproducible SliceBridge issue; avoid sharing private models or credentials.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for the report. SliceBridge is under development. Do not publish sensitive or customer 3MF files.
+        For vulnerabilities, use GitHub's private security-reporting flow instead.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Summarize the failure and the expected behavior.
+      placeholder: Describe observed versus expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal example without private user files.
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version or commit
+      placeholder: e.g. v0.4.0-beta.3 or commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS Apple Silicon
+        - macOS Intel
+        - Other / unsure
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Slicers, printer, nozzle, material
+      description: List source slicer, target slicer/printer, nozzle and filament when relevant. Mark unknowns.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs and safe evidence
+      description: Remove personal paths, tokens and customer data. State if you did not perform an actual print.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Privacy and security
+      options:
+        - label: I removed private model content, credentials and sensitive customer information.
+          required: true
