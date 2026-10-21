@@ -6,7 +6,7 @@ scripts/prusa-sidecar-requirements.txt). No conversion service, no API, no netwo
 beyond the pip install you run yourself.
 
   python3 scripts/package-prusa-sidecar.py build
-  python3 scripts/package-prusa-sidecar.py stage --platform windows --bin-dir native/build/bin
+  python3 scripts/package-prusa-sidecar.py pack-windows --bin-dir native/build/bin
   python3 scripts/package-prusa-sidecar.py verify --platform macos --bin-dir native/build/bin
   python3 scripts/package-prusa-sidecar.py print-ci-steps
 
@@ -15,9 +15,11 @@ Subcommands:
             third_party/panda2prusa/{panda2prusa/, LICENSE, slicebridge_runner.py}.
             Writes dist/prusa-sidecar/{slicebridge-prusa-engine[.exe], panda2prusa-LICENSE.txt,
             manifest.json} after a smoke conversion of tests/fixtures/bambu-five-colors.3mf.
-  stage     copies the sidecar and the MIT license beside SliceBridge.exe (Windows) or into
-            SliceBridge.app/Contents/Resources (macOS, then ad-hoc re-signed).
-  verify    checks the staged layout, license text, and sidecar hash against the manifest.
+  pack-windows  embeds the sidecar and MIT license inside one Windows SliceBridge.exe.
+  stage     places the sidecar in SliceBridge.app/Contents/Resources on macOS
+            and re-seals the app (Windows must use pack-windows).
+  verify    checks Windows embedded payload or macOS staged files, upstream
+            license, and sidecar hash against the build manifest.
   print-ci-steps  prints the workflow steps the CI jobs need.
 
 Relative paths resolve against the repository root, so commands work from any directory.
@@ -479,7 +481,7 @@ def cmd_verify(args):
 
 CI_STEPS = """\
 # Windows job (native.yml, windows-native). Run from the repository root.
-# Add these steps after "Build native Windows single exe" and before the zip step.
+# Add these steps after "Build native Windows single exe" and before artifact upload.
 - name: Set up Python for the Panda2Prusa sidecar
   uses: actions/setup-python@v6
   with:
@@ -492,20 +494,17 @@ CI_STEPS = """\
     if ($LASTEXITCODE -ne 0) { throw 'pip install failed' }
     python scripts/package-prusa-sidecar.py build
     if ($LASTEXITCODE -ne 0) { throw 'Panda2Prusa sidecar build failed' }
-- name: Stage and verify sidecar beside SliceBridge.exe
+- name: Embed, verify and smoke-test the Prusa engine in SliceBridge.exe
   working-directory: .
   shell: pwsh
   run: |
-    python scripts/package-prusa-sidecar.py stage --platform windows --bin-dir native/build/bin
-    if ($LASTEXITCODE -ne 0) { throw 'Sidecar staging failed' }
+    python scripts/package-prusa-sidecar.py pack-windows --bin-dir native/build/bin
+    if ($LASTEXITCODE -ne 0) { throw 'Windows one-file packing failed' }
     python scripts/package-prusa-sidecar.py verify --platform windows --bin-dir native/build/bin --smoke
-    if ($LASTEXITCODE -ne 0) { throw 'Sidecar verification failed' }
-# Replace the existing Compress-Archive line (which packs only SliceBridge.exe) with:
-- name: Archive Windows native beta
-  working-directory: .
-  shell: pwsh
-  run: |
-    Compress-Archive -LiteralPath 'native/build/bin/SliceBridge.exe','native/build/bin/slicebridge-prusa-engine.exe','native/build/bin/panda2prusa-LICENSE.txt' -DestinationPath 'native/build/bin/SliceBridge-Windows.zip' -CompressionLevel Optimal -Force
+    if ($LASTEXITCODE -ne 0) { throw 'Embedded engine smoke failed' }
+    & native/build/bin/SliceBridge.exe '--verify-bundled-prusa'
+    if ($LASTEXITCODE -ne 0) { throw 'The actual EXE cannot load its embedded engine' }
+# Upload native/build/bin/SliceBridge.exe directly; do not create a ZIP of multiple executables.
 
 # macOS job (native.yml, macos-native). Run from the repository root.
 # Add these steps after "Build macOS app using system WebKit" and before "Check native app size and package".

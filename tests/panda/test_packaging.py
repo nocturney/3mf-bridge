@@ -14,6 +14,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 SCRIPT = Path(__file__).resolve().parents[2] / "scripts" / "package-prusa-sidecar.py"
 REQUIREMENTS = SCRIPT.with_name("prusa-sidecar-requirements.txt")
@@ -30,7 +31,13 @@ def quiet_main(argv):
     """Run the CLI, returning (exit status, stdout, stderr)."""
     out, err = io.StringIO(), io.StringIO()
     with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
-        status = pps.main(argv)
+        # Packing only runs on Windows in production. These fixture tests are
+        # platform-independent and use fake MZ files, not real executables.
+        if argv and argv[0] == "pack-windows":
+            with patch.object(pps, "host_platform", return_value="windows"):
+                status = pps.main(argv)
+        else:
+            status = pps.main(argv)
     return status, out.getvalue(), err.getvalue()
 
 
@@ -45,7 +52,7 @@ class PackagingFixture(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.dist = self.root / "dist"
         self.dist.mkdir()
-        self.sidecar_bytes = b"STAND-IN SIDECAR BYTES (test input, not an engine)"
+        self.sidecar_bytes = b"MZSTAND-IN SIDECAR BYTES (test input, not an engine)"
         self.license_text = MIT_TEXT
 
     def make_dist(self, platform, sidecar=None, license_text=None, manifest_sha=None):
@@ -60,7 +67,7 @@ class PackagingFixture(unittest.TestCase):
     def make_windows_bin(self):
         bin_dir = self.root / "native" / "build" / "bin"
         bin_dir.mkdir(parents=True)
-        (bin_dir / "SliceBridge.exe").write_bytes(b"WAILS APP EXE")
+        (bin_dir / "SliceBridge.exe").write_bytes(b"MZWAILS APP EXE")
         return bin_dir
 
     def make_macos_bin(self):
@@ -71,16 +78,17 @@ class PackagingFixture(unittest.TestCase):
 
 
 class StageAndVerify(PackagingFixture):
-    def test_windows_stage_places_sidecar_and_license_beside_app_exe(self):
+    def test_windows_packs_engine_and_license_inside_one_app_exe(self):
         self.make_dist("windows")
         bin_dir = self.make_windows_bin()
-        status, _, err = quiet_main(["stage", "--platform", "windows", "--bin-dir", str(bin_dir),
+        status, _, err = quiet_main(["pack-windows", "--bin-dir", str(bin_dir),
                                      "--dist-dir", str(self.dist)])
         self.assertEqual(status, 0, err)
-        self.assertEqual((bin_dir / "slicebridge-prusa-engine.exe").read_bytes(), self.sidecar_bytes)
-        self.assertEqual((bin_dir / pps.LICENSE_NAME).read_text(encoding="utf-8"), MIT_TEXT)
-        self.assertEqual((bin_dir / "SliceBridge.exe").read_bytes(), b"WAILS APP EXE")
-        self.assertFalse(list(bin_dir.glob("*.staging")), "temp file left behind")
+        self.assertEqual([p.name for p in bin_dir.iterdir()], ["SliceBridge.exe"])
+        self.assertTrue((bin_dir / "SliceBridge.exe").read_bytes().startswith(b"MZWAILS APP EXE"))
+        info = pps.inspect_windows_bundle(bin_dir / "SliceBridge.exe", sha(self.sidecar_bytes))
+        self.assertEqual(info["engine"], self.sidecar_bytes)
+        self.assertFalse(list(bin_dir.glob("*.packing")), "temp file left behind")
 
     def test_macos_stage_targets_app_resources_only(self):
         self.make_dist("macos")
@@ -95,14 +103,14 @@ class StageAndVerify(PackagingFixture):
         if os.name == "posix":
             self.assertTrue(os.access(str(resources / "slicebridge-prusa-engine"), os.X_OK))
 
-    def test_verify_accepts_a_correct_stage(self):
+    def test_verify_accepts_a_correct_embedded_windows_package(self):
         self.make_dist("windows")
         bin_dir = self.make_windows_bin()
-        quiet_main(["stage", "--platform", "windows", "--bin-dir", str(bin_dir), "--dist-dir", str(self.dist)])
+        quiet_main(["pack-windows", "--bin-dir", str(bin_dir), "--dist-dir", str(self.dist)])
         status, out, err = quiet_main(["verify", "--platform", "windows", "--bin-dir", str(bin_dir),
                                        "--dist-dir", str(self.dist)])
         self.assertEqual(status, 0, err)
-        self.assertEqual(json.loads(out)["sha256"], sha(self.sidecar_bytes))
+        self.assertEqual(json.loads(out)["engineSha256"], sha(self.sidecar_bytes))
 
     def test_verify_accepts_a_correct_macos_stage_without_seal_check(self):
         self.make_dist("macos")
@@ -113,20 +121,23 @@ class StageAndVerify(PackagingFixture):
                                      "--dist-dir", str(self.dist), "--no-codesign"])
         self.assertEqual(status, 0, err)
 
-    def test_verify_detects_a_tampered_staged_sidecar(self):
+    def test_verify_rejects_a_tampered_embedded_bundle(self):
         self.make_dist("windows")
         bin_dir = self.make_windows_bin()
-        quiet_main(["stage", "--platform", "windows", "--bin-dir", str(bin_dir), "--dist-dir", str(self.dist)])
-        (bin_dir / "slicebridge-prusa-engine.exe").write_bytes(b"swapped")
+        quiet_main(["pack-windows", "--bin-dir", str(bin_dir), "--dist-dir", str(self.dist)])
+        app = bin_dir / "SliceBridge.exe"
+        raw = bytearray(app.read_bytes())
+        raw[-1] ^= 0xFF
+        app.write_bytes(raw)
         status, _, err = quiet_main(["verify", "--platform", "windows", "--bin-dir", str(bin_dir),
                                      "--dist-dir", str(self.dist)])
         self.assertEqual(status, 1)
-        self.assertIn("does not match", err)
+        self.assertIn("SHA-256 mismatch", err)
 
     def test_stage_refuses_a_sidecar_that_does_not_match_its_manifest(self):
         self.make_dist("windows", sidecar=b"changed after the build", manifest_sha=sha(self.sidecar_bytes))
         bin_dir = self.make_windows_bin()
-        status, _, err = quiet_main(["stage", "--platform", "windows", "--bin-dir", str(bin_dir),
+        status, _, err = quiet_main(["pack-windows", "--bin-dir", str(bin_dir),
                                      "--dist-dir", str(self.dist)])
         self.assertEqual(status, 1)
         self.assertIn("manifest", err)
@@ -135,7 +146,7 @@ class StageAndVerify(PackagingFixture):
     def test_stage_refuses_a_license_that_is_not_mit(self):
         self.make_dist("windows", license_text=GPL_TEXT)
         bin_dir = self.make_windows_bin()
-        status, _, err = quiet_main(["stage", "--platform", "windows", "--bin-dir", str(bin_dir),
+        status, _, err = quiet_main(["pack-windows", "--bin-dir", str(bin_dir),
                                      "--dist-dir", str(self.dist)])
         self.assertEqual(status, 1)
         self.assertIn("MIT", err)
@@ -145,37 +156,37 @@ class StageAndVerify(PackagingFixture):
         self.make_dist("windows")
         empty = self.root / "empty-bin"
         empty.mkdir()
-        status, _, err = quiet_main(["stage", "--platform", "windows", "--bin-dir", str(empty),
+        status, _, err = quiet_main(["pack-windows", "--bin-dir", str(empty),
                                      "--dist-dir", str(self.dist)])
         self.assertEqual(status, 2)
-        self.assertIn("SliceBridge.exe", err)
+        self.assertIn("Wails app", err)
 
     def test_stage_refuses_a_manifest_for_the_other_platform(self):
         self.make_dist("macos")
         (self.dist / "slicebridge-prusa-engine.exe").write_bytes(self.sidecar_bytes)
         bin_dir = self.make_windows_bin()
-        status, _, err = quiet_main(["stage", "--platform", "windows", "--bin-dir", str(bin_dir),
+        status, _, err = quiet_main(["pack-windows", "--bin-dir", str(bin_dir),
                                      "--dist-dir", str(self.dist)])
         self.assertEqual(status, 1)
         self.assertIn("built for macos", err)
 
 
 class RefusesLinks(PackagingFixture):
-    def test_windows_symlink_at_sidecar_destination_is_refused_and_target_untouched(self):
+    def test_windows_symlinked_app_is_refused_without_touching_target(self):
         self.make_dist("windows")
         bin_dir = self.make_windows_bin()
         outside = self.root / "outside.txt"
         outside.write_bytes(b"OUTSIDE")
+        (bin_dir / "SliceBridge.exe").unlink()
         try:
-            os.symlink(str(outside), str(bin_dir / "slicebridge-prusa-engine.exe"))
+            os.symlink(str(outside), str(bin_dir / "SliceBridge.exe"))
         except (OSError, NotImplementedError) as error:
             self.skipTest("symlinks unavailable on this host: %s" % error)
-        status, _, err = quiet_main(["stage", "--platform", "windows", "--bin-dir", str(bin_dir),
+        status, _, err = quiet_main(["pack-windows", "--bin-dir", str(bin_dir),
                                      "--dist-dir", str(self.dist)])
         self.assertEqual(status, 1)
         self.assertIn("symlink", err)
         self.assertEqual(outside.read_bytes(), b"OUTSIDE")
-        self.assertEqual((bin_dir / "SliceBridge.exe").read_bytes(), b"WAILS APP EXE")
 
     def test_macos_symlinked_resources_folder_is_refused(self):
         self.make_dist("macos")
@@ -240,14 +251,14 @@ class PinsAndCiText(unittest.TestCase):
         absolute = Path(tempfile.gettempdir()).resolve()
         self.assertEqual(pps.resolve(str(absolute)), absolute)
 
-    def test_ci_steps_cover_both_platforms_and_the_full_windows_archive(self):
+    def test_ci_steps_cover_single_windows_exe_and_bundled_macos_app(self):
         status, out, _ = quiet_main(["print-ci-steps"])
         self.assertEqual(status, 0)
-        self.assertIn("stage --platform windows --bin-dir native/build/bin", out)
+        self.assertIn("pack-windows --bin-dir native/build/bin", out)
         self.assertIn("stage --platform macos --bin-dir native/build/bin", out)
-        self.assertIn("Compress-Archive", out)
-        self.assertIn("slicebridge-prusa-engine.exe", out)
-        self.assertIn("panda2prusa-LICENSE.txt", out)
+        self.assertIn("SliceBridge.exe", out)
+        self.assertNotIn("Compress-Archive", out)
+        self.assertNotIn("stage --platform windows", out)
 
 
 if __name__ == "__main__":

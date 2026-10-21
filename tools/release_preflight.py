@@ -7,6 +7,8 @@ from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
 import hashlib
+import io
+import struct
 import json
 from pathlib import Path, PurePosixPath
 import re
@@ -135,13 +137,41 @@ def binary_metadata(binary: bytes):
     return {"modules": modules, "commit": commit.group(1).lower() if commit else None,
             "compiler": compiler.group(0) if compiler else None}
 
+def inspect_one_file_windows_exe(data: bytes):
+    """Inspect the appended engine payload without executing any binary."""
+    magic = b"SLICEBRIDGE_PRUSA_V1"
+    trailer_size = len(magic) + 8 + 32
+    if not data.startswith(b"MZ") or len(data) < trailer_size:
+        raise ValueError("Windows single-file asset is not a valid PE with embedded engine")
+    trailer = data[-trailer_size:]
+    if not trailer.startswith(magic):
+        raise ValueError("Windows single-file asset has no embedded Prusa engine")
+    size = struct.unpack("<Q", trailer[len(magic):len(magic)+8])[0]
+    if size == 0 or size > (128 << 20) or size > len(data) - trailer_size:
+        raise ValueError("Windows embedded engine size is invalid")
+    payload = data[-trailer_size-size:-trailer_size]
+    if hashlib.sha256(payload).digest() != trailer[-32:]:
+        raise ValueError("Windows embedded engine checksum mismatch")
+    with zipfile.ZipFile(io.BytesIO(payload)) as z:
+        if sorted(z.namelist()) != ["panda2prusa-LICENSE.txt", "slicebridge-prusa-engine.exe"]:
+            raise ValueError("Windows embedded engine archive contains unexpected members")
+        if z.testzip() is not None:
+            raise ValueError("Windows embedded engine ZIP CRC check failed")
+        engine = z.read("slicebridge-prusa-engine.exe")
+        license_text = z.read("panda2prusa-LICENSE.txt")
+    if not engine.startswith(b"MZ") or b"MIT License" not in license_text or b"Permission is hereby granted" not in license_text:
+        raise ValueError("Windows embedded engine or MIT license invalid")
+    return {"embeddedPrusaEngine": True, "embeddedZipCrcPass": True,
+            "embeddedEngineSha256": hashlib.sha256(engine).hexdigest()}
+
+
 def draft_assets(asset_dir, source_sha):
     results, module_evidence, warnings = [], {}, []
     if asset_dir is None:
         return results, module_evidence, warnings
     if not asset_dir.is_dir():
         raise ValueError("Draft asset directory does not exist")
-    paths = sorted(p for p in asset_dir.iterdir() if p.is_file() and p.suffix.lower() == ".zip")
+    paths = sorted(p for p in asset_dir.iterdir() if p.is_file() and p.suffix.lower() in (".zip", ".exe"))
     if len(paths) > 20:
         raise ValueError("Too many draft assets")
     for path in paths:
@@ -151,6 +181,23 @@ def draft_assets(asset_dir, source_sha):
                   "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
                   "signingStatus": "NOT CHECKED (requires platform-specific trust checks)",
                   "goBuilds": []}
+        if path.suffix.lower() == ".exe":
+            if path.name.lower() != "slicebridge.exe":
+                raise ValueError("Unexpected Windows executable asset: " + path.name)
+            raw = path.read_bytes()
+            result.update(inspect_one_file_windows_exe(raw))
+            info = binary_metadata(raw)
+            if info is not None:
+                result["goBuilds"].append({"path": path.name, "compiler": info["compiler"],
+                                           "buildCommit": info["commit"],
+                                           "dependencyCount": len(info["modules"])})
+                if info["commit"] != source_sha:
+                    warnings.append(path.name + ": embedded commit " + str(info["commit"])
+                                    + " does not match requested " + source_sha)
+                for dep in info["modules"]:
+                    module_evidence.setdefault(dep, set()).add(path.name)
+            results.append(result)
+            continue
         with zipfile.ZipFile(path) as z:
             members = [m for m in z.infolist() if not m.is_dir()]
             if len(members) > 10000 or sum(m.file_size for m in members) > MAX_UNCOMPRESSED_BYTES:
