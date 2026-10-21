@@ -10,6 +10,8 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	"github.com/nocturney/slicebridge/native/presets"
 )
 
 const maxMyPrinters = 32
@@ -121,6 +123,39 @@ func catalogSnapshot() (PrinterCatalogReply, error) {
 
 func (a *App) PrinterCatalog() (PrinterCatalogReply, error) {
 	return catalogSnapshot()
+}
+
+// InstalledOrcaTargets lists locally installed Orca-family machines that
+// resolved completely. Selection needs no catalogue status flag or approval.
+// Titles come from the offline catalogue when a model matches; otherwise the
+// installed printer_model is shown unchanged.
+func (a *App) InstalledOrcaTargets() presets.OrcaDiscovery {
+	discovery := presets.DiscoverOrca()
+	catalog, err := catalogSnapshot()
+	if err != nil {
+		return discovery
+	}
+	for i := range discovery.Targets {
+		discovery.Targets[i].Title = catalogTitle(catalog, discovery.Targets[i].Model)
+	}
+	return discovery
+}
+
+// catalogTitle returns "Manufacturer Model" for an exact catalogue model or
+// alias match, and the raw installed model name otherwise.
+func catalogTitle(catalog PrinterCatalogReply, installedModel string) string {
+	for _, item := range catalog.Models {
+		if strings.EqualFold(item.Manufacturer, "Bambu Lab") {
+			continue
+		}
+		names := append([]string{item.Model}, item.Aliases...)
+		for _, name := range names {
+			if strings.EqualFold(strings.TrimSpace(name), strings.TrimSpace(installedModel)) {
+				return strings.TrimSpace(item.Manufacturer + " " + item.Model)
+			}
+		}
+	}
+	return installedModel
 }
 
 func myPrintersPath() (string, error) {
