@@ -400,8 +400,8 @@ func tempOrcaBundle(bundle *presets.OrcaBundle) (string, func(), error) {
 }
 
 func validateTargets(targets []string) error {
-	if len(targets) == 0 || len(targets) > 4 {
-		return fmt.Errorf("select between 1 and 4 printers")
+	if len(targets) == 0 || len(targets) > maxMyPrinters {
+		return fmt.Errorf("select between 1 and %d printers", maxMyPrinters)
 	}
 	seen := map[string]bool{}
 	for _, t := range targets {
@@ -471,10 +471,15 @@ func (a *App) ConvertBatch(request BatchRequest) BatchReply {
 			entry.Source = summary
 			results := make([]ConvertResult, len(request.Targets))
 			var wg sync.WaitGroup
+			// Even with up to 32 selected printers, at most four 3MF
+			// conversions run concurrently to bound CPU, RAM and disk use.
+			permits := make(chan struct{}, 4)
 			for i, target := range request.Targets {
 				wg.Add(1)
 				go func(index int, t string) {
 					defer wg.Done()
+					permits <- struct{}{}
+					defer func() { <-permits }()
 					results[index] = configuredConvert(source, t, summary.Nozzle, settings.Printers[t])
 				}(i, target)
 			}
