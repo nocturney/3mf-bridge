@@ -16,7 +16,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/nocturney/3mf-bridge/native/makerworld"
+	"github.com/nocturney/slicebridge/native/makerworld"
 	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 

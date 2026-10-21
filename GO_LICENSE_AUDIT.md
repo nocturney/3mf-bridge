@@ -34,7 +34,7 @@
 | `github.com/leaanthony/u` | `v1.1.1` | MIT-family* |
 | `github.com/mattn/go-colorable` | `v0.1.14` | MIT-family* |
 | `github.com/mattn/go-isatty` | `v0.0.22` | MIT-family* |
-| `github.com/nocturney/3mf-bridge/engine` | `v0.0.0-00010101000000-000000000000` | local replacement |
+| `github.com/nocturney/slicebridge/engine` | `v0.0.0-00010101000000-000000000000` | local replacement |
 | `github.com/pkg/browser` | `v0.0.0-20240102092130-5ac0b6a4141c` | BSD-family* |
 | `github.com/pkg/errors` | `v0.9.1` | BSD-family* |
 | `github.com/rivo/uniseg` | `v0.4.7` | MIT-family* |
@@ -53,7 +53,7 @@
 ## Local replacements
 
 - `github.com/BryanSmee/bl_to_std` resolves to `../third_party/bl2std`. The pinned submodule is commit `4252f5f0a880463fd2e6aeed3125ec3653de60ee`, whose [LICENSE](https://github.com/BryanSmee/bl_to_std/blob/4252f5f0a880463fd2e6aeed3125ec3653de60ee/LICENSE) is **GNU GPL version 3**. Preserve its separate authorship, copyright notices and corresponding source requirements.
-- `github.com/nocturney/3mf-bridge/engine` resolves to `../engine`. The project's own code is intended to be GPL-3.0-only where its contributors hold licensing rights. The legacy module path is tracked in [issue #10](https://github.com/nocturney/slicebridge/issues/10).
+- `github.com/nocturney/slicebridge/engine` resolves to `../engine`. The project's own code is intended to be GPL-3.0-only where its contributors hold licensing rights. The Go module identifier follows the public repository name; older published release tags are unchanged.
 
 ## Release-time blockers remaining
 

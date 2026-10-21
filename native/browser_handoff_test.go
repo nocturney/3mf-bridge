@@ -12,7 +12,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nocturney/3mf-bridge/native/makerworld"
+	"github.com/nocturney/slicebridge/native/makerworld"
 )
 
 type transportFunc func(*http.Request) (*http.Response, error)

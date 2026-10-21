@@ -1,14 +1,14 @@
-module github.com/nocturney/3mf-bridge/native
+module github.com/nocturney/slicebridge/native
 
 go 1.25.0
 
-replace github.com/nocturney/3mf-bridge/engine => ../engine
+replace github.com/nocturney/slicebridge/engine => ../engine
 
 replace github.com/BryanSmee/bl_to_std => ../third_party/bl2std
 
 require (
 	github.com/BryanSmee/bl_to_std v0.0.0
-	github.com/nocturney/3mf-bridge/engine v0.0.0-00010101000000-000000000000
+	github.com/nocturney/slicebridge/engine v0.0.0-00010101000000-000000000000
 	github.com/wailsapp/wails/v2 v2.17.0
 	golang.org/x/mod v0.37.0
 )

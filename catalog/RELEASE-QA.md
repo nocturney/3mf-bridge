@@ -1,5 +1,26 @@
 # SliceBridge catalogue: release boundaries and at-home slicer QA
 
+## Community beta: one engine family, representative QA
+
+For experimental development builds, **do not require a separate full
+slicer test for every rebranded or closely related slicer**. Prefer a
+representative import/conversion check per shared 3MF/slicing engine
+family, then check *known* differences (machine profile, extruders,
+nozzles, G-code dialect and materials). Accept targeted user bug reports
+to refine compatibility instead of holding up every beta for exhaustive
+combinatorial testing.
+
+Show other slicer variants as **experimental / not individually
+verified** until tested. A shared engine is a strong compatibility
+indicator, but does not certify a vendor's printer presets or physical
+hardware. The four existing conversion adapters remain the only working
+conversion targets; the other catalogue entries are still **catalogue
+only**, not automatically activated or described as supported converters.
+Never silently change user slicer/nozzle settings or start a physical
+print. Actual model-specific verification can be added based on reported
+problems or whenever a stronger compatibility claim is needed.
+
+
 ## What can ship without physical slicer QA
 
 **Data-only candidate:** the metadata registry in PR #8 has no converter
