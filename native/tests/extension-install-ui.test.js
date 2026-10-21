@@ -9,7 +9,9 @@ const native=path.resolve(__dirname,'..');
 const html=fs.readFileSync(path.join(native,'frontend/dist/index.html'),'utf8');
 const script=fs.readFileSync(path.join(native,'frontend/dist/integrations.js'),'utf8');
 
-function harness(storeURL='') {
+const settle=()=>new Promise(resolve=>setImmediate(resolve));
+
+function harness(storeURL='', developerMode=true) {
   const calls=[];
   const elements=new Map();
   function node(name) {
@@ -43,6 +45,7 @@ function harness(storeURL='') {
     return el;
   }
   const api={
+    GetDeveloperMode:async()=>developerMode,
     BrowserLinkStatus:async()=>({platform:'windows',registered:true}),
     BrowserExtensionStoreURL:async(browser)=>{calls.push(['listing',browser]);return storeURL;},
     PrepareBrowserExtension:async(browser)=>{calls.push(['prepare',browser]);return {folder:'/tmp/SliceBridge/BrowserExtensions/chromium'};},
@@ -55,7 +58,8 @@ function harness(storeURL='') {
       documentElement:{lang:'he',dir:'rtl'},
       getElementById:node,
       createElement:node,
-      createTextNode:text=>({textContent:text})
+      createTextNode:text=>({textContent:text}),
+      addEventListener(){}
     },
     window:{go:{main:{App:api}}},
     setTimeout:setTimeout,
@@ -79,6 +83,7 @@ test('install wizard has one CTA and keeps technical steps folded',()=>{
 
 test('without published store, one guided click prepares the beta and opens selected browser',async()=>{
   const h=harness();
+  await settle();
   h.node('integrationsBtn').listeners.click();
   await new Promise(resolve=>setImmediate(resolve));
   assert.match(h.node('extensionStoreStatus').textContent,/לא פורסם בחנות/);
@@ -94,6 +99,7 @@ test('without published store, one guided click prepares the beta and opens sele
 
 test('verified store link launches store only, with no silent sideload',async()=>{
   const h=harness('https://microsoftedge.microsoft.com/addons/detail/example/abcdefghijklmnopabcdefghijklmnop');
+  await settle();
   h.node('integrationsBtn').listeners.click();
   await new Promise(resolve=>setImmediate(resolve));
   assert.equal(h.node('installExtensionBtn').textContent,'התקן מחנות הדפדפן');
@@ -105,6 +111,7 @@ test('verified store link launches store only, with no silent sideload',async()=
 
 test('Firefox selection shows temporary beta limitation and safe browser path',async()=>{
   const h=harness();
+  await settle();
   h.node('integrationsBtn').listeners.click();
   h.node('browserTargetSelect').value='firefox';
   h.node('browserTargetSelect').listeners.change();
@@ -118,6 +125,7 @@ test('Firefox selection shows temporary beta limitation and safe browser path',a
 
 test('an off-domain HTTPS link cannot enable storefront installation',async()=>{
   const h=harness('https://bad.example/detail/fake');
+  await settle();
   h.node('integrationsBtn').listeners.click();
   await new Promise(resolve=>setImmediate(resolve));
   assert.equal(h.node('installExtensionBtn').textContent,'התחל התקנת בטא מודרכת');

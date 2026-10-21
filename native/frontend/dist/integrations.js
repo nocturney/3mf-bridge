@@ -54,7 +54,8 @@
       modeNoExtension:'אם לא מופיע חלון אישור: בדוק שהתוסף מותקן ופעיל בדפדפן שנפתח.',
       modeError:'לא הצלחנו לפתוח את הדפדפן: ',
       modeScopeNote:'חשוב: ההגדרה נשמרת בכל דפדפן בנפרד, ורק לקישורים נתמכים באתר MakerWorld. ברירת המחדל של Bambu Studio נשארת ללא שינוי.',
-      done:'סיום'
+      done:'סיום',
+      makerworldLocked:'חיבור ל־MakerWorld נעול. פתח אודות ← מצב מפתחים כדי לפתוח אותו.'
     },
     en: {
       integrationTitle:'MakerWorld Setup',
@@ -104,7 +105,8 @@
       modeNoExtension:'No confirmation prompt? Check that the extension is installed and enabled in the browser that opened.',
       modeError:'Could not open the browser: ',
       modeScopeNote:'Important: each browser stores its own choice, and only supported MakerWorld links are affected. Bambu Studio remains your system default.',
-      done:'Done'
+      done:'Done',
+      makerworldLocked:'MakerWorld setup is locked. Open About → Developer mode to unlock it.'
     }
   };
   const t = key => (translateMap[document.documentElement.lang==='he'?'he':'en'][key] || key);
@@ -127,6 +129,23 @@
   const confirm = el('applyBrowserModeBtn');
   const browser = el('browserTargetSelect');
   const modes = Array.from(dialog.querySelectorAll('input[name="makerworldMode"]'));
+  const launcher = el('integrationsBtn');
+  const gate = el('integrationsGate');
+  // Locked until the native Developer Mode state says otherwise. The About
+  // dialog publishes changes; anything but an explicit true keeps it locked.
+  let developerMode = false;
+  let developerSettled = false;
+
+  function renderGate() {
+    gate.tabIndex = developerMode ? -1 : 0;
+    gate.title = developerMode ? '' : t('makerworldLocked');
+  }
+  function applyDeveloperMode(enabled) {
+    developerMode = enabled === true;
+    launcher.disabled = !developerMode;
+    if (!developerMode && dialog.open) dialog.close();
+    renderGate();
+  }
 
   function setMessage(target, text, error=false) {
     target.textContent = text;
@@ -182,6 +201,7 @@
     dialog.dir = document.documentElement.dir;
     updateBrowserGuide();
     updateStoreStatus();
+    renderGate();
     if (folderResult) showPreparedFolder(folderResult.folder);
   }
   function showPreparedFolder(folder) {
@@ -226,6 +246,7 @@
     }
   }
   el('integrationsBtn').addEventListener('click',()=>{
+    if(!developerMode)return;
     translate();
     dialog.showModal();
     refreshStatus();
@@ -336,5 +357,16 @@
     }
   });
   for(const lang of ['he','en']) el(lang+'Btn').addEventListener('click',translate);
+  document.addEventListener('slicebridge:developer-mode',event=>{
+    developerSettled=true;
+    applyDeveloperMode(event.detail?.enabled);
+  });
+  async function loadDeveloperMode(){
+    for(let i=0;i<30&&!api()?.GetDeveloperMode;i++)await new Promise(resolve=>setTimeout(resolve,70));
+    let enabled=false;
+    try{enabled=(await api().GetDeveloperMode())===true;}catch{enabled=false;}
+    if(!developerSettled)applyDeveloperMode(enabled);
+  }
   translate();
+  loadDeveloperMode();
 })();
