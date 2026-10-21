@@ -90,13 +90,18 @@ func TestCriticalManufacturerAliasesResolveToExactCatalogueNames(t *testing.T) {
 		t.Fatal("folder names must fold to letters and digits only")
 	}
 	// Bambu folders are excluded from manufacturer lists even though they map.
+	if !excludedVendors["UltiMaker"] || !excludedVendors["Raise3D"] {
+		t.Fatal("irrelevant makers must be excluded from generic Orca associations")
+	}
 	if !excludedVendors["Bambu Lab"] {
 		t.Fatal("Bambu Lab must stay excluded from generic Orca manufacturers")
 	}
 }
 
 func TestManufacturerSlicerCoverageAndStableIDs(t *testing.T) {
-	want := []string{"prusa-slicer", "bambu-studio", "orca-slicer", "elegoo-slicer", "qidi-studio", "snapmaker-orca", "flash-studio"}
+	want := []string{"prusa-slicer", "bambu-studio", "orca-slicer", "elegoo-slicer", "qidi-studio", "snapmaker-orca", "flash-studio",
+		"creality-print", "anycubic-slicer-next", "sovol-slicer", "flsun-slicer", "flashprint", "qidi-slicer", "snapmaker-luban",
+		"ankermake-studio", "artillery-slicer", "voxelmaker", "ratos-slicer", "lulzbot-cura", "creality-slicer", "anycubic-slicer", "dremel-digilab"}
 	items := detectManufacturerSlicers("plan9", hostManufacturerFS{}, "", "", "", "", "")
 	if len(items) != len(want) {
 		t.Fatalf("coverage changed: want %d slicers, got %d", len(want), len(items))
@@ -322,4 +327,50 @@ func TestMacBundlesNeedInfoPlistAndUserApplicationsCount(t *testing.T) {
 	if f := byID["flash-studio"]; !f.Installed {
 		t.Fatalf("user-level Flash Studio Desktop bundle not detected: %+v", f)
 	}
+}
+
+func TestPopularManufacturerSlicerCoverageWindows(t *testing.T) {
+  pf := t.TempDir()
+  bins := []struct {
+    path string
+    id string
+    maker string
+  }{
+    {filepath.Join(pf,"CrealityPrint","CrealityPrint.exe"),"creality-print","Creality"},
+    {filepath.Join(pf,"AnycubicSlicerNext","AnycubicSlicerNext.exe"),"anycubic-slicer-next","Anycubic"},
+    {filepath.Join(pf,"SovolSlicer","SovolSlicer.exe"),"sovol-slicer","Sovol"},
+    {filepath.Join(pf,"FLSUNSlicer","FLSUNSlicer.exe"),"flsun-slicer","FLSun"},
+    {filepath.Join(pf,"FlashPrint","FlashPrint.exe"),"flashprint","Flashforge"},
+    {filepath.Join(pf,"VoxelMaker","VoxelMaker.exe"),"voxelmaker","Voxelab"},
+    {filepath.Join(pf,"QIDISlicer","QIDISlicer.exe"),"qidi-slicer","QIDI"},
+  }
+  for _, b := range bins {
+    writeManufacturerFile(t,b.path,"MZ")
+  }
+  detected:=itemsByID(detectManufacturerSlicers("windows",hostManufacturerFS{},pf,"","","",""))
+  for _, b:=range bins {
+    item:=detected[b.id]
+    if !item.Installed || item.Evidence!="application" || !strings.Contains(strings.Join(item.Manufacturers,"|"),b.maker) {
+       t.Errorf("%s manufacturer %s was not detected: %+v",b.id,b.maker,item)
+    }
+  }
+  for _, item:=range detected {
+     if strings.Contains(strings.Join(item.Manufacturers,"|"),"UltiMaker") || strings.Contains(strings.Join(item.Manufacturers,"|"),"Raise3D") {
+       t.Fatalf("Excluded manufacturers leaked into slicer list: %+v",item)
+     }
+  }
+}
+func TestCrealityPrintMacBundleAndAnycubicAlternativeWindowsPaths(t *testing.T) {
+ apps:=t.TempDir()
+ writeManufacturerFile(t,filepath.Join(apps,"CrealityPrint.app","Contents","Info.plist"),"<plist/>")
+ mac:=itemsByID(detectManufacturerSlicers("darwin",hostManufacturerFS{},"","","",apps,""))
+ if !mac["creality-print"].Installed || mac["creality-print"].Evidence!="application" {
+   t.Fatalf("CrealityPrint macOS bundle not detected: %+v",mac["creality-print"])
+ }
+ pf:=t.TempDir()
+ writeManufacturerFile(t,filepath.Join(pf,"Anycubic Slicer Next","AnycubicSlicerNext.exe"),"MZ")
+ win:=itemsByID(detectManufacturerSlicers("windows",hostManufacturerFS{},pf,"","","",""))
+ if !win["anycubic-slicer-next"].Installed {
+   t.Fatalf("Anycubic Slicer Next alternate path not detected: %+v",win["anycubic-slicer-next"])
+ }
 }
