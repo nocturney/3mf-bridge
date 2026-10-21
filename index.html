@@ -9,6 +9,7 @@
       --bg: #f7f6f2;
       --surface: #fbfbf9;
       --surface-2: #f3f0ec;
+      --surface-3: #edeae5;
       --border: #d4d1ca;
       --text: #28251d;
       --muted: #7a7974;
@@ -16,9 +17,10 @@
       --primary-hover: #0c4e54;
       --success: #2e5c10;
       --warning: #964219;
-      --radius: 18px;
-      --radius-sm: 12px;
-      --shadow: 0 16px 40px rgba(26, 24, 20, 0.08);
+      --error: #a12c7b;
+      --radius: 20px;
+      --radius-sm: 14px;
+      --shadow: 0 18px 45px rgba(24, 22, 18, 0.08);
     }
 
     * {
@@ -31,14 +33,12 @@
       font-family: "Segoe UI", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 24px;
     }
 
-    .app {
-      width: min(920px, 100%);
+    .shell {
+      width: min(980px, 100%);
+      margin: 0 auto;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -47,7 +47,7 @@
     }
 
     .header {
-      padding: 28px 32px 18px;
+      padding: 30px 32px 20px;
       border-bottom: 1px solid var(--border);
       background: linear-gradient(to bottom, #fcfcfa, #f8f6f2);
     }
@@ -68,38 +68,57 @@
       margin: 12px 0 0;
       color: var(--muted);
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.7;
+      max-width: 70ch;
     }
 
     .content {
       padding: 28px 32px 32px;
       display: grid;
-      gap: 24px;
+      gap: 20px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px;
     }
 
     .dropzone {
-      border: 2px dashed #b9b4aa;
+      border: 2px dashed #bdb7ac;
       border-radius: var(--radius);
       background: var(--surface-2);
       padding: 36px 24px;
       text-align: center;
+      transition: 160ms ease;
+    }
+
+    .dropzone.dragover {
+      border-color: var(--primary);
+      background: #eef5f4;
+      transform: translateY(-1px);
     }
 
     .dropzone h2 {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       font-size: 24px;
     }
 
     .dropzone p {
-      margin: 0 0 20px;
+      margin: 0 0 18px;
       color: var(--muted);
-      font-size: 15px;
+      line-height: 1.7;
     }
 
-    .actions {
+    .actions,
+    .footer-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+    }
+
+    .actions {
       justify-content: center;
     }
 
@@ -110,6 +129,12 @@
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
+      transition: 160ms ease;
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
     }
 
     .primary {
@@ -117,7 +142,7 @@
       color: white;
     }
 
-    .primary:hover {
+    .primary:hover:not(:disabled) {
       background: var(--primary-hover);
     }
 
@@ -127,24 +152,25 @@
       border: 1px solid var(--border);
     }
 
-    .filebox,
-    .targets,
-    .status {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 18px 18px 16px;
+    .secondary:hover:not(:disabled) {
+      background: #f9f8f5;
     }
 
     .section-title {
-      margin: 0 0 14px;
+      margin: 0 0 12px;
       font-size: 18px;
     }
 
     .file-meta {
       color: var(--muted);
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.8;
+      word-break: break-word;
+      white-space: pre-line;
+    }
+
+    .file-meta strong {
+      color: var(--text);
     }
 
     .target-grid {
@@ -159,15 +185,17 @@
       gap: 12px;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 14px 14px;
+      padding: 14px;
       background: #fff;
       cursor: pointer;
+      user-select: none;
     }
 
     label.option input {
       width: 18px;
       height: 18px;
       accent-color: var(--primary);
+      flex: 0 0 auto;
     }
 
     .status-list {
@@ -176,19 +204,161 @@
       list-style: none;
       display: grid;
       gap: 10px;
+    }
+
+    .status-item {
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--surface-2);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .status-item.muted {
       color: var(--muted);
     }
 
-    .footer-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: flex-start;
-      flex-wrap: wrap;
+    .status-item.success {
+      background: #edf5e8;
+      color: var(--success);
     }
 
-    .note {
+    .status-item.warning {
+      background: #f8eee8;
+      color: var(--warning);
+    }
+
+    .status-item.error {
+      background: #f8eaf2;
+      color: var(--error);
+    }
+
+    .hint {
       font-size: 13px;
       color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* On desktop, arrange the workflow in two short rows instead of one tall column. */
+    @media (min-width: 840px) {
+      body {
+        padding: 12px 16px;
+      }
+
+      .header {
+        padding: 18px 24px 14px;
+      }
+
+      .eyebrow {
+        margin-bottom: 4px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .subtitle {
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: none;
+      }
+
+      .content {
+        padding: 16px 20px 18px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      #dropzone {
+        grid-column: 1;
+        grid-row: 1;
+        display: grid;
+        align-content: center;
+        padding: 16px;
+      }
+
+      #sourcePanel {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      #targetsPanel {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      #statusPanel {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      #mainActions {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        justify-content: center;
+      }
+
+      #footerHint {
+        grid-column: 1 / -1;
+        grid-row: 4;
+      }
+
+      .panel {
+        padding: 12px 14px;
+      }
+
+      .dropzone h2 {
+        margin-bottom: 4px;
+        font-size: 21px;
+      }
+
+      .dropzone p {
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      button {
+        padding: 10px 18px;
+      }
+
+      .section-title {
+        margin-bottom: 8px;
+        font-size: 17px;
+      }
+
+      .file-meta {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .target-grid {
+        gap: 8px;
+      }
+
+      label.option {
+        padding: 10px;
+        gap: 8px;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.25;
+      }
+
+      .status-list {
+        gap: 8px;
+      }
+
+      .status-item {
+        padding: 9px 11px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .hint {
+        font-size: 12px;
+        line-height: 1.4;
+      }
     }
 
     @media (max-width: 720px) {
@@ -209,8 +379,8 @@
         grid-template-columns: 1fr;
       }
 
-      .footer-actions,
-      .actions {
+      .actions,
+      .footer-actions {
         flex-direction: column;
       }
 
@@ -221,61 +391,233 @@
   </style>
 </head>
 <body>
-  <main class="app">
+  <main class="shell">
     <section class="header">
-      <p class="eyebrow">3MF Bridge / MVP</p>
+      <p class="eyebrow">3MF Bridge / Desktop MVP</p>
       <h1>המרת קובצי Bambu 3MF למדפסות יעד</h1>
       <p class="subtitle">
-        גרור קובץ 3MF, בחר את מדפסות היעד, והמערכת תיצור קבצים מותאמים עם קידומת בשם הקובץ.
+        בחר או גרור קובץ 3MF, סמן את מדפסות היעד, והמערכת תיצור עותקי פלט בתיקיית המקור
+        עם קידומת מתאימה לכל מדפסת, בלי לדרוס קבצים קיימים.
       </p>
     </section>
 
     <section class="content">
-      <div class="dropzone">
+      <section id="dropzone" class="dropzone">
         <h2>גרור לכאן קובץ 3MF</h2>
-        <p>או בחר קובץ ידנית. בשלב זה זהו ממשק MVP בלבד.</p>
+        <p>או לחץ על הכפתור לבחירה ידנית של קובץ Bambu 3MF.</p>
         <div class="actions">
-          <button class="primary" type="button">בחירת קובץ</button>
-          <button class="secondary" type="button">הדגמת המרה</button>
+          <button id="pickFileBtn" class="primary" type="button">בחירת קובץ</button>
         </div>
-      </div>
+      </section>
 
-      <div class="filebox">
+      <section id="sourcePanel" class="panel">
         <h3 class="section-title">קובץ מקור</h3>
-        <div class="file-meta">
-          עדיין לא נבחר קובץ.<br />
-          לאחר הבחירה יוצגו כאן שם הקובץ, מיקום וגודל.
+        <div id="fileMeta" class="file-meta">
+          עדיין לא נבחר קובץ.
         </div>
-      </div>
+      </section>
 
-      <div class="targets">
+      <section id="targetsPanel" class="panel">
         <h3 class="section-title">מדפסות יעד</h3>
         <div class="target-grid">
-          <label class="option"><input type="checkbox" /> <span>Snapmaker U1</span></label>
-          <label class="option"><input type="checkbox" /> <span>Flashforge Creator 5</span></label>
-          <label class="option"><input type="checkbox" /> <span>ELEGOO CC2</span></label>
-          <label class="option"><input type="checkbox" /> <span>QIDI Plus5</span></label>
+          <label class="option"><input type="checkbox" value="u1" /> <span>Snapmaker U1</span></label>
+          <label class="option"><input type="checkbox" value="c5" disabled /> <span data-target-name="c5">Flashforge Creator 5 — בודק פרופיל...</span></label>
+          <label class="option"><input type="checkbox" value="cc2" disabled /> <span data-target-name="cc2">ELEGOO CC2 — בודק פרופיל...</span></label>
+          <label class="option"><input type="checkbox" value="qidi" disabled /> <span data-target-name="qidi">QIDI Plus5 — בודק פרופיל...</span></label>
         </div>
+      </section>
+
+      <div id="mainActions" class="footer-actions">
+        <button id="convertBtn" class="primary" type="button">המרת הקובץ</button>
+        <button id="openFolderBtn" class="secondary" type="button" disabled>פתיחת תיקיית פלט</button>
       </div>
 
-      <div class="footer-actions">
-        <button class="primary" type="button">המרת הקובץ</button>
-        <button class="secondary" type="button">פתיחת תיקיית פלט</button>
-      </div>
-
-      <div class="status">
+      <section id="statusPanel" class="panel">
         <h3 class="section-title">סטטוס</h3>
-        <ul class="status-list">
-          <li>ממתין לבחירת קובץ.</li>
-          <li>ממתין לבחירת יעד אחד לפחות.</li>
-          <li>המרה אמיתית תחובר בשלב הבא.</li>
+        <ul id="statusList" class="status-list">
+          <li class="status-item muted">ממתין לבחירת קובץ.</li>
+          <li class="status-item muted">ממתין לבחירת יעד אחד לפחות.</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="note">
-        הגרסה הנוכחית היא מעטפת UI ראשונית בלבד. בשלב הבא נחבר בחירת קובץ, גישה לתיקייה והמרה אמיתית.
+      <div id="footerHint" class="hint">
+        כל המרה מבוצעת באופן מקומי ויוצרת פרויקט נפרד עם פרופיל מדפסת אמיתי.
+        עבור C5, CC2 ו-QIDI נדרשת התקנה מקומית של סלייסר היעד ופרופילי היצרן.
+        גרסאות אלו הן ניסיוניות: יש לפתוח כל פלט בסלייסר שלו, לבדוק חומרים והגדרות ולבצע Slicing לפני הדפסה.
       </div>
     </section>
   </main>
+
+  <script>
+    const pickFileBtn = document.getElementById('pickFileBtn');
+    const convertBtn = document.getElementById('convertBtn');
+    const openFolderBtn = document.getElementById('openFolderBtn');
+    const fileMeta = document.getElementById('fileMeta');
+    const statusList = document.getElementById('statusList');
+    const dropzone = document.getElementById('dropzone');
+
+    let selectedFile = null;
+
+    function renderFileMeta(file) {
+      if (!file) {
+        fileMeta.textContent = 'עדיין לא נבחר קובץ.';
+        return;
+      }
+
+      fileMeta.textContent = ['שם: ' + file.name, 'מיקום: ' + file.folder, 'גודל: ' + file.sizeLabel].join('\n');
+    }
+
+    function setStatus(items) {
+      statusList.innerHTML = '';
+
+      for (const item of items) {
+        const li = document.createElement('li');
+        li.className = `status-item ${item.type || 'muted'}`;
+        li.textContent = item.text;
+        statusList.appendChild(li);
+      }
+    }
+
+    function getSelectedTargets() {
+      return Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+        .map((el) => el.value);
+    }
+
+    async function refreshTargetAvailability() {
+      const labels = {
+        c5: 'Flashforge Creator 5',
+        cc2: 'ELEGOO CC2',
+        qidi: 'QIDI Plus5'
+      };
+      try {
+        const states = await window.bridgeApi.getTargetAvailability();
+        for (const state of states) {
+          if (!labels[state.target]) continue;
+          const box = document.querySelector('input[value="' + state.target + '"]');
+          const span = document.querySelector('[data-target-name="' + state.target + '"]');
+          box.disabled = !state.available;
+          span.textContent = labels[state.target] +
+            (state.available ? ' — פרופיל מקומי זמין (ניסיוני)' : ' — דרוש פרופיל סלייסר');
+          span.title = state.available ? state.slicer : state.error;
+        }
+      } catch (error) {
+        setStatus([{ type: 'error', text: 'לא ניתן לאתר פרופילי סלייסרים: ' + error.message }]);
+      }
+    }
+
+    window.bridgeLayoutReady = refreshTargetAvailability();
+
+    async function handlePickedFile(file) {
+      selectedFile = file;
+      openFolderBtn.disabled = true;
+      renderFileMeta(file);
+      setStatus([
+        { type: 'success', text: `נבחר קובץ: ${file.name}` },
+        { type: 'muted', text: 'כעת בחר מדפסת יעד אחת לפחות והפעל המרה.' }
+      ]);
+    }
+
+    pickFileBtn.addEventListener('click', async () => {
+      const result = await window.bridgeApi.pick3mfFile();
+      if (result.canceled) return;
+      await handlePickedFile(result.file);
+    });
+
+    dropzone.addEventListener('dragover', (event) => {
+      event.preventDefault();
+      dropzone.classList.add('dragover');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('dragover');
+    });
+
+    dropzone.addEventListener('drop', async (event) => {
+      event.preventDefault();
+      dropzone.classList.remove('dragover');
+
+      const files = event.dataTransfer.files;
+      if (!files || !files.length) return;
+
+      const dropped = files[0];
+      const droppedPath = window.bridgeApi.getDroppedFilePath(dropped);
+      if (!droppedPath) {
+        setStatus([{ type: 'error', text: 'לא ניתן לקבל את נתיב הקובץ שנגרר.' }]);
+        return;
+      }
+      const result = await window.bridgeApi.inspectDroppedFile(droppedPath);
+
+      if (!result.ok) {
+        setStatus([{ type: 'error', text: result.error }]);
+        return;
+      }
+
+      await handlePickedFile(result.file);
+    });
+
+    convertBtn.addEventListener('click', async () => {
+      const targets = getSelectedTargets();
+
+      if (!selectedFile) {
+        setStatus([{ type: 'error', text: 'יש לבחור קובץ 3MF לפני ההמרה.' }]);
+        return;
+      }
+
+      if (!targets.length) {
+        setStatus([{ type: 'error', text: 'יש לבחור לפחות מדפסת יעד אחת.' }]);
+        return;
+      }
+
+      convertBtn.disabled = true;
+      setStatus([{ type: 'muted', text: 'ממיר קובץ, נא להמתין...' }]);
+
+      try {
+        const result = await window.bridgeApi.convert3mf({
+          filePath: selectedFile.path,
+          targets
+        });
+
+        const items = [];
+        if (result.results && result.results.length > 0) {
+          items.push({
+            type: 'success',
+            text: `נוצרו ${result.results.length} פרויקטים בתיקיית המקור.`
+          });
+          for (const entry of result.results) {
+            items.push({
+              type: 'success',
+              text: `המרה הושלמה: ${entry.outputName}`
+            });
+          }
+          items.push({
+            type: 'warning',
+            text: 'לכל יעד: פתח את הקובץ בסלייסר המתאים, בדוק חומרים ובצע Slice לפני הדפסה.'
+          });
+        }
+        for (const failure of result.failures || []) {
+          items.push({
+            type: 'error',
+            text: `${failure.target.toUpperCase()}: ${failure.error} (${failure.code})`
+          });
+        }
+        if (!result.ok && items.length === 0) {
+          items.push({ type: 'error', text: result.error || 'ההמרה נכשלה.' });
+        }
+        setStatus(items);
+        openFolderBtn.disabled = !(result.results && result.results.length > 0);
+      } catch (error) {
+        setStatus([{ type: 'error', text: error.message || 'אירעה שגיאה לא צפויה.' }]);
+      } finally {
+        convertBtn.disabled = false;
+      }
+    });
+
+    openFolderBtn.addEventListener('click', async () => {
+      const result = await window.bridgeApi.openOutputFolder();
+      if (!result.ok) {
+        setStatus([{ type: 'error', text: result.error || 'לא ניתן לפתוח את תיקיית הפלט.' }]);
+      }
+    });
+  </script>
 </body>
 </html>

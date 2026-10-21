@@ -1,8 +1,10 @@
 node_modules/
 dist/
 out/
+bin/
 *.log
+*.tmp
+tests/fixtures/U1-*.3mf
 
-# Python test artifacts
 __pycache__/
 *.pyc

@@ -1,0 +1,79 @@
+name: Windows portable beta
+
+on:
+  push:
+    branches: [feature/real-3mf-engine]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout with pinned conversion engine
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: engine/go.mod
+          cache: false
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Test Go converter and build executable
+        shell: pwsh
+        run: ./scripts/build-engine.ps1
+
+      - name: Install Electron packaging dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Verify Electron runtime installation
+        shell: pwsh
+        run: |
+          if (-not (Test-Path '.\node_modules\electron\dist\electron.exe')) {
+            throw 'Electron runtime missing; root npm postinstall did not complete'
+          }
+
+      - name: Test Electron IPC and window geometry
+        run: npm test
+
+      - name: Smoke-test Electron auto-fit on Windows
+        shell: pwsh
+        run: |
+          $output = & .\node_modules\electron\dist\electron.exe .\tests\electron-fit-smoke.js 2>&1 | Out-String
+          Write-Output $output
+          if ($LASTEXITCODE -ne 0 -or $output -notmatch 'ELECTRON_FIT_SMOKE .*"fits":true') {
+            throw "Electron window did not fit the available display or the smoke test did not run"
+          }
+
+      - name: Create Windows portable app
+        run: npm run package:win
+
+      - name: Validate packaged native engine and make zip
+        shell: pwsh
+        run: |
+          $folder = Get-ChildItem -Path dist -Directory | Select-Object -First 1
+          if (-not $folder) { throw "No packaged application found" }
+          if (-not (Test-Path (Join-Path $folder.FullName 'resources/bin/bridge-core.exe'))) {
+            throw "Native engine is missing from packaged app"
+          }
+          Compress-Archive -Path (Join-Path $folder.FullName '*') -DestinationPath 'dist/3MF-Bridge-Windows-portable.zip' -CompressionLevel Optimal -Force
+
+      - name: Publish Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: 3mf-bridge-windows-portable
+          path: dist/3MF-Bridge-Windows-portable.zip
+          if-no-files-found: error
+          retention-days: 14
