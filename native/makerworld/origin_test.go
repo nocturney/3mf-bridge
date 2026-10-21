@@ -42,6 +42,24 @@ func TestWindowsZoneIdentifier(t *testing.T) {
 	}
 }
 
+func TestWindowsADSReadIsBounded(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "Zone.Identifier")
+	tooLarge := []byte(strings.Repeat("x", 65536))
+	if err := os.WriteFile(path, tooLarge, 0600); err != nil {
+		t.Fatal(err)
+	}
+	data, err := readLimitedADS(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(data) != 32*1024+1 {
+		t.Fatalf("oversized Windows ADS read %d bytes, wanted 32769", len(data))
+	}
+	if out := fromWindowsADS(data); out.Kind != "unknown" {
+		t.Fatalf("truncated unsafe ADS was trusted: %+v", out)
+	}
+}
+
 func TestMacWhereFrom(t *testing.T) {
 	data := `(
   "https://public-cdn.bblmw.com/example.3mf?token=PRIVATE",

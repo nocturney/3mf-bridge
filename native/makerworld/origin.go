@@ -6,6 +6,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"io"
 	"net"
 	"net/url"
 	"os"
@@ -77,6 +78,17 @@ func Identify(referrer, host string) Source {
 	}
 	return Source{Kind: "unknown", Confidence: "unknown"}
 }
+// readLimitedADS bounds the memory cost of even a malformed or malicious
+// NTFS Zone.Identifier stream before handing its bytes to the parser.
+func readLimitedADS(path string) ([]byte, error) {
+	stream, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer stream.Close()
+	return io.ReadAll(io.LimitReader(stream, 32*1024+1))
+}
+
 func fromWindowsADS(data []byte) Source {
 	if len(data) > 32*1024 {
 		return Source{Kind: "unknown", Confidence: "unknown"}
@@ -129,7 +141,7 @@ func Detect(path string) Source {
 	switch runtime.GOOS {
 	case "windows":
 		// ADS path is read-only. It can be missing on copies/non-NTFS volumes.
-		data, err := os.ReadFile(path + ":Zone.Identifier")
+		data, err := readLimitedADS(path + ":Zone.Identifier")
 		if err != nil {
 			return none
 		}
