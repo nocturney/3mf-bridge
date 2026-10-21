@@ -28,7 +28,7 @@ I put SliceBridge together using existing solutions and AI assistance, adapted t
 
 ---
 
-<sub><strong>Development builds available / גרסאות פיתוח להורדה:</strong> [GitHub Releases](https://github.com/nocturney/slicebridge/releases). Experimental builds, not stable releases; some are unsigned. Check printer and slicer settings before printing. [Current source](https://github.com/nocturney/slicebridge/tree/main) · [Printer catalogue roadmap](https://github.com/nocturney/slicebridge/issues/7).</sub>
+<sub><strong>Development builds available / גרסאות פיתוח להורדה:</strong> [GitHub Releases](https://github.com/nocturney/slicebridge/releases). Experimental builds, not stable releases; some are unsigned. Check printer and slicer settings before printing. [Current source](https://github.com/nocturney/slicebridge/tree/main) · [Printer catalogue details](catalog/README.md).</sub>
 
 **Open source:** [GPL-3.0-only](LICENSE) for covered project-owned code · [License scope & rights](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md).
 

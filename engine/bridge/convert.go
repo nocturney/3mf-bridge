@@ -35,47 +35,47 @@ func ErrorCode(err error) string {
 // of another source color and material, never by nearest-color substitution.
 // Projects with <= four IDs retain their established, injective mapping.
 func sourceSlotPlan(filaments []converter.Filament, maxSlots int) ([]converter.Slot, map[int]int, []converter.Filament, int, error) {
-    if len(filaments) == 0 || maxSlots <= 0 {
-        return nil, nil, nil, 0, fmt.Errorf("source has no usable material slots")
-    }
-    type identity struct {
-        color string
-        material string
-    }
-    slots := make([]converter.Slot, 0, maxSlots)
-    mapped := make(map[int]int, len(filaments))
-    unique := make([]converter.Filament, 0, maxSlots)
-    seen := make(map[identity]int)
-    compact := len(filaments) > maxSlots
-    for _, filament := range filaments {
-        if filament.ID <= 0 {
-            return nil, nil, nil, 0, fmt.Errorf("invalid source filament ID %d", filament.ID)
-        }
-        if _, duplicate := mapped[filament.ID]; duplicate {
-            return nil, nil, nil, 0, fmt.Errorf("repeated source filament ID %d", filament.ID)
-        }
-        key := identity{color: strings.ToUpper(filament.Color), material: filament.Type}
-        if compact {
-            if slot, exists := seen[key]; exists {
-                mapped[filament.ID] = slot
-                continue
-            }
-        }
-        if len(slots) >= maxSlots {
-            return nil, nil, nil, 0, fmt.Errorf(
-                "source has %d slots with more than %d distinct color/material combinations; refusing to merge different materials or colors",
-                len(filaments), maxSlots)
-        }
-        slot := len(slots)+1
-        seen[key] = slot
-        mapped[filament.ID] = slot
-        slots = append(slots, converter.Slot{
-            Color: filament.Color, Type: filament.Type,
-            Support: converter.IsSupportType(filament.Type, ""),
-        })
-        unique = append(unique, filament)
-    }
-    return slots, mapped, unique, len(filaments)-len(unique), nil
+	if len(filaments) == 0 || maxSlots <= 0 {
+		return nil, nil, nil, 0, fmt.Errorf("source has no usable material slots")
+	}
+	type identity struct {
+		color    string
+		material string
+	}
+	slots := make([]converter.Slot, 0, maxSlots)
+	mapped := make(map[int]int, len(filaments))
+	unique := make([]converter.Filament, 0, maxSlots)
+	seen := make(map[identity]int)
+	compact := len(filaments) > maxSlots
+	for _, filament := range filaments {
+		if filament.ID <= 0 {
+			return nil, nil, nil, 0, fmt.Errorf("invalid source filament ID %d", filament.ID)
+		}
+		if _, duplicate := mapped[filament.ID]; duplicate {
+			return nil, nil, nil, 0, fmt.Errorf("repeated source filament ID %d", filament.ID)
+		}
+		key := identity{color: strings.ToUpper(filament.Color), material: filament.Type}
+		if compact {
+			if slot, exists := seen[key]; exists {
+				mapped[filament.ID] = slot
+				continue
+			}
+		}
+		if len(slots) >= maxSlots {
+			return nil, nil, nil, 0, fmt.Errorf(
+				"source has %d slots with more than %d distinct color/material combinations; refusing to merge different materials or colors",
+				len(filaments), maxSlots)
+		}
+		slot := len(slots) + 1
+		seen[key] = slot
+		mapped[filament.ID] = slot
+		slots = append(slots, converter.Slot{
+			Color: filament.Color, Type: filament.Type,
+			Support: converter.IsSupportType(filament.Type, ""),
+		})
+		unique = append(unique, filament)
+	}
+	return slots, mapped, unique, len(filaments) - len(unique), nil
 }
 
 // Convert keeps the original validated U1 entrypoint for compatibility.
@@ -238,24 +238,24 @@ func ConvertWithTargetNozzle(source, destination, target, profileFile, requested
 			"%d redundant source filament slots were coalesced because their colors and material types match exactly; review spool assignments.", folded))
 	}
 	return map[string]any{
-		"ok":                          true,
-		"target":                      target,
-		"output":                      dst,
-		"engine":                      "bl2std",
-		"source_nozzle":               sourceNozzle.Nozzle,
-		"source_nozzle_source":        sourceNozzle.Source,
-		"source_nozzle_assumed":       sourceNozzle.Assumed,
-		"target_nozzle":               targetNozzle,
-		"nozzle_remapped":             sourceNozzle.Nozzle != targetNozzle,
-		"nozzle_selected_by_user":    requestedNozzle != "",
-		"source_filament_slots":       len(insp.Filaments),
-		"target_filament_slots_used":   len(slots),
+		"ok":                               true,
+		"target":                           target,
+		"output":                           dst,
+		"engine":                           "bl2std",
+		"source_nozzle":                    sourceNozzle.Nozzle,
+		"source_nozzle_source":             sourceNozzle.Source,
+		"source_nozzle_assumed":            sourceNozzle.Assumed,
+		"target_nozzle":                    targetNozzle,
+		"nozzle_remapped":                  sourceNozzle.Nozzle != targetNozzle,
+		"nozzle_selected_by_user":          requestedNozzle != "",
+		"source_filament_slots":            len(insp.Filaments),
+		"target_filament_slots_used":       len(slots),
 		"identical_source_slots_coalesced": folded,
-		"source_to_target_slot_map":    mapping,
-		"geometry_vertices":           after.vertices,
-		"geometry_triangles":          after.triangles,
-		"removed_slice_cache_entries": removed,
-		"preserved_print_keys":        preserved,
-		"warnings":                    warnings,
+		"source_to_target_slot_map":        mapping,
+		"geometry_vertices":                after.vertices,
+		"geometry_triangles":               after.triangles,
+		"removed_slice_cache_entries":      removed,
+		"preserved_print_keys":             preserved,
+		"warnings":                         warnings,
 	}, nil
 }

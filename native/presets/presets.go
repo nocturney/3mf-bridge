@@ -101,13 +101,14 @@ func Variant(target, source string) (string, string, string, map[string]string, 
 	}
 	return nozzle, machine, process, materials, nil
 }
+
 // Candidates and ResolveSlicer use the same ordered location inventory.
 func Candidates(target string) []string {
-    paths := []string{}
-    for _, loc := range slicerLocations(target) {
-        paths = append(paths, loc.root)
-    }
-    return paths
+	paths := []string{}
+	for _, loc := range slicerLocations(target) {
+		paths = append(paths, loc.root)
+	}
+	return paths
 }
 func FindRoot(target string) (string, error) {
 	spec, ok := Specs[target]

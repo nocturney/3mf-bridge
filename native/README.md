@@ -1,11 +1,10 @@
 # SliceBridge Native (Wails / Go)
 
-3MF Bridge Native replaces Electron with native OS webviews:
+SliceBridge Native is the primary desktop app and uses native OS webviews:
 - Windows 10/11: Microsoft Edge WebView2 Runtime (installed in Windows 11 and verified on Chris)
 - macOS: system WKWebView / WebKit
 
-This project lives on its own `feature/native-webview-shell` branch and
-preserves Electron Beta 2 on `feature/real-3mf-engine`.
+The Wails desktop app is merged into `main`; older Electron code remains in the source tree as a legacy prototype.
 
 **Single Go executable**: no Electron/Chromium payload, no Node.js runtime
 in production, no external 3MF converter binary. English and Hebrew are the
@@ -96,8 +95,7 @@ printers with the original Electron app and a single four-printer operation.
 The native-Wails rewrite reuses the **same Go conversion implementation**
 but reimplements the profile filesystem resolver. Treat Wails GUI and macOS
 native-runtime smoke as independent QA tasks. No physical print validation
-is claimed. Do not merge the stacked PR until native platform builds and
-owner smoke QA pass.
+is claimed. Publish future native binaries only after exact-version Windows/macOS CI and representative QA.
 
 ## Upstream
 
