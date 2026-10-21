@@ -198,3 +198,22 @@ test('brand banner keeps just the short first headline',()=>{
   assert.match(html,/DIFFERENT SLICERS\.<br>ONE SIMPLE WORKFLOW\./);
   assert.doesNotMatch(html,new RegExp(['A STRONGER','COMMUNITY'].join(' '),'i'));
 });
+
+test('installed Orca profiles join the target list via backend-issued IDs only',()=>{
+  const html=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const js=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.js'),'utf8');
+  const batch=fs.readFileSync(path.resolve(__dirname,'../batch.go'),'utf8');
+  const backend=fs.readFileSync(path.resolve(__dirname,'../presets/orca.go'),'utf8');
+  // The four built-in rows stay the only static adapters in the HTML.
+  assert.equal((html.match(/data-target-row="/g)||[]).length,4);
+  // Installed rows are appended to the same list that conversion reads.
+  assert.match(js,/api\(\)\?\.InstalledOrcaTargets/);
+  assert.match(js,/installedRows\.push\(\{id:target\.id,row,checkbox\}\)/);
+  assert.match(js,/#targetList input\[type=checkbox\]:checked:not\(:disabled\)/);
+  assert.match(js,/printerNames\[id\]\|\|installedTargets\.find/);
+  // Frontend never sends or receives installed-profile paths.
+  assert.doesNotMatch(js,/target\.(path|root|file|executable)\b/);
+  assert.match(backend,/func IsOrcaTargetID\(id string\) bool/);
+  assert.match(batch,/presets\.IsOrcaTargetID\(target\)/);
+  assert.match(batch,/presets\.ResolveOrcaBundle\(target\)/);
+});
