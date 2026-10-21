@@ -99,8 +99,11 @@ jobs:
           foreach ($old in @('build/bin/slicebridge-prusa-engine.exe', 'build/bin/panda2prusa-LICENSE.txt', 'build/bin/SliceBridge-Windows.zip')) {
             if (Test-Path $old) { throw "Unexpected separate Windows release file: $old" }
           }
-          & $exe '--verify-bundled-prusa'
-          if ($LASTEXITCODE -ne 0) { throw 'Actual Windows app failed embedded Prusa extraction probe' }
+          # Wails sets the Windows GUI subsystem; PowerShell's direct '& exe'
+          # does not reliably assign LASTEXITCODE for GUI apps.
+          $probe = Start-Process -FilePath (Resolve-Path $exe).Path -ArgumentList '--verify-bundled-prusa' -Wait -PassThru
+          Write-Output "Embedded Prusa probe exit code: $($probe.ExitCode)"
+          if ($probe.ExitCode -ne 0) { throw 'Actual Windows app failed embedded Prusa extraction probe' }
           $commit = git rev-parse HEAD
           $buildInfo = go version -m $exe | Out-String
           if ($LASTEXITCODE -ne 0 -or !$buildInfo.Contains($commit)) { throw 'Go executable build commit mismatch' }
