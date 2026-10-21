@@ -5,7 +5,7 @@ on:
     paths:
       - VERSION
       - CHANGELOG.md
-      - VERSIONING.md
+      - docs/release/VERSIONING.md
       - tools/check_versioning.py
       - tests/test_versioning.py
       - .github/workflows/versioning.yml
@@ -14,7 +14,7 @@ on:
     paths:
       - VERSION
       - CHANGELOG.md
-      - VERSIONING.md
+      - docs/release/VERSIONING.md
       - tools/check_versioning.py
       - tests/test_versioning.py
       - .github/workflows/versioning.yml
