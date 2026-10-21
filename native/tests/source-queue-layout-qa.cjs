@@ -8,12 +8,20 @@ const {spawnSync}=require('node:child_process');
 const assert=require('node:assert/strict');
 const {pathToFileURL}=require('node:url');
 const src=path.resolve(__dirname,'../frontend/dist');
-const chrome=process.env.CHROME_BIN || (process.platform==='darwin'
-  ?'/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge'
-  :process.platform==='win32'
-    ?'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-    :'/usr/bin/google-chrome');
-if(!fs.existsSync(chrome))throw Error('Chromium browser not available at '+chrome);
+// WebView2 uses Edge on Windows; prefer its Chromium renderer and retain Chrome
+// as a fallback if the runner image has a broken headless browser launch.
+// CHROME_BIN stays strict when explicitly provided (useful for local diagnosis).
+const preferredBrowsers=process.env.CHROME_BIN?[process.env.CHROME_BIN]:
+  process.platform==='win32'?[
+    'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+    'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+  ]:process.platform==='darwin'
+    ?['/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge']
+    :['/usr/bin/google-chrome'];
+const browsers=[...new Set(preferredBrowsers)].filter(p=>fs.existsSync(p));
+if(!browsers.length)throw Error('No Chromium renderer found: '+preferredBrowsers.join(', '));
+console.log('CHROMIUM_QA_CANDIDATES',browsers.join(' | '));
 
 const original=fs.readFileSync(path.join(src,'index.html'),'utf8');
 const fixtureScript=[
@@ -89,7 +97,7 @@ const fixture=original
  .replace(/<script defer src="\.\/[^"]+"[^>]*><\/script>/g,'')
  .replace('</body>','<script>'+fixtureScript+'</script></body>');
 const markerDir=fs.mkdtempSync(path.join(src,'.source-qa-'));
-const browserProfile=fs.mkdtempSync(path.join(os.tmpdir(),'slicebridge-chrome-'));
+const browserProfileRoot=fs.mkdtempSync(path.join(os.tmpdir(),'slicebridge-chromium-'));
 const htmlPath=path.join(markerDir,'fixture.html');
 fs.writeFileSync(htmlPath,fixture,'utf8');
 // Resolve the CSS and icon from the actual frontend dist; do not copy them.
@@ -129,18 +137,47 @@ const trials=process.env.QUEUE_LAYOUT_SINGLE?[[1280,900,Number(process.env.QUEUE
   [720,500,2,'en'],
   [1100,750,0,'he']
 ];
+// The whole geometry suite must pass in a real Chromium renderer. A headless
+// launch failure is not a layout failure: report it and try another installed
+// Chromium binary instead of silently dropping any viewport/assertions.
+let selectedBrowser=0;
+function renderWithChromium(args,url,scenario){
+  const failures=[];
+  for(let i=selectedBrowser;i<browsers.length;i++){
+    const browser=browsers[i];
+    const profile=path.join(browserProfileRoot,'profile-'+i);
+    const p=spawnSync(browser,[...args,'--user-data-dir='+profile,url],{
+      encoding:'utf8',timeout:30000,maxBuffer:8*1024*1024
+    });
+    if(p.status===0){
+      if(i!==selectedBrowser||!fs.existsSync(path.join(browserProfileRoot,'.selected'))){
+        console.log('CHROMIUM_QA_SELECTED',path.basename(browser));
+        fs.writeFileSync(path.join(browserProfileRoot,'.selected'),String(i));
+      }
+      selectedBrowser=i;
+      return p;
+    }
+    const failure={
+      scenario,browser,status:p.status,signal:p.signal,
+      error:p.error?{code:p.error.code,message:p.error.message}:null,
+      stderr:(p.stderr||'').slice(-1200),
+      stdout:(p.stdout||'').slice(-600)
+    };
+    console.error('CHROMIUM_QA_LAUNCH_FAILURE',JSON.stringify(failure));
+    failures.push(failure);
+  }
+  throw Error('No headless Chromium renderer could complete '+scenario+': '+JSON.stringify(failures));
+}
 try{
   for(const [w,h,files,lang] of trials){
     const url=pathToFileURL(htmlPath).href+'?files='+files+'&lang='+lang;
     const args=[
       '--headless=new','--disable-gpu','--disable-extensions',
       '--no-first-run','--no-default-browser-check','--no-sandbox',
-      '--user-data-dir='+browserProfile,
       '--window-size='+w+','+h,
-      '--virtual-time-budget=2500','--dump-dom',url
+      '--virtual-time-budget=2500','--dump-dom'
     ];
-    const p=spawnSync(chrome,args,{encoding:'utf8',timeout:25000,maxBuffer:8*1024*1024});
-    if(p.status!==0)throw Error('Chrome failed: '+p.status+' '+p.stderr.slice(-1500));
+    const p=renderWithChromium(args,url,w+'x'+h+' '+lang+' files='+files);
     const m=p.stdout.match(/data-layout-qa="([^"]+)"/);
     if(!m)throw Error('No computed-geometry report: '+p.stdout.slice(-1000)+' '+p.stderr.slice(-1000));
     const q=JSON.parse(decodeURIComponent(m[1]));
@@ -194,5 +231,5 @@ try{
   }
 }finally{
  fs.rmSync(markerDir,{recursive:true,force:true});
- fs.rmSync(browserProfile,{recursive:true,force:true});
+ fs.rmSync(browserProfileRoot,{recursive:true,force:true,maxRetries:5,retryDelay:100});
 }
