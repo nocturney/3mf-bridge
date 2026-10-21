@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/nocturney/3mf-bridge/native/presets"
@@ -183,5 +184,93 @@ func TestInstalledPreferencesAndFourWayBatch(t *testing.T) {
 				t.Errorf("%s output got nozzle %v not saved 0.4", r.Target, r.Report["target_nozzle"])
 			}
 		}
+	}
+}
+
+func TestInvalidSettingsRecoveryBacksUpOriginalOnlyWithConsent(t *testing.T) {
+	withFreshSettings(t)
+	path, err := settingsPath()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+		t.Fatal(err)
+	}
+	original := []byte("{ definitely not JSON }")
+	if err := os.WriteFile(path, original, 0600); err != nil {
+		t.Fatal(err)
+	}
+	app := &App{}
+	if _, err := app.GetSettings(); err == nil {
+		t.Fatal("invalid settings should fail closed")
+	}
+	if _, err := app.RecoverInvalidSettings(false); err == nil {
+		t.Fatal("recovery without user confirmation was accepted")
+	}
+	if unchanged, err := os.ReadFile(path); err != nil || string(unchanged) != string(original) {
+		t.Fatalf("declined recovery modified settings: %s, %v", unchanged, err)
+	}
+	recovered, err := app.RecoverInvalidSettings(true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if recovered.BackupPath == "" {
+		t.Fatal("original file backup path not returned")
+	}
+	backupBytes, err := os.ReadFile(recovered.BackupPath)
+	if err != nil || string(backupBytes) != string(original) {
+		t.Fatalf("invalid settings not preserved: %s, %v", backupBytes, err)
+	}
+	if recovered.Settings.Version != 1 || recovered.Settings.Printers["u1"].Nozzle != "auto" {
+		t.Fatalf("unexpected recovery settings: %+v", recovered.Settings)
+	}
+	if _, err := app.SavePrinterSettings("u1", PrinterSettings{Nozzle: "0.4", Slicer: "auto"}); err != nil {
+		t.Fatalf("settings unusable after recovery: %v", err)
+	}
+	valid, err := app.RecoverInvalidSettings(true)
+	if err != nil || valid.BackupPath != "" {
+		t.Fatalf("valid settings must not be reset or backed up: %+v %v", valid, err)
+	}
+}
+
+func TestFutureSettingsSchemaRecoveryPreservesOriginal(t *testing.T) {
+	withFreshSettings(t)
+	blob := []byte("{\"version\":99,\"printers\":{}}")
+	path, err := settingsPath()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, blob, 0600); err != nil {
+		t.Fatal(err)
+	}
+	app := &App{}
+	if _, err := app.GetSettings(); err == nil {
+		t.Fatal("unsupported future schema should not be silently reset")
+	}
+	res, err := app.RecoverInvalidSettings(true)
+	if err != nil {
+		t.Fatal(err)
+	}
+	got, err := os.ReadFile(res.BackupPath)
+	if err != nil || string(got) != string(blob) || res.Settings.Version != 1 {
+		t.Fatalf("future-schema backup lost: %+v %s %v", res, got, err)
+	}
+}
+
+func TestAutoNozzleRejectsSavedFilamentPreset(t *testing.T) {
+	withFreshSettings(t)
+	app := &App{}
+	_, err := app.SavePrinterSettings("u1", PrinterSettings{
+		Nozzle: "auto", Slicer: "auto", Filaments: map[string]string{"PLA": "PLA @U1 0.4 nozzle"},
+	})
+	if err == nil || !strings.Contains(err.Error(), "fixed physical nozzle") {
+		t.Fatalf("ambiguous nozzle/preset combination accepted: %v", err)
+	}
+	got, err := app.GetSettings()
+	if err != nil || len(got.Printers["u1"].Filaments) != 0 {
+		t.Fatalf("invalid preset was persisted: %+v %v", got, err)
 	}
 }

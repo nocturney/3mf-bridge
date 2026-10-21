@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/nocturney/3mf-bridge/native/presets"
 	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
@@ -25,6 +26,11 @@ type Settings struct {
 	Version  int                        `json:"version"`
 	Printers map[string]PrinterSettings `json:"printers"`
 	Window   WindowSettings             `json:"window"`
+}
+
+type SettingsRecovery struct {
+	Settings   Settings `json:"settings"`
+	BackupPath string   `json:"backupPath,omitempty"`
 }
 
 func defaultSettings() Settings {
@@ -147,6 +153,45 @@ func writeSettings(settings Settings) error {
 	}
 	return nil
 }
+// RecoverInvalidSettings is an opt-in recovery path for malformed or incompatible
+// settings. It never edits an otherwise valid file and retains the exact bytes
+// of the old file alongside the replacement. The UI must request confirmation.
+func (a *App) RecoverInvalidSettings(confirmed bool) (SettingsRecovery, error) {
+	if !confirmed {
+		return SettingsRecovery{}, fmt.Errorf("settings recovery requires explicit confirmation")
+	}
+	a.settingsMu.Lock()
+	defer a.settingsMu.Unlock()
+
+	if valid, err := loadSettings(); err == nil {
+		return SettingsRecovery{Settings: valid}, nil
+	}
+	path, err := settingsPath()
+	if err != nil {
+		return SettingsRecovery{}, err
+	}
+	info, err := os.Lstat(path)
+	if err != nil {
+		return SettingsRecovery{}, err
+	}
+	if !info.Mode().IsRegular() {
+		return SettingsRecovery{}, fmt.Errorf("settings are not a regular file; recovery refused")
+	}
+	backup := path + ".invalid-" + time.Now().UTC().Format("20060102T150405.000000000") + ".bak"
+	if err := os.Rename(path, backup); err != nil {
+		return SettingsRecovery{}, fmt.Errorf("could not preserve original settings: %w", err)
+	}
+	fresh := defaultSettings()
+	if err := writeSettings(fresh); err != nil {
+		// If no replacement file was created, try to restore the original.
+		if _, checkErr := os.Lstat(path); errors.Is(checkErr, os.ErrNotExist) {
+			_ = os.Rename(backup, path)
+		}
+		return SettingsRecovery{}, fmt.Errorf("settings backup/recovery failed (%s): %w", backup, err)
+	}
+	return SettingsRecovery{Settings: fresh, BackupPath: backup}, nil
+}
+
 func validateSettings(target string, pref PrinterSettings, checkInstalled bool) error {
 	spec, ok := presets.Specs[target]
 	if !ok {
@@ -179,6 +224,16 @@ func validateSettings(target string, pref PrinterSettings, checkInstalled bool) 
 		}
 	}
 	if checkInstalled {
+		// With an automatic nozzle, a source project can select 0.6 mm after
+		// the user saved a vendor filament preset verified only for 0.4 mm.
+		// Require an explicit physical nozzle instead of silently remapping.
+		if pref.Nozzle == "" || pref.Nozzle == "auto" {
+			for _, name := range pref.Filaments {
+				if name != "" {
+					return fmt.Errorf("choose a fixed physical nozzle before saving a filament preset; automatic nozzle follows the source project")
+				}
+			}
+		}
 		// A physical nozzle preference is valid without a slicer installed:
 		// the user can configure their printer in advance. Conversion will
 		// still fail closed if a required native vendor profile is missing.
