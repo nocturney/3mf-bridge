@@ -28,13 +28,13 @@ jobs:
           lock = json.loads(Path("package-lock.json").read_text(encoding="utf-8"))
           assert package["license"] == "GPL-3.0-only"
           assert lock["packages"][""]["license"] == "GPL-3.0-only"
-          required = ["LICENSING.md", "THIRD_PARTY_NOTICES.md", "TRADEMARKS.md", "DISTRIBUTION_CHECKLIST.md"]
+          required = ["docs/legal/LICENSING.md", "docs/legal/THIRD_PARTY_NOTICES.md", "docs/legal/TRADEMARKS.md", "docs/release/DISTRIBUTION_CHECKLIST.md"]
           for name in required:
               assert Path(name).is_file(), "Missing license document: " + name
-          notices = Path("THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8")
+          notices = Path("docs/legal/THIRD_PARTY_NOTICES.md").read_text(encoding="utf-8")
           assert "BryanSmee/bl_to_std" in notices
           assert "NOT redistributed" in notices, "Vendor profile redistribution caveat missing"
-          checklist = Path("DISTRIBUTION_CHECKLIST.md").read_text(encoding="utf-8")
+          checklist = Path("docs/release/DISTRIBUTION_CHECKLIST.md").read_text(encoding="utf-8")
           assert "GPL-3.0-only" in checklist and "matching source" in checklist, "GPL source obligations missing from community guide"
           print("PASS: GPL-3.0-only metadata, third-party notices and community guide")
           PY
