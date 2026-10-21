@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "manufacturer": "IdeaFormer",
+  "models": [
+    {
+      "id": "ideaformer-ideaformer-ir3-v2",
+      "manufacturer": "IdeaFormer",
+      "model": "IdeaFormer IR3 V2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.00.00.06",
+          "manifest": {
+            "path": "resources/profiles/IdeaFormer.json",
+            "sha256": "1ddc573a520954265a4299ca81d69365bb27d2618a14f1fb395bba0ddc767e54"
+          },
+          "model": {
+            "path": "machine/IdeaFormer IR3 V2.json",
+            "sha256": "04a5ad69fca3ca9cbfc90692a2f1c6a77aa68fc71539d99e5e0d481f7d8f4222",
+            "manufacturer_model_id": "IdeaFormer_IR3_V2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

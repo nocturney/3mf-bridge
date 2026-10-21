@@ -15,10 +15,14 @@ Published development builds are listed under [GitHub Releases](https://github.c
 ## [0.4.0-beta.4.dev.8] — 2026-10-21 (planned next development milestone, NOT RELEASED)
 
 - This is a planned next source/build number, not an available download. The latest published pre-release is [v0.4.0-beta.4.dev.7](https://github.com/nocturney/slicebridge/releases/tag/v0.4.0-beta.4.dev.7), built from source 986161df3cdc9485e71bda2bbcd9a4bcd877dab7 on October 20, 2026.
-- PRs #1 to #4 are merged into main; MakerWorld/browser features in #5 and #6 are tracked separately until tested and merged. Code integration does not automatically publish an installer.
+- PRs #1–#6 and #8 are now merged into `main`, including the four conversion targets, MakerWorld integration and the 603-model reference catalogue (not 603 conversion adapters). Code integration does not automatically publish an installer.
 - Future dev.8 binaries require an approved source SHA, matching Windows/macOS builds, GPL and notices, and SHA256 checksums. VERSION alone cannot publish a stable release.
 
 Historical dev.0 through dev.6 headings describe the state at the time they were written. All dev.1 through dev.6 packages were subsequently published as experimental pre-releases; the actual GitHub Releases list is authoritative.
+
+## [0.4.0-beta.4.dev.7] — 2026-10-20 (published experimental pre-release)
+
+- Published [v0.4.0-beta.4.dev.7](https://github.com/nocturney/slicebridge/releases/tag/v0.4.0-beta.4.dev.7) with experimental Windows/macOS downloads and corresponding source `986161df3cdc9485e71bda2bbcd9a4bcd877dab7`. This **does not include** code merged into `main` on October 21, 2026, or any later planned dev.8 changes.
 
 ## [0.4.0-beta.4.dev.6] — 2026-10-20 (development milestone, not released)
 

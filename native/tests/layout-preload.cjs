@@ -11,6 +11,7 @@ const app={
   GetVersion:async()=>({version:'0.4.0-beta.3',platform:'windows-amd64'}),
   SelectFiles:async()=>{pickCount++;return pickCount===1?mockFiles:[{path:'C:\\models\\new-project.3mf',name:'new-project.3mf',folder:'C:\\models',size:500,sizeLabel:'500 B'}];},
   SelectFolder:async()=>mockFiles,
+  DetectMakerWorldOrigins:async(paths)=>Object.fromEntries(paths.filter(p=>p.includes('project-01.3mf')).map(p=>[p,{kind:'makerworld',confidence:'high',originUrl:'https://makerworld.com/en/models/123',evidence:'download_referrer'}])),
   PrinterOptions:async(target,nozzle,slicer,material)=>({
     nozzles:['0.2','0.4','0.6','0.8'],
     slicers:[{id:target==='qidi'?'orca-slicer':'system',name:'Installed vendor slicer',installed:true}],
@@ -36,7 +37,12 @@ const app={
   OpenOutputFolder:async()=>{},
   RememberWindowSize:async()=>{},
   CheckForUpdates:async()=>({status:'up_to_date'}),
-  OpenUpdatePage:async()=>{}
+  OpenUpdatePage:async()=>{},
+  BrowserLinkStatus:async()=>({platform:'windows',registered:false}),
+  EnableBrowserLink:async()=>{},
+  PrepareBrowserExtension:async(browser)=>({folder:'C:\\SliceBridge\\BrowserExtensions\\'+(browser==='firefox'?'firefox':'chromium'),kind:browser==='firefox'?'firefox':'chromium'}),
+  OpenMakerWorldMode:async(browser,mode)=>{if(!['edge','chrome','brave','firefox'].includes(browser)||!['off','ask','always'].includes(mode))throw new Error('Invalid browser or mode')},
+  OpenBrowserSetup:async()=>{}
 };
 contextBridge.exposeInMainWorld('go',{main:{App:app}});
 contextBridge.exposeInMainWorld('runtime',{OnFileDrop:()=>{},EventsOn:()=>{}});

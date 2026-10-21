@@ -1,0 +1,1812 @@
+{
+  "schema_version": 1,
+  "manufacturer": "SeeMeCNC",
+  "models": [
+    {
+      "id": "seemecnc-seemecnc-artemis-300",
+      "manufacturer": "SeeMeCNC",
+      "model": "SeeMeCNC Artemis 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "2.4.0.06",
+          "manifest": {
+            "path": "resources/profiles/SeeMeCNC.json",
+            "sha256": "3e26133bd065b79931b13b14efc996e70280e6dd4ef5e607097a0067a2e2c220"
+          },
+          "model": {
+            "path": "machine/SeeMeCNC Artemis 300.json",
+            "sha256": "1331974ddb2a0e10720eba5ecd79c34128a18a2265781646296662fb7ed6dace",
+            "manufacturer_model_id": "SEEMECNC_ARTEMIS_300"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.7",
+            "1"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SeeMeCNC Artemis 0.4 nozzle",
+                "path": "machine/SeeMeCNC_Artemis_0_4mm.json",
+                "sha256": "bb4ab8bf0f66f3bed136d5c397e491ad860801060cdccfce9572afca37d53a2b",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC Artemis 0.4 nozzle",
+                    "path": "machine/SeeMeCNC_Artemis_0_4mm.json",
+                    "sha256": "bb4ab8bf0f66f3bed136d5c397e491ad860801060cdccfce9572afca37d53a2b"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @SeeMeCNC Artemis 0.4",
+                "path": "process/0.20mm Standard @SeeMeCNC Artemis 0.4.json",
+                "sha256": "06b6b00029003f99cbb623f9e127f915a02771ace2e0fe533e0ae337844ce83d",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.4mm",
+                    "path": "process/SeeMeCNC_process_base_0.4mm.json",
+                    "sha256": "88908e7c33041e087477075b906496a9542e6a1afd14e9f3554886ed69e21807"
+                  },
+                  {
+                    "name": "0.20mm Standard @SeeMeCNC Artemis 0.4",
+                    "path": "process/0.20mm Standard @SeeMeCNC Artemis 0.4.json",
+                    "sha256": "06b6b00029003f99cbb623f9e127f915a02771ace2e0fe533e0ae337844ce83d"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "SeeMeCNC Artemis 0.5 nozzle",
+                "path": "machine/SeeMeCNC_Artemis_0_5mm.json",
+                "sha256": "78556941569cb2aebd565d809f62bc69b524b46ff75b9f1b7261fb03afefadfb",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC Artemis 0.5 nozzle",
+                    "path": "machine/SeeMeCNC_Artemis_0_5mm.json",
+                    "sha256": "78556941569cb2aebd565d809f62bc69b524b46ff75b9f1b7261fb03afefadfb"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Standard @SeeMeCNC Artemis 0.5",
+                "path": "process/0.25mm Standard @SeeMeCNC Artemis 0.5.json",
+                "sha256": "00819dadcc5f795eb5d561ca8ab23409d2c7a117c22725d99fa15a5f5f5f8c81",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.5mm",
+                    "path": "process/SeeMeCNC_process_base_0.5mm.json",
+                    "sha256": "12eb17ebf13aad90a2e493d50090e2f7f4bba2cf8daf1176790675aeaad8e962"
+                  },
+                  {
+                    "name": "0.25mm Standard @SeeMeCNC Artemis 0.5",
+                    "path": "process/0.25mm Standard @SeeMeCNC Artemis 0.5.json",
+                    "sha256": "00819dadcc5f795eb5d561ca8ab23409d2c7a117c22725d99fa15a5f5f5f8c81"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.7",
+              "machine": {
+                "name": "SeeMeCNC Artemis 0.7 nozzle",
+                "path": "machine/SeeMeCNC_Artemis_0_7mm.json",
+                "sha256": "9d5abe81b3a400a24570b69620c0664c955fc49fa0e8da3cd52c90f8361c5548",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC Artemis 0.7 nozzle",
+                    "path": "machine/SeeMeCNC_Artemis_0_7mm.json",
+                    "sha256": "9d5abe81b3a400a24570b69620c0664c955fc49fa0e8da3cd52c90f8361c5548"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.35mm Standard @SeeMeCNC Artemis 0.7",
+                "path": "process/0.35mm Standard @SeeMeCNC Artemis 0.7.json",
+                "sha256": "861e5701668149336aeb03394f0a24456de019272396f33e162b8697ec8ab09a",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.7mm",
+                    "path": "process/SeeMeCNC_process_base_0.7mm.json",
+                    "sha256": "d3fbc088c6f57c5675584d9e04f8d11dde1e354f0bf6b8ca478a6b4e9392aace"
+                  },
+                  {
+                    "name": "0.35mm Standard @SeeMeCNC Artemis 0.7",
+                    "path": "process/0.35mm Standard @SeeMeCNC Artemis 0.7.json",
+                    "sha256": "861e5701668149336aeb03394f0a24456de019272396f33e162b8697ec8ab09a"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "SeeMeCNC Artemis 1.0 nozzle",
+                "path": "machine/SeeMeCNC_Artemis_1_0mm.json",
+                "sha256": "cfd6e774c07f4c7a7ff3fee645f44322dbbb0800f6e7e2de69527f392985142e",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC Artemis 1.0 nozzle",
+                    "path": "machine/SeeMeCNC_Artemis_1_0mm.json",
+                    "sha256": "cfd6e774c07f4c7a7ff3fee645f44322dbbb0800f6e7e2de69527f392985142e"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm Standard @SeeMeCNC Artemis 1.0",
+                "path": "process/0.50mm Standard @SeeMeCNC Artemis 1.0.json",
+                "sha256": "b3ae1e1bda0da870f7ecfe1bc1f202d9e03484479bb1bfa82ec2f533aab50a4c",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 1.0mm",
+                    "path": "process/SeeMeCNC_process_base_1.0mm.json",
+                    "sha256": "c6a247c5cf638d3c7289059338644e57487255ee0e4430d459cb700c6f90bb3f"
+                  },
+                  {
+                    "name": "0.50mm Standard @SeeMeCNC Artemis 1.0",
+                    "path": "process/0.50mm Standard @SeeMeCNC Artemis 1.0.json",
+                    "sha256": "b3ae1e1bda0da870f7ecfe1bc1f202d9e03484479bb1bfa82ec2f533aab50a4c"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SeeMeCNC.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.7",
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC Artemis 0.4 nozzle",
+          "process": "0.20mm Standard @SeeMeCNC Artemis 0.4",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC Artemis 0.5 nozzle",
+          "process": "0.25mm Standard @SeeMeCNC Artemis 0.5",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.7": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC Artemis 0.7 nozzle",
+          "process": "0.35mm Standard @SeeMeCNC Artemis 0.7",
+          "filament": "SeeMeCNC PLA"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC Artemis 1.0 nozzle",
+          "process": "0.50mm Standard @SeeMeCNC Artemis 1.0",
+          "filament": "SeeMeCNC PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "seemecnc-seemecnc-bossdelta-300",
+      "manufacturer": "SeeMeCNC",
+      "model": "SeeMeCNC BOSSdelta 300",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "2.4.0.06",
+          "manifest": {
+            "path": "resources/profiles/SeeMeCNC.json",
+            "sha256": "3e26133bd065b79931b13b14efc996e70280e6dd4ef5e607097a0067a2e2c220"
+          },
+          "model": {
+            "path": "machine/SeeMeCNC BOSSdelta 300.json",
+            "sha256": "480f92f90daca45293a9c955c8edc047f4aba81a52e99ae4c575c3930acbaa5a",
+            "manufacturer_model_id": "SEEMECNC_BOSSDELTA_300"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.7",
+            "1"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 300 0.4 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta_300_0_4mm.json",
+                "sha256": "fd7b185cc74a75613d6aed976b2e221a195a5a3edeb9926d7b68217fb11e67c2",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 300 0.4 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta_300_0_4mm.json",
+                    "sha256": "fd7b185cc74a75613d6aed976b2e221a195a5a3edeb9926d7b68217fb11e67c2"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @SeeMeCNC BOSSdelta 300 0.4",
+                "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 300 0.4.json",
+                "sha256": "881bf9c53211442b0f6d54316bfe82e23deb559aa19535657bdb90de718633fd",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.4mm",
+                    "path": "process/SeeMeCNC_process_base_0.4mm.json",
+                    "sha256": "88908e7c33041e087477075b906496a9542e6a1afd14e9f3554886ed69e21807"
+                  },
+                  {
+                    "name": "0.20mm Standard @SeeMeCNC BOSSdelta 300 0.4",
+                    "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 300 0.4.json",
+                    "sha256": "881bf9c53211442b0f6d54316bfe82e23deb559aa19535657bdb90de718633fd"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 300 0.5 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta_300_0_5mm.json",
+                "sha256": "170f5f6630c1c4971dc3fdf9d0fb9e08d8a712c75582652e417b4be0b75bc171",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 300 0.5 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta_300_0_5mm.json",
+                    "sha256": "170f5f6630c1c4971dc3fdf9d0fb9e08d8a712c75582652e417b4be0b75bc171"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Standard @SeeMeCNC BOSSdelta 300 0.5",
+                "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 300 0.5.json",
+                "sha256": "8f02a882616edb206c68f3fc1f9465502ed16aeff65a3a113ddae5c24d7a79fd",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.5mm",
+                    "path": "process/SeeMeCNC_process_base_0.5mm.json",
+                    "sha256": "12eb17ebf13aad90a2e493d50090e2f7f4bba2cf8daf1176790675aeaad8e962"
+                  },
+                  {
+                    "name": "0.25mm Standard @SeeMeCNC BOSSdelta 300 0.5",
+                    "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 300 0.5.json",
+                    "sha256": "8f02a882616edb206c68f3fc1f9465502ed16aeff65a3a113ddae5c24d7a79fd"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.7",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 300 0.7 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta_300_0_7mm.json",
+                "sha256": "9c2d539630d7b7177e079e3b68c2270f502ee7b8288e1ac52f4986ba7adad632",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 300 0.7 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta_300_0_7mm.json",
+                    "sha256": "9c2d539630d7b7177e079e3b68c2270f502ee7b8288e1ac52f4986ba7adad632"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.35mm Standard @SeeMeCNC BOSSdelta 300 0.7",
+                "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 300 0.7.json",
+                "sha256": "f2bc1497cf6ca44cd21a68a29d24a3c842a5c78e75f51eb8656e97ea5d501236",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.7mm",
+                    "path": "process/SeeMeCNC_process_base_0.7mm.json",
+                    "sha256": "d3fbc088c6f57c5675584d9e04f8d11dde1e354f0bf6b8ca478a6b4e9392aace"
+                  },
+                  {
+                    "name": "0.35mm Standard @SeeMeCNC BOSSdelta 300 0.7",
+                    "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 300 0.7.json",
+                    "sha256": "f2bc1497cf6ca44cd21a68a29d24a3c842a5c78e75f51eb8656e97ea5d501236"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 300 1.0 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta_300_1_0mm.json",
+                "sha256": "a9c38ef6d7492cf245503737d80ca8dcd7abe871e67055f3ec5cbdcaadb29eff",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 300 1.0 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta_300_1_0mm.json",
+                    "sha256": "a9c38ef6d7492cf245503737d80ca8dcd7abe871e67055f3ec5cbdcaadb29eff"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm Standard @SeeMeCNC BOSSdelta 300 1.0",
+                "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 300 1.0.json",
+                "sha256": "bc39a0ac7c7fefa929617097cbe10c6fe7da8f51fc8363d03b9cc2b91d4a7a3e",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 1.0mm",
+                    "path": "process/SeeMeCNC_process_base_1.0mm.json",
+                    "sha256": "c6a247c5cf638d3c7289059338644e57487255ee0e4430d459cb700c6f90bb3f"
+                  },
+                  {
+                    "name": "0.50mm Standard @SeeMeCNC BOSSdelta 300 1.0",
+                    "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 300 1.0.json",
+                    "sha256": "bc39a0ac7c7fefa929617097cbe10c6fe7da8f51fc8363d03b9cc2b91d4a7a3e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SeeMeCNC.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.7",
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 300 0.4 nozzle",
+          "process": "0.20mm Standard @SeeMeCNC BOSSdelta 300 0.4",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 300 0.5 nozzle",
+          "process": "0.25mm Standard @SeeMeCNC BOSSdelta 300 0.5",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.7": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 300 0.7 nozzle",
+          "process": "0.35mm Standard @SeeMeCNC BOSSdelta 300 0.7",
+          "filament": "SeeMeCNC PLA"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 300 1.0 nozzle",
+          "process": "0.50mm Standard @SeeMeCNC BOSSdelta 300 1.0",
+          "filament": "SeeMeCNC PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "seemecnc-seemecnc-bossdelta-500-0505",
+      "manufacturer": "SeeMeCNC",
+      "model": "SeeMeCNC BOSSdelta 500 0505",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "2.4.0.06",
+          "manifest": {
+            "path": "resources/profiles/SeeMeCNC.json",
+            "sha256": "3e26133bd065b79931b13b14efc996e70280e6dd4ef5e607097a0067a2e2c220"
+          },
+          "model": {
+            "path": "machine/SeeMeCNC BOSSdelta 500 0505.json",
+            "sha256": "1188d6a4460a6940024a6c94c2ca67a9672ad51a1dd943643339948446cabfb0",
+            "manufacturer_model_id": "SEEMECNC_BOSSDELTA_500_0505"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.7",
+            "1"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0505 0.4 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0505_0_4mm.json",
+                "sha256": "96c79b1ee6dffa0761e67271d5bd6b95ea41214a7304fe86de85356a7a60c782",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0505 0.4 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0505_0_4mm.json",
+                    "sha256": "96c79b1ee6dffa0761e67271d5bd6b95ea41214a7304fe86de85356a7a60c782"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0505 0.4",
+                "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 500 0505 0.4.json",
+                "sha256": "4ee3eb9980bbded6802ca3c87dc65ed2500ce93c2eb270b8ab27dab841552c72",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.4mm",
+                    "path": "process/SeeMeCNC_process_base_0.4mm.json",
+                    "sha256": "88908e7c33041e087477075b906496a9542e6a1afd14e9f3554886ed69e21807"
+                  },
+                  {
+                    "name": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0505 0.4",
+                    "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 500 0505 0.4.json",
+                    "sha256": "4ee3eb9980bbded6802ca3c87dc65ed2500ce93c2eb270b8ab27dab841552c72"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0505 0.5 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0505_0_5mm.json",
+                "sha256": "34aabb4caff5fb2faf6042f8000f681c08e6017a61ff416b4b8095f5cf3d4f28",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0505 0.5 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0505_0_5mm.json",
+                    "sha256": "34aabb4caff5fb2faf6042f8000f681c08e6017a61ff416b4b8095f5cf3d4f28"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0505 0.5",
+                "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 500 0505 0.5.json",
+                "sha256": "cf25f6ea710d14d0d43faff87ea356b9fc201833e37e6f8438cb3231b0e44bc6",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.5mm",
+                    "path": "process/SeeMeCNC_process_base_0.5mm.json",
+                    "sha256": "12eb17ebf13aad90a2e493d50090e2f7f4bba2cf8daf1176790675aeaad8e962"
+                  },
+                  {
+                    "name": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0505 0.5",
+                    "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 500 0505 0.5.json",
+                    "sha256": "cf25f6ea710d14d0d43faff87ea356b9fc201833e37e6f8438cb3231b0e44bc6"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.7",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0505 0.7 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0505_0_7mm.json",
+                "sha256": "b6793bf5cbad1229e80147aa26e1e1abdf0a00397a98bca04ccc9f9720a8e782",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0505 0.7 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0505_0_7mm.json",
+                    "sha256": "b6793bf5cbad1229e80147aa26e1e1abdf0a00397a98bca04ccc9f9720a8e782"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0505 0.7",
+                "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 500 0505 0.7.json",
+                "sha256": "59675a4030a3e67fa054490ee025933d3846257aa2e1603faa03137b4409c347",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.7mm",
+                    "path": "process/SeeMeCNC_process_base_0.7mm.json",
+                    "sha256": "d3fbc088c6f57c5675584d9e04f8d11dde1e354f0bf6b8ca478a6b4e9392aace"
+                  },
+                  {
+                    "name": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0505 0.7",
+                    "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 500 0505 0.7.json",
+                    "sha256": "59675a4030a3e67fa054490ee025933d3846257aa2e1603faa03137b4409c347"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0505 1.0 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0505_1_0mm.json",
+                "sha256": "0733c8b63c865411901d7055210c05fa3abb7616be380f3a8c8b642b41b1ed45",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0505 1.0 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0505_1_0mm.json",
+                    "sha256": "0733c8b63c865411901d7055210c05fa3abb7616be380f3a8c8b642b41b1ed45"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0505 1.0",
+                "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 500 0505 1.0.json",
+                "sha256": "63697c405a30d1929653d98db4f10623b3e0150fd87cc30e141598aa3b987d21",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 1.0mm",
+                    "path": "process/SeeMeCNC_process_base_1.0mm.json",
+                    "sha256": "c6a247c5cf638d3c7289059338644e57487255ee0e4430d459cb700c6f90bb3f"
+                  },
+                  {
+                    "name": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0505 1.0",
+                    "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 500 0505 1.0.json",
+                    "sha256": "63697c405a30d1929653d98db4f10623b3e0150fd87cc30e141598aa3b987d21"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SeeMeCNC.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.7",
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0505 0.4 nozzle",
+          "process": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0505 0.4",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0505 0.5 nozzle",
+          "process": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0505 0.5",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.7": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0505 0.7 nozzle",
+          "process": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0505 0.7",
+          "filament": "SeeMeCNC PLA"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0505 1.0 nozzle",
+          "process": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0505 1.0",
+          "filament": "SeeMeCNC PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "seemecnc-seemecnc-bossdelta-500-0510",
+      "manufacturer": "SeeMeCNC",
+      "model": "SeeMeCNC BOSSdelta 500 0510",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "2.4.0.06",
+          "manifest": {
+            "path": "resources/profiles/SeeMeCNC.json",
+            "sha256": "3e26133bd065b79931b13b14efc996e70280e6dd4ef5e607097a0067a2e2c220"
+          },
+          "model": {
+            "path": "machine/SeeMeCNC BOSSdelta 500 0510.json",
+            "sha256": "f021606b838980c09ad6d40ab7b7cd1dc7bff18e876bf0ce0c6c950b767cd975",
+            "manufacturer_model_id": "SEEMECNC_BOSSDELTA_500_0510"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.7",
+            "1"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0510 0.4 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0510_0_4mm.json",
+                "sha256": "ed1689e0f9dd5c44adc9f9b79687c77c04d33447648cb8ad22ae5c3d5d7357f7",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0510 0.4 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0510_0_4mm.json",
+                    "sha256": "ed1689e0f9dd5c44adc9f9b79687c77c04d33447648cb8ad22ae5c3d5d7357f7"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0510 0.4",
+                "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 500 0510 0.4.json",
+                "sha256": "9c379a2f4c8d7615db7cfb727e0a3fc3acbf82b85ce925d4b0265a137d41b7ba",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.4mm",
+                    "path": "process/SeeMeCNC_process_base_0.4mm.json",
+                    "sha256": "88908e7c33041e087477075b906496a9542e6a1afd14e9f3554886ed69e21807"
+                  },
+                  {
+                    "name": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0510 0.4",
+                    "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 500 0510 0.4.json",
+                    "sha256": "9c379a2f4c8d7615db7cfb727e0a3fc3acbf82b85ce925d4b0265a137d41b7ba"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0510 0.5 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0510_0_5mm.json",
+                "sha256": "6b37ff2724ec18c1f031e5a4fccfbf16d6c44ec96905a29082f1d4e79cb29c64",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0510 0.5 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0510_0_5mm.json",
+                    "sha256": "6b37ff2724ec18c1f031e5a4fccfbf16d6c44ec96905a29082f1d4e79cb29c64"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0510 0.5",
+                "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 500 0510 0.5.json",
+                "sha256": "5de00bbb7a1204acd894df9a7237057f8f3ddc919571a5a1704a1f08f4c45e15",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.5mm",
+                    "path": "process/SeeMeCNC_process_base_0.5mm.json",
+                    "sha256": "12eb17ebf13aad90a2e493d50090e2f7f4bba2cf8daf1176790675aeaad8e962"
+                  },
+                  {
+                    "name": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0510 0.5",
+                    "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 500 0510 0.5.json",
+                    "sha256": "5de00bbb7a1204acd894df9a7237057f8f3ddc919571a5a1704a1f08f4c45e15"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.7",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0510 0.7 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0510_0_7mm.json",
+                "sha256": "75e16e9883700bf37097ed5929bfd69df4ca12393f88ca493f379479ce77ebc8",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0510 0.7 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0510_0_7mm.json",
+                    "sha256": "75e16e9883700bf37097ed5929bfd69df4ca12393f88ca493f379479ce77ebc8"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0510 0.7",
+                "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 500 0510 0.7.json",
+                "sha256": "8712aed26d6312a99531d6388fabaa28a800924a29dbe03190ad584ff25a9940",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.7mm",
+                    "path": "process/SeeMeCNC_process_base_0.7mm.json",
+                    "sha256": "d3fbc088c6f57c5675584d9e04f8d11dde1e354f0bf6b8ca478a6b4e9392aace"
+                  },
+                  {
+                    "name": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0510 0.7",
+                    "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 500 0510 0.7.json",
+                    "sha256": "8712aed26d6312a99531d6388fabaa28a800924a29dbe03190ad584ff25a9940"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0510 1.0 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0510_1_0mm.json",
+                "sha256": "5d504d9c297853010069a7c07f574754705993bdd26bdc747282b4314f2b348c",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0510 1.0 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0510_1_0mm.json",
+                    "sha256": "5d504d9c297853010069a7c07f574754705993bdd26bdc747282b4314f2b348c"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0510 1.0",
+                "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 500 0510 1.0.json",
+                "sha256": "7a63fa552eeaa8deb8066c520bc415d527aec36d2ec2909dcf6e195e541f80a9",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 1.0mm",
+                    "path": "process/SeeMeCNC_process_base_1.0mm.json",
+                    "sha256": "c6a247c5cf638d3c7289059338644e57487255ee0e4430d459cb700c6f90bb3f"
+                  },
+                  {
+                    "name": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0510 1.0",
+                    "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 500 0510 1.0.json",
+                    "sha256": "7a63fa552eeaa8deb8066c520bc415d527aec36d2ec2909dcf6e195e541f80a9"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SeeMeCNC.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.7",
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0510 0.4 nozzle",
+          "process": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0510 0.4",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0510 0.5 nozzle",
+          "process": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0510 0.5",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.7": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0510 0.7 nozzle",
+          "process": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0510 0.7",
+          "filament": "SeeMeCNC PLA"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0510 1.0 nozzle",
+          "process": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0510 1.0",
+          "filament": "SeeMeCNC PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "seemecnc-seemecnc-bossdelta-500-0521",
+      "manufacturer": "SeeMeCNC",
+      "model": "SeeMeCNC BOSSdelta 500 0521",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "2.4.0.06",
+          "manifest": {
+            "path": "resources/profiles/SeeMeCNC.json",
+            "sha256": "3e26133bd065b79931b13b14efc996e70280e6dd4ef5e607097a0067a2e2c220"
+          },
+          "model": {
+            "path": "machine/SeeMeCNC BOSSdelta 500 0521.json",
+            "sha256": "fa6f7d86822f5c1b555b79eb1655f087a39eac27d359f418d8876aacc7c070da",
+            "manufacturer_model_id": "SEEMECNC_BOSSDELTA_500_0521"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.7",
+            "1"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0521 0.4 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0521_0_4mm.json",
+                "sha256": "b7d777bca082b0b20ffab3397d7d5294f8a320de5d93e74ff335751366f1dc6a",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0521 0.4 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0521_0_4mm.json",
+                    "sha256": "b7d777bca082b0b20ffab3397d7d5294f8a320de5d93e74ff335751366f1dc6a"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0521 0.4",
+                "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 500 0521 0.4.json",
+                "sha256": "f5a56c0c1a08880fcb863fc7e5f3c7279e6e15d1005bc09e11930fdd6f4f7ad4",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.4mm",
+                    "path": "process/SeeMeCNC_process_base_0.4mm.json",
+                    "sha256": "88908e7c33041e087477075b906496a9542e6a1afd14e9f3554886ed69e21807"
+                  },
+                  {
+                    "name": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0521 0.4",
+                    "path": "process/0.20mm Standard @SeeMeCNC BOSSdelta 500 0521 0.4.json",
+                    "sha256": "f5a56c0c1a08880fcb863fc7e5f3c7279e6e15d1005bc09e11930fdd6f4f7ad4"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0521 0.5 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0521_0_5mm.json",
+                "sha256": "c2deed435e2f6432725a6878992ac1696e1db7482e6fc699a0d63a32040b0a66",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0521 0.5 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0521_0_5mm.json",
+                    "sha256": "c2deed435e2f6432725a6878992ac1696e1db7482e6fc699a0d63a32040b0a66"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0521 0.5",
+                "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 500 0521 0.5.json",
+                "sha256": "6fa46d690acd7e19f1fabdab770652a76aea644692ef3a7a49b1f027fbb51f71",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.5mm",
+                    "path": "process/SeeMeCNC_process_base_0.5mm.json",
+                    "sha256": "12eb17ebf13aad90a2e493d50090e2f7f4bba2cf8daf1176790675aeaad8e962"
+                  },
+                  {
+                    "name": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0521 0.5",
+                    "path": "process/0.25mm Standard @SeeMeCNC BOSSdelta 500 0521 0.5.json",
+                    "sha256": "6fa46d690acd7e19f1fabdab770652a76aea644692ef3a7a49b1f027fbb51f71"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.7",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0521 0.7 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0521_0_7mm.json",
+                "sha256": "0cf22c98007ab44fc7274bfab7712f20aff3a2a538cebacd885a66aba7a21c41",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0521 0.7 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0521_0_7mm.json",
+                    "sha256": "0cf22c98007ab44fc7274bfab7712f20aff3a2a538cebacd885a66aba7a21c41"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0521 0.7",
+                "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 500 0521 0.7.json",
+                "sha256": "cde404ca500e4a6d297dd18abdd3e0ac5c78291cd67fca996a37c36ae5ccbd4f",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.7mm",
+                    "path": "process/SeeMeCNC_process_base_0.7mm.json",
+                    "sha256": "d3fbc088c6f57c5675584d9e04f8d11dde1e354f0bf6b8ca478a6b4e9392aace"
+                  },
+                  {
+                    "name": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0521 0.7",
+                    "path": "process/0.35mm Standard @SeeMeCNC BOSSdelta 500 0521 0.7.json",
+                    "sha256": "cde404ca500e4a6d297dd18abdd3e0ac5c78291cd67fca996a37c36ae5ccbd4f"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "SeeMeCNC BOSSdelta 500 0521 1.0 nozzle",
+                "path": "machine/SeeMeCNC_BOSSdelta500_0521_1_0mm.json",
+                "sha256": "fa4e0a5b9963888742cd64f69ec912653139330bd4b592dba0feae1bafd2b378",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC BOSSdelta 500 0521 1.0 nozzle",
+                    "path": "machine/SeeMeCNC_BOSSdelta500_0521_1_0mm.json",
+                    "sha256": "fa4e0a5b9963888742cd64f69ec912653139330bd4b592dba0feae1bafd2b378"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0521 1.0",
+                "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 500 0521 1.0.json",
+                "sha256": "bc6996eacd78d11934774f67bbf64af8524a285e1b9681b8456fd0daae5729bf",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 1.0mm",
+                    "path": "process/SeeMeCNC_process_base_1.0mm.json",
+                    "sha256": "c6a247c5cf638d3c7289059338644e57487255ee0e4430d459cb700c6f90bb3f"
+                  },
+                  {
+                    "name": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0521 1.0",
+                    "path": "process/0.50mm Standard @SeeMeCNC BOSSdelta 500 0521 1.0.json",
+                    "sha256": "bc6996eacd78d11934774f67bbf64af8524a285e1b9681b8456fd0daae5729bf"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SeeMeCNC.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.7",
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0521 0.4 nozzle",
+          "process": "0.20mm Standard @SeeMeCNC BOSSdelta 500 0521 0.4",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0521 0.5 nozzle",
+          "process": "0.25mm Standard @SeeMeCNC BOSSdelta 500 0521 0.5",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.7": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0521 0.7 nozzle",
+          "process": "0.35mm Standard @SeeMeCNC BOSSdelta 500 0521 0.7",
+          "filament": "SeeMeCNC PLA"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC BOSSdelta 500 0521 1.0 nozzle",
+          "process": "0.50mm Standard @SeeMeCNC BOSSdelta 500 0521 1.0",
+          "filament": "SeeMeCNC PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "seemecnc-seemecnc-rostockmax-v3-2",
+      "manufacturer": "SeeMeCNC",
+      "model": "SeeMeCNC RostockMAX v3.2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "2.4.0.06",
+          "manifest": {
+            "path": "resources/profiles/SeeMeCNC.json",
+            "sha256": "3e26133bd065b79931b13b14efc996e70280e6dd4ef5e607097a0067a2e2c220"
+          },
+          "model": {
+            "path": "machine/SeeMeCNC RostockMAX v3.2.json",
+            "sha256": "caa549ad9af5bb44a3765134897658f92ecf852aaa3313f4c972f0bf480363f8",
+            "manufacturer_model_id": "SEEMECNC_ROSTOCKMAX_V32"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.7",
+            "1"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v3.2 0.4 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v3.2_0_4mm.json",
+                "sha256": "50167e84af411c43f834c22a8e11be63b0640becafb6a6482489344663e08c20",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v3.2 0.4 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v3.2_0_4mm.json",
+                    "sha256": "50167e84af411c43f834c22a8e11be63b0640becafb6a6482489344663e08c20"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @SeeMeCNC RostockMAX v3.2 0.4",
+                "path": "process/0.20mm Standard @SeeMeCNC RostockMAX v3.2 0.4.json",
+                "sha256": "302dd60c24d1b316929b7b2bc17dc122deb477361c250dc08a6195b2ecf463ad",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.4mm",
+                    "path": "process/SeeMeCNC_process_base_0.4mm.json",
+                    "sha256": "88908e7c33041e087477075b906496a9542e6a1afd14e9f3554886ed69e21807"
+                  },
+                  {
+                    "name": "0.20mm Standard @SeeMeCNC RostockMAX v3.2 0.4",
+                    "path": "process/0.20mm Standard @SeeMeCNC RostockMAX v3.2 0.4.json",
+                    "sha256": "302dd60c24d1b316929b7b2bc17dc122deb477361c250dc08a6195b2ecf463ad"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v3.2 0.5 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v3.2_0_5mm.json",
+                "sha256": "b59f43a9b44b962cd0e0aa225429dd13b063898dfb616e7fa0691dc40b1ef91b",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v3.2 0.5 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v3.2_0_5mm.json",
+                    "sha256": "b59f43a9b44b962cd0e0aa225429dd13b063898dfb616e7fa0691dc40b1ef91b"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Standard @SeeMeCNC RostockMAX v3.2 0.5",
+                "path": "process/0.25mm Standard @SeeMeCNC RostockMAX v3.2 0.5.json",
+                "sha256": "f29a7d33f76b607804aca4bdd3520e66f6993f980003497b32cf52c92d8b56b6",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.5mm",
+                    "path": "process/SeeMeCNC_process_base_0.5mm.json",
+                    "sha256": "12eb17ebf13aad90a2e493d50090e2f7f4bba2cf8daf1176790675aeaad8e962"
+                  },
+                  {
+                    "name": "0.25mm Standard @SeeMeCNC RostockMAX v3.2 0.5",
+                    "path": "process/0.25mm Standard @SeeMeCNC RostockMAX v3.2 0.5.json",
+                    "sha256": "f29a7d33f76b607804aca4bdd3520e66f6993f980003497b32cf52c92d8b56b6"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.7",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v3.2 0.7 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v3.2_0_7mm.json",
+                "sha256": "de0f23b6849205e2b560345cca2eacddd86f320f25628e71387fb822fe62ed1b",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v3.2 0.7 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v3.2_0_7mm.json",
+                    "sha256": "de0f23b6849205e2b560345cca2eacddd86f320f25628e71387fb822fe62ed1b"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.35mm Standard @SeeMeCNC RostockMAX v3.2 0.7",
+                "path": "process/0.35mm Standard @SeeMeCNC RostockMAX v3.2 0.7.json",
+                "sha256": "44d056850773c542f9ef6d1c87213ed9bf9d9d5f187fa0e45aa01b13f544c2a1",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.7mm",
+                    "path": "process/SeeMeCNC_process_base_0.7mm.json",
+                    "sha256": "d3fbc088c6f57c5675584d9e04f8d11dde1e354f0bf6b8ca478a6b4e9392aace"
+                  },
+                  {
+                    "name": "0.35mm Standard @SeeMeCNC RostockMAX v3.2 0.7",
+                    "path": "process/0.35mm Standard @SeeMeCNC RostockMAX v3.2 0.7.json",
+                    "sha256": "44d056850773c542f9ef6d1c87213ed9bf9d9d5f187fa0e45aa01b13f544c2a1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v3.2 1.0 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v3.2_1_0mm.json",
+                "sha256": "ca90091ad413455c5cf176fecf2310987b85059ebeffc9850ff7dafb03b75af2",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v3.2 1.0 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v3.2_1_0mm.json",
+                    "sha256": "ca90091ad413455c5cf176fecf2310987b85059ebeffc9850ff7dafb03b75af2"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm Standard @SeeMeCNC RostockMAX v3.2 1.0",
+                "path": "process/0.50mm Standard @SeeMeCNC RostockMAX v3.2 1.0.json",
+                "sha256": "e97e820dec274fe6f5325b68d91cc71320db989fad3d297b383ecfa087b47e84",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 1.0mm",
+                    "path": "process/SeeMeCNC_process_base_1.0mm.json",
+                    "sha256": "c6a247c5cf638d3c7289059338644e57487255ee0e4430d459cb700c6f90bb3f"
+                  },
+                  {
+                    "name": "0.50mm Standard @SeeMeCNC RostockMAX v3.2 1.0",
+                    "path": "process/0.50mm Standard @SeeMeCNC RostockMAX v3.2 1.0.json",
+                    "sha256": "e97e820dec274fe6f5325b68d91cc71320db989fad3d297b383ecfa087b47e84"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SeeMeCNC.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.7",
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v3.2 0.4 nozzle",
+          "process": "0.20mm Standard @SeeMeCNC RostockMAX v3.2 0.4",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v3.2 0.5 nozzle",
+          "process": "0.25mm Standard @SeeMeCNC RostockMAX v3.2 0.5",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.7": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v3.2 0.7 nozzle",
+          "process": "0.35mm Standard @SeeMeCNC RostockMAX v3.2 0.7",
+          "filament": "SeeMeCNC PLA"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v3.2 1.0 nozzle",
+          "process": "0.50mm Standard @SeeMeCNC RostockMAX v3.2 1.0",
+          "filament": "SeeMeCNC PLA"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "seemecnc-seemecnc-rostockmax-v4",
+      "manufacturer": "SeeMeCNC",
+      "model": "SeeMeCNC RostockMAX v4",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "2.4.0.06",
+          "manifest": {
+            "path": "resources/profiles/SeeMeCNC.json",
+            "sha256": "3e26133bd065b79931b13b14efc996e70280e6dd4ef5e607097a0067a2e2c220"
+          },
+          "model": {
+            "path": "machine/SeeMeCNC RostockMAX v4.json",
+            "sha256": "9652a9f251cb4f23a362f2d636def82267b0b0f620a6282a0c002651008da130",
+            "manufacturer_model_id": "SEEMECNC_ROSTOCKMAX_V4"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.7",
+            "1"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v4 0.4 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v4_0_4mm.json",
+                "sha256": "e6cdd730abe6b0b964b4bae9a18adcee877f2c59d2026ec4382ff7d8f7905d0f",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v4 0.4 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v4_0_4mm.json",
+                    "sha256": "e6cdd730abe6b0b964b4bae9a18adcee877f2c59d2026ec4382ff7d8f7905d0f"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @SeeMeCNC RostockMAX v4 0.4",
+                "path": "process/0.20mm Standard @SeeMeCNC RostockMAX v4 0.4.json",
+                "sha256": "324d43554a235c87a116471e780ba56821270c969983211500d153ebd83135aa",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.4mm",
+                    "path": "process/SeeMeCNC_process_base_0.4mm.json",
+                    "sha256": "88908e7c33041e087477075b906496a9542e6a1afd14e9f3554886ed69e21807"
+                  },
+                  {
+                    "name": "0.20mm Standard @SeeMeCNC RostockMAX v4 0.4",
+                    "path": "process/0.20mm Standard @SeeMeCNC RostockMAX v4 0.4.json",
+                    "sha256": "324d43554a235c87a116471e780ba56821270c969983211500d153ebd83135aa"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v4 0.5 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v4_0_5mm.json",
+                "sha256": "3c83b09fd14b01e846a358c8a9f355a4d8aa5cdb8393a6826d4893e3ac319170",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v4 0.5 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v4_0_5mm.json",
+                    "sha256": "3c83b09fd14b01e846a358c8a9f355a4d8aa5cdb8393a6826d4893e3ac319170"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm Standard @SeeMeCNC RostockMAX v4 0.5",
+                "path": "process/0.25mm Standard @SeeMeCNC RostockMAX v4 0.5.json",
+                "sha256": "5901755390ed6e19c25483f67ba9d7b4767e0b21837a50552c4ae904b673125c",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.5mm",
+                    "path": "process/SeeMeCNC_process_base_0.5mm.json",
+                    "sha256": "12eb17ebf13aad90a2e493d50090e2f7f4bba2cf8daf1176790675aeaad8e962"
+                  },
+                  {
+                    "name": "0.25mm Standard @SeeMeCNC RostockMAX v4 0.5",
+                    "path": "process/0.25mm Standard @SeeMeCNC RostockMAX v4 0.5.json",
+                    "sha256": "5901755390ed6e19c25483f67ba9d7b4767e0b21837a50552c4ae904b673125c"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.7",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v4 0.7 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v4_0_7mm.json",
+                "sha256": "80fb22da0b5df30eba0c8b1e92a892a4a7ddb8286494e7ee26f6c28ca1e824be",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v4 0.7 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v4_0_7mm.json",
+                    "sha256": "80fb22da0b5df30eba0c8b1e92a892a4a7ddb8286494e7ee26f6c28ca1e824be"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.35mm Standard @SeeMeCNC RostockMAX v4 0.7",
+                "path": "process/0.35mm Standard @SeeMeCNC RostockMAX v4 0.7.json",
+                "sha256": "45874776b58f18e54f12c6a1240b30261ceb6a7852bad3592035027191591196",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 0.7mm",
+                    "path": "process/SeeMeCNC_process_base_0.7mm.json",
+                    "sha256": "d3fbc088c6f57c5675584d9e04f8d11dde1e354f0bf6b8ca478a6b4e9392aace"
+                  },
+                  {
+                    "name": "0.35mm Standard @SeeMeCNC RostockMAX v4 0.7",
+                    "path": "process/0.35mm Standard @SeeMeCNC RostockMAX v4 0.7.json",
+                    "sha256": "45874776b58f18e54f12c6a1240b30261ceb6a7852bad3592035027191591196"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "SeeMeCNC RostockMAX v4 1.0 nozzle",
+                "path": "machine/SeeMeCNC_RostockMAX_v4_1_0mm.json",
+                "sha256": "317e654ff78956721231adddb654a0e6a6e2a1a73e435b5ceda5c93b15d700a3",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC RostockMAX v4 1.0 nozzle",
+                    "path": "machine/SeeMeCNC_RostockMAX_v4_1_0mm.json",
+                    "sha256": "317e654ff78956721231adddb654a0e6a6e2a1a73e435b5ceda5c93b15d700a3"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm Standard @SeeMeCNC RostockMAX v4 1.0",
+                "path": "process/0.50mm Standard @SeeMeCNC RostockMAX v4 1.0.json",
+                "sha256": "f556aaa4ad14e7d09032d3c926e4ff1510c34bebe024b1295a8878c24909a77e",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC process base 1.0mm",
+                    "path": "process/SeeMeCNC_process_base_1.0mm.json",
+                    "sha256": "c6a247c5cf638d3c7289059338644e57487255ee0e4430d459cb700c6f90bb3f"
+                  },
+                  {
+                    "name": "0.50mm Standard @SeeMeCNC RostockMAX v4 1.0",
+                    "path": "process/0.50mm Standard @SeeMeCNC RostockMAX v4 1.0.json",
+                    "sha256": "f556aaa4ad14e7d09032d3c926e4ff1510c34bebe024b1295a8878c24909a77e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "SeeMeCNC PLA",
+                "path": "filament/SeeMeCNC_PLA.json",
+                "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54",
+                "inheritance": [
+                  {
+                    "name": "SeeMeCNC PLA",
+                    "path": "filament/SeeMeCNC_PLA.json",
+                    "sha256": "2343d5d417f1628ecde8fb7a97b8fa520ae7b5bdd30e71553eaadeddde49fe54"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/SeeMeCNC.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.7",
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v4 0.4 nozzle",
+          "process": "0.20mm Standard @SeeMeCNC RostockMAX v4 0.4",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v4 0.5 nozzle",
+          "process": "0.25mm Standard @SeeMeCNC RostockMAX v4 0.5",
+          "filament": "SeeMeCNC PLA"
+        },
+        "0.7": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v4 0.7 nozzle",
+          "process": "0.35mm Standard @SeeMeCNC RostockMAX v4 0.7",
+          "filament": "SeeMeCNC PLA"
+        },
+        "1": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/SeeMeCNC.json",
+          "machine": "SeeMeCNC RostockMAX v4 1.0 nozzle",
+          "process": "0.50mm Standard @SeeMeCNC RostockMAX v4 1.0",
+          "filament": "SeeMeCNC PLA"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

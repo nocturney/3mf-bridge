@@ -1,7 +1,7 @@
 :root{
   color-scheme:light;
   --bg:#F5FAF7;--panel:#fff;--muted-panel:#F3FAF6;--stroke:#D5E6DD;
-  --ink:#193F38;--ink-muted:#638178;--brand:#2F7F73;--brand-dark:#193F38;
+  --ink:#193F38;--ink-muted:#526B61;--brand:#2F7F73;--brand-dark:#193F38;
   --light-brand:#DFF6EE;--good:#237c4d;--bad:#b34940;--warning:#926123;
   --radius:11px;--shadow:0 1px 2px #17332b10,0 5px 16px #17332b09;
 }
@@ -116,9 +116,11 @@ button:focus-visible,select:focus-visible,input:focus-visible,.dropzone:focus-vi
 .dropzone svg{width:17px;height:17px;flex:none}
 .dropzone.wails-drop-target-active,.dropzone.drop-active{background:#e1f4ed;border-color:#318c79}
 .queue-list{
-  min-height:0;overflow-y:auto;flex:1 1 0;scrollbar-gutter:stable;
+  min-height:0;overflow-y:auto;overflow-x:hidden;flex:1 1 0;scrollbar-gutter:stable;
   padding:0 14px 7px;overscroll-behavior:contain
 }
+.queue-list[hidden]{display:none!important}
+.queue-list[hidden]+.panel-bottom{margin-top:auto}
 .empty-list{text-align:center;padding:22px 12px;color:var(--ink-muted);font-size:12px}
 .queue-item{
   display:flex;align-items:center;gap:9px;padding:9px 7px;
@@ -340,3 +342,624 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .actionbar-info{flex:1 1 auto;min-width:0}.action-buttons{margin-inline-start:0}
 @media (max-width:860px){.app-meta{gap:5px;padding-inline:7px}.app-meta .version-label{font-size:9px}.update-check-btn{font-size:0;gap:0;padding:5px 7px}.update-check-btn svg{width:17px;height:17px}}
 @media (max-width:530px){.app-meta .version-label{display:inline;font-size:8px}.app-meta{padding-inline:3px;gap:3px}.report-header-actions{gap:5px}.clear-results-btn{font-size:10px}}
+
+/* MakerWorld-provenance badge. Only display when browser origin evidence is strong. */
+.file-badge.makerworld-badge{background:#DFF6EE;color:#193F38;border:1px solid #A9E5D0;font-weight:850;letter-spacing:.025em}
+/* Permanent approved Direction 1 brand banner + truthful file-level progress.
+   The wallpaper is cut from the original, approved mint/forest design board. */
+.shell{grid-template-rows:56px auto minmax(0,1fr) 76px 91px 49px}
+.shell:has(.update-notice:not([hidden])){grid-template-rows:56px auto auto minmax(0,1fr) 76px 91px 49px}
+.brand-banner{
+  direction:ltr;position:relative;overflow:hidden;background:#0e3d36;
+  display:flex;align-items:center;padding:12px 36px;
+  border-top:1px solid #256c59;min-height:0;isolation:isolate;flex-shrink:0;
+}
+.brand-banner-art{
+  position:absolute;inset:0 0 0 auto;width:78%;z-index:-1;
+  background-image:linear-gradient(to right,#0e3d36 0%,#0e3d36ad 22%,transparent 56%),url('./slicebridge-banner.png');
+  background-position:center,right 57%;
+  background-size:100% 100%,cover;background-repeat:no-repeat;
+}
+.brand-banner-content{display:flex;flex-direction:column;justify-content:center;gap:3px;max-width:420px}
+.brand-banner-content strong{font-size:11px;color:#f2fff9;font-weight:600;letter-spacing:.22em;line-height:1.45}
+.brand-banner-rule{display:block;width:26px;height:2px;background:#a7f3d0;margin:1px 0}
+.brand-banner-content small{font-size:10px;color:#deeee8;letter-spacing:.016em;line-height:1.4;max-width:375px}
+.conversion-progress{
+  background:#f9fffb;border-top:1px solid #b9d9ca;padding:6px 22px 8px;
+  display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:0;
+}
+.conversion-progress-labels{display:flex;justify-content:space-between;align-items:center;gap:12px;direction:ltr;color:#426959;font-size:10px;line-height:1.25}
+#progressDescription{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0}
+#progressPercent{font:700 11px/1.2 ui-monospace,Consolas,monospace;color:#193f38;flex:none}
+.progress-track{width:100%;height:7px;background:#d9eee5;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#2cc4a7,#166e63);transition:width .22s ease}
+.progress-track.is-working .progress-fill{
+  background-image:repeating-linear-gradient(115deg,#2cc4a7 0px,#2cc4a7 13px,#40d7b1 13px,#40d7b1 26px);
+  background-size:70px 100%;animation:progress-wave 1s linear infinite;
+}
+.progress-track.is-error .progress-fill{background:#bf6b50}
+@keyframes progress-wave{to{background-position:70px 0}}
+.integrations-dialog{width:min(610px,calc(100vw - 28px))}
+.integration-content{display:flex;flex-direction:column;gap:12px}
+.integration-content>p{margin:0;font-size:12px;color:#557269;line-height:1.6}
+.integration-content h3{margin:5px 0 0;font-size:13px}
+.integration-state{padding:10px 12px;border:1px solid #bbdacc;background:#f0fbf4;border-radius:9px;font-size:12px;font-weight:650}
+.integration-state.error{border-color:#e7b5a5;background:#fff4ef}
+.mode-list{display:grid;gap:8px}
+.mode-list>div{padding:9px 12px;border:1px solid #d1e7dc;background:#f8fdfa;border-radius:9px}
+.mode-list strong{display:block;font-size:12px;color:#193f38}
+.mode-list small{display:block;margin-top:3px;color:#60786b;font-size:11px}
+.integration-note{padding:9px 11px;border-left:3px solid #2cc4a7;background:#f1faf6}
+.integration-actions{flex-wrap:wrap}
+@media (max-height:750px){
+  .shell{grid-template-rows:52px auto minmax(0,1fr) 60px 67px 39px}
+  .shell:has(.update-notice:not([hidden])){grid-template-rows:52px auto auto minmax(0,1fr) 60px 67px 39px}
+  .sectionbar{min-height:58px;padding:7px 16px}
+  .left-column{grid-template-rows:minmax(120px,1fr) minmax(145px,auto)}
+  .target-list{min-height:0;overflow-y:auto}
+  .brand-banner{padding:6px 20px}
+  .brand-banner-content strong{font-size:9px;line-height:1.3}
+  .brand-banner-content small{font-size:9px;max-width:410px}
+  .actionbar{padding:6px 14px;min-height:60px}
+  .conversion-progress{padding:4px 14px}
+}
+@media (max-height:650px) and (min-width:746px){
+  .left-column{grid-template-rows:minmax(105px,1fr) minmax(119px,auto)}
+  .sectionbar{min-height:45px;padding:4px 14px}
+  .sectionbar p{display:none}
+  .target-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}
+  .target-option{padding:5px 6px}
+  .printer-label small{display:none}
+  .brand-banner-content small{display:none}
+}
+@media (max-width:860px){
+  .brand-banner{padding-inline:16px}
+  .brand-banner-content{max-width:330px}
+  .brand-banner-content strong{font-size:9px;letter-spacing:.12em}
+  .brand-banner-content small{font-size:9px}
+  .brand-banner-art{width:74%}
+}
+@media (max-width:550px){
+  .brand-banner-content small{display:none}
+  .brand-banner{padding-inline:10px}
+  .brand-banner-art{width:90%}
+  .conversion-progress{padding-inline:8px}
+  .integration-actions .compact-btn{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){
+  .progress-fill{transition:none}
+  .progress-track.is-working .progress-fill{animation:none}
+}
+
+/* MakerWorld onboarding: three actionable steps, not static settings cards. */
+.integrations-dialog{width:min(690px,calc(100vw - 28px))}
+.integration-content{gap:12px;padding:14px 18px}
+.integration-step{border:1px solid #dae8df;background:#fbfefc;border-radius:11px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-width:0}
+.integration-step-heading{display:flex;align-items:flex-start;gap:10px;min-width:0}
+.integration-step-heading>div{min-width:0}
+.integration-step-heading h3{font-size:14px;line-height:1.35;margin:0 0 3px;color:var(--ink)}
+.integration-step-heading p{font-size:11px;line-height:1.5;margin:0;color:var(--ink-muted)}
+.step-index{font:700 12px/1.35 ui-monospace,Consolas,monospace;background:#dff6ee;color:#2f7f73;border-radius:6px;padding:5px;flex:none}
+.integration-step .integration-state{align-self:stretch;font-weight:500;font-size:11px;line-height:1.5;padding:10px 12px}
+.integration-step .integration-state.ready{background:#eaf8ef;border-color:#b2debd}
+.integration-step .integration-state.missing{background:#fffaf0;border-color:#e7d6ad}
+.integration-step .mode-list{border:0;padding:0;margin:0;display:grid;gap:7px;width:100%}
+.mode-list .mode-option{display:flex;align-items:center;gap:11px;border:1px solid #d1e7dc;border-radius:9px;background:#fff;padding:9px 12px;cursor:pointer;min-height:52px}
+.mode-list .mode-option:hover{border-color:#7bb6a1;background:#f2faf6}
+.mode-list .mode-option:focus-within{outline:2px solid #5bbfa8;outline-offset:1px}
+.mode-list .mode-option:has(input:checked){border-color:#2f7f73;background:#e9f7f0;box-shadow:0 0 0 1px #2f7f7333}
+.mode-option input{accent-color:#2f7f73;width:16px;height:16px;margin:0;flex:none;cursor:pointer}
+.mode-option span{display:flex;flex-direction:column;gap:1px;min-width:0}
+.mode-option strong{font-size:12px;font-weight:700}
+.mode-option small{font-size:11px;color:#60786b;line-height:1.4}
+.integration-install-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;min-width:0;width:100%}
+.integration-install-row label{font-size:11px;font-weight:650}
+.integration-install-row select{border:1px solid #d1dfd6;border-radius:8px;background:#fff;color:var(--ink);min-height:36px;padding:7px 9px;font:inherit;max-width:100%}
+.integration-install-row button{white-space:normal}
+.integration-instructions{margin:0;padding-inline-start:22px;font-size:11px;color:#47685c;line-height:1.8}
+.integration-instructions code{display:inline-block;direction:ltr;unicode-bidi:isolate;padding:1px 5px;border-radius:4px;background:#eaf5ef;color:#193f38}
+.integration-feedback{font-size:11px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap;margin:0;color:#426959}
+.integration-feedback.error{color:#a34435}
+.integration-feedback:empty{display:none}
+.integration-caution{font-size:11px;line-height:1.5;color:#905819;margin:0}
+.integration-content>.integration-note{font-size:11px;line-height:1.5;margin:0}
+.integration-actions{align-items:center;justify-content:flex-end;padding:10px 18px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:610px){.integration-install-row{align-items:stretch}.integration-install-row select{flex:1 1 160px}.integration-install-row button{flex:1 1 175px}}
+
+/* My Printers: RTL/LTR-safe picker, with local installed-slicer cover art only. */
+.targets-actions{display:flex;align-items:center;gap:14px;white-space:nowrap}
+.target-option[hidden],.catalog-only-targets[hidden]{display:none!important}
+.catalog-only-targets{max-height:88px;overflow-y:auto;border-top:1px solid var(--stroke);
+  padding:8px 13px;background:#fbfaf4;scrollbar-gutter:stable}
+.catalog-only-target{display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:5px;border-bottom:1px solid #eee9db;padding:4px 2px;font-size:11px}
+.catalog-only-target:last-child{border-bottom:0}
+.catalog-only-target small,.catalog-only-label{color:#9a6b32}
+.my-printers-dialog{width:min(890px,calc(100vw - 30px));max-width:none;
+  border:1px solid var(--stroke);border-radius:12px}
+.my-printers-dialog .dialog-frame{max-height:min(810px,calc(100dvh - 34px));min-height:min(520px,calc(100dvh - 34px))}
+.my-printers-content{display:flex;flex-direction:column;gap:10px;padding:15px 20px;
+  min-height:0;flex:1}
+.selected-printer-overview{padding:11px 12px;border:1px solid var(--stroke);
+  background:#f4faf6;border-radius:9px;flex:none}
+.selected-printer-overview h3{font-size:12px;margin:0 0 8px}
+.selected-printer-summary{display:flex;flex-wrap:wrap;gap:7px;max-height:114px;overflow-y:auto}
+.selected-printer-pill{display:flex;flex-direction:column;gap:2px;border:1px solid #c9e5d7;
+  background:#fff;border-radius:7px;padding:5px 8px;max-width:270px;min-width:120px}
+.selected-printer-pill strong{font-size:11px;overflow-wrap:anywhere}
+.selected-printer-pill small{font-size:10px;color:#618477}
+.printer-search-field{margin:0;flex:none}
+.printer-search-field input{width:100%;min-height:40px;border:1px solid #bfd7cc;
+  background:#fff;border-radius:8px;color:var(--ink);padding:9px 13px}
+.catalog-search-count,.catalog-footnote{margin:0;color:#678077;font-size:11px;flex:none}
+.catalog-model-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;overflow-y:auto;min-height:160px;flex:1 1 260px;
+  overscroll-behavior:contain;align-content:start;padding:3px 4px 8px;scrollbar-gutter:stable}
+.catalog-model-card{display:flex;align-items:center;gap:9px;min-width:0;padding:9px;
+  background:#fff;border:1px solid #dceae2;border-radius:10px;cursor:pointer;min-height:91px}
+.catalog-model-card:hover{background:#f7fcf9;border-color:#96c9b3}
+.catalog-model-card.is-selected{border-color:#499887;background:#f1faf6;box-shadow:0 0 0 1px #49988715}
+.catalog-model-card:focus-within{outline:2px solid #5bbfa8;outline-offset:1px}
+.catalog-model-card input{width:17px;height:17px;accent-color:var(--brand);flex:none}
+.printer-avatar{width:78px;height:70px;flex:none;border:1px solid #d7e6de;border-radius:8px;
+  background:linear-gradient(150deg,#e3f3ec,#fafdfa);position:relative;overflow:hidden;
+  display:grid;place-items:center;color:#388c77}
+.printer-avatar .avatar-device{font-size:23px;opacity:.85}
+.printer-avatar .avatar-initials{font-size:9px;position:absolute;bottom:3px;right:5px;
+  color:#477e70;direction:ltr}
+.printer-avatar .printer-cover-photo{width:100%;height:100%;object-fit:contain;
+  display:block;position:absolute;inset:0;background:#fff}
+.catalog-model-copy{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;text-align:start}
+.catalog-model-copy strong{font-size:12px;color:var(--ink);overflow-wrap:anywhere}
+.catalog-model-copy small{font-size:10.5px;color:#688076}
+.catalog-model-copy .existing-adapter{color:#2d8664}
+.catalog-model-copy .catalog-only-label{color:#9b6e33}
+.catalog-model-copy .nozzle-list{direction:ltr;text-align:start;unicode-bidi:isolate;font-size:10px}
+.catalog-empty{grid-column:1/-1;text-align:center;color:#70847a;margin:25px 0}
+@media(max-width:760px){
+  .my-printers-dialog .dialog-frame{max-height:calc(100dvh - 24px)}
+  .catalog-model-list{grid-template-columns:1fr}
+  .my-printers-content{padding:12px}
+  .printer-avatar{width:72px;height:64px}
+  .topbar-actions #myPrintersBtn{padding-inline:6px}
+  .topbar-actions #myPrintersBtn span{font-size:10px}
+  .targets-actions{gap:7px}
+}
+
+/* Navigation and first-use picker refinement (0.4.0-beta.4 UI milestone). */
+.topbar-actions{min-width:0}
+.topbar .labeled-btn{white-space:nowrap;flex-shrink:0}
+@media(max-width:1160px){
+  /* Keep actions accessible by icon + tooltip, never clip Hebrew labels. */
+  .topbar .labeled-btn span{display:none}
+  .topbar .labeled-btn{width:38px;min-width:38px;padding-inline:8px}
+}
+.empty-target-notice{padding:13px 15px;margin:0;color:var(--ink-muted);font-size:12px;
+  line-height:1.6;overflow-wrap:anywhere}
+.empty-target-notice[hidden],#selectAllBtn[hidden]{display:none!important}
+.my-printers-dialog .dialog-frame{
+  min-height:0;max-height:calc(100dvh - 34px)
+}
+.my-printers-dialog.has-results .dialog-frame{
+  height:min(760px,calc(100dvh - 34px))
+}
+.selected-printer-overview.is-empty{padding:8px 12px}
+.selected-printer-overview.is-empty h3{margin:0}
+.selected-printer-summary[hidden]{display:none}
+.printer-filter-row{display:grid;grid-template-columns:minmax(155px,1fr) minmax(0,1.7fr);
+  gap:12px;align-items:end;flex:none}
+.printer-filter-row .field{margin:0;min-width:0;display:flex;flex-direction:column;gap:5px}
+.printer-filter-row .field>span{font-size:11px;font-weight:600;color:var(--ink-muted)}
+.printer-filter-row select,.printer-filter-row input{
+  width:100%;min-width:0;min-height:42px;padding:9px 10px;
+  border:1px solid #bfd7cc;background:#fff;border-radius:8px;color:var(--ink)
+}
+.catalog-picker-hint{
+  border:1px dashed #c2dacf;border-radius:10px;
+  padding:19px 16px;margin:0;text-align:center;font-size:12px;
+  color:#69857a;background:#fbfefc
+}
+.catalog-picker-hint[hidden],.catalog-model-list[hidden],
+.catalog-search-count[hidden],#myPrintersHiddenNote[hidden]{display:none!important}
+.catalog-model-list{max-height:475px;min-height:0}
+.my-printers-dialog:not(.has-results) .my-printers-content{flex:0 1 auto}
+.my-printers-dialog:not(.has-results) .dialog-frame{height:auto}
+@media(max-width:760px){
+  .printer-filter-row{grid-template-columns:1fr;gap:9px}
+  .my-printers-dialog.has-results .dialog-frame{height:calc(100dvh - 24px)}
+}
+
+
+/* 0.4.0-beta.4.dev.2 — responsive UI: no clipped upload area; target cards;
+   always-visible labels for the single top-level Printers, Settings and MakerWorld actions. */
+.workspace{
+  /* Small windows must scroll the work surface, never silently crop its panels. */
+  overflow-y:auto;
+  overflow-x:hidden;
+  align-content:start;
+  scrollbar-gutter:stable;
+}
+.left-column{
+  grid-template-rows:minmax(205px,1fr) auto;
+  min-height:min-content;
+  gap:10px;
+}
+.queue-panel{min-height:205px}
+.queue-toolbar{padding-block:9px 4px}
+.dropzone{min-height:52px;margin-block:4px 8px}
+.queue-list{min-height:0}
+.targets-panel{min-height:0}
+.target-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  padding:9px 10px 10px;
+  align-content:start;
+  min-height:0;
+  overflow-y:auto;
+}
+.target-option{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+  min-height:65px;
+  padding:8px 9px;
+  background:#fff;
+  border:1px solid var(--stroke);
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow:0 1px 2px #193f3809;
+  transition:background .15s,border-color .15s,box-shadow .15s;
+}
+.target-option:hover{background:#f5fbf8;border-color:#a2d2be}
+.target-option:focus-within{outline:2px solid var(--brand);outline-offset:1px}
+.target-option:has(input:checked){
+  background:#eefaf4;
+  border-color:#62ab95;
+  box-shadow:0 0 0 1px #62ab951e;
+}
+.target-option input{width:17px;height:17px;flex:none;cursor:pointer}
+.target-printer-icon{
+  width:30px;height:31px;
+  display:grid;place-items:center;
+  flex:none;border-radius:8px;
+  background:#eaf4ee;color:#438578;
+  font-size:19px;line-height:1;
+}
+.target-option:has(input:checked) .target-printer-icon{background:#d8efe2;color:#236b54}
+.printer-label{gap:3px;min-width:0}
+.printer-label strong{
+  font-size:11px;font-weight:700;
+  white-space:normal;line-height:1.3;
+  overflow-wrap:anywhere;
+}
+.printer-label small{
+  font-size:10px;line-height:1.35;
+  white-space:normal;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+.target-option.unavailable{opacity:.64}
+.target-option[hidden],.catalog-only-targets[hidden]{display:none!important}
+/* Reset older height/width layout overrides that turned cards back into rows. */
+@media(max-height:750px){
+  .left-column{grid-template-rows:minmax(205px,auto) auto}
+  .target-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .target-option{min-height:65px;padding:8px 9px}
+  .printer-label small{display:-webkit-box}
+}
+@media(max-height:650px) and (min-width:746px){
+  .left-column{grid-template-rows:minmax(205px,auto) auto}
+  .target-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .target-option{padding:8px 9px}
+  .printer-label small{display:-webkit-box}
+}
+@media(max-width:745px){
+  .left-column{grid-template-rows:minmax(205px,auto) auto;gap:10px}
+  .queue-panel{min-height:205px}
+  .target-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:480px){
+  .target-list{grid-template-columns:1fr}
+}
+/* Every action retains its text — never collapse primary navigation to icons. */
+.topbar{
+  gap:clamp(7px,1.2vw,14px);
+  padding-inline:clamp(9px,1.65vw,22px);
+}
+.topbar-actions{gap:3px;min-width:0;flex-shrink:1;justify-content:flex-end}
+.topbar .labeled-btn{
+  width:auto;min-width:0;max-width:none;flex:none;
+  gap:5px;padding:5px 7px;
+  white-space:nowrap;
+}
+.topbar .labeled-btn span{
+  display:inline!important;
+  font-size:11px;
+  white-space:nowrap;
+}
+.topbar .labeled-btn svg{width:16px;height:16px}
+.topbar .language-switch{margin-inline-start:3px}
+@media(max-width:860px){
+  .brand-copy>span{display:none}
+  .brand-copy strong{font-size:15px}
+  .topbar .labeled-btn{gap:4px;padding-inline:5px}
+}
+@media(max-width:740px){
+  /* A two-row header is clearer than clipping buttons or their text. */
+  .shell{grid-template-rows:auto auto minmax(0,1fr) 76px 91px 49px}
+  .shell:has(.update-notice:not([hidden])){
+    grid-template-rows:auto auto auto minmax(0,1fr) 76px 91px 49px
+  }
+  .topbar{flex-wrap:wrap;min-height:56px;padding-block:7px;row-gap:4px}
+  .brand{flex:0 1 auto}
+  .topbar-actions{
+    width:100%;flex:1 1 100%;
+    justify-content:space-between;gap:2px
+  }
+  .topbar .labeled-btn span{font-size:10px}
+  .topbar .labeled-btn svg{width:14px;height:14px}
+  .language-switch{margin-inline-start:1px}
+  .language-switch button{min-width:34px;padding:5px 5px}
+}
+@media(max-width:380px){
+  .topbar-actions{flex-wrap:wrap}
+  .topbar .labeled-btn{padding-inline:4px}
+  .topbar .labeled-btn span{font-size:9.5px}
+}
+
+@media(max-width:740px) and (max-height:750px){
+  .shell{grid-template-rows:auto auto minmax(0,1fr) 60px 67px 39px}
+  .shell:has(.update-notice:not([hidden])){
+    grid-template-rows:auto auto auto minmax(0,1fr) 60px 67px 39px
+  }
+}
+
+/* dev.3: target cards use the installed-slicer's vetted PNG covers. */
+.target-printer-icon{
+  width:44px;height:44px;flex:0 0 44px;
+  position:relative;overflow:hidden;
+  border:1px solid #d7e6de;border-radius:8px;
+  background:#f0f7f3;font-size:16px;
+}
+.target-printer-icon.has-cover{background:#fff}
+.target-printer-icon .printer-cover-photo{
+  display:block;position:absolute;inset:0;
+  width:100%;height:100%;object-fit:contain;background:#fff;
+}
+.target-option{gap:6px;min-height:68px}
+.target-option .printer-label{min-width:0}
+@media(max-width:860px){
+  .target-printer-icon{width:40px;height:40px;flex-basis:40px}
+}
+
+/* Browser extension installation: one clear action, advanced beta steps folded. */
+.integration-install-row #installExtensionBtn{flex:1 1 200px;min-height:38px}
+.integration-store-status{margin:0;color:#496c60;font-size:11px;line-height:1.55}
+.integration-store-status.error{color:#a34435}
+.integration-beta-details{
+  border:1px solid #d6e9df;border-radius:10px;
+  background:#f8fcfa;padding:10px 12px;
+}
+.integration-beta-details summary{
+  cursor:pointer;list-style:auto;font-size:11px;
+  font-weight:650;color:#315f50;line-height:1.45;
+}
+.integration-beta-details[open] summary{margin-bottom:11px}
+.integration-beta-details>p{margin:0 0 10px;color:#526d62;font-size:11px;line-height:1.55}
+.integration-install-help{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.integration-install-help button{font-size:11px;flex:1 1 165px}
+.integration-beta-details .integration-instructions{margin-bottom:9px}
+
+/* dev.5 — the source queue owns real vertical space once files are selected.
+   The old grid's 205px minimum left almost no space after fixed controls.
+   Scroll the workspace for short windows; scroll the file list for many files. */
+.workspace{
+  grid-template-columns:minmax(360px,43%) minmax(0,1fr);
+  overflow-y:auto;
+  overflow-x:hidden;
+  align-content:start;
+  scrollbar-gutter:stable;
+}
+.left-column{
+  display:flex;
+  flex-direction:column;
+  align-self:start;
+  min-height:0;
+  gap:12px;
+}
+.queue-panel{
+  flex:none;
+  height:224px;
+  min-height:224px;
+}
+.queue-panel.has-files{
+  height:clamp(390px,49dvh,490px);
+  min-height:390px;
+}
+.queue-panel.has-files .panel-heading{min-height:44px;padding-block:9px}
+.queue-panel.has-files .queue-toolbar{padding-block:6px 4px}
+.queue-panel.has-files .dropzone{
+  min-height:39px;
+  padding:6px 10px;
+  margin-block:3px 4px;
+  display:flex; /* Restore drop affordance even on short windows. */
+}
+.queue-panel.has-files .panel-bottom{padding-block:5px}
+.queue-files-heading{
+  display:flex;align-items:center;justify-content:space-between;
+  flex:none;gap:8px;
+  min-height:27px;padding:4px 13px;
+  background:#f4faf7;border-block:1px solid #e7f0ea;
+  color:#42685b;font-size:11px;font-weight:650;
+}
+.queue-files-heading[hidden]{display:none!important}
+.queue-files-heading .count-chip{padding:1px 7px;font-size:10px}
+.queue-panel .queue-list{
+  min-height:0;
+  max-height:none;
+  flex:1 1 0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-gutter:stable;
+  padding:4px 13px 8px;
+}
+.queue-panel.has-files .queue-list{min-height:145px}
+.queue-panel .queue-list[hidden]{display:none!important}
+.queue-item{min-height:56px;align-items:center}
+.queue-file-details strong{
+  white-space:normal;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  overflow-wrap:anywhere;
+  line-height:1.35;
+  max-height:2.7em;
+  direction:ltr;text-align:start;
+}
+.queue-file-details small{margin-top:3px}
+.targets-panel{
+  height:auto;
+  flex:none;
+}
+.targets-panel .target-list{
+  flex:0 1 auto;
+  max-height:310px;
+}
+@media(max-width:960px){
+  .workspace{grid-template-columns:minmax(0,1fr)}
+  .left-column{gap:12px}
+  .results-panel{min-height:285px;height:auto}
+  .results-scroll{min-height:205px}
+}
+@media(max-height:700px){
+  .queue-panel.has-files .dropzone{display:flex}
+  .queue-panel.has-files .panel-bottom{display:block}
+}
+
+/* dev.6 — content-sized source cards, so a few files never hide target printers.
+   Only the queue itself scrolls when many files are selected. */
+.queue-panel{
+  height:206px;
+  min-height:0;
+}
+.queue-panel.has-files{
+  height:auto;
+  min-height:0;
+  max-height:none;
+}
+.queue-panel.has-files .panel-heading{
+  min-height:42px;
+  padding-block:8px;
+}
+.queue-panel.has-files .queue-toolbar{
+  padding:4px 12px 2px;
+}
+.queue-panel.has-files .queue-toolbar .compact-btn{
+  min-height:32px;
+  padding:5px 10px;
+}
+.queue-panel.has-files .dropzone{
+  min-height:33px;
+  margin:2px 12px 4px;
+  padding:5px 9px;
+  display:flex;
+}
+.queue-panel.has-files .queue-files-heading,
+.queue-panel.has-files .panel-bottom{
+  display:none!important; /* source header already shows file count */
+}
+.queue-panel.has-files .queue-list{
+  flex:0 1 auto;
+  min-height:0;
+  height:auto;
+  max-height:min(196px,30dvh);
+  overflow-y:auto;
+  padding:2px 10px 5px;
+}
+.queue-panel.has-files .queue-item{
+  min-height:53px;
+  padding-block:6px;
+}
+/* Small desktop windows retain the persistent banner/progress, but give the
+   work area room for source files AND target printer cards before scrolling. */
+@media (min-width:741px) and (max-height:825px){
+  .shell{grid-template-rows:52px auto minmax(0,1fr) 62px 82px 34px}
+  .shell:has(.update-notice:not([hidden])){
+    grid-template-rows:52px auto auto minmax(0,1fr) 62px 82px 34px;
+  }
+  .sectionbar{min-height:60px;padding:7px 17px}
+  .sectionbar h1{font-size:19px}
+  .workspace{padding-bottom:7px}
+  .actionbar{min-height:62px;padding:6px 16px}
+  .brand-banner{padding:4px 24px}
+  .conversion-progress{padding:3px 16px}
+}
+
+/* Very short saved windows keep the full headline, omitting only the tiny
+   descriptive tagline so the source list and printer cards remain above fold. */
+@media (min-width:741px) and (max-height:760px){
+  .shell{grid-template-rows:52px auto minmax(0,1fr) 62px 58px 34px}
+  .shell:has(.update-notice:not([hidden])){
+    grid-template-rows:52px auto auto minmax(0,1fr) 62px 58px 34px;
+  }
+  .brand-banner{padding:5px 24px}
+  .brand-banner-content small{display:none}
+}
+
+
+/* Simple About: one home for installed version, updates, GPL and credits. */
+.about-dialog{width:min(560px,calc(100vw - 28px))}
+.about-dialog .dialog-header{padding-bottom:10px}
+.about-content{display:flex;flex-direction:column;gap:12px;padding-block:10px 14px}
+.about-identity{display:flex;align-items:center;gap:12px;direction:ltr}
+.about-identity img{border-radius:12px;flex:none;background:#e8f6ef}
+.about-identity strong{font-size:22px;font-weight:800;letter-spacing:-.4px;color:var(--brand-dark)}
+.about-card{border:1px solid var(--stroke);background:#fbfefc;border-radius:10px;padding:13px 14px}
+.about-card h3{font-size:12px;color:var(--ink);margin:0 0 7px}
+.about-card p{margin:0;color:var(--ink-muted);font-size:12px;line-height:1.55}
+.about-version-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.about-version-row .version-label{display:block;font-size:13px;font-weight:700;color:var(--brand-dark);direction:ltr;text-align:start}
+.about-dialog .update-check-btn{white-space:normal;min-height:33px;border:1px solid var(--stroke);background:#fff;font-size:11px}
+.about-dialog .update-check-btn svg{width:15px;height:15px}
+.about-dialog .update-notice{padding:10px;margin-top:10px;border:1px solid #b9dcd3;border-radius:8px;gap:8px}
+.about-dialog .about-credits-title{margin-top:13px}
+.about-credit-list{margin:3px 0 0;padding-inline-start:18px;color:var(--ink-muted);font-size:11px;line-height:1.55}
+.about-credit-list li+li{margin-top:4px}
+.about-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.about-card .about-controls{margin-top:13px}
+.about-controls .compact-btn{font-size:11px;min-height:32px;white-space:normal;text-align:center}
+.about-links .compact-btn{flex:1 1 145px}
+.about-legal-text{white-space:pre-wrap;overflow-wrap:anywhere;direction:ltr;text-align:left;
+  border:1px solid #d8e6de;border-radius:8px;background:#f4f8f5;color:#29483e;
+  font:11px/1.5 ui-monospace,Consolas,monospace;max-height:205px;overflow-y:auto;
+  padding:11px;margin:12px 0 0;user-select:text}
+.about-legal-text[hidden]{display:none}
+.about-card .about-status,.about-status{color:var(--bad);font-size:11px;min-height:0;margin:0}
+.about-status:empty{display:none}
+.about-disclaimer{margin:0;color:var(--ink-muted);font-size:11px;line-height:1.55}
+@media(max-width:500px){
+  .about-content{padding-inline:13px}
+  .about-dialog .dialog-header{padding-inline:13px}
+  .about-dialog .dialog-actions{padding-inline:13px}
+}
+
+/* Keep source and results independently clickable in short desktop windows. */
+@media (min-width:746px) and (max-width:960px) { .workspace { grid-template-columns:minmax(360px,43%) minmax(0,1fr); } }
+@media (max-width:745px) { .workspace { grid-auto-rows:max-content;align-content:start; } .results-panel { align-self:start;height:auto; } }
+
+
+/* WCAG AA: readable secondary copy and section markers within Mint-Forest. */
+
+.section-number { color:#266A5F; }
+.file-badge { color:#266A5F; }
+.panel-bottom { color:#526B61; }
+
+
+/* Picker text AA contrast: selected model metadata and first-use helper. */
+.selected-printer-pill small,.catalog-picker-hint { color:#526B61; }

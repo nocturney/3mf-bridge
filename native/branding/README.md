@@ -31,17 +31,25 @@ flowing 3D-print layers**. Mint highlights on the upper arch and deep
 forest towards the base signify different slicers joined by one bridge.
 A rounded pale-mint icon tile matches both native OS environments.
 
-Master: `slicebridge-symbol.svg`
+**Approved visual sources (do not redraw):**
+- `direction1-reference/approved-icon.png`: exact user-approved icon crop.
+- `direction1-reference/approved-wave.png`: exact user-approved banner crop.
+- The earlier `slicebridge-symbol.svg` is a rejected interpretation, NOT the production icon master.
 
-Derived generated assets (all committed):
+`build-icons.cjs` resizes the approved icon into platform files, crops only the wave region of the approved banner so the accessible HTML text appears once, and retains the source crops for reproducibility.
+
+Derived generated assets (committed):
 - `../build/appicon.png`: Wails app icon master (1024 px)
 - `../build/windows/icon.ico`: Windows taskbar/executable multi-resolution
 - `../build/darwin/icon.icns`: macOS Dock/application icon
-- `../frontend/dist/brand-icon.svg`: app toolbar mark, resolution-independent
-- `slicebridge-preview.png`: design review only
+- `../frontend/dist/brand-icon.png`: app toolbar mark from approved pixels
+- `../frontend/dist/slicebridge-banner.png`: wave-only approved-pixel crop, with live banner text in HTML
+- `../../browser-extension/shared/icon-{16,32,48,128}.png`: extension icons
+- `slicebridge-preview.png`: earlier design review only
 
-For development rebuilds: `npm install --no-save sharp` in `native/branding`,
+For development rebuilds: `npm install --no-save --prefix native/branding sharp`,
 then `node native/branding/build-icons.cjs` from the repository root.
+Package browser builds with `node browser-extension/build.cjs`; install `dist/extensions/chromium` as an unpacked Edge/Chrome extension and load `dist/extensions/firefox` as a temporary Firefox add-on for testing. These are unsigned development artifacts, not store-ready releases.
 Go/Wails production binaries do not depend on Sharp or Node.
 
 ## UI decisions retained

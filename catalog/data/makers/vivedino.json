@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Vivedino",
+  "models": [
+    {
+      "id": "vivedino-troodon-2-0-klipper",
+      "manufacturer": "Vivedino",
+      "model": "Troodon 2.0 - Klipper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.13",
+          "manifest": {
+            "path": "resources/profiles/Vivedino.json",
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
+          },
+          "model": {
+            "path": "machine/Troodon2Klipper.json",
+            "sha256": "77fa1bceb3efa695ee26ddf4a75bc6c4f86561dd4ffa2d15953a3aec416cc823",
+            "manufacturer_model_id": "Troodon2Klipper"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "vivedino-troodon-2-0-rrf",
+      "manufacturer": "Vivedino",
+      "model": "Troodon 2.0 - RRF",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.13",
+          "manifest": {
+            "path": "resources/profiles/Vivedino.json",
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
+          },
+          "model": {
+            "path": "machine/Troodon2RRF.json",
+            "sha256": "662e2b103ee393d937f509059600b00dca9c954a6040b29896d25622f09e883f",
+            "manufacturer_model_id": "Troodon2RRF"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "vivedino-xplorer-dual-gantry",
+      "manufacturer": "Vivedino",
+      "model": "Xplorer Dual Gantry",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.13",
+          "manifest": {
+            "path": "resources/profiles/Vivedino.json",
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
+          },
+          "model": {
+            "path": "machine/XplorerDualGantry.json",
+            "sha256": "ef30a8b588c386e3c09b214abadc7b3c986daa2fe3b2ca496444f3d97325968f",
+            "manufacturer_model_id": "XplorerDualGantry"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "vivedino-xplorer-idex",
+      "manufacturer": "Vivedino",
+      "model": "Xplorer IDEX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.13",
+          "manifest": {
+            "path": "resources/profiles/Vivedino.json",
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
+          },
+          "model": {
+            "path": "machine/XplorerIDEX.json",
+            "sha256": "39de8c90cf09d35a1b4e8638521c126b9f30102b4937c5f728d5cc3d512c23ba",
+            "manufacturer_model_id": "XplorerIDEX"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "vivedino-xplorer-iqex",
+      "manufacturer": "Vivedino",
+      "model": "Xplorer IQEX",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.13",
+          "manifest": {
+            "path": "resources/profiles/Vivedino.json",
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
+          },
+          "model": {
+            "path": "machine/XplorerIQEX.json",
+            "sha256": "c72e7eff59e25a850b5d70bd81c628816bd91d2ba78956922375770b67ddf27a",
+            "manufacturer_model_id": "XplorerIQEX"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "vivedino-xplorer-single",
+      "manufacturer": "Vivedino",
+      "model": "Xplorer Single",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.13",
+          "manifest": {
+            "path": "resources/profiles/Vivedino.json",
+            "sha256": "22146c20c766874e69a2acd2a77ca376d749596f63ab078444c9bb241e732bed"
+          },
+          "model": {
+            "path": "machine/XplorerSingle.json",
+            "sha256": "f3524b74b2af2cfb82535fc8b217a1055b7077fdfe84fec3fd803b14b3a8a59d",
+            "manufacturer_model_id": "XplorerSingle"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

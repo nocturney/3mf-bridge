@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "purpose": "source provenance and root license evidence, not legal clearance",
+  "default_action": "metadata_references_only; use locally installed slicer profiles",
+  "items": [
+    {
+      "key": "bambu",
+      "repository": "bambulab/BambuStudio",
+      "commit": "79df7ae309be398ed30c9f397c13c9911c2edc57",
+      "pinned_repository_url": "https://github.com/bambulab/BambuStudio/tree/79df7ae309be398ed30c9f397c13c9911c2edc57",
+      "repository_root_license_observed": "AGPL-3.0",
+      "repository_root_license_evidence": [
+        {
+          "path": "LICENSE",
+          "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6",
+          "license_id_observed": "AGPL-3.0"
+        }
+      ],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    },
+    {
+      "key": "qidi",
+      "repository": "QIDITECH/QIDIStudio",
+      "commit": "403b619d56147160bb883e94f95a7951245bc6d0",
+      "pinned_repository_url": "https://github.com/QIDITECH/QIDIStudio/tree/403b619d56147160bb883e94f95a7951245bc6d0",
+      "repository_root_license_observed": "AGPL-3.0",
+      "repository_root_license_evidence": [
+        {
+          "path": "LICENSE",
+          "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+          "license_id_observed": "AGPL-3.0"
+        }
+      ],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    },
+    {
+      "key": "elegoo",
+      "repository": "elegooofficial/ElegooSlicer",
+      "commit": "2d507e39a96ab9562b35d06b23ef5df8fe613297",
+      "pinned_repository_url": "https://github.com/elegooofficial/ElegooSlicer/tree/2d507e39a96ab9562b35d06b23ef5df8fe613297",
+      "repository_root_license_observed": "AGPL-3.0",
+      "repository_root_license_evidence": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6",
+          "license_id_observed": "AGPL-3.0"
+        }
+      ],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    },
+    {
+      "key": "snapmaker",
+      "repository": "Snapmaker/Orca_Presets",
+      "commit": "0c2d17834b7820339c1cf4326fda7db9da4a766a",
+      "pinned_repository_url": "https://github.com/Snapmaker/Orca_Presets/tree/0c2d17834b7820339c1cf4326fda7db9da4a766a",
+      "repository_root_license_observed": "no_repository_level_license_found",
+      "repository_root_license_evidence": [],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    },
+    {
+      "key": "flashforge",
+      "repository": "FlashForge/Orca-Flashforge",
+      "commit": "c45cc8216c184574c36873314ae7caea67c7a1ad",
+      "pinned_repository_url": "https://github.com/FlashForge/Orca-Flashforge/tree/c45cc8216c184574c36873314ae7caea67c7a1ad",
+      "repository_root_license_observed": "AGPL-3.0",
+      "repository_root_license_evidence": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6",
+          "license_id_observed": "AGPL-3.0"
+        }
+      ],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    },
+    {
+      "key": "orca",
+      "repository": "OrcaSlicer/OrcaSlicer",
+      "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+      "pinned_repository_url": "https://github.com/OrcaSlicer/OrcaSlicer/tree/4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+      "repository_root_license_observed": "AGPL-3.0",
+      "repository_root_license_evidence": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6",
+          "license_id_observed": "AGPL-3.0"
+        }
+      ],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    },
+    {
+      "key": "prusa_official",
+      "repository": "prusa3d/PrusaSlicer-settings",
+      "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+      "pinned_repository_url": "https://github.com/prusa3d/PrusaSlicer-settings/tree/a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+      "repository_root_license_observed": "AGPL-3.0",
+      "repository_root_license_evidence": [
+        {
+          "path": "License",
+          "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+          "license_id_observed": "AGPL-3.0"
+        }
+      ],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    },
+    {
+      "key": "prusa_community",
+      "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+      "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+      "pinned_repository_url": "https://github.com/prusa3d/PrusaSlicer-settings-non-prusa-fff/tree/a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+      "repository_root_license_observed": "no_repository_level_license_found",
+      "repository_root_license_evidence": [],
+      "individual_profile_licensing_reviewed": false,
+      "third_party_profile_payloads_included": false,
+      "third_party_profile_payloads_redistribution_cleared": false
+    }
+  ]
+}

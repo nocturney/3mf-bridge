@@ -1,0 +1,10 @@
+:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#193F38;background:#F6FEFA}*{box-sizing:border-box}
+body{margin:0;width:346px}main{padding:18px}header{display:flex;align-items:center;gap:9px;margin-bottom:16px}
+header strong{font-size:17px}header img{border-radius:7px}h1{font-size:15px;margin:0 0 7px}
+p{color:#55776c;font-size:12px;line-height:1.6;margin:0 0 14px}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:7px}legend{font-size:12px;font-weight:700;margin-bottom:8px}
+fieldset label{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #CCE3D8;border-radius:9px;background:#fff;cursor:pointer}
+fieldset label:has(input:checked){background:#E4F7ED;border-color:#5BBFA8}
+input{margin-top:2px;accent-color:#2F7F73}fieldset strong{display:block;font-size:13px}
+fieldset small{display:block;font-size:11px;color:#5D786D;line-height:1.45;margin-top:3px}
+#status{margin:9px 0 0;color:#193F38;min-height:18px}.foot{padding-top:10px;margin-top:10px;border-top:1px solid #D2E9DE;font-size:11px}

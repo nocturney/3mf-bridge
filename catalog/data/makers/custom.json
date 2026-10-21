@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Custom",
+  "models": [
+    {
+      "id": "custom-generic-belt-printer",
+      "manufacturer": "Custom",
+      "model": "Generic Belt Printer",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Custom.json",
+            "sha256": "a90f0a87578a6360734b2226e79edf771910e877afc020458f772801ad1dc6f4"
+          },
+          "model": {
+            "path": "machine/MyBeltPrinter.json",
+            "sha256": "100361783815be9d817e3fc1dbd028559bda08cd31a869438022c7220c03ad2d",
+            "manufacturer_model_id": "my_belt_01"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "custom-generic-klipper-printer",
+      "manufacturer": "Custom",
+      "model": "Generic Klipper Printer",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Custom.json",
+            "sha256": "a90f0a87578a6360734b2226e79edf771910e877afc020458f772801ad1dc6f4"
+          },
+          "model": {
+            "path": "machine/MyKlipper.json",
+            "sha256": "afd779d5a3b1265782f26cbcaf1979248c95268988ac7798de2debb5df13a95f",
+            "manufacturer_model_id": "my_klipper_01"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "custom-generic-marlin-printer",
+      "manufacturer": "Custom",
+      "model": "Generic Marlin Printer",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Custom.json",
+            "sha256": "a90f0a87578a6360734b2226e79edf771910e877afc020458f772801ad1dc6f4"
+          },
+          "model": {
+            "path": "machine/MyMarlin.json",
+            "sha256": "bf89ad9fcde0354ec17276f8c25755f6906c5274d2781d7c9a7f8fe256f8c77b",
+            "manufacturer_model_id": "my_marlin_01"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "custom-generic-repetier-printer",
+      "manufacturer": "Custom",
+      "model": "Generic Repetier Printer",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Custom.json",
+            "sha256": "a90f0a87578a6360734b2226e79edf771910e877afc020458f772801ad1dc6f4"
+          },
+          "model": {
+            "path": "machine/MyRepetier.json",
+            "sha256": "131c6836e0066c9ddbfc956e285041ff2c08a6abece3be29be8fb0b51e456db1",
+            "manufacturer_model_id": "my_repetier_01"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "custom-generic-rrf-printer",
+      "manufacturer": "Custom",
+      "model": "Generic RRF Printer",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Custom.json",
+            "sha256": "a90f0a87578a6360734b2226e79edf771910e877afc020458f772801ad1dc6f4"
+          },
+          "model": {
+            "path": "machine/MyRRF.json",
+            "sha256": "a173a1d994154446bc7769a74f1863da66f99bc37bdeb1cffd061da295a769ca",
+            "manufacturer_model_id": "my_rrf_01"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "custom-generic-toolchanger-printer",
+      "manufacturer": "Custom",
+      "model": "Generic ToolChanger Printer",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.08",
+          "manifest": {
+            "path": "resources/profiles/Custom.json",
+            "sha256": "a90f0a87578a6360734b2226e79edf771910e877afc020458f772801ad1dc6f4"
+          },
+          "model": {
+            "path": "machine/MyToolChanger.json",
+            "sha256": "07a8e445658f31c2b71e9e463ce60a33558d41329e81319c161378d809191ea5",
+            "manufacturer_model_id": "my_toolchanger_01"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

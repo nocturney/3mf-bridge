@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Positron3D",
+  "models": [
+    {
+      "id": "positron3d-the-positron",
+      "manufacturer": "Positron3D",
+      "model": "The Positron",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Positron3D.json",
+            "sha256": "f640ed09ecf173d343f7aea3bd6b9eda875106442aa06442a0b09d468658dac6"
+          },
+          "model": {
+            "path": "machine/The Positron.json",
+            "sha256": "8d2fc2dcd27974ec79222c8f80dae097ff0c14afcf7164e8edfd161f28696715",
+            "manufacturer_model_id": "thepositron_1"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

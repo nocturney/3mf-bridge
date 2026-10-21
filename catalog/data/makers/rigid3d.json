@@ -1,0 +1,494 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Rigid3D",
+  "models": [
+    {
+      "id": "rigid3d-rigid3d-mucit",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Mucit",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Mucit",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Rigid3D Mucit",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "printer:Rigid3D Mucit",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Rigid3D Mucit",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:Rigid3D Mucit"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm - Standard @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "print:0.20mm - Standard @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm - Standard @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:0.20mm - Standard @Rigid3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Rigid3D PLA @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "filament:Rigid3D PLA @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Rigid3D PLA @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:Rigid3D PLA @Rigid3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Rigid3D/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Rigid3D/2.1.0.ini",
+          "machine": "Rigid3D Mucit",
+          "process": "0.20mm - Standard @Rigid3D",
+          "filament": "Rigid3D PLA @Rigid3D"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "rigid3d-rigid3d-mucit2",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Mucit2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Mucit2",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Rigid3D Mucit2",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "printer:Rigid3D Mucit2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Rigid3D Mucit2",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:Rigid3D Mucit2"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm - Standard @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "print:0.20mm - Standard @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm - Standard @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:0.20mm - Standard @Rigid3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Rigid3D PLA @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "filament:Rigid3D PLA @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Rigid3D PLA @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:Rigid3D PLA @Rigid3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Rigid3D/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Rigid3D/2.1.0.ini",
+          "machine": "Rigid3D Mucit2",
+          "process": "0.20mm - Standard @Rigid3D",
+          "filament": "Rigid3D PLA @Rigid3D"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "rigid3d-rigid3d-zero2",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Zero2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Zero2",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Rigid3D Zero2",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "printer:Rigid3D Zero2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Rigid3D Zero2",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:Rigid3D Zero2"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm - Standard @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "print:0.20mm - Standard @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm - Standard @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:0.20mm - Standard @Rigid3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Rigid3D PLA @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "filament:Rigid3D PLA @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Rigid3D PLA @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:Rigid3D PLA @Rigid3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Rigid3D/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Rigid3D/2.1.0.ini",
+          "machine": "Rigid3D Zero2",
+          "process": "0.20mm - Standard @Rigid3D",
+          "filament": "Rigid3D PLA @Rigid3D"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "rigid3d-rigid3d-zero3",
+      "manufacturer": "Rigid3D",
+      "model": "Rigid3D Zero3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "Rigid3D/2.1.0.ini",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "model": {
+            "path": "Rigid3D/2.1.0.ini",
+            "section": "printer_model:Zero3",
+            "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Rigid3D Zero3",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "printer:Rigid3D Zero3",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "Rigid3D Zero3",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "printer:Rigid3D Zero3"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm - Standard @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "print:0.20mm - Standard @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.20mm - Standard @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "print:0.20mm - Standard @Rigid3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Rigid3D PLA @Rigid3D",
+                "path": "Rigid3D/2.1.0.ini",
+                "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                "section": "filament:Rigid3D PLA @Rigid3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Rigid3D PLA @Rigid3D",
+                    "path": "Rigid3D/2.1.0.ini",
+                    "sha256": "f8f76764b39dde8f1c031dbf7962eb24d69fcc7a0946e3e45949c3d2fb2ec1d2",
+                    "section": "filament:Rigid3D PLA @Rigid3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Rigid3D/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Rigid3D/2.1.0.ini",
+          "machine": "Rigid3D Zero3",
+          "process": "0.20mm - Standard @Rigid3D",
+          "filament": "Rigid3D PLA @Rigid3D"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

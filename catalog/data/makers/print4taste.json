@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Print4Taste",
+  "models": [
+    {
+      "id": "print4taste-mycusini-2-0",
+      "manufacturer": "Print4Taste",
+      "model": "mycusini 2.0",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.2",
+          "manifest": {
+            "path": "Print4Taste/1.1.2.ini",
+            "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562"
+          },
+          "model": {
+            "path": "Print4Taste/1.1.2.ini",
+            "section": "printer_model:MC2.0",
+            "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562"
+          },
+          "nozzles_mm": [
+            "1"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "1",
+              "machine": {
+                "name": "mycusini 2.0",
+                "path": "Print4Taste/1.1.2.ini",
+                "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                "section": "printer:mycusini 2.0",
+                "inheritance": [
+                  {
+                    "name": "mycusini 2.0",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "printer:mycusini 2.0"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.50mm SOLID @MC2.0",
+                "path": "Print4Taste/1.1.2.ini",
+                "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                "section": "print:0.50mm SOLID @MC2.0",
+                "inheritance": [
+                  {
+                    "name": "*common_MC2.0*",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "print:*common_MC2.0*"
+                  },
+                  {
+                    "name": "0.50mm SOLID @MC2.0",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "print:0.50mm SOLID @MC2.0"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "mycusini 3D Choco @MC2.0",
+                "path": "Print4Taste/1.1.2.ini",
+                "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                "section": "filament:mycusini 3D Choco @MC2.0",
+                "inheritance": [
+                  {
+                    "name": "mycusini 3D Choco @MC2.0",
+                    "path": "Print4Taste/1.1.2.ini",
+                    "sha256": "df430fb0865ce9eaaf3fd0e0f0101ea669439bf78dc51f3cc456465763a67562",
+                    "section": "filament:mycusini 3D Choco @MC2.0"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "Print4Taste/1.1.2.ini",
+        "nozzles_mm": [
+          "1"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "1": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "Print4Taste/1.1.2.ini",
+          "machine": "mycusini 2.0",
+          "process": "0.50mm SOLID @MC2.0",
+          "filament": "mycusini 3D Choco @MC2.0"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

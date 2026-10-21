@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Folgertech",
+  "models": [
+    {
+      "id": "folgertech-folgertech-ft-5",
+      "manufacturer": "Folgertech",
+      "model": "Folgertech FT-5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Folgertech.json",
+            "sha256": "17a96ac17fb1ff212cb1da2eb86afb4fbae0f314b0be50e53b77cc1e4edf4e40"
+          },
+          "model": {
+            "path": "machine/Folgertech FT-5.json",
+            "sha256": "cd5c49829a4f60dabfff560975ab4080153a744780617c67323b18a71025ddd7",
+            "manufacturer_model_id": "FT-5"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (2)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "folgertech-folgertech-ft-6",
+      "manufacturer": "Folgertech",
+      "model": "Folgertech FT-6",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Folgertech.json",
+            "sha256": "17a96ac17fb1ff212cb1da2eb86afb4fbae0f314b0be50e53b77cc1e4edf4e40"
+          },
+          "model": {
+            "path": "machine/Folgertech FT-6.json",
+            "sha256": "69951d3426c898dac0f2328f5890da69491d154a66f09c2a03c046e05c20a1e1",
+            "manufacturer_model_id": "FT-6"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (2)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "folgertech-folgertech-i3",
+      "manufacturer": "Folgertech",
+      "model": "Folgertech i3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/Folgertech.json",
+            "sha256": "17a96ac17fb1ff212cb1da2eb86afb4fbae0f314b0be50e53b77cc1e4edf4e40"
+          },
+          "model": {
+            "path": "machine/Folgertech i3.json",
+            "sha256": "6fbc1b2315e9ccba668da4d8cdf0a61fb0a1eb51451833fdc8207ae57b555cbe",
+            "manufacturer_model_id": "i3"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (2)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "manufacturer": "OpenEYE",
+  "models": [
+    {
+      "id": "openeye-openeye-peacock-v2",
+      "manufacturer": "OpenEYE",
+      "model": "OpenEYE Peacock V2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.03",
+          "manifest": {
+            "path": "resources/profiles/OpenEYE.json",
+            "sha256": "f2d8cca1fe6d51b0f77d75bcf5003bab4d12c466d815490925527fcf97fdcdcc"
+          },
+          "model": {
+            "path": "machine/OpenEYE Peacock V2.json",
+            "sha256": "fc62b9a0db8de70632fb4d68c99a666dc099b7e9d53825752db608156fee61d0",
+            "manufacturer_model_id": "openeye_01"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

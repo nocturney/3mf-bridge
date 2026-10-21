@@ -17,6 +17,7 @@ async function inspect(win){
       documentScroll:document.documentElement.scrollHeight-innerHeight,
       bodyScroll:document.body.scrollHeight-innerHeight,
       header:rect('.topbar'),footer:rect('.actionbar'),
+      banner:rect('.brand-banner'),progressBar:rect('.conversion-progress'),
       workspace:rect('.workspace'),queue:rect('.queue-list'),
       results:rect('.results-scroll'),
       queueScroll:e('.queue-list').scrollHeight-e('.queue-list').clientHeight,
@@ -25,11 +26,26 @@ async function inspect(win){
       modal:e('#settingsDialog').open,
       modalHeight:e('#settingsDialog').getBoundingClientRect().height,
       conversionDisabled:e('#convertBtn').disabled,
+      integrationsModal:e('#integrationsDialog').open,
+      integrationsStatus:e('#browserLinkStatus').textContent,
+      setupChoices:document.querySelectorAll('#integrationsDialog input[name=makerworldMode]').length,
+      selectedMode:document.querySelector('#integrationsDialog input[name=makerworldMode]:checked')?.value||'',
+      applyDisabled:e('#applyBrowserModeBtn').disabled,
+      preparedFolder:e('#extensionFolderStatus').textContent,
+      modeFeedback:e('#modeStatus').textContent,
+      browserAddress:e('#browserSettingsAddress').textContent,
       reportCards:document.querySelectorAll('.file-report').length,
       clearResultsDisabled:e('#clearResultsBtn').disabled,
       brandImageLoaded:e('.brand-mark').naturalWidth>0,
-      metaInFooter:!!e('footer .app-meta #installedVersion')&&!!e('footer .app-meta #checkUpdatesBtn'),
-      hasJsonExport:!!e('#exportReportBtn')
+      metaInAbout:!!e('#aboutDialog #installedVersion')&&!!e('#aboutDialog #checkUpdatesBtn'),
+      metaInFooter:!!e('footer #installedVersion')||!!e('footer #checkUpdatesBtn'),
+      aboutButton:rect('#aboutBtn'),
+      hasJsonExport:!!e('#exportReportBtn'),
+      integrationLabel:e('#integrationsBtn').textContent.trim(),
+      integrationButton:rect('#integrationsBtn'),
+      progressPercent:e('#progressPercent').textContent,
+      progressFill:rect('#progressFill'),progressTrack:rect('#progressTrack'),
+      makerworldBadges:document.querySelectorAll('.makerworld-badge').length
     };
   })()`);
 }
@@ -48,18 +64,69 @@ async function main(){
   let layout=await inspect(win);
   assert.equal(layout.documentScroll,0,'document scroll at desktop size');
   assert.equal(layout.bodyScroll,0,'body scroll at desktop size');
-  assert.ok(layout.footer.bottom<=layout.viewport.h+1 &&layout.footer.bottom>=layout.viewport.h-1,
-    'fixed actionbar must align to bottom of the window');
+  assert.ok(Math.abs(layout.footer.bottom-layout.banner.y)<2,'actionbar must sit above fixed banner');
+  assert.ok(Math.abs(layout.banner.bottom-layout.progressBar.y)<2,'progress must sit directly below banner');
+  assert.ok(Math.abs(layout.progressBar.bottom-layout.viewport.h)<2,'progress must align with bottom of window');
   assert.equal(layout.brandImageLoaded,true,'new SliceBridge icon must render');
-  assert.equal(layout.metaInFooter,true,'version and update button share bottom bar');
+  assert.equal(layout.metaInAbout,true,'installed version and update check should be in About');
+  assert.equal(layout.metaInFooter,false,'footer should have no duplicated version/update controls');
+  assert.ok(layout.aboutButton.x>=0 && layout.aboutButton.x+layout.aboutButton.width<=layout.viewport.w+1,
+    'About button must fit in the top bar');
+  await win.webContents.executeJavaScript("document.getElementById('aboutBtn').click()");
+  await sleep(60);
+  assert.equal(await win.webContents.executeJavaScript("document.getElementById('aboutDialog').open"),true,
+    'About modal must open');
+  assert.equal(await win.webContents.executeJavaScript("document.getElementById('installedVersion').textContent"),
+    'v0.4.0-beta.3','About must show installed native version');
+  await win.webContents.executeJavaScript("document.getElementById('closeAboutBtn').click()");
   assert.equal(layout.hasJsonExport,false,'old JSON export must be removed');
+  assert.equal(layout.integrationLabel,'MakerWorld Setup','integration button should have a readable title');
+  assert.ok(layout.integrationButton.x>=0 && layout.integrationButton.x+layout.integrationButton.width<=layout.viewport.w+1,
+    'English integration button must fit the top bar');
+  await win.webContents.executeJavaScript("document.getElementById('heBtn').click()");
+  await sleep(80);
+  layout=await inspect(win);
+  assert.equal(layout.dir,'rtl','Hebrew language must use RTL');
+  assert.equal(layout.integrationLabel,'חיבור ל־MakerWorld','Hebrew integration label must be human readable');
+  assert.ok(layout.integrationButton.x>=0 && layout.integrationButton.x+layout.integrationButton.width<=layout.viewport.w+1,
+    'Hebrew integration button must fit the top bar');
+  await win.webContents.executeJavaScript("document.getElementById('enBtn').click()");
+  await sleep(80);
+  layout=await inspect(win);
   assert.ok(layout.workspace.height>250,'workspace must have useful height');
   assert.ok(layout.queue.height>40,'file list needs independent scroll container');
+  await win.webContents.executeJavaScript("document.getElementById('integrationsBtn').click()");
+  await sleep(150);
+  layout=await inspect(win);
+  assert.equal(layout.integrationsModal,true,'MakerWorld onboarding modal must open');
+  assert.match(layout.integrationsStatus,/Action needed/i,'OS link status is actionable');
+  assert.equal(layout.setupChoices,3,'exactly three native mode options are clickable');
+  assert.equal(layout.selectedMode,'','native app must not fake browser current mode');
+  assert.equal(layout.applyDisabled,true,'browser confirmation requires a selection');
+  assert.equal(layout.browserAddress,'edge://extensions','local Edge instructions replace GitHub');
+  await win.webContents.executeJavaScript("document.getElementById('prepareExtensionBtn').click()");
+  await sleep(100);
+  layout=await inspect(win);
+  assert.match(layout.preparedFolder,/BrowserExtensions/,'native setup prepares local files');
+  await win.webContents.executeJavaScript("document.querySelector('input[name=makerworldMode][value=ask]').click()");
+  layout=await inspect(win);
+  assert.equal(layout.selectedMode,'ask','Ask is selectable in the app');
+  assert.equal(layout.applyDisabled,false,'selected mode enables browser confirmation');
+  await win.webContents.executeJavaScript("document.getElementById('applyBrowserModeBtn').click()");
+  await sleep(80);
+  layout=await inspect(win);
+  assert.match(layout.modeFeedback,/Confirm this choice/i,'browser approval is explicitly required');
+  await fs.mkdir(path.join(__dirname,'..','..','dist'),{recursive:true});
+  await fs.writeFile(path.join(__dirname,'..','..','dist','makerworld-wizard-desktop.png'),(await win.webContents.capturePage()).toPNG());
+  await win.webContents.executeJavaScript("document.getElementById('closeIntegrationsBtn').click()");
+  layout=await inspect(win);
+  assert.equal(layout.integrationsModal,false,'MakerWorld modal must close');
 
   await win.webContents.executeJavaScript("document.getElementById('addFilesBtn').click()");
   await sleep(200);
   layout=await inspect(win);
   assert.equal(layout.queueCount,'32','multi-select should append all source files');
+  assert.equal(layout.makerworldBadges,1,'verified MakerWorld origin is marked in the queue');
   assert.ok(layout.queueScroll>100,'file list should scroll internally');
   assert.equal(layout.documentScroll,0,'adding files must not scroll document');
 
@@ -112,8 +179,9 @@ async function main(){
   await sleep(180);
   layout=await inspect(win);
   assert.equal(layout.documentScroll,0,'body stays fixed in compact window');
-  assert.ok(layout.footer.bottom<=layout.viewport.h+1&&layout.footer.bottom>=layout.viewport.h-1,
-    'footer must remain attached to bottom in compact window');
+  assert.ok(Math.abs(layout.footer.bottom-layout.banner.y)<2,'compact actionbar must be above banner');
+  assert.ok(Math.abs(layout.banner.bottom-layout.progressBar.y)<2,'compact banner must be above progress');
+  assert.ok(Math.abs(layout.progressBar.bottom-layout.viewport.h)<2,'compact progress must remain at window bottom');
   assert.ok(layout.workspace.height>100,'compact workspace remains usable');
   const image2=await win.webContents.capturePage();
   await fs.writeFile(path.join(__dirname,'..','..','dist','native-workflow-compact.png'),image2.toPNG());
