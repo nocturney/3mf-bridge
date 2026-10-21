@@ -573,6 +573,26 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   .printer-filter-row{grid-template-columns:1fr;gap:9px}
   .my-printers-dialog.has-results .dialog-frame{height:calc(100dvh - 24px)}
 }
+/* Short desktop windows: keep one complete tall multi-nozzle card visible.
+   Older builds clipped the list when all five selected-printer pills wrapped. */
+@media(max-height:650px){
+  .my-printers-dialog .dialog-header{padding:8px 14px 4px}
+  .my-printers-dialog .dialog-header p{display:none}
+  .my-printers-dialog .dialog-header h2{font-size:16px;margin:0}
+  .my-printers-dialog .my-printers-content{padding:5px 12px;gap:5px}
+  .my-printers-dialog .selected-printer-overview{padding:5px 8px}
+  .my-printers-dialog .selected-printer-overview h3{margin:0 0 3px}
+  .my-printers-dialog .selected-printer-summary{
+    flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;max-height:38px;gap:5px
+  }
+  .my-printers-dialog .selected-printer-pill{flex:0 0 auto;min-width:0;max-width:230px;padding:3px 6px}
+  .my-printers-dialog .selected-printer-pill strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .my-printers-dialog .printer-filter-row{gap:6px}
+  .my-printers-dialog .printer-filter-row .field{gap:2px}
+  .my-printers-dialog .printer-filter-row select,
+  .my-printers-dialog .printer-filter-row input{min-height:32px;padding:5px 8px}
+  .my-printers-dialog .dialog-actions{padding:5px 12px 7px}
+}
 
 
 /* 0.4.0-beta.4.dev.2 — responsive UI: no clipped upload area; target cards;
