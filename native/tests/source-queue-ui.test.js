@@ -60,3 +60,12 @@ test('source file names display useful details and retain removal affordance',()
   assert.match(app,/const location=node\('small','',file\.folder\+' · '\+file\.sizeLabel\)/);
   assert.match(app,/remove\.title=language==='he'\?'הסר מהתור'/);
 });
+
+
+test('lossless duplicate-slot reduction is explicitly disclosed in both UI languages',()=>{
+  const app=read('frontend/dist/app.js');
+  assert.match(app,/identicalSlotsCoalesced:'אוחדו/);
+  assert.match(app,/identicalSlotsCoalesced:'\{n\} source filament slots/);
+  assert.match(app,/Number\(report\.identical_source_slots_coalesced\)>0/);
+  assert.match(app,/t\('identicalSlotsCoalesced',\{n:report\.identical_source_slots_coalesced\}\)/);
+});
