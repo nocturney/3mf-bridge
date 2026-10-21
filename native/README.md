@@ -21,6 +21,10 @@ only shipped UI languages. Toggle between them in the top bar; Hebrew is RTL.
 - Reads *installed* machine, process and filament presets directly from
   Flash Studio Desktop, ElegooSlicer, Snapmaker Orca and OrcaSlicer/QIDIStudio.
   Vendor G-code and temperature curves are never redistributed in the app.
+  Discovery covers system-wide Program Files (including x86) and user-local
+  Programs on Windows, and both /Applications and ~/Applications on macOS.
+  Supported app IDs and vendor folders remain allowlisted; no filesystem-wide
+  scan or executable path supplied by the UI is accepted.
 - U1 0.4 mm continues using the field-validated builtin converter profile,
   including on machines without Snapmaker Orca installed.
 - Detects material or profile mismatches and fails that target instead of

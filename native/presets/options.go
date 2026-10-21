@@ -20,60 +20,105 @@ type slicerLocation struct {
 	id, name, root, executable string
 }
 
+// slicerLocationsForOS builds a bounded list of known install locations.
+// Candidate paths are local only; no registry scans, network access, or
+// executable paths supplied by untrusted frontend input.
+func slicerLocationsForOS(target, platform, programFiles, programFilesX86, localAppData, home, override string) []slicerLocation {
+    if override != "" {
+        return []slicerLocation{{"system", "Custom local profile", override, ""}}
+    }
+    result := []slicerLocation{}
+    seen := map[string]bool{}
+    add := func(id, name, root, executable string) {
+        if root == "" || seen[root] {
+            return
+        }
+        seen[root] = true
+        result = append(result, slicerLocation{id, name, root, executable})
+    }
+    if platform == "windows" {
+        // Keep the original Program Files priority. LocalAppData/Programs
+        // also hosts legitimate per-user installs without admin privileges.
+        bases := []string{programFiles, programFilesX86}
+        if localAppData != "" {
+            bases = append(bases, filepath.Join(localAppData, "Programs"))
+        }
+        for _, base := range bases {
+            if base == "" {
+                continue
+            }
+            app := func(id, name, folder, exe string) {
+                dir := filepath.Join(base, folder)
+                add(id, name, filepath.Join(dir, "resources", "profiles"), filepath.Join(dir, exe))
+            }
+            switch target {
+            case "u1":
+                app("snapmaker-orca", "Snapmaker Orca", "Snapmaker_Orca", "snapmaker-orca.exe")
+            case "c5":
+                dir := filepath.Join("Flashforge", "Flash Studio Desktop")
+                app("flash-studio", "Flash Studio Desktop", dir, "flash studio.exe")
+            case "cc2":
+                app("elegoo-slicer", "ElegooSlicer", "ElegooSlicer", "elegoo-slicer.exe")
+            case "qidi":
+                app("orca-slicer", "OrcaSlicer", "OrcaSlicer", "orca-slicer.exe")
+                app("qidi-studio", "QIDIStudio", "QIDIStudio", "QIDIStudio.exe")
+            }
+        }
+    }
+    if platform == "darwin" {
+        bases := []string{"/Applications"}
+        if home != "" {
+            bases = append(bases, filepath.Join(home, "Applications"))
+        }
+        for _, base := range bases {
+            app := func(id, name, bundleName string) {
+                bundle := filepath.Join(base, bundleName+".app")
+                add(id, name, filepath.Join(bundle, "Contents", "Resources", "profiles"), bundle)
+            }
+            switch target {
+            case "u1":
+                app("snapmaker-orca", "Snapmaker Orca", "Snapmaker Orca")
+            case "c5":
+                app("flash-studio", "Flash Studio", "Flash Studio")
+                app("flash-studio", "Flash Studio Desktop", "Flash Studio Desktop")
+            case "cc2":
+                app("elegoo-slicer", "ElegooSlicer", "ElegooSlicer")
+            case "qidi":
+                app("qidi-studio", "QIDIStudio", "QIDIStudio")
+                app("orca-slicer", "OrcaSlicer", "OrcaSlicer")
+            }
+        }
+    }
+    return result
+}
+
 func slicerLocations(target string) []slicerLocation {
-	if env := os.Getenv("BRIDGE_SLICER_PROFILE_" + strings.ToUpper(target)); env != "" {
-		return []slicerLocation{{"system", "Custom test install", env, ""}}
-	}
-	if runtime.GOOS == "windows" {
-		pf := os.Getenv("ProgramFiles")
-		if pf == "" {
-			pf = `C:\Program Files`
-		}
-		switch target {
-		case "u1":
-			return []slicerLocation{{"snapmaker-orca", "Snapmaker Orca", filepath.Join(pf, "Snapmaker_Orca", "resources", "profiles"), filepath.Join(pf, "Snapmaker_Orca", "snapmaker-orca.exe")}}
-		case "c5":
-			return []slicerLocation{{"flash-studio", "Flash Studio Desktop", filepath.Join(pf, "Flashforge", "Flash Studio Desktop", "resources", "profiles"), filepath.Join(pf, "Flashforge", "Flash Studio Desktop", "flash studio.exe")}}
-		case "cc2":
-			return []slicerLocation{{"elegoo-slicer", "ElegooSlicer", filepath.Join(pf, "ElegooSlicer", "resources", "profiles"), filepath.Join(pf, "ElegooSlicer", "elegoo-slicer.exe")}}
-		case "qidi":
-			return []slicerLocation{
-				{"orca-slicer", "OrcaSlicer", filepath.Join(pf, "OrcaSlicer", "resources", "profiles"), filepath.Join(pf, "OrcaSlicer", "orca-slicer.exe")},
-				{"qidi-studio", "QIDIStudio", filepath.Join(pf, "QIDIStudio", "resources", "profiles"), filepath.Join(pf, "QIDIStudio", "QIDIStudio.exe")},
-			}
-		}
-	}
-	if runtime.GOOS == "darwin" {
-		m := func(id, name, app string) slicerLocation {
-			bundle := filepath.Join("/Applications", app+".app")
-			return slicerLocation{id, name, filepath.Join(bundle, "Contents", "Resources", "profiles"), bundle}
-		}
-		switch target {
-		case "u1":
-			return []slicerLocation{m("snapmaker-orca", "Snapmaker Orca", "Snapmaker Orca")}
-		case "c5":
-			return []slicerLocation{m("flash-studio", "Flash Studio", "Flash Studio")}
-		case "cc2":
-			return []slicerLocation{m("elegoo-slicer", "ElegooSlicer", "ElegooSlicer")}
-		case "qidi":
-			return []slicerLocation{
-				m("qidi-studio", "QIDIStudio", "QIDIStudio"), m("orca-slicer", "OrcaSlicer", "OrcaSlicer"),
-			}
-		}
-	}
-	return nil
+    pf := os.Getenv("ProgramFiles")
+    if runtime.GOOS == "windows" && pf == "" {
+        pf = `C:\Program Files`
+    }
+    home, _ := os.UserHomeDir()
+    return slicerLocationsForOS(target, runtime.GOOS, pf, os.Getenv("ProgramFiles(x86)"),
+        os.Getenv("LOCALAPPDATA"), home, os.Getenv("BRIDGE_SLICER_PROFILE_"+strings.ToUpper(target)))
 }
 func Slicers(target string) []SlicerChoice {
-	spec, ok := Specs[target]
-	if !ok {
-		return nil
-	}
-	items := make([]SlicerChoice, 0, 3)
-	for _, loc := range slicerLocations(target) {
-		info, err := os.Stat(filepath.Join(loc.root, spec.Vendor))
-		items = append(items, SlicerChoice{ID: loc.id, Name: loc.name, Installed: err == nil && info.IsDir()})
-	}
-	return items
+    spec, ok := Specs[target]
+    if !ok {
+        return nil
+    }
+    items := make([]SlicerChoice, 0, 3)
+    positions := map[string]int{}
+    for _, loc := range slicerLocations(target) {
+        info, err := os.Stat(filepath.Join(loc.root, spec.Vendor))
+        installed := err == nil && info.IsDir()
+        if at, exists := positions[loc.id]; exists {
+            items[at].Installed = items[at].Installed || installed
+            continue
+        }
+        positions[loc.id] = len(items)
+        items = append(items, SlicerChoice{ID: loc.id, Name: loc.name, Installed: installed})
+    }
+    return items
 }
 func ResolveSlicer(target, id string) (root, execPath, slicerName string, err error) {
 	spec, ok := Specs[target]
