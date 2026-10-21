@@ -1,0 +1,23 @@
+# Dependabot opens reviewable pull requests only. It must not merge or publish releases.
+# Go modules live in development branches today; add engine/native ecosystems
+# only after those manifests land in main.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "deps"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 2
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "ci-deps"
