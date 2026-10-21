@@ -273,10 +273,11 @@ def cmd_build(args):
             str(vendor / VENDOR_RUNNER),
         ]
         print("building", exe_name(platform), "with PyInstaller", pyinstaller_version)
-        # Run PyInstaller from the repository, never from Windows TEMP; PyInstaller
-        # explicitly refuses launching inside the OS temporary directory.
-        # --workpath/--distpath/--specpath still isolate generated files.
-        run(command, cwd=str(ROOT))
+        # PyInstaller refuses *any* working directory beneath Windows TEMP.
+        # The clone may itself be in TEMP during developer smoke tests. Run
+        # from the host home folder while all generated paths and entrypoint
+        # are absolute and isolated under workdir.
+        run(command, cwd=str(Path.home()))
         built = dist_tmp / exe_name(platform)
         if not built.is_file():
             raise Failure(f"PyInstaller did not produce {built}")
