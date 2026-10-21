@@ -5,3 +5,6 @@ bin/
 *.log
 *.tmp
 tests/fixtures/U1-*.3mf
+
+__pycache__/
+*.pyc

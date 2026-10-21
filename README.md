@@ -1,87 +1,28 @@
-# 3MF Bridge — Multi-printer beta
+![SliceBridge approved banner — Different slicers. One simple workflow.](assets/slicebridge-readme-banner-rounded.svg)
 
-ממיר מקומי לפרויקטי Bambu Studio / MakerWorld מסוג `.3mf`: בחירת קובץ, סימון מדפסות יעד, ויצירת פלטים ליד קובץ המקור.
+# SliceBridge
 
-**כל ארבעת היעדים פועלים במקביל, עם זיהוי אוטומטי של קוטר הדיזה:** Snapmaker U1, Flashforge Creator 5, ELEGOO Centauri Carbon 2 (CC2) ו-QIDI Plus5 (Orca: X-Plus 5). אפשר לסמן כמה יעדים ולבצע המרה אחת; המנוע יוצר `U1-`, `C5-`, `CC2-`, `QIDI-` עם שמות ללא דריסה. המרה שנכשלת ביעד אחד לא מוחקת פלטים של יעדים אחרים.
+**Bridge your prints.**
 
-## מצב תאימות (18.10.2026)
+[English](#english) · [עברית](#hebrew)
 
-| מדפסת | סלייסר יעד | קוטרי דיזה נתמכים | בדיקות |
-| --- | --- | --- | --- |
-| Snapmaker U1 | Snapmaker Orca | 0.2 / 0.4 / 0.6 / 0.8 מ״מ | **PASS לפי המשתמש:** פתיחה ו-Slice, שמירת הגדרות וחומרים |
-| Flashforge Creator 5 | Flash Studio Desktop | 0.25 / 0.4 / 0.6 / 0.8 מ״מ | **PASS לפי המשתמש:** פתיחה ו-Slice |
-| ELEGOO CC2 | ElegooSlicer | 0.2 / 0.4 / 0.6 / 0.8 מ״מ | **PASS לפי המשתמש:** פתיחה ו-Slice |
-| QIDI Plus5 | OrcaSlicer, X 5 Series | 0.2 / 0.4 / 0.6 / 0.8 מ״מ | **PASS לפי המשתמש:** פתיחה ו-Slice |
+<a id="english"></a>
+## English
 
-**חשוב:** המשתמש אישר שכל ארבעת הסלייסרים מבצעים Slice בהצלחה ושפעולת המרה בו-זמנית לכל ארבע המדפסות פועלת. זו בדיקת QA מדווחת של המשתמש, לא תיעוד בדיקות פיזיות או אימות עצמאי לכל שילוב של דיזה/חומר. לפני הדפסה מומלץ עדיין לבדוק התאמת הדיזה הפיזית, החומר, התמיכות והגדרות המכונה.
+A 3D project shouldn't have to be rebuilt for every printer. **SliceBridge** connects Bambu Studio 3MF projects with supported printers and slicers. Choose your targets, convert locally using compatible printer profiles, and continue in the slicer you already know — without changing the original file.
 
-## זיהוי קוטר דיזה ומיפוי אוטומטי
+I put SliceBridge together using existing solutions and AI assistance, adapted to fit my workflow. Hopefully it will be useful to others too.
 
-המנוע בודק את `nozzle_diameter`/פרופיל המדפסת בקובץ 3MF. כאשר הקוטר מצוין, נבחר פרופיל מכונה, תהליך וחומרים שמתאימים לאותו קוטר **מתוך סלייסר היעד המותקן**. הגדרות גובה שכבה מהמקור מועברות רק אם הן בטווח `min_layer_height` / `max_layer_height` של מכונת היעד; אחרת נשאר גובה השכבה התקין של פרופיל היעד.
+<a id="hebrew"></a>
+<div dir="rtl" align="right" lang="he">
+<h2>עברית</h2>
+<p>לא צריך להכין מחדש פרויקט תלת־ממדי לכל מדפסת. <strong><span dir="ltr">SliceBridge</span></strong> מגשר בין פרויקטי <span dir="ltr">3MF</span> של <span dir="ltr">Bambu Studio</span> לבין מדפסות וסלייסרים נתמכים. בוחרים מדפסות יעד, ממירים מקומית בעזרת פרופילים תואמים וממשיכים בסלייסר המוכר — בלי לשנות את קובץ המקור.</p>
+<p>הרכבתי את <span dir="ltr">SliceBridge</span> בעזרת פתרונות קיימים וכלי בינה מלאכותית, בהתאמה לצורת העבודה שלי. בתקווה שזה יעזור גם לאחרים.</p>
+</div>
 
-**מיפוי מאושר של Creator 5:** מקור Bambu ‏**0.2 מ״מ → יעד Creator 5 ‏0.25 מ״מ אוטומטית וללא חלון אישור**. זה אינו שינוי בקוטר פיזי; יש לוודא שהדיזה המותקנת במדפסת היא 0.25 מ״מ. שאר הקטרים נבחרים בהתאמה ישירה (0.4/0.6/0.8). עבור U1, ‏CC2 ו־QIDI הזיהוי ישיר (0.2/0.4/0.6/0.8). מקור 0.25 מ״מ שאין לו התאמה ישירה ביעד נחסם במקום לבחור פרופיל אחר ללא אישור.
+---
 
-בקובץ שאינו מציין שום דיזה ניתן להמשיך כבעבר עם **ברירת מחדל משוערת של 0.4 מ״מ**; הדו״ח הפנימי מסמן שזו הנחה. קובץ המצהיר על דיזות סותרות באותו פרויקט נחסם במקום לצמצם אותן אוטומטית.
+<sub><strong>Development builds available / גרסאות פיתוח להורדה:</strong> [GitHub Releases](https://github.com/nocturney/slicebridge/releases). Experimental builds, not stable releases; some are unsigned. Check printer and slicer settings before printing. [Development branch](https://github.com/nocturney/slicebridge/tree/feature/browser-compat-and-icon) · [Printer catalogue roadmap](https://github.com/nocturney/slicebridge/issues/7).</sub>
 
-**בדיקות מקומיות:** 40 המרות סינתטיות מול פרופילי היצרנים המותקנים על Chris עברו בכל ארבע המדפסות, בארבעת קוטרי המקור, בחומר אחד/כמה חומרים ועם בדיקת גובה שכבה חריג. קיימות גם בדיקות יחידה למיפוי ולמניעת החלפת פרופיל שגוי. זאת תוספת לדיווח המשתמש על הצלחת Slice בארבעת הסלייסרים; לא בוצעו הדפסות פיזיות.
-
-## דרישות
-
-ל־U1 עם דיזה 0.4 מ״מ אין תלות בהתקנת סלייסר לצורך יצירת הפלט, כי נשמר מנוע ה־U1 שכבר אומת. עבור U1 עם דיזות 0.2/0.6/0.8 מ״מ נדרשת התקנה מקומית של Snapmaker Orca ופרופילי הדיזה המתאימים. שלושת היעדים הנוספים דורשים *סלייסרים מותקנים עם פרופילי מדפסת מקוריים* במחשב שמבצע את ההמרה. כך המנוע משתמש בפועל ב-machine / process / filament native presets, כולל ה-G-code הייעודי לכל מכונה, ולא מחלק פרופיל Bambu ששמו שונה.
-
-- **U1 (מלבד 0.4):** `C:\Program Files\Snapmaker_Orca\resources\profiles\` — Snapmaker U1 עם הדיזה שנבחרה. ניתן לשנות נתיב דרך `BRIDGE_SLICER_PROFILE_U1`.
-- **C5:** `C:\Program Files\Flashforge\Flash Studio Desktop\resources\profiles\` — פרופילי Flashforge Creator 5 לפי קוטר הדיזה.
-- **CC2:** `C:\Program Files\ElegooSlicer\resources\profiles\` — פרופילי Elegoo Centauri Carbon 2 לפי קוטר הדיזה.
-- **QIDI:** `C:\Program Files\OrcaSlicer\resources\profiles\` — פרופילי X 5 Series / X-Plus 5 לפי קוטר הדיזה.
-
-בתצורה שאינה נתיב ברירת המחדל ניתן להגדיר `BRIDGE_SLICER_PROFILE_U1`, `BRIDGE_SLICER_PROFILE_C5`, `BRIDGE_SLICER_PROFILE_CC2` או `BRIDGE_SLICER_PROFILE_QIDI` לנתיב תיקיית `resources/profiles` המתאימה. הממשק מאתר את הפרופילים בזמן הפתיחה; יעד חסר מופיע כבוי עם הסבר. אין צורך להעלות קבצים לאינטרנט או להגדיר API.
-
-ממופה עד ארבעה חריצי חומר בלי איחוד צבעים אוטומטי. סוגי חומר מקומיים נתמכים: C5 — PLA/PETG/ABS/ASA; CC2 — PLA/PETG/ABS/ASA/TPU; QIDI — PLA/PETG/ABS/TPU. סוג לא מוכר או חומר עם נתון טמפרטורה/זרימה חסר נחסם במקום שיוחלף ב־PLA בשקט. עבור CC2 נדרשת מערכת CANVAS, ול־QIDI נדרשת QIDI Box כדי לבצע בפועל הדפסה רב־צבעית.
-
-## מה הממיר מבצע
-
-- משתמש ב־[bl2std](https://github.com/BryanSmee/bl_to_std) (Go, GPLv3), ב־commit נעול `4252f5f`, עם שכבת adapters ו-QA משלנו.
-- מחליף את זהות המכונה ואת בסיס הגדרות היצרן; ממפה חומרי מקור לחריצים, משמר גאומטריה וצביעת משולשים וכן תת־קבוצה שמרנית של כוונות הדפסה משותפות, כגון layer height, walls, brim, supports.
-- מעתיק הגדרות טמפרטורה, זרימה וקירור ממקורות היצרן של *סוג החומר המתאים לכל חריץ*; אין העתקה של G-code מכונה מ־Bambu. פרמטרי יצרן לא תואמים אינם מועתקים.
-- מסיר מטמון G-code/plate sliced ישן, בודק שהמשולשים והקודקודים קיימים לאחר ההמרה, שהתוצאה משויכת למדפסת הנכונה, ושאף קובץ פלט קודם לא נדרס.
-- לכל יעד תהליך עצמאי: תקלה ב־C5 לא מבטלת תוצאה ל־CC2/‏QIDI/‏U1.
-- אין שירות ענן, אין מעקב Analytics ואין תקשורת עם מדפסות.
-
-**מגבלות:** לא נבדקה עדיין תמיכה בקובצי MakerWorld מורכבים עם modifiers מיוחדים, multi-plate, גאומטריה שאינה נכנסת למשטח היעד או מעל ארבעה חריצי חומר. לא הוכח שכל מפתח הגדרה נשמר אחד־לאחד; הגדרות חומרה ו-G-code נלקחות בכוונה מהסלייסר היעד. בדיקה של Slice ממשי ומדפסות תידרש אחרי smoke ראשון של שלושת הסלייסרים.
-
-## פיתוח ובדיקות Windows
-
-נדרשים Node.js 24+, npm ו־Go 1.24.7+ לבניית הקוד. התקנת הכלים דורשת אינטרנט; *המרת קובצי 3MF עצמה מקומית בלבד*.
-
-```powershell
-git submodule update --init
-.\scripts\build-engine.ps1
-npm ci
-npm test
-npm run test:desktop
-npm start
-```
-
-במחשב Chris מותקנת Go כתיקייה מקומית:
-```powershell
-.\scripts\build-engine.ps1 -GoExe 'D:\Velvet\Toolchains\go-1.24.7\go\bin\go.exe'
-```
-
-בדיקה נוספת *רק במחשב שבו שלושת הסלייסרים מותקנים*:
-```powershell
-python .\tests\make-mixed-fixture.py
-python .\tests\make-nozzle-fixtures.py
-npm run test:installed
-```
-
-הבדיקה הזו מפעילה ארבע סדרות המרה **במקביל** (אחת לכל מדפסת) על קובצי 3MF סינתטיים, כולל קטרים שונים, כמה חומרים וטיפול בגובה שכבה חריג; היא מוודאת פרופיל יעד, גאומטריה ופלט שונה מהמקור. לבניית portable zip:
-
-```powershell
-npm run package:win
-```
-
-GitHub Actions מריץ בדיקות Go, יחידה ואינטגרציה, בדיקת פתיחת חלון Electron ומעלה Windows Portable ZIP. בפריסה למחשב נוסף יש להתקין את סלייסרי היצרן להמרות C5/CC2/QIDI.
-
-## רישוי
-
-קוד ההמרה bl2std נכלל כ־Git submodule תחת GPLv3; כללי רישוי המכלול מתועדים ב־`LICENSE` וב־`THIRD_PARTY_NOTICES.md`. קובצי פרופיל הסלייסר של Flashforge, ELEGOO ו־QIDI **אינם נכללים בריפו או במתקין**: הם נקראים מתוך ההתקנות המקומיות שברשות המשתמש.
+**Open source:** [GPL-3.0-only](LICENSE) for covered project-owned code · [License scope & rights](LICENSING.md) · [Third-party notices](THIRD_PARTY_NOTICES.md).  
+<div dir="rtl" align="right" lang="he">**קוד פתוח:** <a href="LICENSE" dir="ltr">GPL-3.0-only</a> · <a href="LICENSING.md">היקף הרישיון</a> · <a href="THIRD_PARTY_NOTICES.md">קרדיטים לצדדים שלישיים</a>.</div>
