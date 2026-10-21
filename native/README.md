@@ -29,46 +29,24 @@ only shipped UI languages. Toggle between them in the top bar; Hebrew is RTL.
 - Source file picker, native drag/drop, output-folder opener, independent
   per-target successes/errors, source/target nozzle in completion report.
 
-## Checking for GitHub updates
+## About, version and community updates
 
-The **Check for updates / בדיקת עדכונים** button is explicit and manual.
-It requests GitHub Releases for `nocturney/3mf-bridge`, compares the
-installed SemVer version against published stable **and beta** releases, and
-checks for an archive built for the running Windows or macOS architecture.
-The UI displays the new version and opens its GitHub Release page in the
-system browser when selected. **No silent download, installation, or
-periodic background requests.**
+The **About / אודות** window shows the installed build version, a manual **Check
+for updates / בדיקת עדכונים** button, GPL-3.0-only, third-party credits, and
+links to the exact stamped source commit and [public development
+Releases](https://github.com/nocturney/slicebridge/releases). The complete
+license and notices are **bundled locally** and readable offline.
 
-The repository is currently **private**: public GitHub API requests return
-HTTP 404. The updater therefore uses the existing signed-in GitHub CLI
-(`gh`) on the local machine, with credentials managed by GitHub CLI and
-the operating system keychain. The app does **not** bundle, request,
-store or expose a GitHub token to the HTML frontend. On a new machine,
-install GitHub CLI and run `gh auth login` with an account authorized to
-access this repository. If authentication is missing, the UI says so
-instead of pretending that the software is up to date.
+The update check queries the public `nocturney/slicebridge` GitHub Releases
+API only when clicked; no GitHub CLI, account, automatic installation or
+background polling is needed. It considers published prereleases and offers
+only platform-matching downloads. Any network failure remains visible rather
+than silently claiming the build is current.
 
-At the time of the implementation there are **no published Releases**,
-only CI preview artifacts. In this case the updater explicitly reports
-"No GitHub Releases yet" and offers to open the native beta build page.
-CI artifacts are **not** counted as versioned Releases, and expire after
-14 days.
-
-For future Releases, tag with a full SemVer (e.g. `v0.4.0-beta.2`),
-bump `native/updates_bridge.go`'s `appVersion`, and attach the matching
-asset file to the GitHub Release:
-- Windows x64: `3MF-Bridge-Windows-native.zip`
-- macOS Apple Silicon: `3MF-Bridge-macOS-Apple-Silicon.zip`
-
-There is no Intel Mac binary yet; its update checker will not offer an
-Apple Silicon download. All release pages are constructed from a fixed
-trusted `github.com/nocturney/3mf-bridge` path, never an arbitrary URL
-returned by GitHub.
-
-Update backend tests use an isolated local HTTP mock. Optionally run
-`BRIDGE_TEST_GITHUB=1 go test -v ./updates` to test the real authenticated
-private-repository request. The bilingual update-button JavaScript test
-is `node --test tests/update-ui.test.js`.
+Development downloads can be unsigned, so Windows/macOS may show an
+unknown-publisher warning. Inspect target slicer, nozzle and material
+settings before printing. Go tests for this updater live in `updates/`
+and native UI tests in `tests/about-ui.test.js` and `tests/update-ui.test.js`.
 
 ## Development
 

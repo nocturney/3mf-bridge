@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Meltingplot",
+  "models": [
+    {
+      "id": "meltingplot-meltingplot-chx-350",
+      "manufacturer": "Meltingplot",
+      "model": "Meltingplot CHX 350",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Meltingplot.json",
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
+          },
+          "model": {
+            "path": "machine/Meltingplot CHX 350.json",
+            "sha256": "e9fa23ed3f7491353e799bcfa6e92e230714583c913f4ce797a9949b1132f247",
+            "manufacturer_model_id": "Meltingplot-CHX-350"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1",
+            "1.2"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (5)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "meltingplot-meltingplot-mbl-133",
+      "manufacturer": "Meltingplot",
+      "model": "Meltingplot MBL 133",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Meltingplot.json",
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
+          },
+          "model": {
+            "path": "machine/Meltingplot MBL 133.json",
+            "sha256": "8238baf8d2157fccad290307a17068562ed25e5649227eb9794721f28ae89728",
+            "manufacturer_model_id": "Meltingplot-MBL-133"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1",
+            "1.2"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (5)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "meltingplot-meltingplot-mbl-136",
+      "manufacturer": "Meltingplot",
+      "model": "Meltingplot MBL 136",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Meltingplot.json",
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
+          },
+          "model": {
+            "path": "machine/Meltingplot MBL 136.json",
+            "sha256": "1ed4a72ae11136e476b1ba2158a77e757f3a077a354c60fbb151cf64017cb857",
+            "manufacturer_model_id": "Meltingplot-MBL-136"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1",
+            "1.2"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (5)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "meltingplot-meltingplot-mbl-308",
+      "manufacturer": "Meltingplot",
+      "model": "Meltingplot MBL 308",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Meltingplot.json",
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
+          },
+          "model": {
+            "path": "machine/Meltingplot MBL 308.json",
+            "sha256": "6763a211261929d76bad30324c21c5b97eeb733ba761e016b2a8c7195fb9367d",
+            "manufacturer_model_id": "Meltingplot-MBL-308"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1",
+            "1.2"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (5)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "meltingplot-meltingplot-mbl-480",
+      "manufacturer": "Meltingplot",
+      "model": "Meltingplot MBL 480",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Meltingplot.json",
+            "sha256": "bcea996301ee30793051c70b2fe5d601681bfe62b206b00d1135abac917ef3cc"
+          },
+          "model": {
+            "path": "machine/Meltingplot MBL 480.json",
+            "sha256": "845cea234393bb05259aa252fe1d70fd0b2ce35be6c5b6ef04dd265d1f53c789",
+            "manufacturer_model_id": "Meltingplot-MBL-480"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8",
+            "1",
+            "1.2"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (5)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "manufacturer": "TwoTrees",
+  "models": [
+    {
+      "id": "twotrees-twotrees-sk1",
+      "manufacturer": "TwoTrees",
+      "model": "TwoTrees SK1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/TwoTrees.json",
+            "sha256": "256747aa176a9f2a84afbcbfba95f4d5649fe38dfa5b0d8b9633900f5ed46b5e"
+          },
+          "model": {
+            "path": "machine/TwoTrees SK1.json",
+            "sha256": "a73d0271b15e69bdeb2a6cbeb50c26268dc7d5ece1c594112612834178ce60fa",
+            "manufacturer_model_id": "TwoTrees_SK1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "twotrees-twotrees-sp-5-klipper",
+      "manufacturer": "TwoTrees",
+      "model": "TwoTrees SP-5 Klipper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/TwoTrees.json",
+            "sha256": "256747aa176a9f2a84afbcbfba95f4d5649fe38dfa5b0d8b9633900f5ed46b5e"
+          },
+          "model": {
+            "path": "machine/TwoTrees SP-5 Klipper.json",
+            "sha256": "f92b636648f9c36a815676d536ceff03d26f45a0f69bbee22b5c301a1fecfaaa",
+            "manufacturer_model_id": "TwoTrees_SP-5_Klipper"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

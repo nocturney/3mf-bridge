@@ -1,0 +1,399 @@
+{
+  "schema_version": 1,
+  "manufacturer": "LulzBot",
+  "models": [
+    {
+      "id": "lulzbot-lulzbot-mini-1",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Mini 1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "6e75dfc558d3282fc325306a61ca5e24704d28869ff44b92873686a0426c20a1"
+          },
+          "model": {
+            "path": "machine/Lulzbot Mini 1.json",
+            "sha256": "1731322d943085076e1b5cb2e7382823db40a043c689b0a90086c4fefaeb1b23",
+            "manufacturer_model_id": "Lulzbot-Mini-1"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-4-or-5",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz 4 or 5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "6e75dfc558d3282fc325306a61ca5e24704d28869ff44b92873686a0426c20a1"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz 4 or 5.json",
+            "sha256": "b7186079c29f0564aa394bc8390b188a9bae07198fa6bba46bd4950ed26f4089",
+            "manufacturer_model_id": "Lulzbot-Taz-4-5"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-6",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz 6",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "6e75dfc558d3282fc325306a61ca5e24704d28869ff44b92873686a0426c20a1"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz 6.json",
+            "sha256": "9db109319fd1994f9ba4a10d0a944611f7fd5060df6cd50776f6e467179213ee",
+            "manufacturer_model_id": "Lulzbot-Taz-6"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-pro-dual",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz Pro Dual",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "6e75dfc558d3282fc325306a61ca5e24704d28869ff44b92873686a0426c20a1"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz Pro Dual.json",
+            "sha256": "c9eee95aac97992a4a7a013df312942db25caa7d8c6ec119c8a336570b700c48",
+            "manufacturer_model_id": "Lulzbot-Taz-Pro-Dual"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-lulzbot-taz-pro-s",
+      "manufacturer": "LulzBot",
+      "model": "Lulzbot Taz Pro S",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Lulzbot.json",
+            "sha256": "6e75dfc558d3282fc325306a61ca5e24704d28869ff44b92873686a0426c20a1"
+          },
+          "model": {
+            "path": "machine/Lulzbot Taz Pro S.json",
+            "sha256": "7e3ac831b1343950f85a33742b2aa28308c161eaa2b92ace75809ce9deda6fac",
+            "manufacturer_model_id": "Lulzbot-Taz-Pro-S"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "lulzbot-mini-aero",
+      "manufacturer": "LulzBot",
+      "model": "Mini Aero",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.0.0",
+          "manifest": {
+            "path": "LulzBot/1.0.0.ini",
+            "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955"
+          },
+          "model": {
+            "path": "LulzBot/1.0.0.ini",
+            "section": "printer_model:MINI_AERO",
+            "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "Mini Aero 0.5mm",
+                "path": "LulzBot/1.0.0.ini",
+                "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                "section": "printer:Mini Aero 0.5mm",
+                "inheritance": [
+                  {
+                    "name": "Mini Aero 0.5mm",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "printer:Mini Aero 0.5mm"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm STANDARD @lulzbot",
+                "path": "LulzBot/1.0.0.ini",
+                "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                "section": "print:0.25mm STANDARD @lulzbot",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.25mm STANDARD @lulzbot",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "print:0.25mm STANDARD @lulzbot"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Jessie PLA @lulzbot",
+                "path": "LulzBot/1.0.0.ini",
+                "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                "section": "filament:Jessie PLA @lulzbot",
+                "inheritance": [
+                  {
+                    "name": "Jessie PLA @lulzbot",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "filament:Jessie PLA @lulzbot"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "LulzBot/1.0.0.ini",
+        "nozzles_mm": [
+          "0.5"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LulzBot/1.0.0.ini",
+          "machine": "Mini Aero 0.5mm",
+          "process": "0.25mm STANDARD @lulzbot",
+          "filament": "Jessie PLA @lulzbot"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "lulzbot-taz6-aero",
+      "manufacturer": "LulzBot",
+      "model": "Taz6 Aero",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.0.0",
+          "manifest": {
+            "path": "LulzBot/1.0.0.ini",
+            "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955"
+          },
+          "model": {
+            "path": "LulzBot/1.0.0.ini",
+            "section": "printer_model:TAZ6_AERO",
+            "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955"
+          },
+          "nozzles_mm": [
+            "0.5"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "Taz6 Aero 0.5mm",
+                "path": "LulzBot/1.0.0.ini",
+                "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                "section": "printer:Taz6 Aero 0.5mm",
+                "inheritance": [
+                  {
+                    "name": "Taz6 Aero 0.5mm",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "printer:Taz6 Aero 0.5mm"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.25mm STANDARD @lulzbot",
+                "path": "LulzBot/1.0.0.ini",
+                "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                "section": "print:0.25mm STANDARD @lulzbot",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "0.25mm STANDARD @lulzbot",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "print:0.25mm STANDARD @lulzbot"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Jessie PLA @lulzbot",
+                "path": "LulzBot/1.0.0.ini",
+                "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                "section": "filament:Jessie PLA @lulzbot",
+                "inheritance": [
+                  {
+                    "name": "Jessie PLA @lulzbot",
+                    "path": "LulzBot/1.0.0.ini",
+                    "sha256": "8c3769ae16d7e6f1500bab2606a13b51dcc3505cda7cb0a1e94cf02056bd8955",
+                    "section": "filament:Jessie PLA @lulzbot"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "LulzBot/1.0.0.ini",
+        "nozzles_mm": [
+          "0.5"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.5": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LulzBot/1.0.0.ini",
+          "machine": "Taz6 Aero 0.5mm",
+          "process": "0.25mm STANDARD @lulzbot",
+          "filament": "Jessie PLA @lulzbot"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

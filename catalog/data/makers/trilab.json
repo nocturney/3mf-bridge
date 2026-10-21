@@ -1,0 +1,1510 @@
+{
+  "schema_version": 1,
+  "manufacturer": "TriLAB",
+  "models": [
+    {
+      "id": "trilab-azteq-dynamic",
+      "manufacturer": "TriLAB",
+      "model": "AzteQ Dynamic",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:AQD",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "AzteQ Dynamic",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:AzteQ Dynamic",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "*AQI*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*AQI*"
+                  },
+                  {
+                    "name": "*AQD*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*AQD*"
+                  },
+                  {
+                    "name": "AzteQ Dynamic",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:AzteQ Dynamic"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @AQ",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.20mm Normal @AQ",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.20mm Normal @AQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @AQ"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament ASA @AQI",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament ASA @AQI",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "*AQI 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*AQI 0.4*"
+                  },
+                  {
+                    "name": "Generic ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic ASA @AQI"
+                  },
+                  {
+                    "name": "Prusament ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament ASA @AQI"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "TriLAB/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "AzteQ Dynamic",
+          "process": "0.20mm Normal @AQ",
+          "filament": "Prusament ASA @AQI"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "trilab-azteq-industrial",
+      "manufacturer": "TriLAB",
+      "model": "AzteQ Industrial",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:AQI",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 3,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "AzteQ Industrial",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:AzteQ Industrial",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "*AQI*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*AQI*"
+                  },
+                  {
+                    "name": "AzteQ Industrial",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:AzteQ Industrial"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Normal @AQ",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.20mm Normal @AQ",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.20mm Normal @AQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @AQ"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament ASA @AQI",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament ASA @AQI",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "*AQI 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*AQI 0.4*"
+                  },
+                  {
+                    "name": "Generic ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic ASA @AQI"
+                  },
+                  {
+                    "name": "Prusament ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament ASA @AQI"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "AzteQ Industrial - 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:AzteQ Industrial - 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "*AQI*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*AQI*"
+                  },
+                  {
+                    "name": "AzteQ Industrial",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:AzteQ Industrial"
+                  },
+                  {
+                    "name": "AzteQ Industrial - 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:AzteQ Industrial - 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm Normal @AQ 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.30mm Normal @AQ 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.20mm Normal @AQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @AQ"
+                  },
+                  {
+                    "name": "0.30mm Normal @AQ 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.30mm Normal @AQ 0.6 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament ASA @AQI 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament ASA @AQI 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "*AQI 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*AQI 0.4*"
+                  },
+                  {
+                    "name": "Generic ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic ASA @AQI"
+                  },
+                  {
+                    "name": "Prusament ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament ASA @AQI"
+                  },
+                  {
+                    "name": "*AQI 0.6*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*AQI 0.6*"
+                  },
+                  {
+                    "name": "Prusament ASA @AQI 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament ASA @AQI 0.6 nozzle"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "AzteQ Industrial - 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:AzteQ Industrial - 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "*AQI*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*AQI*"
+                  },
+                  {
+                    "name": "AzteQ Industrial",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:AzteQ Industrial"
+                  },
+                  {
+                    "name": "AzteQ Industrial - 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:AzteQ Industrial - 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm Normal @AQ 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.40mm Normal @AQ 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.20mm Normal @AQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @AQ"
+                  },
+                  {
+                    "name": "0.40mm Normal @AQ 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.40mm Normal @AQ 0.8 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament ASA @AQI 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament ASA @AQI 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "*AQI 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*AQI 0.4*"
+                  },
+                  {
+                    "name": "Generic ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic ASA @AQI"
+                  },
+                  {
+                    "name": "Prusament ASA @AQI",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament ASA @AQI"
+                  },
+                  {
+                    "name": "*AQI 0.8*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*AQI 0.8*"
+                  },
+                  {
+                    "name": "Prusament ASA @AQI 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament ASA @AQI 0.8 nozzle"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "TriLAB/2.1.0.ini",
+        "nozzles_mm": [
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "AzteQ Industrial",
+          "process": "0.20mm Normal @AQ",
+          "filament": "Prusament ASA @AQI"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "AzteQ Industrial - 0.6 nozzle",
+          "process": "0.30mm Normal @AQ 0.6 nozzle",
+          "filament": "Prusament ASA @AQI 0.6 nozzle"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "AzteQ Industrial - 0.8 nozzle",
+          "process": "0.40mm Normal @AQ 0.8 nozzle",
+          "filament": "Prusament ASA @AQI 0.8 nozzle"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "trilab-deltiq-2",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "DeltiQ 2 - 0.25 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:DeltiQ 2 - 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "DeltiQ 2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2"
+                  },
+                  {
+                    "name": "DeltiQ 2 - 0.25 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 - 0.25 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.07mm Quality @DQ2 0.25 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.07mm Quality @DQ2 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.07mm Quality @DQ2 0.25 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.07mm Quality @DQ2 0.25 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fillamentum PLA @DQ2 0.25 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Fillamentum PLA @DQ2 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "Generic PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic PLA @DQ2"
+                  },
+                  {
+                    "name": "Fillamentum PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Fillamentum PLA @DQ2"
+                  },
+                  {
+                    "name": "*DQ2 0.25*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.25*"
+                  },
+                  {
+                    "name": "Fillamentum PLA @DQ2 0.25 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Fillamentum PLA @DQ2 0.25 nozzle"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "DeltiQ 2 - 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:DeltiQ 2 - 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "DeltiQ 2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2"
+                  },
+                  {
+                    "name": "DeltiQ 2 - 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 - 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm Normal @DQ2 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.30mm Normal @DQ2 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.30mm Normal @DQ2 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.30mm Normal @DQ2 0.6 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament PLA @DQ2 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament PLA @DQ2 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "Generic PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic PLA @DQ2"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2"
+                  },
+                  {
+                    "name": "*DQ2 0.6*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.6*"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2 0.6 nozzle"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "DeltiQ 2 - 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:DeltiQ 2 - 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "DeltiQ 2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2"
+                  },
+                  {
+                    "name": "DeltiQ 2 - 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 - 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm Normal @DQ2 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.40mm Normal @DQ2 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.40mm Normal @DQ2 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.40mm Normal @DQ2 0.8 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament PLA @DQ2 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament PLA @DQ2 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "Generic PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic PLA @DQ2"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2"
+                  },
+                  {
+                    "name": "*DQ2 0.8*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.8*"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2 0.8 nozzle"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": [
+            "print missing preset: 0.20mm Normal @DQ2 (1)"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "TriLAB/2.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "DeltiQ 2 - 0.25 nozzle",
+          "process": "0.07mm Quality @DQ2 0.25 nozzle",
+          "filament": "Fillamentum PLA @DQ2 0.25 nozzle"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "DeltiQ 2 - 0.6 nozzle",
+          "process": "0.30mm Normal @DQ2 0.6 nozzle",
+          "filament": "Prusament PLA @DQ2 0.6 nozzle"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "DeltiQ 2 - 0.8 nozzle",
+          "process": "0.40mm Normal @DQ2 0.8 nozzle",
+          "filament": "Prusament PLA @DQ2 0.8 nozzle"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "trilab-deltiq-2-flexprint",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 + FlexPrint",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2+FP",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: 0.20mm FLEX @DQ2FP (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-flexprint-2",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 + FlexPrint 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2+FP2",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: 0.20mm FLEX @DQ2FP (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-plus",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 Plus",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2P",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.25",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.25",
+              "machine": {
+                "name": "DeltiQ 2 Plus - 0.25 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:DeltiQ 2 Plus - 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "DeltiQ 2 Plus",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 Plus"
+                  },
+                  {
+                    "name": "DeltiQ 2 Plus - 0.25 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 Plus - 0.25 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.07mm Quality @DQ2 0.25 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.07mm Quality @DQ2 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.07mm Quality @DQ2 0.25 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.07mm Quality @DQ2 0.25 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Fillamentum PLA @DQ2 0.25 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Fillamentum PLA @DQ2 0.25 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "Generic PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic PLA @DQ2"
+                  },
+                  {
+                    "name": "Fillamentum PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Fillamentum PLA @DQ2"
+                  },
+                  {
+                    "name": "*DQ2 0.25*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.25*"
+                  },
+                  {
+                    "name": "Fillamentum PLA @DQ2 0.25 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Fillamentum PLA @DQ2 0.25 nozzle"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "DeltiQ 2 Plus - 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:DeltiQ 2 Plus - 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "DeltiQ 2 Plus",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 Plus"
+                  },
+                  {
+                    "name": "DeltiQ 2 Plus - 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 Plus - 0.6 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.30mm Normal @DQ2 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.30mm Normal @DQ2 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.30mm Normal @DQ2 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.30mm Normal @DQ2 0.6 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament PLA @DQ2 0.6 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament PLA @DQ2 0.6 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "Generic PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic PLA @DQ2"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2"
+                  },
+                  {
+                    "name": "*DQ2 0.6*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.6*"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2 0.6 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2 0.6 nozzle"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "DeltiQ 2 Plus - 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "printer:DeltiQ 2 Plus - 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DeltiQ*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ*"
+                  },
+                  {
+                    "name": "*DeltiQ 2*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:*DeltiQ 2*"
+                  },
+                  {
+                    "name": "DeltiQ 2 Plus",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 Plus"
+                  },
+                  {
+                    "name": "DeltiQ 2 Plus - 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "printer:DeltiQ 2 Plus - 0.8 nozzle"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.40mm Normal @DQ2 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "print:0.40mm Normal @DQ2 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "0.20mm Normal @DQ",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.20mm Normal @DQ"
+                  },
+                  {
+                    "name": "0.40mm Normal @DQ2 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "print:0.40mm Normal @DQ2 0.8 nozzle"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Prusament PLA @DQ2 0.8 nozzle",
+                "path": "TriLAB/2.1.0.ini",
+                "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                "section": "filament:Prusament PLA @DQ2 0.8 nozzle",
+                "inheritance": [
+                  {
+                    "name": "*DQ2 0.4*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.4*"
+                  },
+                  {
+                    "name": "Generic PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Generic PLA @DQ2"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2"
+                  },
+                  {
+                    "name": "*DQ2 0.8*",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:*DQ2 0.8*"
+                  },
+                  {
+                    "name": "Prusament PLA @DQ2 0.8 nozzle",
+                    "path": "TriLAB/2.1.0.ini",
+                    "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809",
+                    "section": "filament:Prusament PLA @DQ2 0.8 nozzle"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": [
+            "print missing preset: 0.20mm Normal @DQ2 (1)"
+          ]
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "TriLAB/2.1.0.ini",
+        "nozzles_mm": [
+          "0.25",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.25": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "DeltiQ 2 Plus - 0.25 nozzle",
+          "process": "0.07mm Quality @DQ2 0.25 nozzle",
+          "filament": "Fillamentum PLA @DQ2 0.25 nozzle"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "DeltiQ 2 Plus - 0.6 nozzle",
+          "process": "0.30mm Normal @DQ2 0.6 nozzle",
+          "filament": "Prusament PLA @DQ2 0.6 nozzle"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "TriLAB/2.1.0.ini",
+          "machine": "DeltiQ 2 Plus - 0.8 nozzle",
+          "process": "0.40mm Normal @DQ2 0.8 nozzle",
+          "filament": "Prusament PLA @DQ2 0.8 nozzle"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "trilab-deltiq-2-plus-flexprint",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 Plus + FlexPrint",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2P+FP",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: 0.20mm FLEX @DQ2FP (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-2-plus-flexprint-2",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ 2 Plus + FlexPrint 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQ2P+FP2",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: 0.20mm FLEX @DQ2FP (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-l",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ L",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQL",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: DeltiQ 0.20mm Normal (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-m",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ M",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQM",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: DeltiQ 0.20mm Normal (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "trilab-deltiq-xl",
+      "manufacturer": "TriLAB",
+      "model": "DeltiQ XL",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "2.1.0",
+          "manifest": {
+            "path": "TriLAB/2.1.0.ini",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "model": {
+            "path": "TriLAB/2.1.0.ini",
+            "section": "printer_model:DQXL",
+            "sha256": "8cb601df6a553baac2a252f97714f0a00846ed5f924004e730a8ef323a1ee809"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 1,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: DeltiQ 0.20mm Normal (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

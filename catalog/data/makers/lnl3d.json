@@ -1,0 +1,2281 @@
+{
+  "schema_version": 1,
+  "manufacturer": "LNL3D",
+  "models": [
+    {
+      "id": "lnl3d-lnl3d-d3",
+      "manufacturer": "LNL3D",
+      "model": "LNL3D D3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "LNL3D/1.1.0.ini",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "model": {
+            "path": "LNL3D/1.1.0.ini",
+            "section": "printer_model:LNL3D_D3",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "LNL3D D3 (0.2 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 (0.2 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.2nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 (0.2 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 (0.2 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.12mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.12mm*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.2nozzle*"
+                  },
+                  {
+                    "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "LNL3D D3 (0.4 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 (0.4 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.4nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 (0.4 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 (0.4 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.16mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.16mm*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.4nozzle*"
+                  },
+                  {
+                    "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "LNL3D D3 (0.6 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 (0.6 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.6nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 (0.6 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 (0.6 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.24mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.24mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "LNL3D D3 (0.8 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 (0.8 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.8nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 (0.8 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 (0.8 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.36mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.36mm*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "LNL3D/1.1.0.ini",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 (0.2 mm nozzle)",
+          "process": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 (0.4 mm nozzle)",
+          "process": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 (0.6 mm nozzle)",
+          "process": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 (0.8 mm nozzle)",
+          "process": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "lnl3d-lnl3d-d3-v2",
+      "manufacturer": "LNL3D",
+      "model": "LNL3D D3 V2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "LNL3D/1.1.0.ini",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "model": {
+            "path": "LNL3D/1.1.0.ini",
+            "section": "printer_model:LNL3D_D3_V2",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "LNL3D D3 V2 (0.2 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 V2 (0.2 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_V2*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_V2*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.2nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 V2 (0.2 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 V2 (0.2 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.12mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.12mm*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.2nozzle*"
+                  },
+                  {
+                    "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "LNL3D D3 V2 (0.4 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 V2 (0.4 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_V2*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_V2*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.4nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 V2 (0.4 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 V2 (0.4 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.16mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.16mm*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.4nozzle*"
+                  },
+                  {
+                    "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "LNL3D D3 V2 (0.6 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 V2 (0.6 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_V2*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_V2*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.6nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 V2 (0.6 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 V2 (0.6 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.24mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.24mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "LNL3D D3 V2 (0.8 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 V2 (0.8 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_V2*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_V2*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.8nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 V2 (0.8 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 V2 (0.8 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.36mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.36mm*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "LNL3D/1.1.0.ini",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 V2 (0.2 mm nozzle)",
+          "process": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 V2 (0.4 mm nozzle)",
+          "process": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 V2 (0.6 mm nozzle)",
+          "process": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 V2 (0.8 mm nozzle)",
+          "process": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "lnl3d-lnl3d-d3-vulcan",
+      "manufacturer": "LNL3D",
+      "model": "LNL3D D3 Vulcan",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "LNL3D/1.1.0.ini",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "model": {
+            "path": "LNL3D/1.1.0.ini",
+            "section": "printer_model:LNL3D_D3_VULCAN",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "LNL3D D3 Vulcan (0.2 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 Vulcan (0.2 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_VULCAN*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_VULCAN*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.2nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 Vulcan (0.2 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 Vulcan (0.2 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.12mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.12mm*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.2nozzle*"
+                  },
+                  {
+                    "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "LNL3D D3 Vulcan (0.4 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 Vulcan (0.4 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_VULCAN*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_VULCAN*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.4nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 Vulcan (0.4 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 Vulcan (0.4 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.16mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.16mm*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.4nozzle*"
+                  },
+                  {
+                    "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "LNL3D D3 Vulcan (0.6 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 Vulcan (0.6 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_VULCAN*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_VULCAN*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.6nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 Vulcan (0.6 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 Vulcan (0.6 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.24mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.24mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "LNL3D D3 Vulcan (0.8 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D3 Vulcan (0.8 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D3_VULCAN*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D3_VULCAN*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.8nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D3 Vulcan (0.8 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D3 Vulcan (0.8 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.36mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.36mm*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "LNL3D/1.1.0.ini",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 Vulcan (0.2 mm nozzle)",
+          "process": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 Vulcan (0.4 mm nozzle)",
+          "process": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 Vulcan (0.6 mm nozzle)",
+          "process": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D3 Vulcan (0.8 mm nozzle)",
+          "process": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "lnl3d-lnl3d-d5",
+      "manufacturer": "LNL3D",
+      "model": "LNL3D D5",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "LNL3D/1.1.0.ini",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "model": {
+            "path": "LNL3D/1.1.0.ini",
+            "section": "printer_model:LNL3D_D5",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "LNL3D D5 (0.2 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D5 (0.2 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D5*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D5*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.2nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D5 (0.2 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D5 (0.2 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.12mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.12mm*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.2nozzle*"
+                  },
+                  {
+                    "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "LNL3D D5 (0.4 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D5 (0.4 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D5*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D5*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.4nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D5 (0.4 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D5 (0.4 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.16mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.16mm*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.4nozzle*"
+                  },
+                  {
+                    "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "LNL3D D5 (0.6 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D5 (0.6 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D5*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D5*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.6nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D5 (0.6 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D5 (0.6 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.24mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.24mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "LNL3D D5 (0.8 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D5 (0.8 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D5*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D5*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.8nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D5 (0.8 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D5 (0.8 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.36mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.36mm*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "LNL3D/1.1.0.ini",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D5 (0.2 mm nozzle)",
+          "process": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D5 (0.4 mm nozzle)",
+          "process": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D5 (0.6 mm nozzle)",
+          "process": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D5 (0.8 mm nozzle)",
+          "process": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "lnl3d-lnl3d-d6",
+      "manufacturer": "LNL3D",
+      "model": "LNL3D D6",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "LNL3D/1.1.0.ini",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "model": {
+            "path": "LNL3D/1.1.0.ini",
+            "section": "printer_model:LNL3D_D6",
+            "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "candidate_printer_sections": 4,
+          "variants": [
+            {
+              "nozzle_mm": "0.2",
+              "machine": {
+                "name": "LNL3D D6 (0.2 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D6 (0.2 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D6*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D6*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.2nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D6 (0.2 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D6 (0.2 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.12mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.12mm*"
+                  },
+                  {
+                    "name": "*0.2nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.2nozzle*"
+                  },
+                  {
+                    "name": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.12 mm DETAIL (0.2 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "LNL3D D6 (0.4 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D6 (0.4 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D6*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D6*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.4nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D6 (0.4 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D6 (0.4 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.16mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.16mm*"
+                  },
+                  {
+                    "name": "*0.4nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.4nozzle*"
+                  },
+                  {
+                    "name": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "LNL3D D6 (0.6 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D6 (0.6 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D6*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D6*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.6nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D6 (0.6 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D6 (0.6 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.24mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.24mm*"
+                  },
+                  {
+                    "name": "*0.6nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.6nozzle*"
+                  },
+                  {
+                    "name": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.24 mm DRAFT (0.6 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.8",
+              "machine": {
+                "name": "LNL3D D6 (0.8 mm nozzle)",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "printer:LNL3D D6 (0.8 mm nozzle)",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "*LNL3D_D6*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*LNL3D_D6*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:*0.8nozzle*"
+                  },
+                  {
+                    "name": "LNL3D D6 (0.8 mm nozzle)",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "printer:LNL3D D6 (0.8 mm nozzle)"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.36mm*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.36mm*"
+                  },
+                  {
+                    "name": "*0.8nozzle*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:*0.8nozzle*"
+                  },
+                  {
+                    "name": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "print:0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @LNL3D",
+                "path": "LNL3D/1.1.0.ini",
+                "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                "section": "filament:Generic PLA @LNL3D",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @LNL3D",
+                    "path": "LNL3D/1.1.0.ini",
+                    "sha256": "f2189abfa39b19a106d398b8e155c5176e5d713cf5f7c149387f439391c6b792",
+                    "section": "filament:Generic PLA @LNL3D"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "LNL3D/1.1.0.ini",
+        "nozzles_mm": [
+          "0.2",
+          "0.4",
+          "0.6",
+          "0.8"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.2": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D6 (0.2 mm nozzle)",
+          "process": "0.12 mm DETAIL (0.2 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D6 (0.4 mm nozzle)",
+          "process": "0.16 mm OPTIMAL (0.4 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.6": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D6 (0.6 mm nozzle)",
+          "process": "0.24 mm DRAFT (0.6 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        },
+        "0.8": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "LNL3D/1.1.0.ini",
+          "machine": "LNL3D D6 (0.8 mm nozzle)",
+          "process": "0.36 mm CHUNKY (0.8 mm nozzle) @LNL3D",
+          "filament": "Generic PLA @LNL3D"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

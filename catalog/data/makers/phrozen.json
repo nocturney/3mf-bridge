@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Phrozen",
+  "models": [
+    {
+      "id": "phrozen-phrozen-arco",
+      "manufacturer": "Phrozen",
+      "model": "Phrozen Arco",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.06",
+          "manifest": {
+            "path": "resources/profiles/Phrozen.json",
+            "sha256": "333ff5a37d8fa41f1ca4a101f5b2ee8d61b3ad63d2a1aa112a86c222524459ed"
+          },
+          "model": {
+            "path": "machine/Phrozen Arco.json",
+            "sha256": "031e1b8ae17cd59caf07d80b9b1982e2e4923d61bf6b5ca6f12f2802469dbf12",
+            "manufacturer_model_id": "Phrozen Arco"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

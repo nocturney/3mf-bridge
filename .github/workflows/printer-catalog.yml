@@ -1,0 +1,72 @@
+name: Printer profile registry QA
+
+on:
+  pull_request:
+    paths:
+      - 'catalog/**'
+      - '.github/workflows/printer-catalog.yml'
+  push:
+    branches: [main, feature/printer-catalog]
+    paths:
+      - 'catalog/**'
+      - '.github/workflows/printer-catalog.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry:
+    name: Metadata integrity and regression (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact PR head or branch SHA
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Verify profile source precedence, references, hashes and nozzles
+        run: python catalog/tools/check.py catalog
+      - name: Parser and committed snapshot regression tests
+        run: python -m unittest discover -s catalog/tests -v
+      - name: Validate JSON schema syntax
+        run: python -c "import json; json.load(open('catalog/schema-v1.json',encoding='utf-8'))"
+
+  package:
+    name: Immutable metadata-only package
+    needs: registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact tested PR head or branch SHA
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Generate checked metadata bundle and checksum
+        run: python catalog/tools/package.py --output catalog/build-output
+      - name: Verify downloadable ZIP checksum
+        run: |
+          cd catalog/build-output
+          sha256sum --check *.sha256
+      - name: Upload verified metadata-only bundle (not a product release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: slicebridge-catalog-metadata-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            catalog/build-output/*.zip
+            catalog/build-output/*.sha256
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 6

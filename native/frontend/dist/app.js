@@ -4,11 +4,11 @@
 // local-only file handling, and a persisted per-printer hardware profile.
 const translations = {
   he: {
-    brandTagline:'מחברים בין סלייסרים',settings:'הגדרות',checkUpdates:'בדיקת עדכונים',
+    brandTagline:'מחברים בין סלייסרים',settings:'הגדרות',makerworldSetup:'חיבור ל־MakerWorld',checkUpdates:'בדיקת עדכונים',
     dismiss:'סגירה',workspaceTitle:'סביבת המרה',
     workspaceSubtitle:'המרת פרויקטים לכמה מדפסות, בלי לשנות את המקור.',
     localOnly:'עיבוד מקומי בלבד',queueTitle:'קובצי מקור',clear:'ניקוי',
-    addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',
+    addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',queuedFiles:'קבצים שנבחרו',
     dropHint:'גרור קובצי 3MF או תיקייה לכאן',queueFootnote:'עד 200 קובצי 3MF, כולל תיקיות משנה.',
     targetsTitle:'מדפסות יעד',selectAll:'בחר הכול',deselectAll:'בטל בחירה',
     resultsTitle:'תוצאות המרה',emptyTitle:'מוכן להמרה',
@@ -65,11 +65,11 @@ const translations = {
     openReleases:'צפייה בגרסאות',openPreviewBuilds:'צפייה בבניות Beta'
   },
   en: {
-    brandTagline:'Bridge your prints',settings:'Settings',checkUpdates:'Check for updates',
+    brandTagline:'Bridge your prints',settings:'Settings',makerworldSetup:'MakerWorld Setup',checkUpdates:'Check for updates',
     dismiss:'Dismiss',workspaceTitle:'Conversion workspace',
     workspaceSubtitle:'Convert projects for multiple printers without altering your originals.',
     localOnly:'Completely local',queueTitle:'Source projects',clear:'Clear',
-    addFiles:'Add files',addFolder:'Add folder',
+    addFiles:'Add files',addFolder:'Add folder',queuedFiles:'Selected source files',
     dropHint:'Drop 3MF files or folders here',queueFootnote:'Up to 200 projects, including subfolders.',
     targetsTitle:'Target printers',selectAll:'Select all',deselectAll:'Clear selection',
     resultsTitle:'Conversion results',emptyTitle:'Ready to convert',
@@ -185,11 +185,44 @@ function languageSwitch(lang){
   try{localStorage.setItem('3mfBridgeLanguage',language);}catch{}
   renderCopy();renderQueue();renderTargets();renderResults();renderActionBar();renderUpdates();
   if(dom.settings.open){renderSettingsTabs();paintSettings();}
+  window.SliceBridgeMyPrinters?.render();
 }
 function getSelectedTargets(){
-  return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)')).map((e)=>e.value);
+  return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)'))
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden).map((e)=>e.value);
+}
+let completedBatchFiles=0;
+let progressPhase='idle';
+let totalBatchFiles=0;
+// Progress is derived from completed source projects, not guessed elapsed time.
+// Native conversions use multiple targets concurrently within each file.
+function renderProgress(){
+  const text=el('progressDescription');
+  const percent=el('progressPercent');
+  const track=el('progressTrack');
+  const fill=el('progressFill');
+  if(!text||!percent||!track||!fill)return;
+  const total=Math.max(1,totalBatchFiles||progress?.fileCount||files.length||1);
+  const completed=Math.min(total,Math.max(0,completedBatchFiles));
+  const value=Math.min(100,Math.floor(100*completed/total));
+  const current=progress?.fileName || '';
+  const label=progressPhase==='working'
+    ? (language==='he'?'מעבד פרויקט':'Converting project')+' '+Math.min(total,completed+1)+'/'+total+(current?' · '+current:'')
+    :progressPhase==='done'
+      ? (language==='he'?'ההמרה הסתיימה':'Conversion finished')
+      :progressPhase==='error'
+        ? (language==='he'?'ההמרה הופסקה — בדוק תוצאות':'Conversion stopped — review results')
+        : (language==='he'?'ממתין להמרה':'Waiting for conversion');
+  text.textContent=label;
+  percent.textContent=value+'%';
+  fill.style.width=value+'%';
+  track.setAttribute('aria-valuenow',String(value));
+  track.setAttribute('aria-valuetext',label+', '+value+'%');
+  track.classList.toggle('is-working',progressPhase==='working');
+  track.classList.toggle('is-error',progressPhase==='error');
 }
 function renderActionBar(){
+  renderProgress();
   const selected=getSelectedTargets().length;
   const work=files.length*selected;
   dom.convertCount.textContent=work>0?'('+work+')':'';
@@ -197,6 +230,7 @@ function renderActionBar(){
   el('addFilesBtn').disabled=el('addFolderBtn').disabled=el('clearQueueBtn').disabled=busy;
   el('selectAllBtn').disabled=busy;
   el('settingsBtn').disabled=busy;
+  el('myPrintersBtn').disabled=busy||!window.SliceBridgeMyPrinters?.isReady();
   dom.folderBtn.disabled=busy||!(lastBatch?.successes>0);
   if(busy){
     dom.activityIcon.className='activity-icon busy';
@@ -219,10 +253,15 @@ function setActivity(title,detail,type=''){
 }
 function renderQueue(){
   dom.fileList.replaceChildren();
+  const hasFiles=files.length>0;
+  dom.fileList.hidden=!hasFiles;
+  dom.fileList.parentElement.classList.toggle('has-files',hasFiles);
+  el('queuedFilesLabel').hidden=!hasFiles;
+  el('queueFilesShownCount').textContent=hasFiles?String(files.length):'';
+  dom.fileList.setAttribute('aria-label',t('queuedFiles'));
   dom.queueCount.textContent=String(files.length);
   el('clearQueueBtn').disabled=busy||!files.length;
   if(!files.length){
-    dom.fileList.append(node('p','empty-list',t('queueEmpty')));
     renderActionBar();
     return;
   }
@@ -246,10 +285,13 @@ function renderQueue(){
   renderActionBar();
 }
 function renderTargets(){
+  const selectedLegacy=window.SliceBridgeMyPrinters?.legacyTargets();
   for(const target of targetOrder){
     const data=available.find((a)=>a.target===target);
     const row=document.querySelector('[data-target-row="'+target+'"]');
     const checkbox=row.querySelector('input');
+    row.hidden=Array.isArray(selectedLegacy)&&!selectedLegacy.includes(target);
+    if(row.hidden)checkbox.checked=false;
     const summary=row.querySelector('[data-printer-summary]');
     checkbox.disabled=busy||(data&&!data.available);
     // A running job temporarily locks controls; it must never erase the
@@ -270,13 +312,31 @@ function renderTargets(){
       summary.title=text;
     }
   }
+  const catalogOnly=el('catalogOnlyTargets');
+  const missing=window.SliceBridgeMyPrinters?.selectedStatuses()
+    .filter((entry)=>entry.kind==='catalog_only')||[];
+  catalogOnly.hidden=!missing.length;
+  catalogOnly.replaceChildren();
+  for(const entry of missing){
+    const label=node('div','catalog-only-target');
+    label.append(node('strong','',window.SliceBridgePicker.title(entry.model)),
+      node('small','',language==='he'?'קטלוג בלבד · המרה אינה זמינה':'Catalog only · conversion unavailable'));
+    catalogOnly.append(label);
+  }
   const count=getSelectedTargets().length;
-  el('selectAllBtn').textContent=count===available.filter(v=>v.available).length?t('deselectAll'):t('selectAll');
+  const selectable=available.filter(v=>v.available&&(!Array.isArray(selectedLegacy)||selectedLegacy.includes(v.target)));
+  el('selectAllBtn').hidden=selectable.length===0;
+  const noneChosen=Array.isArray(selectedLegacy)&&selectedLegacy.length===0;
+  el('emptyTargetNotice').hidden=!noneChosen;
+  el('emptyTargetNotice').textContent=language==='he'?
+    'לא נבחרו מדפסות יעד. אפשר להוסיף דרך סמל המדפסת בראש החלון.':
+    'No target printers selected. Use the printer icon at the top to add them.';
+  el('selectAllBtn').textContent=count===selectable.length?t('deselectAll'):t('selectAll');
   renderActionBar();
 }
 async function refreshAvailability(){
   if(!api())return;
-  try{available=await api().Availability();renderTargets();}
+  try{available=await api().Availability();window.SliceBridgeMyPrinters?.setAvailability(available);renderTargets();}
   catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
 }
 async function addFiles(infos){
@@ -443,6 +503,7 @@ function clearResults(){
   if(busy)return;
   lastBatch=null;
   progress=null;
+  completedBatchFiles=0;totalBatchFiles=0;progressPhase='idle';
   memoryStatus=null;
   dom.resultList.scrollTop=0;
   renderResults();
@@ -454,6 +515,7 @@ async function runBatch(){
   const targets=getSelectedTargets();
   if(!targets.length){setActivity(t('noTargets'),'','warning');return;}
   busy=true;progress=null;memoryStatus=null;lastBatch=null;
+  completedBatchFiles=0;totalBatchFiles=files.length;progressPhase='working';
   renderResults();renderQueue();renderTargets();renderActionBar();
   try{
     const response=await api().ConvertBatch({filePaths:files.map((f)=>f.path),targets});
@@ -461,6 +523,8 @@ async function runBatch(){
       setActivity(t('convertError'),response.error,'warning');
     }
     lastBatch=response;
+    completedBatchFiles=Math.min(totalBatchFiles,response.filesDone||0);
+    progressPhase=response.error?'error':'done';
     if(response.filesDone){
       setActivity(response.successes?t('finished'):t('failed'),
         response.successes?t('finishedHint',{success:response.successes,failed:response.failures}):t('failedHint'),
@@ -469,6 +533,7 @@ async function runBatch(){
     renderResults();
     el('resultsPanel').scrollTop=0;
   }catch(e){
+    progressPhase='error';
     setActivity(t('convertError'),e?.message||String(e),'warning');
   }finally{
     busy=false;progress=null;
@@ -653,7 +718,8 @@ async function openUpdate(){
   catch(e){updateError=e?.message||String(e);renderUpdates();}
 }
 function selectAll(){
-  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'));
+  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'))
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden);
   const allSelected=boxes.every((e)=>e.checked);
   for(const box of boxes)box.checked=!allSelected;
   memoryStatus=null;renderTargets();
@@ -689,10 +755,6 @@ function registerHandlers(){
   });
   dom.settings.addEventListener('close',()=>{draftPrefs=null;choiceSequence++;});
   for(const target of targetOrder){
-    document.querySelector('[data-settings-target="'+target+'"]')
-      .addEventListener('click',(e)=>{
-        e.preventDefault();e.stopPropagation();openSettings(target);
-      });
     document.querySelector('[data-target-row="'+target+'"] input')
       .addEventListener('change',()=>{memoryStatus=null;renderTargets();});
   }
@@ -700,6 +762,15 @@ function registerHandlers(){
   el('enBtn').addEventListener('click',()=>languageSwitch('en'));
   el('checkUpdatesBtn').addEventListener('click',checkUpdates);
   el('openUpdateBtn').addEventListener('click',openUpdate);
+  window.addEventListener('slicebridge:my-printers-changed',()=>{
+    const selected=window.SliceBridgeMyPrinters?.legacyTargets();
+    for(const key of targetOrder){
+      const checkbox=document.querySelector('[data-target-row="'+key+'"] input');
+      if(Array.isArray(selected))checkbox.checked=selected.includes(key)&&
+        available.some(item=>item.target===key&&item.available);
+    }
+    renderTargets();
+  });
   el('dismissUpdateBtn').addEventListener('click',()=>{
     updateResult=null;updateError='';renderUpdates();
   });
@@ -737,7 +808,25 @@ async function initialiseNative(){
   }
   if(window.runtime?.EventsOn){
     window.runtime.EventsOn('bridge:batch-progress',(data)=>{
-      progress=data;renderActionBar();
+      if(!busy||!data)return;
+      progress=data;
+      totalBatchFiles=Math.max(1,data.fileCount||totalBatchFiles);
+      if(data.completed){
+        completedBatchFiles=Math.max(completedBatchFiles,data.fileIndex||0);
+      }else{
+        completedBatchFiles=Math.max(completedBatchFiles,(data.fileIndex||1)-1);
+      }
+      renderActionBar();
+    });
+    window.runtime.EventsOn('bridge:makerworld-imported',(event)=>{
+      const file=event?.file;
+      if(!file?.path)return;
+      file.makerworld=event.source||{kind:'makerworld',confidence:'high'};
+      addFiles([file]).catch((e)=>setActivity(t('addError'),String(e),'warning'));
+    });
+    window.runtime.EventsOn('bridge:makerworld-import-failed',(message)=>{
+      // Native backend deliberately returns sanitized messages without signed URLs.
+      setActivity('MakerWorld',String(message||'Import failed'),'warning');
     });
   }
   try{settings=await api().GetSettings();}
@@ -746,6 +835,7 @@ async function initialiseNative(){
   catch{installedVersion=null;}
   renderUpdates();
   await refreshAvailability();
+  await window.SliceBridgeMyPrinters?.init();
   renderCopy();renderTargets();renderQueue();renderResults();renderActionBar();
 }
 

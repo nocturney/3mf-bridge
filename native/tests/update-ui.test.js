@@ -12,7 +12,7 @@ const source = fs.readFileSync(path.join(frontend, 'app.js'), 'utf8');
 
 function element(id) {
   return {
-    id, textContent: '', title: '', className: '', dataset: {}, value: '',
+    id, textContent: '', title: '', className: '', dataset: {}, style: {}, value: '',
     hidden: false, disabled: false, checked: false, open: false,
     children: [], handlers: {},
     classList: { toggle() {}, add() {}, remove() {} },
@@ -34,18 +34,24 @@ function setupUI() {
     assert.match(html, new RegExp('id="' + id + '"'), 'update controls must remain in native UI');
   }
   const ids = [
-    'fileList', 'queueCount', 'resultList', 'reportCounts', 'convertBtn',
+    'fileList', 'queueCount', 'queuedFilesLabel', 'queueFilesShownCount',
+    'resultList', 'reportCounts', 'convertBtn',
     'convertCount', 'activityText', 'activityDetail', 'activityIcon',
     'openFolderBtn', 'settingsDialog', 'clearQueueBtn', 'addFilesBtn',
-    'addFolderBtn', 'selectAllBtn', 'settingsBtn', 'resultsPanel',
+    'addFolderBtn', 'selectAllBtn', 'settingsBtn', 'myPrintersBtn',
+    'emptyTargetNotice', 'catalogOnlyTargets', 'resultsPanel',
     'clearResultsBtn', 'installedVersion', 'checkUpdatesBtn',
     'updateNotice', 'updateStatus', 'openUpdateBtn', 'dismissUpdateBtn',
     'heBtn', 'enBtn', 'settingsTabs', 'settingsNozzle', 'settingsSlicer',
     'settingsMaterial', 'settingsFilament', 'settingsStatus',
     'closeSettingsBtn', 'cancelSettingsBtn', 'saveSettingsBtn',
-    'dropzone', 'targetList'
+    'dropzone', 'targetList',
+    'progressDescription', 'progressPercent', 'progressTrack', 'progressFill'
   ];
   const elements = Object.fromEntries(ids.map((id) => [id, element(id)]));
+  // The queue list is a direct child of the actual source panel. The renderer
+  // toggles its has-files class when files are added/removed.
+  elements.fileList.parentElement = element('source-panel');
   const targets = ['u1', 'c5', 'cc2', 'qidi'];
   const rows = Object.fromEntries(targets.map((target) => {
     const checkbox = element(target + '-checkbox');
@@ -113,7 +119,7 @@ function setupUI() {
     structuredClone
   };
   vm.runInNewContext(source, context, {filename: 'native-app.js'});
-  return {elements, rows, app, sent, win};
+  return {elements, rows, app, sent, context, win};
 }
 
 async function settle() {
@@ -167,6 +173,29 @@ test('authentication and offline errors do not automatically download or install
   elements.dismissUpdateBtn.handlers.click();
   assert.equal(elements.updateNotice.hidden, true);
   assert.equal(sent.length, 1);
+});
+
+test('conversion progress counts completed files only, never fabricated intermediate percentages',async()=>{
+  const {elements, context}=setupUI();
+  await settle();
+  const set=(phase,done,total)=>{
+    vm.runInNewContext('progressPhase='+JSON.stringify(phase)+
+      '; completedBatchFiles='+done+'; totalBatchFiles='+total+'; renderProgress();',context);
+  };
+  assert.equal(elements.progressPercent.textContent,'0%');
+  set('working',0,3);
+  assert.equal(elements.progressPercent.textContent,'0%');
+  set('working',1,3);
+  assert.equal(elements.progressPercent.textContent,'33%');
+  assert.equal(elements.progressFill.style.width,'33%');
+  set('working',2,3);
+  assert.equal(elements.progressPercent.textContent,'66%');
+  set('error',2,3);
+  assert.equal(elements.progressPercent.textContent,'66%');
+  assert.match(elements.progressDescription.textContent,/stopped/i);
+  set('done',3,3);
+  assert.equal(elements.progressPercent.textContent,'100%');
+  assert.match(elements.progressDescription.textContent,/finished/i);
 });
 
 test('invalid preferences require explicit recovery and preserve backup location', async () => {

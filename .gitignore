@@ -10,6 +10,7 @@ native/frontend/wailsjs/
 native/frontend/node_modules/
 native/frontend/dist/.DS_Store
 native/.DS_Store
-
 __pycache__/
 *.pyc
+catalog/build-output/
+catalog/package-smoke/

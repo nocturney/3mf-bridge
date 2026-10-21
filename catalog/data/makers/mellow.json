@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Mellow",
+  "models": [
+    {
+      "id": "mellow-m1",
+      "manufacturer": "Mellow",
+      "model": "M1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Mellow.json",
+            "sha256": "c5a4fb6627b319d2c78dd801ea04405fbcec716584e0b64faf00e6507c4d6cdb"
+          },
+          "model": {
+            "path": "machine/M1.json",
+            "sha256": "4788817706a450bd1debb8b1bf536f2723964edcc9c7ef28593d2b6f9a475dd2",
+            "manufacturer_model_id": "m1_1"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (4)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

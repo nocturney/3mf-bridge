@@ -1,0 +1,893 @@
+{
+  "schema_version": 1,
+  "manufacturer": "BIBO",
+  "models": [
+    {
+      "id": "bibo-bibo2-touch",
+      "manufacturer": "BIBO",
+      "model": "BIBO2 Touch",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.1",
+          "manifest": {
+            "path": "BIBO/1.1.1.ini",
+            "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f"
+          },
+          "model": {
+            "path": "BIBO/1.1.1.ini",
+            "section": "printer_model:BIBO2",
+            "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "candidate_printer_sections": 10,
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO M2 BLTouch Dual extrusion",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO M2 BLTouch Dual extrusion",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch Dual extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch Dual extrusion"
+                  },
+                  {
+                    "name": "*marlin2*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*marlin2*"
+                  },
+                  {
+                    "name": "BIBO M2 BLTouch Dual extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO M2 BLTouch Dual extrusion"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO M2 BLTouch E1 right only extrusion",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO M2 BLTouch E1 right only extrusion",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E1 right only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E1 right only extrusion"
+                  },
+                  {
+                    "name": "*marlin2*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*marlin2*"
+                  },
+                  {
+                    "name": "BIBO M2 BLTouch E1 right only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO M2 BLTouch E1 right only extrusion"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO M2 BLTouch E2 left only extrusion",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO M2 BLTouch E2 left only extrusion",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E2 left only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E2 left only extrusion"
+                  },
+                  {
+                    "name": "*marlin2*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*marlin2*"
+                  },
+                  {
+                    "name": "BIBO M2 BLTouch E2 left only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO M2 BLTouch E2 left only extrusion"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO M2 E1 right E2 Ditto BLTouch",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO M2 E1 right E2 Ditto BLTouch",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E1 right only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E1 right only extrusion"
+                  },
+                  {
+                    "name": "BIBO2 E1 right E2 Ditto",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 E1 right E2 Ditto"
+                  },
+                  {
+                    "name": "*marlin2*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*marlin2*"
+                  },
+                  {
+                    "name": "BIBO M2 E1 right E2 Ditto BLTouch",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO M2 E1 right E2 Ditto BLTouch"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO M2 E2 left E1 Ditto BLTouch",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO M2 E2 left E1 Ditto BLTouch",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E2 left only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E2 left only extrusion"
+                  },
+                  {
+                    "name": "BIBO2 E2 left E1 Ditto",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 E2 left E1 Ditto"
+                  },
+                  {
+                    "name": "*marlin2*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*marlin2*"
+                  },
+                  {
+                    "name": "BIBO M2 E2 left E1 Ditto BLTouch",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO M2 E2 left E1 Ditto BLTouch"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO2 E1 right E2 Ditto",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO2 E1 right E2 Ditto",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E1 right only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E1 right only extrusion"
+                  },
+                  {
+                    "name": "BIBO2 E1 right E2 Ditto",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 E1 right E2 Ditto"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO2 E2 left E1 Ditto",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO2 E2 left E1 Ditto",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E2 left only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E2 left only extrusion"
+                  },
+                  {
+                    "name": "BIBO2 E2 left E1 Ditto",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 E2 left E1 Ditto"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO2 Touch Dual extrusion",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO2 Touch Dual extrusion",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch Dual extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch Dual extrusion"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO2 Touch E1 right only extrusion",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO2 Touch E1 right only extrusion",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E1 right only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E1 right only extrusion"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "BIBO2 Touch E2 left only extrusion",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "printer:BIBO2 Touch E2 left only extrusion",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:*common*"
+                  },
+                  {
+                    "name": "BIBO2 Touch E2 left only extrusion",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "printer:BIBO2 Touch E2 left only extrusion"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm NORMAL @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "print:0.20mm NORMAL @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*common*"
+                  },
+                  {
+                    "name": "*0.20mm*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:*0.20mm*"
+                  },
+                  {
+                    "name": "0.20mm NORMAL @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "print:0.20mm NORMAL @BIBO2"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic PLA @BIBO2",
+                "path": "BIBO/1.1.1.ini",
+                "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                "section": "filament:Generic PLA @BIBO2",
+                "inheritance": [
+                  {
+                    "name": "*common*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*common*"
+                  },
+                  {
+                    "name": "*PLA*",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:*PLA*"
+                  },
+                  {
+                    "name": "Generic PLA @BIBO2",
+                    "path": "BIBO/1.1.1.ini",
+                    "sha256": "ecb2fc1bc524e6da8f399b24da020660287f4a0c6fb1be1b642d0ef6b5870a9f",
+                    "section": "filament:Generic PLA @BIBO2"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "prusa",
+        "publisher": "prusa_community",
+        "manifest": "BIBO/1.1.1.ini",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "manifest": "BIBO/1.1.1.ini",
+          "machine": "BIBO M2 BLTouch Dual extrusion",
+          "process": "0.20mm NORMAL @BIBO2",
+          "filament": "Generic PLA @BIBO2"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

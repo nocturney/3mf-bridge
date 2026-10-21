@@ -1,0 +1,584 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Vzbot",
+  "models": [
+    {
+      "id": "vzbot-vzbot-235-awd",
+      "manufacturer": "Vzbot",
+      "model": "Vzbot 235 AWD",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Vzbot.json",
+            "sha256": "f03a2aeeb5b346984cfd8799c7434ac6769d0f4aa4c5a92ae2769f9b4e0aeadb"
+          },
+          "model": {
+            "path": "machine/Vzbot 235 AWD.json",
+            "sha256": "525acd7a181998daa45725ce9e8beb0570f1bc056ec11fb7550c59a3bbe09cc3",
+            "manufacturer_model_id": "Vzbot 235 AWD"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Vzbot 235 AWD 0.4 nozzle",
+                "path": "machine/Vzbot 235 AWD 0.4 nozzle.json",
+                "sha256": "6f2e0558c6b73d36d31cf939bb7787e69a36b195407f50ab4a6f01f2872c9ca4",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "dab52a7e44ef65a3f00b4df800c8dd49157cb44c67a9e62041620e7eab07782d"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "65636e584a1814680e75c1ebb194bb4dd79ea1b5ff30ab9c049dc64d4aa1cf82"
+                  },
+                  {
+                    "name": "Vzbot 235 AWD 0.4 nozzle",
+                    "path": "machine/Vzbot 235 AWD 0.4 nozzle.json",
+                    "sha256": "6f2e0558c6b73d36d31cf939bb7787e69a36b195407f50ab4a6f01f2872c9ca4"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @Vzbot",
+                "path": "process/0.20mm Standard @Vzbot.json",
+                "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "8bdc518acf25e8ef9b173fc6e79097c4635a95bda35df6361056262ad33d5c6b"
+                  },
+                  {
+                    "name": "fdm_process_Vzbot_common",
+                    "path": "process/fdm_process_Vzbot_common.json",
+                    "sha256": "c1577f2315ca4b2b8c479768875fd17435443df4bbf0f748110af619b894b885"
+                  },
+                  {
+                    "name": "0.20mm Standard @Vzbot",
+                    "path": "process/0.20mm Standard @Vzbot.json",
+                    "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic ABS @Vzbot",
+                "path": "filament/Generic ABS @Vzbot.json",
+                "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
+                  },
+                  {
+                    "name": "fdm_filament_abs",
+                    "path": "filament/fdm_filament_abs.json",
+                    "sha256": "d7470077d6edb185f126b537bcea3dcc09adbc21777b8c85ff8cea490aefdedf"
+                  },
+                  {
+                    "name": "Generic ABS @Vzbot",
+                    "path": "filament/Generic ABS @Vzbot.json",
+                    "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "Vzbot 235 AWD 0.5 nozzle",
+                "path": "machine/Vzbot 235 AWD 0.5 nozzle.json",
+                "sha256": "0346444ed42e3c93fa768665c0e89d66d252c4aad3ad81b942c5f1087023b7d4",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "dab52a7e44ef65a3f00b4df800c8dd49157cb44c67a9e62041620e7eab07782d"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "65636e584a1814680e75c1ebb194bb4dd79ea1b5ff30ab9c049dc64d4aa1cf82"
+                  },
+                  {
+                    "name": "Vzbot 235 AWD 0.4 nozzle",
+                    "path": "machine/Vzbot 235 AWD 0.4 nozzle.json",
+                    "sha256": "6f2e0558c6b73d36d31cf939bb7787e69a36b195407f50ab4a6f01f2872c9ca4"
+                  },
+                  {
+                    "name": "Vzbot 235 AWD 0.5 nozzle",
+                    "path": "machine/Vzbot 235 AWD 0.5 nozzle.json",
+                    "sha256": "0346444ed42e3c93fa768665c0e89d66d252c4aad3ad81b942c5f1087023b7d4"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @Vzbot",
+                "path": "process/0.20mm Standard @Vzbot.json",
+                "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "8bdc518acf25e8ef9b173fc6e79097c4635a95bda35df6361056262ad33d5c6b"
+                  },
+                  {
+                    "name": "fdm_process_Vzbot_common",
+                    "path": "process/fdm_process_Vzbot_common.json",
+                    "sha256": "c1577f2315ca4b2b8c479768875fd17435443df4bbf0f748110af619b894b885"
+                  },
+                  {
+                    "name": "0.20mm Standard @Vzbot",
+                    "path": "process/0.20mm Standard @Vzbot.json",
+                    "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic ABS @Vzbot",
+                "path": "filament/Generic ABS @Vzbot.json",
+                "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
+                  },
+                  {
+                    "name": "fdm_filament_abs",
+                    "path": "filament/fdm_filament_abs.json",
+                    "sha256": "d7470077d6edb185f126b537bcea3dcc09adbc21777b8c85ff8cea490aefdedf"
+                  },
+                  {
+                    "name": "Generic ABS @Vzbot",
+                    "path": "filament/Generic ABS @Vzbot.json",
+                    "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Vzbot 235 AWD 0.6 nozzle",
+                "path": "machine/Vzbot 235 AWD 0.6 nozzle.json",
+                "sha256": "8e20ce66e602369d50ba7dec79ab5046d3d391bb26065418087fa5fa7788997d",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "dab52a7e44ef65a3f00b4df800c8dd49157cb44c67a9e62041620e7eab07782d"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "65636e584a1814680e75c1ebb194bb4dd79ea1b5ff30ab9c049dc64d4aa1cf82"
+                  },
+                  {
+                    "name": "Vzbot 235 AWD 0.4 nozzle",
+                    "path": "machine/Vzbot 235 AWD 0.4 nozzle.json",
+                    "sha256": "6f2e0558c6b73d36d31cf939bb7787e69a36b195407f50ab4a6f01f2872c9ca4"
+                  },
+                  {
+                    "name": "Vzbot 235 AWD 0.6 nozzle",
+                    "path": "machine/Vzbot 235 AWD 0.6 nozzle.json",
+                    "sha256": "8e20ce66e602369d50ba7dec79ab5046d3d391bb26065418087fa5fa7788997d"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @Vzbot",
+                "path": "process/0.20mm Standard @Vzbot.json",
+                "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "8bdc518acf25e8ef9b173fc6e79097c4635a95bda35df6361056262ad33d5c6b"
+                  },
+                  {
+                    "name": "fdm_process_Vzbot_common",
+                    "path": "process/fdm_process_Vzbot_common.json",
+                    "sha256": "c1577f2315ca4b2b8c479768875fd17435443df4bbf0f748110af619b894b885"
+                  },
+                  {
+                    "name": "0.20mm Standard @Vzbot",
+                    "path": "process/0.20mm Standard @Vzbot.json",
+                    "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic ABS @Vzbot",
+                "path": "filament/Generic ABS @Vzbot.json",
+                "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
+                  },
+                  {
+                    "name": "fdm_filament_abs",
+                    "path": "filament/fdm_filament_abs.json",
+                    "sha256": "d7470077d6edb185f126b537bcea3dcc09adbc21777b8c85ff8cea490aefdedf"
+                  },
+                  {
+                    "name": "Generic ABS @Vzbot",
+                    "path": "filament/Generic ABS @Vzbot.json",
+                    "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Vzbot.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Vzbot.json",
+          "machine": "Vzbot 235 AWD 0.4 nozzle",
+          "process": "0.20mm Standard @Vzbot",
+          "filament": "Generic ABS @Vzbot"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Vzbot.json",
+          "machine": "Vzbot 235 AWD 0.5 nozzle",
+          "process": "0.20mm Standard @Vzbot",
+          "filament": "Generic ABS @Vzbot"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Vzbot.json",
+          "machine": "Vzbot 235 AWD 0.6 nozzle",
+          "process": "0.20mm Standard @Vzbot",
+          "filament": "Generic ABS @Vzbot"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "vzbot-vzbot-330-awd",
+      "manufacturer": "Vzbot",
+      "model": "Vzbot 330 AWD",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/Vzbot.json",
+            "sha256": "f03a2aeeb5b346984cfd8799c7434ac6769d0f4aa4c5a92ae2769f9b4e0aeadb"
+          },
+          "model": {
+            "path": "machine/Vzbot 330 AWD.json",
+            "sha256": "e20ed339b5491ce60d3eb1123fac4c8b62d073d66318156b9a178542aa40d69c",
+            "manufacturer_model_id": "Vzbot 330 AWD"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "Vzbot 330 AWD 0.4 nozzle",
+                "path": "machine/Vzbot 330 AWD 0.4 nozzle.json",
+                "sha256": "d4d0b4d85bd7d7add7cd7a49f24949382e5a8bef8cd1246398f3899516265c3d",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "dab52a7e44ef65a3f00b4df800c8dd49157cb44c67a9e62041620e7eab07782d"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "65636e584a1814680e75c1ebb194bb4dd79ea1b5ff30ab9c049dc64d4aa1cf82"
+                  },
+                  {
+                    "name": "Vzbot 330 AWD 0.4 nozzle",
+                    "path": "machine/Vzbot 330 AWD 0.4 nozzle.json",
+                    "sha256": "d4d0b4d85bd7d7add7cd7a49f24949382e5a8bef8cd1246398f3899516265c3d"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @Vzbot",
+                "path": "process/0.20mm Standard @Vzbot.json",
+                "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "8bdc518acf25e8ef9b173fc6e79097c4635a95bda35df6361056262ad33d5c6b"
+                  },
+                  {
+                    "name": "fdm_process_Vzbot_common",
+                    "path": "process/fdm_process_Vzbot_common.json",
+                    "sha256": "c1577f2315ca4b2b8c479768875fd17435443df4bbf0f748110af619b894b885"
+                  },
+                  {
+                    "name": "0.20mm Standard @Vzbot",
+                    "path": "process/0.20mm Standard @Vzbot.json",
+                    "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic ABS @Vzbot",
+                "path": "filament/Generic ABS @Vzbot.json",
+                "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
+                  },
+                  {
+                    "name": "fdm_filament_abs",
+                    "path": "filament/fdm_filament_abs.json",
+                    "sha256": "d7470077d6edb185f126b537bcea3dcc09adbc21777b8c85ff8cea490aefdedf"
+                  },
+                  {
+                    "name": "Generic ABS @Vzbot",
+                    "path": "filament/Generic ABS @Vzbot.json",
+                    "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.5",
+              "machine": {
+                "name": "Vzbot 330 AWD 0.5 nozzle",
+                "path": "machine/Vzbot 330 AWD 0.5 nozzle.json",
+                "sha256": "2a9e96787a8ff8818d149dc7d279517d36f96e847f9dadfee3b05e3ddc138d15",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "dab52a7e44ef65a3f00b4df800c8dd49157cb44c67a9e62041620e7eab07782d"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "65636e584a1814680e75c1ebb194bb4dd79ea1b5ff30ab9c049dc64d4aa1cf82"
+                  },
+                  {
+                    "name": "Vzbot 330 AWD 0.4 nozzle",
+                    "path": "machine/Vzbot 330 AWD 0.4 nozzle.json",
+                    "sha256": "d4d0b4d85bd7d7add7cd7a49f24949382e5a8bef8cd1246398f3899516265c3d"
+                  },
+                  {
+                    "name": "Vzbot 330 AWD 0.5 nozzle",
+                    "path": "machine/Vzbot 330 AWD 0.5 nozzle.json",
+                    "sha256": "2a9e96787a8ff8818d149dc7d279517d36f96e847f9dadfee3b05e3ddc138d15"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @Vzbot",
+                "path": "process/0.20mm Standard @Vzbot.json",
+                "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "8bdc518acf25e8ef9b173fc6e79097c4635a95bda35df6361056262ad33d5c6b"
+                  },
+                  {
+                    "name": "fdm_process_Vzbot_common",
+                    "path": "process/fdm_process_Vzbot_common.json",
+                    "sha256": "c1577f2315ca4b2b8c479768875fd17435443df4bbf0f748110af619b894b885"
+                  },
+                  {
+                    "name": "0.20mm Standard @Vzbot",
+                    "path": "process/0.20mm Standard @Vzbot.json",
+                    "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic ABS @Vzbot",
+                "path": "filament/Generic ABS @Vzbot.json",
+                "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
+                  },
+                  {
+                    "name": "fdm_filament_abs",
+                    "path": "filament/fdm_filament_abs.json",
+                    "sha256": "d7470077d6edb185f126b537bcea3dcc09adbc21777b8c85ff8cea490aefdedf"
+                  },
+                  {
+                    "name": "Generic ABS @Vzbot",
+                    "path": "filament/Generic ABS @Vzbot.json",
+                    "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549"
+                  }
+                ]
+              }
+            },
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "Vzbot 330 AWD 0.6 nozzle",
+                "path": "machine/Vzbot 330 AWD 0.6 nozzle.json",
+                "sha256": "af3281939d89b2f5fc854eedebefdbdde2a314378caf526fdc2d22d0a6b0ec10",
+                "inheritance": [
+                  {
+                    "name": "fdm_machine_common",
+                    "path": "machine/fdm_machine_common.json",
+                    "sha256": "dab52a7e44ef65a3f00b4df800c8dd49157cb44c67a9e62041620e7eab07782d"
+                  },
+                  {
+                    "name": "fdm_klipper_common",
+                    "path": "machine/fdm_klipper_common.json",
+                    "sha256": "65636e584a1814680e75c1ebb194bb4dd79ea1b5ff30ab9c049dc64d4aa1cf82"
+                  },
+                  {
+                    "name": "Vzbot 330 AWD 0.4 nozzle",
+                    "path": "machine/Vzbot 330 AWD 0.4 nozzle.json",
+                    "sha256": "d4d0b4d85bd7d7add7cd7a49f24949382e5a8bef8cd1246398f3899516265c3d"
+                  },
+                  {
+                    "name": "Vzbot 330 AWD 0.6 nozzle",
+                    "path": "machine/Vzbot 330 AWD 0.6 nozzle.json",
+                    "sha256": "af3281939d89b2f5fc854eedebefdbdde2a314378caf526fdc2d22d0a6b0ec10"
+                  }
+                ]
+              },
+              "process": {
+                "name": "0.20mm Standard @Vzbot",
+                "path": "process/0.20mm Standard @Vzbot.json",
+                "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_common",
+                    "path": "process/fdm_process_common.json",
+                    "sha256": "8bdc518acf25e8ef9b173fc6e79097c4635a95bda35df6361056262ad33d5c6b"
+                  },
+                  {
+                    "name": "fdm_process_Vzbot_common",
+                    "path": "process/fdm_process_Vzbot_common.json",
+                    "sha256": "c1577f2315ca4b2b8c479768875fd17435443df4bbf0f748110af619b894b885"
+                  },
+                  {
+                    "name": "0.20mm Standard @Vzbot",
+                    "path": "process/0.20mm Standard @Vzbot.json",
+                    "sha256": "7ba02a30d4adeb09006971b32d65032361f436a96990d0830b2272fee89a5464"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Generic ABS @Vzbot",
+                "path": "filament/Generic ABS @Vzbot.json",
+                "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "98e5f868c9802d5dd67b417d4b00ad89dd2241d74d2aefb6a4035a6426c62cd6"
+                  },
+                  {
+                    "name": "fdm_filament_abs",
+                    "path": "filament/fdm_filament_abs.json",
+                    "sha256": "d7470077d6edb185f126b537bcea3dcc09adbc21777b8c85ff8cea490aefdedf"
+                  },
+                  {
+                    "name": "Generic ABS @Vzbot",
+                    "path": "filament/Generic ABS @Vzbot.json",
+                    "sha256": "89847872cbd38f9be803906afa852283d17111093f9a5bbe08547e7a0af7b549"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Vzbot.json",
+        "nozzles_mm": [
+          "0.4",
+          "0.5",
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Vzbot.json",
+          "machine": "Vzbot 330 AWD 0.4 nozzle",
+          "process": "0.20mm Standard @Vzbot",
+          "filament": "Generic ABS @Vzbot"
+        },
+        "0.5": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Vzbot.json",
+          "machine": "Vzbot 330 AWD 0.5 nozzle",
+          "process": "0.20mm Standard @Vzbot",
+          "filament": "Generic ABS @Vzbot"
+        },
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Vzbot.json",
+          "machine": "Vzbot 330 AWD 0.6 nozzle",
+          "process": "0.20mm Standard @Vzbot",
+          "filament": "Generic ABS @Vzbot"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

@@ -6,32 +6,33 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' asset:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: asset:; connect-src 'self' ws:; object-src 'none'">
   <title>SliceBridge</title>
   <link rel="stylesheet" href="./app.css">
+  <script defer src="./printer-picker.js"></script>
   <script defer src="./app.js"></script>
+  <script defer src="./my-printers.js"></script>
+  <script defer src="./integrations.js"></script>
+  <script defer src="./about.js"></script>
 </head>
 <body>
 <div class="shell" id="appShell">
   <header class="topbar">
     <div class="brand">
-      <img class="brand-mark" src="./brand-icon.svg" width="35" height="35" alt="">
+      <img class="brand-mark" src="./brand-icon.png" width="35" height="35" alt="">
       <div class="brand-copy">
         <strong>Slice<span class="brand-accent">Bridge</span></strong>
         <span data-i18n="brandTagline">Bambu → Native 3MF</span>
       </div>
     </div>
     <div class="topbar-actions">
+      <button id="myPrintersBtn" type="button" class="ghost-btn labeled-btn" title="My printers" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="3"/><path d="M7 18v2m10-2v2M8 9h8"/></svg><span>המדפסות שלי</span></button>
       <button id="settingsBtn" type="button" class="ghost-btn labeled-btn" data-i18n-title="settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span data-i18n="settings">הגדרות</span></button>
+      <button id="integrationsBtn" type="button" class="ghost-btn labeled-btn" data-i18n-title="makerworldSetup" title="MakerWorld Setup"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="makerworldSetup">MakerWorld Setup</span></button>
+      <button id="aboutBtn" type="button" class="ghost-btn labeled-btn" title="About" aria-haspopup="dialog" aria-controls="aboutDialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg><span id="aboutBtnLabel">אודות</span></button>
       <div class="language-switch" role="group" aria-label="Language">
         <button id="heBtn" type="button" lang="he">עברית</button>
         <button id="enBtn" type="button" lang="en">EN</button>
       </div>
     </div>
   </header>
-
-  <div id="updateNotice" class="update-notice" hidden>
-    <span id="updateStatus" role="status"></span>
-    <button type="button" id="openUpdateBtn" class="link-btn" hidden></button>
-    <button type="button" id="dismissUpdateBtn" class="ghost-btn" data-i18n-title="dismiss" title="סגירה" aria-label="Close">×</button>
-  </div>
 
   <div class="sectionbar">
     <div>
@@ -60,6 +61,9 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
           <p data-i18n="dropHint">אפשר לגרור קבצים או תיקייה לכאן</p>
         </div>
+        <div class="queue-files-heading" id="queuedFilesLabel" hidden>
+          <span data-i18n="queuedFiles">קבצים שנבחרו</span><span id="queueFilesShownCount" class="count-chip" aria-live="polite"></span>
+        </div>
         <div class="queue-list" id="fileList" role="list" aria-label="3MF files"></div>
         <div class="panel-bottom" id="queueFootnote" data-i18n="queueFootnote">עד 200 קובצי 3MF, כולל תיקיות משנה.</div>
       </section>
@@ -67,30 +71,32 @@
       <section class="panel targets-panel">
         <div class="panel-heading">
           <div class="panel-title"><span class="section-number">02</span><h2 data-i18n="targetsTitle">מדפסות יעד</h2></div>
-          <button id="selectAllBtn" class="text-btn" type="button" data-i18n="selectAll">בחר הכול</button>
+          <div class="targets-actions"><button id="selectAllBtn" class="text-btn" type="button" data-i18n="selectAll">בחר הכול</button></div>
         </div>
         <div class="target-list" id="targetList">
           <label class="target-option" data-target-row="u1">
-            <input type="checkbox" value="u1" checked>
+            <input type="checkbox" value="u1">
+            <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>Snapmaker U1</strong><small data-printer-summary="u1">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="u1" aria-label="Snapmaker U1 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="c5">
-            <input type="checkbox" value="c5" checked>
+            <input type="checkbox" value="c5">
+            <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>Flashforge Creator 5</strong><small data-printer-summary="c5">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="c5" aria-label="Flashforge Creator 5 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="cc2">
-            <input type="checkbox" value="cc2" checked>
+            <input type="checkbox" value="cc2">
+            <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>ELEGOO CC2</strong><small data-printer-summary="cc2">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="cc2" aria-label="ELEGOO CC2 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
           <label class="target-option" data-target-row="qidi">
-            <input type="checkbox" value="qidi" checked>
+            <input type="checkbox" value="qidi">
+            <span class="target-printer-icon" aria-hidden="true">▣</span>
             <span class="printer-label"><strong>QIDI Plus5</strong><small data-printer-summary="qidi">—</small></span>
-            <button type="button" class="printer-gear" data-settings-target="qidi" aria-label="QIDI Plus5 settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h5m4 0h7M4 17h2m4 0h10"/><circle cx="11" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
           </label>
         </div>
+        <p id="emptyTargetNotice" class="empty-target-notice" hidden>אין מדפסות יעד שנבחרו. אפשר להוסיף דרך סמל המדפסת בראש החלון.</p>
+        <div class="catalog-only-targets" id="catalogOnlyTargets" hidden></div>
       </section>
     </div>
 
@@ -117,7 +123,6 @@
         <small id="activityDetail" data-i18n="idleHint">בחר קבצים ומדפסות כדי להתחיל</small>
       </div>
     </div>
-    <div class="app-meta" aria-label="Application version and updates"><span class="version-label" id="installedVersion" title="Version"></span><button id="checkUpdatesBtn" type="button" class="update-check-btn" data-i18n-title="checkUpdates" title="Check for updates"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 10a7 7 0 0 1 12-3l3 5M4 12l3 5a7 7 0 0 0 12-3"/></svg><span data-i18n="checkUpdates">בדיקת עדכונים</span></button></div>
     <div class="action-buttons">
       <button id="openFolderBtn" class="compact-btn secondary" type="button" disabled data-i18n="openFolder">פתח תיקיית פלט</button>
       <button id="convertBtn" class="compact-btn primary convert-button" type="button" disabled>
@@ -125,7 +130,62 @@
       </button>
     </div>
   </footer>
+  <section class="brand-banner" aria-label="SliceBridge brand banner">
+    <div class="brand-banner-art" aria-hidden="true"></div>
+    <div class="brand-banner-content">
+      <strong>DIFFERENT SLICERS.<br>ONE SIMPLE WORKFLOW.</strong>
+      <span class="brand-banner-rule" aria-hidden="true"></span>
+      <small>SliceBridge makes your 3D printing workflow more open, flexible, and connected.</small>
+    </div>
+  </section>
+  <section class="conversion-progress" role="group" aria-label="Conversion progress">
+    <div class="conversion-progress-labels">
+      <span id="progressDescription" data-i18n="progressIdle" role="status" aria-live="polite">Ready to convert</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div id="progressTrack" class="progress-track" role="progressbar" aria-label="Conversion progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+  </section>
 </div>
+
+<dialog id="myPrintersDialog" class="settings-dialog my-printers-dialog" aria-labelledby="myPrintersTitle">
+  <div class="dialog-frame">
+    <header class="dialog-header">
+      <div>
+        <h2 id="myPrintersTitle">המדפסות שלי</h2>
+        <p id="myPrintersIntro">בחר מדפסות מהרשימה או חפש יצרן ודגם.</p>
+      </div>
+      <button type="button" id="closeMyPrintersBtn" class="ghost-btn close-dialog" aria-label="Close">×</button>
+    </header>
+    <div class="dialog-scroll my-printers-content">
+      <div class="selected-printer-overview" id="selectedPrinterOverview">
+        <h3 id="myPrintersSelectionCount">0 מדפסות נבחרו</h3>
+        <div id="selectedPrinterSummary" class="selected-printer-summary"></div>
+      </div>
+      <div class="printer-filter-row">
+        <label class="field manufacturer-filter-field" for="printerManufacturerFilter">
+          <span id="printerManufacturerLabel">יצרן</span>
+          <select id="printerManufacturerFilter" aria-label="בחירת יצרן"><option value="">בחר יצרן…</option></select>
+        </label>
+        <label class="field printer-search-field" for="printerCatalogSearch">
+          <span id="printerSearchLabel">או חיפוש דגם</span>
+          <input id="printerCatalogSearch" type="search" maxlength="120" autocomplete="off" placeholder="שם יצרן או דגם">
+        </label>
+      </div>
+      <p id="catalogPickerHint" class="catalog-picker-hint" role="status">בחר יצרן או חפש דגם כדי להציג מדפסות.</p>
+      <p id="catalogSearchCount" class="catalog-search-count" role="status"></p>
+      <div id="catalogModelList" class="catalog-model-list" role="group" aria-label="Catalogue models"></div>
+      <p id="myPrintersHiddenNote" class="catalog-footnote"></p>
+      <p id="myPrintersScope" class="catalog-footnote">ההמרה תופעל רק למדפסות שיש להן מתאם קיים ופרופיל מקומי.</p>
+      <p id="myPrintersStatus" class="dialog-status" role="alert"></p>
+    </div>
+    <footer class="dialog-actions">
+      <button type="button" id="cancelMyPrintersBtn" class="compact-btn secondary">לא עכשיו</button>
+      <button type="button" id="saveMyPrintersBtn" class="compact-btn primary">שמור מדפסות</button>
+    </footer>
+  </div>
+</dialog>
 
 <dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle">
   <div class="dialog-frame">
@@ -176,5 +236,135 @@
     </footer>
   </div>
 </dialog>
+
+<dialog id="integrationsDialog" class="settings-dialog integrations-dialog" aria-labelledby="integrationsTitle">
+  <div class="dialog-frame">
+    <header class="dialog-header">
+      <div><h2 id="integrationsTitle" data-i18n="integrationTitle">MakerWorld Setup</h2>
+        <p data-i18n="integrationHint">Open MakerWorld projects directly in SliceBridge without replacing Bambu Studio.</p></div>
+      <button type="button" id="closeIntegrationsBtn" class="ghost-btn close-dialog" aria-label="Close">×</button>
+    </header>
+    <div class="dialog-scroll integration-content">
+      <section class="integration-step" aria-labelledby="integrationStepOne">
+        <div class="integration-step-heading"><span class="step-index">01</span><div>
+          <h3 id="integrationStepOne" data-i18n="stepOneTitle">Enable app links</h3>
+          <p data-i18n="stepOneHint">Let Windows open SliceBridge when a browser sends a project.</p>
+        </div></div>
+        <div class="integration-state"><span id="browserLinkStatus" role="status" aria-live="polite">Checking browser links…</span></div>
+        <button type="button" id="enableLinksBtn" class="compact-btn secondary" data-i18n="enableBrowserLinks">Enable app links</button>
+      </section>
+
+      <section class="integration-step" aria-labelledby="integrationStepTwo">
+        <div class="integration-step-heading"><span class="step-index">02</span><div>
+          <h3 id="integrationStepTwo" data-i18n="stepTwoTitle">Install the browser extension</h3>
+          <p data-i18n="stepTwoHint">Choose your browser. SliceBridge will guide you through the available installation option.</p>
+        </div></div>
+        <div class="integration-install-row">
+          <label for="browserTargetSelect" data-i18n="browserLabel">Browser</label>
+          <select id="browserTargetSelect" aria-label="Browser">
+            <option value="edge">Microsoft Edge</option>
+            <option value="chrome">Google Chrome</option>
+            <option value="brave">Brave</option>
+            <option value="firefox">Firefox (test)</option>
+          </select>
+          <button id="installExtensionBtn" class="compact-btn primary" type="button" data-i18n="guidedBetaInstall">Start guided beta install</button>
+        </div>
+        <p id="extensionStoreStatus" class="integration-store-status" role="status" aria-live="polite">Store installation is not available yet. This is a beta setup.</p>
+        <details id="betaInstallDetails" class="integration-beta-details">
+          <summary data-i18n="betaInstallGuide">Beta setup steps (advanced)</summary>
+          <p data-i18n="betaInstallInfo">The beta extension is included in SliceBridge. Your browser must still ask permission before installation.</p>
+          <div class="integration-install-help">
+            <button id="prepareExtensionBtn" class="compact-btn secondary" type="button" data-i18n="prepareExtension">Open extension folder</button>
+            <button id="openExtensionsBtn" class="compact-btn secondary" type="button" data-i18n="openExtensionsPage">Open browser extensions</button>
+          </div>
+          <ol class="integration-instructions">
+            <li><span data-i18n="installInstructionOne">The browser extensions page:</span> <code id="browserSettingsAddress" dir="ltr">edge://extensions</code></li>
+            <li data-i18n="installInstructionTwo">Enable Developer mode, then choose Load unpacked.</li>
+            <li data-i18n="installInstructionThree">Select the prepared SliceBridge folder shown in File Explorer.</li>
+          </ol>
+          <p id="firefoxInstallWarning" class="integration-caution" data-i18n="firefoxInstallWarning" hidden>Firefox test extensions must be reloaded after restarting Firefox.</p>
+          <p id="extensionFolderStatus" class="integration-feedback" role="status" aria-live="polite"></p>
+        </details>
+      </section>
+
+      <section class="integration-step" aria-labelledby="integrationStepThree">
+        <div class="integration-step-heading"><span class="step-index">03</span><div>
+          <h3 id="integrationStepThree" data-i18n="stepThreeTitle">Choose how MakerWorld opens</h3>
+          <p data-i18n="stepThreeHint">Select an option, then confirm it in the browser. The app cannot change extension settings silently.</p>
+        </div></div>
+        <fieldset class="mode-list">
+          <legend class="sr-only" data-i18n="stepThreeTitle">Choose how MakerWorld opens</legend>
+          <label class="mode-option"><input type="radio" name="makerworldMode" value="off"><span><strong data-i18n="interceptOff">Off</strong><small data-i18n="interceptOffDetail">Use Bambu Studio as usual.</small></span></label>
+          <label class="mode-option"><input type="radio" name="makerworldMode" value="ask"><span><strong data-i18n="interceptAsk">Ask every time</strong><small data-i18n="interceptAskDetail">Choose SliceBridge or Bambu for each project.</small></span></label>
+          <label class="mode-option"><input type="radio" name="makerworldMode" value="always"><span><strong data-i18n="interceptAlways">Always use SliceBridge</strong><small data-i18n="interceptAlwaysDetail">Open supported MakerWorld links in SliceBridge.</small></span></label>
+        </fieldset>
+        <button type="button" id="applyBrowserModeBtn" class="compact-btn primary" data-i18n="confirmInBrowser" disabled>Open browser to confirm</button>
+        <p id="modeStatus" class="integration-feedback" role="status" aria-live="polite"></p>
+      </section>
+      <p class="integration-note" data-i18n="modeScopeNote">The extension controls only supported MakerWorld links. Each browser stores its own choice; Bambu Studio's defaults stay unchanged.</p>
+      <p id="integrationStatus" class="dialog-status" role="status"></p>
+    </div>
+    <footer class="dialog-actions integration-actions">
+      <button type="button" id="doneIntegrationsBtn" class="compact-btn secondary" data-i18n="done">Done</button>
+    </footer>
+  </div>
+</dialog>
+<dialog id="aboutDialog" class="settings-dialog about-dialog" aria-labelledby="aboutTitle">
+  <div class="dialog-frame">
+    <header class="dialog-header">
+      <div>
+        <h2 id="aboutTitle" data-about-i18n="title">אודות SliceBridge</h2>
+        <p data-about-i18n="subtitle">פרויקט אישי בקוד פתוח לחיבור בין סלייסרים.</p>
+      </div>
+      <button id="closeAboutBtn" type="button" class="ghost-btn close-dialog" aria-label="Close">×</button>
+    </header>
+    <div class="dialog-scroll about-content">
+      <div class="about-identity">
+        <img src="./brand-icon.png" alt="" width="50" height="50">
+        <strong>SliceBridge</strong>
+      </div>
+      <section class="about-card" aria-labelledby="aboutVersionHeading">
+        <div class="about-version-row">
+          <div>
+            <h3 id="aboutVersionHeading" data-about-i18n="version">גרסה מותקנת</h3>
+            <span class="version-label" id="installedVersion" title="Version">—</span>
+          </div>
+          <button id="checkUpdatesBtn" type="button" class="update-check-btn compact-btn secondary" data-i18n-title="checkUpdates" title="Check for updates"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 10a7 7 0 0 1 12-3l3 5M4 12l3 5a7 7 0 0 0 12-3"/></svg><span data-i18n="checkUpdates">בדיקת עדכונים</span></button>
+        </div>
+        <div id="updateNotice" class="update-notice" hidden>
+    <span id="updateStatus" role="status"></span>
+    <button type="button" id="openUpdateBtn" class="link-btn" hidden></button>
+    <button type="button" id="dismissUpdateBtn" class="ghost-btn" data-i18n-title="dismiss" title="סגירה" aria-label="Close">×</button>
+  </div>
+      </section>
+      <section class="about-card" aria-labelledby="aboutLicenseHeading">
+        <h3 id="aboutLicenseHeading" data-about-i18n="license">רישיון וקוד פתוח</h3>
+        <p data-about-i18n="licenseSummary">SliceBridge מופץ תחת GPL-3.0-only. הרישיון המלא מצורף לתוכנה.</p>
+        <h3 class="about-credits-title" data-about-i18n="credits">תודות וקרדיטים</h3>
+        <ul class="about-credit-list">
+          <li data-about-i18n="creditBl">bl2std — מנוע המרה, GPLv3.</li>
+          <li data-about-i18n="creditWails">Wails — ממשק שולחני מקורי, MIT.</li>
+          <li data-about-i18n="creditVendor">פרופילי מדפסות נטענים מהסלייסרים שמותקנים אצל המשתמש; הם לא מצורפים לתוכנה.</li>
+        </ul>
+        <div class="about-controls">
+          <button id="viewLicenseBtn" type="button" class="compact-btn secondary">הצגת הרישיון המלא</button>
+          <button id="viewCreditsBtn" type="button" class="compact-btn secondary">כל הקרדיטים וההודעות</button>
+        </div>
+        <pre id="aboutLegalText" class="about-legal-text" dir="ltr" lang="en" hidden></pre>
+        <p id="aboutLegalStatus" class="about-status" role="status" aria-live="polite"></p>
+      </section>
+      <nav class="about-controls about-links" aria-label="SliceBridge GitHub">
+        <button id="aboutSourceBtn" type="button" class="compact-btn secondary" data-about-i18n="source">קוד המקור</button>
+        <button id="aboutReleasesBtn" type="button" class="compact-btn secondary" data-about-i18n="releases">גרסאות להורדה</button>
+      </nav>
+      <p id="aboutLinkStatus" class="about-status" role="status" aria-live="polite"></p>
+      <p class="about-disclaimer" data-about-i18n="offline">פרטי הרישוי והקרדיטים זמינים גם ללא חיבור לאינטרנט. בדיקת עדכונים וקישורים ל־GitHub דורשים חיבור.</p>
+    </div>
+    <footer class="dialog-actions">
+      <button id="doneAboutBtn" type="button" class="compact-btn primary" data-about-i18n="close">סגירה</button>
+    </footer>
+  </div>
+</dialog>
+
 </body>
 </html>
