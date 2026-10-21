@@ -135,6 +135,9 @@ func manufacturerCandidates(platform, programFiles, programFilesX86, localAppDat
 				bases = append(bases, filepath.Join(localAppData, "Programs"))
 			}
 			for _, base := range bases {
+				if base == "" {
+					continue
+				}
 				for _, install := range spec.windows {
 					candidate := manufacturerCandidate{index: i, base: base, app: append(append([]string{}, install.folder...), install.exe)}
 					if spec.profiles {
@@ -145,6 +148,9 @@ func manufacturerCandidates(platform, programFiles, programFilesX86, localAppDat
 			}
 		case "darwin":
 			for _, base := range []string{applications, userApplications} {
+				if base == "" {
+					continue
+				}
 				for _, bundle := range spec.bundles {
 					candidate := manufacturerCandidate{index: i, base: base, app: []string{bundle, "Contents", "Info.plist"}}
 					if spec.profiles {
