@@ -10,14 +10,14 @@ on:
       - "tools/release_preflight.py"
       - "tests/test_release_preflight.py"
       - ".github/workflows/release-preflight.yml"
-      - "RELEASE_OPERATIONS.md"
+      - "docs/release/RELEASE_OPERATIONS.md"
   push:
     branches: [main]
     paths:
       - "tools/release_preflight.py"
       - "tests/test_release_preflight.py"
       - ".github/workflows/release-preflight.yml"
-      - "RELEASE_OPERATIONS.md"
+      - "docs/release/RELEASE_OPERATIONS.md"
   workflow_dispatch:
 
 permissions:
