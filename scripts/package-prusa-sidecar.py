@@ -273,7 +273,10 @@ def cmd_build(args):
             str(vendor / VENDOR_RUNNER),
         ]
         print("building", exe_name(platform), "with PyInstaller", pyinstaller_version)
-        run(command, cwd=str(workdir))
+        # Run PyInstaller from the repository, never from Windows TEMP; PyInstaller
+        # explicitly refuses launching inside the OS temporary directory.
+        # --workpath/--distpath/--specpath still isolate generated files.
+        run(command, cwd=str(ROOT))
         built = dist_tmp / exe_name(platform)
         if not built.is_file():
             raise Failure(f"PyInstaller did not produce {built}")
