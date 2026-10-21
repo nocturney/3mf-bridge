@@ -1,4 +1,4 @@
-## SliceBridge Native Beta 3 (0.4.0-beta.3)
+## SliceBridge Native — experimental dev.8 (0.4.0-beta.4.dev.8)
 
 The native desktop workflow now supports:
 1. **Saved per-printer preferences**: actual physical target nozzle
@@ -7,8 +7,8 @@ The native desktop workflow now supports:
    optional material-specific native filament presets for PLA/PETG/ABS/ASA/TPU.
    Preferences are validated against the real installed vendor profile data,
    stored as an atomic local JSON file in the OS user config directory
-   (Windows: `%AppData%/Velvet Factory/3MF Bridge/settings.json`;
-   macOS: `~/Library/Application Support/Velvet Factory/3MF Bridge/settings.json`).
+   (Windows: `%AppData%/Velvet Factory/SliceBridge/settings.json`;
+   macOS: `~/Library/Application Support/Velvet Factory/SliceBridge/settings.json`).
    No preferences or filenames are sent to any cloud service.
    **Physical nozzle** settings are operator-specified; the tool cannot
    probe your actual printer's hardware. Set them accurately before slicing.
