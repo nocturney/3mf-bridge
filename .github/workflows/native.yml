@@ -74,6 +74,8 @@ jobs:
       - name: Test, build and stage bundled Panda2Prusa engine
         shell: pwsh
         run: |
+          python -m unittest discover -s ../tests -p 'test_prusa_single_file.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'Windows one-file packager self-tests failed' }
           python -m pip install --no-cache-dir -r ../scripts/prusa-sidecar-requirements.txt
           if ($LASTEXITCODE -ne 0) { throw 'Python engine dependencies failed' }
           python -m unittest discover -s ../third_party/panda2prusa -p 'tests_slicebridge.py' -v
@@ -82,26 +84,35 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'Cross-format conversion QA failed' }
           python ../scripts/package-prusa-sidecar.py build
           if ($LASTEXITCODE -ne 0) { throw 'Python sidecar build failed' }
-          python ../scripts/package-prusa-sidecar.py stage --platform windows --bin-dir native/build/bin
-          if ($LASTEXITCODE -ne 0) { throw 'Python sidecar staging failed' }
+          python ../scripts/package-prusa-sidecar.py pack-windows --bin-dir native/build/bin
+          if ($LASTEXITCODE -ne 0) { throw 'Embedding Python engine into Windows EXE failed' }
           python ../scripts/package-prusa-sidecar.py verify --platform windows --bin-dir native/build/bin --smoke
-          if ($LASTEXITCODE -ne 0) { throw 'Packaged Python sidecar smoke failed' }
-      - name: Verify standalone binary and archive
+          if ($LASTEXITCODE -ne 0) { throw 'Embedded Python engine smoke failed' }
+      - name: Verify Windows single-file portable executable
         shell: pwsh
         run: |
           $exe = 'build/bin/SliceBridge.exe'
           if (!(Test-Path $exe)) { throw 'Native binary missing' }
           $size = (Get-Item $exe).Length
-          Write-Output "Native Windows exe bytes: $size"
-          if ($size -gt 35000000) { throw 'Native binary unexpectedly large' }
-          $files = @($exe, 'build/bin/slicebridge-prusa-engine.exe', 'build/bin/panda2prusa-LICENSE.txt')
-          foreach ($file in $files) { if (!(Test-Path $file)) { throw "Missing release file: $file" } }
-          Compress-Archive -LiteralPath $files -DestinationPath 'build/bin/SliceBridge-Windows.zip' -CompressionLevel Optimal -Force
-      - name: Upload Windows native beta
+          Write-Output "Single-file Windows EXE bytes: $size"
+          if ($size -gt 85000000) { throw 'Single-file binary unexpectedly large' }
+          foreach ($old in @('build/bin/slicebridge-prusa-engine.exe', 'build/bin/panda2prusa-LICENSE.txt', 'build/bin/SliceBridge-Windows.zip')) {
+            if (Test-Path $old) { throw "Unexpected separate Windows release file: $old" }
+          }
+          # Wails sets the Windows GUI subsystem; PowerShell's direct '& exe'
+          # does not reliably assign LASTEXITCODE for GUI apps.
+          $probe = Start-Process -FilePath (Resolve-Path $exe).Path -ArgumentList '--verify-bundled-prusa' -Wait -PassThru
+          Write-Output "Embedded Prusa probe exit code: $($probe.ExitCode)"
+          if ($probe.ExitCode -ne 0) { throw 'Actual Windows app failed embedded Prusa extraction probe' }
+          $commit = git rev-parse HEAD
+          $buildInfo = go version -m $exe | Out-String
+          if ($LASTEXITCODE -ne 0 -or !$buildInfo.Contains($commit)) { throw 'Go executable build commit mismatch' }
+      - name: Upload Windows one-file beta
         uses: actions/upload-artifact@v4
         with:
-          name: slicebridge-windows
-          path: native/build/bin/SliceBridge-Windows.zip
+          name: slicebridge-windows-single-exe
+          path: native/build/bin/SliceBridge.exe
+          if-no-files-found: error
           retention-days: 14
 
   macos-native:

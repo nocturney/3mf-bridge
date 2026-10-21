@@ -16,6 +16,17 @@ import (
 var assets embed.FS
 
 func main() {
+	// Headless release smoke probe. The Windows single-file executable must
+	// initialize its embedded Prusa engine without opening a WebView.
+	if len(os.Args) == 2 && os.Args[1] == "--verify-bundled-prusa" {
+		exe, source, reason := locatePrusaEngine()
+		if source != "embedded" || exe == "" || reason != "" {
+			fmt.Fprintln(os.Stderr, "PRUSA_BUNDLE_FAILED", reason)
+			os.Exit(2)
+		}
+		fmt.Println("PRUSA_BUNDLE_OK")
+		return
+	}
 	app := &App{}
 	preferences, prefErr := loadSettings()
 	if prefErr != nil {

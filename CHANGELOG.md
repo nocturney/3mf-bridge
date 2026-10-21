@@ -6,6 +6,11 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.14] - 2026-10-21 (development build; see GitHub Releases)
+
+- Windows portable download is one `SliceBridge.exe` with the Prusa conversion engine embedded. No external helper executable, Python installation or installer is required; the verified engine extracts automatically to a per-user cache.
+- macOS still packages the engine inside the single `SliceBridge.app`; conversion functionality and source material/color preservation are unchanged.
+
 ## [0.4.0-beta.4.dev.13] - 2026-10-21 (development build; see GitHub Releases)
 
 - Show only available conversion destinations in My Printers and the main target list.

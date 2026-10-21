@@ -76,7 +76,7 @@ func ReleaseURL(tag string) (string, error) {
 func expectedAssets(goos, arch string) []string {
 	switch goos + "/" + arch {
 	case "windows/amd64":
-		return []string{"slicebridge-windows.zip", "slicebridge-windows-native.zip", "3mf-bridge-windows-native.zip", "3mf-bridge-windows-x64.zip"}
+		return []string{"slicebridge.exe", "slicebridge-windows.zip", "slicebridge-windows-native.zip", "3mf-bridge-windows-native.zip", "3mf-bridge-windows-x64.zip"}
 	case "darwin/arm64":
 		return []string{"slicebridge-macos-apple-silicon.zip", "slicebridge-macos-arm64.zip", "3mf-bridge-macos-apple-silicon.zip", "3mf-bridge-macos-arm64.zip"}
 	case "darwin/amd64":

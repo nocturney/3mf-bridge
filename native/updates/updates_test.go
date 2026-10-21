@@ -150,3 +150,15 @@ func TestPublicSliceBridgeReleaseURLs(t *testing.T) {
 		t.Fatalf("outdated release links: %s %s", ReleasesURL, BuildsURL)
 	}
 }
+
+func TestSingleFileWindowsReleaseIsRecognized(t *testing.T) {
+	body := `[{"tag_name":"v0.4.0-beta.4.dev.14","assets":[{"name":"SliceBridge.exe"},{"name":"SliceBridge-macOS-Apple-Silicon.zip"}]}]`
+	windows, err := fakeGitHub(t, body, 200, "0.4.0-beta.4.dev.13", "windows", "amd64")
+	if err != nil || windows.Status != "update_available" || windows.AssetName != "SliceBridge.exe" {
+		t.Fatalf("standalone Windows EXE not discovered: %+v %v", windows, err)
+	}
+	mac, err := fakeGitHub(t, body, 200, "0.4.0-beta.4.dev.13", "darwin", "arm64")
+	if err != nil || mac.Status != "update_available" || mac.AssetName != "SliceBridge-macOS-Apple-Silicon.zip" {
+		t.Fatalf("macOS app bundle missing from release selection: %+v %v", mac, err)
+	}
+}

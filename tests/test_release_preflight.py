@@ -1,11 +1,13 @@
 """Offline tests for the preflight tool. No network or real binaries required."""
 from __future__ import annotations
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
 import subprocess
 import sys
+import struct
 import tempfile
 import unittest
 import zipfile
@@ -106,6 +108,31 @@ class PreflightTests(unittest.TestCase):
         self.assertEqual(report["draftAssets"][0]["zipCrcPass"], True)
         self.assertFalse((out / "test-draft.zip").exists())
         self.assertTrue((out / "DRAFT_ASSET_SHA256SUMS.txt").exists())
+
+    def test_standalone_windows_exe_overlay_is_checked(self):
+        asset_dir = self.root / "windows"
+        asset_dir.mkdir()
+        payload = io.BytesIO()
+        with zipfile.ZipFile(payload, "w") as archive:
+            archive.writestr("slicebridge-prusa-engine.exe", b"MZembedded-sidecar")
+            archive.writestr("panda2prusa-LICENSE.txt", b"MIT License\nPermission is hereby granted")
+        contents = payload.getvalue()
+        magic = b"SLICEBRIDGE_PRUSA_V1"
+        trailer = magic + struct.pack("<Q", len(contents)) + hashlib.sha256(contents).digest()
+        asset = asset_dir / "SliceBridge.exe"
+        asset.write_bytes(b"MZmain-app" + contents + trailer)
+        out = self.root / "exe-evidence"
+        self.run_preflight(out, assets=asset_dir)
+        report = json.loads((out / "release-evidence.json").read_text())
+        entry = report["draftAssets"][0]
+        self.assertEqual(entry["name"], "SliceBridge.exe")
+        self.assertTrue(entry["embeddedPrusaEngine"])
+        self.assertTrue(entry["embeddedZipCrcPass"])
+        self.assertFalse((out / asset.name).exists(), "preflight must not redistribute binaries")
+        raw = bytearray(asset.read_bytes())
+        raw[-1] ^= 0xFF
+        asset.write_bytes(raw)
+        self.run_preflight(self.root / "tampered-exe", assets=asset_dir, expected=1)
 
     def test_recursive_pinned_submodule_source(self):
         child = self.root / "upstream"

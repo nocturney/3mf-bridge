@@ -22,10 +22,10 @@ import (
 	"github.com/BryanSmee/bl_to_std/pkg/converter"
 )
 
-// The Panda2Prusa engine is a vendor Python program shipped as a sidecar
-// executable next to SliceBridge. Go never converts geometry or settings: it
-// only locates the sidecar, runs it with a bounded timeout and reply size,
-// and verifies the published 3MF before reporting success.
+// Panda2Prusa is a bundled Python engine: Windows embeds it in the single
+// portable EXE, while macOS stores it inside SliceBridge.app. Go never changes
+// the engine's geometry/settings; it executes it with bounded time and output
+// and verifies the resulting 3MF before reporting success.
 
 const (
 	prusaTargetID    = "prusa-project"
@@ -66,8 +66,8 @@ func prusaFail(code, format string, args ...any) error {
 	return &prusaError{code: code, msg: fmt.Sprintf(format, args...)}
 }
 
-// PrusaEngineStatus reports whether the sidecar file exists. It is a file-level
-// probe only and never executes the engine.
+// PrusaEngineStatus checks that the bundled engine is accessible, extracting
+// the verified Windows payload to a private cache if needed. It never runs it.
 type PrusaEngineStatus struct {
 	Available bool   `json:"available"`
 	Engine    string `json:"engine"`
@@ -99,6 +99,18 @@ func locatePrusaEngine() (exe, source, reason string) {
 	self, err := os.Executable()
 	if err != nil {
 		return "", "bundled", "missing"
+	}
+	if runtime.GOOS == "windows" {
+		embedded, present, bundleErr := locateEmbeddedPrusaEngine(self)
+		if bundleErr != nil {
+			return "", "embedded", "unavailable"
+		}
+		if present {
+			if requireRegularExecutable(embedded) != nil {
+				return "", "embedded", "unavailable"
+			}
+			return embedded, "embedded", ""
+		}
 	}
 	name := prusaEngineName
 	if runtime.GOOS == "windows" {
@@ -155,7 +167,7 @@ func prusaConvert(source string) ConvertResult {
 		return result
 	default:
 		result.Code = "PRUSA_ENGINE_MISSING"
-		result.Error = "The PrusaSlicer project engine is not installed with this build"
+		result.Error = "The bundled PrusaSlicer project engine is unavailable"
 		return result
 	}
 	abs, err := filepath.Abs(source)
@@ -216,7 +228,7 @@ func runPrusaConversion(exe, source, out string, sourceSlots int) (map[string]an
 		"target_filament_slots":      facts.filamentSlots,
 		"slots_preserved":            true,
 		"source_slots_metadata_only": true,
-		"warnings": []string{"Source filament IDs are retained in SliceBridge 3MF metadata. Select your PrusaSlicer printer and filament presets before slicing; those presets are not installed or changed."},
+		"warnings":                   []string{"Source filament IDs are retained in SliceBridge 3MF metadata. Select your PrusaSlicer printer and filament presets before slicing; those presets are not installed or changed."},
 		"target_triangles":           facts.triangles,
 		"target_plates":              0, // PrusaSlicer plates are not read; shown as unknown.
 		"native_filament_overrides":  map[string]string{},
