@@ -37,7 +37,9 @@ python slicebridge_runner.py --source /abs/in.3mf --output /abs/out.3mf --json [
 - stdout is exactly one JSON object and nothing is written to stderr.
 - Success: exit `0`, `{"ok": true, "engine": "panda2prusa", ...}`. The payload has source and output
   SHA-256 values, `stats` (objects, volumes, build items, triangles, vertices, painted triangles),
-  `extruder_remap: null`, the `verified` checks, and `printer_profile: {"verified": false}`.
+  `extruder_remap: null`, `slot_count` (the number of source filament slots recorded), the `verified`
+  checks, `printer_profile: {"verified": false}`, and `warnings`. The warnings say the printer profile
+  must be chosen manually and that the slot record is not a PrusaSlicer preset.
 - Failure: exit `1`, `{"ok": false, "code": "...", "error": "..."}`.
 - Bad arguments: exit `2`, code `BAD_ARGUMENTS`.
 
@@ -67,6 +69,7 @@ Stable codes:
 | `GEOMETRY_MISMATCH` | Object, volume, triangle, vertex or build-item summary differs from the source |
 | `PAINT_MISMATCH` | Paint data differs from the source |
 | `EXTRUDER_MISMATCH` | Object or volume extruder identity differs from the source |
+| `METADATA_MISMATCH` | `Metadata/SliceBridge_source_filaments.json` differs from the source filament slots |
 | `SOURCE_MODIFIED` | Source changed during conversion. Nothing is published |
 | `PUBLISH_FAILED` | Hard link failed. The filesystem must support hard links |
 | `INTERNAL_ERROR` | Unexpected failure. Reported as JSON, never a traceback |
@@ -81,18 +84,42 @@ Stable codes:
 4. Create a temporary `.slicebridge-*.partial` file beside the output. Run upstream
    `convert_file(..., plates=..., extruder_map={}, compact_extruders=False)` into it. Empty `{}`
    means no slot remapping, so sparse slots and same-colour distinct slots keep their original numbers.
-5. Verify the temporary file. It must pass the zip CRC check, contain no G-code, and match the
-   expected summary: object, volume, triangle and vertex counts, build items and transforms, paint
-   strings and per-object paint counts, and object and volume extruders. Volume ranges must tile each
-   object's triangles exactly.
-6. Re-hash the source. If it changed, refuse.
-7. `os.link` the temporary file to the output. `link` fails if the output exists, so this is an atomic
-   no-replace publish. The temporary file is always removed.
+5. Repack the temporary file, streaming, into a second temporary file. Every entry keeps its name,
+   compression method, timestamp and bytes. `[Content_Types].xml` gains one Override for the slot
+   record, and `Metadata/SliceBridge_source_filaments.json` is appended. Nothing is extracted, and
+   `Metadata/Slic3r_PE.config` is never written.
+6. Verify the repacked file. It must pass the zip CRC check, contain no G-code and no
+   `Metadata/Slic3r_PE.config`, and match the expected summary: object, volume, triangle and vertex
+   counts, build items and transforms, paint strings and per-object paint counts, and object and volume
+   extruders. Volume ranges must tile each object's triangles exactly. The slot record must equal the
+   source slots exactly, and the Override must be present.
+7. Re-hash the source. If it changed, refuse.
+8. `os.link` the repacked file to the output. `link` fails if the output exists, so this is an atomic
+   no-replace publish. Both temporary files are always removed.
+
+## Source filament slot record
+
+`Metadata/SliceBridge_source_filaments.json` is backup metadata written by SliceBridge. It is not a
+PrusaSlicer filament preset, and PrusaSlicer does not read it.
+
+```json
+{"schemaVersion":1,"source":"bambu-orca","slots":[{"id":1,"color":"#FF0000","material":"PLA"}, ...]}
+```
+
+- The slots come from the source's `Metadata/project_settings.config` (`filament_colour` and
+  `filament_type`). Every source slot is kept, in source order. Duplicate colours, unused slots and
+  sparse ids are not collapsed.
+- `id` is the 1-based source position. `color` is `#RRGGBB` in upper case. A missing or unreadable
+  colour is `null` and gets a warning. A missing material is `null`.
+- If the source lists no filament data, the record has no slots and a warning says so. `slice_info.xml`
+  is not used as a fallback, because it lists only the slots a print uses.
 
 ## What this does not do
 
 - It does not claim printer profile compatibility. The output is a PrusaSlicer project. Open it in
   PrusaSlicer and pick your own Prusa printer profile before slicing.
+- It does not write a PrusaSlicer printer or filament preset. The slot record is backup metadata only.
+  Filaments must be set up manually.
 - It does not carry over print settings beyond part names and extruders, such as custom layer heights,
   modifiers, or per-part profiles. See upstream `CHANGELOG.md`.
 - It does not keep Bambu plate membership. Selected objects are written together with their build
