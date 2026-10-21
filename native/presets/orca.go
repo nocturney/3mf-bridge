@@ -17,8 +17,9 @@ import (
 )
 
 // Installed Orca-family machine presets become conversion targets only when the
-// machine, its default process and a PLA filament are all locally present and
-// each one explicitly lists that machine as compatible. Nothing is inferred
+// machine, a compatible installed process and a PLA filament are locally present
+// and explicitly list that machine as compatible. A broken vendor default does
+// not hide another valid process for the same model. Nothing is inferred
 // from vendor folder names, and no per-printer approval flag is consulted.
 
 const maxOrcaRejections = 50
@@ -191,10 +192,11 @@ func scanOrcaVendor(loc slicerLocation, vendor string) ([]orcaCandidate, []OrcaR
 		return nil, []OrcaRejection{{Vendor: vendor, Slicer: loc.name, Reason: "vendor profiles unreadable: " + err.Error()}}
 	}
 	byMachine := orcaFilamentsByMachine(index)
+	byProcess := orcaProcessesByMachine(index)
 	candidates := []orcaCandidate{}
 	rejected := []OrcaRejection{}
 	for _, file := range files {
-		candidate, err := resolveOrcaMachine(index, byMachine, loc, vendor, file)
+		candidate, err := resolveOrcaMachine(index, byMachine, byProcess, loc, vendor, file)
 		if err != nil {
 			rejected = append(rejected, OrcaRejection{
 				Vendor: vendor, Machine: strings.TrimSuffix(filepath.Base(file), ".json"),
@@ -208,7 +210,7 @@ func scanOrcaVendor(loc slicerLocation, vendor string) ([]orcaCandidate, []OrcaR
 }
 
 // resolveOrcaMachine applies every fail-closed check to one machine file.
-func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string, loc slicerLocation, vendor, file string) (orcaCandidate, error) {
+func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string, byProcess map[string][]string, loc slicerLocation, vendor, file string) (orcaCandidate, error) {
 	stem := strings.TrimSuffix(filepath.Base(file), ".json")
 	data, err := os.ReadFile(file)
 	if err != nil {
@@ -247,17 +249,12 @@ func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string,
 			return orcaCandidate{}, fmt.Errorf("%s is missing", key)
 		}
 	}
-	processName := orcaFirstString(machine["default_print_profile"])
-	if processName == "" {
-		return orcaCandidate{}, fmt.Errorf("no default process preset is declared")
-	}
-	if len(index["process:"+processName]) == 0 {
-		return orcaCandidate{}, fmt.Errorf("default process preset %q is not installed", processName)
-	}
-	if !orcaListsMachine(index, "process", processName, machineName) {
-		return orcaCandidate{}, fmt.Errorf("default process %q does not list this machine as compatible", processName)
-	}
-	process, err := flatten(index, "process", processName, map[string]bool{})
+	// Vendor machine defaults sometimes point to a different model's process
+	// (observed in the user's installed Flash Studio, ELEGOO and Snapmaker Orca).
+	// Resolve an explicitly compatible installed process instead of dropping
+	// the printer. Never fall back to a guessed or incompatible process.
+	processName, process, err := orcaCompatibleProcess(
+		index, byProcess[machineName], orcaFirstString(machine["default_print_profile"]), machineName, nozzle)
 	if err != nil {
 		return orcaCandidate{}, err
 	}
@@ -315,11 +312,94 @@ func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string,
 	}
 	return orcaCandidate{
 		target: OrcaTarget{
-			ID: target, Slicer: loc.name, Vendor: vendor, Machine: machineName, Model: model,
+			ID: target, Title: machineName, Slicer: loc.name, Vendor: vendor, Machine: machineName, Model: model,
 			Nozzle: nozzle, PhysicalTools: tools, Materials: materialNames,
 		},
 		bundle: bundle,
 	}, nil
+}
+
+// orcaProcessesByMachine indexes *explicit* vendor process compatibility once
+// per vendor. Re-using this index avoids rescanning thousands of process files
+// for each nozzle variant and makes recovery from broken defaults deterministic.
+func orcaProcessesByMachine(index catalog) map[string][]string {
+	result := map[string][]string{}
+	for key := range index {
+		if !strings.HasPrefix(key, "process:") {
+			continue
+		}
+		name := strings.TrimPrefix(key, "process:")
+		machines, ok := orcaCompatibility(index, "process", name)
+		if !ok {
+			continue
+		}
+		for _, machine := range machines {
+			result[machine] = append(result[machine], name)
+		}
+	}
+	for machine, choices := range result {
+		sort.Strings(choices)
+		unique := choices[:0]
+		for _, choice := range choices {
+			if len(unique) == 0 || unique[len(unique)-1] != choice {
+				unique = append(unique, choice)
+			}
+		}
+		result[machine] = unique
+	}
+	return result
+}
+
+// orcaCompatibleProcess prefers the installed machine's valid default, but
+// honors alternative vendor process profiles when that default is missing,
+// misspelled or belongs to a *different* printer. Alternatives must explicitly
+// list the exact machine, flatten successfully, and have a sane layer height.
+// The best ordinary layer height is around half the nozzle diameter.
+func orcaCompatibleProcess(index catalog, compatible []string, preferred, machine, nozzle string) (string, map[string]any, error) {
+	has := func(name string) bool {
+		for _, choice := range compatible {
+			if choice == name {
+				return true
+			}
+		}
+		return false
+	}
+	if preferred != "" && has(preferred) {
+		if process, err := flatten(index, "process", preferred, map[string]bool{}); err == nil {
+			return preferred, process, nil
+		}
+	}
+	diameter, err := strconv.ParseFloat(nozzle, 64)
+	if err != nil || diameter <= 0 {
+		return "", nil, fmt.Errorf("invalid machine nozzle for process lookup")
+	}
+	bestName := ""
+	var bestProcess map[string]any
+	bestScore := math.Inf(1)
+	for _, name := range compatible {
+		if name == preferred {
+			continue
+		}
+		process, err := flatten(index, "process", name, map[string]bool{})
+		if err != nil {
+			continue
+		}
+		height, err := strconv.ParseFloat(orcaFirstString(process["layer_height"]), 64)
+		if err != nil || height <= 0 || height > diameter*0.8 {
+			continue
+		}
+		score := math.Abs(height - diameter*0.5)
+		if !strings.Contains(strings.ToLower(name), "standard") {
+			score += diameter
+		}
+		if score < bestScore || (score == bestScore && (bestName == "" || name < bestName)) {
+			bestName, bestProcess, bestScore = name, process, score
+		}
+	}
+	if bestName == "" {
+		return "", nil, fmt.Errorf("no installed compatible process for %q (default %q unusable)", machine, preferred)
+	}
+	return bestName, bestProcess, nil
 }
 
 // orcaNozzle requires one uniform, supported diameter per installed tool. The

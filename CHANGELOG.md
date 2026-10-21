@@ -6,6 +6,13 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.16] - 2026-10-21 (development build; see GitHub Releases)
+
+- Restore Orca-family printer nozzle profiles hidden because the slicer's declared default process was missing, misspelled, or intended for another printer. Select a locally installed process only if it explicitly lists the exact machine, flattens successfully, and has an appropriate layer height.
+- Detect compatible process alternatives once per slicer/vendor to avoid repeatedly rescanning them for every machine. Never substitute a process from another printer model.
+- Show the machine/nozzle designation in the installed profile's display name so Creator 5 Pro 0.25, 0.4, 0.6, and 0.8 mm profiles can be distinguished when available.
+- Add test fixtures modeling the installed Flash Studio Creator 5 Pro profile anomaly, safety rejections, and unavailable defaults. Keep manufacturer slicer files, existing printer selections, and other conversion routes unchanged.
+
 ## [0.4.0-beta.4.dev.15] - 2026-10-21 (development build; see GitHub Releases)
 
 - In My Printers, show the principal slicer-integration manufacturers first, a disabled visual separator, and other detected manufacturers alphabetically. Existing selections stay first in saved order.
