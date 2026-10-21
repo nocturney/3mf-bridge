@@ -16,8 +16,8 @@ import (
 	"time"
 
 	"github.com/BryanSmee/bl_to_std/pkg/converter"
-	"github.com/nocturney/3mf-bridge/engine/bridge"
-	"github.com/nocturney/3mf-bridge/native/presets"
+	"github.com/nocturney/slicebridge/engine/bridge"
+	"github.com/nocturney/slicebridge/native/presets"
 	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 

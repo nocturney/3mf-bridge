@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/nocturney/3mf-bridge/blob/feature/printer-catalog/catalog/schema-v1.json",
+  "$id": "https://github.com/nocturney/slicebridge/blob/main/catalog/schema-v1.json",
   "title": "SliceBridge printer registry maker snapshot v1",
   "type": "object",
   "additionalProperties": false,

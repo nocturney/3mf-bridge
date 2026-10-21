@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/nocturney/3mf-bridge/native/makerworld"
+	"github.com/nocturney/slicebridge/native/makerworld"
 )
 
 // DetectMakerWorldOrigins reads the operating system's existing download

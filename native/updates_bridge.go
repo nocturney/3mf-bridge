@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/nocturney/3mf-bridge/native/updates"
+	"github.com/nocturney/slicebridge/native/updates"
 	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 

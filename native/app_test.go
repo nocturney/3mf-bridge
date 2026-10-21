@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/nocturney/3mf-bridge/native/presets"
+	"github.com/nocturney/slicebridge/native/presets"
 )
 
 func loadFixture(t *testing.T, fixture string) string {

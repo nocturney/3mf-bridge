@@ -1,4 +1,4 @@
-module github.com/nocturney/3mf-bridge/engine
+module github.com/nocturney/slicebridge/engine
 
 go 1.24.7
 

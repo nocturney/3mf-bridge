@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nocturney/3mf-bridge/native/presets"
+	"github.com/nocturney/slicebridge/native/presets"
 )
 
 func withFreshSettings(t *testing.T) {

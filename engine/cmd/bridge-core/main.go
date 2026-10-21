@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/nocturney/3mf-bridge/engine/bridge"
+	"github.com/nocturney/slicebridge/engine/bridge"
 )
 
 func main() {

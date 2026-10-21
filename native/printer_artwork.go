@@ -14,7 +14,7 @@ import (
     "path/filepath"
     "strings"
 
-    "github.com/nocturney/3mf-bridge/native/presets"
+    "github.com/nocturney/slicebridge/native/presets"
 )
 
 const maxArtworkBytes = 512 << 10

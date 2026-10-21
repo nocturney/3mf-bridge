@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nocturney/3mf-bridge/native/presets"
+	"github.com/nocturney/slicebridge/native/presets"
 	wailsruntime "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
