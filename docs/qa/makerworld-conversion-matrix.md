@@ -28,7 +28,7 @@ or the version.
 | Panda2Prusa, Windows embedded EXE | `native/prusa_embedded_windows.go` | Not built or run here. Needs Windows (CI) |
 | Panda2Prusa, macOS bundled sidecar | `scripts/package-prusa-sidecar.py` | Not built here (needs PyInstaller pin and a build) |
 | SliceBridge comparator | `tests/panda/panda_qa.py` | Ran here (`compare`, `stale_gcode_problems`) |
-| Compat CLI | `tests/compat/threemf_compat.py` | Ran here; see harness defects below |
+| Compat CLI | `tests/compat/threemf_compat.py` | Validated on 11 real Panda2Prusa synthetic outputs after source-slot metadata fix; inapplicable cross-format checks skip |
 | Go Orca adapter | `engine/bridge/*.go`, `native/presets/orca.go` | **Cannot run here**: `go` is not installed and `third_party/bl2std` is empty (submodule not checked out) |
 
 Commands used (repo root):
@@ -37,7 +37,7 @@ Commands used (repo root):
 python3 -m unittest discover -s tests/makerworld -p 'test_*.py' -v        # 8 tests
 python3 tests/makerworld/smoke_conversion.py [--keep-output DIR] [--strict]
 python3 -m unittest discover -s tests/panda -p 'test_*.py' -v            # 41 tests, needs lxml
-python3 -m unittest discover -s tests/compat -p 'test_*.py' -v           # 38 tests
+python3 -m unittest discover -s tests/compat -p 'test_*.py' -v           # 45 tests
 python3 -m unittest discover -s third_party/panda2prusa -p 'tests_slicebridge.py' -v   # 40 tests, needs lxml
 python3 -m unittest discover -s tests -p 'test_prusa_single_file.py' -v  # 5 tests
 ```
@@ -59,31 +59,30 @@ Status key: **PASS** = checked and matched on this run. **FAIL** = checked and d
 
 | Fixture (source, tested) | Source facts (objects / triangles / paint / filaments / nozzle / gcode) | Target | Source structure | Conversion + SliceBridge comparator | Compat CLI | Physical QA |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bambu-one-color.3mf` | 1 / 4 / `4`x4 / 1 / none / yes | Prusa | PASS | PASS | FAIL (harness, see below) | UNTESTED |
+| `bambu-one-color.3mf` | 1 / 4 / `4`x4 / 1 / none / yes | Prusa | PASS | PASS | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-one-color.3mf` | same | Orca | PASS | UNTESTED: no Go toolchain, bl2std empty | n/a | UNTESTED |
-| `bambu-five-colors.3mf` | 1 / 4 / `4`x3, `2C`x1 (slots 1 and 5) / 5 / none / yes | Prusa | PASS | PASS (palette of 5 slots, duplicates kept) | FAIL (harness) | UNTESTED |
+| `bambu-five-colors.3mf` | 1 / 4 / `4`x3, `2C`x1 (slots 1 and 5) / 5 / none / yes | Prusa | PASS | PASS (palette of 5 slots, duplicates kept) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-five-colors.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-mixed-three.3mf` | 1 / 4 / `4`x2, `8`, `0C` (channels 1, 2, 3) / 3 / none / yes | Prusa | PASS | PASS | FAIL (harness) | UNTESTED |
+| `bambu-mixed-three.3mf` | 1 / 4 / `4`x2, `8`, `0C` (channels 1, 2, 3) / 3 / none / yes | Prusa | PASS | PASS | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-mixed-three.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-mixed-nozzle-0.2.3mf` | 1 / 4 / as mixed-three / 3 / 0.2 / yes | Prusa | PASS | PASS (nozzle **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-mixed-nozzle-0.2.3mf` | 1 / 4 / as mixed-three / 3 / 0.2 / yes | Prusa | PASS | PASS (nozzle **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-mixed-nozzle-0.2.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-mixed-nozzle-0.6.3mf` | 1 / 4 / as mixed-three / 3 / 0.6 / yes | Prusa | PASS | PASS (nozzle **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-mixed-nozzle-0.6.3mf` | 1 / 4 / as mixed-three / 3 / 0.6 / yes | Prusa | PASS | PASS (nozzle **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-mixed-nozzle-0.6.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-mixed-nozzle-0.8.3mf` | 1 / 4 / as mixed-three / 3 / 0.8 / yes | Prusa | PASS | PASS (nozzle **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-mixed-nozzle-0.8.3mf` | 1 / 4 / as mixed-three / 3 / 0.8 / yes | Prusa | PASS | PASS (nozzle **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-mixed-nozzle-0.8.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-nozzle-0.2.3mf` | 1 / 4 / `4`x4 / 1 / 0.2 / yes | Prusa | PASS | PASS (nozzle **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-nozzle-0.2.3mf` | 1 / 4 / `4`x4 / 1 / 0.2 / yes | Prusa | PASS | PASS (nozzle **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-nozzle-0.2.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-nozzle-0.2-overheight.3mf` | 1 / 4 / `4`x4 / 1 / 0.2 / yes; **layer_height 0.10 vs 0.16, model identical** | Prusa | PASS | PASS (layer height **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-nozzle-0.2-overheight.3mf` | 1 / 4 / `4`x4 / 1 / 0.2 / yes; **layer_height 0.10 vs 0.16, model identical** | Prusa | PASS | PASS (layer height **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-nozzle-0.2-overheight.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-nozzle-0.4.3mf` | 1 / 4 / `4`x4 / 1 / 0.4 / yes | Prusa | PASS | PASS (nozzle **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-nozzle-0.4.3mf` | 1 / 4 / `4`x4 / 1 / 0.4 / yes | Prusa | PASS | PASS (nozzle **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-nozzle-0.4.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-nozzle-0.6.3mf` | 1 / 4 / `4`x4 / 1 / 0.6 / yes | Prusa | PASS | PASS (nozzle **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-nozzle-0.6.3mf` | 1 / 4 / `4`x4 / 1 / 0.6 / yes | Prusa | PASS | PASS (nozzle **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-nozzle-0.6.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
-| `bambu-nozzle-0.8.3mf` | 1 / 4 / `4`x4 / 1 / 0.8 / yes | Prusa | PASS | PASS (nozzle **not carried**) | FAIL (harness) | UNTESTED |
+| `bambu-nozzle-0.8.3mf` | 1 / 4 / `4`x4 / 1 / 0.8 / yes | Prusa | PASS | PASS (nozzle **not carried**) | PASS (source slots in metadata; format-only checks skipped) | UNTESTED |
 | `bambu-nozzle-0.8.3mf` | same | Orca | PASS | UNTESTED: as above | n/a | UNTESTED |
 
-Totals (this run): source structure 11 PASS. Prusa conversion + comparator 11 PASS. Compat CLI 11 FAIL
-(harness defect, not a conversion verdict). Orca 11 UNTESTED. Physical QA 22 UNTESTED.
+Totals (this run): source structure 11 PASS. Prusa conversion + comparator 11 PASS. Compat CLI 11 PASS after parser fixes (five format-inapplicable checks SKIP per output). Orca 11 UNTESTED. Physical QA 22 UNTESTED.
 
 "Source facts" are from `tests/makerworld/matrix.py`, and the expected counts are pinned in
 `EXPECTED` and checked by `test_source_matrix.py`. Paint codes use a scheme inferred from the repo
@@ -108,14 +107,12 @@ Expected vs observed, Prusa target:
 2. **Windows embedded sidecar not exercised.** `native/prusa_embedded_windows.go` extracts the EXE from the
    portable build. Only the vendored Python runner ran here. CI (`native.yml`) runs the contract on Windows
    and macOS.
-3. **Compat harness defects (`tests/compat`, not changed here).**
-   - It does not read `Metadata/SliceBridge_source_filaments.json`, which is where the Prusa output keeps
-     its colour list. So `palette_slots` and `virtual_channels` FAIL on every Prusa output, even though
-     `panda_qa` reads the same file and matches.
-   - For a Prusa output, the JSON-only checks (`machine_scripts_not_carried`, `process_intent`) FAIL as
-     "output project settings missing". Its own README says these are JSON-layout-only, so they should SKIP.
-   - `tests/compat/README.md` points to `.github/workflows/conversion-compat.yml`, which does not exist. The
-     compat unit tests are not run in CI.
+3. **Compat harness fixed and rechecked.** The checker now validates source filament identities
+   preserved in SliceBridge metadata without claiming they are native PrusaSlicer presets.
+   It reports inapplicable cross-family Bambu/Orca process and printer-script checks as SKIP,
+   not PASS or FAIL. All 11 generated Panda2Prusa outputs passed the checker; this does not
+   validate slicing or actual printer compatibility. New CI coverage is being added.
+   The standalone conversion-compat workflow previously referenced in the README was absent.
 4. **Prusa output has no PrusaSlicer-readable filament or printer config here.** The output has
    `Slic3r_PE_model.config` and the SliceBridge JSON, but no `Slic3r_PE.config`. Whether PrusaSlicer shows
    the colours or extruders correctly is **untested**. Physical or PrusaSlicer-import QA is needed.
