@@ -215,6 +215,8 @@ func runPrusaConversion(exe, source, out string, sourceSlots int) (map[string]an
 		"source_filament_slots":      sourceSlots,
 		"target_filament_slots":      facts.filamentSlots,
 		"slots_preserved":            true,
+		"source_slots_metadata_only": true,
+		"warnings": []string{"Source filament IDs are retained in SliceBridge 3MF metadata. Select your PrusaSlicer printer and filament presets before slicing; those presets are not installed or changed."},
 		"target_triangles":           facts.triangles,
 		"target_plates":              0, // PrusaSlicer plates are not read; shown as unknown.
 		"native_filament_overrides":  map[string]string{},
@@ -344,8 +346,8 @@ type prusaOutputFacts struct {
 }
 
 // validatePrusaOutput inspects the ZIP content itself: safe entry names, the
-// content-types part, editable mesh geometry, a declared filament count, and no
-// stale sliced G-code.
+// content-types part, editable mesh geometry, a lossless source-slot record,
+// and no stale sliced G-code.
 func validatePrusaOutput(output string) (prusaOutputFacts, error) {
 	var facts prusaOutputFacts
 	invalid := func(message string) error {
@@ -392,14 +394,17 @@ func validatePrusaOutput(output string) (prusaOutputFacts, error) {
 				return facts, invalid("engine output contains invalid 3D model XML")
 			}
 			facts.triangles += triangles
-		case name == "Metadata/Slic3r_PE.config":
+		case name == "Metadata/SliceBridge_source_filaments.json":
+			// Panda2Prusa intentionally does not write a Prusa printer or
+			// filament preset. Our auxiliary JSON record preserves EVERY
+			// original numbered source slot without overriding user presets.
 			data, err := readZipEntry(f, prusaConfigLimit)
 			if err != nil {
-				return facts, invalid("engine output config cannot be read")
+				return facts, invalid("engine output source slot record cannot be read")
 			}
-			slots, found := countPrusaFilaments(data)
-			if !found {
-				return facts, invalid("engine output does not declare filament slots")
+			slots, err := countPreservedSourceSlots(data)
+			if err != nil {
+				return facts, invalid("engine output source slot record is invalid: " + err.Error())
 			}
 			facts.filamentSlots = slots
 			hasSlotConfig = true
@@ -455,22 +460,34 @@ func readZipEntry(f *zip.File, limit int64) ([]byte, error) {
 	return data, nil
 }
 
-// countPrusaFilaments reads the filament_colour list from a PrusaSlicer config.
-// Each ';'-separated entry is one filament slot. Missing data is not zero.
-func countPrusaFilaments(config []byte) (int, bool) {
-	for _, line := range strings.Split(string(config), "\n") {
-		line = strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(line), ";"))
-		key, value, ok := strings.Cut(line, "=")
-		if !ok || strings.TrimSpace(key) != "filament_colour" {
-			continue
-		}
-		value = strings.Trim(strings.TrimSpace(value), `"`)
-		if value == "" {
-			return 0, true
-		}
-		return len(strings.Split(value, ";")), true
+// countPreservedSourceSlots validates SliceBridge's lossless auxiliary metadata.
+// It is not a native PrusaSlicer filament preset; its job is to retain each
+// source slot, including unused and identically coloured distinct slots.
+func countPreservedSourceSlots(data []byte) (int, error) {
+	var record struct {
+		SchemaVersion int    `json:"schemaVersion"`
+		Source        string `json:"source"`
+		Slots         []struct {
+			ID       int     `json:"id"`
+			Color    *string `json:"color"`
+			Material *string `json:"material"`
+		} `json:"slots"`
 	}
-	return 0, false
+	if err := json.Unmarshal(data, &record); err != nil {
+		return 0, fmt.Errorf("invalid JSON: %w", err)
+	}
+	if record.SchemaVersion != 1 || record.Source != "bambu-orca" {
+		return 0, fmt.Errorf("unknown schema or source")
+	}
+	if len(record.Slots) == 0 || len(record.Slots) > 64 {
+		return 0, fmt.Errorf("source slot count outside 1..64")
+	}
+	for index, slot := range record.Slots {
+		if slot.ID != index+1 {
+			return 0, fmt.Errorf("source slot IDs must remain ordered and distinct")
+		}
+	}
+	return len(record.Slots), nil
 }
 
 // requirePreservedSlots enforces the project rule that every source filament
