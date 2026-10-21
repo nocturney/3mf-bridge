@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "key": "bambu",
+      "provider": "manufacturer",
+      "repository": "bambulab/BambuStudio",
+      "commit": "79df7ae309be398ed30c9f397c13c9911c2edc57",
+      "base": "resources/profiles",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "qidi",
+      "provider": "manufacturer",
+      "repository": "QIDITECH/QIDIStudio",
+      "commit": "403b619d56147160bb883e94f95a7951245bc6d0",
+      "base": "resources/profiles",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "elegoo",
+      "provider": "manufacturer",
+      "repository": "elegooofficial/ElegooSlicer",
+      "commit": "2d507e39a96ab9562b35d06b23ef5df8fe613297",
+      "base": "resources/profiles",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "snapmaker",
+      "provider": "manufacturer",
+      "repository": "Snapmaker/Orca_Presets",
+      "commit": "0c2d17834b7820339c1cf4326fda7db9da4a766a",
+      "base": ".",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "flashforge",
+      "provider": "manufacturer",
+      "repository": "FlashForge/Orca-Flashforge",
+      "commit": "c45cc8216c184574c36873314ae7caea67c7a1ad",
+      "base": "resources/profiles",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "orca",
+      "provider": "orca",
+      "repository": "OrcaSlicer/OrcaSlicer",
+      "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+      "base": "resources/profiles",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "prusa_official",
+      "provider": "manufacturer",
+      "repository": "prusa3d/PrusaSlicer-settings",
+      "commit": "a40f669e7c3ff4dfe05a937fc08fc57993dcf0d5",
+      "base": "live/PrusaResearch",
+      "license_status": "review_before_redistribution"
+    },
+    {
+      "key": "prusa_community",
+      "provider": "prusa",
+      "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+      "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+      "base": ".",
+      "license_status": "review_before_redistribution"
+    }
+  ]
+}

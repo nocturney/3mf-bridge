@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "format": "slicebridge-existing-adapter-compatibility-map",
+  "source_settings_schema_version": 1,
+  "observed_wails_backend": {
+    "repository": "nocturney/slicebridge",
+    "commit": "3bf292876406edb891351fe160ca146532299014",
+    "files": ["native/presets/presets.go", "native/preferences.go", "native/batch.go"]
+  },
+  "registration_policy": "metadata_only_never_auto_enable_catalogued_models",
+  "unmapped_catalogue_models": "catalog_only",
+  "preserve_saved_preferences": true,
+  "profile_payloads_distributed": false,
+  "default_profile_acquisition": "read_local_slicer_installation_only",
+  "runtime_adapter_qa_not_certified": true,
+  "mappings": [
+    {
+      "legacy_target": "u1",
+      "model_id": "snapmaker-u1",
+      "maker_file": "makers/snapmaker.json",
+      "legacy_display_name": "Snapmaker U1",
+      "legacy_slicer_label": "Snapmaker Orca",
+      "target_nozzles_mm": [
+        "0.2",
+        "0.4",
+        "0.6",
+        "0.8"
+      ],
+      "source_nozzle_remap_mm": {},
+      "builtin_fast_path_nozzle_mm": "0.4",
+      "builtin_fast_path_preconditions": {"slicer": "auto", "custom_filaments": "none"},
+      "adapter_status": "legacy_adapter_exists_not_catalog_qa_certified",
+      "profile_location_policy": "installed_slicer_only",
+      "catalog_activates_conversion": false,
+      "conversion_tested": false
+    },
+    {
+      "legacy_target": "c5",
+      "model_id": "flashforge-creator-5",
+      "maker_file": "makers/flashforge.json",
+      "legacy_display_name": "Flashforge Creator 5",
+      "legacy_slicer_label": "Flash Studio Desktop",
+      "target_nozzles_mm": [
+        "0.25",
+        "0.4",
+        "0.6",
+        "0.8"
+      ],
+      "source_nozzle_remap_mm": {
+        "0.2": "0.25"
+      },
+      "builtin_fast_path_nozzle_mm": null,
+      "adapter_status": "legacy_adapter_exists_not_catalog_qa_certified",
+      "profile_location_policy": "installed_slicer_only",
+      "catalog_activates_conversion": false,
+      "conversion_tested": false
+    },
+    {
+      "legacy_target": "cc2",
+      "model_id": "elegoo-centauri-carbon-2",
+      "maker_file": "makers/elegoo.json",
+      "legacy_display_name": "ELEGOO CC2",
+      "legacy_slicer_label": "ElegooSlicer",
+      "target_nozzles_mm": [
+        "0.2",
+        "0.4",
+        "0.6",
+        "0.8"
+      ],
+      "source_nozzle_remap_mm": {},
+      "builtin_fast_path_nozzle_mm": null,
+      "adapter_status": "legacy_adapter_exists_not_catalog_qa_certified",
+      "profile_location_policy": "installed_slicer_only",
+      "catalog_activates_conversion": false,
+      "conversion_tested": false
+    },
+    {
+      "legacy_target": "qidi",
+      "model_id": "qidi-x-plus-5",
+      "maker_file": "makers/qidi.json",
+      "legacy_display_name": "QIDI Plus5",
+      "legacy_slicer_label": "OrcaSlicer / QIDIStudio",
+      "target_nozzles_mm": [
+        "0.2",
+        "0.4",
+        "0.6",
+        "0.8"
+      ],
+      "source_nozzle_remap_mm": {},
+      "builtin_fast_path_nozzle_mm": null,
+      "adapter_status": "legacy_adapter_exists_not_catalog_qa_certified",
+      "profile_location_policy": "installed_slicer_only",
+      "catalog_activates_conversion": false,
+      "conversion_tested": false
+    }
+  ]
+}

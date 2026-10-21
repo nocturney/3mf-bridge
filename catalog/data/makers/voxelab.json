@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Voxelab",
+  "models": [
+    {
+      "id": "voxelab-voxelab-aquila-x2",
+      "manufacturer": "Voxelab",
+      "model": "Voxelab Aquila X2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.02",
+          "manifest": {
+            "path": "resources/profiles/Voxelab.json",
+            "sha256": "9af111f55f5956fde1c7c7628b0c55fa70a8e962e8f71c31d741c6dca9f85554"
+          },
+          "model": {
+            "path": "machine/Voxelab Aquila X2.json",
+            "sha256": "09bf89157b75dd6ce2df337e8feb8d7dec384cdfff42413cddd8220e28ae9088",
+            "manufacturer_model_id": "Voxelab-Aquila-X2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

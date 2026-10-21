@@ -17,10 +17,10 @@ import (
 )
 
 const (
-	Repository  = "nocturney/3mf-bridge"
-	APIURL      = "https://api.github.com/repos/nocturney/3mf-bridge/releases?per_page=50"
-	ReleasesURL = "https://github.com/nocturney/3mf-bridge/releases"
-	BuildsURL   = "https://github.com/nocturney/3mf-bridge/actions/workflows/native.yml"
+	Repository  = "nocturney/slicebridge"
+	APIURL      = "https://api.github.com/repos/nocturney/slicebridge/releases?per_page=50"
+	ReleasesURL = "https://github.com/nocturney/slicebridge/releases"
+	BuildsURL   = "https://github.com/nocturney/slicebridge/actions/workflows/native.yml"
 	maxResponse = 2 << 20
 )
 

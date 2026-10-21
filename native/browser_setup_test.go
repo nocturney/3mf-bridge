@@ -73,3 +73,47 @@ func TestPrepareExtensionRejectsSymlinkDestination(t *testing.T) {
 		t.Error("symlink output accepted")
 	}
 }
+
+func TestOfficialExtensionInstallPagesRequireExplicitListing(t *testing.T) {
+	addresses := map[string]string{
+		"edge":"edge://extensions", "chrome":"chrome://extensions",
+		"brave":"brave://extensions", "firefox":"about:debugging#/runtime/this-firefox",
+	}
+	for browser, expected := range addresses {
+		got, err := browserExtensionsPage(browser)
+		if err != nil || got != expected { t.Fatalf("%s: %q, %v", browser, got, err) }
+		listing, err := verifiedExtensionStoreURL(browser)
+		if err != nil || listing != "" { t.Fatalf("unpublished %s falsely advertised a store: %q, %v", browser, listing, err) }
+	}
+	for _, bad := range []string{"", "safari", "edge://extensions", "edge;rm", "../firefox"} {
+		if _, err := browserExtensionsPage(bad); err == nil { t.Errorf("unsafe browser install route %q", bad) }
+		if _, err := verifiedExtensionStoreURL(bad); err == nil { t.Errorf("unsafe browser store route %q", bad) }
+	}
+}
+
+func TestOfficialExtensionStoreLinksMustStayOnTheApprovedHost(t *testing.T) {
+	defer func() { delete(approvedExtensionStoreURLs, "edge"); delete(approvedExtensionStoreURLs, "chrome"); delete(approvedExtensionStoreURLs, "firefox") }()
+	valid := map[string]string{
+		"edge":"https://microsoftedge.microsoft.com/addons/detail/example/abcdefghijklmnopabcdefghijklmnop",
+		"chrome":"https://chromewebstore.google.com/detail/example/abcdefghijklmnopabcdefghijklmnop",
+		"firefox":"https://addons.mozilla.org/en-US/firefox/addon/example/",
+	}
+	for browser, listed := range valid {
+		approvedExtensionStoreURLs[browser] = listed
+		got, err := verifiedExtensionStoreURL(browser)
+		if err != nil || got != listed { t.Errorf("valid listing for %s rejected: %q %v", browser, got, err) }
+	}
+	if got, err := verifiedExtensionStoreURL("brave"); err != nil || got != valid["chrome"] {
+		t.Fatalf("Brave must use the verified Chrome listing only: %q %v", got, err)
+	}
+	for browser, bad := range map[string]string{
+		"edge":"https://microsoftedge.microsoft.com.evil.example/addons/detail/fake",
+		"chrome":"http://chromewebstore.google.com/detail/example",
+		"firefox":"https://addons.mozilla.org.evil.example/en-US/firefox/addon/fake",
+	} {
+		approvedExtensionStoreURLs[browser] = bad
+		if got, err := verifiedExtensionStoreURL(browser); err == nil || got != "" {
+			t.Errorf("unsafe %s listing not rejected: %q, %v", browser, got, err)
+		}
+	}
+}

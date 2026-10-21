@@ -39,11 +39,23 @@ jobs:
           node ../browser-extension/build.cjs
           $changed = git -C .. status --porcelain --untracked-files=all -- native/frontend/dist/extension-packages
           if ($LASTEXITCODE -ne 0 -or $changed) { throw 'Embedded extension bytes differ from source; regenerate and commit' }
+      - name: Verify offline printer catalogue is reproducible
+        shell: pwsh
+        run: |
+          python ../catalog/tools/check.py ../catalog
+          if ($LASTEXITCODE -ne 0) { throw "Catalog metadata verification failed" }
+          python ../catalog/tools/verify_ui.py --catalog ../catalog --repo ..
+          if ($LASTEXITCODE -ne 0) { throw "Committed printer picker snapshot drift" }
       - name: Test Go engine and native backend
         shell: pwsh
         run: go test -count=1 ./...
       - name: Test native UI and browser handoff
-        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js
+        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js tests/my-printers-ui.test.js
+      - name: Verify short-window frontend interactions (headless Chrome)
+        shell: pwsh
+        run: |
+          node tests/source-queue-layout-qa.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Source panel is obscured or compact layout regressed' }
       - name: Install stable Wails 2
         shell: pwsh
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
@@ -89,10 +101,14 @@ jobs:
         run: |
           node ../browser-extension/build.cjs
           test -z "$(git -C .. status --porcelain --untracked-files=all -- native/frontend/dist/extension-packages)"
+      - name: Verify offline printer catalogue is reproducible
+        run: |
+          python3 ../catalog/tools/check.py ../catalog
+          python3 ../catalog/tools/verify_ui.py --catalog ../catalog --repo ..
       - name: Test Go engine and native backend
         run: go test -count=1 ./...
       - name: Test native UI and browser handoff
-        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js
+        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js tests/my-printers-ui.test.js
       - name: Install stable Wails 2
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
       - name: Build macOS app using system WebKit

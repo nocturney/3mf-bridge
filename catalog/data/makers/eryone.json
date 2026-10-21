@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Eryone",
+  "models": [
+    {
+      "id": "eryone-eryone-er20",
+      "manufacturer": "Eryone",
+      "model": "Eryone ER20",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Eryone.json",
+            "sha256": "d4c71e3169596dfa9468b5046fac66d19fbf8e08cf37bca380df3d3fc2f3e07b"
+          },
+          "model": {
+            "path": "machine/ER20/Eryone ER20.json",
+            "sha256": "bfb19c8076f6374ebb63aa8a1cd90bdb8aecef2f03730600f6b86823cf13e20b",
+            "manufacturer_model_id": "Eryone ER20"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (5)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "eryone-eryone-er20-klipper",
+      "manufacturer": "Eryone",
+      "model": "Eryone ER20 Klipper",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Eryone.json",
+            "sha256": "d4c71e3169596dfa9468b5046fac66d19fbf8e08cf37bca380df3d3fc2f3e07b"
+          },
+          "model": {
+            "path": "machine/ER20_Klipper/Eryone ER20 Klipper.json",
+            "sha256": "f9a3471fb997eb0feb210b5b3fdffd1646b8c67e195f483538ce6308ffe39c9a",
+            "manufacturer_model_id": "Eryone ER20 Klipper"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.5",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (5)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "eryone-thinker-x400",
+      "manufacturer": "Eryone",
+      "model": "Thinker X400",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.07",
+          "manifest": {
+            "path": "resources/profiles/Eryone.json",
+            "sha256": "d4c71e3169596dfa9468b5046fac66d19fbf8e08cf37bca380df3d3fc2f3e07b"
+          },
+          "model": {
+            "path": "machine/Thinker X400.json",
+            "sha256": "ef5b44a0417d950222d1e52d10a6d9ad64df0356f053808e0e6c260789c602e4",
+            "manufacturer_model_id": "Thinker-X400"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (2)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

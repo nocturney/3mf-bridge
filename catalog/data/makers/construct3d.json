@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "manufacturer": "CONSTRUCT3D",
+  "models": [
+    {
+      "id": "construct3d-construct-1",
+      "manufacturer": "CONSTRUCT3D",
+      "model": "Construct 1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/CONSTRUCT3D.json",
+            "sha256": "d3dba5d5c4d7a6af1eedbfa7c6bbc843792ce812f86510ae0917998c992ae408"
+          },
+          "model": {
+            "path": "machine/Construct 1.json",
+            "sha256": "5001d3711781ea37e4feddf5ce1ce73628ca27e5b317d35668ca24a37ffc2b5f",
+            "manufacturer_model_id": "Construct-1"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "construct3d-construct-1-xl",
+      "manufacturer": "CONSTRUCT3D",
+      "model": "Construct 1 XL",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.04",
+          "manifest": {
+            "path": "resources/profiles/CONSTRUCT3D.json",
+            "sha256": "d3dba5d5c4d7a6af1eedbfa7c6bbc843792ce812f86510ae0917998c992ae408"
+          },
+          "model": {
+            "path": "machine/Construct 1 XL.json",
+            "sha256": "91f9431157502eba1db07f719b2375066613b32c52b3fe2a2a9531e60112a8c4",
+            "manufacturer_model_id": "Construct-1-XL"
+          },
+          "nozzles_mm": [
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

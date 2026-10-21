@@ -72,7 +72,7 @@ func authenticatedReleases(ctx context.Context) ([]byte, error) {
 	deadline, cancel := context.WithTimeout(ctx, 12*time.Second)
 	defer cancel()
 	command := exec.CommandContext(deadline, binary,
-		"api", "repos/nocturney/3mf-bridge/releases?per_page=50",
+		"api", "repos/nocturney/slicebridge/releases?per_page=50",
 		"--method", "GET")
 	command.Stdin = nil
 	data, err := command.Output()
@@ -91,20 +91,19 @@ func checkInstalledPrivate(ctx context.Context, installed, goos, arch string) (R
 	if len(expectedAssets(goos, arch)) == 0 {
 		return Result{InstalledVersion: installed, Platform: goos + "-" + arch, Status: "unsupported_platform"}, nil
 	}
-	// This repo is currently private. Prefer the user's authenticated gh
-	// session to avoid misleading unauthenticated 404 / no-update results.
+	// The public repository works for everyone without an account or GitHub CLI.
+	result, err := Check(ctx, NewClient(), APIURL, installed, goos, arch)
+	if !errors.Is(err, ErrRepositoryPrivate) {
+		return result, err
+	}
+	// An authenticated CLI is only an optional fallback if access changes.
 	raw, cliErr := authenticatedReleases(ctx)
 	if cliErr == nil {
 		return evaluateCLIJSON(ctx, raw, installed, goos, arch)
 	}
-	// If releases are later made public, clients without gh still work.
-	result, err := Check(ctx, NewClient(), APIURL, installed, goos, arch)
-	if errors.Is(err, ErrRepositoryPrivate) {
-		return Result{
-			InstalledVersion: installed,
-			Platform:         goos + "-" + arch,
-			Status:           "authentication_required",
-		}, nil
-	}
-	return result, err
+	return Result{
+		InstalledVersion: installed,
+		Platform:         goos + "-" + arch,
+		Status:           "authentication_required",
+	}, nil
 }

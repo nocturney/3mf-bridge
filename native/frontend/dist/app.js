@@ -8,7 +8,7 @@ const translations = {
     dismiss:'סגירה',workspaceTitle:'סביבת המרה',
     workspaceSubtitle:'המרת פרויקטים לכמה מדפסות, בלי לשנות את המקור.',
     localOnly:'עיבוד מקומי בלבד',queueTitle:'קובצי מקור',clear:'ניקוי',
-    addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',
+    addFiles:'הוסף קבצים',addFolder:'הוסף תיקייה',queuedFiles:'קבצים שנבחרו',
     dropHint:'גרור קובצי 3MF או תיקייה לכאן',queueFootnote:'עד 200 קובצי 3MF, כולל תיקיות משנה.',
     targetsTitle:'מדפסות יעד',selectAll:'בחר הכול',deselectAll:'בטל בחירה',
     resultsTitle:'תוצאות המרה',emptyTitle:'מוכן להמרה',
@@ -64,7 +64,7 @@ const translations = {
     dismiss:'Dismiss',workspaceTitle:'Conversion workspace',
     workspaceSubtitle:'Convert projects for multiple printers without altering your originals.',
     localOnly:'Completely local',queueTitle:'Source projects',clear:'Clear',
-    addFiles:'Add files',addFolder:'Add folder',
+    addFiles:'Add files',addFolder:'Add folder',queuedFiles:'Selected source files',
     dropHint:'Drop 3MF files or folders here',queueFootnote:'Up to 200 projects, including subfolders.',
     targetsTitle:'Target printers',selectAll:'Select all',deselectAll:'Clear selection',
     resultsTitle:'Conversion results',emptyTitle:'Ready to convert',
@@ -175,9 +175,11 @@ function languageSwitch(lang){
   try{localStorage.setItem('3mfBridgeLanguage',language);}catch{}
   renderCopy();renderQueue();renderTargets();renderResults();renderActionBar();renderUpdates();
   if(dom.settings.open){renderSettingsTabs();paintSettings();}
+  window.SliceBridgeMyPrinters?.render();
 }
 function getSelectedTargets(){
-  return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)')).map((e)=>e.value);
+  return Array.from(document.querySelectorAll('#targetList input[type=checkbox]:checked:not(:disabled)'))
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden).map((e)=>e.value);
 }
 let completedBatchFiles=0;
 let progressPhase='idle';
@@ -218,6 +220,7 @@ function renderActionBar(){
   el('addFilesBtn').disabled=el('addFolderBtn').disabled=el('clearQueueBtn').disabled=busy;
   el('selectAllBtn').disabled=busy;
   el('settingsBtn').disabled=busy;
+  el('myPrintersBtn').disabled=busy||!window.SliceBridgeMyPrinters?.isReady();
   dom.folderBtn.disabled=busy||!(lastBatch?.successes>0);
   if(busy){
     dom.activityIcon.className='activity-icon busy';
@@ -240,10 +243,15 @@ function setActivity(title,detail,type=''){
 }
 function renderQueue(){
   dom.fileList.replaceChildren();
+  const hasFiles=files.length>0;
+  dom.fileList.hidden=!hasFiles;
+  dom.fileList.parentElement.classList.toggle('has-files',hasFiles);
+  el('queuedFilesLabel').hidden=!hasFiles;
+  el('queueFilesShownCount').textContent=hasFiles?String(files.length):'';
+  dom.fileList.setAttribute('aria-label',t('queuedFiles'));
   dom.queueCount.textContent=String(files.length);
   el('clearQueueBtn').disabled=busy||!files.length;
   if(!files.length){
-    dom.fileList.append(node('p','empty-list',t('queueEmpty')));
     renderActionBar();
     return;
   }
@@ -267,10 +275,13 @@ function renderQueue(){
   renderActionBar();
 }
 function renderTargets(){
+  const selectedLegacy=window.SliceBridgeMyPrinters?.legacyTargets();
   for(const target of targetOrder){
     const data=available.find((a)=>a.target===target);
     const row=document.querySelector('[data-target-row="'+target+'"]');
     const checkbox=row.querySelector('input');
+    row.hidden=Array.isArray(selectedLegacy)&&!selectedLegacy.includes(target);
+    if(row.hidden)checkbox.checked=false;
     const summary=row.querySelector('[data-printer-summary]');
     checkbox.disabled=busy||(data&&!data.available);
     // A running job temporarily locks controls; it must never erase the
@@ -291,13 +302,31 @@ function renderTargets(){
       summary.title=text;
     }
   }
+  const catalogOnly=el('catalogOnlyTargets');
+  const missing=window.SliceBridgeMyPrinters?.selectedStatuses()
+    .filter((entry)=>entry.kind==='catalog_only')||[];
+  catalogOnly.hidden=!missing.length;
+  catalogOnly.replaceChildren();
+  for(const entry of missing){
+    const label=node('div','catalog-only-target');
+    label.append(node('strong','',window.SliceBridgePicker.title(entry.model)),
+      node('small','',language==='he'?'קטלוג בלבד · המרה אינה זמינה':'Catalog only · conversion unavailable'));
+    catalogOnly.append(label);
+  }
   const count=getSelectedTargets().length;
-  el('selectAllBtn').textContent=count===available.filter(v=>v.available).length?t('deselectAll'):t('selectAll');
+  const selectable=available.filter(v=>v.available&&(!Array.isArray(selectedLegacy)||selectedLegacy.includes(v.target)));
+  el('selectAllBtn').hidden=selectable.length===0;
+  const noneChosen=Array.isArray(selectedLegacy)&&selectedLegacy.length===0;
+  el('emptyTargetNotice').hidden=!noneChosen;
+  el('emptyTargetNotice').textContent=language==='he'?
+    'לא נבחרו מדפסות יעד. אפשר להוסיף דרך סמל המדפסת בראש החלון.':
+    'No target printers selected. Use the printer icon at the top to add them.';
+  el('selectAllBtn').textContent=count===selectable.length?t('deselectAll'):t('selectAll');
   renderActionBar();
 }
 async function refreshAvailability(){
   if(!api())return;
-  try{available=await api().Availability();renderTargets();}
+  try{available=await api().Availability();window.SliceBridgeMyPrinters?.setAvailability(available);renderTargets();}
   catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
 }
 async function addFiles(infos){
@@ -655,7 +684,8 @@ async function openUpdate(){
   catch(e){updateError=e?.message||String(e);renderUpdates();}
 }
 function selectAll(){
-  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'));
+  const boxes=Array.from(document.querySelectorAll('#targetList input[type=checkbox]:not(:disabled)'))
+    .filter((e)=>!e.closest?.('[data-target-row]')?.hidden);
   const allSelected=boxes.every((e)=>e.checked);
   for(const box of boxes)box.checked=!allSelected;
   memoryStatus=null;renderTargets();
@@ -691,10 +721,6 @@ function registerHandlers(){
   });
   dom.settings.addEventListener('close',()=>{draftPrefs=null;choiceSequence++;});
   for(const target of targetOrder){
-    document.querySelector('[data-settings-target="'+target+'"]')
-      .addEventListener('click',(e)=>{
-        e.preventDefault();e.stopPropagation();openSettings(target);
-      });
     document.querySelector('[data-target-row="'+target+'"] input')
       .addEventListener('change',()=>{memoryStatus=null;renderTargets();});
   }
@@ -702,6 +728,15 @@ function registerHandlers(){
   el('enBtn').addEventListener('click',()=>languageSwitch('en'));
   el('checkUpdatesBtn').addEventListener('click',checkUpdates);
   el('openUpdateBtn').addEventListener('click',openUpdate);
+  window.addEventListener('slicebridge:my-printers-changed',()=>{
+    const selected=window.SliceBridgeMyPrinters?.legacyTargets();
+    for(const key of targetOrder){
+      const checkbox=document.querySelector('[data-target-row="'+key+'"] input');
+      if(Array.isArray(selected))checkbox.checked=selected.includes(key)&&
+        available.some(item=>item.target===key&&item.available);
+    }
+    renderTargets();
+  });
   el('dismissUpdateBtn').addEventListener('click',()=>{
     updateResult=null;updateError='';renderUpdates();
   });
@@ -766,6 +801,7 @@ async function initialiseNative(){
   catch{installedVersion=null;}
   renderUpdates();
   await refreshAvailability();
+  await window.SliceBridgeMyPrinters?.init();
   renderCopy();renderTargets();renderQueue();renderResults();renderActionBar();
 }
 

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "manufacturer": "E2D",
+  "models": [
+    {
+      "id": "e2d-e2d-i310",
+      "manufacturer": "E2D",
+      "model": "E2D i310",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "E2D/1.1.0.ini",
+            "sha256": "e5bfd5ae6c171e8f841653b40a83c0446e1791c383f7b6d5d134d1cd4afa50df"
+          },
+          "model": {
+            "path": "E2D/1.1.0.ini",
+            "section": "printer_model:i310",
+            "sha256": "e5bfd5ae6c171e8f841653b40a83c0446e1791c383f7b6d5d134d1cd4afa50df"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: 0.20mm NORMAL i310 (1)",
+            "print missing preset: 0.20mm DRAFT @0.30 nozzle i310 (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "e2d-e2d-i311",
+      "manufacturer": "E2D",
+      "model": "E2D i311",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "prusa",
+          "publisher": "prusa_community",
+          "repository": "prusa3d/PrusaSlicer-settings-non-prusa-fff",
+          "commit": "a01e756eceadc4d7b47e56f7296f00e4dd6b85bf",
+          "bundle_version": "1.1.0",
+          "manifest": {
+            "path": "E2D/1.1.0.ini",
+            "sha256": "e5bfd5ae6c171e8f841653b40a83c0446e1791c383f7b6d5d134d1cd4afa50df"
+          },
+          "model": {
+            "path": "E2D/1.1.0.ini",
+            "section": "printer_model:i311",
+            "sha256": "e5bfd5ae6c171e8f841653b40a83c0446e1791c383f7b6d5d134d1cd4afa50df"
+          },
+          "nozzles_mm": [
+            "0.3",
+            "0.4"
+          ],
+          "candidate_printer_sections": 2,
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "print missing preset: 0.20mm NORMAL i311 (1)",
+            "print missing preset: 0.20mm NORMAL @0.30 nozzle i311 (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}

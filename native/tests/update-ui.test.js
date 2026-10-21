@@ -34,10 +34,12 @@ function setupUI() {
     assert.match(html, new RegExp('id="' + id + '"'), 'update controls must remain in native UI');
   }
   const ids = [
-    'fileList', 'queueCount', 'resultList', 'reportCounts', 'convertBtn',
+    'fileList', 'queueCount', 'queuedFilesLabel', 'queueFilesShownCount',
+    'resultList', 'reportCounts', 'convertBtn',
     'convertCount', 'activityText', 'activityDetail', 'activityIcon',
     'openFolderBtn', 'settingsDialog', 'clearQueueBtn', 'addFilesBtn',
-    'addFolderBtn', 'selectAllBtn', 'settingsBtn', 'resultsPanel',
+    'addFolderBtn', 'selectAllBtn', 'settingsBtn', 'myPrintersBtn',
+    'emptyTargetNotice', 'catalogOnlyTargets', 'resultsPanel',
     'clearResultsBtn', 'installedVersion', 'checkUpdatesBtn',
     'updateNotice', 'updateStatus', 'openUpdateBtn', 'dismissUpdateBtn',
     'heBtn', 'enBtn', 'settingsTabs', 'settingsNozzle', 'settingsSlicer',
@@ -47,6 +49,9 @@ function setupUI() {
     'progressDescription', 'progressPercent', 'progressTrack', 'progressFill'
   ];
   const elements = Object.fromEntries(ids.map((id) => [id, element(id)]));
+  // The queue list is a direct child of the actual source panel. The renderer
+  // toggles its has-files class when files are added/removed.
+  elements.fileList.parentElement = element('source-panel');
   const targets = ['u1', 'c5', 'cc2', 'qidi'];
   const rows = Object.fromEntries(targets.map((target) => {
     const checkbox = element(target + '-checkbox');

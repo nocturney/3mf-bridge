@@ -1,0 +1,198 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const picker=require('../frontend/dist/printer-picker.js');
+const catalog=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../frontend/dist/printer-catalog.json'),'utf8'));
+
+test('snapshot is complete yet only 4 target adapters, no media/profiles embedded',()=>{
+  assert.equal(catalog.modelCount,603);
+  assert.equal(catalog.models.length,603);
+  assert.equal(catalog.legacyAdapterCount,4);
+  assert.equal(catalog.thirdPartyProfilePayloadsIncluded,false);
+  assert.ok(catalog.models.some(x=>x.manufacturer==='Bambu Lab'));
+  assert.ok(catalog.models.every(x=>x.imagePath==null && x.logoPath==null));
+  assert.equal(catalog.models.filter(x=>x.legacyTarget).length,4);
+  assert.equal(picker.search(catalog.models,'',[],100).total,
+               603-catalog.models.filter(picker.isHidden).length);
+});
+
+test('Bambu printer destination stays hidden in normal list and even when searched',()=>{
+  for(const word of ['Bambu','P1S','X1C','Bambu Lab']){
+    assert.ok(picker.search(catalog.models,word).models.every(x=>x.manufacturer!=='Bambu Lab'));
+  }
+  assert.equal(picker.search(catalog.models,'Bambu Lab').total,0);
+  assert.ok(catalog.models.some(x=>x.manufacturer==='Bambu Lab'));
+});
+
+test('search works for brand, model and legacy aliases, without inventing release dates',()=>{
+  const u1=picker.search(catalog.models,'snapmaker u1').models;
+  assert.ok(u1.some(x=>x.id==='snapmaker-u1'));
+  const c5=picker.search(catalog.models,'Creator 5').models;
+  assert.ok(c5.some(x=>x.id==='flashforge-creator-5'));
+  const cc2=picker.search(catalog.models,'ELEGOO CC2').models;
+  assert.ok(cc2.some(x=>x.id==='elegoo-centauri-carbon-2'));
+  assert.ok(catalog.models.every(x=>x.releaseDate===null));
+  assert.equal(picker.search(catalog.models,'nonexistent printer 999999').total,0);
+});
+
+test('selected legacy adapters and unrelated index-only printers stay separate',()=>{
+  const u1=catalog.models.find(x=>x.id==='snapmaker-u1');
+  const c5=catalog.models.find(x=>x.id==='flashforge-creator-5');
+  const other=catalog.models.find(x=>!x.legacyTarget && !picker.isHidden(x));
+  const chosen=[other.id,c5.id,u1.id];
+  assert.deepEqual(picker.selectedAdapterTargets(catalog.models,chosen),['c5','u1']);
+  const result=picker.statuses(catalog.models,chosen,[
+    {target:'c5',available:false,error:'Flash Studio not installed'},
+    {target:'u1',available:true}
+  ]);
+  assert.deepEqual(result.map(x=>x.kind),['catalog_only','missing_local_profile','ready']);
+  assert.deepEqual(result.map(x=>x.canConvert),[false,false,true]);
+});
+
+test('broad list capped at 80 and selected first; text cannot execute JS',()=>{
+  const other=catalog.models.find(x=>!x.legacyTarget && !picker.isHidden(x));
+  const view=picker.search(catalog.models,'',[other.id]);
+  assert.equal(view.models.length,80);
+  assert.equal(view.models[0].id,other.id);
+  assert.equal(picker.title({manufacturer:'X<script>',model:'<img src=x>'}),
+               'X<script> <img src=x>');
+  // UI inserts those fields via textContent only, not innerHTML.
+  const js=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  assert.doesNotMatch(js,/innerHTML\s*=/);
+  assert.match(js,/textContent|createTextNode|node\(/);
+});
+
+test('new picker UI has bilingual names, consent-based selection and no network media',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  for(const id of ['myPrintersBtn','myPrintersDialog','printerCatalogSearch',
+                   'printerManufacturerFilter','catalogPickerHint',
+                   'catalogModelList','saveMyPrintersBtn','cancelMyPrintersBtn']){
+    assert.ok(doc.includes('id="'+id+'"'),id);
+  }
+  assert.match(doc,/src="\.\/printer-picker\.js"/);
+  assert.match(doc,/src="\.\/my-printers\.js"/);
+  assert.match(script,/SaveMyPrinters/);
+  assert.match(script,/GetMyPrinters/);
+  assert.match(script,/PrinterCatalog/);
+  assert.match(script,/קטלוג בלבד/);
+  assert.match(script,/catalog only/i);
+  assert.doesNotMatch(script,/fetch\s*\(|XMLHttpRequest|https?:\/\//);
+});
+
+
+test('first-run is empty; cards and installed cover images load only after user filters',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const script=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  const backend=fs.readFileSync(path.resolve(__dirname,'../printer_catalog.go'),'utf8');
+  const style=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  assert.match(backend,/Version: 1, SelectedIDs: \[\]string\{\}/);
+  for(const target of ['u1','c5','cc2','qidi']){
+    assert.doesNotMatch(doc,new RegExp('<input type="checkbox" value="'+target+'" checked>'));
+  }
+  assert.match(doc,/id="printerManufacturerFilter"/);
+  assert.match(doc,/id="catalogPickerHint"/);
+  assert.match(script,/const hasFilter=Boolean\(term\|\|manufacturer\)/);
+  assert.match(script,/const matches=hasFilter\?picker\.search/);
+  assert.match(script,/list\.hidden=!hasFilter/);
+  assert.match(script,/observeCover\(graphic,model\.id\)/);
+  assert.match(style,/\.catalog-model-list\[hidden\]/);
+});
+
+test('exactly one My Printers button and one Settings button, with responsive icons',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const js=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.js'),'utf8');
+  const pickerJS=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  assert.equal((doc.match(/id="myPrintersBtn"/g)||[]).length,1);
+  assert.equal((doc.match(/id="settingsBtn"/g)||[]).length,1);
+  assert.equal((doc.match(/id="manageTargetsBtn"/g)||[]).length,0);
+  assert.equal((doc.match(/data-settings-target="/g)||[]).length,0);
+  assert.doesNotMatch(js,/manageTargetsBtn|data-settings-target/);
+  assert.doesNotMatch(pickerJS,/manageTargetsBtn/);
+  assert.match(css,/@media\(max-width:1160px\)/);
+  assert.match(css,/\.topbar \.labeled-btn span\{display:none\}/);
+  assert.match(doc,/id="emptyTargetNotice"/);
+});
+
+
+test('queue drop area can scroll instead of cropping in constrained window heights',()=>{
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  assert.match(css,/\/\* 0\.4\.0-beta\.4\.dev\.2[\s\S]*?responsive UI/);
+  const refinement=css.slice(css.indexOf('/* 0.4.0-beta.4.dev.2'));
+  assert.match(refinement,/\.workspace\{\s*[\s\S]*?overflow-y:auto;/);
+  assert.match(refinement,/\.left-column\{\s*[\s\S]*?grid-template-rows:minmax\(205px,1fr\) auto;/);
+  assert.match(refinement,/\.queue-panel\{\s*min-height:205px\}/);
+  assert.match(refinement,/@media\(max-height:750px\)\{\s*\.left-column\{grid-template-rows:minmax\(205px,auto\) auto\}/);
+  assert.match(refinement,/@media\(max-width:740px\) and \(max-height:750px\)/);
+});
+
+test('target printers are accessible two-column selectable cards with a narrow one-column fallback',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  const refinement=css.slice(css.indexOf('/* 0.4.0-beta.4.dev.2'));
+  assert.match(refinement,/\.target-list\{\s*display:grid;\s*grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+  assert.match(refinement,/\.target-option:has\(input:checked\)/);
+  assert.match(refinement,/@media\(max-width:480px\)\{\s*\.target-list\{grid-template-columns:1fr\}/);
+  assert.equal((doc.match(/class="target-option"/g)||[]).length,4);
+  assert.equal((doc.match(/class="target-printer-icon" aria-hidden="true"/g)||[]).length,4);
+  for(const key of ['u1','c5','cc2','qidi']){
+    assert.match(doc,new RegExp('<input type="checkbox" value="'+key+'"'));
+    assert.match(doc,new RegExp('data-printer-summary="'+key+'"'));
+  }
+});
+
+test('header always shows labels for printers, settings and MakerWorld, even below 1160px',()=>{
+  const doc=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  const refinement=css.slice(css.indexOf('/* 0.4.0-beta.4.dev.2'));
+  for(const id of ['myPrintersBtn','settingsBtn','integrationsBtn']){
+    const hit=doc.match(new RegExp('<button id="'+id+'"[^>]*>([\\s\\S]*?)</button>'));
+    assert.ok(hit,id);
+    assert.match(hit[1],/<span[^>]*>[^<]+<\/span>/);
+  }
+  assert.match(refinement,/\.topbar \.labeled-btn span\{\s*display:inline!important;/);
+  assert.match(refinement,/@media\(max-width:740px\)[\s\S]*?\.topbar\{flex-wrap:wrap;/);
+  assert.match(refinement,/@media\(max-width:380px\)[\s\S]*?\.topbar \.labeled-btn span\{font-size:9\.5px\}/);
+  assert.equal((doc.match(/id="myPrintersBtn"/g)||[]).length,1);
+  assert.equal((doc.match(/id="settingsBtn"/g)||[]).length,1);
+});
+
+
+test('target printer cards reuse locally installed PNG covers with safe fallback',()=>{
+  const html=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  const js=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/my-printers.js'),'utf8');
+  const css=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.css'),'utf8');
+  const backend=fs.readFileSync(path.resolve(__dirname,'../printer_artwork.go'),'utf8');
+  const expected=[['u1','snapmaker-u1'],['c5','flashforge-creator-5'],
+                  ['cc2','elegoo-centauri-carbon-2'],['qidi','qidi-x-plus-5']];
+  for(const [target,modelID] of expected){
+    const model=catalog.models.find(model=>model.id===modelID);
+    assert.ok(model);
+    assert.equal(model.legacyTarget,target);
+    assert.ok(model.localCoverCandidates.length>0);
+    assert.match(html,new RegExp('data-target-row="'+target+'"'));
+  }
+  assert.equal((html.match(/class="target-printer-icon"/g)||[]).length,4);
+  assert.match(js,/function loadTargetArtwork\(\)/);
+  assert.match(js,/!model\.legacyTarget\|\|!chosen\.has\(model\.id\)/);
+  assert.match(js,/querySelector\('\[data-target-row=/);
+  assert.match(js,/tile\.dataset\.artId=model\.id/);
+  assert.match(js,/queueCover\(model\.id\)/);
+  assert.match(js,/selected=reply;\s*loadTargetArtwork\(\)/);
+  assert.match(js,/loaded=true;\s*loadTargetArtwork\(\)/);
+  assert.match(js,/\.printer-avatar\[data-art-id\], \.target-printer-icon\[data-art-id\]/);
+  assert.match(js,/result\?\.provenance==='local_installed_slicer'/);
+  assert.doesNotMatch(js,/fetch\s*\(|XMLHttpRequest|https?:\/\//);
+  assert.match(css,/\.target-printer-icon \.printer-cover-photo\{/);
+  assert.match(css,/object-fit:contain/);
+  assert.match(backend,/func \(a \*App\) PrinterArtwork\(modelID string\)/);
+});
+
+test('brand banner keeps just the short first headline',()=>{
+  const html=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/index.html'),'utf8');
+  assert.match(html,/DIFFERENT SLICERS\.<br>ONE SIMPLE WORKFLOW\./);
+  assert.doesNotMatch(html,new RegExp(['A STRONGER','COMMUNITY'].join(' '),'i'));
+});

@@ -1,0 +1,1895 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Volumic",
+  "models": [
+    {
+      "id": "volumic-exo42",
+      "manufacturer": "Volumic",
+      "model": "EXO42",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO42.json",
+            "sha256": "792f4f12445877dbde2e521fe0677ea775d906f612bc63d0cf2f5fa005348fe3",
+            "manufacturer_model_id": "V420"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "EXO42 (0.4 nozzle)",
+                "path": "machine/EXO42 (0.4 nozzle).json",
+                "sha256": "59741f390f101fd1c19d8ce4ebe36aa007bf217db546277d3b70983ebc2d5483",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO42 (0.4 nozzle)",
+                    "path": "machine/EXO42 (0.4 nozzle).json",
+                    "sha256": "59741f390f101fd1c19d8ce4ebe36aa007bf217db546277d3b70983ebc2d5483"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed - 0.15mm",
+                "path": "process/Normal speed - 0.15mm.json",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed - 0.15mm",
+                    "path": "process/Normal speed - 0.15mm.json",
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "EXO42 (0.4 nozzle)",
+          "process": "Normal speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-exo42-idre",
+      "manufacturer": "Volumic",
+      "model": "EXO42 IDRE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO42 IDRE.json",
+            "sha256": "78da124c368c3af05d2b3da644cd532deb554871aba16d5ffa4d296788f35e5e",
+            "manufacturer_model_id": "V420I"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "volumic-exo42-performance",
+      "manufacturer": "Volumic",
+      "model": "EXO42 Performance",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO42 Performance.json",
+            "sha256": "f773e763a82cbb793b3b1f16777780241b21cc7db4d966532987f5a52929dbee",
+            "manufacturer_model_id": "V420K"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "volumic-exo42-stage-2",
+      "manufacturer": "Volumic",
+      "model": "EXO42 Stage 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO42 Stage 2.json",
+            "sha256": "c1018ed8184ce5de21b27598576506048b5932b1d1bda56475c3a88f919506ab",
+            "manufacturer_model_id": "V420S2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "EXO42 Stage 2 (0.4 nozzle)",
+                "path": "machine/EXO42 Stage 2 (0.4 nozzle).json",
+                "sha256": "fc781f47c87315bfb3b6309e012228ddfe3544f6cfa0b1530569c4a410e6ce86",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO42 Stage 2 (0.4 nozzle)",
+                    "path": "machine/EXO42 Stage 2 (0.4 nozzle).json",
+                    "sha256": "fc781f47c87315bfb3b6309e012228ddfe3544f6cfa0b1530569c4a410e6ce86"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed (Stage 2) - 0.20mm",
+                "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed (Stage 2) - 0.20mm",
+                    "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "EXO42 Stage 2 (0.4 nozzle)",
+          "process": "Normal speed (Stage 2) - 0.20mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-exo65",
+      "manufacturer": "Volumic",
+      "model": "EXO65",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO65.json",
+            "sha256": "ceb6c615c08083c0188ce335716a84c8ca93e2e7596c022cc140d4d4c47b6eaa",
+            "manufacturer_model_id": "V650"
+          },
+          "nozzles_mm": [
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "EXO65 (0.6 nozzle)",
+                "path": "machine/EXO65 (0.6 nozzle).json",
+                "sha256": "5d6fdaf68e50bedb22098929e963ae8f174bf559391a037b32d7383f5068aa6a",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO65 (0.6 nozzle)",
+                    "path": "machine/EXO65 (0.6 nozzle).json",
+                    "sha256": "5d6fdaf68e50bedb22098929e963ae8f174bf559391a037b32d7383f5068aa6a"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed - 0.15mm",
+                "path": "process/Normal speed - 0.15mm.json",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed - 0.15mm",
+                    "path": "process/Normal speed - 0.15mm.json",
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "EXO65 (0.6 nozzle)",
+          "process": "Normal speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-exo65-idre",
+      "manufacturer": "Volumic",
+      "model": "EXO65 IDRE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO65 IDRE.json",
+            "sha256": "4f84ac0556bbf2094652dc2bd68f29fc0226b93f93dc579a0a4c8fac36917dfb",
+            "manufacturer_model_id": "V650I"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "volumic-exo65-performance",
+      "manufacturer": "Volumic",
+      "model": "EXO65 Performance",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO65 Performance.json",
+            "sha256": "f10cd28d0203998b8d9970e6aa1da0f30ca9b839c8705da857a20125871a7795",
+            "manufacturer_model_id": "V650K"
+          },
+          "nozzles_mm": [
+            "0.4",
+            "0.6",
+            "0.8"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "volumic-exo65-stage-2",
+      "manufacturer": "Volumic",
+      "model": "EXO65 Stage 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/EXO65 Stage 2.json",
+            "sha256": "95494776ff65c2bb2c3455d67946f7644d5d764c3d1d9621e202a73a770db2c8",
+            "manufacturer_model_id": "V650S2"
+          },
+          "nozzles_mm": [
+            "0.6"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.6",
+              "machine": {
+                "name": "EXO65 Stage 2 (0.6 nozzle)",
+                "path": "machine/EXO65 Stage 2 (0.6 nozzle).json",
+                "sha256": "872417b709078944cd7a0f484e611adc40b475d4af457467cc655d94594b8e2e",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "EXO65 Stage 2 (0.6 nozzle)",
+                    "path": "machine/EXO65 Stage 2 (0.6 nozzle).json",
+                    "sha256": "872417b709078944cd7a0f484e611adc40b475d4af457467cc655d94594b8e2e"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed (Stage 2) - 0.20mm",
+                "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed (Stage 2) - 0.20mm",
+                    "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.6"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.6": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "EXO65 Stage 2 (0.6 nozzle)",
+          "process": "Normal speed (Stage 2) - 0.20mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-sh65",
+      "manufacturer": "Volumic",
+      "model": "SH65",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/SH65.json",
+            "sha256": "049f11e60ba7daafafb1fbcbe81491a3075fe89c5e91dccc6507799916c52522",
+            "manufacturer_model_id": "V650300"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SH65 (0.4 nozzle)",
+                "path": "machine/SH65 (0.4 nozzle).json",
+                "sha256": "4e9cf817bc33b21ca67c22e8d0cb7cd8caa03baf9602d799d4520f49e5f81b47",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "SH65 (0.4 nozzle)",
+                    "path": "machine/SH65 (0.4 nozzle).json",
+                    "sha256": "4e9cf817bc33b21ca67c22e8d0cb7cd8caa03baf9602d799d4520f49e5f81b47"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed - 0.15mm",
+                "path": "process/Normal speed - 0.15mm.json",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed - 0.15mm",
+                    "path": "process/Normal speed - 0.15mm.json",
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "SH65 (0.4 nozzle)",
+          "process": "Normal speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-sh65-idre",
+      "manufacturer": "Volumic",
+      "model": "SH65 IDRE",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/SH65 IDRE.json",
+            "sha256": "76f6fe963089b68cd0ab260f4e4ae4b2d9c751c6c68cbbe40d524c131fbc55c6",
+            "manufacturer_model_id": "V650300I"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "volumic-sh65-performance",
+      "manufacturer": "Volumic",
+      "model": "SH65 Performance",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/SH65 Performance.json",
+            "sha256": "798ffc512ac3d41415a1c23a93811410eca54231e98fac8dedd97702d1dbe8ae",
+            "manufacturer_model_id": "V650300K"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "missing process preset (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "volumic-sh65-stage-2",
+      "manufacturer": "Volumic",
+      "model": "SH65 Stage 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/SH65 Stage 2.json",
+            "sha256": "45dd986177331ea18702fc758c1584ac528c1133fd2ab96321e3972afc6c17bd",
+            "manufacturer_model_id": "V650300S2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "SH65 Stage 2 (0.4 nozzle)",
+                "path": "machine/SH65 Stage 2 (0.4 nozzle).json",
+                "sha256": "4cfb8e5a5688027c04393a504c5096bc5d263d531cf7c27c4773623bf921de74",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "SH65 Stage 2 (0.4 nozzle)",
+                    "path": "machine/SH65 Stage 2 (0.4 nozzle).json",
+                    "sha256": "4cfb8e5a5688027c04393a504c5096bc5d263d531cf7c27c4773623bf921de74"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed (Stage 2) - 0.20mm",
+                "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed (Stage 2) - 0.20mm",
+                    "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "SH65 Stage 2 (0.4 nozzle)",
+          "process": "Normal speed (Stage 2) - 0.20mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs20mk2",
+      "manufacturer": "Volumic",
+      "model": "VS20MK2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS20MK2.json",
+            "sha256": "6dc9377a6308e697874e34a58ddc5ce5c3fe2cea19c3072c596526c73395b3c4",
+            "manufacturer_model_id": "V20"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS20MK2 (0.4 nozzle)",
+                "path": "machine/VS20MK2 (0.4 nozzle).json",
+                "sha256": "9e4ce565958466c28eb8987610fb91a8b361c856c1c4bcf6721050652eb10748",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS20MK2 (0.4 nozzle)",
+                    "path": "machine/VS20MK2 (0.4 nozzle).json",
+                    "sha256": "9e4ce565958466c28eb8987610fb91a8b361c856c1c4bcf6721050652eb10748"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Compatible speed - 0.15mm",
+                "path": "process/Compatible speed - 0.15mm.json",
+                "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Compatible speed - 0.15mm",
+                    "path": "process/Compatible speed - 0.15mm.json",
+                    "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS20MK2 (0.4 nozzle)",
+          "process": "Compatible speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30mk2",
+      "manufacturer": "Volumic",
+      "model": "VS30MK2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30MK2.json",
+            "sha256": "b41b0f71b19ca9266f158733934c24e980c643733b60fc5585758e9fe3564e64",
+            "manufacturer_model_id": "V30"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30MK2 (0.4 nozzle)",
+                "path": "machine/VS30MK2 (0.4 nozzle).json",
+                "sha256": "f58c4db0943db902d0736dc57ca87e002fd5adc504018c41e43064f2bea26e02",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30MK2 (0.4 nozzle)",
+                    "path": "machine/VS30MK2 (0.4 nozzle).json",
+                    "sha256": "f58c4db0943db902d0736dc57ca87e002fd5adc504018c41e43064f2bea26e02"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Compatible speed - 0.15mm",
+                "path": "process/Compatible speed - 0.15mm.json",
+                "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Compatible speed - 0.15mm",
+                    "path": "process/Compatible speed - 0.15mm.json",
+                    "sha256": "a83c6efc4081fe94b6041703965f9e0e4ea838b7eeb781bccf4252f94bfd6611"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30MK2 (0.4 nozzle)",
+          "process": "Compatible speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30mk3",
+      "manufacturer": "Volumic",
+      "model": "VS30MK3",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30MK3.json",
+            "sha256": "957333a00de2f220e047cf1341a4b81a80673b2ed65030c6c4209e1decb648b5",
+            "manufacturer_model_id": "V300A"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30MK3 (0.4 nozzle)",
+                "path": "machine/VS30MK3 (0.4 nozzle).json",
+                "sha256": "3bc1631344b99508dd9528bc7a6c2bd95c9f40e106419ac1645a5cdc00928d21",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30MK3 (0.4 nozzle)",
+                    "path": "machine/VS30MK3 (0.4 nozzle).json",
+                    "sha256": "3bc1631344b99508dd9528bc7a6c2bd95c9f40e106419ac1645a5cdc00928d21"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed - 0.15mm",
+                "path": "process/Normal speed - 0.15mm.json",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed - 0.15mm",
+                    "path": "process/Normal speed - 0.15mm.json",
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30MK3 (0.4 nozzle)",
+          "process": "Normal speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30mk3-stage-2",
+      "manufacturer": "Volumic",
+      "model": "VS30MK3 Stage 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30MK3 Stage 2.json",
+            "sha256": "41699095deef81b1aa79d4b5027b199a873ccf7661e9bdf6c7c81ff7fec7c83b",
+            "manufacturer_model_id": "V300AS2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30MK3 Stage 2 (0.4 nozzle)",
+                "path": "machine/VS30MK3 Stage 2 (0.4 nozzle).json",
+                "sha256": "cb4f84f488f78ba2f61c1fa3b59c04ba65d5e63a14fe90541cb5777bd5dd2656",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30MK3 Stage 2 (0.4 nozzle)",
+                    "path": "machine/VS30MK3 Stage 2 (0.4 nozzle).json",
+                    "sha256": "cb4f84f488f78ba2f61c1fa3b59c04ba65d5e63a14fe90541cb5777bd5dd2656"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed (Stage 2) - 0.20mm",
+                "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed (Stage 2) - 0.20mm",
+                    "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30MK3 Stage 2 (0.4 nozzle)",
+          "process": "Normal speed (Stage 2) - 0.20mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30sc",
+      "manufacturer": "Volumic",
+      "model": "VS30SC",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30SC.json",
+            "sha256": "74c5b4ac14361665ae84197a563b8d44490969c3c44a89a0d8669067bf30feed",
+            "manufacturer_model_id": "V300A"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30SC (0.4 nozzle)",
+                "path": "machine/VS30SC (0.4 nozzle).json",
+                "sha256": "d658770689a09a4a6ae08ebba2034b916f8965d35ae8b888aad51f11abae38dc",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC (0.4 nozzle)",
+                    "path": "machine/VS30SC (0.4 nozzle).json",
+                    "sha256": "d658770689a09a4a6ae08ebba2034b916f8965d35ae8b888aad51f11abae38dc"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed - 0.15mm",
+                "path": "process/Normal speed - 0.15mm.json",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed - 0.15mm",
+                    "path": "process/Normal speed - 0.15mm.json",
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30SC (0.4 nozzle)",
+          "process": "Normal speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30sc2",
+      "manufacturer": "Volumic",
+      "model": "VS30SC2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30SC2.json",
+            "sha256": "bc1ac9aa90f3585462b853ea16fc3ac89ace02fc638e59b49b2ac32f2c9ae6f0",
+            "manufacturer_model_id": "V300"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30SC2 (0.4 nozzle)",
+                "path": "machine/VS30SC2 (0.4 nozzle).json",
+                "sha256": "3ef4a88b40feb8cd7181070e9713e43ccba05075ae87aa6eeedf392fde07e9c3",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC2 (0.4 nozzle)",
+                    "path": "machine/VS30SC2 (0.4 nozzle).json",
+                    "sha256": "3ef4a88b40feb8cd7181070e9713e43ccba05075ae87aa6eeedf392fde07e9c3"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed - 0.15mm",
+                "path": "process/Normal speed - 0.15mm.json",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed - 0.15mm",
+                    "path": "process/Normal speed - 0.15mm.json",
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30SC2 (0.4 nozzle)",
+          "process": "Normal speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30sc2-performance",
+      "manufacturer": "Volumic",
+      "model": "VS30SC2 Performance",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30SC2 Performance.json",
+            "sha256": "71f198df203f651e7c40de89bec3e5fc4136578a94570bd1d21c11399d84caa2",
+            "manufacturer_model_id": "V300P"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30SC2 Performance (0.4 nozzle)",
+                "path": "machine/VS30SC2 Performance (0.4 nozzle).json",
+                "sha256": "5664fdcb43faafadf2beb5c819cea3939fd5a84737dccf4a3feabf3d9a38fc23",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC2 Performance (0.4 nozzle)",
+                    "path": "machine/VS30SC2 Performance (0.4 nozzle).json",
+                    "sha256": "5664fdcb43faafadf2beb5c819cea3939fd5a84737dccf4a3feabf3d9a38fc23"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal performance VS30 - 0.20mm",
+                "path": "process/Normal performance VS30 - 0.20mm.json",
+                "sha256": "d41dee08792108e7934c0145c7d11633201e8d16372ae96698636557d136b8f3",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal performance VS30 - 0.20mm",
+                    "path": "process/Normal performance VS30 - 0.20mm.json",
+                    "sha256": "d41dee08792108e7934c0145c7d11633201e8d16372ae96698636557d136b8f3"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30SC2 Performance (0.4 nozzle)",
+          "process": "Normal performance VS30 - 0.20mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30sc2-stage-2",
+      "manufacturer": "Volumic",
+      "model": "VS30SC2 Stage 2",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30SC2 Stage 2.json",
+            "sha256": "16df5fc45a2b346c8ac845cee153bada1b1c02d1ca596575d65a2bbacc32712d",
+            "manufacturer_model_id": "V300S2"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30SC2 Stage 2 (0.4 nozzle)",
+                "path": "machine/VS30SC2 Stage 2 (0.4 nozzle).json",
+                "sha256": "d42d75293c872e2bd78ecac259d6a8ac49fb7bdbd338ac77c48460a896c4246f",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30SC2 Stage 2 (0.4 nozzle)",
+                    "path": "machine/VS30SC2 Stage 2 (0.4 nozzle).json",
+                    "sha256": "d42d75293c872e2bd78ecac259d6a8ac49fb7bdbd338ac77c48460a896c4246f"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed (Stage 2) - 0.20mm",
+                "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed (Stage 2) - 0.20mm",
+                    "path": "process/Normal speed (Stage 2) - 0.20mm.json",
+                    "sha256": "4e284ffc2e8e393ce5a325fbd7f89f2784d5b645d524f9a4e6ad79d07971ff7e"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30SC2 Stage 2 (0.4 nozzle)",
+          "process": "Normal speed (Stage 2) - 0.20mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    },
+    {
+      "id": "volumic-vs30ultra",
+      "manufacturer": "Volumic",
+      "model": "VS30ULTRA",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.05",
+          "manifest": {
+            "path": "resources/profiles/Volumic.json",
+            "sha256": "6adbe3aa17ef70db1c38d66d545e8924caa41d14831aaa1ad63ad911055e8e12"
+          },
+          "model": {
+            "path": "machine/VS30ULTRA.json",
+            "sha256": "1705dcdda317c2112518b176411034eec6d716a11aa3fecbb5941ed6505cc710",
+            "manufacturer_model_id": "V300B"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [
+            {
+              "nozzle_mm": "0.4",
+              "machine": {
+                "name": "VS30ULTRA (0.4 nozzle)",
+                "path": "machine/VS30ULTRA (0.4 nozzle).json",
+                "sha256": "f93d852cc61e98a7b0f672260765ad551729b3b3ac5dd592b5d3e5a7d2b2d7e4",
+                "inheritance": [
+                  {
+                    "name": "fdm_volumic_common",
+                    "path": "machine/fdm_volumic_common.json",
+                    "sha256": "432759a4f067ca70dab08be94c985da92e769c2efbc766599c69a3adee34358b"
+                  },
+                  {
+                    "name": "VS30ULTRA (0.4 nozzle)",
+                    "path": "machine/VS30ULTRA (0.4 nozzle).json",
+                    "sha256": "f93d852cc61e98a7b0f672260765ad551729b3b3ac5dd592b5d3e5a7d2b2d7e4"
+                  }
+                ]
+              },
+              "process": {
+                "name": "Normal speed - 0.15mm",
+                "path": "process/Normal speed - 0.15mm.json",
+                "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1",
+                "inheritance": [
+                  {
+                    "name": "fdm_process_volumic_common",
+                    "path": "process/fdm_process_volumic_common.json",
+                    "sha256": "adf4f8cf6a23469bae5cdadfc95121e5f7019962895377a802dd550a64cca158"
+                  },
+                  {
+                    "name": "Normal speed - 0.15mm",
+                    "path": "process/Normal speed - 0.15mm.json",
+                    "sha256": "4b9dedde21b2333dfa2b6a4184138f481599b81e1c0d3e72e795ac49468d07f1"
+                  }
+                ]
+              },
+              "filament": {
+                "name": "Volumic UNIVERSAL Ultra",
+                "path": "filament/Volumic UNIVERSAL Ultra.json",
+                "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832",
+                "inheritance": [
+                  {
+                    "name": "fdm_filament_common",
+                    "path": "filament/fdm_filament_common.json",
+                    "sha256": "0d891b6e9776f172238aaf9b4424b62819e713b9c6ecb9e16c64b8fd1c9a4c42"
+                  },
+                  {
+                    "name": "fdm_filament_pla",
+                    "path": "filament/fdm_filament_pla.json",
+                    "sha256": "a85ea28f5cbb8ad56bec31762b426058b21dbc74477daa1b280344fffd1b2266"
+                  },
+                  {
+                    "name": "Volumic UNIVERSAL Ultra",
+                    "path": "filament/Volumic UNIVERSAL Ultra.json",
+                    "sha256": "cd1824247487ee6ad49b05aec1082221e036b3fedf38f64d85d5bc576295f832"
+                  }
+                ]
+              }
+            }
+          ],
+          "validation": "structural_verified",
+          "warnings": []
+        }
+      ],
+      "preferred_profile": {
+        "provider": "orca",
+        "publisher": "orca",
+        "manifest": "resources/profiles/Volumic.json",
+        "nozzles_mm": [
+          "0.4"
+        ]
+      },
+      "preferred_by_nozzle": {
+        "0.4": {
+          "provider": "orca",
+          "publisher": "orca",
+          "manifest": "resources/profiles/Volumic.json",
+          "machine": "VS30ULTRA (0.4 nozzle)",
+          "process": "Normal speed - 0.15mm",
+          "filament": "Volumic UNIVERSAL Ultra"
+        }
+      },
+      "status": "structural_verified"
+    }
+  ]
+}

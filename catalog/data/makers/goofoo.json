@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "manufacturer": "Goofoo",
+  "models": [
+    {
+      "id": "goofoo-goofoo-gp1",
+      "manufacturer": "Goofoo",
+      "model": "Goofoo GP1",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Goofoo.json",
+            "sha256": "ef091ef4f30ec5609533a93f6c8e8a5a61bb0a0eec8b7845887918933c353aad"
+          },
+          "model": {
+            "path": "machine/Goofoo GP1.json",
+            "sha256": "4add718f693f861b5260b651848a1a32489c88763a226150d35026515e13072f",
+            "manufacturer_model_id": "V003"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "goofoo-goofoo-turbom",
+      "manufacturer": "Goofoo",
+      "model": "Goofoo TurboM",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Goofoo.json",
+            "sha256": "ef091ef4f30ec5609533a93f6c8e8a5a61bb0a0eec8b7845887918933c353aad"
+          },
+          "model": {
+            "path": "machine/Goofoo TurboM.json",
+            "sha256": "8f19218e7f8c853727fe9539fea3c40585bbfe7676c16de0dbaffc4fd7aeb137",
+            "manufacturer_model_id": "V002"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "goofoo-goofoo-velo",
+      "manufacturer": "Goofoo",
+      "model": "Goofoo Velo+",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Goofoo.json",
+            "sha256": "ef091ef4f30ec5609533a93f6c8e8a5a61bb0a0eec8b7845887918933c353aad"
+          },
+          "model": {
+            "path": "machine/Goofoo Velo+.json",
+            "sha256": "79359d5c7ea8b8fc7ad0bb4f9c97934c1dbffc4996db2628b53aefb8b13c361f",
+            "manufacturer_model_id": "V001"
+          },
+          "nozzles_mm": [
+            "0.2",
+            "0.4",
+            "0.6"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (3)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    },
+    {
+      "id": "goofoo-goofoo-velo-tool",
+      "manufacturer": "Goofoo",
+      "model": "Goofoo Velo+ Tool",
+      "release_date": null,
+      "release_date_evidence": null,
+      "conversion_tested": false,
+      "profile_sources": [
+        {
+          "provider": "orca",
+          "publisher": "orca",
+          "repository": "OrcaSlicer/OrcaSlicer",
+          "commit": "4c2ae6d2022bdba6bc587b74a8a2cf443a206348",
+          "bundle_version": "02.04.00.01",
+          "manifest": {
+            "path": "resources/profiles/Goofoo.json",
+            "sha256": "ef091ef4f30ec5609533a93f6c8e8a5a61bb0a0eec8b7845887918933c353aad"
+          },
+          "model": {
+            "path": "machine/Goofoo Velo+ Tool.json",
+            "sha256": "4529974491920a0165e9a78ed156e472f121ad8e5d30cc17a9204abd20fff489",
+            "manufacturer_model_id": "V006"
+          },
+          "nozzles_mm": [
+            "0.4"
+          ],
+          "variants": [],
+          "validation": "index_only",
+          "warnings": [
+            "no valid default filament dependency chain (1)"
+          ]
+        }
+      ],
+      "preferred_profile": null,
+      "preferred_by_nozzle": {},
+      "status": "index_only"
+    }
+  ]
+}
