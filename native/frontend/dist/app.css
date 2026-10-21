@@ -340,3 +340,6 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .actionbar-info{flex:1 1 auto;min-width:0}.action-buttons{margin-inline-start:0}
 @media (max-width:860px){.app-meta{gap:5px;padding-inline:7px}.app-meta .version-label{font-size:9px}.update-check-btn{font-size:0;gap:0;padding:5px 7px}.update-check-btn svg{width:17px;height:17px}}
 @media (max-width:530px){.app-meta .version-label{display:inline;font-size:8px}.app-meta{padding-inline:3px;gap:3px}.report-header-actions{gap:5px}.clear-results-btn{font-size:10px}}
+
+/* MakerWorld-provenance badge. Only display when browser origin evidence is strong. */
+.file-badge.makerworld-badge{background:#DFF6EE;color:#193F38;border:1px solid #A9E5D0;font-weight:850;letter-spacing:.025em}

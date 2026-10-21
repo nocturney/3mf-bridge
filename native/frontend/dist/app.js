@@ -229,7 +229,9 @@ function renderQueue(){
   const fragment=document.createDocumentFragment();
   files.forEach((file,index)=>{
     const item=node('div','queue-item');item.setAttribute('role','listitem');
-    const badge=node('div','file-badge','3MF');
+    const origin=file.makerworld?.kind==='makerworld'&&file.makerworld?.confidence==='high';
+    const badge=node('div',origin?'file-badge makerworld-badge':'file-badge',origin?'MW':'3MF');
+    if(origin)badge.title=language==='he'?'הורד מ־MakerWorld':'Downloaded from MakerWorld';
     const info=node('div','queue-file-details');
     const name=node('strong','',file.name);name.title=file.path;
     const location=node('small','',file.folder+' · '+file.sizeLabel);location.title=file.folder;
@@ -293,6 +295,20 @@ async function addFiles(infos){
   memoryStatus=null;
   clearResults();
   renderQueue();
+  // Check only already-selected files, without watching folders or scanning
+  // unrelated downloads. Provenance can be absent, so unknown stays generic.
+  if(api()?.DetectMakerWorldOrigins){
+    const missing=next.filter(f=>!f.makerworld).map(f=>f.path);
+    if(missing.length) {
+      api().DetectMakerWorldOrigins(missing).then(found=>{
+        let changed=false;
+        for(const f of files){
+          if(found?.[f.path]){f.makerworld=found[f.path];changed=true;}
+        }
+        if(changed)renderQueue();
+      }).catch(()=>{}); // best-effort evidence, never block conversion
+    }
+  }
 }
 async function pickFiles(){
   if(busy||!api())return;

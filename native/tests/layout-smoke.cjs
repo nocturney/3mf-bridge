@@ -29,7 +29,8 @@ async function inspect(win){
       clearResultsDisabled:e('#clearResultsBtn').disabled,
       brandImageLoaded:e('.brand-mark').naturalWidth>0,
       metaInFooter:!!e('footer .app-meta #installedVersion')&&!!e('footer .app-meta #checkUpdatesBtn'),
-      hasJsonExport:!!e('#exportReportBtn')
+      hasJsonExport:!!e('#exportReportBtn'),
+      makerworldBadges:document.querySelectorAll('.makerworld-badge').length
     };
   })()`);
 }
@@ -60,6 +61,7 @@ async function main(){
   await sleep(200);
   layout=await inspect(win);
   assert.equal(layout.queueCount,'32','multi-select should append all source files');
+  assert.equal(layout.makerworldBadges,1,'verified MakerWorld origin is marked in the queue');
   assert.ok(layout.queueScroll>100,'file list should scroll internally');
   assert.equal(layout.documentScroll,0,'adding files must not scroll document');
 
