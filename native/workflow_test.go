@@ -1,11 +1,15 @@
 package main
 
 import (
+	"archive/zip"
+	"encoding/json"
+	"io"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 
+	"github.com/BryanSmee/bl_to_std/pkg/converter"
 	"github.com/nocturney/slicebridge/native/presets"
 )
 
@@ -183,6 +187,94 @@ func TestInstalledPreferencesAndFourWayBatch(t *testing.T) {
 			if r.Report["target_nozzle"] != "0.4" {
 				t.Errorf("%s output got nozzle %v not saved 0.4", r.Target, r.Report["target_nozzle"])
 			}
+		}
+	}
+}
+
+// On a host with the vendor slicers installed, validate that even targets
+// with four physical toolheads preserve all five virtual palette entries.
+// No slicer UI, printer, or personal settings are changed by this test.
+func TestFiveVirtualFilamentsAcrossInstalledFourTargets(t *testing.T) {
+	if os.Getenv("BRIDGE_TEST_INSTALLED") != "1" {
+		t.Skip("requires installed target slicer presets")
+	}
+	withFreshSettings(t)
+	source := loadFixture(t, "bambu-five-colors.3mf")
+	report := (&App{}).ConvertBatch(BatchRequest{
+		FilePaths: []string{source},
+		Targets:   []string{"u1", "c5", "cc2", "qidi"},
+	})
+	if report.Successes != 4 || report.Failures != 0 || len(report.Files) != 1 {
+		t.Fatalf("five virtual colors did not convert to all targets: %+v", report)
+	}
+	wantColors := []string{"#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FFFFFF"}
+	for _, result := range report.Files[0].Results {
+		if result.Report["virtual_filament_slots"] != 5 ||
+			result.Report["physical_toolheads"] != 4 ||
+			result.Report["user_slot_mapping_required"] != true {
+			t.Errorf("%s lost review metadata: %+v", result.Target, result.Report)
+			continue
+		}
+		mapped, ok := result.Report["source_to_target_slot_map"].(map[int]int)
+		if !ok || mapped[5] != 5 || mapped[1] != 1 {
+			t.Errorf("%s silently folded fifth slot: %+v", result.Target, result.Report)
+		}
+		inspection, err := converter.Inspect(result.OutputPath)
+		if err != nil || len(inspection.Filaments) != 5 {
+			t.Errorf("%s output lost virtual filaments: %+v (%v)", result.Target, inspection, err)
+			continue
+		}
+		for i, filament := range inspection.Filaments {
+			if filament.Color != wantColors[i] || filament.Type != "PLA" {
+				t.Errorf("%s slot %d changed identity: %+v", result.Target, i+1, filament)
+			}
+		}
+		archive, err := zip.OpenReader(result.OutputPath)
+		if err != nil {
+			t.Fatal(err)
+		}
+		entries := map[string][]byte{}
+		for _, f := range archive.File {
+			if f.Name != "Metadata/project_settings.config" &&
+				f.Name != "Metadata/model_settings.config" &&
+				f.Name != "3D/3dmodel.model" &&
+				f.Name != "Metadata/plate_1.gcode" {
+				continue
+			}
+			input, err := f.Open()
+			if err != nil {
+				t.Fatal(err)
+			}
+			data, err := io.ReadAll(input)
+			input.Close()
+			if err != nil {
+				t.Fatal(err)
+			}
+			entries[f.Name] = data
+		}
+		archive.Close()
+		cfg := map[string]any{}
+		if err := json.Unmarshal(entries["Metadata/project_settings.config"], &cfg); err != nil {
+			t.Fatal(err)
+		}
+		colors, ok := cfg["filament_colour"].([]any)
+		if !ok || len(colors) != 5 {
+			t.Errorf("%s palette shortened: %+v", result.Target, cfg["filament_colour"])
+		} else {
+			for i, color := range colors {
+				if color != wantColors[i] {
+					t.Errorf("%s target color %d changed: %v", result.Target, i+1, color)
+				}
+			}
+		}
+		if !strings.Contains(string(entries["3D/3dmodel.model"]), "paint_color=\"2C\"") {
+			t.Errorf("%s lost fifth-filament per-triangle painting", result.Target)
+		}
+		if !strings.Contains(string(entries["Metadata/model_settings.config"]), "value=\"5\"") {
+			t.Errorf("%s lost fifth-filament object assignment", result.Target)
+		}
+		if _, leaked := entries["Metadata/plate_1.gcode"]; leaked {
+			t.Errorf("%s copied stale printer G-code", result.Target)
 		}
 	}
 }

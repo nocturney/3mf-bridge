@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"bytes"
 	"encoding/json"
+	"github.com/BryanSmee/bl_to_std/pkg/converter"
 	"io"
 	"os"
 	"path/filepath"
@@ -14,7 +15,7 @@ import (
 func fixture(t *testing.T, filename string, count int) []byte {
 	t.Helper()
 	var filaments []string
-	colors := []string{"#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FFFFFF"}
+	colors := []string{"#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FFFFFF", "#00FFFF"}
 	for i := 0; i < count; i++ {
 		filaments = append(filaments, "<filament id='"+string(rune('1'+i))+"' type='PLA' color='"+colors[i]+"' used_m='1' used_g='3'/>")
 	}
@@ -143,22 +144,35 @@ func TestU1ConversionSanitizesAndPreservesGeometry(t *testing.T) {
 	}
 }
 
-func TestRejectUnverifiedTargetsAndExcessColors(t *testing.T) {
+func TestRejectUnverifiedTargetEvenWhenPaletteIsValid(t *testing.T) {
 	dir := t.TempDir()
 	input := filepath.Join(dir, "input.3mf")
 	out := filepath.Join(dir, "result.3mf")
-	fixture(t, input, 1)
+	fixture(t, input, 5)
 	_, err := Convert(input, out, "c5")
 	if err == nil || ErrorCode(err) != "TARGET_PROFILE_REQUIRED" {
 		t.Fatalf("unverified target: %v", err)
 	}
 	if _, err := os.Stat(out); !os.IsNotExist(err) {
-		t.Fatal("created unsupported target output")
+		t.Fatal("created output without verified vendor profile")
 	}
-	fixture(t, input, 5)
-	_, err = Convert(input, out, "u1")
-	if err == nil || ErrorCode(err) != "COLOR_MAPPING_REVIEW_REQUIRED" {
-		t.Fatalf("unexpected color mapping policy: %v", err)
+}
+
+func TestConvertSixDistinctSlotsAsVirtualFilaments(t *testing.T) {
+	dir := t.TempDir()
+	input := filepath.Join(dir, "six-source.3mf")
+	out := filepath.Join(dir, "U1-six-source.3mf")
+	fixture(t, input, 6)
+	result, err := Convert(input, out, "u1")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result["virtual_filament_slots"] != 6 || result["physical_toolheads"] != 4 {
+		t.Fatalf("six source filaments were silently reduced: %+v", result)
+	}
+	filaments, err := converter.Inspect(out)
+	if err != nil || len(filaments.Filaments) != 6 {
+		t.Fatalf("virtual channel count lost: %+v (%v)", filaments, err)
 	}
 }
 

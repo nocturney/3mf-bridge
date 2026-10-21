@@ -62,10 +62,11 @@ test('source file names display useful details and retain removal affordance',()
 });
 
 
-test('lossless duplicate-slot reduction is explicitly disclosed in both UI languages',()=>{
+test('extra virtual filament slots are disclosed without any silent merge',()=>{
   const app=read('frontend/dist/app.js');
-  assert.match(app,/identicalSlotsCoalesced:'אוחדו/);
-  assert.match(app,/identicalSlotsCoalesced:'\{n\} source filament slots/);
-  assert.match(app,/Number\(report\.identical_source_slots_coalesced\)>0/);
-  assert.match(app,/t\('identicalSlotsCoalesced',\{n:report\.identical_source_slots_coalesced\}\)/);
+  assert.match(app,/virtualSlotsReview:'כל \{n\} ערוצי הצבע/);
+  assert.match(app,/virtualSlotsReview:'All \{n\} source color\/material/);
+  assert.match(app,/if\(report\.user_slot_mapping_required\)/);
+  assert.match(app,/t\('virtualSlotsReview',\{n:report\.virtual_filament_slots,physical:report\.physical_toolheads\}\)/);
+  assert.doesNotMatch(app,/identical_source_slots_coalesced/);
 });

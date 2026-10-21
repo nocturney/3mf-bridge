@@ -48,7 +48,7 @@ const translations = {
     cacheRemoved:'קובצי Slice ישנים שהוסרו',
     sourceAssumed:'קוטר דיזת המקור לא זוהה — הונחה 0.4 מ״מ.',
     switchedNozzle:'בוצעה התאמת קוטר דיזה לפי הגדרות המדפסת.',
-    identicalSlotsCoalesced:'אוחדו {n} ערוצי פילמנט שהצבע וסוג החומר שלהם זהים. יש לבדוק שיוך סלילים בסלייסר היעד.',
+    virtualSlotsReview:'כל {n} ערוצי הצבע והחומר מהמקור נשמרו בנפרד. למדפסת {physical} ראשי הדפסה; יש לבחור בתוך הסלייסר מה לאחד או להסיר לפני חיתוך והדפסה.',
     summarySuccess:'הומר בהצלחה',summaryFailure:'נכשל',
     noSource:'הוסף לפחות קובץ אחד.',noTargets:'בחר מדפסת יעד אחת לפחות.',
     fileLimit:'מותר להוסיף לכל היותר 200 קבצים.',queueEmpty:'עדיין אין קבצים בתור.',
@@ -110,7 +110,7 @@ const translations = {
     cacheRemoved:'Stale sliced files removed',
     sourceAssumed:'No source nozzle specified — 0.4 mm assumed.',
     switchedNozzle:'Nozzle diameter was adapted to match the saved target configuration.',
-    identicalSlotsCoalesced:'{n} source filament slots with identical colors and materials were combined. Review spool assignments in the target slicer.',
+    virtualSlotsReview:'All {n} source color/material slots were preserved separately. This printer has {physical} physical tools; choose what to merge or remove in the slicer before slicing or printing.',
     summarySuccess:'Converted',summaryFailure:'Failed',
     noSource:'Add at least one source project.',noTargets:'Select one or more printers.',
     fileLimit:'You can queue a maximum of 200 projects.',queueEmpty:'No files in the queue yet.',
@@ -448,9 +448,9 @@ function resultLine(parent,result,source){
     }else if(report.nozzle_remapped){
       grid.append(node('div','detail-full warning-line',t('switchedNozzle')));
     }
-    if(Number(report.identical_source_slots_coalesced)>0){
+    if(report.user_slot_mapping_required){
       grid.append(node('div','detail-full warning-line',
-        t('identicalSlotsCoalesced',{n:report.identical_source_slots_coalesced})));
+        t('virtualSlotsReview',{n:report.virtual_filament_slots,physical:report.physical_toolheads})));
     }
     details.append(heading,grid);
     actions.append(details);
