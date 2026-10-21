@@ -44,19 +44,21 @@ only shipped UI languages. Toggle between them in the top bar; Hebrew is RTL.
 
 The fixed **PrusaSlicer project** target writes `PRUSA-<name>.3mf` beside the
 source by running the vendor Panda2Prusa engine. The row appears only when the
-engine sidecar is installed with the app:
+bundled engine is available:
 
-- Windows: `slicebridge-prusa-engine.exe` next to `SliceBridge.exe`.
-- macOS: `slicebridge-prusa-engine` in `SliceBridge.app/Contents/Resources/`.
+- Windows: one `SliceBridge.exe` includes the engine and upstream MIT license.
+  On first use, a SHA-256 verified payload is extracted automatically to the
+  user's versioned application cache; no other download or Python is needed.
+- macOS: the engine stays inside `SliceBridge.app/Contents/Resources/`.
 
 Contract: `slicebridge-prusa-engine --source <abs .3mf> --output <abs .3mf> --json`
 prints one JSON object, either `{"ok":true,"engine":"panda2prusa",...}` or
 `{"ok":false,"code":"UPPERCASE","error":"..."}`. Go never converts geometry.
 Each output must pass a ZIP content check and keep every source filament slot;
 otherwise the output is removed and the target reports a coded failure.
-Missing sidecars fail closed. Release builds never fall back to PATH or system
-Python. Developers may set `SLICEBRIDGE_PRUSA_ENGINE` to an absolute executable
-for tests only.
+Missing or damaged embedded engine files fail closed. Release builds never
+fall back to PATH or system Python. Developers may set
+`SLICEBRIDGE_PRUSA_ENGINE` to an absolute executable for tests only.
 
 The output is a generic PrusaSlicer project. Choose the exact printer model in
 PrusaSlicer after opening it. Nothing here claims a printer-specific profile or
