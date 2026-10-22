@@ -475,17 +475,17 @@ func TestWindowsInstallTreeDiscoversVendorFirstWithoutDuplicates(t *testing.T) {
 	local := t.TempDir()
 	forkProfiles := filepath.Join(pf, "Snapmaker_Orca", "resources", "profiles")
 	genericProfiles := filepath.Join(local, "Programs", "OrcaSlicer", "resources", "profiles")
-	writeOrcaFiles(t, forkProfiles, "Acme", acmeSample())
-	writeOrcaFiles(t, genericProfiles, "Acme", acmeSample())
+	writeOrcaFiles(t, forkProfiles, "Snapmaker", acmeSample())
+	writeOrcaFiles(t, genericProfiles, "Snapmaker", acmeSample())
 	writeOrcaFiles(t, genericProfiles, "Zed", acmeSample())
 
 	d := discoverOrca(orcaFamilyLocations("windows", pf, "", local, "", nil))
 	if len(d.Targets) != 2 || len(d.Rejected) != 0 {
-		t.Fatalf("want Acme once and Zed once: %+v", d)
+		t.Fatalf("want Snapmaker once from its own fork and Zed once from generic Orca: %+v", d)
 	}
 	for _, target := range d.Targets {
-		if target.Vendor == "Acme" && target.Slicer != "Snapmaker Orca" {
-			t.Fatalf("Acme duplicated from generic OrcaSlicer instead of the vendor fork: %+v", target)
+		if target.Vendor == "Snapmaker" && target.Slicer != "Snapmaker Orca" {
+			t.Fatalf("Snapmaker duplicated from generic OrcaSlicer instead of its vendor fork: %+v", target)
 		}
 		if target.Vendor == "Zed" && target.Slicer != "OrcaSlicer" {
 			t.Fatalf("Zed vendor must come from generic OrcaSlicer: %+v", target)
