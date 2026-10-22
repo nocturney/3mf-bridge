@@ -13,6 +13,13 @@ import (
 func writeOrcaTree(t *testing.T, vendor string, files map[string]map[string]any) string {
 	t.Helper()
 	root := t.TempDir()
+	writeOrcaFiles(t, root, vendor, files)
+	return root
+}
+
+// writeOrcaFiles writes one vendor's files under an existing profiles root.
+func writeOrcaFiles(t *testing.T, root, vendor string, files map[string]map[string]any) {
+	t.Helper()
 	for rel, body := range files {
 		path := filepath.Join(root, vendor, rel)
 		if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
@@ -26,7 +33,6 @@ func writeOrcaTree(t *testing.T, vendor string, files map[string]map[string]any)
 			t.Fatal(err)
 		}
 	}
-	return root
 }
 
 const acmeMachine = "machine/Acme Mini 0.4.json"
@@ -301,5 +307,152 @@ func TestOrcaProcessSelectionDeterministicWithoutDefault(t *testing.T) {
 	d := discoverFrom(writeOrcaTree(t, "Acme", files))
 	if len(d.Targets) != 1 {
 		t.Fatalf("machine without default but with valid process hidden: %+v", d)
+	}
+}
+
+func TestSymlinkedVendorAndMachineFilesAreIgnored(t *testing.T) {
+	outside := writeOrcaTree(t, "Acme", acmeSample())
+	linkedVendor := t.TempDir()
+	if err := os.Symlink(filepath.Join(outside, "Acme"), filepath.Join(linkedVendor, "Acme")); err != nil {
+		t.Skipf("symlinks unavailable: %v", err)
+	}
+	if d := discoverFrom(linkedVendor); len(d.Targets) != 0 || len(d.Rejected) != 0 {
+		t.Fatalf("symlinked vendor folder must be ignored: %+v", d)
+	}
+
+	files := acmeSample()
+	delete(files, acmeMachine)
+	root := writeOrcaTree(t, "Acme", files)
+	machineDir := filepath.Join(root, "Acme", "machine")
+	if err := os.MkdirAll(machineDir, 0700); err != nil {
+		t.Fatal(err)
+	}
+	data, err := json.Marshal(acmeSample()[acmeMachine])
+	if err != nil {
+		t.Fatal(err)
+	}
+	elsewhere := filepath.Join(t.TempDir(), "machine.json")
+	if err := os.WriteFile(elsewhere, data, 0600); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(elsewhere, filepath.Join(machineDir, "Acme Mini 0.4.json")); err != nil {
+		t.Skipf("symlinks unavailable: %v", err)
+	}
+	if d := discoverFrom(root); len(d.Targets) != 0 || len(d.Rejected) != 0 {
+		t.Fatalf("symlinked machine file must not be read: %+v", d)
+	}
+}
+
+func TestOrcaChainRejectsSymlinkedApplicationFolder(t *testing.T) {
+	base := t.TempDir()
+	bundle := filepath.Join(base, "real", "Snapmaker Orca.app")
+	profiles := filepath.Join(bundle, "Contents", "Resources", "profiles")
+	if err := os.MkdirAll(profiles, 0700); err != nil {
+		t.Fatal(err)
+	}
+	if !orcaChainIsReal(bundle, profiles) {
+		t.Fatal("real application folder rejected")
+	}
+	if orcaChainIsReal(filepath.Join(base, "missing.app"), filepath.Join(base, "missing.app", "Contents", "Resources", "profiles")) {
+		t.Fatal("missing application folder accepted")
+	}
+	link := filepath.Join(base, "linked.app")
+	if err := os.Symlink(bundle, link); err != nil {
+		t.Skipf("symlinks unavailable: %v", err)
+	}
+	if orcaChainIsReal(link, filepath.Join(link, "Contents", "Resources", "profiles")) {
+		t.Fatal("symlinked application folder accepted")
+	}
+}
+
+func TestVendorForkCopyWinsOverGenericOrcaAndBrokenCopyFallsBack(t *testing.T) {
+	fork := writeOrcaTree(t, "Acme", acmeSample())
+	generic := writeOrcaTree(t, "Acme", acmeSample())
+	d := discoverOrca([]slicerLocation{
+		{id: "snapmaker-orca", name: "Snapmaker Orca", root: fork},
+		{id: "orca-slicer", name: "OrcaSlicer", root: generic},
+	})
+	if len(d.Targets) != 1 || d.Targets[0].Slicer != "Snapmaker Orca" || len(d.Rejected) != 0 {
+		t.Fatalf("vendor fork must win, and the duplicate must not be offered: %+v", d)
+	}
+
+	broken := acmeSample()
+	delete(broken, acmeFilament)
+	brokenRoot := writeOrcaTree(t, "Acme", broken)
+	d = discoverOrca([]slicerLocation{
+		{id: "snapmaker-orca", name: "Snapmaker Orca", root: brokenRoot},
+		{id: "orca-slicer", name: "OrcaSlicer", root: generic},
+	})
+	if len(d.Targets) != 1 || d.Targets[0].Slicer != "OrcaSlicer" {
+		t.Fatalf("incomplete vendor copy must fall back to generic OrcaSlicer: %+v", d)
+	}
+	if len(d.Rejected) != 1 || d.Rejected[0].Slicer != "Snapmaker Orca" || !strings.Contains(d.Rejected[0].Reason, "no PLA filament") {
+		t.Fatalf("broken vendor copy should be reported: %+v", d.Rejected)
+	}
+}
+
+func TestAbstractMachinePresetsAreSkippedSilently(t *testing.T) {
+	files := acmeSample()
+	files["machine/fdm_acme_common.json"] = map[string]any{
+		"name": "fdm_acme_common", "instantiation": "false", "nozzle_diameter": []any{"0.4"},
+	}
+	d := discoverFrom(writeOrcaTree(t, "Acme", files))
+	if len(d.Targets) != 1 || len(d.Rejected) != 0 {
+		t.Fatalf("inheritance-only preset must not be a target or a rejection: %+v", d)
+	}
+}
+
+func TestProcessFilesBeyondScanDepthAreNotIndexed(t *testing.T) {
+	files := acmeSample()
+	delete(files, acmeProcess)
+	files["process/a/b/c/d/0.20mm Acme Standard.json"] = map[string]any{
+		"name": "0.20mm Acme Standard", "compatible_printers": []any{"Acme Mini 0.4 nozzle"}, "layer_height": "0.2",
+	}
+	d := discoverFrom(writeOrcaTree(t, "Acme", files))
+	if len(d.Targets) != 0 || len(d.Rejected) != 1 || !strings.Contains(d.Rejected[0].Reason, "no installed compatible process") {
+		t.Fatalf("process file below the scan depth must not satisfy the chain: %+v", d)
+	}
+}
+
+// TestWindowsInstallTreeDiscoversVendorFirstWithoutDuplicates lays out real
+// per-user and system install folders, then runs the production inventory.
+func TestWindowsInstallTreeDiscoversVendorFirstWithoutDuplicates(t *testing.T) {
+	pf := t.TempDir()
+	local := t.TempDir()
+	forkProfiles := filepath.Join(pf, "Snapmaker_Orca", "resources", "profiles")
+	genericProfiles := filepath.Join(local, "Programs", "OrcaSlicer", "resources", "profiles")
+	writeOrcaFiles(t, forkProfiles, "Acme", acmeSample())
+	writeOrcaFiles(t, genericProfiles, "Acme", acmeSample())
+	writeOrcaFiles(t, genericProfiles, "Zed", acmeSample())
+
+	d := discoverOrca(orcaFamilyLocations("windows", pf, "", local, "", nil))
+	if len(d.Targets) != 2 || len(d.Rejected) != 0 {
+		t.Fatalf("want Acme once and Zed once: %+v", d)
+	}
+	for _, target := range d.Targets {
+		if target.Vendor == "Acme" && target.Slicer != "Snapmaker Orca" {
+			t.Fatalf("Acme duplicated from generic OrcaSlicer instead of the vendor fork: %+v", target)
+		}
+		if target.Vendor == "Zed" && target.Slicer != "OrcaSlicer" {
+			t.Fatalf("Zed vendor must come from generic OrcaSlicer: %+v", target)
+		}
+	}
+}
+
+// TestMacInstallTreeDiscoversUserApplications uses a per-user Applications folder,
+// so the test never depends on what is installed in the machine's /Applications.
+func TestMacInstallTreeDiscoversUserApplications(t *testing.T) {
+	home := t.TempDir()
+	bundle := filepath.Join(home, "Applications", "OrcaSlicer.app", "Contents", "Resources", "profiles")
+	writeOrcaFiles(t, bundle, "Acme", acmeSample())
+	var mine []slicerLocation
+	for _, loc := range orcaFamilyLocations("darwin", "", "", "", home, nil) {
+		if strings.HasPrefix(loc.root, home) {
+			mine = append(mine, loc)
+		}
+	}
+	d := discoverOrca(mine)
+	if len(d.Targets) != 1 || d.Targets[0].Slicer != "OrcaSlicer" {
+		t.Fatalf("user-installed OrcaSlicer not discovered: %+v", d)
 	}
 }

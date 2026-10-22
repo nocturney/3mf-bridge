@@ -4,11 +4,14 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io/fs"
 	"math"
 	"os"
 	"path/filepath"
 	"regexp"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -24,6 +27,18 @@ import (
 
 const maxOrcaRejections = 50
 const maxOrcaTools = 8
+
+// Hard bounds for one installed Orca-family scan. A vendor tree that exceeds
+// them is rejected with a reason rather than read without limit.
+const maxOrcaVendors = 64
+const maxOrcaMachineFiles = 512
+const maxOrcaCatalogFiles = 20000
+const maxOrcaProfileBytes = 4 << 20
+const maxOrcaDepth = 4
+
+// errOrcaAbstract marks an inheritance-only machine preset. It is not a printer
+// and is skipped silently rather than reported as a rejection.
+var errOrcaAbstract = errors.New("abstract machine preset")
 
 var orcaTargetPattern = regexp.MustCompile(`^orca-[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{10}$`)
 var orcaMaterials = []string{"PLA", "PETG", "ABS", "ASA", "TPU"}
@@ -104,19 +119,45 @@ func ResolveOrcaBundle(id string) (*OrcaBundle, error) {
 	return resolveOrca(installedOrcaLocations(), id)
 }
 
+// installedOrcaLocations returns the trusted roots to scan, in priority order.
+// An application folder is used only when every folder down to its profiles is a
+// real directory. Explicit local overrides carry no executable and are used as given.
 func installedOrcaLocations() []slicerLocation {
-	seen := map[string]bool{}
 	locations := []slicerLocation{}
-	for _, target := range []string{"u1", "c5", "cc2", "qidi"} {
-		for _, loc := range slicerLocations(target) {
-			if seen[loc.root] {
-				continue
-			}
-			seen[loc.root] = true
-			locations = append(locations, loc)
+	for _, loc := range installedOrcaFamilyLocations() {
+		if loc.executable != "" && !orcaAppIsReal(loc) {
+			continue
 		}
+		locations = append(locations, loc)
 	}
 	return locations
+}
+
+// orcaAppIsReal checks the application folder chain above a profiles root.
+func orcaAppIsReal(loc slicerLocation) bool {
+	appDir := loc.executable
+	if runtime.GOOS == "windows" {
+		appDir = filepath.Dir(loc.executable)
+	}
+	return orcaChainIsReal(appDir, loc.root)
+}
+
+// orcaChainIsReal reports whether appDir and every folder down to root are real
+// directories. A link anywhere on that chain could redirect the scan elsewhere.
+func orcaChainIsReal(appDir, root string) bool {
+	rel, err := filepath.Rel(appDir, root)
+	if err != nil || rel == "." || rel == ".." || strings.HasPrefix(rel, ".."+string(filepath.Separator)) {
+		return false
+	}
+	current := appDir
+	for _, part := range append([]string{""}, strings.Split(rel, string(filepath.Separator))...) {
+		current = filepath.Join(current, part)
+		info, err := os.Lstat(current)
+		if err != nil || !info.IsDir() {
+			return false
+		}
+	}
+	return true
 }
 
 func discoverOrca(locations []slicerLocation) OrcaDiscovery {
@@ -183,21 +224,36 @@ func findOrcaCandidate(locations []slicerLocation, id string) (orcaCandidate, er
 	return orcaCandidate{}, fmt.Errorf("installed profile is not available or no longer resolves completely")
 }
 
+// scanOrca walks the locations in priority order. A machine is offered once per
+// vendor and printer name, so the first complete copy wins. A vendor fork therefore
+// beats the generic OrcaSlicer copy of the same machine, and a broken fork copy
+// falls back to the generic one because only complete candidates reach this point.
 func scanOrca(locations []slicerLocation) ([]orcaCandidate, []OrcaRejection) {
 	candidates := []orcaCandidate{}
 	rejected := []OrcaRejection{}
+	offered := map[string]bool{}
 	for _, loc := range locations {
 		vendors, err := os.ReadDir(loc.root)
 		if err != nil {
 			continue
 		}
-		for _, vendor := range vendors {
+		for i, vendor := range vendors {
+			if i >= maxOrcaVendors {
+				break
+			}
 			// Bambu remains a source-only vendor in this app.
 			if !vendor.IsDir() || vendor.Name() == "BBL" || vendor.Name() == "OrcaFilamentLibrary" {
 				continue
 			}
 			found, problems := scanOrcaVendor(loc, vendor.Name())
-			candidates = append(candidates, found...)
+			for _, candidate := range found {
+				key := candidate.target.Vendor + "\x00" + candidate.target.Machine
+				if offered[key] {
+					continue
+				}
+				offered[key] = true
+				candidates = append(candidates, candidate)
+			}
 			rejected = append(rejected, problems...)
 		}
 	}
@@ -214,14 +270,18 @@ func scanOrcaVendor(loc slicerLocation, vendor string) ([]orcaCandidate, []OrcaR
 	}
 	files := []string{}
 	for _, entry := range entries {
-		if !entry.IsDir() && strings.EqualFold(filepath.Ext(entry.Name()), ".json") {
+		// Regular files only: a link could point outside the installed profiles.
+		if entry.Type().IsRegular() && strings.EqualFold(filepath.Ext(entry.Name()), ".json") {
 			files = append(files, filepath.Join(machineDir, entry.Name()))
 		}
 	}
 	if len(files) == 0 {
 		return nil, nil
 	}
-	index, err := readCatalog(loc.root, Spec{Vendor: vendor})
+	if len(files) > maxOrcaMachineFiles {
+		return nil, []OrcaRejection{{Vendor: vendor, Slicer: loc.name, Reason: "too many machine presets to scan"}}
+	}
+	index, err := readOrcaCatalog(loc.root, vendor)
 	if err != nil {
 		return nil, []OrcaRejection{{Vendor: vendor, Slicer: loc.name, Reason: "vendor profiles unreadable: " + err.Error()}}
 	}
@@ -231,6 +291,9 @@ func scanOrcaVendor(loc slicerLocation, vendor string) ([]orcaCandidate, []OrcaR
 	rejected := []OrcaRejection{}
 	for _, file := range files {
 		candidate, err := resolveOrcaMachine(index, byMachine, byProcess, loc, vendor, file)
+		if errors.Is(err, errOrcaAbstract) {
+			continue
+		}
 		if err != nil {
 			rejected = append(rejected, OrcaRejection{
 				Vendor: vendor, Machine: strings.TrimSuffix(filepath.Base(file), ".json"),
@@ -253,6 +316,9 @@ func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string,
 	var leaf map[string]any
 	if err := json.Unmarshal(data, &leaf); err != nil {
 		return orcaCandidate{}, fmt.Errorf("machine JSON is invalid")
+	}
+	if fmt.Sprint(leaf["instantiation"]) == "false" {
+		return orcaCandidate{}, errOrcaAbstract
 	}
 	machineName, _ := leaf["name"].(string)
 	if machineName == "" {
@@ -352,6 +418,87 @@ func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string,
 		bundle: bundle,
 		root:   loc.root,
 	}, nil
+}
+
+// readOrcaCatalog is the bounded counterpart of readCatalog for one vendor. It
+// reads only machine, process and filament JSON, never follows links, stops at
+// maxOrcaDepth folders, and fails once maxOrcaCatalogFiles is exceeded. Files
+// over maxOrcaProfileBytes are skipped, so anything that depends on them is
+// rejected as incomplete.
+func readOrcaCatalog(root, vendor string) (catalog, error) {
+	out := catalog{}
+	dirs := []string{filepath.Join(root, vendor)}
+	if vendor == "Flashforge" {
+		dirs = append(dirs, filepath.Join(root, "OrcaFilamentLibrary"))
+	}
+	visited := 0
+	for _, dir := range dirs {
+		err := filepath.WalkDir(dir, func(file string, d fs.DirEntry, walkErr error) error {
+			if walkErr != nil {
+				if errors.Is(walkErr, fs.ErrNotExist) && file == dir {
+					return nil
+				}
+				return walkErr
+			}
+			if d.Type()&fs.ModeSymlink != 0 {
+				return nil
+			}
+			rel, err := filepath.Rel(dir, file)
+			if err != nil {
+				return err
+			}
+			if d.IsDir() {
+				if strings.Count(rel, string(filepath.Separator))+1 > maxOrcaDepth {
+					return fs.SkipDir
+				}
+				return nil
+			}
+			if !strings.EqualFold(filepath.Ext(file), ".json") {
+				return nil
+			}
+			typ := kind(rel)
+			if typ == "" {
+				return nil
+			}
+			visited++
+			if visited > maxOrcaCatalogFiles {
+				return fmt.Errorf("vendor profile tree exceeds %d files", maxOrcaCatalogFiles)
+			}
+			info, err := d.Info()
+			if err != nil {
+				return err
+			}
+			if info.Size() > maxOrcaProfileBytes {
+				return nil
+			}
+			data, err := os.ReadFile(file)
+			if err != nil {
+				return err
+			}
+			var settings map[string]any
+			if err := json.Unmarshal(data, &settings); err != nil {
+				// The path is left out so the install location never reaches the UI.
+				return fmt.Errorf("vendor JSON is invalid")
+			}
+			if len(settings) == 0 {
+				return nil
+			}
+			stem := strings.TrimSuffix(filepath.Base(file), ".json")
+			names := []string{stem}
+			if s, ok := settings["name"].(string); ok && s != "" && s != stem {
+				names = append(names, s)
+			}
+			for _, name := range names {
+				key := typ + ":" + name
+				out[key] = append(out[key], preset{file, settings})
+			}
+			return nil
+		})
+		if err != nil {
+			return nil, err
+		}
+	}
+	return out, nil
 }
 
 // orcaProcessesByMachine indexes *explicit* vendor process compatibility once
