@@ -66,22 +66,21 @@ test('maker spellings collapse to one canonical maker and one dropdown entry',()
     {id:'orca-qidi-x-max-3-8888888888',vendor:'Qidi',model:'X-Max 3',title:'Qidi X-Max 3 0.4 nozzle',nozzle:'0.4'},
   ];
   const items=picker.supportedModels(catalog.models,availabilityAll(),installed,true);
-  const {preferred,others}=picker.manufacturerGroups(items);
-  assert.equal(preferred.filter(name=>/^elegoo$/i.test(name)).length,1);
-  assert.equal(preferred.filter(name=>/^qidi$/i.test(name)).length,1);
-  assert.ok(preferred.includes('ELEGOO'));
-  assert.ok(preferred.includes('QIDI'));
-  assert.equal(new Set([...preferred,...others].map(name=>name.toLowerCase())).size,
-               preferred.length+others.length);
+  const makers=picker.manufacturerNames(items);
+  assert.equal(makers.filter(name=>/^elegoo$/i.test(name)).length,1);
+  assert.equal(makers.filter(name=>/^qidi$/i.test(name)).length,1);
+  assert.ok(makers.includes('ELEGOO'));
+  assert.ok(makers.includes('QIDI'));
+  assert.equal(new Set(makers.map(name=>name.toLowerCase())).size,makers.length);
   // PrusaSlicer is a generic export target, never a physical maker.
-  assert.equal([...preferred,...others].some(name=>/prusaslicer|generic/i.test(name)),false);
+  assert.equal(makers.some(name=>/prusaslicer|generic/i.test(name)),false);
   assert.equal(items.find(item=>item.id==='prusa-project').manufacturer,'Generic');
   assert.equal(picker.makerLabel('Prusa'),'Prusa Research');
   assert.equal(picker.makerLabel(' prusa research '),'Prusa Research');
   assert.equal(picker.makerKey('Creality'),picker.makerKey('  creality '));
 });
 
-test('integrated makers lead the dropdown, then one divider, then the rest alphabetically',async()=>{
+test('manufacturer dropdown is one alphabetic list, no preferred conversion vendors or separators',async()=>{
   const h=loadMyPrinters({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
   h.api.setSupportedTargets({available:availabilityAll(),installedTargets:[...proVariants,
     {id:'orca-elegoo-centauri-carbon-9999999999',vendor:'Elegoo',model:'Centauri Carbon',title:'Elegoo Centauri Carbon 0.4 nozzle',nozzle:'0.4'},
@@ -89,15 +88,12 @@ test('integrated makers lead the dropdown, then one divider, then the rest alpha
   await h.api.init();
   const options=h.dom('printerManufacturerFilter').children.map(option=>[option.value,option.disabled===true]);
   const values=options.map(([value])=>value);
-  // The full catalogue's makers: mainstream first, one divider, then everyone else A-Z.
-  const makers=values.slice(1),divider=makers.indexOf('');
+  const makers=values.slice(1);
   assert.equal(values[0],'');
-  assert.deepEqual(makers.slice(0,divider),['Anycubic','Creality','ELEGOO','Flashforge','FLSun','Prusa Research','QIDI','Snapmaker','Sovol']);
-  assert.equal(makers.filter(value=>value==='').length,1);
-  assert.deepEqual(options.filter(([,disabled])=>disabled).map(([value])=>value),['']);
-  const others=makers.slice(divider+1);
-  assert.ok(others.includes('Afinia')&&others.includes('Zortrax'));
-  assert.deepEqual(others,[...others].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
+  assert.equal(makers.filter(value=>value==='').length,0);
+  assert.equal(options.filter(([,disabled])=>disabled).length,0);
+  assert.deepEqual(makers,[...makers].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
+  assert.ok(makers.includes('Afinia')&&makers.includes('Zortrax'));
   assert.equal(values.filter(value=>value==='ELEGOO').length,1);
 });
 
@@ -180,7 +176,7 @@ test('variant checkboxes keep other nozzles selected and never swap one for anot
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,'Creator 5 Pro');
   const boxes=variantBoxes(card);
-  assert.equal(boxes.length,5);
+  assert.equal(boxes.length,6); // Five actual slicer/nozzle choices and the catalogue identity.
   assert.equal(boxes.filter(box=>box.checked).length,1);
   assert.equal(boxes.find(box=>box.value===oldIds.pro).checked,true);
   const [quarter]=boxes.filter(box=>box.value===proVariants[0].id);
@@ -245,9 +241,9 @@ test('installed cover lookups run once per slicer, not once per nozzle',async()=
   h.dom('printerCatalogSearch').value='Creator 5 Pro';
   h.dom('printerCatalogSearch').fire('input');
   await flush();
-  // The vendor slicer (Flash Studio) comes first in the source tiers and supplies the cover,
-  // so the generic OrcaSlicer is never asked; still one lookup per slicer, never per nozzle.
-  assert.deepEqual(asked,[proVariants[4].id]);
+  // The variants are inspected in physical-nozzle order. One request per
+  // slicer is sufficient, without ranking manufacturers or converter tiers.
+  assert.deepEqual(asked,[proVariants[0].id,proVariants[4].id]);
   assert.equal(avatarOf(h,'Creator 5 Pro').querySelector('img.printer-cover-photo').src,proCover);
 });
 
@@ -317,94 +313,116 @@ test('a refused or failed artwork request leaves an honest unavailable card and 
   }
 });
 
-// Source-tier default for a ticked card. Installed targets as the backend lists them, with
-// the slicer app name that found them. No availability, so only installed targets are ready.
-const installedTarget=(vendor,model,slicer,nozzle,hex)=>({
+// My Printers is a physical inventory. A conversion engine's ranking and
+// readiness never sort manufacturers, variants or the default card checkbox.
+const installedTarget=(vendor,model,slicer,nozzle,hex,ready)=>({
   id:'orca-'+(vendor+'-'+model).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+hex,
-  vendor,model,title:vendor+' '+model+' '+nozzle+' nozzle',nozzle,slicer,physicalTools:1,
+  vendor,model,title:vendor+' '+model+' '+nozzle+' nozzle',nozzle,slicer,physicalTools:1,ready,
 });
 const defaultCard=(installed,model)=>picker.groupDestinations(picker.supportedModels([],[],installed,false))
   .find(group=>group.model===model);
 
-test('Flash Studio is the default card target over generic OrcaSlicer, whatever the nozzle or input order',()=>{
+test('the printer card defaults to a real 0.4 mm nozzle, not a preferred conversion engine',()=>{
   const orca=installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer','0.4','1111111111');
   const flash=installedTarget('Flashforge','Creator 5 Pro','Flash Studio Desktop','0.6','2222222222');
   for(const installed of [[orca,flash],[flash,orca]]){
     const card=defaultCard(installed,'Creator 5 Pro');
-    assert.equal(card.id,flash.id);
+    assert.equal(card.id,orca.id);
     assert.deepEqual(card.ids.slice().sort(),[orca.id,flash.id].sort());
   }
 });
 
-test('QIDIStudio is the default card target over generic OrcaSlicer at the same nozzle',()=>{
-  const orca=installedTarget('QIDI','X-Plus 5','OrcaSlicer','0.4','3333333333');
-  const qidi=installedTarget('QIDI','X-Plus 5','QIDIStudio','0.4','4444444444');
-  for(const installed of [[orca,qidi],[qidi,orca]]){
-    assert.equal(defaultCard(installed,'X-Plus 5').id,qidi.id);
+test('manufacturer-owned profiles never outrank the same physical nozzle from other valid slicers',()=>{
+  const cases=[
+    [['QIDI','X-Plus 5','OrcaSlicer'],['QIDI','X-Plus 5','QIDIStudio']],
+    [['Snapmaker','U1','OrcaSlicer'],['Snapmaker','U1','Snapmaker Orca']],
+    [['ELEGOO','Centauri Carbon 2','OrcaSlicer'],['ELEGOO','Centauri Carbon 2','ElegooSlicer']],
+    [['Prusa Research','CORE One','OrcaSlicer'],['Prusa Research','CORE One','PrusaSlicer']],
+  ];
+  for(const [[vendor,model,slicerA],[, ,slicerB]] of cases){
+    const other=installedTarget(vendor,model,slicerA,'0.4','3333333333');
+    const owned=installedTarget(vendor,model,slicerB,'0.6','4444444444');
+    for(const variants of [[other,owned],[owned,other]]){
+      assert.equal(defaultCard(variants,model).id,other.id);
+    }
   }
 });
 
-test('Snapmaker Orca is the default card target over generic OrcaSlicer at the same nozzle',()=>{
-  const orca=installedTarget('Snapmaker','U1','OrcaSlicer','0.4','5555555555');
-  const snapmaker=installedTarget('Snapmaker','U1','Snapmaker Orca','0.4','6666666666');
-  for(const installed of [[orca,snapmaker],[snapmaker,orca]]){
-    assert.equal(defaultCard(installed,'U1').id,snapmaker.id);
-  }
+test('no vendor, process, or converter preference changes the default when no 0.4 variant exists',()=>{
+  const qidi=installedTarget('QIDI','X-Plus 5','QIDIStudio','0.8','aaaaaaaaaa');
+  const orca=installedTarget('QIDI','X-Plus 5','OrcaSlicer','0.25','bbbbbbbbbb');
+  assert.equal(defaultCard([qidi,orca],'X-Plus 5').id,orca.id);
+  assert.equal(defaultCard([orca,qidi],'X-Plus 5').id,orca.id);
 });
 
-test('ELEGOO Slicer is the default card target over generic OrcaSlicer, even at 0.6 mm against 0.4 mm',()=>{
-  const orca=installedTarget('ELEGOO','Centauri Carbon 2','OrcaSlicer','0.4','7777777777');
-  const elegoo=installedTarget('ELEGOO','Centauri Carbon 2','ElegooSlicer','0.6','8888888888');
-  for(const installed of [[orca,elegoo],[elegoo,orca]]){
-    assert.equal(defaultCard(installed,'Centauri Carbon 2').id,elegoo.id);
-  }
+test('ready/not-ready status never affects physical grouping or nozzle ordering',()=>{
+  const variants=[
+    {id:'prusa-acme-mini-aaaaaaaaaa',manufacturer:'Acme',model:'Mini',nozzle:'0.4',slicer:'PrusaSlicer',ready:false},
+    {id:'orca-acme-mini-bbbbbbbbbb',manufacturer:'Acme',model:'Mini',nozzle:'0.6',slicer:'OrcaSlicer',ready:true},
+  ];
+  const initial=picker.groupDestinations(variants)[0];
+  const swapped=picker.groupDestinations(variants.map(v=>({...v,ready:!v.ready})))[0];
+  assert.deepEqual(initial.ids,swapped.ids);
+  assert.equal(initial.id,swapped.id);
+  assert.equal(initial.id,variants[0].id);
 });
 
-test('generic PrusaSlicer ranks below generic OrcaSlicer on a physical card',()=>{
-  const prusa=installedTarget('Snapmaker','U1','PrusaSlicer','0.4','9999999999');
-  const orca=installedTarget('Snapmaker','U1','OrcaSlicer','0.6','aaaaaaaaaa');
-  assert.equal(defaultCard([prusa,orca],'U1').id,orca.id);
+test('nozzle variants from valid installed profiles display without conversion tier labels',async()=>{
+  const sample=installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer','0.4','eeeeeeeeee');
+  const h=loadWithGlobals({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
+  h.api.setSupportedTargets({available:[],installedTargets:[sample,...proVariants],prusaAvailable:false,
+    installedPrusaTargets:[{id:'prusa-flashforge-creator-5-pro-ffffffffff',vendor:'Flashforge',
+      model:'Creator 5 Pro',title:'Flashforge Creator 5 Pro 0.6 nozzle',nozzle:'0.6',ready:false}]});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('printerCatalogSearch').value='Creator 5 Pro';
+  h.dom('printerCatalogSearch').fire('input');
+  const labels=textOf(cardFor(h,'Creator 5 Pro'));
+  assert.ok(labels.includes('PrusaSlicer'),labels);
+  assert.doesNotMatch(labels,/Tier|Preferred|Supported|Adapter|דירוג|מומלץ|מתאם מובנה/i);
 });
 
-test('an unknown or another maker’s slicer fork never masquerades as the manufacturer app',()=>{
-  const orca=installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer','0.4','e111111111');
-  const unknown=installedTarget('Flashforge','Creator 5 Pro','QIDIStudio','0.4','e222222222');
-  const other=installedTarget('Flashforge','Creator 5 Pro','CustomVendorFork','0.4','e333333333');
-  const flash=installedTarget('Flashforge','Creator 5 Pro','Flash Studio Desktop','0.6','e444444444');
-  for(const items of [[orca,unknown,other,flash],[other,unknown,flash,orca]]){
-    assert.equal(defaultCard(items,'Creator 5 Pro').id,flash.id);
-  }
-  // Without Flash Studio, generic Orca must not be demoted in favour of an
-  // unrelated application's brand name.
-  assert.equal(defaultCard([other,orca,unknown],'Creator 5 Pro').id,orca.id);
+test('unrelated manufacturer fork presets never appear as ready options even from an older backend',()=>{
+  const ankerBySnap=installedTarget('Anker','M5C','Snapmaker Orca','0.4','1111111111');
+  const ankerByElegoo=installedTarget('Anker','M5C','ElegooSlicer','0.4','2222222222');
+  const ankerByOrca=installedTarget('Anker','M5C','OrcaSlicer','0.4','3333333333');
+  const flashByElegoo=installedTarget('Flashforge','Creator 5 Pro','ElegooSlicer','0.6','4444444444');
+  const flashByFlash=installedTarget('Flashforge','Creator 5 Pro','Flash Studio Desktop','0.25','5555555555');
+  const items=picker.supportedModels([],[],[ankerBySnap,ankerByElegoo,ankerByOrca,
+                                             flashByElegoo,flashByFlash],false);
+  assert.deepEqual(items.map(v=>v.id).sort(),[ankerByOrca.id,flashByFlash.id].sort());
 });
 
-test('Prusa Research may prefer its own PrusaSlicer profiles over generic Orca',()=>{
-  const generic=installedTarget('Prusa Research','CORE One','OrcaSlicer','0.4','e555555555');
-  const vendor=installedTarget('Prusa Research','CORE One','PrusaSlicer','0.4','e666666666');
-  assert.equal(defaultCard([generic,vendor],'CORE One').id,vendor.id);
+test('Anker M5C / AnkerMake M5C alias belongs to one card, never copied nozzle settings',()=>{
+  const ids=['anker-anker-m5c','anker-ankermake-m5c'];
+  const items=picker.catalogItems(catalog.models,[],[],false);
+  const group=picker.groupDestinations(items).find(g=>g.manufacturer==='Anker'&&g.model==='M5C');
+  assert.ok(group);
+  assert.ok(ids.every(id=>group.ids.includes(id)));
+  assert.equal(group.variants.filter(v=>v.nozzle||v.slicer).length,0);
+  assert.deepEqual(picker.allSavedIds(items,[...ids]),ids);
 });
 
-test('within one source tier the 0.4 mm variant is the first-selection default',()=>{
-  const orca=['0.25','0.4','0.6'].map((nozzle,i)=>installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer',nozzle,'b'.repeat(9)+i));
-  assert.equal(defaultCard(orca,'Creator 5 Pro').id,orca[1].id);
-  // No 0.4 mm variant in the tier: the lowest nozzle of that tier is the default.
-  const flash=['0.25','0.6'].map((nozzle,i)=>installedTarget('Flashforge','Creator 5 Pro','Flash Studio Desktop',nozzle,'c'.repeat(9)+i));
-  assert.equal(defaultCard(flash,'Creator 5 Pro').id,flash[0].id);
+test('saved 5 printer identities survive installed-profile availability and converter changes',async()=>{
+  const saved=[...fiveSaved];
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:saved,onboardingPending:false}),
+    SaveMyPrinters:(requested)=>({selectedIds:requested,onboardingPending:false}),
+  });
+  h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  assert.equal(h.dom('myPrintersSelectionCount').textContent,'5 printers selected');
+  h.api.setSupportedTargets({available:[],installedTargets:proVariants.map(v=>({...v,slicer:'OrcaSlicer'})),
+    prusaAvailable:false});
+  h.dom('saveMyPrintersBtn').fire('click');
+  await flush();
+  assert.deepEqual(h.plain(saved),fiveSaved);
 });
 
-test('an installed Snapmaker vendor profile outranks the built-in U1 template, and saved IDs never change',()=>{
-  const snapmaker=installedTarget('Snapmaker','U1','Snapmaker Orca','0.4','dddddddddd');
-  const available=availabilityAll({c5:false,cc2:false,qidi:false});
-  const items=picker.supportedModels(catalog.models,available,[snapmaker],false);
-  const card=picker.groupDestinations(items).find(group=>group.model==='U1');
-  assert.equal(card.id,snapmaker.id);
-  assert.ok(card.ids.includes(snapmaker.id)&&card.ids.includes(oldIds.u1));
-  // If the vendor profile is no longer installed, the built-in fallback is still usable.
-  const fallback=picker.groupDestinations(picker.supportedModels(catalog.models,available,[],false))
-    .find(group=>group.model==='U1');
-  assert.equal(fallback.id,oldIds.u1);
-  // Existing saved choices remain exact IDs; no implicit migration to the new default.
-  assert.deepEqual(picker.selectedTargetIds(items,[oldIds.u1,snapmaker.id]),[oldIds.u1,snapmaker.id]);
-  assert.equal(picker.searchGroups(picker.groupDestinations(items),'',[oldIds.u1]).models[0].ids.includes(oldIds.u1),true);
+test('no conversion ranking implementation remains in the physical printer picker',()=>{
+  const pickerScript=fs.readFileSync(path.join(dist,'printer-picker.js'),'utf8');
+  const dialogScript=fs.readFileSync(path.join(dist,'my-printers.js'),'utf8');
+  assert.doesNotMatch(pickerScript,/sourceTier|primaryMakers|manufacturerSlicers|best source tier/);
+  assert.doesNotMatch(dialogScript,/manufacturerGroups|selectedAdapterTargets|מתאם מובנה|builtInVariant/);
 });

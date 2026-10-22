@@ -48,10 +48,16 @@ func TestResolveOrcaExecutableTiedToTheExactInstalledWindowsRoot(t *testing.T) {
 }
 
 func TestResolveOrcaExecutableUsesQIDIFixedFilenameFallback(t *testing.T) {
-	loc, target := orcaLaunchFixture(t, "windows", "QIDIStudio", "QIDIStudio.exe")
+	loc, _ := orcaLaunchFixture(t, "windows", "QIDIStudio", "QIDIStudio.exe")
 	loc.id, loc.name = "qidi-studio", "QIDIStudio"
-	// Keep the original synthetic machine ID: the ID hashes a machine file path,
-	// not the app/display name.
+	// Model files for a different vendor in QIDIStudio are no longer trusted
+	// as QIDI targets. Use the matching synthetic QIDI vendor folder here.
+	writeOrcaFiles(t, loc.root, "QIDI", acmeSample())
+	targets := discoverOrca([]slicerLocation{loc}).Targets
+	if len(targets) != 1 || targets[0].Vendor != "QIDI" {
+		t.Fatalf("only the QIDI-owned synthetic machine should resolve: %+v", targets)
+	}
+	target := targets[0].ID
 	if err := os.Remove(loc.executable); err != nil {
 		t.Fatal(err)
 	}
