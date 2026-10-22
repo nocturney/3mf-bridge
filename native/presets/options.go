@@ -20,9 +20,57 @@ type slicerLocation struct {
 	id, name, root, executable string
 }
 
+// appInstall is one install name of an application. Windows folders sit under each
+// install base; macOS bundle names sit in each application directory.
+type appInstall struct {
+	id, name, folder, exe string
+}
+
+// appGroups lists a target's applications in priority order. Vendor applications come
+// before generic Orca. Alternative install names of one app share a group.
+func appGroups(target, platform string) [][]appInstall {
+	switch platform {
+	case "windows":
+		switch target {
+		case "u1":
+			return [][]appInstall{{{"snapmaker-orca", "Snapmaker Orca", "Snapmaker_Orca", "snapmaker-orca.exe"}}}
+		case "c5":
+			return [][]appInstall{{{"flash-studio", "Flash Studio Desktop", filepath.Join("Flashforge", "Flash Studio Desktop"), "flash studio.exe"}}}
+		case "cc2":
+			return [][]appInstall{{{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", "elegoo-slicer.exe"}}}
+		case "qidi":
+			return [][]appInstall{
+				{{"qidi-studio", "QIDIStudio", "QIDIStudio", "QIDIStudio.exe"}},
+				{{"orca-slicer", "OrcaSlicer", "OrcaSlicer", "orca-slicer.exe"}},
+			}
+		}
+	case "darwin":
+		switch target {
+		case "u1":
+			return [][]appInstall{{{"snapmaker-orca", "Snapmaker Orca", "Snapmaker Orca", ""}}}
+		case "c5":
+			return [][]appInstall{{
+				{"flash-studio", "Flash Studio", "Flash Studio", ""},
+				{"flash-studio", "Flash Studio Desktop", "Flash Studio Desktop", ""},
+			}}
+		case "cc2":
+			return [][]appInstall{{{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", ""}}}
+		case "qidi":
+			return [][]appInstall{
+				{{"qidi-studio", "QIDIStudio", "QIDIStudio", ""}},
+				{{"orca-slicer", "OrcaSlicer", "OrcaSlicer", ""}},
+			}
+		}
+	}
+	return nil
+}
+
 // slicerLocationsForOS builds a bounded list of known install locations.
 // Candidate paths are local only; no registry scans, network access, or
 // executable paths supplied by untrusted frontend input.
+// Applications are ordered by priority group, and every install base is checked
+// inside a group before the next group. So a vendor app in LocalAppData still
+// beats a generic Orca in Program Files. An unknown target yields no paths.
 func slicerLocationsForOS(target, platform, programFiles, programFilesX86, localAppData, home, override string) []slicerLocation {
 	if override != "" {
 		return []slicerLocation{{"system", "Custom local profile", override, ""}}
@@ -36,56 +84,34 @@ func slicerLocationsForOS(target, platform, programFiles, programFilesX86, local
 		seen[root] = true
 		result = append(result, slicerLocation{id, name, root, executable})
 	}
-	if platform == "windows" {
+	var bases []string
+	switch platform {
+	case "windows":
 		// Keep the original Program Files priority. LocalAppData/Programs
 		// also hosts legitimate per-user installs without admin privileges.
-		bases := []string{programFiles, programFilesX86}
+		bases = []string{programFiles, programFilesX86}
 		if localAppData != "" {
 			bases = append(bases, filepath.Join(localAppData, "Programs"))
 		}
+	case "darwin":
+		bases = []string{"/Applications"}
+		if home != "" {
+			bases = append(bases, filepath.Join(home, "Applications"))
+		}
+	}
+	for _, group := range appGroups(target, platform) {
 		for _, base := range bases {
 			if base == "" {
 				continue
 			}
-			app := func(id, name, folder, exe string) {
-				dir := filepath.Join(base, folder)
-				add(id, name, filepath.Join(dir, "resources", "profiles"), filepath.Join(dir, exe))
-			}
-			switch target {
-			case "u1":
-				app("snapmaker-orca", "Snapmaker Orca", "Snapmaker_Orca", "snapmaker-orca.exe")
-			case "c5":
-				dir := filepath.Join("Flashforge", "Flash Studio Desktop")
-				app("flash-studio", "Flash Studio Desktop", dir, "flash studio.exe")
-			case "cc2":
-				app("elegoo-slicer", "ElegooSlicer", "ElegooSlicer", "elegoo-slicer.exe")
-			case "qidi":
-				app("orca-slicer", "OrcaSlicer", "OrcaSlicer", "orca-slicer.exe")
-				app("qidi-studio", "QIDIStudio", "QIDIStudio", "QIDIStudio.exe")
-			}
-		}
-	}
-	if platform == "darwin" {
-		bases := []string{"/Applications"}
-		if home != "" {
-			bases = append(bases, filepath.Join(home, "Applications"))
-		}
-		for _, base := range bases {
-			app := func(id, name, bundleName string) {
-				bundle := filepath.Join(base, bundleName+".app")
-				add(id, name, filepath.Join(bundle, "Contents", "Resources", "profiles"), bundle)
-			}
-			switch target {
-			case "u1":
-				app("snapmaker-orca", "Snapmaker Orca", "Snapmaker Orca")
-			case "c5":
-				app("flash-studio", "Flash Studio", "Flash Studio")
-				app("flash-studio", "Flash Studio Desktop", "Flash Studio Desktop")
-			case "cc2":
-				app("elegoo-slicer", "ElegooSlicer", "ElegooSlicer")
-			case "qidi":
-				app("qidi-studio", "QIDIStudio", "QIDIStudio")
-				app("orca-slicer", "OrcaSlicer", "OrcaSlicer")
+			for _, app := range group {
+				if platform == "windows" {
+					dir := filepath.Join(base, app.folder)
+					add(app.id, app.name, filepath.Join(dir, "resources", "profiles"), filepath.Join(dir, app.exe))
+					continue
+				}
+				bundle := filepath.Join(base, app.folder+".app")
+				add(app.id, app.name, filepath.Join(bundle, "Contents", "Resources", "profiles"), bundle)
 			}
 		}
 	}
@@ -125,10 +151,16 @@ func ResolveSlicer(target, id string) (root, execPath, slicerName string, err er
 	if !ok {
 		return "", "", "", fmt.Errorf("unsupported target %q", target)
 	}
+	return resolveSlicerAt(slicerLocations(target), spec, id)
+}
+
+// resolveSlicerAt takes the first location, in priority order, whose vendor folder
+// exists. Fails closed when none matches the preference.
+func resolveSlicerAt(locations []slicerLocation, spec Spec, id string) (root, execPath, slicerName string, err error) {
 	if id == "" {
 		id = "auto"
 	}
-	for _, loc := range slicerLocations(target) {
+	for _, loc := range locations {
 		if id != "auto" && id != loc.id {
 			continue
 		}

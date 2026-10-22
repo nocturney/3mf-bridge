@@ -1,0 +1,131 @@
+'use strict';
+// Full catalogue selection: every non-Bambu catalogue ID is selectable, saved membership never
+// implies conversion readiness, one card per physical model, and saved-first / maker / date order.
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const picker=require('../frontend/dist/printer-picker.js');
+const {loadMyPrinters,availabilityAll,catalog}=require('./my-printers-harness.js');
+
+const dist=path.resolve(__dirname,'../frontend/dist');
+const tick=()=>new Promise(resolve=>setImmediate(resolve));
+const plain=(value)=>JSON.parse(JSON.stringify(value));
+const nonBambu=catalog.models.filter(model=>!picker.isHidden(model));
+const cardIds=(h)=>h.dom('catalogModelList').children.map(card=>card.children[0].value);
+const cardFor=(h,id)=>h.dom('catalogModelList').children.find(card=>card.children[0].value===id);
+const orcaPro=(nozzle,hex,slicer)=>({
+  id:'orca-flashforge-creator-5-pro-'+nozzle.replace('.','')+'-'+hex,vendor:'Flashforge',model:'Creator 5 Pro',
+  title:'Flashforge Creator 5 Pro '+nozzle+' nozzle',nozzle,physicalTools:1,slicer,
+});
+const proVariants=[orcaPro('0.25','1111111111','OrcaSlicer'),orcaPro('0.4','2222222222','OrcaSlicer'),
+                   orcaPro('0.4','5555555555','Flash Studio')];
+
+test('the catalogue offers all 589 non-Bambu IDs as selectable, with each ID reachable on its own',()=>{
+  assert.equal(nonBambu.length,589);
+  const groups=picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false));
+  const reachable=groups.flatMap(group=>group.ids).filter(id=>nonBambu.some(model=>model.id===id));
+  assert.equal(reachable.length,589);
+  assert.equal(new Set(reachable).size,589);
+  // Spelling duplicates of one model share a card, and each spelling is still its own choice.
+  const creality=groups.find(group=>group.model==='CR-10 S Pro V2'||group.model==='CR-10S Pro V2');
+  assert.equal(creality.ids.length,2);
+});
+
+test('the dialog renders every catalogue model (one card per physical model) with no cap',async()=>{
+  const h=loadMyPrinters({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
+  h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  const expected=picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false));
+  assert.equal(h.dom('catalogModelList').children.length,expected.length);
+  assert.equal(h.dom('catalogSearchCount').hidden,true);
+  // Both spellings of one model are offered as choices inside the single card.
+  h.dom('printerCatalogSearch').value='CR-10';
+  h.dom('printerCatalogSearch').fire('input');
+  const card=cardFor(h,'creality-creality-cr-10-s-pro-v2');
+  const choices=card.children.find(child=>child.classList.contains('catalog-variant-list')).children.map(option=>option.children[0].value);
+  assert.deepEqual(choices.sort(),['creality-creality-cr-10-s-pro-v2','creality-creality-cr-10s-pro-v2']);
+});
+
+test('an unknown catalogue model is selected in the dialog but is never a conversion destination',async()=>{
+  let sent=null;
+  const afinia='afinia-afinia-h-1-hs';
+  const h=loadMyPrinters({
+    GetMyPrinters:()=>({selectedIds:[afinia,'snapmaker-u1'],onboardingPending:false}),
+    SaveMyPrinters:(requested)=>{sent=requested;return {selectedIds:requested,onboardingPending:false};},
+  });
+  h.api.setSupportedTargets({available:availabilityAll(),installedTargets:[],prusaAvailable:false});
+  await h.api.init();
+  assert.deepEqual(plain(h.api.selectedTargetIds()),['snapmaker-u1']);
+  assert.equal(h.api.isSelectedTarget(afinia),false);
+  h.dom('myPrintersBtn').fire('click');
+  assert.equal(cardFor(h,afinia).children[0].checked,true);
+  assert.equal(h.dom('selectedPrinterSummary').children.length,2);
+  // Availability disappears: the catalogue pick is kept, and conversion still has no target for it.
+  h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
+  assert.equal(cardFor(h,afinia).children[0].checked,true);
+  h.dom('saveMyPrintersBtn').fire('click');
+  await tick();
+  assert.deepEqual(plain(sent),[afinia,'snapmaker-u1']);
+  assert.deepEqual(plain(h.api.selectedTargetIds()),[]);
+  assert.deepEqual(plain(h.api.legacyTargets()),[]);
+});
+
+test('a physical model with a catalogue ID and installed targets is one card, defaulting to a ready target',async()=>{
+  const h=loadMyPrinters({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
+  h.api.setSupportedTargets({available:[],installedTargets:proVariants,prusaAvailable:false});
+  await h.api.init();
+  const groups=picker.groupDestinations(picker.catalogItems(catalog.models,[],proVariants,false));
+  const pro=groups.filter(group=>group.model==='Creator 5 Pro');
+  assert.equal(pro.length,1);
+  assert.ok(pro[0].ids.includes('flashforge-creator-5-pro'));
+  assert.equal(pro[0].ready,true);
+  assert.ok(proVariants.map(v=>v.id).includes(pro[0].id),'card selects a ready conversion ID');
+  h.dom('myPrintersBtn').fire('click');
+  assert.equal(cardIds(h).filter(id=>id==='flashforge-creator-5-pro').length,0,'catalogue ID is not a separate card');
+  h.dom('printerCatalogSearch').value='Creator 5 Pro';
+  h.dom('printerCatalogSearch').fire('input');
+  const card=cardFor(h,pro[0].id);
+  const boxes=card.children.find(child=>child.classList.contains('catalog-variant-list')).children;
+  assert.equal(boxes.length,3);
+});
+
+test('saved selections come first in saved order, then makers A-Z, newest release first within a maker',()=>{
+  const groups=picker.groupDestinations(picker.catalogItems(catalog.models,availabilityAll(),[],true));
+  const saved=['snapmaker-u1','afinia-afinia-h-1-hs'];
+  const order=picker.searchGroups(groups,'',saved,picker.maxRender).models;
+  assert.deepEqual(order.slice(0,2).map(group=>group.id),saved);
+  const rest=order.slice(2);
+  const makers=rest.map(group=>String(group.manufacturer));
+  assert.deepEqual(makers,[...makers].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
+  // Within Prusa Research: dated launches newest first, then undated models alphabetically.
+  const prusa=rest.filter(group=>group.manufacturer==='Prusa Research');
+  const dated=prusa.filter(group=>group.releaseDate);
+  assert.deepEqual(dated.map(group=>group.releaseDate),[...dated.map(group=>group.releaseDate)].sort().reverse());
+  const firstUndated=prusa.findIndex(group=>!group.releaseDate);
+  assert.ok(firstUndated>0);
+  assert.ok(prusa.slice(firstUndated).every(group=>!group.releaseDate));
+  const undated=prusa.slice(firstUndated).map(group=>group.model);
+  assert.deepEqual(undated,[...undated].sort((a,b)=>a.localeCompare(b,'en',{numeric:true,sensitivity:'base'})));
+  // No invented dates: a model without a catalogued or verified release has no date at all.
+  assert.equal(groups.find(group=>group.manufacturer==='Afinia').releaseDate,null);
+});
+
+test('dates are never shown and no category or support-tier wording appears in the picker',()=>{
+  const script=fs.readFileSync(path.join(dist,'my-printers.js'),'utf8');
+  const html=fs.readFileSync(path.join(dist,'index.html'),'utf8');
+  const dialog=html.slice(html.indexOf('<dialog id="myPrintersDialog"'),html.indexOf('id="settingsDialog"'));
+  assert.doesNotMatch(script,/tier|categor|קטגור|שכבה/i);
+  assert.doesNotMatch(dialog,/tier|categor|קטגור|שכבה/i);
+  assert.doesNotMatch(script,/releaseDate|model-launch-date/);
+});
+
+test('the picker stylesheet has no fixed card or list heights that could hide variant rows',()=>{
+  const css=fs.readFileSync(path.join(dist,'app.css'),'utf8');
+  const pickerRules=css.slice(css.indexOf('/* My Printers: RTL/LTR-safe picker'),css.indexOf('/* Navigation and first-use picker refinement'));
+  assert.doesNotMatch(pickerRules,/catalog-model-card\{[^}]*min-height:\s*\d+px/);
+  assert.doesNotMatch(pickerRules,/catalog-model-list\{[^}]*max-height:\s*\d+px/);
+  assert.match(pickerRules,/\.catalog-model-card\{display:grid;/);
+  assert.match(pickerRules,/\.catalog-variant-list\{grid-column:1\/-1;/);
+});

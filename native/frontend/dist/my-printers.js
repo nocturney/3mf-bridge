@@ -1,7 +1,8 @@
 /* SliceBridge My Printers: offline snapshot + explicit, separate local selection.
- * Only supported destinations are listed (see SliceBridgePicker.supportedModels).
- * One card per physical model; its nozzle/slicer variants keep their own target IDs.
- * No other conversion target is activated by browsing this catalogue.
+ * The full non-Bambu catalogue is listed for selection (SliceBridgePicker.catalogItems).
+ * Selecting a catalogue model saves membership only; conversion reads just the ready
+ * destinations (SliceBridgePicker.supportedModels). One card per physical model; its
+ * nozzle/slicer variants keep their own target IDs.
  * No network reads for artwork: pictures come only from installed slicers, asked
  * through the backend. No bundled photos, manifests or cross-origin fetches.
  */
@@ -17,7 +18,7 @@ const translations={
     none:'לא נמצאו דגמים',
     showing:'מציג {shown} מתוך {total} דגמים · צמצם את החיפוש להצגת דגמים נוספים',
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
-    manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',startHint:'בחר יצרן או חפש דגם כדי להציג מדפסות.',
+    manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',
     noSupported:'עדיין אין יעדים זמינים במחשב זה.',nothingSelected:'עדיין לא נבחרו מדפסות.',
     variants:'זרבובית וסלייסר',builtInVariant:'מתאם מובנה',imageUnavailable:'תמונה אינה זמינה'
   },
@@ -28,7 +29,7 @@ const translations={
     none:'No models matched',
     showing:'Showing {shown} of {total} models · narrow the search to find more',
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
-    manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',startHint:'Choose a manufacturer or search to see models.',
+    manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',
     noSupported:'No destinations are available on this computer yet.',nothingSelected:'No printers selected yet.',
     variants:'Nozzle and slicer',builtInVariant:'Built-in target',imageUnavailable:'Image unavailable'
   }
@@ -36,7 +37,9 @@ const translations={
 const changedEvent='slicebridge:my-printers-changed';
 let catalog=null,selected=null,draft=null,firstRun=false,loaded=false,saving=false;
 // Destination inputs, pushed in by the app shell through setSupportedTargets().
-let availability=[],installed=[],prusaAvailable=false,supported=[],groups=[];
+// `listed` is every selectable item (catalogue, installed Orca, PrusaSlicer);
+// `supported` is the ready subset that conversion may use.
+let availability=[],installed=[],prusaAvailable=false,listed=[],supported=[],groups=[];
 let groupByKey=new Map(),groupByItemId=new Map(),catalogIndex=new Map();
 
 const t=(key,variables={})=>{
@@ -235,7 +238,7 @@ function refreshManufacturerOptions(){
   filter.replaceChildren();
   const placeholder=node('option','',t('chooseManufacturer'));
   placeholder.value='';filter.append(placeholder);
-  const {preferred,others}=picker.manufacturerGroups(supported);
+  const {preferred,others}=picker.manufacturerGroups(listed);
   const makers=[...preferred,...others];
   for(const maker of preferred){
     const option=node('option','',maker);option.value=maker;filter.append(option);
@@ -251,15 +254,18 @@ function refreshManufacturerOptions(){
   }
   filter.value=makers.includes(previous)?previous:'';
 }
+// Catalogue-only spellings have no nozzle or slicer, so they are told apart by their model text.
 function variantLabel(item){
-  return item.legacyTarget?t('builtInVariant'):(picker.variantText(item)||picker.title(item));
+  if(item.legacyTarget)return t('builtInVariant');
+  return item.ready?(picker.variantText(item)||picker.title(item)):item.model;
 }
-// A variant checkbox list appears only for physical models with several installed targets.
-function variantList(group){
+// Nozzle/slicer checkboxes list the ready targets of a model. A model with no ready target
+// lists its catalogue IDs instead, so every catalogue ID stays individually selectable.
+function variantList(variants){
   const list=node('div','catalog-variant-list');
   list.setAttribute('role','group');
   list.setAttribute('aria-label',t('variants'));
-  for(const variant of group.variants){
+  for(const variant of variants){
     const option=node('label','catalog-variant');
     const box=node('input');
     box.type='checkbox';box.value=variant.id;box.checked=draft.has(variant.id);
@@ -307,18 +313,20 @@ function groupCard(group,index){
   copy.append(node('strong','',group.model),node('small','',group.manufacturer));
   label.append(graphic,copy);
   row.append(input,label);
-  if(group.variants.length>1)row.append(variantList(group));
+  const ready=group.variants.filter(variant=>variant.ready);
+  const choices=ready.length?ready:group.variants;
+  if(choices.length>1)row.append(variantList(choices));
   return row;
 }
 function render(){
   syncCopy();
   if(!loaded||!draft)return;
   const choice=[...draft];
-  const empty=!supported.length;
+  const empty=!groups.length;
   $('myPrintersSelectionCount').textContent=t('selected',{n:choice.length});
   const selectionList=$('selectedPrinterSummary');
   selectionList.replaceChildren();
-  const entries=supported.filter(item=>draft.has(item.id));
+  const entries=listed.filter(item=>draft.has(item.id));
   $('selectedPrinterSummary').hidden=!entries.length;
   $('selectedPrinterOverview').classList.toggle('is-empty',!entries.length);
   if(!entries.length)selectionList.append(node('span','catalog-muted',t('nothingSelected')));
@@ -331,17 +339,17 @@ function render(){
   }
   const term=$('printerCatalogSearch').value.trim();
   const manufacturer=$('printerManufacturerFilter').value;
-  const hasFilter=Boolean(term||manufacturer);
-  const showList=hasFilter||supported.length>0;
-  const source=manufacturer?groups.filter(group=>group.manufacturer===manufacturer):groups;
-  const matches=showList?picker.searchGroups(source,term,choice,80):{models:[],total:0};
+  // The whole catalogue is visible at once; the maker filter and search only narrow it.
+  const showList=!empty;
+  const source=manufacturer?groups.filter(group=>picker.makerKey(group.manufacturer)===picker.makerKey(manufacturer)):groups;
+  const matches=showList?picker.searchGroups(source,term,choice,picker.maxRender):{models:[],total:0};
   const list=$('catalogModelList');
   $('printerCatalogSearch').disabled=empty;
   $('printerManufacturerFilter').disabled=empty;
   $('myPrintersDialog').classList.toggle('has-results',showList);
-  $('catalogPickerHint').textContent=empty?t('noSupported'):t('startHint');
+  $('catalogPickerHint').textContent=t('noSupported');
   $('catalogPickerHint').hidden=showList;
-  // No result counts or unsupported-model classifications unless the list is truncated.
+  // Result counts only appear when a filter hides part of the catalogue.
   $('catalogSearchCount').hidden=matches.total<=matches.models.length;
   if(artObserver)artObserver.disconnect();
   slotRegistry.dialog.clear();
@@ -361,7 +369,7 @@ function setSupportedTargets(next={}){
   installed=Array.isArray(next.installedTargets)?next.installedTargets:[];
   prusaAvailable=next.prusaAvailable===true;
   recomputeSupported();
-  if(draft)draft=new Set([...draft].filter(id=>supported.some(item=>item.id===id)));
+  if(draft)draft=new Set([...draft].filter(id=>listed.some(item=>item.id===id)));
   if(loaded){
     refreshManufacturerOptions();
     loadTargetArtwork();
@@ -370,8 +378,9 @@ function setSupportedTargets(next={}){
   window.dispatchEvent(new Event(changedEvent));
 }
 function recomputeSupported(){
-  supported=picker?picker.supportedModels(catalog?catalog.models:[],availability,installed,prusaAvailable):[];
-  groups=picker?picker.groupDestinations(supported):[];
+  listed=picker?picker.catalogItems(catalog?catalog.models:[],availability,installed,prusaAvailable):[];
+  supported=listed.filter(item=>item.ready);
+  groups=picker?picker.groupDestinations(listed):[];
   groupByKey=new Map(groups.map(group=>[group.key,group]));
   groupByItemId=new Map();
   for(const group of groups)for(const variant of group.variants)groupByItemId.set(variant.id,group);
@@ -380,7 +389,8 @@ function open(onboarding=false){
   if(!loaded||saving)return;
   if($('myPrintersDialog').open)return;
   firstRun=Boolean(onboarding);
-  draft=new Set(selectedTargetIds());
+  // Every saved ID stays visible and selected here, even when it is not a ready target now.
+  draft=new Set(picker.allSavedIds(listed,selected.selectedIds));
   $('printerCatalogSearch').value='';
   $('printerManufacturerFilter').value='';
   $('myPrintersStatus').textContent='';
@@ -389,13 +399,13 @@ function open(onboarding=false){
   $('printerCatalogSearch').focus();
 }
 async function save(){
-  if(!loaded||!draft||saving||!supported.length)return;
+  if(!loaded||!draft||saving||!listed.length)return;
   saving=true;
   $('saveMyPrintersBtn').disabled=true;
   $('myPrintersStatus').textContent='';
   try{
-    // Only supported, selected IDs are sent. Stale saved IDs are not sent back.
-    const requested=[...draft].filter(id=>supported.some(item=>item.id===id));
+    // Only listed, selected IDs are sent. Stale saved IDs are not sent back.
+    const requested=[...draft].filter(id=>listed.some(item=>item.id===id));
     const reply=await api().SaveMyPrinters(requested);
     if(!reply||reply.onboardingPending||!Array.isArray(reply.selectedIds)){
       throw Error('Saved printer selection was not confirmed');

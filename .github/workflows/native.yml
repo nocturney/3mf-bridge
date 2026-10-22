@@ -53,12 +53,20 @@ jobs:
         shell: pwsh
         run: go test -count=1 ./...
       - name: Test native UI and browser handoff
-        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js tests/my-printers-ui.test.js tests/manufacturer-slicer-ui.test.js tests/prusa-target-ui.test.js tests/printer-cards-ui.test.js tests/printer-release-dates-ui.test.js tests/supported-targets-ui.test.js tests/main-destinations-ui.test.js
+        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js tests/my-printers-ui.test.js tests/manufacturer-slicer-ui.test.js tests/prusa-target-ui.test.js tests/printer-cards-ui.test.js tests/printer-release-dates-ui.test.js tests/printer-catalog-selection-ui.test.js tests/supported-targets-ui.test.js tests/main-destinations-ui.test.js
       - name: Verify short-window frontend interactions (headless Chromium/WebView2)
         shell: pwsh
         run: |
           node tests/source-queue-layout-qa.cjs
           if ($LASTEXITCODE -ne 0) { throw 'Source panel is obscured or compact layout regressed' }
+          node tests/picker-layout-ci.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'My Printers real-browser layout is clipped or overlapping' }
+      - name: Verify 3MF compatibility and MakerWorld-style fixture integrity
+        run: |
+          python -m unittest discover -s ../tests/compat -p 'test_*.py' -v
+          if ($LASTEXITCODE -ne 0) { throw '3MF compatibility tests failed' }
+          python -m unittest discover -s ../tests/makerworld -p 'test_*.py' -v
+          if ($LASTEXITCODE -ne 0) { throw 'MakerWorld-style fixture tests failed' }
       - name: Install stable Wails 2
         shell: pwsh
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
@@ -143,7 +151,11 @@ jobs:
       - name: Test Go engine and native backend
         run: go test -count=1 ./...
       - name: Test native UI and browser handoff
-        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js tests/my-printers-ui.test.js tests/manufacturer-slicer-ui.test.js tests/prusa-target-ui.test.js tests/printer-cards-ui.test.js tests/printer-release-dates-ui.test.js tests/supported-targets-ui.test.js tests/main-destinations-ui.test.js
+        run: node --test ../browser-extension/build.test.cjs ../browser-extension/setup-flow.test.cjs tests/update-ui.test.js tests/brand-ui.test.js tests/my-printers-ui.test.js tests/manufacturer-slicer-ui.test.js tests/prusa-target-ui.test.js tests/printer-cards-ui.test.js tests/printer-release-dates-ui.test.js tests/printer-catalog-selection-ui.test.js tests/supported-targets-ui.test.js tests/main-destinations-ui.test.js
+      - name: Verify 3MF compatibility and MakerWorld-style fixture integrity
+        run: |
+          python3 -m unittest discover -s ../tests/compat -p 'test_*.py' -v
+          python3 -m unittest discover -s ../tests/makerworld -p 'test_*.py' -v
       - name: Install stable Wails 2
         run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.17.0
       - name: Build macOS app using system WebKit

@@ -7,6 +7,7 @@ only read, never written.
 import contextlib
 import hashlib
 import io
+import json
 import os
 import tempfile
 import unittest
@@ -297,6 +298,96 @@ class FixtureTests(Base):
         report = qa.compare(self.fixture("bambu-mixed-three.3mf"),
                             self.write("m.3mf", self.clean(syn.read_zip(self.fixture("bambu-mixed-three.3mf")))))
         self.assertEqual(report["facts"]["source_channels"], [1, 2, 3])
+
+
+class NestedRealWorldPackageTests(Base):
+    def nested(self):
+        entries=dict(self.source())
+        actual=entries["3D/3dmodel.model"]
+        entries["3D/Objects/object_1.model"]=actual
+        entries["3D/3dmodel.model"]=(
+            b'<model xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">'
+            b'<resources/><build/></model>')
+        entries["3D/_rels/3dmodel.model.rels"]=(
+            b'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            b'<Relationship Id="child" Target="/3D/Objects/object_1.model" '
+            b'Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel"/>'
+            b'</Relationships>')
+        return entries
+
+    def test_child_model_geometry_is_counted(self):
+        source=self.nested()
+        src=self.write("src.3mf",source)
+        source_package=qa.Package(src)
+        paths=qa.model_parts(source_package)
+        self.assertEqual(paths, ["3D/3dmodel.model","3D/Objects/object_1.model"])
+        self.assertGreater(qa.geometry(source_package,paths)["triangles"],0)
+        report=self.pair(source,self.clean(source))
+        self.assertTrue(report["ok"],failed(report))
+        self.assertEqual(statuses(report)["geometry_counts"],"pass")
+
+    def test_unreferenced_gcode_mime_default_is_not_slice_cache(self):
+        out=self.clean(self.source())
+        out["[Content_Types].xml"]=out["[Content_Types].xml"].replace(
+            b"</Types>", b'<Default Extension="gcode" ContentType="text/x.gcode"/></Types>')
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["no_sliced_gcode"],"pass")
+
+    def test_explicit_gcode_part_reference_is_rejected(self):
+        out=self.clean(self.source())
+        out["_rels/.rels"]=out["_rels/.rels"].replace(
+            b"</Relationships>",
+            b'<Relationship Id="bad" Target="/Metadata/plate_1.gcode" '
+            b'Type="http://example.com/sliced-cache"/></Relationships>')
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["no_sliced_gcode"],"fail")
+
+    def test_missing_nested_model_fails_even_when_root_shell_exists(self):
+        entries=self.nested()
+        del entries["3D/Objects/object_1.model"]
+        with self.assertRaisesRegex(qa.InputError,"model relationship target missing"):
+            qa.compare(self.write("src.3mf",entries),
+                       self.write("out.3mf",self.clean(self.source())))
+
+
+class PrusaMetadataOnlyTests(Base):
+    def generic_prusa(self, slots=None):
+        if slots is None:
+            slots=[{"id":i + 1, "color":c, "material":t}
+                   for i, (c, t) in enumerate(zip(COLORS, TYPES))]
+        entries=syn.prusa_package(COLORS, TYPES, extruder=5, paints=PAINTS)
+        entries.pop("Metadata/Slic3r_PE.config", None)
+        entries["Metadata/SliceBridge_source_filaments.json"]=json.dumps(
+            {"schemaVersion":1, "source":"bambu-orca", "slots":slots}).encode()
+        return entries
+
+    def test_metadata_only_prusa_palette_is_preserved_without_native_preset_claim(self):
+        report=self.pair(self.source(), self.generic_prusa())
+        self.assertTrue(report["ok"], failed(report))
+        self.assertEqual(statuses(report)["palette_slots"], "pass")
+        self.assertEqual(statuses(report)["virtual_channels"], "pass")
+        self.assertEqual(statuses(report)["paint_state"], "skip")
+        self.assertEqual(statuses(report)["process_intent"], "skip")
+        self.assertEqual(statuses(report)["machine_scripts_not_carried"], "skip")
+        self.assertIn("metadata only", report["facts"]["output_palette_basis"])
+
+    def test_metadata_only_prusa_palette_drop_fails(self):
+        out=self.generic_prusa()
+        record=json.loads(out["Metadata/SliceBridge_source_filaments.json"])
+        record["slots"].pop()
+        out["Metadata/SliceBridge_source_filaments.json"]=json.dumps(record).encode()
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["palette_slots"], "fail")
+        self.assertEqual(statuses(report)["virtual_channels"], "fail")
+
+    def test_duplicate_slot_id_fails_explicitly(self):
+        out=self.generic_prusa()
+        record=json.loads(out["Metadata/SliceBridge_source_filaments.json"])
+        record["slots"][3]["id"]=3
+        out["Metadata/SliceBridge_source_filaments.json"]=json.dumps(record).encode()
+        report=self.pair(self.source(),out)
+        self.assertEqual(statuses(report)["output_palette"], "fail")
+        self.assertEqual(statuses(report)["palette_slots"], "fail")
 
 
 class CliTests(Base):

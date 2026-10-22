@@ -40,9 +40,9 @@ test('catalogue-only models never become destinations, even when every adapter i
 
 test('each supported item has exactly the documented fields and no status, tag or path data',()=>{
   const [first]=picker.supportedModels(catalog.models,availabilityAll(),[orca],true);
-  assert.deepEqual(Object.keys(first).sort(),['aliases','id','legacyTarget','manufacturer','model','nozzle','releaseDate','slicer']);
+  assert.deepEqual(Object.keys(first).sort(),['aliases','id','legacyTarget','manufacturer','model','nozzle','ready','releaseDate','slicer']);
   for(const item of picker.supportedModels(catalog.models,availabilityAll(),[orca],true)){
-    assert.deepEqual(Object.keys(item).sort(),['aliases','id','legacyTarget','manufacturer','model','nozzle','releaseDate','slicer'],item.id);
+    assert.deepEqual(Object.keys(item).sort(),['aliases','id','legacyTarget','manufacturer','model','nozzle','ready','releaseDate','slicer'],item.id);
     assert.ok(Array.isArray(item.aliases));
     for(const value of [item.manufacturer,item.model,...item.aliases]){
       assert.equal(typeof value,'string');
@@ -53,7 +53,7 @@ test('each supported item has exactly the documented fields and no status, tag o
 
 test('installed Orca targets outside the 603-model catalogue are listed by backend id',()=>{
   const items=plain(picker.supportedModels(catalog.models,[],[orca],false));
-  assert.deepEqual(items,[{id:orcaId,manufacturer:'Anker',model:'Make M5',aliases:[],legacyTarget:null,nozzle:'0.4',slicer:null,releaseDate:null}]);
+  assert.deepEqual(items,[{id:orcaId,manufacturer:'Anker',model:'Make M5',aliases:[],legacyTarget:null,nozzle:'0.4',slicer:null,ready:true,releaseDate:null}]);
   assert.equal(catalog.models.some(model=>model.id===orcaId),false);
 });
 
@@ -117,7 +117,7 @@ test('Bambu is never a destination, whether built in, by vendor code or by title
 test('PrusaSlicer project is listed only when the engine probe is available',()=>{
   const on=picker.supportedModels(catalog.models,[],[],true);
   // PrusaSlicer is a generic export target, not a physical maker.
-  assert.deepEqual(plain(on),[{id:'prusa-project',manufacturer:'Generic',model:'PrusaSlicer project',aliases:['Generic project'],legacyTarget:null,nozzle:null,slicer:null,releaseDate:null}]);
+  assert.deepEqual(plain(on),[{id:'prusa-project',manufacturer:'Generic',model:'PrusaSlicer project',aliases:['Generic project'],legacyTarget:null,nozzle:null,slicer:null,ready:true,releaseDate:null}]);
   for(const value of [false,undefined,'true',1,null]){
     assert.deepEqual(picker.supportedModels(catalog.models,[],[],value),[],String(value));
   }
@@ -149,7 +149,7 @@ test('legacy keys come only from selected built-in destinations',()=>{
   assert.deepEqual(picker.legacyTargetsFor(items,picked).sort(),['c5','u1']);
 });
 
-test('My Printers lists only supported destinations, with stale saved IDs hidden and never sent back',async()=>{
+test('saved catalogue membership is kept as selected but is never a conversion target; stale IDs are not sent back',async()=>{
   const saved=[nonLegacy.id,'orca-gone-0123456789',builtIn.u1];
   const h=loadMyPrinters({
     GetMyPrinters:()=>({selectedIds:saved,onboardingPending:false}),
@@ -164,11 +164,12 @@ test('My Printers lists only supported destinations, with stale saved IDs hidden
 
   h.dom('myPrintersBtn').fire('click');
   assert.equal(h.dom('myPrintersDialog').open,true);
-  assert.equal(h.dom('selectedPrinterSummary').children.length,1);
+  // The catalogue model is shown as selected in the dialog, the stale installed profile is not.
+  assert.equal(h.dom('selectedPrinterSummary').children.length,2);
+  assert.equal(h.dom('catalogModelList').children.some(card=>card.children[0].value===nonLegacy.id&&card.children[0].checked),true);
   h.dom('saveMyPrintersBtn').fire('click');
   await tick();
-  const save=h.calls.filter(call=>call==='SaveMyPrinters');
-  assert.equal(save.length,1);
+  assert.deepEqual(h.plain(h.calls.filter(call=>call==='SaveMyPrinters')).length,1);
   assert.equal(h.recorded.events.includes('slicebridge:my-printers-changed'),true);
   assert.deepEqual(h.plain(h.api.selectedTargetIds()),[builtIn.u1]);
 });
@@ -182,15 +183,11 @@ test('save sends only the visible selection, including dynamic and PrusaSlicer d
   h.api.setSupportedTargets({available:availabilityAll({c5:false,cc2:false,qidi:false}),installedTargets:[orca],prusaAvailable:true});
   await h.api.init();
   h.dom('myPrintersBtn').fire('click');
-  h.dom('printerManufacturerFilter').value='Anker';
-  h.dom('printerManufacturerFilter').fire('change');
-  const cards=h.dom('catalogModelList').children;
-  assert.equal(cards.length,1);
-  assert.equal(cards[0].children[0].value,orcaId);
-  cards[0].children[0].checked=true;
-  cards[0].children[0].fire('change');
-  h.dom('printerManufacturerFilter').value='';
-  h.dom('printerManufacturerFilter').fire('change');
+  h.dom('printerCatalogSearch').value='Make M5';
+  h.dom('printerCatalogSearch').fire('input');
+  const orcaCard=h.dom('catalogModelList').children.find(card=>card.children[0].value===orcaId);
+  orcaCard.children[0].checked=true;
+  orcaCard.children[0].fire('change');
   h.dom('printerCatalogSearch').value='prusa';
   h.dom('printerCatalogSearch').fire('input');
   const prusa=h.dom('catalogModelList').children.find(card=>card.children[0].value==='prusa-project');
@@ -204,29 +201,36 @@ test('save sends only the visible selection, including dynamic and PrusaSlicer d
   assert.equal(h.api.isSelectedTarget('u1'),false);
 });
 
-test('an empty supported result shows one honest line and no unsupported lists',()=>{
+test('with no ready conversion target the full catalogue stays selectable and the saved pick is kept',()=>{
   const h=loadMyPrinters({GetMyPrinters:()=>({selectedIds:[builtIn.u1],onboardingPending:false})});
   h.api.setSupportedTargets({available:availabilityAll({u1:false,c5:false,cc2:false,qidi:false}),installedTargets:[],prusaAvailable:false});
   return h.api.init().then(()=>{
     h.dom('myPrintersBtn').fire('click');
-    assert.equal(h.dom('catalogPickerHint').textContent,'No destinations are available on this computer yet.');
-    assert.equal(h.dom('catalogModelList').children.length,0);
-    assert.equal(h.dom('saveMyPrintersBtn').disabled,true);
-    assert.equal(h.dom('printerCatalogSearch').disabled,true);
-    assert.equal(h.dom('printerManufacturerFilter').disabled,true);
-    assert.equal(h.dom('printerManufacturerFilter').children.length,1);
+    assert.equal(h.dom('catalogPickerHint').hidden,true);
+    assert.ok(h.dom('catalogModelList').children.length>500);
+    assert.equal(h.dom('saveMyPrintersBtn').disabled,false);
+    assert.equal(h.dom('printerCatalogSearch').disabled,false);
+    assert.equal(h.dom('printerManufacturerFilter').disabled,false);
+    assert.equal(h.dom('selectedPrinterSummary').children.length,1);
+    assert.deepEqual(h.plain(h.api.selectedTargetIds()),[]);
     assert.equal(h.api.isReady(),true);
   });
 });
 
-test('manufacturer dropdown offers only makers of supported destinations',async()=>{
+test('manufacturer dropdown offers every catalogue maker, with mainstream makers before one separator',async()=>{
   const h=loadMyPrinters({});
   h.api.setSupportedTargets({available:availabilityAll({c5:false,cc2:false,qidi:false}),installedTargets:[orca],prusaAvailable:false});
   await h.api.init();
   const options=h.dom('printerManufacturerFilter').children;
-  assert.deepEqual(options.map(option=>option.value),['','Snapmaker','','Anker']);
-  assert.equal(options[2].disabled,true,'separator must not be a selectable maker');
-  assert.match(options[2].textContent,/─/);
+  const values=options.map(option=>option.value);
+  assert.equal(values[0],'');
+  assert.deepEqual(values.slice(1,10),['Anycubic','Creality','ELEGOO','Flashforge','FLSun','Prusa Research','QIDI','Snapmaker','Sovol']);
+  assert.ok(values.includes('Anker')&&values.includes('Afinia'));
+  assert.equal(values.includes('Bambu Lab'),false);
+  assert.equal(values.includes('Generic'),false);
+  const separator=options[values.indexOf('',1)];
+  assert.equal(separator.disabled,true,'separator must not be a selectable maker');
+  assert.match(separator.textContent,/─/);
 });
 
 test('losing availability trims an open draft and removes the destination everywhere',async()=>{
@@ -278,7 +282,7 @@ test('integrated manufacturers appear ahead of alphabetical others, with one dis
   assert.deepEqual(picker.manufacturerGroups([]),{preferred:[],others:[]});
 });
 
-test('unselected printers sort by verified launch date, selected first in saved order',()=>{
+test('unselected printers sort by maker A-Z, then newest verified launch within a maker; selected first',()=>{
   const targets=[
     {id:'orca-zzzzz-unknown-1111111111',vendor:'Zzzzz',model:'Unknown One',title:'Unknown One'},
     {id:'orca-qidi-plus5-2222222222',vendor:'QIDI',model:'Plus5',title:'QIDI Plus5'},
@@ -289,8 +293,8 @@ test('unselected printers sort by verified launch date, selected first in saved 
   const items=picker.supportedModels(catalog.models,[],targets,false);
   const order=picker.search(items,'').models.map(item=>item.id);
   assert.deepEqual(order,[
-    'orca-qidi-plus5-2222222222','orca-flashforge-creator-5-pro-3333333333',
-    'orca-snapmaker-u1-4444444444','orca-anycubic-old-5555555555',
+    'orca-anycubic-old-5555555555','orca-flashforge-creator-5-pro-3333333333',
+    'orca-qidi-plus5-2222222222','orca-snapmaker-u1-4444444444',
     'orca-zzzzz-unknown-1111111111'
   ]);
   assert.equal(items.find(x=>x.id==='orca-qidi-plus5-2222222222').releaseDate,'2026-08-05');
@@ -299,14 +303,14 @@ test('unselected printers sort by verified launch date, selected first in saved 
   assert.deepEqual(picker.search(items,'',selected).models.map(item=>item.id).slice(0,2),selected);
 });
 
-test('unknown launch dates stay unknown and popular brands lead undated fallbacks',()=>{
+test('unknown launch dates stay unknown; makers sort alphabetically, undated models last within a maker',()=>{
   const list=[
     {id:'z',manufacturer:'Acme',model:'Mystery M300',aliases:[]},
     {id:'s',manufacturer:'Snapmaker',model:'Unknown New X',aliases:[]},
     {id:'p',manufacturer:'Prusa',model:'No Public Date',aliases:[]},
   ];
   assert.equal(picker.releaseDate(list[0]),null);
-  assert.deepEqual(picker.search(list,'').models.map(x=>x.id),['p','s','z']);
+  assert.deepEqual(picker.search(list,'').models.map(x=>x.id),['z','p','s']);
   assert.equal(picker.releaseDate({manufacturer:'QIDI',model:'Plus5',releaseDate:'2025-12-01'}),'2025-12-01');
   assert.equal(picker.releaseDate({manufacturer:'QIDI',model:'Plus5',releaseDate:'yesterday'}),'2026-08-05');
 });
