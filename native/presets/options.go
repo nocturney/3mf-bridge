@@ -235,6 +235,23 @@ func ResolveSlicer(target, id string) (root, execPath, slicerName string, err er
 	return resolveSlicerAt(slicerLocations(target), spec, id)
 }
 
+// qidiStudioExecutable retains the older Windows filename but also accepts the
+// real qidi-studio.exe used by current installed builds. Only the two fixed names
+// in the same trusted app folder are allowed; links and empty files do not qualify.
+func qidiStudioExecutable(loc slicerLocation) string {
+	if loc.id != "qidi-studio" || filepath.Base(loc.executable) != "QIDIStudio.exe" {
+		return loc.executable
+	}
+	if info, err := os.Lstat(loc.executable); err == nil && info.Mode().IsRegular() && info.Size() > 0 {
+		return loc.executable
+	}
+	alternative := filepath.Join(filepath.Dir(loc.executable), "qidi-studio.exe")
+	if info, err := os.Lstat(alternative); err == nil && info.Mode().IsRegular() && info.Size() > 0 {
+		return alternative
+	}
+	return loc.executable
+}
+
 // resolveSlicerAt takes the first location, in priority order, whose vendor folder
 // exists. Fails closed when none matches the preference.
 func resolveSlicerAt(locations []slicerLocation, spec Spec, id string) (root, execPath, slicerName string, err error) {
@@ -248,7 +265,7 @@ func resolveSlicerAt(locations []slicerLocation, spec Spec, id string) (root, ex
 		if s, e := os.Stat(filepath.Join(loc.root, spec.Vendor)); e != nil || !s.IsDir() {
 			continue
 		}
-		return loc.root, loc.executable, loc.name, nil
+		return loc.root, qidiStudioExecutable(loc), loc.name, nil
 	}
 	return "", "", "", fmt.Errorf("no installed %s slicer matching preference %q", spec.Name, id)
 }
