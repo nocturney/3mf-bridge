@@ -119,6 +119,56 @@ func ResolveOrcaBundle(id string) (*OrcaBundle, error) {
 	return resolveOrca(installedOrcaLocations(), id)
 }
 
+// ResolveOrcaExecutable returns the trusted app *owning the exact installed
+// profile*, rather than accepting an executable path (or vendor name) from UI.
+// It re-resolves the ID and refuses custom profile-only roots and links.
+func ResolveOrcaExecutable(id string) (executable, slicerName string, err error) {
+	return resolveOrcaExecutableAt(installedOrcaLocations(), id, runtime.GOOS)
+}
+
+func resolveOrcaExecutableAt(locations []slicerLocation, id, platform string) (string, string, error) {
+	candidate, err := findOrcaCandidate(locations, id)
+	if err != nil {
+		return "", "", err
+	}
+	for _, loc := range locations {
+		if loc.root != candidate.root || loc.name != candidate.target.Slicer {
+			continue
+		}
+		if loc.executable == "" {
+			return "", "", fmt.Errorf("installed profile has no trusted slicer application to open")
+		}
+		executable := loc.executable
+		appDir := executable
+		switch platform {
+		case "windows":
+			appDir = filepath.Dir(executable)
+			// Some QIDIStudio builds ship one of two verified executable names.
+			executable = qidiStudioExecutable(loc)
+		case "darwin":
+			// open -a accepts the .app bundle path, not its inner binary.
+		default:
+			return "", "", fmt.Errorf("opening Orca profiles is unsupported on %s", platform)
+		}
+		// Resolve the original app/profile relationship again at launch time.
+		if !orcaChainIsReal(appDir, loc.root) {
+			return "", "", fmt.Errorf("installed slicer path is missing or contains a link")
+		}
+		info, err := os.Lstat(executable)
+		if err != nil {
+			return "", "", fmt.Errorf("installed %s application is missing: %w", loc.name, err)
+		}
+		if platform == "windows" && (!info.Mode().IsRegular() || info.Size() == 0) {
+			return "", "", fmt.Errorf("installed %s executable is not a regular non-empty file", loc.name)
+		}
+		if platform == "darwin" && !info.IsDir() {
+			return "", "", fmt.Errorf("installed %s application is not a real .app directory", loc.name)
+		}
+		return executable, loc.name, nil
+	}
+	return "", "", fmt.Errorf("installed slicer application for profile is unavailable")
+}
+
 // installedOrcaLocations returns the trusted roots to scan, in priority order.
 // An application folder is used only when every folder down to its profiles is a
 // real directory. Explicit local overrides carry no executable and are used as given.
