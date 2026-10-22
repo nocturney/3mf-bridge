@@ -374,3 +374,19 @@ func TestCrealityPrintMacBundleAndAnycubicAlternativeWindowsPaths(t *testing.T) 
    t.Fatalf("Anycubic Slicer Next alternate path not detected: %+v",win["anycubic-slicer-next"])
  }
 }
+
+
+// The installed Windows QIDIStudio build can use qidi-studio.exe rather than
+// QIDIStudio.exe. Both names must detect the same trusted resource root.
+func TestQIDIStudioHyphenatedWindowsExecutableDetected(t *testing.T) {
+    root := t.TempDir()
+    pf := filepath.Join(root, "Program Files")
+    writeManufacturerFile(t, filepath.Join(pf, "QIDIStudio", "qidi-studio.exe"), "MZ")
+    writeManufacturerFile(t, filepath.Join(pf, "QIDIStudio", "resources", "profiles",
+        "X 5 Series", "machine", "X-Plus 5.json"), "{}")
+    byID := itemsByID(detectManufacturerSlicers("windows", hostManufacturerFS{}, pf, "", "", "", ""))
+    got := byID["qidi-studio"]
+    if !got.Installed || got.Evidence != manufacturerEvidenceApplication {
+        t.Fatalf("real hyphenated QIDI executable and resources not detected: %+v", got)
+    }
+}
