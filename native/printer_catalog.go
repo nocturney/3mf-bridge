@@ -392,5 +392,7 @@ func (a *App) SaveMyPrinters(ids []string) (MyPrintersReply, error) {
 	if err = os.Rename(temporary.Name(), path); err != nil {
 		return MyPrintersReply{}, err
 	}
-	return MyPrintersReply{Version: 1, SelectedIDs: append([]string{}, ids...)}, nil
+	// Reply with the same visible-only view as GetMyPrinters. The complete
+	// absent-slicer inventory remains safely on disk, not in the UI payload.
+	return loadMyPrinters(catalog)
 }
