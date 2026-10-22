@@ -567,9 +567,6 @@ func (a *App) OpenInSlicer(target, outputPath string) error {
 	if target == "" || target != actual {
 		return fmt.Errorf("file was not generated for this printer in the current session")
 	}
-	if presets.IsOrcaTargetID(target) {
-		return fmt.Errorf("outputs for installed Orca profiles cannot be opened from here yet")
-	}
 	f, err := fileInfo(outputPath)
 	if err != nil {
 		return err
@@ -580,11 +577,19 @@ func (a *App) OpenInSlicer(target, outputPath string) error {
 	if target == prusaTargetID {
 		return launchPrusaSlicer(outputPath)
 	}
-	settings, err := a.GetSettings()
-	if err != nil {
-		return err
+	var exe, slicer string
+	if presets.IsOrcaTargetID(target) {
+		// Re-resolve the installed machine profile from its opaque target ID,
+		// and launch only the verified app that owns those exact profiles.
+		// Custom profile-only roots must fail closed (no guessed executable).
+		exe, slicer, err = presets.ResolveOrcaExecutable(target)
+	} else {
+		var settings Settings
+		settings, err = a.GetSettings()
+		if err == nil {
+			_, exe, slicer, err = presets.ResolveSlicer(target, settings.Printers[target].Slicer)
+		}
 	}
-	_, exe, slicer, err := presets.ResolveSlicer(target, settings.Printers[target].Slicer)
 	if err != nil {
 		return err
 	}
