@@ -245,7 +245,9 @@ test('installed cover lookups run once per slicer, not once per nozzle',async()=
   h.dom('printerCatalogSearch').value='Creator 5 Pro';
   h.dom('printerCatalogSearch').fire('input');
   await flush();
-  assert.deepEqual(asked,[proVariants[0].id,proVariants[4].id]);
+  // The vendor slicer (Flash Studio) comes first in the source tiers and supplies the cover,
+  // so the generic OrcaSlicer is never asked; still one lookup per slicer, never per nozzle.
+  assert.deepEqual(asked,[proVariants[4].id]);
   assert.equal(avatarOf(h,'Creator 5 Pro').querySelector('img.printer-cover-photo').src,proCover);
 });
 
@@ -313,4 +315,73 @@ test('a refused or failed artwork request leaves an honest unavailable card and 
     assert.equal(avatarOf(h,model).classList.contains('is-unavailable'),true,model);
     assert.equal(avatarOf(h,model).querySelector('img.printer-cover-photo'),null,model);
   }
+});
+
+// Source-tier default for a ticked card. Installed targets as the backend lists them, with
+// the slicer app name that found them. No availability, so only installed targets are ready.
+const installedTarget=(vendor,model,slicer,nozzle,hex)=>({
+  id:'orca-'+(vendor+'-'+model).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+hex,
+  vendor,model,title:vendor+' '+model+' '+nozzle+' nozzle',nozzle,slicer,physicalTools:1,
+});
+const defaultCard=(installed,model)=>picker.groupDestinations(picker.supportedModels([],[],installed,false))
+  .find(group=>group.model===model);
+
+test('Flash Studio is the default card target over generic OrcaSlicer, whatever the nozzle or input order',()=>{
+  const orca=installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer','0.4','1111111111');
+  const flash=installedTarget('Flashforge','Creator 5 Pro','Flash Studio Desktop','0.6','2222222222');
+  for(const installed of [[orca,flash],[flash,orca]]){
+    const card=defaultCard(installed,'Creator 5 Pro');
+    assert.equal(card.id,flash.id);
+    assert.deepEqual(card.ids.slice().sort(),[orca.id,flash.id].sort());
+  }
+});
+
+test('QIDIStudio is the default card target over generic OrcaSlicer at the same nozzle',()=>{
+  const orca=installedTarget('QIDI','X-Plus 5','OrcaSlicer','0.4','3333333333');
+  const qidi=installedTarget('QIDI','X-Plus 5','QIDIStudio','0.4','4444444444');
+  for(const installed of [[orca,qidi],[qidi,orca]]){
+    assert.equal(defaultCard(installed,'X-Plus 5').id,qidi.id);
+  }
+});
+
+test('Snapmaker Orca is the default card target over generic OrcaSlicer at the same nozzle',()=>{
+  const orca=installedTarget('Snapmaker','U1','OrcaSlicer','0.4','5555555555');
+  const snapmaker=installedTarget('Snapmaker','U1','Snapmaker Orca','0.4','6666666666');
+  for(const installed of [[orca,snapmaker],[snapmaker,orca]]){
+    assert.equal(defaultCard(installed,'U1').id,snapmaker.id);
+  }
+});
+
+test('ELEGOO Slicer is the default card target over generic OrcaSlicer, even at 0.6 mm against 0.4 mm',()=>{
+  const orca=installedTarget('ELEGOO','Centauri Carbon 2','OrcaSlicer','0.4','7777777777');
+  const elegoo=installedTarget('ELEGOO','Centauri Carbon 2','ElegooSlicer','0.6','8888888888');
+  for(const installed of [[orca,elegoo],[elegoo,orca]]){
+    assert.equal(defaultCard(installed,'Centauri Carbon 2').id,elegoo.id);
+  }
+});
+
+test('generic PrusaSlicer ranks below generic OrcaSlicer on a physical card',()=>{
+  const prusa=installedTarget('Snapmaker','U1','PrusaSlicer','0.4','9999999999');
+  const orca=installedTarget('Snapmaker','U1','OrcaSlicer','0.6','aaaaaaaaaa');
+  assert.equal(defaultCard([prusa,orca],'U1').id,orca.id);
+});
+
+test('within one source tier the 0.4 mm variant is the first-selection default',()=>{
+  const orca=['0.25','0.4','0.6'].map((nozzle,i)=>installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer',nozzle,'b'.repeat(9)+i));
+  assert.equal(defaultCard(orca,'Creator 5 Pro').id,orca[1].id);
+  // No 0.4 mm variant in the tier: the lowest nozzle of that tier is the default.
+  const flash=['0.25','0.6'].map((nozzle,i)=>installedTarget('Flashforge','Creator 5 Pro','Flash Studio Desktop',nozzle,'c'.repeat(9)+i));
+  assert.equal(defaultCard(flash,'Creator 5 Pro').id,flash[0].id);
+});
+
+test('the built-in adapter stays the first-selection default, and saved IDs keep their order',()=>{
+  const snapmaker=installedTarget('Snapmaker','U1','Snapmaker Orca','0.4','dddddddddd');
+  const items=picker.supportedModels(catalog.models,availabilityAll({c5:false,cc2:false,qidi:false}),[snapmaker],false);
+  const card=picker.groupDestinations(items).find(group=>group.model==='U1');
+  assert.equal(card.id,oldIds.u1);
+  assert.ok(card.ids.includes(snapmaker.id)&&card.ids.includes(oldIds.u1));
+  // Preferences change only the default: every saved ID stays selectable, in saved order.
+  assert.deepEqual(picker.selectedTargetIds(items,[snapmaker.id,oldIds.u1]),[snapmaker.id,oldIds.u1]);
+  const groups=picker.groupDestinations(items);
+  assert.equal(picker.searchGroups(groups,'',[snapmaker.id]).models[0].ids.includes(snapmaker.id),true);
 });
