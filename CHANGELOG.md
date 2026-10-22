@@ -6,6 +6,14 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.18] - 2026-10-22 (development build; release status: see GitHub Releases)
+
+- Restore the full non-Bambu printer inventory: 589 catalogue IDs shown as 584 distinct physical-model cards, with each matching nozzle/slicer target preserved. Keeping a catalogue model in My Printers does not assert that it can be converted; conversion remains guarded by actual installed and validated profile chains.
+- Default to each manufacturer's matching, fully resolved local slicer profile before a generic Orca/Prusa alternative; preserve explicit nozzle, slicer, filament preferences and the five existing saved printers. The Snapmaker U1 built-in 0.4 mm template remains an offline fallback when its installed vendor profile is not usable.
+- Repair the RTL/LTR My Printers layout and intrinsic-height nozzle variant cards, and require real Windows/macOS Chromium geometry regression checks. Restore exact-model photos from locally installed slicers only; remove the external U1 photo and image manifest.
+- Expand MakerWorld/Bambu-origin 3MF compatibility QA to nested model parts, source filament metadata, multi-color/virtual-slot checks and explicit format-inapplicable comparisons; preserve dev.10's independent source color/material channels and reject stale sliced G-code. Generic PrusaSlicer projects still require choosing compatible printer/material profiles in the slicer.
+- Keep Bambu as a source, not a conversion target; no Cura, ideaMaker, UP Studio or other niche-format engines were added. Move historical auxiliary files out of the repository root, maintain the short README, and record a per-release regression audit from beta.3 to dev.17. Source tests and CI do not constitute physical print validation.
+
 ## [0.4.0-beta.4.dev.17] - 2026-10-21 (development build; see GitHub Releases)
 
 - My Printers now shows one card per physical printer model, with each installed nozzle/slicer profile available as a distinct selectable variant. Existing printer choices, engine target identifiers and source-to-slicer conversion routes are retained.
