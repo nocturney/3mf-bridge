@@ -258,6 +258,24 @@ func sourceSummary(path string) (SourceSummary, error) {
 }
 func (a *App) InspectFile(path string) (SourceSummary, error) { return sourceSummary(path) }
 
+// selectSnapmakerProfile chooses an actual installed, validated Snapmaker Orca
+// profile over the historical built-in 0.4 mm U1 template. The template remains
+// an offline fallback ONLY for the old default auto/0.4 path. An explicit user
+// nozzle, slicer or filament preference never triggers a silent replacement.
+func selectSnapmakerProfile(target, nozzle string, preference PrinterSettings,
+	load func(string, string, string, map[string]string) (*presets.Bundle, error)) (bool, *presets.Bundle) {
+	eligibleBuiltin := target == "u1" && nozzle == "0.4" &&
+		preference.Slicer == "auto" && len(preference.Filaments) == 0
+	if !eligibleBuiltin {
+		return false, nil
+	}
+	vendor, err := load(target, nozzle, "auto", nil)
+	if err != nil {
+		return true, nil
+	}
+	return false, vendor
+}
+
 func configuredConvert(source, target, sourceNozzle string, preference PrinterSettings) ConvertResult {
 	// The generic PrusaSlicer project has no per-printer settings entry, so the
 	// preference argument is intentionally ignored for it.
@@ -285,15 +303,18 @@ func configuredConvert(source, target, sourceNozzle string, preference PrinterSe
 	if target == "c5" && nativeNozzle == "0.2" {
 		nativeNozzle = "0.25"
 	}
-	useBuiltin := target == "u1" && nativeNozzle == "0.4" && preference.Slicer == "auto" && len(preference.Filaments) == 0
+	useBuiltin, bundle := selectSnapmakerProfile(target, nativeNozzle, preference, presets.LoadConfigured)
 	usedSlicer := "Built-in Snapmaker U1 template"
 	profileFile := ""
 	if !useBuiltin {
-		bundle, err := presets.LoadConfigured(target, nativeNozzle, preference.Slicer, preference.Filaments)
-		if err != nil {
-			result.Code = "TARGET_PROFILE_INVALID"
-			result.Error = err.Error()
-			return result
+		if bundle == nil {
+			var loadErr error
+			bundle, loadErr = presets.LoadConfigured(target, nativeNozzle, preference.Slicer, preference.Filaments)
+			if loadErr != nil {
+				result.Code = "TARGET_PROFILE_INVALID"
+				result.Error = loadErr.Error()
+				return result
+			}
 		}
 		usedSlicer = bundle.Slicer
 		f, cleanup, err := tempVendorBundle(bundle)

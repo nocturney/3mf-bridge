@@ -393,14 +393,18 @@ test('within one source tier the 0.4 mm variant is the first-selection default',
   assert.equal(defaultCard(flash,'Creator 5 Pro').id,flash[0].id);
 });
 
-test('the built-in adapter stays the first-selection default, and saved IDs keep their order',()=>{
+test('an installed Snapmaker vendor profile outranks the built-in U1 template, and saved IDs never change',()=>{
   const snapmaker=installedTarget('Snapmaker','U1','Snapmaker Orca','0.4','dddddddddd');
-  const items=picker.supportedModels(catalog.models,availabilityAll({c5:false,cc2:false,qidi:false}),[snapmaker],false);
+  const available=availabilityAll({c5:false,cc2:false,qidi:false});
+  const items=picker.supportedModels(catalog.models,available,[snapmaker],false);
   const card=picker.groupDestinations(items).find(group=>group.model==='U1');
-  assert.equal(card.id,oldIds.u1);
+  assert.equal(card.id,snapmaker.id);
   assert.ok(card.ids.includes(snapmaker.id)&&card.ids.includes(oldIds.u1));
-  // Preferences change only the default: every saved ID stays selectable, in saved order.
-  assert.deepEqual(picker.selectedTargetIds(items,[snapmaker.id,oldIds.u1]),[snapmaker.id,oldIds.u1]);
-  const groups=picker.groupDestinations(items);
-  assert.equal(picker.searchGroups(groups,'',[snapmaker.id]).models[0].ids.includes(snapmaker.id),true);
+  // If the vendor profile is no longer installed, the built-in fallback is still usable.
+  const fallback=picker.groupDestinations(picker.supportedModels(catalog.models,available,[],false))
+    .find(group=>group.model==='U1');
+  assert.equal(fallback.id,oldIds.u1);
+  // Existing saved choices remain exact IDs; no implicit migration to the new default.
+  assert.deepEqual(picker.selectedTargetIds(items,[oldIds.u1,snapmaker.id]),[oldIds.u1,snapmaker.id]);
+  assert.equal(picker.searchGroups(picker.groupDestinations(items),'',[oldIds.u1]).models[0].ids.includes(oldIds.u1),true);
 });
