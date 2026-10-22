@@ -25,11 +25,11 @@ path before the run; the check fails if the conversion replaced it.
 | `source_zip_sanity`, `output_zip_sanity` | Readable ZIP, no duplicate or unsafe names, no encryption | Yes |
 | `output_components` | `[Content_Types].xml`, `_rels/.rels`, and a 3D model relationship whose target exists | Yes |
 | `no_sliced_gcode` | No `*.gcode` / `*.gcode.md5` entries or references | Yes |
-| `geometry_counts`, `geometry_hash` | Vertex/triangle counts across the root model **and referenced child `.model` parts**; order-independent hash of canonical triangles | Yes |
-| `paint_state` | Per-triangle paint code multiset (triangle identity = sorted vertex coordinates) | Only same codec (Orca/Bambu share one) |
+| `geometry_counts`, `geometry_hash` | Placed build geometry: recursively resolves `p:path` child `.model` parts and component/build transforms; compares world-space triangles and unique placed vertices | Yes |
+| `paint_state` | Paint codes bound to **placed** triangle geometry, including component instances | Only same codec (Orca/Bambu share one) |
 | `palette_slots` | Ordered (colour, material) per slot; duplicates kept separate. Generic Panda2Prusa outputs preserve source slots in SliceBridge JSON metadata, **not** native Prusa filament presets. | Yes |
 | `virtual_channels` | Channels used by objects and paint (incl. fifth) still exist with the same identity | Paint channels only for Orca/Bambu |
-| `object_extruder_mapping` | Ordered object extruder values | Yes (same metadata idea) |
+| `object_extruder_mapping` | Per-build-instance extruder assignments aligned by world-space geometry, not metadata order or object IDs; unprovable bindings marked `skip` | When object-to-build binding is provable |
 | `machine_scripts_not_carried` | Source `*_gcode` printer scripts are not copied | JSON layout only |
 | `process_intent` | Numeric process keys the engine documents as carried over | JSON layout only |
 | `non_overwrite` | Output path is not the source; source hash and any pre-existing output hash unchanged | Yes |
@@ -55,8 +55,9 @@ Skipped checks are reported as `skip`, never `pass`.
   empty in this checkout and no Go toolchain is installed, so the engine cannot
   produce output locally. The harness can still validate any output file that
   is supplied.
-- **Not verified.** Build transforms, object names, supports, nozzle settings,
-  firmware scripts, slicing results and real-printer behaviour are not checked.
+- **Not verified.** Geometric equivalence checks build/component transforms, but not
+  slicer interpretation. Non-build object/volume bindings, object names, supports,
+  nozzle settings, firmware scripts, slicing and real-printer behaviour remain unverified.
 
 ## Files
 

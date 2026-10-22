@@ -22,6 +22,12 @@ import xml.etree.ElementTree as ET
 import zipfile
 import zlib
 from collections import Counter
+from pathlib import Path
+
+# Shared placement-aware parser lives with Panda QA. Keep direct CLI invocation
+# (python tests/compat/threemf_compat.py) working from any current directory.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "panda"))
+from world_3mf import Scene, SceneError
 
 FAMILIES = ("orca", "bambu", "prusa")
 # Orca and Bambu share the JSON-config layout and the paint codec; Prusa differs in both.
@@ -223,24 +229,27 @@ def _paint_code(el):
 
 
 def geometry(pkg, parts):
-    """Vertex/triangle counts, an order-independent hash, and per-triangle paint state."""
-    vertices = 0
-    tris = []
-    for part in parts:
-        for mesh in _iter(pkg.xml(part), "mesh"):
-            verts = [tuple(_coord(v, k) for k in "xyz") for v in _iter(mesh, "vertex")]
-            vertices += len(verts)
-            for tri in _iter(mesh, "triangle"):
-                try:
-                    idx = [int(tri.get(k)) for k in ("v1", "v2", "v3")]
-                except (TypeError, ValueError):
-                    raise InputError("triangle has a non-integer vertex index")
-                if any(i < 0 or i >= len(verts) for i in idx):
-                    raise InputError("triangle references a vertex outside its mesh")
-                canon = tuple(sorted(verts[i] for i in idx))
-                tris.append((canon, _paint_code(tri)))
-    digest = hashlib.sha256(json.dumps(sorted(c for c, _ in tris)).encode()).hexdigest()
-    return {"vertices": vertices, "triangles": len(tris), "hash": digest, "tris": tris}
+    """Placed build geometry, not orphan meshes or raw pre-transform vertices.
+
+    Root/child part availability was already validated by model_parts(). A
+    cloned component counts once per *instance*, and coordinates are in mm.
+    """
+    if not parts:
+        raise InputError("no model parts")
+    try:
+        scene = Scene(pkg.files, decimals=4,
+                      paint_normalizer=lambda code: code.strip().upper().lstrip("0"))
+    except SceneError as exc:
+        raise InputError("cannot resolve placed 3MF geometry: " + str(exc)) from exc
+    if not scene.triangles:
+        raise InputError("3MF has no printable build triangles")
+    placed = scene.geometry()
+    digest = hashlib.sha256(json.dumps(sorted(placed.items())).encode()).hexdigest()
+    vertices = len({vertex for triangle in placed for vertex in triangle})
+    tris = [(triangle, paint) for (triangle, paint), count in scene.triangles.items()
+            for _ in range(count)]
+    return {"vertices": vertices, "triangles": sum(placed.values()),
+            "hash": digest, "tris": tris, "_scene": scene}
 
 
 def bbl_channel(code):
@@ -332,6 +341,55 @@ def object_extruders(pkg):
                 pairs.append((obj.get("id"), values[-1] if values else None))
             return pairs
     return []
+
+
+def mapped_object_tools(src_geo, out_geo, source_meta, output_meta):
+    """Compare tools by placed build-item geometry, not XML metadata order/IDs.
+
+    When per-build-item mapping cannot be proven, return 'skip' rather than
+    claiming an unverified match. The geometry checks gate the full report.
+    """
+    src_scene, out_scene = src_geo["_scene"], out_geo["_scene"]
+    src_map, out_map = dict(source_meta), dict(output_meta)
+    src_build_ids = {oid for oid, _ in src_scene.items}
+    mapped_ids = [oid for oid in src_build_ids if src_map.get(oid) is not None]
+    if not mapped_ids:
+        return "skip", "no source object extruder bound to a verified build item"
+
+    def geometry_only(item):
+        records = Counter()
+        for (coords, _), count in item[1].items():
+            records[coords] += count
+        return records
+
+    remaining = set(range(len(out_scene.items)))
+    targets = [geometry_only(item) for item in out_scene.items]
+    verified = 0
+    for item in src_scene.items:
+        oid = item[0]
+        if src_map.get(oid) is None:
+            continue
+        source_triangles = geometry_only(item)
+        matches = [i for i in sorted(remaining) if source_triangles == targets[i]]
+        if not matches:
+            return ("skip" if src_geo["hash"] != out_geo["hash"] else "fail",
+                    "cannot align build object %s with output by placed geometry" % oid)
+        best = next((i for i in matches if out_map.get(out_scene.items[i][0]) == src_map[oid]),
+                    matches[0])
+        remaining.remove(best)
+        output_id = out_scene.items[best][0]
+        actual = out_map.get(output_id)
+        if src_map[oid] != actual:
+            return "fail", ("source build object %s tool %s != aligned output %s tool %s"
+                            % (oid, src_map[oid], output_id, actual))
+        verified += 1
+    unsupported = sorted(oid for oid, val in source_meta
+                         if val is not None and oid not in src_build_ids)
+    if unsupported:
+        return "skip", ("%d build items matched, %d non-build metadata bindings unverified"
+                        % (verified, len(unsupported)))
+    return "pass", ("%d extruder-bound build items matched by world-space geometry"
+                    % verified)
 
 
 def _scalar(value):
@@ -486,10 +544,11 @@ def compare(source, output, family="auto", expect_model=None,
         add("object_extruder_mapping", "skip", "no object extruder metadata")
     elif out_ext is None:
         add("object_extruder_mapping", "fail", "output extruder metadata unreadable")
+    elif out_geo is None:
+        add("object_extruder_mapping", "skip", "output geometry cannot be aligned")
     else:
-        same = [v for _, v in src_ext] == [v for _, v in out_ext]
-        add("object_extruder_mapping", "pass" if same else "fail",
-            f"source {src_ext} -> output {out_ext}")
+        state, detail = mapped_object_tools(src_geo, out_geo, src_ext, out_ext)
+        add("object_extruder_mapping", state, detail)
 
     out_cfg = None
     if src_cfg is None:

@@ -5,12 +5,14 @@ Every project is generated in a temporary directory. Repository fixtures are
 only read, never written.
 """
 import contextlib
+import copy
 import hashlib
 import io
 import json
 import os
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 import synthetic as syn
 import threemf_compat as qa
@@ -306,8 +308,11 @@ class NestedRealWorldPackageTests(Base):
         actual=entries["3D/3dmodel.model"]
         entries["3D/Objects/object_1.model"]=actual
         entries["3D/3dmodel.model"]=(
-            b'<model xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02">'
-            b'<resources/><build/></model>')
+            b'<model xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02" '
+            b'xmlns:p="http://schemas.microsoft.com/3dmanufacturing/production/2015/06">'
+            b'<resources><object id="2" type="model"><components>'
+            b'<component p:path="/3D/Objects/object_1.model" objectid="1"/>'
+            b'</components></object></resources><build><item objectid="2"/></build></model>')
         entries["3D/_rels/3dmodel.model.rels"]=(
             b'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
             b'<Relationship Id="child" Target="/3D/Objects/object_1.model" '
@@ -348,6 +353,62 @@ class NestedRealWorldPackageTests(Base):
         with self.assertRaisesRegex(qa.InputError,"model relationship target missing"):
             qa.compare(self.write("src.3mf",entries),
                        self.write("out.3mf",self.clean(self.source())))
+
+
+class RenumberedBuildToolTests(Base):
+    """World-space identity outlives model ID changes and metadata reordering."""
+
+    def inputs(self):
+        src = self.source()
+        root = ET.fromstring(src["3D/3dmodel.model"])
+        resources = next(x for x in root if x.tag.endswith("resources"))
+        first = next(x for x in resources if x.tag.endswith("object"))
+        second = copy.deepcopy(first)
+        second.set("id", "2")
+        resources.append(second)
+        build = next(x for x in root if x.tag.endswith("build"))
+        instance = copy.deepcopy(next(iter(build)))
+        instance.set("objectid", "2")
+        instance.set("transform", "1 0 0 0 1 0 0 0 1 30 0 0")
+        build.append(instance)
+        src["3D/3dmodel.model"] = ET.tostring(root, encoding="utf-8")
+        # Deliberately not the same order as the source build items.
+        src["Metadata/model_settings.config"] = (
+            "<config><object id='2'><metadata key='extruder' value='2'/></object>"
+            "<object id='1'><metadata key='extruder' value='5'/></object></config>")
+        dest = self.clean(src)
+        root = ET.fromstring(dest["3D/3dmodel.model"])
+        for obj in root.iter():
+            if obj.tag.endswith("object") or obj.tag.endswith("item"):
+                key = "id" if obj.tag.endswith("object") else "objectid"
+                obj.set(key, {"1": "11", "2": "12"}[obj.get(key)])
+        build = next(x for x in root if x.tag.endswith("build"))
+        items = list(build)
+        for item in items:
+            build.remove(item)
+        for item in reversed(items):
+            build.append(item)
+        dest["3D/3dmodel.model"] = ET.tostring(root, encoding="utf-8")
+        # Correct tools, but both object IDs and metadata ordering changed.
+        dest["Metadata/model_settings.config"] = (
+            "<config><object id='11'><metadata key='extruder' value='5'/></object>"
+            "<object id='12'><metadata key='extruder' value='2'/></object></config>")
+        return src, dest
+
+    def test_correct_tools_survive_metadata_and_build_reordering(self):
+        source, output = self.inputs()
+        report = self.pair(source, output)
+        self.assertTrue(report["ok"], failed(report))
+        self.assertEqual(statuses(report)["object_extruder_mapping"], "pass")
+        self.assertEqual(statuses(report)["geometry_hash"], "pass")
+
+    def test_mismapped_tools_fail_despite_identical_geometry(self):
+        source, output = self.inputs()
+        output["Metadata/model_settings.config"] = output["Metadata/model_settings.config"].replace(
+            "id='12'><metadata key='extruder' value='2'",
+            "id='12'><metadata key='extruder' value='1'")
+        report = self.pair(source, output)
+        self.assertIn("object_extruder_mapping", failed(report))
 
 
 class PrusaMetadataOnlyTests(Base):

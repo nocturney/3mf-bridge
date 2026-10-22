@@ -17,6 +17,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from world_3mf import Scene, SceneError
+
 REPO = Path(__file__).resolve().parents[2]
 FIXTURES = REPO / "tests" / "fixtures"
 FIVE_COLORS = FIXTURES / "bambu-five-colors.3mf"
@@ -265,50 +267,65 @@ def compare(source, output):
     """
     problems = collections.defaultdict(list)
     try:
-        src_model = Model(source)
-        out_model = Model(output)
-    except (ValueError, ET.ParseError, KeyError) as error:
-        return {"model": ["cannot parse 3dmodel.model: %s" % error]}
+        src_scene, out_scene = Scene(source.files), Scene(output.files)
+        # Keep the root model parser for simple transform metadata checks. Actual
+        # triangle traversal MUST use Scene (including p:path and nested parts).
+        src_model, out_model = Model(source), Model(output)
+    except (SceneError, ValueError, ET.ParseError, KeyError) as error:
+        return {"model": ["cannot resolve placed 3MF scene: %s" % error]}
 
-    src_mesh, out_mesh = src_model.mesh_records(), out_model.mesh_records()
+    src_mesh, out_mesh = src_scene.triangles, out_scene.triangles
+    src_geometry, out_geometry = src_scene.geometry(), out_scene.geometry()
+    if not src_geometry or not out_geometry:
+        problems["geometry"].append("build contains no placed triangles")
+    if src_geometry != out_geometry:
+        missing = sum((src_geometry - out_geometry).values())
+        extra = sum((out_geometry - src_geometry).values())
+        problems["geometry"].append("world-space triangles differ: %d missing, %d extra at %d decimals"
+                                    % (missing, extra, src_scene.decimals))
+        # Equivalent placement may be expressed by a different object hierarchy.
+        # Only report differing build transforms when placed geometry also differs.
+        if src_model.transforms() != out_model.transforms():
+            problems["transforms"].append("build transforms and placed geometry differ")
+
+    # Pair paint codes with placed triangles, not merely raw paint-code counts:
+    # swapping the colours of equal-area regions must fail.
     if src_mesh != out_mesh:
         missing = sum((src_mesh - out_mesh).values())
         extra = sum((out_mesh - src_mesh).values())
-        problems["geometry"].append("triangle records differ: %d missing, %d extra" % (missing, extra))
-
-    if len(src_model.items) != len(out_model.items):
-        problems["transforms"].append("build item count %d != %d" % (len(src_model.items), len(out_model.items)))
-    elif src_model.transforms() != out_model.transforms():
-        problems["transforms"].append("build transforms differ")
-
-    src_paints = collections.Counter(paint for _, paint in src_mesh.elements())
-    out_paints = collections.Counter(paint for _, paint in out_mesh.elements())
-    if src_paints != out_paints:
-        problems["paints"].append("paint bitstream multiset differs: source %s, output %s"
-                                  % (dict(src_paints), dict(out_paints)))
+        problems["paints"].append("placed triangle/paint records differ: %d missing, %d extra"
+                                  % (missing, extra))
 
     src_obj, out_obj = source_settings(source), output_settings(output)
-    out_by_signature = {}
-    for oid, entry in out_model.objects.items():
-        if entry["mesh"]:
-            out_by_signature.setdefault(out_model.signature(oid), oid)
-    for oid, entry in src_model.objects.items():
-        if not entry["mesh"] and not entry["components"]:
-            continue
+    # IDs are package-local, and Panda may renumber or flatten source objects.
+    # Align *placed build items* by their painted geometry, not raw object ID
+    # or pre-transform mesh signature. Duplicates are matched one-to-one.
+    available = set(range(len(out_scene.items)))
+    for oid, placed in src_scene.items:
         src_entry = src_obj.get(oid, {"extruder": None, "parts": {}})
-        match = out_by_signature.get(src_model.signature(oid))
-        if match is None:
-            if src_entry["extruder"] is not None or src_entry["parts"]:
-                problems["extruders"].append("source object %s has no geometry-equal output object" % oid)
+        if src_entry["extruder"] is None and not src_entry["parts"]:
             continue
-        out_entry = out_obj.get(match, {"extruder": None, "volumes": []})
+        matches = [i for i in sorted(available) if placed == out_scene.items[i][1]]
+        if not matches:
+            problems["extruders"].append("cannot verify placement-based extruder alignment for source build object %s" % oid)
+            continue
+        # When identical object instances overlap, prefer a matching tool,
+        # but still consume each output instance at most once.
+        chosen = next((i for i in matches
+                       if out_obj.get(out_scene.items[i][0], {}).get("extruder")
+                       == src_entry["extruder"]), matches[0])
+        available.remove(chosen)
+        dest_id = out_scene.items[chosen][0]
+        out_entry = out_obj.get(dest_id, {"extruder": None, "volumes": []})
         if src_entry["extruder"] is not None and out_entry["extruder"] != src_entry["extruder"]:
-            problems["extruders"].append("object %s extruder %s != output %s"
+            problems["extruders"].append("source object %s extruder %s != matched output %s"
                                          % (oid, src_entry["extruder"], out_entry["extruder"]))
+        # Volume tools are checked separately. Their IDs are not comparable
+        # between Bambu/Prusa, so do not pretend to match those IDs.
         src_parts = sorted(src_entry["parts"].values())
         out_parts = sorted(e for _, e in out_entry["volumes"] if e is not None)
         if src_parts and src_parts != out_parts:
-            problems["extruders"].append("object %s volume extruders %s != output %s"
+            problems["extruders"].append("source object %s volume extruders %s != matched output %s"
                                          % (oid, src_parts, out_parts))
 
     src_palette_list, out_palette_list = source_palette(source), output_palette(output)
