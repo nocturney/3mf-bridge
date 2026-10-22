@@ -20,7 +20,7 @@ const translations={
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
     manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',
     noSupported:'עדיין אין יעדים זמינים במחשב זה.',nothingSelected:'עדיין לא נבחרו מדפסות.',
-    variants:'זרבובית וסלייסר',nozzleUnspecified:'ללא שיוך דיזה',imageUnavailable:'תמונה אינה זמינה'
+    variants:'דגם, דיזה וסלייסר',nozzleUnspecified:'ללא שיוך דיזה',imageUnavailable:'תמונה אינה זמינה'
   },
   en:{
     title:'My printers',welcome:'Choose printers',welcomeBody:'No printers are selected yet. Choose a manufacturer or search for a model to begin.',
@@ -31,7 +31,7 @@ const translations={
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
     manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',
     noSupported:'No destinations are available on this computer yet.',nothingSelected:'No printers selected yet.',
-    variants:'Nozzle and slicer',nozzleUnspecified:'No nozzle specified',imageUnavailable:'Image unavailable'
+    variants:'Model, nozzle and slicer',nozzleUnspecified:'No nozzle specified',imageUnavailable:'Image unavailable'
   }
 };
 const changedEvent='slicebridge:my-printers-changed';
@@ -247,6 +247,8 @@ function refreshManufacturerOptions(){
 // Show physical nozzle/slicer details without any conversion-capability labels.
 function variantLabel(item){
   if(item.legacyTarget)return t('nozzleUnspecified');
+  // Spelling aliases are model identities, not conversion/nozzle presets.
+  if(!item.nozzle&&!item.slicer)return item.catalogueLabel||picker.title(item);
   return picker.variantText(item)||picker.title(item);
 }
 // The slicer/nozzle variants remain selectable as printer inventory even when
@@ -303,11 +305,10 @@ function groupCard(group,index){
   copy.append(node('strong','',group.model),node('small','',group.manufacturer));
   label.append(graphic,copy);
   row.append(input,label);
-  // Catalogue-only aliases (Anker / AnkerMake M5C) are not nozzle choices.
-  // Real installed nozzle/slicer variants are listed irrespective of whether
-  // the separate conversion engine currently supports them.
-  const choices=group.variants.filter(variant=>variant.nozzle||variant.slicer||variant.legacyTarget);
-  if(choices.length>1)row.append(variantList(choices));
+  // One physical card, but EVERY stored ID remains selectable. Catalogue
+  // spellings are labelled as model names, genuine nozzle/slicer variants as
+  // such; no conversion readiness or engine-based ranking.
+  if(group.variants.length>1)row.append(variantList(group.variants));
   return row;
 }
 function render(){

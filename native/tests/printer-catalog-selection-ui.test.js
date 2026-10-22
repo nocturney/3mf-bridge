@@ -40,14 +40,20 @@ test('the dialog renders every catalogue model (one card per physical model) wit
   const expected=picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false));
   assert.equal(h.dom('catalogModelList').children.length,expected.length);
   assert.equal(h.dom('catalogSearchCount').hidden,true);
-  // Pure spelling aliases are NOT presented as nozzle/slicer choices.
+  // Different stored catalogue spellings remain separately reachable and
+  // labelled by actual MODEL spelling, never as conversion engines.
   h.dom('printerCatalogSearch').value='CR-10';
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,'creality-creality-cr-10-s-pro-v2');
   assert.ok(card);
-  assert.equal(card.children.some(child=>child.classList.contains('catalog-variant-list')),false);
+  const variants=card.children.find(child=>child.classList.contains('catalog-variant-list'));
+  assert.ok(variants);
+  const aliasRows=variants.children.map(option=>[option.children[0].value,option.children[1].textContent]);
+  assert.deepEqual(aliasRows.map(([id])=>id).sort(),
+    ['creality-creality-cr-10-s-pro-v2','creality-creality-cr-10s-pro-v2']);
+  assert.equal(new Set(aliasRows.map(([,name])=>name)).size,2);
   const group=expected.find(group=>group.ids.includes('creality-creality-cr-10-s-pro-v2'));
-  assert.deepEqual(group.ids.slice().sort(),['creality-creality-cr-10-s-pro-v2','creality-creality-cr-10s-pro-v2']);
+  assert.deepEqual(group.ids.slice().sort(),aliasRows.map(([id])=>id).sort());
 });
 
 test('an unknown catalogue model is selected in the dialog but is never a conversion destination',async()=>{
@@ -90,7 +96,7 @@ test('a physical model and its installed nozzle targets share one card with a 0.
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,pro[0].id);
   const boxes=card.children.find(child=>child.classList.contains('catalog-variant-list')).children;
-  assert.equal(boxes.length,3);
+  assert.equal(boxes.length,4); // three installed variants plus the selectable original catalogue ID
 });
 
 test('saved selections come first in saved order, then makers A-Z, newest release first within a maker',()=>{

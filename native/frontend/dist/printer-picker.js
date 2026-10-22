@@ -195,7 +195,9 @@
         releaseDate:typeof model.releaseDate==='string'?model.releaseDate:null,
         ready:legacy!==null&&usable.has(legacy),
       };
-      add({...item,releaseDate:releaseDate(item)});
+      // Catalogue-only aliases keep the distinct original spelling for UI
+      // selection, while ready conversion targets retain their exact schema.
+      add({...item,...(legacy===null?{catalogueLabel:clean(model.model)}:{}),releaseDate:releaseDate(item)});
     }
     for(const target of Array.isArray(installedTargets)?installedTargets:[]){
       if(!target||typeof target.id!=='string'||!orcaTargetPattern.test(target.id))continue;

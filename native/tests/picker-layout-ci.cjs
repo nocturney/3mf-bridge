@@ -19,7 +19,7 @@ const {pathToFileURL}=require('node:url');
 const dist=path.resolve(__dirname,'../frontend/dist');
 const indexHtml=fs.readFileSync(path.join(dist,'index.html'),'utf8');
 const catalog=JSON.parse(fs.readFileSync(path.join(dist,'printer-catalog.json'),'utf8'));
-// Non-Bambu catalogue IDs plus the generic PrusaSlicer item: 590 listed items, 584 physical cards.
+// Non-Bambu catalogue IDs plus the generic PrusaSlicer item: 590 listed IDs, 582 physical cards.
 const catalogIds=catalog.models.filter(model=>model.manufacturer.toLowerCase()!=='bambu lab').map(model=>model.id);
 assert.equal(catalogIds.length,589,'catalogue should hold 589 non-Bambu IDs');
 
@@ -61,7 +61,7 @@ const savedCatalogueOnly=['flashforge-creator-5','afinia-afinia-h-1-hs','sovol-s
   'qidi-x-plus-5','elegoo-centauri-carbon-2'];
 
 // 8 layouts: desktop 1100x750 and compact 900x650, English (LTR) and Hebrew (RTL), with and
-// without the Creator 5 Pro filter, plus one catalogue-only run for the 589-to-584 mapping.
+// without the Creator 5 Pro filter, plus one catalogue-only run for the 589-to-582 mapping.
 const scenarios=[
   {name:'en-ltr-1100x750',lang:'en',dir:'ltr',width:1100,height:750,filter:'',installed:true},
   {name:'en-ltr-1100x750-creator5pro',lang:'en',dir:'ltr',width:1100,height:750,filter:'Creator 5 Pro',installed:true},
@@ -334,12 +334,20 @@ function checkScenario(scenario,report){
   if(report.hitTests<1)problems.push('no visible element was hit-tested: scrollArea '+J(report.scrollArea)+
     ' list '+J(report.list)+' firstCard '+J(report.firstCard||{}));
   const creator=report.cards.find(card=>card.name==='Creator 5 Pro');
-  if(scenario.installed&&(!creator||creator.variants.length!==5))
-    problems.push('Creator 5 Pro card should list 5 installed variants: '+JSON.stringify(creator&&creator.variants));
-  // 589 catalogue IDs + PrusaSlicer fold into 584 cards; installed Creator 5 Pro variants join
+  if(scenario.installed){
+    // Five genuine installed nozzle/slicer variants PLUS the selectable
+    // catalogue identity. They must not be conflated with conversion tiers.
+    const expectedInstalled=installedTargets.map(t=>t.nozzle+' mm · '+t.slicer).sort();
+    const actualInstalled=(creator?.variants||[]).filter(v=>v.includes(' mm · ')).sort();
+    if(JSON.stringify(actualInstalled)!==JSON.stringify(expectedInstalled))
+      problems.push('Creator 5 Pro installed nozzle/slicer variants differ: '+JSON.stringify(actualInstalled));
+    if(!creator?.values.includes('flashforge-creator-5-pro'))
+      problems.push('Creator 5 Pro catalogue identity is not independently selectable');
+  }
+  // 589 catalogue IDs + PrusaSlicer fold into 582 cards; installed Creator 5 Pro variants join
   // their existing card rather than adding one.
-  if(!scenario.filter&&report.cardCount!==584)
-    problems.push('expected 584 model cards, measured '+report.cardCount);
+  if(!scenario.filter&&report.cardCount!==582)
+    problems.push('expected 582 model cards, measured '+report.cardCount);
   if(scenario.filter&&report.cardCount<1)problems.push('Creator 5 Pro filter shows no card');
   for(const saved of report.saved){
     if(!scenario.filter){

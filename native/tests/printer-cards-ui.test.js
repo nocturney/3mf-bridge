@@ -176,7 +176,7 @@ test('variant checkboxes keep other nozzles selected and never swap one for anot
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,'Creator 5 Pro');
   const boxes=variantBoxes(card);
-  assert.equal(boxes.length,5);
+  assert.equal(boxes.length,6); // Five actual slicer/nozzle choices and the catalogue identity.
   assert.equal(boxes.filter(box=>box.checked).length,1);
   assert.equal(boxes.find(box=>box.value===oldIds.pro).checked,true);
   const [quarter]=boxes.filter(box=>box.value===proVariants[0].id);
