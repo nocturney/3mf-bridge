@@ -179,8 +179,23 @@
     const value=Number.parseFloat(item?.nozzle);
     return Number.isFinite(value)?value:Number.POSITIVE_INFINITY;
   }
+  // Source tier of a destination, lowest first. 0: the manufacturer's own app (built-in
+  // adapter or a vendor application such as Snapmaker Orca, Flash Studio, ElegooSlicer,
+  // QIDIStudio). 1: generic OrcaSlicer, also any installed target without a slicer name.
+  // 2: generic PrusaSlicer or the project-only export. 3: catalogue-only, not ready.
+  function sourceTier(item){
+    if(!item.ready)return 3;
+    if(item.legacyTarget)return 0;
+    if(item.id===prusaTargetId)return 2;
+    const app=String(item.slicer||'').toLocaleLowerCase('en').replace(/[\s\-_]+/g,'');
+    if(app==='prusaslicer')return 2;
+    if(!app||app==='orcaslicer')return 1;
+    return 0;
+  }
   function variantOrder(left,right){
     if(Boolean(left.ready)!==Boolean(right.ready))return left.ready?-1:1;
+    const byTier=sourceTier(left)-sourceTier(right);
+    if(byTier)return byTier;
     if(Boolean(left.legacyTarget)!==Boolean(right.legacyTarget))return left.legacyTarget?-1:1;
     const byNozzle=nozzleNumber(left)-nozzleNumber(right);
     if(byNozzle&&Number.isFinite(byNozzle))return byNozzle;
@@ -202,10 +217,11 @@
     const groups=[];
     for(const [key,variants] of byKey){
       variants.sort(variantOrder);
-      // Default when a card is ticked: the built-in adapter, else a ready 0.4 mm variant,
-      // else any ready variant, else the catalogue ID alone.
-      const preferred=variants.find(v=>v.ready&&v.legacyTarget)||variants.find(v=>v.ready&&v.nozzle==='0.4')||
-                      variants.find(v=>v.ready)||variants[0];
+      // Default when a card is ticked: the best source tier that is ready (manufacturer app
+      // first), then within that tier the built-in adapter, else the 0.4 mm variant, else the
+      // first of the tier. With nothing ready, the catalogue ID alone.
+      const top=variants.filter(v=>v.ready&&sourceTier(v)===sourceTier(variants[0]));
+      const preferred=top.find(v=>v.legacyTarget)||top.find(v=>v.nozzle==='0.4')||top[0]||variants[0];
       const first=variants[0];
       groups.push({
         key,
