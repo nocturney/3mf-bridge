@@ -366,6 +366,25 @@ test('generic PrusaSlicer ranks below generic OrcaSlicer on a physical card',()=
   assert.equal(defaultCard([prusa,orca],'U1').id,orca.id);
 });
 
+test('an unknown or another maker’s slicer fork never masquerades as the manufacturer app',()=>{
+  const orca=installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer','0.4','e111111111');
+  const unknown=installedTarget('Flashforge','Creator 5 Pro','QIDIStudio','0.4','e222222222');
+  const other=installedTarget('Flashforge','Creator 5 Pro','CustomVendorFork','0.4','e333333333');
+  const flash=installedTarget('Flashforge','Creator 5 Pro','Flash Studio Desktop','0.6','e444444444');
+  for(const items of [[orca,unknown,other,flash],[other,unknown,flash,orca]]){
+    assert.equal(defaultCard(items,'Creator 5 Pro').id,flash.id);
+  }
+  // Without Flash Studio, generic Orca must not be demoted in favour of an
+  // unrelated application's brand name.
+  assert.equal(defaultCard([other,orca,unknown],'Creator 5 Pro').id,orca.id);
+});
+
+test('Prusa Research may prefer its own PrusaSlicer profiles over generic Orca',()=>{
+  const generic=installedTarget('Prusa Research','CORE One','OrcaSlicer','0.4','e555555555');
+  const vendor=installedTarget('Prusa Research','CORE One','PrusaSlicer','0.4','e666666666');
+  assert.equal(defaultCard([generic,vendor],'CORE One').id,vendor.id);
+});
+
 test('within one source tier the 0.4 mm variant is the first-selection default',()=>{
   const orca=['0.25','0.4','0.6'].map((nozzle,i)=>installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer',nozzle,'b'.repeat(9)+i));
   assert.equal(defaultCard(orca,'Creator 5 Pro').id,orca[1].id);

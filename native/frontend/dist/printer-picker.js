@@ -179,18 +179,36 @@
     const value=Number.parseFloat(item?.nozzle);
     return Number.isFinite(value)?value:Number.POSITIVE_INFINITY;
   }
-  // Source tier of a destination, lowest first. 0: the manufacturer's own app (built-in
-  // adapter or a vendor application such as Snapmaker Orca, Flash Studio, ElegooSlicer,
-  // QIDIStudio). 1: generic OrcaSlicer, also any installed target without a slicer name.
-  // 2: generic PrusaSlicer or the project-only export. 3: catalogue-only, not ready.
+  // Only known manufacturer<->slicer pairs are first-party. An arbitrary
+  // third-party Orca fork, even one with a vendor-branded machine profile,
+  // must not outrank that manufacturer's own slicer.
+  const manufacturerSlicers=Object.freeze({
+    'snapmaker':['snapmakerorca'],
+    'flashforge':['flashstudio','flashstudiodesktop'],
+    'elegoo':['elegooslicer'],
+    'qidi':['qidistudio','qidislicer'],
+    'prusa research':['prusaslicer'],
+    'creality':['crealityprint','crealityslicer'],
+    'anycubic':['anycubicslicernext','anycubicslicer'],
+    'sovol':['sovolslicer'],
+    'flsun':['flsunslicer'],
+    'ankermake':['ankermakestudio'],
+    'artillery':['artilleryslicer'],
+    'ratrig':['ratosslicer'],
+  });
+  // Tier 0: an exact vendor app with a resolved profile or available native
+  // adapter. Tier 1: generic OrcaSlicer; 2: another fully resolved Orca fork;
+  // 3: generic PrusaSlicer export/profile; 4: catalogue-only (not convert-ready).
   function sourceTier(item){
-    if(!item.ready)return 3;
+    if(!item.ready)return 4;
     if(item.legacyTarget)return 0;
-    if(item.id===prusaTargetId)return 2;
+    if(item.id===prusaTargetId)return 3;
     const app=String(item.slicer||'').toLocaleLowerCase('en').replace(/[\s\-_]+/g,'');
-    if(app==='prusaslicer')return 2;
-    if(!app||app==='orcaslicer')return 1;
-    return 0;
+    const maker=makerKey(item.manufacturer);
+    if((manufacturerSlicers[maker]||[]).includes(app))return 0;
+    if(app==='orcaslicer')return 1;
+    if(app==='prusaslicer')return 3;
+    return 2;
   }
   function variantOrder(left,right){
     if(Boolean(left.ready)!==Boolean(right.ready))return left.ready?-1:1;

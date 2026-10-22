@@ -253,6 +253,28 @@ func LoadConfigured(target, sourceNozzle, slicerID string, overrides map[string]
 	if !ok {
 		return nil, fmt.Errorf("unknown printer %q", target)
 	}
+	// An "auto" choice must select the first COMPLETE vendor profile, not merely
+	// the first installed app folder. If a manufacturer install has broken or
+	// missing machine/process/PLA data, try the next trusted Orca-family source.
+	// Explicit user selections NEVER fall back to another slicer silently.
+	if slicerID == "" || slicerID == "auto" {
+		seen, reasons := map[string]bool{}, []string{}
+		for _, loc := range slicerLocations(target) {
+			if seen[loc.id] {
+				continue
+			}
+			seen[loc.id] = true
+			bundle, loadErr := LoadConfigured(target, sourceNozzle, loc.id, overrides)
+			if loadErr == nil {
+				return bundle, nil
+			}
+			reasons = append(reasons, loc.name+": "+loadErr.Error())
+		}
+		if len(reasons) == 0 {
+			return nil, fmt.Errorf("no installed %s profile source was found", spec.Name)
+		}
+		return nil, fmt.Errorf("no complete installed %s source profile: %s", spec.Name, strings.Join(reasons, "; "))
+	}
 	nozzle, machineName, processName, filamentNames, err := Variant(target, sourceNozzle)
 	if err != nil {
 		return nil, err
