@@ -217,20 +217,20 @@ test('with no ready conversion target the full catalogue stays selectable and th
   });
 });
 
-test('manufacturer dropdown offers every catalogue maker, with mainstream makers before one separator',async()=>{
+test('manufacturer dropdown shows all real makers alphabetically with no conversion-group separator',async()=>{
   const h=loadMyPrinters({});
   h.api.setSupportedTargets({available:availabilityAll({c5:false,cc2:false,qidi:false}),installedTargets:[orca],prusaAvailable:false});
   await h.api.init();
   const options=h.dom('printerManufacturerFilter').children;
   const values=options.map(option=>option.value);
   assert.equal(values[0],'');
-  assert.deepEqual(values.slice(1,10),['Anycubic','Creality','ELEGOO','Flashforge','FLSun','Prusa Research','QIDI','Snapmaker','Sovol']);
-  assert.ok(values.includes('Anker')&&values.includes('Afinia'));
+  const makers=values.slice(1);
+  assert.deepEqual(makers,[...makers].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
+  assert.ok(makers.includes('Anker')&&makers.includes('Afinia'));
   assert.equal(values.includes('Bambu Lab'),false);
   assert.equal(values.includes('Generic'),false);
-  const separator=options[values.indexOf('',1)];
-  assert.equal(separator.disabled,true,'separator must not be a selectable maker');
-  assert.match(separator.textContent,/─/);
+  assert.equal(values.slice(1).includes(''),false);
+  assert.equal(options.filter(option=>option.disabled).length,0);
 });
 
 test('losing availability trims an open draft and removes the destination everywhere',async()=>{
@@ -269,17 +269,16 @@ test('the 32-printer limit holds in the dialog, not only in the saved file',asyn
   assert.equal(h.dom('myPrintersSelectionCount').textContent,'32 printers selected');
 });
 
-test('integrated manufacturers appear ahead of alphabetical others, with one disabled separator',()=>{
+test('all manufacturers appear once in a single alphabetical list without conversion tiers',()=>{
   const items=[
     {manufacturer:'Zortrax'},{manufacturer:'QIDI'},{manufacturer:'Anycubic'},
     {manufacturer:'Flashforge'},{manufacturer:'Snapmaker'},{manufacturer:'Creality'},
     {manufacturer:'Prusa'},{manufacturer:'ELEGOO'},{manufacturer:'Elegoo'},{manufacturer:'Qidi'},
     {manufacturer:'Generic'}
   ];
-  const grouped=picker.manufacturerGroups(items);
-  assert.deepEqual(grouped.preferred,['Anycubic','Creality','ELEGOO','Flashforge','Prusa Research','QIDI','Snapmaker']);
-  assert.deepEqual(grouped.others,['Generic','Zortrax']);
-  assert.deepEqual(picker.manufacturerGroups([]),{preferred:[],others:[]});
+  assert.deepEqual(picker.manufacturerNames(items),
+    ['Anycubic','Creality','ELEGOO','Flashforge','Generic','Prusa Research','QIDI','Snapmaker','Zortrax']);
+  assert.deepEqual(picker.manufacturerNames([]),[]);
 });
 
 test('unselected printers sort by maker A-Z, then newest verified launch within a maker; selected first',()=>{

@@ -21,13 +21,13 @@ const orcaPro=(nozzle,hex,slicer)=>({
 const proVariants=[orcaPro('0.25','1111111111','OrcaSlicer'),orcaPro('0.4','2222222222','OrcaSlicer'),
                    orcaPro('0.4','5555555555','Flash Studio')];
 
-test('the catalogue offers all 589 non-Bambu IDs as selectable, with each ID reachable on its own',()=>{
+test('all 589 catalogue IDs remain recognized while duplicate spellings share one physical card',()=>{
   assert.equal(nonBambu.length,589);
   const groups=picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false));
   const reachable=groups.flatMap(group=>group.ids).filter(id=>nonBambu.some(model=>model.id===id));
   assert.equal(reachable.length,589);
   assert.equal(new Set(reachable).size,589);
-  // Spelling duplicates of one model share a card, and each spelling is still its own choice.
+  // Existing saved IDs remain recognized even when aliases collapse to one model card.
   const creality=groups.find(group=>group.model==='CR-10 S Pro V2'||group.model==='CR-10S Pro V2');
   assert.equal(creality.ids.length,2);
 });
@@ -40,12 +40,14 @@ test('the dialog renders every catalogue model (one card per physical model) wit
   const expected=picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false));
   assert.equal(h.dom('catalogModelList').children.length,expected.length);
   assert.equal(h.dom('catalogSearchCount').hidden,true);
-  // Both spellings of one model are offered as choices inside the single card.
+  // Pure spelling aliases are NOT presented as nozzle/slicer choices.
   h.dom('printerCatalogSearch').value='CR-10';
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,'creality-creality-cr-10-s-pro-v2');
-  const choices=card.children.find(child=>child.classList.contains('catalog-variant-list')).children.map(option=>option.children[0].value);
-  assert.deepEqual(choices.sort(),['creality-creality-cr-10-s-pro-v2','creality-creality-cr-10s-pro-v2']);
+  assert.ok(card);
+  assert.equal(card.children.some(child=>child.classList.contains('catalog-variant-list')),false);
+  const group=expected.find(group=>group.ids.includes('creality-creality-cr-10-s-pro-v2'));
+  assert.deepEqual(group.ids.slice().sort(),['creality-creality-cr-10-s-pro-v2','creality-creality-cr-10s-pro-v2']);
 });
 
 test('an unknown catalogue model is selected in the dialog but is never a conversion destination',async()=>{
@@ -72,7 +74,7 @@ test('an unknown catalogue model is selected in the dialog but is never a conver
   assert.deepEqual(plain(h.api.legacyTargets()),[]);
 });
 
-test('a physical model with a catalogue ID and installed targets is one card, defaulting to a ready target',async()=>{
+test('a physical model and its installed nozzle targets share one card with a 0.4 mm default',async()=>{
   const h=loadMyPrinters({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
   h.api.setSupportedTargets({available:[],installedTargets:proVariants,prusaAvailable:false});
   await h.api.init();
@@ -81,7 +83,7 @@ test('a physical model with a catalogue ID and installed targets is one card, de
   assert.equal(pro.length,1);
   assert.ok(pro[0].ids.includes('flashforge-creator-5-pro'));
   assert.equal(pro[0].ready,true);
-  assert.ok(proVariants.map(v=>v.id).includes(pro[0].id),'card selects a ready conversion ID');
+  assert.ok(proVariants.filter(v=>v.nozzle==='0.4').map(v=>v.id).includes(pro[0].id),'default is based on physical nozzle');
   h.dom('myPrintersBtn').fire('click');
   assert.equal(cardIds(h).filter(id=>id==='flashforge-creator-5-pro').length,0,'catalogue ID is not a separate card');
   h.dom('printerCatalogSearch').value='Creator 5 Pro';

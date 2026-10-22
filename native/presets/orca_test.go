@@ -366,8 +366,8 @@ func TestOrcaChainRejectsSymlinkedApplicationFolder(t *testing.T) {
 }
 
 func TestVendorForkCopyWinsOverGenericOrcaAndBrokenCopyFallsBack(t *testing.T) {
-	fork := writeOrcaTree(t, "Acme", acmeSample())
-	generic := writeOrcaTree(t, "Acme", acmeSample())
+	fork := writeOrcaTree(t, "Snapmaker", acmeSample())
+	generic := writeOrcaTree(t, "Snapmaker", acmeSample())
 	d := discoverOrca([]slicerLocation{
 		{id: "snapmaker-orca", name: "Snapmaker Orca", root: fork},
 		{id: "orca-slicer", name: "OrcaSlicer", root: generic},
@@ -378,7 +378,7 @@ func TestVendorForkCopyWinsOverGenericOrcaAndBrokenCopyFallsBack(t *testing.T) {
 
 	broken := acmeSample()
 	delete(broken, acmeFilament)
-	brokenRoot := writeOrcaTree(t, "Acme", broken)
+	brokenRoot := writeOrcaTree(t, "Snapmaker", broken)
 	d = discoverOrca([]slicerLocation{
 		{id: "snapmaker-orca", name: "Snapmaker Orca", root: brokenRoot},
 		{id: "orca-slicer", name: "OrcaSlicer", root: generic},
@@ -388,6 +388,60 @@ func TestVendorForkCopyWinsOverGenericOrcaAndBrokenCopyFallsBack(t *testing.T) {
 	}
 	if len(d.Rejected) != 1 || d.Rejected[0].Slicer != "Snapmaker Orca" || !strings.Contains(d.Rejected[0].Reason, "no PLA filament") {
 		t.Fatalf("broken vendor copy should be reported: %+v", d.Rejected)
+	}
+}
+
+func TestBrandedOrcaForksOnlyContributeTheirOwnManufacturer(t *testing.T) {
+	// Real branded Orca forks ship whole upstream vendor libraries. Do not
+	// offer another maker's profiles as a fork-owned destination just because
+	// compatible JSON happens to be bundled beside the manufacturer's files.
+	fork := t.TempDir()
+	writeOrcaFiles(t, fork, "Snapmaker", acmeSample())
+	writeOrcaFiles(t, fork, "Anker", acmeSample())
+	generic := writeOrcaTree(t, "Anker", acmeSample())
+	locations := []slicerLocation{
+		{id: "snapmaker-orca", name: "Snapmaker Orca", root: fork},
+		{id: "orca-slicer", name: "OrcaSlicer", root: generic},
+	}
+	discovery := discoverOrca(locations)
+	if len(discovery.Targets) != 2 || len(discovery.Rejected) != 0 {
+		t.Fatalf("only owner Snapmaker and generic Orca Anker should be discovered: %+v", discovery)
+	}
+	owners := map[string]string{}
+	for _, target := range discovery.Targets {
+		owners[target.Vendor] = target.Slicer
+	}
+	if owners["Snapmaker"] != "Snapmaker Orca" || owners["Anker"] != "OrcaSlicer" {
+		t.Fatalf("unrelated vendor profile leaked through branded fork: %+v", owners)
+	}
+	// An old ID that pointed into an unrelated fork must never re-resolve.
+	oldForeignID := orcaTargetID("Anker", "Acme Mini 0.4 nozzle",
+		filepath.Join(fork, "Anker", acmeMachine))
+	if _, err := resolveOrca(locations, oldForeignID); err == nil {
+		t.Fatal("previous cross-vendor fork target must not be resolved after filtering")
+	}
+}
+
+func TestOrcaForkOwnershipWhitelistDoesNotFilterGenericOrExplicitProfiles(t *testing.T) {
+	for _, tc := range []struct {
+		app, vendor string
+		allowed     bool
+	}{
+		{"snapmaker-orca", "Snapmaker", true},
+		{"snapmaker-orca", "Anker", false},
+		{"elegoo-slicer", "ELEGOO", true},
+		{"elegoo-slicer", "Flashforge", false},
+		{"flash-studio", "Flashforge", true},
+		{"flash-studio", "Anker", false},
+		{"qidi-studio", "QIDI", true},
+		{"qidi-studio", "X 5 Series", true},
+		{"qidi-studio", "Anker", false},
+		{"orca-slicer", "Anker", true},
+		{"system", "Anker", true},
+	} {
+		if got := orcaVendorOwnedByApp(tc.app, tc.vendor); got != tc.allowed {
+			t.Fatalf("app=%q vendor=%q: allowed=%v want %v", tc.app, tc.vendor, got, tc.allowed)
+		}
 	}
 }
 

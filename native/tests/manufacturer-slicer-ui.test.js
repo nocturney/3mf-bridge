@@ -45,9 +45,9 @@ test('an installed slicer alone is not conversion support: nothing is ready, and
   assert.deepEqual(h.plain(h.api.selectedTargetIds()),[]);
   h.dom('myPrintersBtn').fire('click');
   // Catalogue models stay selectable; the slicer adds no maker or card of its own.
-  const {preferred,others}=picker.manufacturerGroups(picker.catalogItems(catalog.models,[],[],false));
+  const expected=picker.manufacturerNames(picker.catalogItems(catalog.models,[],[],false));
   const makers=h.dom('printerManufacturerFilter').children.map(option=>option.value).filter(Boolean);
-  assert.deepEqual(makers,[...preferred,'',...others].filter(Boolean));
+  assert.deepEqual(makers,expected);
   assert.equal(h.dom('catalogModelList').children.length,picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false)).length);
 });
 

@@ -20,7 +20,7 @@ const translations={
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
     manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',
     noSupported:'עדיין אין יעדים זמינים במחשב זה.',nothingSelected:'עדיין לא נבחרו מדפסות.',
-    variants:'זרבובית וסלייסר',builtInVariant:'מתאם מובנה',imageUnavailable:'תמונה אינה זמינה'
+    variants:'זרבובית וסלייסר',nozzleUnspecified:'ללא שיוך דיזה',imageUnavailable:'תמונה אינה זמינה'
   },
   en:{
     title:'My printers',welcome:'Choose printers',welcomeBody:'No printers are selected yet. Choose a manufacturer or search for a model to begin.',
@@ -31,7 +31,7 @@ const translations={
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
     manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',
     noSupported:'No destinations are available on this computer yet.',nothingSelected:'No printers selected yet.',
-    variants:'Nozzle and slicer',builtInVariant:'Built-in target',imageUnavailable:'Image unavailable'
+    variants:'Nozzle and slicer',nozzleUnspecified:'No nozzle specified',imageUnavailable:'Image unavailable'
   }
 };
 const changedEvent='slicebridge:my-printers-changed';
@@ -238,29 +238,19 @@ function refreshManufacturerOptions(){
   filter.replaceChildren();
   const placeholder=node('option','',t('chooseManufacturer'));
   placeholder.value='';filter.append(placeholder);
-  const {preferred,others}=picker.manufacturerGroups(listed);
-  const makers=[...preferred,...others];
-  for(const maker of preferred){
-    const option=node('option','',maker);option.value=maker;filter.append(option);
-  }
-  if(preferred.length&&others.length){
-    const divider=node('option','','────────────');
-    divider.value='';divider.disabled=true;
-    divider.setAttribute('aria-hidden','true');
-    filter.append(divider);
-  }
-  for(const maker of others){
+  const makers=picker.manufacturerNames(listed);
+  for(const maker of makers){
     const option=node('option','',maker);option.value=maker;filter.append(option);
   }
   filter.value=makers.includes(previous)?previous:'';
 }
-// Catalogue-only spellings have no nozzle or slicer, so they are told apart by their model text.
+// Show physical nozzle/slicer details without any conversion-capability labels.
 function variantLabel(item){
-  if(item.legacyTarget)return t('builtInVariant');
-  return item.ready?(picker.variantText(item)||picker.title(item)):item.model;
+  if(item.legacyTarget)return t('nozzleUnspecified');
+  return picker.variantText(item)||picker.title(item);
 }
-// Nozzle/slicer checkboxes list the ready targets of a model. A model with no ready target
-// lists its catalogue IDs instead, so every catalogue ID stays individually selectable.
+// The slicer/nozzle variants remain selectable as printer inventory even when
+// conversion is not yet supported by this engine. Backend readiness stays separate.
 function variantList(variants){
   const list=node('div','catalog-variant-list');
   list.setAttribute('role','group');
@@ -313,8 +303,10 @@ function groupCard(group,index){
   copy.append(node('strong','',group.model),node('small','',group.manufacturer));
   label.append(graphic,copy);
   row.append(input,label);
-  const ready=group.variants.filter(variant=>variant.ready);
-  const choices=ready.length?ready:group.variants;
+  // Catalogue-only aliases (Anker / AnkerMake M5C) are not nozzle choices.
+  // Real installed nozzle/slicer variants are listed irrespective of whether
+  // the separate conversion engine currently supports them.
+  const choices=group.variants.filter(variant=>variant.nozzle||variant.slicer||variant.legacyTarget);
   if(choices.length>1)row.append(variantList(choices));
   return row;
 }

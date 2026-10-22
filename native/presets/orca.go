@@ -274,10 +274,30 @@ func findOrcaCandidate(locations []slicerLocation, id string) (orcaCandidate, er
 	return orcaCandidate{}, fmt.Errorf("installed profile is not available or no longer resolves completely")
 }
 
+// Vendor-branded Orca forks bundle upstream printer libraries for many other
+// manufacturers. Finding an Anker preset under Snapmaker Orca (or a Flashforge
+// preset under ElegooSlicer) does not make that fork the printer's intended
+// conversion destination. Only the owner's profiles belong to a branded fork.
+// Generic OrcaSlicer and explicitly supplied local profile roots remain
+// multi-manufacturer, with their existing compatibility checks intact.
+func orcaVendorOwnedByApp(appID, vendor string) bool {
+	switch appID {
+	case "snapmaker-orca":
+		return strings.EqualFold(vendor, "Snapmaker")
+	case "flash-studio":
+		return strings.EqualFold(vendor, "Flashforge")
+	case "elegoo-slicer":
+		return strings.EqualFold(vendor, "Elegoo")
+	case "qidi-studio":
+		return strings.EqualFold(vendor, "QIDI") || strings.EqualFold(vendor, "X 5 Series")
+	default:
+		return true // Generic Orca and explicitly configured custom profile roots.
+	}
+}
+
 // scanOrca walks the locations in priority order. A machine is offered once per
-// vendor and printer name, so the first complete copy wins. A vendor fork therefore
-// beats the generic OrcaSlicer copy of the same machine, and a broken fork copy
-// falls back to the generic one because only complete candidates reach this point.
+// vendor and printer name. Branded forks contribute ONLY their own manufacturer;
+// for other makers, use a fully resolved generic OrcaSlicer installation instead.
 func scanOrca(locations []slicerLocation) ([]orcaCandidate, []OrcaRejection) {
 	candidates := []orcaCandidate{}
 	rejected := []OrcaRejection{}
@@ -291,8 +311,10 @@ func scanOrca(locations []slicerLocation) ([]orcaCandidate, []OrcaRejection) {
 			if i >= maxOrcaVendors {
 				break
 			}
-			// Bambu remains a source-only vendor in this app.
-			if !vendor.IsDir() || vendor.Name() == "BBL" || vendor.Name() == "OrcaFilamentLibrary" {
+			// Bambu remains source-only. Upstream profiles bundled into a
+			// different maker's fork are not offered as ready destinations.
+			if !vendor.IsDir() || vendor.Name() == "BBL" || vendor.Name() == "OrcaFilamentLibrary" ||
+				!orcaVendorOwnedByApp(loc.id, vendor.Name()) {
 				continue
 			}
 			found, problems := scanOrcaVendor(loc, vendor.Name())

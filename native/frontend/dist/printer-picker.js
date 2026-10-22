@@ -27,11 +27,8 @@
   // Upper bound for one list render. The full non-Bambu catalogue fits, so nothing is cut off.
   const maxRender=1000;
   const maxSelected=32;
-  // Canonical maker keys (casefolded) of integrated and mainstream makers. Detection
-  // alone does not claim a working conversion adapter. All other makers remain
-  // selectable after the divider. PrusaSlicer is a generic engine, not a maker.
-  const primaryMakers=new Set(['snapmaker','flashforge','elegoo','qidi','prusa research',
-                              'creality','anycubic','sovol','flsun']);
+  // My Printers is a hardware inventory, not a list of ranked conversion
+  // integrations. Every real manufacturer gets the same alphabetical treatment.
   // Explicit, reviewed spelling aliases only. Anything else is compared casefolded.
   const makerAliases=Object.freeze({'prusa':'prusa research'});
   // Brand casing for canonical makers whose published spelling is not plain title case.
@@ -74,8 +71,16 @@
   }
   // "QIDI Plus5" under maker "QIDI" is the model "Plus5". Used for aliases and installed names.
   function withoutMakerPrefix(name,maker){
-    const text=clean(name),lead=clean(maker).toLocaleLowerCase('en')+' ';
-    return text.toLocaleLowerCase('en').startsWith(lead)?text.slice(lead.length).trim():text;
+    const text=clean(name);
+    // Orca's Anker records use "Anker M5C", while the catalogue also uses
+    // "AnkerMake M5C". They are the same model, not two physical printers.
+    // Longest prefix first; match whole words only (never "AnkerM5C").
+    const prefixes=makerKey(maker)==='anker'?['AnkerMake','Anker']:[clean(maker)];
+    for(const prefix of prefixes){
+      const lead=prefix.toLocaleLowerCase('en')+' ';
+      if(text.toLocaleLowerCase('en').startsWith(lead))return text.slice(lead.length).trim();
+    }
+    return text;
   }
   // Every physical key a model answers to: its own name, then its known aliases.
   function lookupKeys(item){
@@ -92,22 +97,18 @@
     if(/^\d{4}-\d{2}(?:-\d{2})?$/.test(exact))return exact;
     return verifiedLaunches[physicalKey(item?.manufacturer,item?.model)]||null;
   }
-  function manufacturerGroups(items){
+  function manufacturerNames(items){
     const labels=new Map();
     for(const item of items||[]){
-      // A generic PrusaSlicer export is a usable destination, not a manufacturer.
+      // A generic PrusaSlicer export is a destination, not a manufacturer.
       if(item?.id===prusaTargetId)continue;
       const name=clean(item?.manufacturer);
       if(!name)continue;
       const key=makerKey(name);
       if(!labels.has(key))labels.set(key,makerLabel(name));
     }
-    const sort=(a,b)=>a.localeCompare(b,'en',{sensitivity:'base'});
-    const keys=[...labels.keys()];
-    return {
-      preferred:keys.filter(key=>primaryMakers.has(key)).map(key=>labels.get(key)).sort(sort),
-      others:keys.filter(key=>!primaryMakers.has(key)).map(key=>labels.get(key)).sort(sort),
-    };
+    // No featured manufacturers, dividers or conversion-capability tiers.
+    return [...labels.values()].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'}));
   }
   function isBambuName(text){return /\bbambu\b/i.test(text)||/^bbl$/i.test(text);}
   function isHidden(model){return (model?.manufacturer||'').toLowerCase()==='bambu lab';}
@@ -137,7 +138,26 @@
     };
     return {...item,releaseDate:releaseDate(item),ready};
   }
+  // Defense-in-depth for older backends: the vendor forks bundle many other
+  // manufacturers' Orca presets. Those are not manufacturer-owned destinations.
+  // Unbranded OrcaSlicer (or an explicit custom profile source) still supports
+  // cross-manufacturer models after the backend's compatibility validation.
+  const forkMaker=Object.freeze({
+    'snapmakerorca':'snapmaker',
+    'flashstudio':'flashforge',
+    'flashstudiodesktop':'flashforge',
+    'elegooslicer':'elegoo',
+    'qidistudio':'qidi',
+  });
+  function matchesInstalledFork(target){
+    const app=clean(target?.slicer).toLocaleLowerCase('en').replace(/[\s\-_]+/g,'');
+    const owner=forkMaker[app];
+    if(!owner)return true;
+    const vendor=makerKey(target?.vendor);
+    return vendor===owner||(app==='qidistudio'&&vendor==='x 5 series');
+  }
   function dynamicItem(target){
+    if(!matchesInstalledFork(target))return null;
     return installedItem(target,'Orca',clean(target.slicer)||null,true);
   }
   // Only backend-listed targets with the exact shape count; `ready` must be the literal true.
@@ -200,47 +220,14 @@
     const value=Number.parseFloat(item?.nozzle);
     return Number.isFinite(value)?value:Number.POSITIVE_INFINITY;
   }
-  // Only known manufacturer<->slicer pairs are first-party. An arbitrary
-  // third-party Orca fork, even one with a vendor-branded machine profile,
-  // must not outrank that manufacturer's own slicer.
-  const manufacturerSlicers=Object.freeze({
-    'snapmaker':['snapmakerorca'],
-    'flashforge':['flashstudio','flashstudiodesktop'],
-    'elegoo':['elegooslicer'],
-    'qidi':['qidistudio','qidislicer'],
-    'prusa research':['prusaslicer'],
-    'creality':['crealityprint','crealityslicer'],
-    'anycubic':['anycubicslicernext','anycubicslicer'],
-    'sovol':['sovolslicer'],
-    'flsun':['flsunslicer'],
-    'ankermake':['ankermakestudio'],
-    'artillery':['artilleryslicer'],
-    'ratrig':['ratosslicer'],
-  });
-  // Tier 0: an exact vendor app with a resolved profile or available native
-  // adapter. Tier 1: generic OrcaSlicer; 2: another fully resolved Orca fork;
-  // 3: generic PrusaSlicer export/profile; 4: catalogue-only (not convert-ready).
-  function sourceTier(item){
-    if(!item.ready)return 4;
-    // The 0.4 mm U1 adapter can use a bundled template without reading the
-    // installed manufacturer profile. A validated Snapmaker Orca target wins.
-    if(item.legacyTarget==='u1')return 0.5;
-    if(item.legacyTarget)return 0;
-    if(item.id===prusaTargetId)return 3;
-    const app=String(item.slicer||'').toLocaleLowerCase('en').replace(/[\s\-_]+/g,'');
-    const maker=makerKey(item.manufacturer);
-    if((manufacturerSlicers[maker]||[]).includes(app))return 0;
-    if(app==='orcaslicer')return 1;
-    if(app==='prusaslicer')return 3;
-    return 2;
-  }
+  // My Printers sorts real hardware variants by nozzle and the actual slicer
+  // name, never by engine readiness, adapter strength or vendor preference.
+  // Conversion capabilities belong only to supportedModels() and the batch UI.
   function variantOrder(left,right){
-    if(Boolean(left.ready)!==Boolean(right.ready))return left.ready?-1:1;
-    const byTier=sourceTier(left)-sourceTier(right);
-    if(byTier)return byTier;
-    if(Boolean(left.legacyTarget)!==Boolean(right.legacyTarget))return left.legacyTarget?-1:1;
     const byNozzle=nozzleNumber(left)-nozzleNumber(right);
-    if(byNozzle&&Number.isFinite(byNozzle))return byNozzle;
+    if(Number.isFinite(byNozzle)&&byNozzle!==0)return byNozzle;
+    if(Number.isFinite(nozzleNumber(left))!==Number.isFinite(nozzleNumber(right)))
+      return Number.isFinite(nozzleNumber(left))?-1:1;
     const bySlicer=String(left.slicer||'').localeCompare(String(right.slicer||''),'en',{sensitivity:'base'});
     return bySlicer||String(left.id).localeCompare(String(right.id),'en');
   }
@@ -259,11 +246,11 @@
     const groups=[];
     for(const [key,variants] of byKey){
       variants.sort(variantOrder);
-      // Default when a card is ticked: the best source tier that is ready (manufacturer app
-      // first), then within that tier the built-in adapter, else the 0.4 mm variant, else the
-      // first of the tier. With nothing ready, the catalogue ID alone.
-      const top=variants.filter(v=>v.ready&&sourceTier(v)===sourceTier(variants[0]));
-      const preferred=top.find(v=>v.legacyTarget)||top.find(v=>v.nozzle==='0.4')||top[0]||variants[0];
+      // Default card selection depends on physical nozzle (0.4 mm if present),
+      // or the canonical catalogue entry. Never auto-rank conversion engines.
+      // Existing selected IDs are kept verbatim by My Printers, regardless.
+      const preferred=variants.find(v=>v.nozzle==='0.4')||
+        variants.find(v=>v.nozzle==null&&v.slicer==null)||variants[0];
       const first=variants[0];
       groups.push({
         key,
@@ -357,6 +344,6 @@
       .map(item=>item.legacyTarget);
   }
   return {catalogItems,supportedModels,search,searchGroups,groupDestinations,isHidden,title,releaseDate,
-          manufacturerGroups,physicalKey,lookupKeys,makerKey,makerLabel,variantText,
+          manufacturerNames,physicalKey,lookupKeys,makerKey,makerLabel,variantText,
           selectedTargetIds,allSavedIds,legacyTargetsFor,maxSelected,maxRender};
 });

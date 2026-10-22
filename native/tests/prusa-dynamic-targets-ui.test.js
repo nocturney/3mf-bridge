@@ -26,21 +26,21 @@ const orcaK1={id:'orca-creality-k1-d4e5f6a7b8',title:'Creality K1 0.4 nozzle',ve
   nozzle:'0.4',slicer:'OrcaSlicer',physicalTools:1};
 const onAll=availabilityAll();
 
-// ---- picker: grouping, vendor priority, readiness and the 589/584/603 baseline ----
+// ---- picker: physical grouping, separate readiness and the 589/582/603 baseline ----
 
-test('the catalogue baseline holds: 603 models, 589 non-Bambu IDs, 584 physical cards, no dynamic rows',()=>{
+test('the catalogue baseline holds: 603 models, 589 non-Bambu IDs, 582 physical cards, no dynamic rows',()=>{
   assert.equal(catalog.models.length,603);
   assert.equal(catalog.models.filter(model=>model.manufacturer!=='Bambu Lab').length,589);
   const listed=picker.catalogItems(catalog.models,onAll,[],true,[]);
   assert.equal(listed.length,590);
-  assert.equal(picker.groupDestinations(listed).length,584);
+  assert.equal(picker.groupDestinations(listed).length,582);
 });
 
 test('a ready Prusa target that matches a catalogue model folds into that card and adds no card',()=>{
   const listed=picker.catalogItems(catalog.models,onAll,[],true,[prusaMk4]);
   assert.equal(listed.length,591);
   const groups=picker.groupDestinations(listed);
-  assert.equal(groups.length,584);
+  assert.equal(groups.length,582);
   const card=groups.find(group=>group.ids.includes(prusaMk4.id));
   assert.ok(card,'Prusa MK4 target must join a catalogue card');
   assert.ok(card.ids.includes('prusa-research-mk4'),'catalogue ID stays in the card');
@@ -61,16 +61,17 @@ test('mixed Prusa and Orca variants of one physical model share a card with inde
   assert.equal(byId[prusaMk4Brass.id].nozzle,'0.6');
 });
 
-test('manufacturer first: a Prusa Research model defaults to its PrusaSlicer target over generic Orca',()=>{
+test('equivalent 0.4 mm Prusa and Orca profiles are ordered without manufacturer/conversion preference',()=>{
   const items=picker.supportedModels(catalog.models,onAll,[orcaMk4],true,[prusaMk4]);
   const card=picker.groupDestinations(items).find(group=>group.ids.includes(prusaMk4.id));
-  assert.equal(card.id,prusaMk4.id);
+  assert.deepEqual(card.ids,[orcaMk4.id,prusaMk4.id]);
+  assert.equal(card.id,orcaMk4.id); // Alphabetical slicer name, never conversion rating.
 });
 
-test('generic Orca outranks a Prusa target from a non-Prusa vendor; the Prusa one stays selectable',()=>{
+test('equal-nozzle Orca and Prusa entries sort alphabetically, and both stay selectable',()=>{
   const items=picker.supportedModels(catalog.models,[],[orcaK1],true,[prusaK1]);
   const card=picker.groupDestinations(items).find(group=>group.ids.includes(orcaK1.id));
-  // Generic Orca (tier 1) before generic PrusaSlicer (tier 3).
+  // No tier: equal nozzle means alphabetic slicer name for this card.
   assert.deepEqual(card.ids,[orcaK1.id,prusaK1.id]);
   assert.equal(card.id,orcaK1.id);
   assert.deepEqual(card.variants.map(v=>v.slicer),['OrcaSlicer','PrusaSlicer']);
