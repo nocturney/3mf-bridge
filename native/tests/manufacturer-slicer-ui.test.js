@@ -44,11 +44,15 @@ test('an installed slicer alone is not conversion support: nothing is ready, and
   assert.equal(h.calls.includes('ManufacturerSlicers'),false);
   assert.deepEqual(h.plain(h.api.selectedTargetIds()),[]);
   h.dom('myPrintersBtn').fire('click');
-  // Catalogue models stay selectable; the slicer adds no maker or card of its own.
-  const expected=picker.manufacturerNames(picker.catalogItems(catalog.models,[],[],false));
+  // Default hardware list is curated; this does not add a conversion target.
   const makers=h.dom('printerManufacturerFilter').children.map(option=>option.value).filter(Boolean);
-  assert.deepEqual(makers,expected);
-  assert.equal(h.dom('catalogModelList').children.length,picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false)).length);
+  assert.equal(makers.length,11);
+  assert.ok(makers.includes('QIDI')&&makers.includes('Prusa Research'));
+  assert.equal(makers.includes('Afinia'),false);
+  assert.equal(h.dom('catalogModelList').children.length,241);
+  h.dom('showOtherManufacturersBtn').fire('click');
+  assert.equal(h.dom('catalogModelList').children.length,
+    picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false)).length);
 });
 
 test('an installed slicer never makes a catalogue model a conversion target',async()=>{

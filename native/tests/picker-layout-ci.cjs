@@ -60,17 +60,20 @@ const savedWithInstalled=['flashforge-creator-5','orca-flashforge-creator-5-pro-
 const savedCatalogueOnly=['flashforge-creator-5','afinia-afinia-h-1-hs','sovol-sv06-plus',
   'qidi-x-plus-5','elegoo-centauri-carbon-2'];
 
-// 8 layouts: desktop 1100x750 and compact 900x650, English (LTR) and Hebrew (RTL), with and
-// without the Creator 5 Pro filter, plus one catalogue-only run for the 589-to-582 mapping.
+// Layouts cover both curated-default and user-expanded full-catalogue views,
+// desktop/compact windows and English LTR / Hebrew RTL; no network or device writes.
 const scenarios=[
   {name:'en-ltr-1100x750',lang:'en',dir:'ltr',width:1100,height:750,filter:'',installed:true},
+  {name:'en-ltr-1100x750-expanded',lang:'en',dir:'ltr',width:1100,height:750,filter:'',installed:true,expanded:true},
   {name:'en-ltr-1100x750-creator5pro',lang:'en',dir:'ltr',width:1100,height:750,filter:'Creator 5 Pro',installed:true},
   {name:'he-rtl-1100x750',lang:'he',dir:'rtl',width:1100,height:750,filter:'',installed:true},
   {name:'he-rtl-1100x750-creator5pro',lang:'he',dir:'rtl',width:1100,height:750,filter:'Creator 5 Pro',installed:true},
   {name:'en-ltr-900x650-creator5pro',lang:'en',dir:'ltr',width:900,height:650,filter:'Creator 5 Pro',installed:true},
   {name:'he-rtl-900x650',lang:'he',dir:'rtl',width:900,height:650,filter:'',installed:true},
+  {name:'he-rtl-900x650-expanded',lang:'he',dir:'rtl',width:900,height:650,filter:'',installed:true,expanded:true},
   {name:'he-rtl-900x650-creator5pro',lang:'he',dir:'rtl',width:900,height:650,filter:'Creator 5 Pro',installed:true},
   {name:'en-ltr-1100x750-catalogue-mapping',lang:'en',dir:'ltr',width:1100,height:750,filter:'',installed:false},
+  {name:'en-ltr-1100x750-catalogue-all-ids',lang:'en',dir:'ltr',width:1100,height:750,filter:'',installed:false,expanded:true},
 ];
 
 // Runs inside the page after my-printers.js. Opens the real dialog and reports its geometry.
@@ -128,6 +131,9 @@ function pageMain(config){
       return part.right-part.x>1&&part.bottom-part.y>1?part:null;
     };
     const centre=(r)=>[(r.x+r.right)/2,(r.y+r.bottom)/2];
+    const scope=document.getElementById('showOtherManufacturersBtn');
+    const makers=[...document.getElementById('printerManufacturerFilter').options]
+      .map(option=>option.value).filter(Boolean);
     const cards=[...list.querySelectorAll('.catalog-model-card')];
     const cardReport=[];
     let variantTotal=0,hitTests=0;
@@ -187,7 +193,8 @@ function pageMain(config){
       frame:fr,scrollArea,list:lr,firstCard,
       cardCount:cards.length,variantCount:variantTotal,hitTests,
       pills:pills.map(text),selectionCount:text(document.getElementById('myPrintersSelectionCount')),
-      searchCount:text(document.getElementById('catalogSearchCount')),saved,cards:cardReport};
+      scopeExpanded:scope.getAttribute('aria-pressed')==='true',scopeLabel:text(scope),
+      makers,searchCount:text(document.getElementById('catalogSearchCount')),saved,cards:cardReport};
   }
   if(!api||typeof api.init!=='function')return fail('SliceBridgeMyPrinters did not load');
   api.setSupportedTargets({available:fixture.availability,installedTargets:fixture.installed,prusaAvailable:true});
@@ -197,6 +204,7 @@ function pageMain(config){
     button.click();
     const dialog=document.getElementById('myPrintersDialog');
     if(!dialog.open)throw Error('My Printers dialog did not open');
+    if(config.expanded)document.getElementById('showOtherManufacturersBtn').click();
     if(config.filter){
       const search=document.getElementById('printerCatalogSearch');
       search.value=config.filter;search.dispatchEvent(new Event('input'));
@@ -218,7 +226,8 @@ function dialogDocument(scenario){
     saved:scenario.installed?savedWithInstalled:savedCatalogueOnly,
   };
   const json=(value)=>JSON.stringify(value).replace(/</g,'\\u003c');
-  const driver={lang:scenario.lang,dir:scenario.dir,filter:scenario.filter,saved:fixture.saved};
+  const driver={lang:scenario.lang,dir:scenario.dir,filter:scenario.filter,
+    expanded:scenario.expanded===true,saved:fixture.saved};
   // Only five known, checked-in deferred script includes exist in the real index.
   // Remove those exact tags, rather than attempting to sanitize HTML with a
   // general regex (which cannot safely recognize all closing-script syntax).
@@ -344,10 +353,19 @@ function checkScenario(scenario,report){
     if(!creator?.values.includes('flashforge-creator-5-pro'))
       problems.push('Creator 5 Pro catalogue identity is not independently selectable');
   }
-  // 589 catalogue IDs + PrusaSlicer fold into 582 cards; installed Creator 5 Pro variants join
-  // their existing card rather than adding one.
-  if(!scenario.filter&&report.cardCount!==582)
-    problems.push('expected 582 model cards, measured '+report.cardCount);
+  // The curated default is 241 cards plus one explicitly saved Afinia card;
+  // expanded mode restores all 582 physical cards, including the generic item.
+  const expectedCount=scenario.expanded?582:242;
+  if(!scenario.filter&&report.cardCount!==expectedCount)
+    problems.push('expected '+expectedCount+' model cards, measured '+report.cardCount);
+  if(report.scopeExpanded!==Boolean(scenario.expanded))
+    problems.push('scope toggle state differs from scenario');
+  if(report.makers.includes('Bambu Lab'))
+    problems.push('Bambu destination appeared in maker dropdown');
+  if(!scenario.expanded&&!report.makers.includes('Afinia'))
+    problems.push('saved hidden maker Afinia was not retained in dropdown');
+  if(!scenario.expanded&&report.makers.includes('Artillery'))
+    problems.push('unselected hidden maker was shown in curated dropdown');
   if(scenario.filter&&report.cardCount<1)problems.push('Creator 5 Pro filter shows no card');
   for(const saved of report.saved){
     if(!scenario.filter){
@@ -361,7 +379,7 @@ function checkScenario(scenario,report){
       report.saved.filter(saved=>saved.present&&saved.checked).length);
   if(scenario.filter&&scenario.installed&&!report.saved.some(saved=>saved.id.startsWith('orca-')&&saved.present))
     problems.push('installed Creator 5 Pro variant not shown under filter');
-  if(!scenario.installed){
+  if(!scenario.installed&&scenario.expanded){
     const seen=report.cards.flatMap(card=>card.values);
     const expected=[...catalogIds,'prusa-project'];
     const missing=expected.filter(id=>!seen.includes(id));

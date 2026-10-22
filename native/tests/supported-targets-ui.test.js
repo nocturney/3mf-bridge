@@ -174,7 +174,7 @@ test('saved catalogue membership is kept as selected but is never a conversion t
   assert.deepEqual(h.plain(h.api.selectedTargetIds()),[builtIn.u1]);
 });
 
-test('save sends only the visible selection, including dynamic and PrusaSlicer destinations',async()=>{
+test('save sends selected IDs including expanded dynamic and PrusaSlicer destinations',async()=>{
   let sent=null;
   const h=loadMyPrinters({
     GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
@@ -190,6 +190,8 @@ test('save sends only the visible selection, including dynamic and PrusaSlicer d
   orcaCard.children[0].fire('change');
   h.dom('printerCatalogSearch').value='prusa';
   h.dom('printerCatalogSearch').fire('input');
+  // Generic Prusa export is intentionally outside the curated hardware list.
+  h.dom('showOtherManufacturersBtn').fire('click');
   const prusa=h.dom('catalogModelList').children.find(card=>card.children[0].value==='prusa-project');
   prusa.children[0].checked=true;
   prusa.children[0].fire('change');
@@ -201,12 +203,14 @@ test('save sends only the visible selection, including dynamic and PrusaSlicer d
   assert.equal(h.api.isSelectedTarget('u1'),false);
 });
 
-test('with no ready conversion target the full catalogue stays selectable and the saved pick is kept',()=>{
+test('with no ready conversion target the curated view opens and full catalogue remains available',()=>{
   const h=loadMyPrinters({GetMyPrinters:()=>({selectedIds:[builtIn.u1],onboardingPending:false})});
   h.api.setSupportedTargets({available:availabilityAll({u1:false,c5:false,cc2:false,qidi:false}),installedTargets:[],prusaAvailable:false});
   return h.api.init().then(()=>{
     h.dom('myPrintersBtn').fire('click');
     assert.equal(h.dom('catalogPickerHint').hidden,true);
+    assert.equal(h.dom('catalogModelList').children.length,241);
+    h.dom('showOtherManufacturersBtn').fire('click');
     assert.ok(h.dom('catalogModelList').children.length>500);
     assert.equal(h.dom('saveMyPrintersBtn').disabled,false);
     assert.equal(h.dom('printerCatalogSearch').disabled,false);
@@ -226,7 +230,9 @@ test('manufacturer dropdown shows all real makers alphabetically with no convers
   assert.equal(values[0],'');
   const makers=values.slice(1);
   assert.deepEqual(makers,[...makers].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
-  assert.ok(makers.includes('Anker')&&makers.includes('Afinia'));
+  assert.ok(makers.includes('Anker')&&makers.includes('Creality'));
+  assert.equal(makers.includes('Afinia'),false);
+  assert.equal(makers.length,11);
   assert.equal(values.includes('Bambu Lab'),false);
   assert.equal(values.includes('Generic'),false);
   assert.equal(values.slice(1).includes(''),false);
@@ -254,6 +260,8 @@ test('the 32-printer limit holds in the dialog, not only in the saved file',asyn
   h.api.setSupportedTargets({available:[],installedTargets:many,prusaAvailable:false});
   await h.api.init();
   h.dom('myPrintersBtn').fire('click');
+  // Test manufacturer is available only after opting into the complete list.
+  h.dom('showOtherManufacturersBtn').fire('click');
   h.dom('printerCatalogSearch').value='test';
   h.dom('printerCatalogSearch').fire('input');
   const card=(id)=>h.dom('catalogModelList').children.find(c=>c.children[0].value===id).children[0];

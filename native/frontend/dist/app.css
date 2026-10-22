@@ -559,6 +559,10 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   width:100%;min-width:0;min-height:42px;padding:9px 10px;
   border:1px solid #bfd7cc;background:#fff;border-radius:8px;color:var(--ink)
 }
+/* Curated hardware list toggle: only affects My Printers, never conversion. */
+.printer-catalog-scope{display:flex;justify-content:flex-start;flex:none;min-height:20px}
+.printer-catalog-scope .text-btn{font-size:11px;line-height:1.35;padding:2px 0}
+.printer-catalog-scope .text-btn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .catalog-picker-hint{
   border:1px dashed #c2dacf;border-radius:10px;
   padding:19px 16px;margin:0;text-align:center;font-size:12px;

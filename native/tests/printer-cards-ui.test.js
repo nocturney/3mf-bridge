@@ -93,8 +93,15 @@ test('manufacturer dropdown is one alphabetic list, no preferred conversion vend
   assert.equal(makers.filter(value=>value==='').length,0);
   assert.equal(options.filter(([,disabled])=>disabled).length,0);
   assert.deepEqual(makers,[...makers].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
-  assert.ok(makers.includes('Afinia')&&makers.includes('Zortrax'));
+  assert.equal(makers.includes('Afinia'),false);
+  assert.equal(makers.includes('Zortrax'),false);
+  assert.equal(makers.length,11); // Prusa is one maker; Bambu remains source-only.
   assert.equal(values.filter(value=>value==='ELEGOO').length,1);
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('showOtherManufacturersBtn').fire('click');
+  const all=h.dom('printerManufacturerFilter').children.map(option=>option.value);
+  assert.ok(all.includes('Afinia')&&all.includes('Zortrax'));
+  assert.equal(all.includes('Bambu Lab'),false);
 });
 
 test('a physical model is one card, however many nozzles and slicers it has',()=>{
