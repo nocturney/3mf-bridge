@@ -9,6 +9,8 @@ an external conversion service.
 | `test_packaging.py` | Staging into `native/build/bin` (Windows) and `SliceBridge.app/Contents/Resources` (macOS), manifest hash, MIT license gate, symlink and overwrite refusals, pins, CI text | No |
 | `test_conversion_contract.py` | `FixtureFacts` and `HarnessSelfChecks` run always. `EngineContract` runs the sidecar on `tests/fixtures/bambu-five-colors.3mf` | `EngineContract` only |
 | `panda_qa.py` | Shared stdlib helpers: 3MF reader, comparator, stale-gcode scan, runner invocation | n/a |
+| `world_3mf.py` | Placed 3MF scene reader: recursive `p:path` parts, transforms, instances and paint | No |
+| `test_world_space.py` | Eight synthetic regressions including flattened output, cross-part paths, tool changes and cycles | No |
 
 ## Run
 
@@ -43,13 +45,16 @@ The contract is `--source SRC --output OUT --json`: exit 0, one JSON document on
 
 Each test is an independent claim about the converted 3MF, checked against the Bambu source:
 
-- **Geometry and triangles**: object-local triangle records (coordinates and paint) match as a
-  multiset. Coordinates are compared at 0.0001 mm.
-- **Build transforms**: every build item's 4x4 matrix matches, in count and value.
+- **Geometry and triangles**: placed world-space triangle records match across nested
+  `.model` parts, `p:path` and component/build transforms. Coordinates are compared at
+  0.0001 mm; tiny rounding differences are not silently accepted.
+- **Build transforms**: equivalent flattened/re-numbered models are allowed when placed
+  geometry matches; genuinely moved items fail the geometry/transform checks.
 - **Paint bitstreams**: every `paint_color` / `mmu_segmentation` string is carried verbatim,
   including nested codes such as `2C`.
-- **Extruder assignments**: object-level `extruder` values match, with objects matched by
-  geometry signature rather than by ID. Volume-level values are compared as a sorted multiset.
+- **Extruder assignments**: build-item `extruder` values are aligned by their placed
+  triangle geometry, not by ID or raw object-local signature. Volume-level values are
+  compared as multisets only; per-volume spatial assignment needs separate verification.
 - **Numbered slots**: the output filament colour list equals the source list, in slot order,
   with duplicates kept. A derived fixture gives slots 1, 2 and 4 the same colour. All five slots
   must survive.
