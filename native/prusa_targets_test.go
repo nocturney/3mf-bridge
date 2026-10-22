@@ -82,21 +82,24 @@ func TestInstalledPrusaReplyIsNeverReadyWhileExportIsUnverified(t *testing.T) {
 	}
 }
 
-func TestPrusaSelectionNeedsCompleteAndVerifiedPrinter(t *testing.T) {
+func TestPrusaSelectionIsInventoryEvenWhenConversionIsUnverified(t *testing.T) {
 	catalog := PrinterCatalogReply{}
 	stubPrusa(t, prusaTestID)
-	if err := validateNewSelection([]string{prusaTestID}, catalog); err == nil {
-		t.Fatal("unverified Prusa printer saved as a selection")
+	if err := validateNewSelection([]string{prusaTestID}, catalog); err != nil {
+		t.Fatalf("complete installed Prusa printer must be saveable as inventory: %v", err)
+	}
+	if ready, _ := prusaReadiness(); ready {
+		t.Fatal("saving installed Prusa inventory must not enable conversion")
 	}
 	if err := validateNewSelection([]string{prusaOtherID}, catalog); err == nil {
-		t.Fatal("uninstalled Prusa printer saved as a selection")
+		t.Fatal("uninstalled Prusa printer saved as a new selection")
 	}
 	if err := validateNewSelection([]string{prusaTargetID}, catalog); err != nil {
 		t.Fatalf("generic PrusaSlicer project selection must keep working: %v", err)
 	}
 	prusaExportVerified = true
 	if err := validateNewSelection([]string{prusaTestID}, catalog); err != nil {
-		t.Fatalf("verified complete Prusa printer rejected: %v", err)
+		t.Fatalf("complete installed Prusa printer rejected: %v", err)
 	}
 	if err := validateNewSelection([]string{prusaTestID, prusaTestID}, catalog); err == nil {
 		t.Fatal("duplicate Prusa selection accepted")

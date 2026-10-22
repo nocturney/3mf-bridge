@@ -59,14 +59,12 @@ func installedPrusaReply(discovery presets.PrusaDiscovery) InstalledPrusaReply {
 	return reply
 }
 
-// validatePrusaSelection accepts a saved Prusa printer only when it re-resolves
-// completely and is ready. The same gate applies to conversion.
+// Inventory membership is independent of conversion readiness. A completely
+// resolved installed printer can be saved even when per-printer 3MF export is
+// not implemented; ConvertBatch independently refuses that unsafe conversion.
 func validatePrusaSelection(id string) error {
 	if _, err := resolveInstalledPrusa(id); err != nil {
-		return fmt.Errorf("installed printer profile is not ready")
-	}
-	if ready, reason := prusaReadiness(); !ready {
-		return fmt.Errorf("%s", reason)
+		return fmt.Errorf("installed printer profile is unavailable or incomplete")
 	}
 	return nil
 }
