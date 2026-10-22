@@ -205,6 +205,10 @@ func validateNewSelection(ids []string, catalog PrinterCatalogReply) error {
 			if _, err := resolveInstalledOrca(id); err != nil {
 				return fmt.Errorf("installed printer profile is not ready")
 			}
+		case presets.IsPrusaTargetID(id):
+			if err := validatePrusaSelection(id); err != nil {
+				return err
+			}
 		case !catalogueSelectable(catalog, id):
 			return fmt.Errorf("printer is not in the offline catalogue")
 		}
@@ -228,7 +232,7 @@ func keptSavedSelection(ids []string, catalog PrinterCatalogReply, installed map
 		switch {
 		case id == prusaTargetID:
 			kept = append(kept, id)
-		case presets.IsOrcaTargetID(id):
+		case presets.IsOrcaTargetID(id), presets.IsPrusaTargetID(id):
 			if installed[id] {
 				kept = append(kept, id)
 			}
@@ -239,16 +243,24 @@ func keptSavedSelection(ids []string, catalog PrinterCatalogReply, installed map
 	return kept, nil
 }
 
-// installedOrcaIDs scans installed Orca targets only when a saved selection names
-// one, so ordinary reads never touch the slicer folders.
-func installedOrcaIDs(ids []string) map[string]bool {
+// installedTargetIDs scans installed Orca and Prusa targets only when a saved
+// selection names one of that family, so ordinary reads never touch the slicer
+// folders.
+func installedTargetIDs(ids []string) map[string]bool {
 	installed := map[string]bool{}
+	needOrca, needPrusa := false, false
 	for _, id := range ids {
-		if presets.IsOrcaTargetID(id) {
-			for _, target := range discoverInstalledOrca().Targets {
-				installed[target.ID] = true
-			}
-			break
+		needOrca = needOrca || presets.IsOrcaTargetID(id)
+		needPrusa = needPrusa || presets.IsPrusaTargetID(id)
+	}
+	if needOrca {
+		for _, target := range discoverInstalledOrca().Targets {
+			installed[target.ID] = true
+		}
+	}
+	if needPrusa {
+		for _, target := range discoverInstalledPrusa().Targets {
+			installed[target.ID] = true
 		}
 	}
 	return installed
@@ -282,7 +294,7 @@ func loadMyPrinters(catalog PrinterCatalogReply) (MyPrintersReply, error) {
 	if len(cfg.SelectedIDs) > maxMyPrinters {
 		return MyPrintersReply{}, fmt.Errorf("saved printer selections invalid: at most %d printers", maxMyPrinters)
 	}
-	kept, err := keptSavedSelection(cfg.SelectedIDs, catalog, installedOrcaIDs(cfg.SelectedIDs))
+	kept, err := keptSavedSelection(cfg.SelectedIDs, catalog, installedTargetIDs(cfg.SelectedIDs))
 	if err != nil {
 		return MyPrintersReply{}, fmt.Errorf("saved printer selections invalid: %w", err)
 	}
