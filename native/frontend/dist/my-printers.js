@@ -37,9 +37,9 @@ const translations={
 const changedEvent='slicebridge:my-printers-changed';
 let catalog=null,selected=null,draft=null,firstRun=false,loaded=false,saving=false;
 // Destination inputs, pushed in by the app shell through setSupportedTargets().
-// `listed` is every selectable item (catalogue, installed Orca, PrusaSlicer);
+// `listed` is every selectable item (catalogue, installed Orca, PrusaSlicer, per-printer PrusaSlicer);
 // `supported` is the ready subset that conversion may use.
-let availability=[],installed=[],prusaAvailable=false,listed=[],supported=[],groups=[];
+let availability=[],installed=[],installedPrusa=[],prusaAvailable=false,listed=[],supported=[],groups=[];
 let groupByKey=new Map(),groupByItemId=new Map(),catalogIndex=new Map();
 
 const t=(key,variables={})=>{
@@ -367,6 +367,7 @@ function render(){
 function setSupportedTargets(next={}){
   availability=Array.isArray(next.available)?next.available:[];
   installed=Array.isArray(next.installedTargets)?next.installedTargets:[];
+  installedPrusa=Array.isArray(next.installedPrusaTargets)?next.installedPrusaTargets:[];
   prusaAvailable=next.prusaAvailable===true;
   recomputeSupported();
   if(draft)draft=new Set([...draft].filter(id=>listed.some(item=>item.id===id)));
@@ -378,7 +379,7 @@ function setSupportedTargets(next={}){
   window.dispatchEvent(new Event(changedEvent));
 }
 function recomputeSupported(){
-  listed=picker?picker.catalogItems(catalog?catalog.models:[],availability,installed,prusaAvailable):[];
+  listed=picker?picker.catalogItems(catalog?catalog.models:[],availability,installed,prusaAvailable,installedPrusa):[];
   supported=listed.filter(item=>item.ready);
   groups=picker?picker.groupDestinations(listed):[];
   groupByKey=new Map(groups.map(group=>[group.key,group]));

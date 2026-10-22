@@ -72,7 +72,7 @@ test('main list has no catalogue-only section and built-in rows start hidden unt
 
 test('the main list and the picker share one destination set through setSupportedTargets',()=>{
   const app=fs.readFileSync(path.resolve(__dirname,'../frontend/dist/app.js'),'utf8');
-  assert.match(app,/function publishSupportedTargets\(\)\{\s*window\.SliceBridgeMyPrinters\?\.setSupportedTargets\(\{available,installedTargets,prusaAvailable\}\);/);
+  assert.match(app,/function publishSupportedTargets\(\)\{\s*window\.SliceBridgeMyPrinters\?\.setSupportedTargets\(\{available,installedTargets,installedPrusaTargets,prusaAvailable\}\);/);
   assert.match(app,/available=Array\.isArray\(reply\)\?reply:\[\];/);
   assert.match(app,/installedTargets=Array\.isArray\(reply\?\.targets\)\?reply\.targets:\[\];/);
   // Handed over once after all probes, and before My Printers reads its inputs in init().
