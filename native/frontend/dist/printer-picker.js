@@ -201,6 +201,9 @@
   // 3: generic PrusaSlicer export/profile; 4: catalogue-only (not convert-ready).
   function sourceTier(item){
     if(!item.ready)return 4;
+    // The 0.4 mm U1 adapter can use a bundled template without reading the
+    // installed manufacturer profile. A validated Snapmaker Orca target wins.
+    if(item.legacyTarget==='u1')return 0.5;
     if(item.legacyTarget)return 0;
     if(item.id===prusaTargetId)return 3;
     const app=String(item.slicer||'').toLocaleLowerCase('en').replace(/[\s\-_]+/g,'');
