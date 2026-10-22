@@ -285,6 +285,9 @@ func configuredConvert(source, target, sourceNozzle string, preference PrinterSe
 	if presets.IsOrcaTargetID(target) {
 		return installedConvert(source, target)
 	}
+	if presets.IsPrusaTargetID(target) {
+		return prusaInstalledConvert(target)
+	}
 	result := ConvertResult{Target: target, Prefix: outputs[target]}
 	preferred := preference.Nozzle
 	if preferred == "auto" {
@@ -451,7 +454,7 @@ func validateTargets(targets []string) error {
 	seen := map[string]bool{}
 	for _, t := range targets {
 		_, builtIn := outputs[t]
-		if (!builtIn && !presets.IsOrcaTargetID(t) && t != prusaTargetID) || seen[t] {
+		if (!builtIn && !presets.IsOrcaTargetID(t) && !presets.IsPrusaTargetID(t) && t != prusaTargetID) || seen[t] {
 			return fmt.Errorf("invalid or repeated target %q", t)
 		}
 		seen[t] = true
