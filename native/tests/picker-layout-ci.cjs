@@ -219,9 +219,17 @@ function dialogDocument(scenario){
   };
   const json=(value)=>JSON.stringify(value).replace(/</g,'\\u003c');
   const driver={lang:scenario.lang,dir:scenario.dir,filter:scenario.filter,saved:fixture.saved};
-  const stripped=indexHtml
-    .replace(/<script\b[\s\S]*?<\/script>/gi,'')
-    .replace(/href="\.\/app\.css"/,()=>'href="'+fileUrl('app.css')+'"');
+  // Only five known, checked-in deferred script includes exist in the real index.
+  // Remove those exact tags, rather than attempting to sanitize HTML with a
+  // general regex (which cannot safely recognize all closing-script syntax).
+  const expectedScripts=['printer-picker.js','app.js','my-printers.js','integrations.js','about.js'];
+  let stripped=indexHtml;
+  for(const script of expectedScripts){
+    const exactTag='<script defer src="./'+script+'"></script>';
+    assert.equal(stripped.split(exactTag).length,2,'unexpected source script markup: '+script);
+    stripped=stripped.replace(exactTag,'');
+  }
+  stripped=stripped.replace('href="./app.css"','href="'+fileUrl('app.css')+'"');
   return stripped.replace('</body>',()=>[
     '<style>*,*::before,*::after{transition:none!important;animation:none!important;caret-color:transparent!important}</style>',
     '<script>window.__fixture='+json(fixture)+';'+
