@@ -32,13 +32,17 @@ test('all 589 catalogue IDs remain recognized while duplicate spellings share on
   assert.equal(creality.ids.length,2);
 });
 
-test('the dialog renders every catalogue model (one card per physical model) with no cap',async()=>{
+test('curated catalogue opens first; the complete underlying catalogue is one toggle away',async()=>{
   const h=loadMyPrinters({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
   h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
   await h.api.init();
   h.dom('myPrintersBtn').fire('click');
   const expected=picker.groupDestinations(picker.catalogItems(catalog.models,[],[],false));
+  assert.equal(h.dom('catalogModelList').children.length,241);
+  assert.equal(h.dom('showOtherManufacturersBtn').getAttribute('aria-pressed'),'false');
+  h.dom('showOtherManufacturersBtn').fire('click');
   assert.equal(h.dom('catalogModelList').children.length,expected.length);
+  assert.equal(h.dom('showOtherManufacturersBtn').getAttribute('aria-pressed'),'true');
   assert.equal(h.dom('catalogSearchCount').hidden,true);
   // Different stored catalogue spellings remain separately reachable and
   // labelled by actual MODEL spelling, never as conversion engines.

@@ -1,5 +1,6 @@
 /* SliceBridge My Printers: offline snapshot + explicit, separate local selection.
- * The full non-Bambu catalogue is listed for selection (SliceBridgePicker.catalogItems).
+ * A curated manufacturer list is the default view; "show all" reveals the full
+ * non-Bambu catalogue. Existing saved IDs are ALWAYS included in the view.
  * Selecting a catalogue model saves membership only; conversion reads just the ready
  * destinations (SliceBridgePicker.supportedModels). One card per physical model; its
  * nozzle/slicer variants keep their own target IDs.
@@ -20,7 +21,8 @@ const translations={
     limit:'אפשר לבחור עד 32 מדפסות.',error:'לא ניתן לטעון או לשמור את בחירת המדפסות.',
     manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',
     noSupported:'עדיין אין יעדים זמינים במחשב זה.',nothingSelected:'עדיין לא נבחרו מדפסות.',
-    variants:'דגם, דיזה וסלייסר',nozzleUnspecified:'ללא שיוך דיזה',imageUnavailable:'תמונה אינה זמינה'
+    variants:'דגם, דיזה וסלייסר',nozzleUnspecified:'ללא שיוך דיזה',imageUnavailable:'תמונה אינה זמינה',
+    showAllMakers:'הצג יצרנים נוספים',showCuratedMakers:'הצג רק יצרנים נבחרים'
   },
   en:{
     title:'My printers',welcome:'Choose printers',welcomeBody:'No printers are selected yet. Choose a manufacturer or search for a model to begin.',
@@ -31,11 +33,34 @@ const translations={
     limit:'You can select up to 32 printers.',error:'Could not load or save printer selection.',
     manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',
     noSupported:'No destinations are available on this computer yet.',nothingSelected:'No printers selected yet.',
-    variants:'Model, nozzle and slicer',nozzleUnspecified:'No nozzle specified',imageUnavailable:'Image unavailable'
+    variants:'Model, nozzle and slicer',nozzleUnspecified:'No nozzle specified',imageUnavailable:'Image unavailable',
+    showAllMakers:'Show more manufacturers',showCuratedMakers:'Show selected manufacturers only'
   }
 };
 const changedEvent='slicebridge:my-printers-changed';
 let catalog=null,selected=null,draft=null,firstRun=false,loaded=false,saving=false;
+let showOtherManufacturers=false;
+// UI ONLY. Bambu Lab is retained as a Bambu source maker, but remains excluded
+// from destination picking by SliceBridgePicker.isHidden (unchanged).
+// Prusa and Prusa Research are one displayed maker; all underlying IDs remain.
+const curatedManufacturers=Object.freeze([
+  'Anker','Anycubic','Bambu Lab','Creality','ELEGOO','Flashforge','FLSun',
+  'Prusa','Prusa Research','QIDI','Snapmaker','Sovol','Voron'
+]);
+// Avoid dereferencing the optional picker module during script load: a
+// missing frontend resource must not crash the app's unrelated conversion UI.
+const curatedMakerKeys=new Set(curatedManufacturers.map(name=>
+  name==='Prusa'?'prusa research':name.toLocaleLowerCase('en')));
+// QIDIStudio's installed "X 5 Series" vendor is a QIDI family only for UI
+// grouping; this does not rewrite its ID, source profile or conversion binding.
+function displayMakerKey(name){
+  const key=picker.makerKey(name);
+  return key==='x 5 series'?'qidi':key;
+}
+function visibleGroup(group){
+  return showOtherManufacturers||curatedMakerKeys.has(displayMakerKey(group.manufacturer))||
+    Boolean(draft)&&group.ids.some(id=>draft.has(id));
+}
 // Destination inputs, pushed in by the app shell through setSupportedTargets().
 // `listed` is every selectable item (catalogue, installed Orca, PrusaSlicer, per-printer PrusaSlicer);
 // `supported` is the ready subset that conversion may use.
@@ -229,6 +254,9 @@ function syncCopy(){
   $('printerManufacturerLabel').textContent=t('manufacturer');
   $('printerSearchLabel').textContent=t('searchByModel');
   $('printerManufacturerFilter').querySelector('option[value=""]').textContent=t('chooseManufacturer');
+  const scope=$('showOtherManufacturersBtn');
+  scope.textContent=t(showOtherManufacturers?'showCuratedMakers':'showAllMakers');
+  scope.setAttribute('aria-pressed',String(showOtherManufacturers));
   $('saveMyPrintersBtn').textContent=t('save');
   $('cancelMyPrintersBtn').textContent=t('cancel');
 }
@@ -238,7 +266,12 @@ function refreshManufacturerOptions(){
   filter.replaceChildren();
   const placeholder=node('option','',t('chooseManufacturer'));
   placeholder.value='';filter.append(placeholder);
-  const makers=picker.manufacturerNames(listed);
+  const makers=picker.manufacturerNames(listed
+    .filter(item=>item.id!=='prusa-project'&&
+      (showOtherManufacturers||curatedMakerKeys.has(displayMakerKey(item.manufacturer))||
+       Boolean(draft)&&draft.has(item.id)))
+    .map(item=>displayMakerKey(item.manufacturer)==='qidi'
+      ?{...item,manufacturer:'QIDI'}:item));
   for(const maker of makers){
     const option=node('option','',maker);option.value=maker;filter.append(option);
   }
@@ -266,6 +299,7 @@ function variantList(variants){
       if(box.checked&&draft.size>=picker.maxSelected){box.checked=false;$('myPrintersStatus').textContent=t('limit');return;}
       if(box.checked)draft.add(variant.id);else draft.delete(variant.id);
       $('myPrintersStatus').textContent='';
+      refreshManufacturerOptions();
       render();
     });
     option.append(box,node('span','',variantLabel(variant)));
@@ -292,6 +326,7 @@ function groupCard(group,index){
       for(const id of group.ids)draft.delete(id);
     }
     $('myPrintersStatus').textContent='';
+    refreshManufacturerOptions();
     render();
   });
   const label=node('label','catalog-model-main');
@@ -332,9 +367,11 @@ function render(){
   }
   const term=$('printerCatalogSearch').value.trim();
   const manufacturer=$('printerManufacturerFilter').value;
-  // The whole catalogue is visible at once; the maker filter and search only narrow it.
+  // Curated physical manufacturers by default. Selected IDs from other makers
+  // stay available and checked; "show more" merely lifts this visual filter.
   const showList=!empty;
-  const source=manufacturer?groups.filter(group=>picker.makerKey(group.manufacturer)===picker.makerKey(manufacturer)):groups;
+  const visible=groups.filter(visibleGroup);
+  const source=manufacturer?visible.filter(group=>displayMakerKey(group.manufacturer)===displayMakerKey(manufacturer)):visible;
   const matches=showList?picker.searchGroups(source,term,choice,picker.maxRender):{models:[],total:0};
   const list=$('catalogModelList');
   $('printerCatalogSearch').disabled=empty;
@@ -385,6 +422,8 @@ function open(onboarding=false){
   firstRun=Boolean(onboarding);
   // Every saved ID stays visible and selected here, even when it is not a ready target now.
   draft=new Set(picker.allSavedIds(listed,selected.selectedIds));
+  showOtherManufacturers=false;
+  refreshManufacturerOptions();
   $('printerCatalogSearch').value='';
   $('printerManufacturerFilter').value='';
   $('myPrintersStatus').textContent='';
@@ -444,6 +483,11 @@ $('closeMyPrintersBtn').addEventListener('click',()=>$('myPrintersDialog').close
 $('saveMyPrintersBtn').addEventListener('click',save);
 $('printerCatalogSearch').addEventListener('input',render);
 $('printerManufacturerFilter').addEventListener('change',render);
+$('showOtherManufacturersBtn').addEventListener('click',()=>{
+  showOtherManufacturers=!showOtherManufacturers;
+  refreshManufacturerOptions();
+  render();
+});
 $('myPrintersDialog').addEventListener('close',()=>{
   draft=null;
   firstRun=false;

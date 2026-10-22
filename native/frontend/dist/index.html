@@ -177,6 +177,10 @@
           <input id="printerCatalogSearch" type="search" maxlength="120" autocomplete="off" placeholder="שם יצרן או דגם">
         </label>
       </div>
+      <div class="printer-catalog-scope">
+        <button type="button" id="showOtherManufacturersBtn" class="text-btn"
+          aria-pressed="false" aria-controls="catalogModelList">הצג יצרנים נוספים</button>
+      </div>
       <p id="catalogPickerHint" class="catalog-picker-hint" role="status">בחר יצרן או חפש דגם כדי להציג מדפסות.</p>
       <p id="catalogSearchCount" class="catalog-search-count" role="status"></p>
       <div id="catalogModelList" class="catalog-model-list" role="group" aria-label="Catalogue models"></div>
