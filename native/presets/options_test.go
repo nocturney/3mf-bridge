@@ -3,6 +3,7 @@ package presets
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -162,5 +163,117 @@ func TestMalformedTargetHasNoPathsOrSelection(t *testing.T) {
 	}
 	if IsValidSlicer("../qidi", "qidi-studio") {
 		t.Fatal("malformed target must not accept a slicer choice")
+	}
+}
+
+func TestOrcaFamilyWindowsVendorAppsFirstAndUniversalOrcaLast(t *testing.T) {
+	pf := filepath.Join("C:", "Program Files")
+	x86 := filepath.Join("C:", "Program Files (x86)")
+	local := filepath.Join("C:", "Users", "Tester", "AppData", "Local")
+	got := orcaFamilyLocations("windows", pf, x86, local, "", nil)
+	// Five trusted applications, each checked in the three Windows install bases.
+	if len(got) != 15 {
+		t.Fatalf("want 15 Windows candidates, got %d: %#v", len(got), got)
+	}
+	if got[0].id != "snapmaker-orca" || got[0].root != filepath.Join(pf, "Snapmaker_Orca", "resources", "profiles") {
+		t.Fatalf("first candidate must be the Snapmaker Orca fork in Program Files: %+v", got[0])
+	}
+	if got[3].root != filepath.Join(pf, "Flashforge", "Flash Studio Desktop", "resources", "profiles") {
+		t.Fatalf("Flash Studio Desktop must sit under the Flashforge folder: %+v", got[3])
+	}
+	for _, loc := range got[12:] {
+		if loc.id != "orca-slicer" {
+			t.Fatalf("generic OrcaSlicer must be the last fallback: %+v", loc)
+		}
+	}
+	if got[14].root != filepath.Join(local, "Programs", "OrcaSlicer", "resources", "profiles") {
+		t.Fatalf("per-user OrcaSlicer must be checked last: %+v", got[14])
+	}
+}
+
+func TestOrcaFamilyMacSystemAndUserApplications(t *testing.T) {
+	home := filepath.Join(string(filepath.Separator), "Users", "tester")
+	got := orcaFamilyLocations("darwin", "", "", "", home, nil)
+	// Six bundle names, each checked in /Applications and ~/Applications.
+	if len(got) != 12 {
+		t.Fatalf("want 12 Mac candidates, got %d: %#v", len(got), got)
+	}
+	if got[0].executable != filepath.Join("/Applications", "Snapmaker Orca.app") {
+		t.Fatalf("system Snapmaker Orca not first: %+v", got[0])
+	}
+	if got[1].executable != filepath.Join(home, "Applications", "Snapmaker Orca.app") {
+		t.Fatalf("per-user Snapmaker Orca not second: %+v", got[1])
+	}
+	for _, want := range []string{
+		filepath.Join("/Applications", "Flash Studio.app"),
+		filepath.Join(home, "Applications", "Flash Studio Desktop.app"),
+		filepath.Join("/Applications", "ElegooSlicer.app"),
+		filepath.Join(home, "Applications", "QIDIStudio.app"),
+	} {
+		found := false
+		for _, loc := range got {
+			found = found || loc.executable == want
+		}
+		if !found {
+			t.Fatalf("missing expected Mac bundle %q in %+v", want, got)
+		}
+	}
+	for _, loc := range got[10:] {
+		if loc.id != "orca-slicer" {
+			t.Fatalf("generic OrcaSlicer must be the last fallback: %+v", loc)
+		}
+	}
+}
+
+func TestOrcaFamilyExcludesBambuAndEmptyBases(t *testing.T) {
+	pf := filepath.Join("C:", "Program Files")
+	for _, loc := range orcaFamilyLocations("windows", pf, "", "", "", nil) {
+		if strings.Contains(loc.root, "Bambu") || strings.Contains(loc.root, "BBL") {
+			t.Fatalf("Bambu must stay source-only: %+v", loc)
+		}
+	}
+	if got := orcaFamilyLocations("windows", "", "", "", "", nil); len(got) != 0 {
+		t.Fatalf("no install base must yield no paths: %#v", got)
+	}
+	if got := orcaFamilyLocations("linux", pf, pf, pf, pf, nil); len(got) != 0 {
+		t.Fatalf("unsupported platform must yield no paths: %#v", got)
+	}
+}
+
+func TestOrcaFamilyOverridesLeadAndAreDeduplicated(t *testing.T) {
+	override := filepath.Join(t.TempDir(), "profiles")
+	got := orcaFamilyLocations("darwin", "", "", "", "", []string{override, "", override})
+	if len(got) != 7 || got[0].root != override || got[0].executable != "" {
+		t.Fatalf("explicit override must lead once, then the six /Applications candidates: %#v", got)
+	}
+}
+
+// The four original targets must keep every root they used before this change.
+func TestOrcaFamilyKeepsLegacyFourTargetRoots(t *testing.T) {
+	pf := filepath.Join("C:", "Program Files")
+	x86 := filepath.Join("C:", "Program Files (x86)")
+	local := filepath.Join("C:", "Users", "Tester", "AppData", "Local")
+	home := filepath.Join(string(filepath.Separator), "Users", "tester")
+	windows := orcaFamilyLocations("windows", pf, x86, local, "", nil)
+	mac := orcaFamilyLocations("darwin", "", "", "", home, nil)
+	has := func(list []slicerLocation, root string) bool {
+		for _, loc := range list {
+			if loc.root == root {
+				return true
+			}
+		}
+		return false
+	}
+	for _, target := range []string{"u1", "c5", "cc2", "qidi"} {
+		for _, loc := range slicerLocationsForOS(target, "windows", pf, x86, local, "", "") {
+			if !has(windows, loc.root) {
+				t.Fatalf("Windows %s lost legacy root %q", target, loc.root)
+			}
+		}
+		for _, loc := range slicerLocationsForOS(target, "darwin", "", "", "", home, "") {
+			if !has(mac, loc.root) {
+				t.Fatalf("Mac %s lost legacy root %q", target, loc.root)
+			}
+		}
 	}
 }

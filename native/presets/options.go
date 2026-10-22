@@ -65,25 +65,9 @@ func appGroups(target, platform string) [][]appInstall {
 	return nil
 }
 
-// slicerLocationsForOS builds a bounded list of known install locations.
-// Candidate paths are local only; no registry scans, network access, or
-// executable paths supplied by untrusted frontend input.
-// Applications are ordered by priority group, and every install base is checked
-// inside a group before the next group. So a vendor app in LocalAppData still
-// beats a generic Orca in Program Files. An unknown target yields no paths.
-func slicerLocationsForOS(target, platform, programFiles, programFilesX86, localAppData, home, override string) []slicerLocation {
-	if override != "" {
-		return []slicerLocation{{"system", "Custom local profile", override, ""}}
-	}
-	result := []slicerLocation{}
-	seen := map[string]bool{}
-	add := func(id, name, root, executable string) {
-		if root == "" || seen[root] {
-			return
-		}
-		seen[root] = true
-		result = append(result, slicerLocation{id, name, root, executable})
-	}
+// installBases returns the trusted install bases for a platform in priority order.
+// Empty system directories are dropped, so they never turn into relative paths.
+func installBases(platform, programFiles, programFilesX86, localAppData, home string) []string {
 	var bases []string
 	switch platform {
 	case "windows":
@@ -99,23 +83,120 @@ func slicerLocationsForOS(target, platform, programFiles, programFilesX86, local
 			bases = append(bases, filepath.Join(home, "Applications"))
 		}
 	}
+	result := []string{}
+	for _, base := range bases {
+		if base != "" {
+			result = append(result, base)
+		}
+	}
+	return result
+}
+
+// installLocation is the profile root and executable (Windows) or bundle (macOS)
+// of one application folder inside an install base.
+func installLocation(platform, base string, app appInstall) slicerLocation {
+	if platform == "windows" {
+		dir := filepath.Join(base, app.folder)
+		return slicerLocation{app.id, app.name, filepath.Join(dir, "resources", "profiles"), filepath.Join(dir, app.exe)}
+	}
+	bundle := filepath.Join(base, app.folder+".app")
+	return slicerLocation{app.id, app.name, filepath.Join(bundle, "Contents", "Resources", "profiles"), bundle}
+}
+
+// appendUnique adds a location once per profile root.
+func appendUnique(result []slicerLocation, seen map[string]bool, loc slicerLocation) []slicerLocation {
+	if loc.root == "" || seen[loc.root] {
+		return result
+	}
+	seen[loc.root] = true
+	return append(result, loc)
+}
+
+// slicerLocationsForOS builds a bounded list of known install locations.
+// Candidate paths are local only; no registry scans, network access, or
+// executable paths supplied by untrusted frontend input.
+// Applications are ordered by priority group, and every install base is checked
+// inside a group before the next group. So a vendor app in LocalAppData still
+// beats a generic Orca in Program Files. An unknown target yields no paths.
+func slicerLocationsForOS(target, platform, programFiles, programFilesX86, localAppData, home, override string) []slicerLocation {
+	if override != "" {
+		return []slicerLocation{{"system", "Custom local profile", override, ""}}
+	}
+	result := []slicerLocation{}
+	seen := map[string]bool{}
+	bases := installBases(platform, programFiles, programFilesX86, localAppData, home)
 	for _, group := range appGroups(target, platform) {
 		for _, base := range bases {
-			if base == "" {
-				continue
-			}
 			for _, app := range group {
-				if platform == "windows" {
-					dir := filepath.Join(base, app.folder)
-					add(app.id, app.name, filepath.Join(dir, "resources", "profiles"), filepath.Join(dir, app.exe))
-					continue
-				}
-				bundle := filepath.Join(base, app.folder+".app")
-				add(app.id, app.name, filepath.Join(bundle, "Contents", "Resources", "profiles"), bundle)
+				result = appendUnique(result, seen, installLocation(platform, base, app))
 			}
 		}
 	}
 	return result
+}
+
+// orcaFamilyApps is the bounded, explicit list of trusted applications whose
+// installed resources/profiles tree may hold Orca-compatible machine, process and
+// filament JSON. Vendor forks come first; universal OrcaSlicer is the last
+// fallback. Each entry was verified against that layout. Bambu Studio is absent
+// because it stays source-only, and apps with other layouts are not listed.
+func orcaFamilyApps(platform string) []appInstall {
+	switch platform {
+	case "windows":
+		return []appInstall{
+			{"snapmaker-orca", "Snapmaker Orca", "Snapmaker_Orca", "snapmaker-orca.exe"},
+			{"flash-studio", "Flash Studio Desktop", filepath.Join("Flashforge", "Flash Studio Desktop"), "flash studio.exe"},
+			{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", "elegoo-slicer.exe"},
+			{"qidi-studio", "QIDIStudio", "QIDIStudio", "QIDIStudio.exe"},
+			{"orca-slicer", "OrcaSlicer", "OrcaSlicer", "orca-slicer.exe"},
+		}
+	case "darwin":
+		return []appInstall{
+			{"snapmaker-orca", "Snapmaker Orca", "Snapmaker Orca", ""},
+			{"flash-studio", "Flash Studio", "Flash Studio", ""},
+			{"flash-studio", "Flash Studio Desktop", "Flash Studio Desktop", ""},
+			{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", ""},
+			{"qidi-studio", "QIDIStudio", "QIDIStudio", ""},
+			{"orca-slicer", "OrcaSlicer", "OrcaSlicer", ""},
+		}
+	}
+	return nil
+}
+
+// orcaFamilyLocations is the discovery inventory for installed Orca-family
+// profiles. Explicit local overrides come first, then each trusted application
+// in priority order across every install base. It never searches recursively.
+func orcaFamilyLocations(platform, programFiles, programFilesX86, localAppData, home string, overrides []string) []slicerLocation {
+	result := []slicerLocation{}
+	seen := map[string]bool{}
+	for _, override := range overrides {
+		if override != "" {
+			result = appendUnique(result, seen, slicerLocation{"system", "Custom local profile", override, ""})
+		}
+	}
+	bases := installBases(platform, programFiles, programFilesX86, localAppData, home)
+	for _, app := range orcaFamilyApps(platform) {
+		for _, base := range bases {
+			result = appendUnique(result, seen, installLocation(platform, base, app))
+		}
+	}
+	return result
+}
+
+// installedOrcaFamilyLocations reads the live environment for orcaFamilyLocations.
+// The per-target BRIDGE_SLICER_PROFILE_* overrides are kept as explicit preferences.
+func installedOrcaFamilyLocations() []slicerLocation {
+	pf := os.Getenv("ProgramFiles")
+	if runtime.GOOS == "windows" && pf == "" {
+		pf = `C:\Program Files`
+	}
+	home, _ := os.UserHomeDir()
+	overrides := []string{}
+	for _, target := range []string{"u1", "c5", "cc2", "qidi"} {
+		overrides = append(overrides, os.Getenv("BRIDGE_SLICER_PROFILE_"+strings.ToUpper(target)))
+	}
+	return orcaFamilyLocations(runtime.GOOS, pf, os.Getenv("ProgramFiles(x86)"),
+		os.Getenv("LOCALAPPDATA"), home, overrides)
 }
 
 func slicerLocations(target string) []slicerLocation {
