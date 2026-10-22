@@ -168,3 +168,75 @@ func TestPrusaConversionReResolvesAndNeverWritesWhileUnverified(t *testing.T) {
 		t.Fatalf("a refused Prusa conversion wrote files: before %d after %d", len(before), len(after))
 	}
 }
+
+// A saved printer whose slicer is absent is hidden from the list, so the UI cannot
+// send it back. An unrelated save must still keep it on disk, and it reappears
+// once its slicer is installed again.
+func TestAbsentSlicerSelectionsSurviveRestartAndUnrelatedSave(t *testing.T) {
+	withFreshSettings(t)
+	stubInstalledOrca(t)
+	stubPrusa(t)
+	path := writeMyPrintersFile(t, `{"version":1,"selectedIds":["snapmaker-u1","`+prusaTestID+`","`+readyOrca+`","`+prusaOtherID+`","prusa-project"]}`)
+	app := &App{}
+	got, err := app.GetMyPrinters()
+	if err != nil || !sameIDSet(got.SelectedIDs, []string{"snapmaker-u1", "prusa-project"}) {
+		t.Fatalf("absent-slicer printers not hidden on read: %+v %v", got, err)
+	}
+	// The UI sends only the rows it can list: built-in and generic targets here.
+	if _, err = app.SaveMyPrinters([]string{"snapmaker-u1", "prusa-project"}); err != nil {
+		t.Fatalf("unrelated save rejected: %v", err)
+	}
+	assertDiskIDs(t, path, []string{"snapmaker-u1", "prusa-project", prusaTestID, readyOrca, prusaOtherID})
+	stubInstalledOrca(t, readyOrca)
+	stubPrusa(t, prusaTestID)
+	back, err := app.GetMyPrinters()
+	if err != nil || !sameIDSet(back.SelectedIDs, []string{"snapmaker-u1", "prusa-project", prusaTestID, readyOrca}) {
+		t.Fatalf("saved printers not restored after slicers return: %+v %v", back, err)
+	}
+	assertDiskIDs(t, path, []string{"snapmaker-u1", "prusa-project", prusaTestID, readyOrca, prusaOtherID})
+}
+
+// Deselecting an installed printer still removes it. Only absent slicers are kept.
+func TestDeselectingInstalledPrusaStillRemovesIt(t *testing.T) {
+	withFreshSettings(t)
+	stubInstalledOrca(t)
+	stubPrusa(t, prusaTestID)
+	path := writeMyPrintersFile(t, `{"version":1,"selectedIds":["snapmaker-u1","`+prusaTestID+`"]}`)
+	app := &App{}
+	if _, err := app.SaveMyPrinters([]string{"snapmaker-u1"}); err != nil {
+		t.Fatalf("deselecting installed printer rejected: %v", err)
+	}
+	assertDiskIDs(t, path, []string{"snapmaker-u1"})
+}
+
+func sameIDSet(got, want []string) bool {
+	if len(got) != len(want) {
+		return false
+	}
+	seen := make(map[string]bool, len(got))
+	for _, id := range got {
+		seen[id] = true
+	}
+	for _, id := range want {
+		if !seen[id] {
+			return false
+		}
+	}
+	return true
+}
+
+// assertDiskIDs reads the saved file itself, not a reply, so it proves persistence.
+func assertDiskIDs(t *testing.T, path string, want []string) {
+	t.Helper()
+	raw, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var disk myPrintersOnDisk
+	if err = json.Unmarshal(raw, &disk); err != nil {
+		t.Fatal(err)
+	}
+	if !sameIDSet(disk.SelectedIDs, want) {
+		t.Fatalf("saved file ids = %v, want %v", disk.SelectedIDs, want)
+	}
+}

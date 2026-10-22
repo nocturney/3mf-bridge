@@ -53,6 +53,9 @@ type MyPrintersReply struct {
 	Version           int      `json:"version"`
 	SelectedIDs       []string `json:"selectedIds"`
 	OnboardingPending bool     `json:"onboardingPending"`
+	// savedIDs is the complete validated disk inventory, including currently absent
+	// dynamic targets. It is never serialized to the frontend or used for conversion.
+	savedIDs          []string
 }
 type myPrintersOnDisk struct {
 	Version     int      `json:"version"`
@@ -266,6 +269,29 @@ func installedTargetIDs(ids []string) map[string]bool {
 	return installed
 }
 
+// keepAbsentInventory appends saved Orca and PrusaSlicer IDs whose slicer is absent
+// now. The list hides them, so the UI never sends them back and could not remove
+// them; saving without this would erase them. An installed printer that the request
+// omits is still removed. Kept IDs never imply conversion readiness.
+func keepAbsentInventory(requested, saved []string) ([]string, error) {
+	want := make(map[string]bool, len(requested))
+	for _, id := range requested {
+		want[id] = true
+	}
+	installed := installedTargetIDs(saved)
+	out := append([]string{}, requested...)
+	for _, id := range saved {
+		if want[id] || installed[id] || !(presets.IsOrcaTargetID(id) || presets.IsPrusaTargetID(id)) {
+			continue
+		}
+		out = append(out, id)
+	}
+	if len(out) > maxMyPrinters {
+		return nil, fmt.Errorf("at most %d printers can be selected", maxMyPrinters)
+	}
+	return out, nil
+}
+
 func loadMyPrinters(catalog PrinterCatalogReply) (MyPrintersReply, error) {
 	path, err := myPrintersPath()
 	if err != nil {
@@ -298,7 +324,7 @@ func loadMyPrinters(catalog PrinterCatalogReply) (MyPrintersReply, error) {
 	if err != nil {
 		return MyPrintersReply{}, fmt.Errorf("saved printer selections invalid: %w", err)
 	}
-	return MyPrintersReply{Version: 1, SelectedIDs: kept}, nil
+	return MyPrintersReply{Version: 1, SelectedIDs: kept, savedIDs: append([]string{}, cfg.SelectedIDs...)}, nil
 }
 
 func (a *App) GetMyPrinters() (MyPrintersReply, error) {
@@ -322,7 +348,11 @@ func (a *App) SaveMyPrinters(ids []string) (MyPrintersReply, error) {
 		return MyPrintersReply{}, err
 	}
 	// Corrupt state is never overwritten: the user can repair/recover it.
-	if _, err = loadMyPrinters(catalog); err != nil {
+	saved, err := loadMyPrinters(catalog)
+	if err != nil {
+		return MyPrintersReply{}, err
+	}
+	if ids, err = keepAbsentInventory(ids, saved.savedIDs); err != nil {
 		return MyPrintersReply{}, err
 	}
 	path, err := myPrintersPath()
