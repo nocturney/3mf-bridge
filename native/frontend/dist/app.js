@@ -140,11 +140,15 @@ const targetOrder = ['u1','c5','cc2','qidi'];
 // Installed Orca-family machines, as listed by the backend. Only rows the
 // backend resolved completely are present; the picker never invents one.
 let installedTargets=[];
+// Per-printer PrusaSlicer targets. Optional: an older binary without
+// InstalledPrusaTargets leaves this empty, and no such row is ever shown.
+let installedPrusaTargets=[];
 let installedRows=[];
 let prusaAvailable=false;
 function targetDisplayName(id){
   if(id===prusaTargetId)return t('prusaProjectName');
-  return printerNames[id]||installedTargets.find((item)=>item.id===id)?.title||id;
+  return printerNames[id]||installedTargets.find((item)=>item.id===id)?.title||
+    installedPrusaTargets.find((item)=>item.id===id)?.title||id;
 }
 function prusaCheckbox(){return document.querySelector('[data-prusa-target] input');}
 const el = (id) => document.getElementById(id);
@@ -367,7 +371,7 @@ function renderTargets(){
 }
 // Publishes the destination inputs to My Printers, which owns the supported list.
 function publishSupportedTargets(){
-  window.SliceBridgeMyPrinters?.setSupportedTargets({available,installedTargets,prusaAvailable});
+  window.SliceBridgeMyPrinters?.setSupportedTargets({available,installedTargets,installedPrusaTargets,prusaAvailable});
 }
 async function refreshAvailability(){
   if(!api())return;
@@ -376,6 +380,10 @@ async function refreshAvailability(){
     available=Array.isArray(reply)?reply:[];
   }
   catch(e){setActivity(t('settingsError'),e?.message||String(e),'warning');}
+}
+// Rows the backend marks ready. Readiness is checked again in the picker before a row can show.
+function installedRowTargets(){
+  return [...installedTargets,...installedPrusaTargets.filter((target)=>target?.ready===true)];
 }
 // Installed rows are rebuilt only when the backend list changes; checked state survives.
 // Each row starts hidden unless My Printers selects it (see renderTargets).
@@ -386,7 +394,7 @@ function renderInstalledTargets(){
   for(const entry of installedRows)entry.row.remove();
   installedRows=[];
   const seen=new Set();
-  for(const target of installedTargets){
+  for(const target of installedRowTargets()){
     if(typeof target?.id!=='string'||seen.has(target.id))continue;
     seen.add(target.id);
     const row=node('label','target-option installed-target');
@@ -401,7 +409,10 @@ function renderInstalledTargets(){
     icon.setAttribute('aria-hidden','true');
     const label=node('span','printer-label');
     const physical=language==='he'?'כלים פיזיים':(target.physicalTools===1?'physical tool':'physical tools');
-    const summary=target.nozzle+' mm · '+target.physicalTools+' '+physical;
+    // A PrusaSlicer target has no physical tool count; it shows its nozzle and slicer only.
+    const summary=typeof target.physicalTools==='number'
+      ?target.nozzle+' mm · '+target.physicalTools+' '+physical
+      :[target.nozzle?target.nozzle+' mm':null,target.slicer||'PrusaSlicer'].filter(Boolean).join(' · ');
     label.append(node('strong','',target.title||target.model),node('small','',summary));
     row.title=(target.title||target.model)+' · '+summary;
     row.append(checkbox,icon,label);
@@ -410,17 +421,28 @@ function renderInstalledTargets(){
   }
 }
 async function refreshInstalledTargets(){
-  if(!api()?.InstalledOrcaTargets)return;
-  try{
-    const reply=await api().InstalledOrcaTargets();
-    installedTargets=Array.isArray(reply?.targets)?reply.targets:[];
-  }catch(e){
-    installedTargets=[];
-    setActivity(t('settingsError'),e?.message||String(e),'warning');
+  if(api()?.InstalledOrcaTargets){
+    try{
+      const reply=await api().InstalledOrcaTargets();
+      installedTargets=Array.isArray(reply?.targets)?reply.targets:[];
+    }catch(e){
+      installedTargets=[];
+      setActivity(t('settingsError'),e?.message||String(e),'warning');
+    }
   }
+  await refreshInstalledPrusaTargets();
   renderInstalledTargets();
   renderTargets();
   window.SliceBridgeMyPrinters?.refreshDestinationArt?.();
+}
+// Optional backend method. A missing method or a failed call means no per-printer
+// PrusaSlicer targets this session; the built-in and Orca lists are unaffected.
+async function refreshInstalledPrusaTargets(){
+  if(!api()?.InstalledPrusaTargets){installedPrusaTargets=[];return;}
+  try{
+    const reply=await api().InstalledPrusaTargets();
+    installedPrusaTargets=Array.isArray(reply?.targets)?reply.targets:[];
+  }catch{installedPrusaTargets=[];}
 }
 // The PrusaSlicer row is shown only when the backend file probe finds the
 // sidecar and My Printers selects it. A failed probe offers no target.

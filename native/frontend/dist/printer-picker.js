@@ -1,10 +1,12 @@
 /* Pure, offline-first destination lookup. No image downloads, DOM injection or IO.
  * Two lists, never mixed up:
- * - catalogItems(): every non-Bambu catalogue model plus installed Orca targets and the
- *   PrusaSlicer project item. This is what My Printers lets the user select. Each item
- *   has a `ready` flag saying whether it is a working conversion destination.
+ * - catalogItems(): every non-Bambu catalogue model plus installed Orca targets, installed
+ *   per-printer PrusaSlicer targets and the PrusaSlicer project item. This is what My Printers
+ *   lets the user select. Each item has a `ready` flag saying whether it is a working conversion
+ *   destination.
  * - supportedModels(): only the ready items (built-in adapters that are available,
- *   installed Orca targets resolved completely, PrusaSlicer when its engine is ready).
+ *   installed Orca targets resolved completely, PrusaSlicer targets the backend marked ready
+ *   while the engine probe succeeds).
  *   Conversion reads this list only. Catalogue membership never implies readiness.
  * groupDestinations() folds target IDs into one card per physical model; the IDs
  * themselves (nozzle, slicer, built-in adapter, catalogue ID) are never merged or replaced.
@@ -19,6 +21,8 @@
   const prusaTargetId='prusa-project';
   // Same shape the Go backend issues (presets.IsOrcaTargetID). Anything else is not a destination.
   const orcaTargetPattern=/^orca-[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{10}$/;
+  // Per-printer PrusaSlicer targets, shaped like Orca IDs. The generic "prusa-project" never matches.
+  const prusaTargetPattern=/^prusa-[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{10}$/;
   const limit=80;
   // Upper bound for one list render. The full non-Bambu catalogue fits, so nothing is cut off.
   const maxRender=1000;
@@ -118,22 +122,34 @@
     if(item.legacyTarget)return '';
     return [item.nozzle?item.nozzle+' mm':null,item.slicer||null].filter(Boolean).join(' · ');
   }
-  function dynamicItem(target){
-    const vendor=clean(target.vendor)||'Orca';
+  // One installed machine. `slicer` and `ready` are passed in by the caller: Orca targets are
+  // always resolved (the backend lists only those), while a PrusaSlicer target is ready only
+  // when the backend validated it and the engine probe succeeded.
+  function installedItem(target,fallbackVendor,slicer,ready){
+    const vendor=clean(target.vendor)||fallbackVendor;
     const name=stripNozzle(clean(target.title)||clean(target.model));
     if(!name||isBambuName(vendor)||isBambuName(name))return null;
     // "Snapmaker U1" under vendor "Snapmaker" reads as "Snapmaker U1", not "Snapmaker Snapmaker U1".
     const model=withoutMakerPrefix(name,vendor)||name;
     const item={
       id:target.id,manufacturer:makerLabel(vendor),model,aliases:[],legacyTarget:null,
-      nozzle:nozzleOf(target),slicer:clean(target.slicer)||null,
+      nozzle:nozzleOf(target),slicer,
     };
-    return {...item,releaseDate:releaseDate(item),ready:true};
+    return {...item,releaseDate:releaseDate(item),ready};
+  }
+  function dynamicItem(target){
+    return installedItem(target,'Orca',clean(target.slicer)||null,true);
+  }
+  // Only backend-listed targets with the exact shape count; `ready` must be the literal true.
+  function prusaDynamicItem(target,engineReady){
+    if(!target||typeof target.id!=='string'||!prusaTargetPattern.test(target.id))return null;
+    return installedItem(target,'Prusa','PrusaSlicer',target.ready===true&&engineReady===true);
   }
   // Every destination the My Printers list can show. `ready` is true only for a working
-  // conversion target: an available built-in adapter, a resolved Orca target, or PrusaSlicer
-  // when its engine is ready. Other catalogue models are selectable but never conversion targets.
-  function catalogItems(models,availability,installedTargets,prusaAvailable){
+  // conversion target: an available built-in adapter, a resolved Orca target, a backend-ready
+  // per-printer PrusaSlicer target, or the generic PrusaSlicer project when its engine is ready.
+  // Other catalogue models, and unready PrusaSlicer targets, stay selectable but never convert.
+  function catalogItems(models,availability,installedTargets,prusaAvailable,installedPrusaTargets){
     const usable=new Set((Array.isArray(availability)?availability:[])
       .filter(item=>item?.available===true&&typeof item.target==='string')
       .map(item=>item.target));
@@ -165,14 +181,19 @@
       if(!target||typeof target.id!=='string'||!orcaTargetPattern.test(target.id))continue;
       add(dynamicItem(target));
     }
+    // Missing or malformed list (older backend): no per-printer PrusaSlicer rows at all.
+    for(const target of Array.isArray(installedPrusaTargets)?installedPrusaTargets:[]){
+      add(prusaDynamicItem(target,prusaAvailable===true));
+    }
     // Generic export target: not a physical maker, so it is never a dropdown brand.
     add({id:prusaTargetId,manufacturer:'Generic',model:'PrusaSlicer project',aliases:['Generic project'],
          legacyTarget:null,nozzle:null,slicer:null,releaseDate:null,ready:prusaAvailable===true});
     return items;
   }
   // Conversion destinations only: the ready subset of catalogItems().
-  function supportedModels(models,availability,installedTargets,prusaAvailable){
-    return catalogItems(models,availability,installedTargets,prusaAvailable).filter(item=>item.ready);
+  function supportedModels(models,availability,installedTargets,prusaAvailable,installedPrusaTargets){
+    return catalogItems(models,availability,installedTargets,prusaAvailable,installedPrusaTargets)
+      .filter(item=>item.ready);
   }
   // One card per physical model. Variants keep their own IDs; nothing is merged or replaced.
   function nozzleNumber(item){
