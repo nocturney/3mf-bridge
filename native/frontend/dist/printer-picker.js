@@ -30,7 +30,7 @@
   // My Printers is a hardware inventory, not a list of ranked conversion
   // integrations. Every real manufacturer gets the same alphabetical treatment.
   // Explicit, reviewed spelling aliases only. Anything else is compared casefolded.
-  const makerAliases=Object.freeze({'prusa':'prusa research'});
+  const makerAliases=Object.freeze({'prusa':'prusa research','x 5 series':'qidi'});
   // Brand casing for canonical makers whose published spelling is not plain title case.
   const makerLabels=Object.freeze({'elegoo':'ELEGOO','qidi':'QIDI','flsun':'FLSun','prusa research':'Prusa Research'});
   // Verified PUBLIC launch dates only, from manufacturer announcements.
@@ -131,7 +131,8 @@
     const name=stripNozzle(clean(target.title)||clean(target.model));
     if(!name||isBambuName(vendor)||isBambuName(name))return null;
     // "Snapmaker U1" under vendor "Snapmaker" reads as "Snapmaker U1", not "Snapmaker Snapmaker U1".
-    const model=withoutMakerPrefix(name,vendor)||name;
+    const canonicalVendor=makerLabel(vendor);
+    const model=withoutMakerPrefix(withoutMakerPrefix(name,vendor),canonicalVendor)||name;
     const item={
       id:target.id,manufacturer:makerLabel(vendor),model,aliases:[],legacyTarget:null,
       nozzle:nozzleOf(target),slicer,
@@ -237,6 +238,43 @@
   function latestDate(variants){
     return variants.map(v=>v.releaseDate).filter(Boolean).sort().at(-1)||null;
   }
+  // Default *profile* resolution is not catalogue sorting or a claim of
+  // conversion quality. Consider only already validated, installed targets.
+  // Manufacturer-owned slicers win among the SAME nozzle diameter. Changing
+  // slicer must never silently switch the physical nozzle on a printer.
+  const ownedSlicerNames=Object.freeze({
+    snapmaker:['snapmakerorca'],flashforge:['flashstudio','flashstudiodesktop'],
+    elegoo:['elegooslicer'],qidi:['qidistudio','qidislicer'],
+    'prusa research':['prusaslicer'],creality:['crealityprint','crealityslicer'],
+    anycubic:['anycubicslicernext','anycubicslicer'],sovol:['sovolslicer'],
+    flsun:['flsunslicer'],anker:['ankermakestudio']
+  });
+  function slicerKey(name){
+    return String(name||'').toLocaleLowerCase('en').replace(/[\s_-]+/g,'');
+  }
+  function firstValidatedManufacturer(variants,maker){
+    const own=ownedSlicerNames[makerKey(maker)]||[];
+    return variants.find(item=>item.ready===true&&item.slicer&&own.includes(slicerKey(item.slicer)));
+  }
+  function preferredSlicerVariant(variants,maker,nozzle){
+    const exact=(variants||[]).filter(item=>item?.ready===true&&item.slicer&&item.nozzle===nozzle);
+    return firstValidatedManufacturer(exact,maker)||exact[0]||null;
+  }
+  function defaultVariant(variants,maker){
+    // Built-in adapters already resolve complete manufacturer's presets with
+    // safe automatic fallback. Keep their stable IDs rather than pinning an app.
+    const builtIn=variants.find(item=>item.legacyTarget&&item.ready===true);
+    if(builtIn)return builtIn;
+    const ready=variants.filter(item=>item.ready===true&&item.slicer);
+    if(!ready.length)return variants.find(item=>item.ready===true&&item.nozzle==='0.4')||
+      variants.find(item=>item.nozzle==null&&item.slicer==null)||variants[0];
+    // Existing physical-nozzle convention prefers 0.4 only if actually present;
+    // never choose a 0.25 manufacturer preset over a 0.4 alternative *because*
+    // of the slicer brand. The actual nozzle still needs hardware verification.
+    const exact=ready.filter(item=>item.nozzle==='0.4');
+    const effectiveNozzle=exact.length?'0.4':ready[0].nozzle;
+    return preferredSlicerVariant(ready,maker,effectiveNozzle)||ready[0];
+  }
   function groupDestinations(items){
     const byKey=new Map();
     for(const item of Array.isArray(items)?items:[]){
@@ -248,12 +286,11 @@
     const groups=[];
     for(const [key,variants] of byKey){
       variants.sort(variantOrder);
-      // Default card selection depends on physical nozzle (0.4 mm if present),
-      // or the canonical catalogue entry. Never auto-rank conversion engines.
-      // Existing selected IDs are kept verbatim by My Printers, regardless.
-      const preferred=variants.find(v=>v.nozzle==='0.4')||
-        variants.find(v=>v.nozzle==null&&v.slicer==null)||variants[0];
+      // Manufacturer-owned complete, installed slicer profiles are the
+      // default for an equivalent physical nozzle. Existing user selections
+      // remain verbatim, including explicit non-manufacturer preferences.
       const first=variants[0];
+      const preferred=defaultVariant(variants,first.manufacturer);
       groups.push({
         key,
         id:preferred.id,
@@ -347,5 +384,5 @@
   }
   return {catalogItems,supportedModels,search,searchGroups,groupDestinations,isHidden,title,releaseDate,
           manufacturerNames,physicalKey,lookupKeys,makerKey,makerLabel,variantText,
-          selectedTargetIds,allSavedIds,legacyTargetsFor,maxSelected,maxRender};
+          preferredSlicerVariant,selectedTargetIds,allSavedIds,legacyTargetsFor,maxSelected,maxRender};
 });

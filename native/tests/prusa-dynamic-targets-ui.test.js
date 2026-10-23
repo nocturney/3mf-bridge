@@ -61,11 +61,11 @@ test('mixed Prusa and Orca variants of one physical model share a card with inde
   assert.equal(byId[prusaMk4Brass.id].nozzle,'0.6');
 });
 
-test('equivalent 0.4 mm Prusa and Orca profiles are ordered without manufacturer/conversion preference',()=>{
+test('Prusa Research uses a complete manufacturer PrusaSlicer profile first, with hardware order unchanged',()=>{
   const items=picker.supportedModels(catalog.models,onAll,[orcaMk4],true,[prusaMk4]);
   const card=picker.groupDestinations(items).find(group=>group.ids.includes(prusaMk4.id));
-  assert.deepEqual(card.ids,[orcaMk4.id,prusaMk4.id]);
-  assert.equal(card.id,orcaMk4.id); // Alphabetical slicer name, never conversion rating.
+  assert.deepEqual(card.ids,[orcaMk4.id,prusaMk4.id],'profile list remains hardware/alpha sorted');
+  assert.equal(card.id,prusaMk4.id,'PrusaSlicer is the default only when fully validated');
 });
 
 test('equal-nozzle Orca and Prusa entries sort alphabetically, and both stay selectable',()=>{

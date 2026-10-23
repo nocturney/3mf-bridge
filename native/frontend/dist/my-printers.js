@@ -22,8 +22,9 @@ const translations={
     manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',
     noSupported:'עדיין אין יעדים זמינים במחשב זה.',nothingSelected:'עדיין לא נבחרו מדפסות.',
     variants:'דגם, דיזה וסלייסר',nozzleUnspecified:'ללא שיוך דיזה',imageUnavailable:'תמונה אינה זמינה',
-    profileSettings:'הגדרות',profileHint:'בחר פרופיל דיזה וסלייסר למדפסת. הבחירה תישמר רק לאחר לחיצה על ״שמור מדפסות״.',
-    profileApply:'בחר פרופיל',profileCancel:'ביטול',profileChoose:'יש לבחור פרופיל.',
+    profileSettings:'סלייסר',profileHint:'המערכת תעדיף סלייסר יצרן מותקן עם פרופיל תקין. אפשר לבחור סלייסר חלופי לאותה מדפסת ודיזה; השינוי נשמר רק בלחיצה על ״שמור מדפסות״.',
+    profileApply:'שמור העדפה',profileCancel:'ביטול',profileChoose:'יש לבחור סלייסר.',
+    slicerAutomatic:'ברירת מחדל — {slicer}',
     showAllMakers:'הצג יצרנים נוספים',showCuratedMakers:'הצג רק יצרנים נבחרים'
   },
   en:{
@@ -36,8 +37,9 @@ const translations={
     manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',
     noSupported:'No destinations are available on this computer yet.',nothingSelected:'No printers selected yet.',
     variants:'Model, nozzle and slicer',nozzleUnspecified:'No nozzle specified',imageUnavailable:'Image unavailable',
-    profileSettings:'Settings',profileHint:'Choose the nozzle and slicer profile. Changes are saved only when you select Save printers.',
-    profileApply:'Use profile',profileCancel:'Cancel',profileChoose:'Choose a profile.',
+    profileSettings:'Slicer',profileHint:'A compatible installed manufacturer slicer is preferred automatically. Override only with a verified slicer for this same printer and nozzle; save using Save printers.',
+    profileApply:'Apply preference',profileCancel:'Cancel',profileChoose:'Choose a slicer.',
+    slicerAutomatic:'Default — {slicer}',
     showAllMakers:'Show more manufacturers',showCuratedMakers:'Show selected manufacturers only'
   }
 };
@@ -292,10 +294,28 @@ function variantLabel(item){
   if(!item.nozzle&&!item.slicer)return item.catalogueLabel||picker.title(item);
   return picker.variantText(item)||picker.title(item);
 }
-// Keep the catalogue uncluttered. A separate, explicit profile dialog is the
-// ONLY place that lists nozzle/slicer variants; none are lost or forged.
+// Keep the catalogue uncluttered. The selected-printer settings offer only
+// verified slicer alternatives for the SAME physical nozzle. Other profiles
+// stay in the backend but are not presented as hardware/nozzle choices.
+function eligibleSlicerChoices(group){
+  const active=group.variants.find(item=>draft?.has(item.id));
+  const defaultItem=group.variants.find(item=>item.id===group.id);
+  // No profile dialogue is allowed to change the hardware nozzle. For
+  // built-ins the independent printer-settings panel handles that hardware
+  // preference; this selector is ONLY for equivalent installed slicers.
+  const nozzle=active?.nozzle||defaultItem?.nozzle||null;
+  const choices=group.variants.filter(item=>
+    item.ready===true&&item.slicer&&item.nozzle===nozzle);
+  const bySlicer=new Map();
+  for(const item of choices){
+    const key=String(item.slicer).toLocaleLowerCase('en').replace(/[\s_-]+/g,'');
+    const existing=bySlicer.get(key);
+    if(!existing||item.id===active?.id)bySlicer.set(key,item);
+  }
+  return [...bySlicer.values()];
+}
 function profileConfigurable(group){
-  return group.variants.length>1&&group.variants.some(item=>item.nozzle||item.slicer);
+  return eligibleSlicerChoices(group).length>1;
 }
 function openProfileSettings(group){
   if(saving||!draft)return;
@@ -306,17 +326,27 @@ function openProfileSettings(group){
   const options=$('printerProfileOptions');
   options.replaceChildren();
   const active=group.variants.find(item=>draft.has(item.id));
-  // Only actual nozzle/slicer profiles are offered as NEW choices. Keep an
-  // older catalogue-only ID visible if it was previously selected, without
-  // offering unverified catalogue names as apparent conversion profiles.
-  const choices=group.variants.filter(item=>item.nozzle||item.slicer||draft.has(item.id));
+  const choices=eligibleSlicerChoices(group);
+  const currentNozzle=active?.nozzle||choices[0]?.nozzle;
+  const auto=picker.preferredSlicerVariant(choices,group.manufacturer,currentNozzle);
+  if(!auto)return;
+  // The default button selects this exact, already validated app/profile ID;
+  // don't misrepresent that persisted ID as a future dynamic "auto" binding.
+  // Neither default nor override can infer a different physical nozzle.
+  const automatic=node('label','printer-profile-option');
+  const defaultRadio=node('input');
+  defaultRadio.type='radio';defaultRadio.name='printerProfileChoice';
+  defaultRadio.value=auto.id;defaultRadio.checked=active?.id===auto.id;
+  automatic.append(defaultRadio,node('span','',t('slicerAutomatic',{slicer:auto.slicer})));
+  options.append(automatic);
   for(const variant of choices){
+    if(variant.id===auto.id)continue;
     const option=node('label','printer-profile-option');
     const radio=node('input');
     radio.type='radio';radio.name='printerProfileChoice';
     radio.value=variant.id;radio.checked=active?.id===variant.id;
     radio.disabled=saving;
-    option.append(radio,node('span','',variantLabel(variant)));
+    option.append(radio,node('span','',variant.slicer));
     options.append(option);
   }
   $('printerProfileDialog').showModal();
@@ -382,15 +412,8 @@ function groupCard(group,index){
   copy.append(node('strong','',group.model),node('small','',group.manufacturer));
   label.append(graphic,copy);
   row.append(input,label);
-  // Do not turn a model tile into a wall of technical sub-options.
-  // Installed nozzle/slicer variants remain available on demand.
-  if(profileConfigurable(group)){
-    const settings=node('button','catalog-model-profile-button',t('profileSettings'));
-    settings.type='button';
-    settings.setAttribute('aria-label',t('profileSettings')+': '+picker.title(group));
-    settings.addEventListener('click',()=>openProfileSettings(group));
-    row.append(settings);
-  }
+  // The catalogue is hardware only. Slicer preferences belong with the
+  // selected printers above, not on every unselected catalogue model card.
   return row;
 }
 function render(){
@@ -415,6 +438,13 @@ function render(){
   for(const group of entries){
     const pill=node('span','selected-printer-pill');
     pill.append(node('strong','',picker.title(group)));
+    if(profileConfigurable(group)){
+      const settings=node('button','selected-printer-settings',t('profileSettings'));
+      settings.type='button';
+      settings.setAttribute('aria-label',t('profileSettings')+': '+picker.title(group));
+      settings.addEventListener('click',()=>openProfileSettings(group));
+      pill.append(settings);
+    }
     selectionList.append(pill);
   }
   const term=$('printerCatalogSearch').value.trim();
