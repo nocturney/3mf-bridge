@@ -156,3 +156,54 @@ func TestPhysicalToolWarningWordingIsStable(t *testing.T) {
 		t.Fatalf("two-tool wording wrong: %q", got)
 	}
 }
+
+// Creality Print 7.3 rejects output when support flags are shorter than the
+// project palette, even when the same installed PLA preset backs every slot.
+func TestCrealitySupportFlagsMatchVirtualFilamentSlots(t *testing.T) {
+    b := syntheticOrcaBundle(1)
+    b.Slicer = "Creality Print"
+    b.Profile.ModelID = "Creality K2 Plus"
+    b.Profile.ProjectSettings["filament_is_support"] = []any{"0"}
+    if err := normalizeCrealitySupportFlags(b, 2); err != nil {
+        t.Fatal(err)
+    }
+    if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, []any{"0", "0"}) {
+        t.Fatalf("multi-colour support flags misaligned: %v", got)
+    }
+    if got := b.Profile.ProjectSettings["nozzle_diameter"]; !reflect.DeepEqual(got, []any{"0.4"}) {
+        t.Fatalf("physical nozzle was modified: %v", got)
+    }
+    if b.PhysicalTools != 1 {
+        t.Fatalf("physical tool count changed to %d", b.PhysicalTools)
+    }
+}
+
+func TestCrealityFlagNormalizationDoesNotTouchOtherOrcaForks(t *testing.T) {
+    for _, tc := range []struct{ slicer, model string }{
+        {"QIDIStudio", "QIDI X-Plus 5"},
+        {"OrcaSlicer", "Creality K2 Plus"},
+        {"Creality Print", "Other Vendor"},
+    } {
+        b := syntheticOrcaBundle(1)
+        b.Slicer, b.Profile.ModelID = tc.slicer, tc.model
+        b.Profile.ProjectSettings["filament_is_support"] = []any{"0"}
+        if err := normalizeCrealitySupportFlags(b, 3); err != nil {
+            t.Fatal(err)
+        }
+        if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, []any{"0"}) {
+            t.Fatalf("slicer %s / model %s mutated: %v", tc.slicer, tc.model, got)
+        }
+    }
+}
+
+func TestCrealitySupportFlagsRefuseAmbiguousValues(t *testing.T) {
+    b := syntheticOrcaBundle(1)
+    b.Slicer, b.Profile.ModelID = "Creality Print", "Creality K2 Plus"
+    b.Profile.ProjectSettings["filament_is_support"] = []any{"0", "1"}
+    if err := normalizeCrealitySupportFlags(b, 3); err == nil {
+        t.Fatal("ambiguous per-filament flags must not be silently remapped")
+    }
+    if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, []any{"0", "1"}) {
+        t.Fatalf("ambiguous flags changed: %v", got)
+    }
+}

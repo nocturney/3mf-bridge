@@ -436,6 +436,10 @@ func TestOrcaForkOwnershipWhitelistDoesNotFilterGenericOrExplicitProfiles(t *tes
 		{"qidi-studio", "QIDI", true},
 		{"qidi-studio", "X 5 Series", true},
 		{"qidi-studio", "Anker", false},
+		{"creality-print", "Creality", true},
+		{"creality-print", "Anycubic", false},
+		{"anycubic-slicer-next", "Anycubic", true},
+		{"anycubic-slicer-next", "Creality", false},
 		{"orca-slicer", "Anker", true},
 		{"system", "Anker", true},
 	} {

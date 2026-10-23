@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strings"
 
 	"github.com/BryanSmee/bl_to_std/pkg/converter"
 )
@@ -116,6 +117,11 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 	if err = bindNativeFilamentSettings(&bundle.targetBundle, insp.Filaments); err != nil {
 		return nil, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", bundle.Target, err)
 	}
+	// Creality Print 7.3 refuses a valid multi-filament project when the
+	// installed single-nozzle preset's support flags still have one entry.
+	if err = normalizeCrealitySupportFlags(bundle, len(insp.Filaments)); err != nil {
+		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
+	}
 	result, err := publishConversion(conversionPlan{
 		source: src, destination: dst, target: bundle.Target,
 		expectedModel: bundle.Profile.ModelID,
@@ -128,4 +134,32 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 	}
 	result["profile_kind"] = "installed_orca_json"
 	return result, nil
+}
+
+// normalizeCrealitySupportFlags fixes one observed Creality Print 7.3 CLI
+// incompatibility without modifying any other Orca fork, machine preset,
+// physical nozzle, filament selection, or source project. A single vendor
+// default may be repeated for virtual slots, but conflicting values are
+// never guessed or remapped.
+func normalizeCrealitySupportFlags(bundle *orcaBundle, sourceSlots int) error {
+    if bundle.Slicer != "Creality Print" || !strings.HasPrefix(bundle.Profile.ModelID, "Creality ") ||
+        sourceSlots <= bundle.PhysicalTools {
+        return nil
+    }
+    raw, ok := bundle.Profile.ProjectSettings["filament_is_support"].([]any)
+    if !ok || len(raw) == 0 {
+        return fmt.Errorf("Creality Print multi-filament support flags missing")
+    }
+    if len(raw) == sourceSlots {
+        return nil
+    }
+    if len(raw) != 1 {
+        return fmt.Errorf("Creality Print support flags have %d values for %d filaments", len(raw), sourceSlots)
+    }
+    flags := make([]any, sourceSlots)
+    for i := range flags {
+        flags[i] = raw[0]
+    }
+    bundle.Profile.ProjectSettings["filament_is_support"] = flags
+    return nil
 }

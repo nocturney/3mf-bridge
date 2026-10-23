@@ -171,9 +171,9 @@ func TestOrcaFamilyWindowsVendorAppsFirstAndUniversalOrcaLast(t *testing.T) {
 	x86 := filepath.Join("C:", "Program Files (x86)")
 	local := filepath.Join("C:", "Users", "Tester", "AppData", "Local")
 	got := orcaFamilyLocations("windows", pf, x86, local, "", nil)
-	// Five trusted applications, each checked in the three Windows install bases.
-	if len(got) != 15 {
-		t.Fatalf("want 15 Windows candidates, got %d: %#v", len(got), got)
+	// Only known application names are probed, across three install bases.
+	if want := len(orcaFamilyApps("windows")) * 3; len(got) != want {
+		t.Fatalf("want %d Windows candidates, got %d: %#v", want, len(got), got)
 	}
 	if got[0].id != "snapmaker-orca" || got[0].root != filepath.Join(pf, "Snapmaker_Orca", "resources", "profiles") {
 		t.Fatalf("first candidate must be the Snapmaker Orca fork in Program Files: %+v", got[0])
@@ -181,22 +181,22 @@ func TestOrcaFamilyWindowsVendorAppsFirstAndUniversalOrcaLast(t *testing.T) {
 	if got[3].root != filepath.Join(pf, "Flashforge", "Flash Studio Desktop", "resources", "profiles") {
 		t.Fatalf("Flash Studio Desktop must sit under the Flashforge folder: %+v", got[3])
 	}
-	for _, loc := range got[12:] {
+	for _, loc := range got[len(got)-3:] {
 		if loc.id != "orca-slicer" {
 			t.Fatalf("generic OrcaSlicer must be the last fallback: %+v", loc)
 		}
 	}
-	if got[14].root != filepath.Join(local, "Programs", "OrcaSlicer", "resources", "profiles") {
-		t.Fatalf("per-user OrcaSlicer must be checked last: %+v", got[14])
+	if last := got[len(got)-1]; last.root != filepath.Join(local, "Programs", "OrcaSlicer", "resources", "profiles") {
+		t.Fatalf("per-user OrcaSlicer must be checked last: %+v", last)
 	}
 }
 
 func TestOrcaFamilyMacSystemAndUserApplications(t *testing.T) {
 	home := filepath.Join(string(filepath.Separator), "Users", "tester")
 	got := orcaFamilyLocations("darwin", "", "", "", home, nil)
-	// Six bundle names, each checked in /Applications and ~/Applications.
-	if len(got) != 12 {
-		t.Fatalf("want 12 Mac candidates, got %d: %#v", len(got), got)
+	// Known bundle names, each checked in /Applications and ~/Applications.
+	if want := len(orcaFamilyApps("darwin")) * 2; len(got) != want {
+		t.Fatalf("want %d Mac candidates, got %d: %#v", want, len(got), got)
 	}
 	if got[0].executable != filepath.Join("/Applications", "Snapmaker Orca.app") {
 		t.Fatalf("system Snapmaker Orca not first: %+v", got[0])
@@ -218,7 +218,7 @@ func TestOrcaFamilyMacSystemAndUserApplications(t *testing.T) {
 			t.Fatalf("missing expected Mac bundle %q in %+v", want, got)
 		}
 	}
-	for _, loc := range got[10:] {
+	for _, loc := range got[len(got)-2:] {
 		if loc.id != "orca-slicer" {
 			t.Fatalf("generic OrcaSlicer must be the last fallback: %+v", loc)
 		}
@@ -312,5 +312,32 @@ func TestQIDIStudioExecutableAliasForNativeOpen(t *testing.T) {
         if err != nil || exe != legacy {
             t.Fatalf("symlinked executable must not count as alias: %q %v", exe, err)
         }
+    }
+}
+
+// Detect known owner-specific forks without accepting an unrelated vendor's
+// copied profiles (the latter would misleadingly claim full slicer support).
+func TestOrcaAdditionalOfficialForkInstallPaths(t *testing.T) {
+    pf := filepath.Join("C:", "Program Files")
+    win := orcaFamilyLocations("windows", pf, "", "", "", nil)
+    expected := map[string]string{
+        "creality-print": filepath.Join(pf, "Creality", "Creality Print 7.0", "resources", "profiles"),
+        "anycubic-slicer-next": filepath.Join(pf, "AnycubicSlicerNext", "resources", "profiles"),
+    }
+    for id, root := range expected {
+        found := false
+        for _, loc := range win {
+            if loc.id == id && loc.root == root {
+                found = true
+                break
+            }
+        }
+        if !found {
+            t.Fatalf("missing official %s install layout %s", id, root)
+        }
+    }
+    // Source-only Bambu remains excluded, and installed generic Orca is still last.
+    if win[len(win)-1].id != "orca-slicer" {
+        t.Fatal("new vendor forks must not displace generic fallback")
     }
 }

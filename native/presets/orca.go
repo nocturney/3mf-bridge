@@ -290,6 +290,10 @@ func orcaVendorOwnedByApp(appID, vendor string) bool {
 		return strings.EqualFold(vendor, "Elegoo")
 	case "qidi-studio":
 		return strings.EqualFold(vendor, "QIDI") || strings.EqualFold(vendor, "X 5 Series")
+	case "creality-print":
+		return strings.EqualFold(vendor, "Creality")
+	case "anycubic-slicer-next":
+		return strings.EqualFold(vendor, "Anycubic")
 	default:
 		return true // Generic Orca and explicitly configured custom profile roots.
 	}
