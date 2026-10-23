@@ -274,7 +274,8 @@ test('only backend-ready, selected Prusa targets get a row; the row is checked, 
   assert.ok(row,'ready target gets a row');
   assert.equal(visible(row),true);
   assert.equal(row.querySelector('input').checked,true);
-  assert.equal(row.querySelector('small').textContent,'0.4 mm · PrusaSlicer');
+  assert.equal(row.querySelector('small'),null,'technical subtitle is hidden from printer tiles');
+  assert.match(row.title,/0.4 mm · PrusaSlicer/,'exact profile remains inspectable on hover');
   app.dom('addFilesBtn').fire('click');
   await settle();
   app.dom('convertBtn').fire('click');

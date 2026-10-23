@@ -49,14 +49,15 @@ console.log('CHROMIUM_CI_CANDIDATES',browsers.map(browser=>path.basename(browser
 // nozzle/slicer targets an Orca-based install would expose.
 const availability=['u1','c5','cc2','qidi'].map(target=>({target,available:true}));
 const installedTargets=[
-  ['0.25','1111111111','OrcaSlicer'],['0.4','2222222222','OrcaSlicer'],['0.6','3333333333','OrcaSlicer'],
+  ['0.25','1111111111','Flash Studio Desktop'],['0.4','2222222222','OrcaSlicer'],['0.6','3333333333','OrcaSlicer'],
   ['0.8','4444444444','OrcaSlicer'],['0.4','5555555555','Flash Studio'],
 ].map(([nozzle,hex,slicer])=>({
   id:'orca-flashforge-creator-5-pro-'+nozzle.replace('.','')+'-'+hex,vendor:'Flashforge',model:'Creator 5 Pro',
   title:'Flashforge Creator 5 Pro '+nozzle+' nozzle',nozzle,slicer,
 }));
-const savedWithInstalled=['flashforge-creator-5','orca-flashforge-creator-5-pro-04-2222222222',
-  'afinia-afinia-h-1-hs','sovol-sv06-plus','qidi-x-plus-5'];
+// The user's five physical printers, including the exact 0.25mm Pro profile.
+const savedWithInstalled=['elegoo-centauri-carbon-2','flashforge-creator-5',
+  'qidi-x-plus-5','snapmaker-u1','orca-flashforge-creator-5-pro-025-1111111111'];
 const savedCatalogueOnly=['flashforge-creator-5','afinia-afinia-h-1-hs','sovol-sv06-plus',
   'qidi-x-plus-5','elegoo-centauri-carbon-2'];
 
@@ -141,7 +142,8 @@ function pageMain(config){
       const cr=rectOf(card),name=text(card.querySelector('.catalog-model-copy strong'));
       const variants=[...card.querySelectorAll('.catalog-variant')];
       variantTotal+=variants.length;
-      cardReport.push({name,variants:variants.map(text),
+      cardReport.push({name,key:card.dataset.printerKey,variants:variants.map(text),
+        hasProfileSettings:Boolean(card.querySelector('.catalog-model-profile-button')),
         values:[...card.querySelectorAll('input[type="checkbox"]')].map(input=>input.value)});
       if(cr.x<lr.x-1||cr.right>lr.right+1)
         issues.push('card outside model grid width: '+name+' card '+J(cr)+' grid '+J(lr));
@@ -185,9 +187,16 @@ function pageMain(config){
           issues.push('variant covered by another element: "'+text(variant)+'" visible '+J(part)+' hit '+describe(hit));
       }
     }
-    const saved=config.saved.map((id)=>{
-      const input=[...list.querySelectorAll('input[type="checkbox"]')].find(box=>box.value===id);
-      return {id,present:Boolean(input),checked:Boolean(input&&input.checked)};
+    // The user sees ONE checkbox per physical printer; saved IDs may be
+    // nozzle/profile IDs different from the card's canonical default ID.
+    const picker=window.SliceBridgePicker;
+    const knownGroups=picker.groupDestinations(
+      picker.catalogItems(fixture.catalog.models,fixture.availability,fixture.installed,true));
+    const saved=config.saved.map(id=>{
+      const group=knownGroups.find(group=>group.ids.includes(id));
+      const card=cards.find(card=>card.dataset.printerKey===group?.key);
+      const input=card?.querySelector('input[type="checkbox"]');
+      return {id,present:Boolean(card),checked:Boolean(input?.checked)};
     });
     return {issues,viewport:{width:innerWidth,height:innerHeight},lang:root.lang,dir:root.dir,
       frame:fr,scrollArea,list:lr,firstCard,
@@ -210,7 +219,25 @@ function pageMain(config){
       search.value=config.filter;search.dispatchEvent(new Event('input'));
     }
     await document.fonts.ready;
-    root.setAttribute('data-picker-layout-ci',encodeURIComponent(JSON.stringify(measure())));
+    const report=measure();
+    // Verify the separate profile modal using real Chromium, not a mocked DOM.
+    if(config.installed&&config.filter==='Creator 5 Pro'){
+      const creator=[...document.querySelectorAll('.catalog-model-card')]
+        .find(card=>text(card.querySelector('.catalog-model-copy strong'))==='Creator 5 Pro');
+      const button=creator?.querySelector('.catalog-model-profile-button');
+      if(!button)throw Error('Creator 5 Pro has no separate profile settings button');
+      button.click();
+      const profile=document.getElementById('printerProfileDialog');
+      const profileFrame=profile.querySelector('.dialog-frame');
+      const profileRect=rectOf(profileFrame);
+      report.profile={open:profile.open,frame:profileRect,
+        contentClipped:profileFrame.scrollHeight>profileFrame.clientHeight+1||
+          profileFrame.scrollWidth>profileFrame.clientWidth+1,
+        choices:[...document.querySelectorAll('#printerProfileOptions input[type="radio"]')]
+          .map(input=>({id:input.value,checked:input.checked}))};
+      document.getElementById('cancelPrinterProfileBtn').click();
+    }
+    root.setAttribute('data-picker-layout-ci',encodeURIComponent(JSON.stringify(report)));
   }).catch(fail);
 }
 
@@ -227,7 +254,7 @@ function dialogDocument(scenario){
   };
   const json=(value)=>JSON.stringify(value).replace(/</g,'\\u003c');
   const driver={lang:scenario.lang,dir:scenario.dir,filter:scenario.filter,
-    expanded:scenario.expanded===true,saved:fixture.saved};
+    installed:scenario.installed===true,expanded:scenario.expanded===true,saved:fixture.saved};
   // Only five known, checked-in deferred script includes exist in the real index.
   // Remove those exact tags, rather than attempting to sanitize HTML with a
   // general regex (which cannot safely recognize all closing-script syntax).
@@ -339,31 +366,43 @@ function checkScenario(scenario,report){
   if(report.lang!==scenario.lang||report.dir!==scenario.dir)
     problems.push('document language/direction '+report.lang+'/'+report.dir+' expected '+scenario.lang+'/'+scenario.dir);
   if(report.pills.length!==5)problems.push('selection summary shows '+report.pills.length+' pills, expected 5');
+  if(report.pills.some(pill=>/\bmm\b|OrcaSlicer|Flash Studio|QIDIStudio|physical tools/i.test(pill)))
+    problems.push('technical profiles leaked into the selected printer summary: '+JSON.stringify(report.pills));
+  if(report.variantCount!==0)problems.push('technical variant rows leaked into the catalogue');
   if(!/\b5\b/.test(report.selectionCount))problems.push('selection count does not read 5: "'+report.selectionCount+'"');
   if(report.hitTests<1)problems.push('no visible element was hit-tested: scrollArea '+J(report.scrollArea)+
     ' list '+J(report.list)+' firstCard '+J(report.firstCard||{}));
   const creator=report.cards.find(card=>card.name==='Creator 5 Pro');
   if(scenario.installed){
-    // Five genuine installed nozzle/slicer variants PLUS the selectable
-    // catalogue identity. They must not be conflated with conversion tiers.
-    const expectedInstalled=installedTargets.map(t=>t.nozzle+' mm · '+t.slicer).sort();
-    const actualInstalled=(creator?.variants||[]).filter(v=>v.includes(' mm · ')).sort();
-    if(JSON.stringify(actualInstalled)!==JSON.stringify(expectedInstalled))
-      problems.push('Creator 5 Pro installed nozzle/slicer variants differ: '+JSON.stringify(actualInstalled));
-    if(!creator?.values.includes('flashforge-creator-5-pro'))
-      problems.push('Creator 5 Pro catalogue identity is not independently selectable');
+    if(creator?.variants.length!==0||creator?.values.length!==1)
+      problems.push('Creator 5 Pro shows technical sub-options in its model tile');
+    if(!creator?.hasProfileSettings)
+      problems.push('Creator 5 Pro is missing the separate profile settings action');
+    if(scenario.filter){
+      if(!report.profile?.open||report.profile.choices.length!==5)
+        problems.push('Creator 5 Pro profile settings did not open with all five installed profiles: '+JSON.stringify(report.profile));
+      const exact=report.profile?.choices.find(choice=>choice.id==='orca-flashforge-creator-5-pro-025-1111111111');
+      if(!exact?.checked)problems.push('the saved Creator 5 Pro 0.25 mm profile was not preserved: '+JSON.stringify(report.profile));
+      if(report.profile?.frame){
+        const f=report.profile.frame;
+        if(f.x<0||f.y<0||f.right>scenario.width||f.bottom>scenario.height||report.profile.contentClipped)
+          problems.push('separate profile dialog clipped or outside viewport: '+JSON.stringify(report.profile));
+      }
+    }
   }
-  // The curated default is 241 cards plus one explicitly saved Afinia card;
-  // expanded mode restores all 582 physical cards, including the generic item.
-  const expectedCount=scenario.expanded?582:242;
+  // The curated default is 241 cards; catalogue-only scenarios have an
+  // extra saved Afinia printer retained even though it is outside the shortlist.
+  const expectedCount=scenario.expanded?582:(scenario.installed?241:242);
   if(!scenario.filter&&report.cardCount!==expectedCount)
     problems.push('expected '+expectedCount+' model cards, measured '+report.cardCount);
   if(report.scopeExpanded!==Boolean(scenario.expanded))
     problems.push('scope toggle state differs from scenario');
   if(report.makers.includes('Bambu Lab'))
     problems.push('Bambu destination appeared in maker dropdown');
-  if(!scenario.expanded&&!report.makers.includes('Afinia'))
+  if(!scenario.expanded&&!scenario.installed&&!report.makers.includes('Afinia'))
     problems.push('saved hidden maker Afinia was not retained in dropdown');
+  if(!scenario.expanded&&scenario.installed&&report.makers.includes('Afinia'))
+    problems.push('unselected hidden Afinia maker appeared by default');
   if(!scenario.expanded&&report.makers.includes('Artillery'))
     problems.push('unselected hidden maker was shown in curated dropdown');
   if(scenario.filter&&report.cardCount<1)problems.push('Creator 5 Pro filter shows no card');
@@ -380,12 +419,14 @@ function checkScenario(scenario,report){
   if(scenario.filter&&scenario.installed&&!report.saved.some(saved=>saved.id.startsWith('orca-')&&saved.present))
     problems.push('installed Creator 5 Pro variant not shown under filter');
   if(!scenario.installed&&scenario.expanded){
-    const seen=report.cards.flatMap(card=>card.values);
-    const expected=[...catalogIds,'prusa-project'];
-    const missing=expected.filter(id=>!seen.includes(id));
-    const extra=[...new Set(seen)].filter(id=>!expected.includes(id));
-    if(missing.length)problems.push(missing.length+' catalogue IDs have no selectable input, e.g. '+missing.slice(0,5).join(', '));
-    if(extra.length)problems.push('unexpected IDs in the list: '+extra.slice(0,5).join(', '));
+    const keys=report.cards.map(card=>card.key);
+    if(new Set(keys).size!==582)problems.push('expanded list must contain 582 distinct physical model identities');
+    if(report.cards.some(card=>card.values.length!==1))
+      problems.push('expanded list contains model cards with multiple selection boxes');
+    const picker=require('../frontend/dist/printer-picker.js');
+    const expected=picker.groupDestinations(picker.catalogItems(catalog.models,availability,[],true));
+    if(expected.length!==582||expected.flatMap(g=>g.ids).filter(id=>catalogIds.includes(id)).length!==589)
+      problems.push('underlying 589 non-Bambu source IDs changed');
   }
   return problems;
 }

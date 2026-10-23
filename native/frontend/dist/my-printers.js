@@ -22,6 +22,8 @@ const translations={
     manufacturer:'יצרן',chooseManufacturer:'בחר יצרן…',searchByModel:'או חפש דגם',
     noSupported:'עדיין אין יעדים זמינים במחשב זה.',nothingSelected:'עדיין לא נבחרו מדפסות.',
     variants:'דגם, דיזה וסלייסר',nozzleUnspecified:'ללא שיוך דיזה',imageUnavailable:'תמונה אינה זמינה',
+    profileSettings:'הגדרות',profileHint:'בחר פרופיל דיזה וסלייסר למדפסת. הבחירה תישמר רק לאחר לחיצה על ״שמור מדפסות״.',
+    profileApply:'בחר פרופיל',profileCancel:'ביטול',profileChoose:'יש לבחור פרופיל.',
     showAllMakers:'הצג יצרנים נוספים',showCuratedMakers:'הצג רק יצרנים נבחרים'
   },
   en:{
@@ -34,12 +36,15 @@ const translations={
     manufacturer:'Manufacturer',chooseManufacturer:'Choose manufacturer…',searchByModel:'Or search a model',
     noSupported:'No destinations are available on this computer yet.',nothingSelected:'No printers selected yet.',
     variants:'Model, nozzle and slicer',nozzleUnspecified:'No nozzle specified',imageUnavailable:'Image unavailable',
+    profileSettings:'Settings',profileHint:'Choose the nozzle and slicer profile. Changes are saved only when you select Save printers.',
+    profileApply:'Use profile',profileCancel:'Cancel',profileChoose:'Choose a profile.',
     showAllMakers:'Show more manufacturers',showCuratedMakers:'Show selected manufacturers only'
   }
 };
 const changedEvent='slicebridge:my-printers-changed';
 let catalog=null,selected=null,draft=null,firstRun=false,loaded=false,saving=false;
 let showOtherManufacturers=false;
+let activeProfileGroupKey=null;
 // UI ONLY. Bambu Lab is retained as a Bambu source maker, but remains excluded
 // from destination picking by SliceBridgePicker.isHidden (unchanged).
 // Prusa and Prusa Research are one displayed maker; all underlying IDs remain.
@@ -259,6 +264,9 @@ function syncCopy(){
   scope.setAttribute('aria-pressed',String(showOtherManufacturers));
   $('saveMyPrintersBtn').textContent=t('save');
   $('cancelMyPrintersBtn').textContent=t('cancel');
+  $('printerProfileHint').textContent=t('profileHint');
+  $('applyPrinterProfileBtn').textContent=t('profileApply');
+  $('cancelPrinterProfileBtn').textContent=t('profileCancel');
 }
 function refreshManufacturerOptions(){
   const filter=$('printerManufacturerFilter');
@@ -284,34 +292,65 @@ function variantLabel(item){
   if(!item.nozzle&&!item.slicer)return item.catalogueLabel||picker.title(item);
   return picker.variantText(item)||picker.title(item);
 }
-// The slicer/nozzle variants remain selectable as printer inventory even when
-// conversion is not yet supported by this engine. Backend readiness stays separate.
-function variantList(variants){
-  const list=node('div','catalog-variant-list');
-  list.setAttribute('role','group');
-  list.setAttribute('aria-label',t('variants'));
-  for(const variant of variants){
-    const option=node('label','catalog-variant');
-    const box=node('input');
-    box.type='checkbox';box.value=variant.id;box.checked=draft.has(variant.id);
-    box.disabled=saving||(!box.checked&&draft.size>=picker.maxSelected);
-    box.addEventListener('change',()=>{
-      if(box.checked&&draft.size>=picker.maxSelected){box.checked=false;$('myPrintersStatus').textContent=t('limit');return;}
-      if(box.checked)draft.add(variant.id);else draft.delete(variant.id);
-      $('myPrintersStatus').textContent='';
-      refreshManufacturerOptions();
-      render();
-    });
-    option.append(box,node('span','',variantLabel(variant)));
-    list.append(option);
+// Keep the catalogue uncluttered. A separate, explicit profile dialog is the
+// ONLY place that lists nozzle/slicer variants; none are lost or forged.
+function profileConfigurable(group){
+  return group.variants.length>1&&group.variants.some(item=>item.nozzle||item.slicer);
+}
+function openProfileSettings(group){
+  if(saving||!draft)return;
+  activeProfileGroupKey=group.key;
+  $('printerProfileTitle').textContent=picker.title(group);
+  $('printerProfileHint').textContent=t('profileHint');
+  $('printerProfileStatus').textContent='';
+  const options=$('printerProfileOptions');
+  options.replaceChildren();
+  const active=group.variants.find(item=>draft.has(item.id));
+  // Only actual nozzle/slicer profiles are offered as NEW choices. Keep an
+  // older catalogue-only ID visible if it was previously selected, without
+  // offering unverified catalogue names as apparent conversion profiles.
+  const choices=group.variants.filter(item=>item.nozzle||item.slicer||draft.has(item.id));
+  for(const variant of choices){
+    const option=node('label','printer-profile-option');
+    const radio=node('input');
+    radio.type='radio';radio.name='printerProfileChoice';
+    radio.value=variant.id;radio.checked=active?.id===variant.id;
+    radio.disabled=saving;
+    option.append(radio,node('span','',variantLabel(variant)));
+    options.append(option);
   }
-  return list;
+  $('printerProfileDialog').showModal();
+}
+function applyProfileSettings(){
+  if(saving||!draft||!activeProfileGroupKey)return;
+  const group=groupByKey.get(activeProfileGroupKey);
+  if(!group)return;
+  const next=[...$('printerProfileOptions').querySelectorAll('input')]
+    .find(input=>input.checked);
+  if(!next){
+    $('printerProfileStatus').textContent=t('profileChoose');
+    return;
+  }
+  const removed=group.ids.filter(id=>draft.has(id)).length;
+  if(draft.size-removed>=picker.maxSelected){
+    $('printerProfileStatus').textContent=t('limit');
+    return;
+  }
+  // Changing a printer profile replaces only that printer's target ID(s).
+  // No slicer profiles, materials, other selected printers or settings are edited.
+  for(const id of group.ids)draft.delete(id);
+  draft.add(next.value);
+  $('printerProfileDialog').close();
+  $('myPrintersStatus').textContent='';
+  refreshManufacturerOptions();
+  render();
 }
 // One card per physical model. Ticking the card selects its default target; unticking
 // removes every target of that model. Individual variants stay independently selectable.
 function groupCard(group,index){
   const selectedCount=group.ids.filter(id=>draft.has(id)).length;
   const row=node('div','catalog-model-card');
+  row.dataset.printerKey=group.key;
   if(selectedCount)row.classList.add('is-selected');
   const input=node('input');
   input.type='checkbox';input.id='printer-pick-'+index;
@@ -321,7 +360,10 @@ function groupCard(group,index){
   input.addEventListener('change',()=>{
     if(input.checked){
       if(draft.size>=picker.maxSelected){input.checked=false;$('myPrintersStatus').textContent=t('limit');return;}
-      draft.add(group.id);
+      // Re-select the user's original exact profile if they temporarily
+      // unchecked this model; never downgrade a saved 0.25 mm to a default.
+      const prior=group.ids.find(id=>selected?.selectedIds?.includes(id));
+      draft.add(prior||group.id);
     }else{
       for(const id of group.ids)draft.delete(id);
     }
@@ -340,10 +382,15 @@ function groupCard(group,index){
   copy.append(node('strong','',group.model),node('small','',group.manufacturer));
   label.append(graphic,copy);
   row.append(input,label);
-  // One physical card, but EVERY stored ID remains selectable. Catalogue
-  // spellings are labelled as model names, genuine nozzle/slicer variants as
-  // such; no conversion readiness or engine-based ranking.
-  if(group.variants.length>1)row.append(variantList(group.variants));
+  // Do not turn a model tile into a wall of technical sub-options.
+  // Installed nozzle/slicer variants remain available on demand.
+  if(profileConfigurable(group)){
+    const settings=node('button','catalog-model-profile-button',t('profileSettings'));
+    settings.type='button';
+    settings.setAttribute('aria-label',t('profileSettings')+': '+picker.title(group));
+    settings.addEventListener('click',()=>openProfileSettings(group));
+    row.append(settings);
+  }
   return row;
 }
 function render(){
@@ -351,19 +398,24 @@ function render(){
   if(!loaded||!draft)return;
   const choice=[...draft];
   const empty=!groups.length;
-  $('myPrintersSelectionCount').textContent=t('selected',{n:choice.length});
+  // Count PHYSICAL printers and show simple model names, not profiles.
+  const entries=[],seenGroups=new Set();
+  for(const id of choice){
+    const group=groupByItemId.get(id);
+    if(!group||seenGroups.has(group.key))continue;
+    seenGroups.add(group.key);
+    entries.push(group);
+  }
+  $('myPrintersSelectionCount').textContent=t('selected',{n:entries.length});
   const selectionList=$('selectedPrinterSummary');
   selectionList.replaceChildren();
-  const entries=listed.filter(item=>draft.has(item.id));
   $('selectedPrinterSummary').hidden=!entries.length;
   $('selectedPrinterOverview').classList.toggle('is-empty',!entries.length);
   if(!entries.length)selectionList.append(node('span','catalog-muted',t('nothingSelected')));
-  for(const entry of entries){
+  for(const group of entries){
     const pill=node('span','selected-printer-pill');
-    // Two variants of one model stay distinguishable in the summary.
-    const variant=picker.variantText(entry);
-    const name=node('strong','',variant?picker.title(entry)+' · '+variant:picker.title(entry));
-    pill.append(name);selectionList.append(pill);
+    pill.append(node('strong','',picker.title(group)));
+    selectionList.append(pill);
   }
   const term=$('printerCatalogSearch').value.trim();
   const manufacturer=$('printerManufacturerFilter').value;
@@ -488,7 +540,12 @@ $('showOtherManufacturersBtn').addEventListener('click',()=>{
   refreshManufacturerOptions();
   render();
 });
+$('cancelPrinterProfileBtn').addEventListener('click',()=>$('printerProfileDialog').close());
+$('closePrinterProfileBtn').addEventListener('click',()=>$('printerProfileDialog').close());
+$('applyPrinterProfileBtn').addEventListener('click',applyProfileSettings);
+$('printerProfileDialog').addEventListener('close',()=>{activeProfileGroupKey=null;});
 $('myPrintersDialog').addEventListener('close',()=>{
+  if($('printerProfileDialog').open)$('printerProfileDialog').close();
   draft=null;
   firstRun=false;
 });

@@ -193,6 +193,27 @@
   </div>
 </dialog>
 
+<!-- Profile choice is intentionally outside the printer catalogue cards. -->
+<dialog id="printerProfileDialog" class="settings-dialog printer-profile-dialog" aria-labelledby="printerProfileTitle">
+  <div class="dialog-frame">
+    <header class="dialog-header">
+      <div>
+        <h2 id="printerProfileTitle">פרופיל מדפסת</h2>
+        <p id="printerProfileHint">בחר את פרופיל הדיזה והסלייסר של המדפסת.</p>
+      </div>
+      <button type="button" id="closePrinterProfileBtn" class="ghost-btn close-dialog" aria-label="Close">×</button>
+    </header>
+    <div class="dialog-scroll printer-profile-content">
+      <div id="printerProfileOptions" class="printer-profile-options" role="radiogroup" aria-labelledby="printerProfileTitle"></div>
+      <p id="printerProfileStatus" class="dialog-status" role="alert"></p>
+    </div>
+    <footer class="dialog-actions">
+      <button type="button" id="cancelPrinterProfileBtn" class="compact-btn secondary">ביטול</button>
+      <button type="button" id="applyPrinterProfileBtn" class="compact-btn primary">בחר פרופיל</button>
+    </footer>
+  </div>
+</dialog>
+
 <dialog id="settingsDialog" class="settings-dialog" aria-labelledby="settingsTitle">
   <div class="dialog-frame">
     <header class="dialog-header">
