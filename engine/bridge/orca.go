@@ -151,11 +151,20 @@ func normalizeCrealitySupportFlags(bundle *orcaBundle, sourceSlots int) error {
     // conversion, rather than allowing a one-entry fallback in the output.
     raw := []any{"0"}
     if value, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
-        values, ok := value.([]any)
-        if !ok || len(values) == 0 {
+        switch flags := value.(type) {
+        case []any:
+            if len(flags) == 0 {
+                return fmt.Errorf("Creality Print support flags are empty")
+            }
+            raw = flags
+        case string:
+            if flags != "0" && flags != "1" {
+                return fmt.Errorf("Creality Print support flag %q is invalid", flags)
+            }
+            raw = []any{flags}
+        default:
             return fmt.Errorf("Creality Print support flags are malformed")
         }
-        raw = values
     }
     if len(raw) == sourceSlots {
         return nil

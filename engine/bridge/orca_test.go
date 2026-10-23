@@ -221,3 +221,17 @@ func TestCrealityMissingSupportFlagsUseInstalledDefault(t *testing.T) {
         t.Fatalf("missing support flags should become explicit defaults: %v", got)
     }
 }
+
+// Current Creality 7.3 vendor profiles store this value as a scalar string,
+// while their CLI requires one value per virtual filament.
+func TestCrealityScalarSupportFlagIsExpanded(t *testing.T) {
+    b := syntheticOrcaBundle(1)
+    b.Slicer, b.Profile.ModelID = "Creality Print", "Creality K2 Plus"
+    b.Profile.ProjectSettings["filament_is_support"] = "0"
+    if err := normalizeCrealitySupportFlags(b, 2); err != nil {
+        t.Fatal(err)
+    }
+    if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, []any{"0", "0"}) {
+        t.Fatalf("scalar support flag not normalized: %v", got)
+    }
+}
