@@ -45,11 +45,8 @@ func TestQAAnycubicOfficialLinuxProfiles(t *testing.T) {
 		seen[info.ID] = true
 		machines[info.Model] = true
 		nozzles[info.Nozzle]++
-		// The source fixture has an actual 0.4 mm nozzle. Other diameters
-		// are discovered and structurally checked, not silently substituted.
-		if info.Nozzle != "0.4" {
-			continue
-		}
+		// Explicitly select every official target nozzle in this synthetic QA.
+		// Only a temporary 3MF is generated; saved user selections are untouched.
 		data, err := json.Marshal(target.bundle)
 		if err != nil {
 			t.Fatal(err)
@@ -59,10 +56,14 @@ func TestQAAnycubicOfficialLinuxProfiles(t *testing.T) {
 			t.Fatal(err)
 		}
 		name := fmt.Sprintf("official-target-%03d.3mf", i)
-		if info.Model == "Anycubic Kobra S1" {
+		if info.Model == "Anycubic Kobra S1" && info.Nozzle == "0.4" {
 			name = "Anycubic-Kobra-S1-0.4.3mf"
 		}
 		dst := filepath.Join(output, name)
+		// Remove only the disposable output from a previous QA run; never user files.
+		if err := os.Remove(dst); err != nil && !os.IsNotExist(err) {
+			t.Fatal(err)
+		}
 		if _, err := bridge.ConvertWithOrcaBundle(src, dst, bundleFile); err != nil {
 			failures = append(failures, fmt.Sprintf("%s: %v", info.Machine, err))
 			continue
@@ -91,6 +92,15 @@ func TestQAAnycubicOfficialLinuxProfiles(t *testing.T) {
 		if settings == nil || settings["printer_model"] != info.Model {
 			t.Fatalf("converted model not preserved for %s: %v", info.Machine, settings["printer_model"])
 		}
+		values, ok := settings["nozzle_diameter"].([]any)
+		if !ok || len(values) == 0 {
+			t.Fatalf("no target nozzle array for %s: %v", info.Machine, settings["nozzle_diameter"])
+		}
+		for _, v := range values {
+			if fmt.Sprint(v) != info.Nozzle {
+				t.Fatalf("converted nozzle mismatch for %s: %v; target %s", info.Machine, values, info.Nozzle)
+			}
+		}
 		if code, _ := settings["machine_start_gcode"].(string); code == "" || strings.Contains(code, "UNSAFE_BAMBU_SCRIPT") {
 			t.Fatalf("unsafe/missing target start script for %s", info.Machine)
 		}
@@ -99,7 +109,7 @@ func TestQAAnycubicOfficialLinuxProfiles(t *testing.T) {
 			kobraVerified = true
 		}
 	}
-	t.Logf("ANYCUBIC_RELEASE_MATRIX eligible=%d unique_models=%d rejected_non_targets=%d nozzles=%v converted_0_4=%d failures=%d",
+	t.Logf("ANYCUBIC_RELEASE_MATRIX eligible=%d unique_models=%d rejected_non_targets=%d nozzles=%v converted_all_variants=%d failures=%d",
 		len(targets), len(machines), len(rejected), nozzles, converted, len(failures))
 	for _, f := range failures {
 		t.Logf("PROFILE_CONVERSION_FAILED %s", f)
