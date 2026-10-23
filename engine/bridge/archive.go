@@ -18,6 +18,7 @@ const maxCompressedBytes int64 = 250 << 20
 const maxUncompressedBytes uint64 = 1024 << 20
 
 var cacheName = regexp.MustCompile("^Metadata/plate_[0-9]+\\.(gcode(\\.md5)?|json)$")
+var cacheReference = regexp.MustCompile(`(?i)plate_[0-9]+\.(?:gcode(?:\.md5)?|json)`)
 
 type packageFacts struct {
 	vertices     int
@@ -178,7 +179,7 @@ func stripSliceCache(source, dest string, preserved []string) (int, error) {
 			if err != nil {
 				return removed, err
 			}
-			if bytes.Contains(bytes.ToLower(data), []byte("plate_")) {
+			if cacheReference.Match(data) {
 				edited, err := stripCacheReferences(data)
 				if err != nil {
 					return removed, fmt.Errorf("cannot sanitize %s: %w", f.Name, err)
@@ -253,6 +254,20 @@ func stripCacheReferences(data []byte) ([]byte, error) {
 					continue
 				}
 			}
+		}
+		// encoding/xml inserts the default namespace automatically. Keeping an
+		// identical explicit xmlns attribute would generate duplicate xmlns and
+		// make genuine Bambu/MakerWorld project relationships invalid XML.
+		if st, ok := token.(xml.StartElement); ok && st.Name.Space != "" {
+			attrs := st.Attr[:0]
+			for _, a := range st.Attr {
+				if a.Name.Space == "" && a.Name.Local == "xmlns" && a.Value == st.Name.Space {
+					continue
+				}
+				attrs = append(attrs, a)
+			}
+			st.Attr = attrs
+			token = st
 		}
 		if err := enc.EncodeToken(token); err != nil {
 			return nil, err
