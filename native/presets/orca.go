@@ -311,16 +311,21 @@ func scanOrca(locations []slicerLocation) ([]orcaCandidate, []OrcaRejection) {
 		if err != nil {
 			continue
 		}
-		for i, vendor := range vendors {
-			if i >= maxOrcaVendors {
-				break
-			}
+		scannedVendors := 0
+		for _, vendor := range vendors {
 			// Bambu remains source-only. Upstream profiles bundled into a
 			// different maker's fork are not offered as ready destinations.
 			if !vendor.IsDir() || vendor.Name() == "BBL" || vendor.Name() == "OrcaFilamentLibrary" ||
 				!orcaVendorOwnedByApp(loc.id, vendor.Name()) {
 				continue
 			}
+			// Bound the number of actual eligible vendor directories, not
+			// root JSON index files / artwork. Orca-derived installations can
+			// contain >64 top-level non-directory files before a real vendor.
+			if scannedVendors >= maxOrcaVendors {
+				break
+			}
+			scannedVendors++
 			found, problems := scanOrcaVendor(loc, vendor.Name())
 			for _, candidate := range found {
 				key := candidate.target.Vendor + "\x00" + candidate.target.Machine

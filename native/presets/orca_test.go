@@ -2,6 +2,7 @@ package presets
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -512,5 +513,22 @@ func TestMacInstallTreeDiscoversUserApplications(t *testing.T) {
 	d := discoverOrca(mine)
 	if len(d.Targets) != 1 || d.Targets[0].Slicer != "OrcaSlicer" {
 		t.Fatalf("user-installed OrcaSlicer not discovered: %+v", d)
+	}
+}
+
+// Regression: installed Orca and Snapmaker packages contain dozens of root
+// metadata/index files. These are not vendor directories and must never count
+// toward the security bound for distinct vendor trees.
+func TestNonVendorRootFilesDoNotExhaustVendorScanCap(t *testing.T) {
+	root := writeOrcaTree(t, "Acme", acmeSample())
+	for i := 0; i < maxOrcaVendors+15; i++ {
+		name := filepath.Join(root, fmt.Sprintf("000-index-%03d.json", i))
+		if err := os.WriteFile(name, []byte("{}"), 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	discovered := discoverFrom(root)
+	if len(discovered.Targets) != 1 {
+		t.Fatalf("root metadata files hid valid machine preset; got %+v", discovered)
 	}
 }
