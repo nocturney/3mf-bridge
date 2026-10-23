@@ -304,3 +304,94 @@ func TestCrealityDiameterArrayAlreadyCompleteIsPreserved(t *testing.T) {
 		t.Fatalf("explicitly sized diameters altered: %v", got)
 	}
 }
+
+// A four-tool Creator 5 Pro project previously failed Flash Studio 2.4.2 CLI
+// (error -5: filament_is_support count 1 vs filament_colour size 4).
+// Repeating its missing default "0" in a disposable project made genuine
+// vendor 0.25, 0.6 and 0.8 nozzle presets slice successfully.
+func TestFlashforgeCreator5ProMissingSupportFlagUsesFourNativeSlots(t *testing.T) {
+	b := syntheticOrcaBundle(4)
+	b.Slicer, b.Profile.ModelID = "Flash Studio", "Flashforge Creator 5 Pro"
+	b.Nozzle = "0.25"
+	b.Profile.ProjectSettings["nozzle_diameter"] = []any{"0.25", "0.25", "0.25", "0.25"}
+	if err := normalizeFlashforgeCreator5ProSupportFlags(b, 1); err != nil {
+		t.Fatal(err)
+	}
+	want := []any{"0", "0", "0", "0"}
+	if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, want) {
+		t.Fatalf("missing four tool flags: %v", got)
+	}
+	if got := b.Profile.ProjectSettings["nozzle_diameter"]; !reflect.DeepEqual(got, []any{"0.25", "0.25", "0.25", "0.25"}) {
+		t.Fatalf("manufacturer nozzle diameters modified: %v", got)
+	}
+	if b.PhysicalTools != 4 || b.Profile.FilamentSlots != 4 {
+		t.Fatalf("physical tool count changed: %d/%d", b.PhysicalTools, b.Profile.FilamentSlots)
+	}
+}
+
+func TestFlashforgeSupportFlagNormalizationPreservesExplicitFlags(t *testing.T) {
+	b := syntheticOrcaBundle(4)
+	b.Slicer, b.Profile.ModelID = "Flash Studio", "Flashforge Creator 5 Pro"
+	want := []any{"0", "1", "0", "0"}
+	b.Profile.ProjectSettings["filament_is_support"] = want
+	if err := normalizeFlashforgeCreator5ProSupportFlags(b, 1); err != nil {
+		t.Fatal(err)
+	}
+	if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, want) {
+		t.Fatalf("explicit manufacturer flags were replaced: %v", got)
+	}
+}
+
+func TestFlashforgeSupportFlagNormalizationRejectsAmbiguousValues(t *testing.T) {
+	for _, value := range []any{[]any{"1"}, []any{"0", "1"}, []any{}, "0"} {
+		b := syntheticOrcaBundle(4)
+		b.Slicer, b.Profile.ModelID = "Flash Studio", "Flashforge Creator 5 Pro"
+		b.Profile.ProjectSettings["filament_is_support"] = value
+		if err := normalizeFlashforgeCreator5ProSupportFlags(b, 1); err == nil {
+			t.Fatalf("ambiguous support flag accepted: %v", value)
+		}
+		if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, value) {
+			t.Fatalf("ambiguous support flags changed: %v", got)
+		}
+	}
+}
+
+func TestFlashforgeSupportFlagNormalizationDoesNotTouchOtherSlicers(t *testing.T) {
+	for _, tc := range []struct {
+		slicer, model string
+		tools         int
+	}{
+		{"Snapmaker Orca", "Snapmaker Artisan", 4},
+		{"OrcaSlicer", "Flashforge Creator 5 Pro", 4},
+		{"Flash Studio", "Flashforge AD5X", 4},
+		{"Flash Studio", "Flashforge Creator 5 Pro", 1},
+		{"Creality Print", "Creality K2 Plus", 1},
+	} {
+		b := syntheticOrcaBundle(tc.tools)
+		b.Slicer, b.Profile.ModelID = tc.slicer, tc.model
+		if err := normalizeFlashforgeCreator5ProSupportFlags(b, 1); err != nil {
+			t.Fatal(err)
+		}
+		if _, exists := b.Profile.ProjectSettings["filament_is_support"]; exists {
+			t.Fatalf("unrelated %s / %s received support flags", tc.slicer, tc.model)
+		}
+	}
+}
+
+func TestOrcaInstalledNarrowNozzle025ConvertsBambu02WithoutChangingPhysicalNozzle(t *testing.T) {
+	b := syntheticOrcaBundle(1)
+	b.Nozzle = "0.25"
+	b.Profile.ProjectSettings["nozzle_diameter"] = []any{"0.25"}
+	src := filepath.Join("..", "..", "tests", "fixtures", "bambu-nozzle-0.2.3mf")
+	out := filepath.Join(t.TempDir(), "narrow-converted.3mf")
+	result, err := ConvertWithOrcaBundle(src, out, writeOrcaBundle(t, b))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result["source_nozzle"] != "0.2" || result["target_nozzle"] != "0.25" || result["nozzle_remapped"] != true {
+		t.Fatalf("source 0.2 -> physical 0.25 is not preserved: %v", result)
+	}
+	if st, err := os.Stat(out); err != nil || st.Size() == 0 {
+		t.Fatalf("converted project missing: %v", err)
+	}
+}

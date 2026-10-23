@@ -27,6 +27,7 @@ type installedMatrixRow struct {
 	Model        string `json:"model"`
 	Machine      string `json:"machine"`
 	Nozzle       string `json:"nozzle,omitempty"`
+	SourceNozzle string `json:"sourceNozzle,omitempty"`
 	TargetID     string `json:"targetId,omitempty"`
 	Status       string `json:"status"`
 	Reason       string `json:"reason,omitempty"`
@@ -54,13 +55,28 @@ func TestQAInstalledOrcaPrinterMatrix(t *testing.T) {
 		t.Fatal(err)
 	}
 	convert := os.Getenv("QA_INSTALLED_ORCA_CONVERT") == "1"
-	source := filepath.Join("..", "..", "tests", "fixtures", "bambu-one-color.3mf")
-	if _, err := os.Stat(source); err != nil {
-		t.Fatal(err)
+	fixture := func(filename string) string {
+		return filepath.Join("..", "..", "tests", "fixtures", filename)
 	}
-	inputGeometry, err := qaMatrixModels(source)
-	if err != nil {
-		t.Fatal(err)
+	// The 0.25 mm target is the same *conversion category* as a 0.2 mm
+	// source. Exact target nozzle values must still be saved as 0.25 mm.
+	sourceByNozzle := map[string]string{
+		"0.2":  fixture("bambu-nozzle-0.2.3mf"),
+		"0.25": fixture("bambu-nozzle-0.2.3mf"),
+		"0.4":  fixture("bambu-one-color.3mf"),
+		"0.6":  fixture("bambu-nozzle-0.6.3mf"),
+		"0.8":  fixture("bambu-nozzle-0.8.3mf"),
+	}
+	geometryBySource := map[string]map[string]string{}
+	for _, source := range sourceByNozzle {
+		if _, ok := geometryBySource[source]; ok {
+			continue
+		}
+		inputGeometry, err := qaMatrixModels(source)
+		if err != nil {
+			t.Fatal(err)
+		}
+		geometryBySource[source] = inputGeometry
 	}
 	locations := installedOrcaLocations()
 	report := installedMatrixReport{GeneratedAt: time.Now().UTC().Format(time.RFC3339), Scope: "locally installed Orca-family apps; no hardware and no slicer profile modifications", Rows: []installedMatrixRow{}, Locations: []string{}, Count: map[string]int{}, AppCounts: map[string]map[string]int{}}
@@ -68,6 +84,7 @@ func TestQAInstalledOrcaPrinterMatrix(t *testing.T) {
 		t.Fatal("no installed Orca locations were found")
 	}
 	selectable, _ := scanOrca(locations)
+	conversionFailures := 0
 	selectableIDs := make(map[string]bool, len(selectable))
 	for _, c := range selectable {
 		selectableIDs[c.target.ID] = true
@@ -94,7 +111,11 @@ func TestQAInstalledOrcaPrinterMatrix(t *testing.T) {
 				report.AppCounts[loc.name][row.Status]++
 			}
 			for _, c := range candidates {
-				row := installedMatrixRow{Slicer: loc.name, Vendor: v.Name(), Model: c.target.Model, Machine: c.target.Machine, Nozzle: c.target.Nozzle, TargetID: c.target.ID, Status: "PROFILE_RESOLVED", Selectable: selectableIDs[c.target.ID]}
+				sourceNozzle := c.target.Nozzle
+				if sourceNozzle == "0.25" {
+					sourceNozzle = "0.2"
+				}
+				row := installedMatrixRow{Slicer: loc.name, Vendor: v.Name(), Model: c.target.Model, Machine: c.target.Machine, Nozzle: c.target.Nozzle, SourceNozzle: sourceNozzle, TargetID: c.target.ID, Status: "PROFILE_RESOLVED", Selectable: selectableIDs[c.target.ID]}
 				if !row.Selectable {
 					row.Status = "FALLBACK_NOT_OFFERED"
 					row.Reason = "duplicate or nonpreferred target in another Orca application"
@@ -110,15 +131,22 @@ func TestQAInstalledOrcaPrinterMatrix(t *testing.T) {
 					}
 					out := filepath.Join(reportDir, fmt.Sprintf("output-%s-%03d.3mf", qaMatrixSlug(loc.id), len(report.Rows)))
 					_ = os.Remove(out) // only isolated QA outputs
-					_, err = bridge.ConvertWithOrcaBundle(source, out, filename)
+					source := sourceByNozzle[c.target.Nozzle]
+					if source == "" {
+						t.Fatalf("unexpected target nozzle %s", c.target.Nozzle)
+					}
+					result, err := bridge.ConvertWithOrcaBundle(source, out, filename)
 					if err != nil {
-						row.Status = "CONVERSION_FAILED"
-						row.Reason = err.Error()
-					} else if err = qaMatrixValidate3MF(out, c, inputGeometry); err != nil {
-						row.Status = "VALIDATION_FAILED"
-						row.Reason = err.Error()
+						row.Status, row.Reason = "CONVERSION_FAILED", err.Error()
+					} else if err = qaMatrixValidate3MF(out, c, geometryBySource[source]); err != nil {
+						row.Status, row.Reason = "VALIDATION_FAILED", err.Error()
+					} else if result["source_nozzle"] != sourceNozzle || result["target_nozzle"] != c.target.Nozzle {
+						row.Status, row.Reason = "VALIDATION_FAILED", fmt.Sprintf("source %v / physical target %v mismatch, want %s / %s", result["source_nozzle"], result["target_nozzle"], sourceNozzle, c.target.Nozzle)
 					} else {
 						row.Status = "CONVERTED_3MF_VALID"
+					}
+					if row.Status != "CONVERTED_3MF_VALID" {
+						conversionFailures++
 					}
 					_ = os.Remove(filename)
 					if os.Getenv("QA_MATRIX_KEEP_OUTPUT") != "1" {
@@ -144,6 +172,9 @@ func TestQAInstalledOrcaPrinterMatrix(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Logf("ACTUAL_LOCAL_INSTALLED_SLICER_MATRIX locations=%v totals=%v perApp=%v report=%s", report.Locations, report.Count, report.AppCounts, dest)
+	if conversionFailures > 0 {
+		t.Fatalf("%d target 3MF conversions failed QA (report preserved at %s)", conversionFailures, dest)
+	}
 }
 
 func qaMatrixSlug(s string) string {

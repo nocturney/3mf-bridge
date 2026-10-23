@@ -125,6 +125,9 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 	if err = normalizeCrealityFilamentDiameters(bundle, len(insp.Filaments)); err != nil {
 		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
 	}
+	if err = normalizeFlashforgeCreator5ProSupportFlags(bundle, len(insp.Filaments)); err != nil {
+		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
+	}
 	result, err := publishConversion(conversionPlan{
 		source: src, destination: dst, target: bundle.Target,
 		expectedModel: bundle.Profile.ModelID,
@@ -220,5 +223,37 @@ func normalizeCrealityFilamentDiameters(bundle *orcaBundle, sourceSlots int) err
 		values[i] = diameter
 	}
 	bundle.Profile.ProjectSettings["filament_diameter"] = values
+	return nil
+}
+
+// normalizeFlashforgeCreator5ProSupportFlags fixes a verified *project-output*
+// inconsistency in Flash Studio 2.4.2. Its four-tool Creator 5 Pro preset may
+// omit the per-material support flags; the slicer then expands filament_colour
+// to 4 tool slots but keeps only one implicit support flag and rejects the 3MF.
+// Repeat only the slicer's known 0 default. Do not edit installed printer
+// profiles, nozzle diameters, physical tool assignments, or other Orca forks.
+func normalizeFlashforgeCreator5ProSupportFlags(bundle *orcaBundle, sourceSlots int) error {
+	if bundle.Slicer != "Flash Studio" ||
+		bundle.Profile.ModelID != "Flashforge Creator 5 Pro" || bundle.PhysicalTools != 4 {
+		return nil
+	}
+	count := max(bundle.PhysicalTools, sourceSlots)
+	if raw, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
+		flags, ok := raw.([]any)
+		if !ok {
+			return fmt.Errorf("Flashforge Creator 5 Pro support flag type is invalid")
+		}
+		if len(flags) == count {
+			return nil // Preserve manufacturer-provided per-slot flags verbatim.
+		}
+		if len(flags) != 1 || fmt.Sprint(flags[0]) != "0" {
+			return fmt.Errorf("Flashforge Creator 5 Pro support flags mismatch %d material slots", count)
+		}
+	}
+	flags := make([]any, count)
+	for i := range flags {
+		flags[i] = "0"
+	}
+	bundle.Profile.ProjectSettings["filament_is_support"] = flags
 	return nil
 }
