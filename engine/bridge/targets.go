@@ -39,13 +39,17 @@ func validTargetNozzle(target, nozzle string) bool {
 	return allowed[target][nozzle]
 }
 func targetNozzleForSource(target, sourceNozzle string) (string, error) {
-	if target == "c5" && sourceNozzle == "0.2" {
-		// Explicit user approval: map 0.2mm Bambu designs to Creator 5's
-		// physically available 0.25mm nozzle without user interruption.
-		return "0.25", nil
-	}
 	if validTargetNozzle(target, sourceNozzle) {
 		return sourceNozzle, nil
+	}
+	// The two *narrowest* manufacturer nozzle variants are one conversion
+	// category, but output always uses the exact physical target profile.
+	// For instance: Bambu 0.2 -> Flashforge 0.25, or source 0.25 -> U1 0.2.
+	if sourceNozzle == "0.2" && validTargetNozzle(target, "0.25") {
+		return "0.25", nil
+	}
+	if sourceNozzle == "0.25" && validTargetNozzle(target, "0.2") {
+		return "0.2", nil
 	}
 	return "", fmt.Errorf("no matching %s target nozzle for source %s mm", target, sourceNozzle)
 }

@@ -47,17 +47,25 @@ func Variant(target, source string) (string, string, string, map[string]string, 
 	if !ok {
 		return "", "", "", nil, fmt.Errorf("unknown target %s", target)
 	}
+	supports := func(nozzle string) bool {
+		for _, n := range spec.Nozzles {
+			if n == nozzle {
+				return true
+			}
+		}
+		return false
+	}
 	nozzle := source
-	if target == "c5" && source == "0.2" {
-		nozzle = "0.25"
-	} // owner-approved silent remap
-	valid := false
-	for _, n := range spec.Nozzles {
-		if n == nozzle {
-			valid = true
+	// 0.2 and 0.25 are interchangeable as *narrow nozzle categories*, not as
+	// physical machine diameters. Resolve to the manufacturer's exact preset.
+	if !supports(nozzle) {
+		if source == "0.2" && supports("0.25") {
+			nozzle = "0.25"
+		} else if source == "0.25" && supports("0.2") {
+			nozzle = "0.2"
 		}
 	}
-	if !valid {
+	if !supports(nozzle) {
 		return "", "", "", nil, fmt.Errorf("%s has no %s mm nozzle profile", spec.Name, source)
 	}
 	var machine, process string

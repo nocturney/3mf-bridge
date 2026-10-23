@@ -21,8 +21,13 @@ func TestNozzleTargetMapping(t *testing.T) {
 		{"0.6", "c5", "0.6", false},
 		{"0.8", "c5", "0.8", false},
 		{"0.25", "c5", "0.25", false},
-		{"0.25", "cc2", "", true},
-		{"0.25", "u1", "", true},
+		{"0.25", "cc2", "0.2", false},
+		{"0.25", "u1", "0.2", false},
+		{"0.25", "qidi", "0.2", false},
+		{"0.4", "u1", "0.4", false},
+		{"0.6", "qidi", "0.6", false},
+		{"0.8", "cc2", "0.8", false},
+		{"0.3", "u1", "", true},
 	} {
 		got, err := targetNozzleForSource(tc.target, tc.source)
 		if (err != nil) != tc.fail || got != tc.want {
