@@ -122,6 +122,9 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 	if err = normalizeCrealitySupportFlags(bundle, len(insp.Filaments)); err != nil {
 		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
 	}
+	if err = normalizeCrealityFilamentDiameters(bundle, len(insp.Filaments)); err != nil {
+		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
+	}
 	result, err := publishConversion(conversionPlan{
 		source: src, destination: dst, target: bundle.Target,
 		expectedModel: bundle.Profile.ModelID,
@@ -177,5 +180,45 @@ func normalizeCrealitySupportFlags(bundle *orcaBundle, sourceSlots int) error {
 		flags[i] = raw[0]
 	}
 	bundle.Profile.ProjectSettings["filament_is_support"] = flags
+	return nil
+}
+
+// normalizeCrealityFilamentDiameters repeats the installed single-tool
+// filament diameter for each preserved source slot. Creality Print 7.3's
+// G-code tool writer requires an entry per virtual material; otherwise the
+// 3MF imports with the correct palette but silently slices only material T0.
+// This changes neither the physical nozzle nor any saved slicer preference.
+func normalizeCrealityFilamentDiameters(bundle *orcaBundle, sourceSlots int) error {
+	if bundle.Slicer != "Creality Print" || !strings.HasPrefix(bundle.Profile.ModelID, "Creality ") ||
+		bundle.PhysicalTools != 1 || sourceSlots <= 1 {
+		return nil
+	}
+	raw, ok := bundle.Profile.ProjectSettings["filament_diameter"]
+	if !ok {
+		return fmt.Errorf("installed Creality Print filament diameter is missing")
+	}
+	var diameter any
+	switch v := raw.(type) {
+	case string:
+		if strings.TrimSpace(v) == "" {
+			return fmt.Errorf("installed Creality Print filament diameter is empty")
+		}
+		diameter = v
+	case []any:
+		if len(v) == sourceSlots {
+			return nil
+		}
+		if len(v) != 1 || v[0] == nil {
+			return fmt.Errorf("Creality filament diameters have %d values for %d slots", len(v), sourceSlots)
+		}
+		diameter = v[0]
+	default:
+		return fmt.Errorf("installed Creality Print filament diameter is malformed")
+	}
+	values := make([]any, sourceSlots)
+	for i := range values {
+		values[i] = diameter
+	}
+	bundle.Profile.ProjectSettings["filament_diameter"] = values
 	return nil
 }

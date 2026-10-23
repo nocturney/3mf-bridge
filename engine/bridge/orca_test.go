@@ -235,3 +235,72 @@ func TestCrealityScalarSupportFlagIsExpanded(t *testing.T) {
 		t.Fatalf("scalar support flag not normalized: %v", got)
 	}
 }
+
+// A real 3-color Bambu project only sliced T0 in Creality Print 7.3 when
+// the installed scalar filament diameter was not expanded. A diagnostic
+// copy with 3 diameter entries produced T0/T1/T2 and distinct material usage.
+func TestCrealityVirtualFilamentDiameterMatchesPreservedPalette(t *testing.T) {
+	for _, tc := range []struct{ slots int }{{2}, {3}, {4}} {
+		b := syntheticOrcaBundle(1)
+		b.Slicer, b.Profile.ModelID = "Creality Print", "Creality K2 Plus"
+		b.Profile.ProjectSettings["filament_diameter"] = "1.75"
+		if err := normalizeCrealityFilamentDiameters(b, tc.slots); err != nil {
+			t.Fatal(err)
+		}
+		want := make([]any, tc.slots)
+		for i := range want {
+			want[i] = "1.75"
+		}
+		if got := b.Profile.ProjectSettings["filament_diameter"]; !reflect.DeepEqual(got, want) {
+			t.Fatalf("slots=%d diameter array=%v", tc.slots, got)
+		}
+		if got := b.Profile.ProjectSettings["nozzle_diameter"]; !reflect.DeepEqual(got, []any{"0.4"}) {
+			t.Fatal("physical nozzle changed")
+		}
+	}
+}
+
+func TestCrealityDiameterNormalizationKeepsOtherOrcaUntouched(t *testing.T) {
+	for _, tc := range []struct{ slicer, model string }{
+		{"OrcaSlicer", "Creality K2 Plus"},
+		{"QIDIStudio", "QIDI X-Plus 5"},
+		{"Anycubic Slicer Next", "Anycubic Kobra S1"},
+		{"Creality Print", "Other Vendor"},
+	} {
+		b := syntheticOrcaBundle(1)
+		b.Slicer, b.Profile.ModelID = tc.slicer, tc.model
+		b.Profile.ProjectSettings["filament_diameter"] = "1.75"
+		if err := normalizeCrealityFilamentDiameters(b, 3); err != nil {
+			t.Fatal(err)
+		}
+		if got := b.Profile.ProjectSettings["filament_diameter"]; got != "1.75" {
+			t.Fatalf("%s / %s diameter changed: %v", tc.slicer, tc.model, got)
+		}
+	}
+}
+
+func TestCrealityDiameterNormalizationRefusesAmbiguousValues(t *testing.T) {
+	for _, values := range []any{nil, []any{}, []any{"1.75", "2.85"}, ""} {
+		b := syntheticOrcaBundle(1)
+		b.Slicer, b.Profile.ModelID = "Creality Print", "Creality K2 Plus"
+		if values != nil {
+			b.Profile.ProjectSettings["filament_diameter"] = values
+		}
+		if err := normalizeCrealityFilamentDiameters(b, 3); err == nil {
+			t.Fatalf("ambiguous diameter %v was accepted", values)
+		}
+	}
+}
+
+func TestCrealityDiameterArrayAlreadyCompleteIsPreserved(t *testing.T) {
+	b := syntheticOrcaBundle(1)
+	b.Slicer, b.Profile.ModelID = "Creality Print", "Creality K2 Plus"
+	want := []any{"1.75", "1.75", "1.75"}
+	b.Profile.ProjectSettings["filament_diameter"] = want
+	if err := normalizeCrealityFilamentDiameters(b, 3); err != nil {
+		t.Fatal(err)
+	}
+	if got := b.Profile.ProjectSettings["filament_diameter"]; !reflect.DeepEqual(got, want) {
+		t.Fatalf("explicitly sized diameters altered: %v", got)
+	}
+}
