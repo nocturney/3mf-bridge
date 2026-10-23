@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-
-	"github.com/BryanSmee/bl_to_std/pkg/converter"
 )
 
 // orcaTargetID is the stable identifier the native resolver derives from one
@@ -81,51 +79,10 @@ func loadOrcaBundle(filename string) (*orcaBundle, error) {
 // ConvertWithOrcaBundle converts through an installed Orca-family profile
 // bundle prepared by the native resolver. The bundle supplies the target ID,
 // printer model, physical nozzle and physical tool count; source slots beyond
-// the physical tools stay virtual, exactly as in the built-in engines.
+// the physical tools stay virtual. It shares ConvertTarget's plan and publish
+// path and differs only in loader.
 func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]any, error) {
-	src, dst, err := resolvePaths(source, destination)
-	if err != nil {
-		return nil, err
-	}
-	bundle, err := loadOrcaBundle(profileFile)
-	if err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "installed profile: %v", err)
-	}
-	before, err := inspectPackage(src)
-	if err != nil {
-		return nil, fail("SOURCE_INVALID", "%v", err)
-	}
-	sourceNozzle, err := detectSourceNozzle(src)
-	if err != nil {
-		return nil, fail("SOURCE_NOZZLE_INVALID", "%v", err)
-	}
-	insp, err := converter.Inspect(src)
-	if err != nil {
-		return nil, fail("SOURCE_INVALID", "cannot read source filament assignments: %v", err)
-	}
-	if len(insp.Filaments) == 0 {
-		return nil, fail("NO_FILAMENTS", "source contains no usable filament data")
-	}
-	slots, mapping, err := sourceSlotPlan(insp.Filaments)
-	if err != nil {
-		return nil, fail("SOURCE_FILAMENTS_INVALID", "%v", err)
-	}
-	if len(slots) > bundle.Profile.FilamentSlots {
-		bundle.Profile.FilamentSlots = len(slots)
-	}
-	if err = bindNativeFilamentSettings(&bundle.targetBundle, insp.Filaments); err != nil {
-		return nil, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", bundle.Target, err)
-	}
-	result, err := publishConversion(conversionPlan{
-		source: src, destination: dst, target: bundle.Target,
-		expectedModel: bundle.Profile.ModelID,
-		base:          &bundle.Profile, filaments: insp.Filaments, slots: slots, mapping: mapping,
-		before: before, physicalTools: bundle.PhysicalTools, sourceNozzle: sourceNozzle,
-		targetNozzle: bundle.Nozzle, requestedNozzle: bundle.Nozzle,
+	return convertWith(source, destination, func(NozzleInfo) (*ResolvedTargetProfile, error) {
+		return resolveInstalledOrca(profileFile, "", "")
 	})
-	if err != nil {
-		return nil, err
-	}
-	result["profile_kind"] = "installed_orca_json"
-	return result, nil
 }

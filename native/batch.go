@@ -276,85 +276,41 @@ func selectSnapmakerProfile(target, nozzle string, preference PrinterSettings,
 	return false, vendor
 }
 
+// configuredConvert converts one source for one selected physical printer.
+// Every Bambu-based destination (built-in aliases and installed Orca profiles)
+// goes through the same resolver and the same 3MF conversion core.
 func configuredConvert(source, target, sourceNozzle string, preference PrinterSettings) ConvertResult {
+	return convertWithLoaders(source, target, sourceNozzle, preference, installedLoaders)
+}
+
+func convertWithLoaders(source, target, sourceNozzle string, preference PrinterSettings, loaders targetLoaders) ConvertResult {
+	// TODO(P0-A): the PrusaSlicer-format outputs are foreign-format adapters
+	// that still bypass the shared resolver and bridge core.
 	// The generic PrusaSlicer project has no per-printer settings entry, so the
 	// preference argument is intentionally ignored for it.
 	if target == prusaTargetID {
 		return prusaConvert(source)
 	}
-	if presets.IsOrcaTargetID(target) {
-		return installedConvert(source, target)
-	}
 	if presets.IsPrusaTargetID(target) {
 		return prusaInstalledConvert(target)
 	}
-	result := ConvertResult{Target: target, Prefix: outputs[target]}
-	preferred := preference.Nozzle
-	if preferred == "auto" {
-		preferred = ""
+	resolved, refusal := resolveConversionTarget(target, sourceNozzle, preference, loaders)
+	if refusal != nil {
+		return ConvertResult{Target: target, Prefix: resolvedPrefix(target), Code: refusal.Code, Error: refusal.Error()}
 	}
-	nativeNozzle := sourceNozzle
-	if preferred != "" {
-		nativeNozzle = preferred
-	}
-	_, _, _, _, vErr := presets.Variant(target, nativeNozzle)
-	if vErr != nil {
-		result.Code = "TARGET_NOZZLE_UNAVAILABLE"
-		result.Error = vErr.Error()
-		return result
-	}
-	if target == "c5" && nativeNozzle == "0.2" {
-		nativeNozzle = "0.25"
-	}
-	useBuiltin, bundle := selectSnapmakerProfile(target, nativeNozzle, preference, presets.LoadConfigured)
-	usedSlicer := "Built-in Snapmaker U1 template"
-	profileFile := ""
-	if !useBuiltin {
-		if bundle == nil {
-			var loadErr error
-			bundle, loadErr = presets.LoadConfigured(target, nativeNozzle, preference.Slicer, preference.Filaments)
-			if loadErr != nil {
-				result.Code = "TARGET_PROFILE_INVALID"
-				result.Error = loadErr.Error()
-				return result
-			}
-		}
-		usedSlicer = bundle.Slicer
-		f, cleanup, err := tempVendorBundle(bundle)
-		if err != nil {
-			result.Code = "TARGET_PROFILE_INVALID"
-			result.Error = err.Error()
-			return result
-		}
-		defer cleanup()
-		profileFile = f
-	}
-	return writeConversion(result, source, usedSlicer, preference.Filaments, func(out string) (map[string]any, error) {
-		return bridge.ConvertWithTargetNozzle(source, out, target, profileFile, preferred)
+	defer resolved.release()
+	result := ConvertResult{Target: target, Prefix: resolved.Prefix}
+	return writeConversion(result, source, resolved.Slicer, resolved.Overrides, func(out string) (map[string]any, error) {
+		return bridge.ConvertTarget(source, out, resolved.Request)
 	})
 }
 
-// installedConvert converts through an installed Orca-family machine profile.
-// The profile itself fixes nozzle, tool count and model, so the per-printer
-// preferences of the built-in targets intentionally do not apply.
-func installedConvert(source, target string) ConvertResult {
-	result := ConvertResult{Target: target, Prefix: presets.OrcaPrefix(target)}
-	bundle, err := presets.ResolveOrcaBundle(target)
-	if err != nil {
-		result.Code = "TARGET_PROFILE_INVALID"
-		result.Error = err.Error()
-		return result
+// resolvedPrefix names the output prefix for a refused target, as before.
+func resolvedPrefix(target string) string {
+	if presets.IsOrcaTargetID(target) {
+		return presets.OrcaPrefix(target)
 	}
-	profileFile, cleanup, err := tempOrcaBundle(bundle)
-	if err != nil {
-		result.Code = "TARGET_PROFILE_INVALID"
-		result.Error = err.Error()
-		return result
-	}
-	defer cleanup()
-	return writeConversion(result, source, bundle.Slicer, map[string]string{}, func(out string) (map[string]any, error) {
-		return bridge.ConvertWithOrcaBundle(source, out, profileFile)
-	})
+	return outputs[target]
 }
 
 // writeConversion publishes into the first free same-name output and enriches
