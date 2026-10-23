@@ -270,7 +270,11 @@ test('installed Orca profiles join the target list via backend-issued IDs only',
   assert.doesNotMatch(js,/target\.(path|root|file|executable)\b/);
   assert.match(backend,/func IsOrcaTargetID\(id string\) bool/);
   assert.match(batch,/presets\.IsOrcaTargetID\(target\)/);
-  assert.match(batch,/presets\.ResolveOrcaBundle\(target\)/);
+  // The unified resolver (not the batch dispatcher) owns installed profile lookup.
+  const resolver=fs.readFileSync(path.resolve(__dirname,'../target_resolver.go'),'utf8');
+  assert.match(batch,/resolveConversionTarget\(target, sourceNozzle, preference, loaders\)/);
+  assert.match(resolver,/orca:\s*presets\.ResolveOrcaBundle/);
+  assert.match(resolver,/func resolveInstalledOrcaTarget\(/);
 });
 
 test('native bootstrap waits for all deferred My Printers modules to register',()=>{

@@ -211,8 +211,9 @@ func resolveBuiltinTarget(target, profileFile, requestedNozzle, sourceNozzle str
 	resolved := &ResolvedTargetProfile{
 		ID: target, ExpectedModel: model, Nozzle: nozzle, NozzleOrigin: origin, PhysicalTools: 4,
 	}
-	if target == "u1" && nozzle == "0.4" {
-		// Keep the already field-validated 0.4mm U1 engine behavior unchanged.
+	if target == "u1" && nozzle == "0.4" && profileFile == "" {
+		// Only use the legacy fallback when no complete installed vendor
+		// profile was supplied. An installed profile must never be ignored.
 		resolved.Kind = ProfileBuiltinTemplate
 		resolved.base = printer.Builtin("snapmaker-u1")
 		return resolved, nil
