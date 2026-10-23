@@ -6,6 +6,13 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 - Future development changes will be listed here.
 
+## [0.4.0-beta.4.dev.20] - 2026-10-23 (experimental development build; release status: see GitHub Releases)
+
+- **Return to the simple pre-Pro printer selection experience** ([PR #74](https://github.com/nocturney/slicebridge/pull/74)): My Printers has one compact card/checkbox per physical model and a clean model-only list of selected printers, without in-card technical nozzle/slicer variants, conversion rankings or misleading unavailable-image captions. A prominent Show more manufacturers control preserves access to the entire underlying 603-record catalogue (589 non-Bambu entries), while the curated manufacturer shortlist stays the default.
+- **Profile options moved into separate Settings** inside My Printers. Explicitly switching one model's installed nozzle/slicer target changes only that model's draft selection; Save Printers persists the exact target ID. Rechecking a temporarily deselected model restores its original saved profile (including Flashforge Creator 5 Pro 0.25 mm) rather than silently switching to 0.4 mm. Existing user settings, printer identities and slicer/filament presets are never rewritten by updating.
+- **Select all now really selects all conversion destinations**: the four built-in targets plus actual backend-resolved installed Orca and ready PrusaSlicer targets. Newly seen installed profiles start checked if selected by the user; later re-discovery preserves manual unchecks. Main destination cards show printer name only; detailed nozzle, slicer and physical tools stay out of the primary interface. Backend conversion availability, profile ownership checks and safety restrictions are unchanged.
+- **Release QA:** added functional five-printer regression (including exact 0.25 mm Creator 5 Pro conversion target), alias retention, profile-dialog cancellation/reselection, and real Chrome RTL/LTR layout and modal checks. This is still an experimental pre-release: no real physical printing approval and no claim of complete multi-colour Prusa preset/tool mapping.
+
 ## [0.4.0-beta.4.dev.19] - 2026-10-22 (experimental development build; release status: see GitHub Releases)
 
 - **My Printers is a hardware inventory, not a conversion leaderboard.** [PR #71](https://github.com/nocturney/slicebridge/pull/71) removes preferred-maker groups and source-tier ranking, groups duplicate Anker/AnkerMake spellings into one model card, keeps each saved catalogue ID selectable, and blocks foreign manufacturer profiles borrowed from branded Orca forks. No conversion capability is inferred from a catalogue row.
