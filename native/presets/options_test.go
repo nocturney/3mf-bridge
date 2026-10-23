@@ -243,8 +243,8 @@ func TestOrcaFamilyExcludesBambuAndEmptyBases(t *testing.T) {
 func TestOrcaFamilyOverridesLeadAndAreDeduplicated(t *testing.T) {
 	override := filepath.Join(t.TempDir(), "profiles")
 	got := orcaFamilyLocations("darwin", "", "", "", "", []string{override, "", override})
-	if len(got) != 7 || got[0].root != override || got[0].executable != "" {
-		t.Fatalf("explicit override must lead once, then the six /Applications candidates: %#v", got)
+	if len(got) != 1+len(orcaFamilyApps("darwin")) || got[0].root != override || got[0].executable != "" {
+		t.Fatalf("explicit override must lead once, then known /Applications candidates: %#v", got)
 	}
 }
 

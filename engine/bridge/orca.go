@@ -146,9 +146,16 @@ func normalizeCrealitySupportFlags(bundle *orcaBundle, sourceSlots int) error {
         sourceSlots <= bundle.PhysicalTools {
         return nil
     }
-    raw, ok := bundle.Profile.ProjectSettings["filament_is_support"].([]any)
-    if !ok || len(raw) == 0 {
-        return fmt.Errorf("Creality Print multi-filament support flags missing")
+    // bl_to_std defaults missing support-only flags to one "0" entry.
+    // Write the same documented default for each virtual filament before
+    // conversion, rather than allowing a one-entry fallback in the output.
+    raw := []any{"0"}
+    if value, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
+        values, ok := value.([]any)
+        if !ok || len(values) == 0 {
+            return fmt.Errorf("Creality Print support flags are malformed")
+        }
+        raw = values
     }
     if len(raw) == sourceSlots {
         return nil

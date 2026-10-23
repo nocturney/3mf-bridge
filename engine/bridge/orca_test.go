@@ -207,3 +207,17 @@ func TestCrealitySupportFlagsRefuseAmbiguousValues(t *testing.T) {
         t.Fatalf("ambiguous flags changed: %v", got)
     }
 }
+
+// The installed Creality profile may omit this optional setting; the upstream
+// converter's single-slot default is "0". Replicating it is necessary for
+// Creality Print's multi-filament 3MF validator.
+func TestCrealityMissingSupportFlagsUseInstalledDefault(t *testing.T) {
+    b := syntheticOrcaBundle(1)
+    b.Slicer, b.Profile.ModelID = "Creality Print", "Creality K2 Plus"
+    if err := normalizeCrealitySupportFlags(b, 2); err != nil {
+        t.Fatal(err)
+    }
+    if got := b.Profile.ProjectSettings["filament_is_support"]; !reflect.DeepEqual(got, []any{"0", "0"}) {
+        t.Fatalf("missing support flags should become explicit defaults: %v", got)
+    }
+}
