@@ -118,7 +118,8 @@ test('new picker UI has bilingual names, consent-based selection and no network 
   assert.match(script,/PrinterCatalog/);
   assert.doesNotMatch(script,/קטלוג בלבד|מתאם המרה קיים|catalog only|adapter exists/i);
   assert.doesNotMatch(doc,/id="myPrintersScope"/);
-  assert.match(script,/pill\.append\(name\);selectionList\.append\(pill\)/);
+  assert.match(script,/pill\.append\(node\('strong','',picker\.title\(group\)\)\)/);
+  assert.doesNotMatch(script,/variant\?picker\.title\(entry\)/);
   assert.doesNotMatch(script,/copy\.append\(meta\)/);
   // No network reads at all: artwork comes from installed slicers via the backend only.
   assert.equal((script.match(/fetch\s*\(/g)||[]).length,0);

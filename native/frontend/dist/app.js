@@ -356,8 +356,12 @@ function renderTargets(){
     setRowVisible(prusaRow,box,visible);
     box.disabled=busy||!visible;
   }
-  const shown=builtIns.filter((entry)=>builtInVisible(entry.target));
-  const checkedShown=shown.filter((entry)=>entry.checkbox.checked).length;
+  // All available visible rows count, including installed Orca and Prusa.
+  const shown=[...builtIns.map(({row,checkbox})=>({row,checkbox})),
+    ...installedRows.map(({row,checkbox})=>({row,checkbox})),
+    ...(prusaRow?[{row:prusaRow,checkbox:prusaCheckbox()}]:[])]
+    .filter(({row,checkbox})=>!row.hidden&&!checkbox.disabled);
+  const checkedShown=shown.filter(({checkbox})=>checkbox.checked).length;
   el('selectAllBtn').hidden=shown.length===0;
   el('selectAllBtn').textContent=checkedShown===shown.length?t('deselectAll'):t('selectAll');
   // Shown only once My Printers is ready and nothing is selected for conversion.
@@ -390,7 +394,8 @@ function installedRowTargets(){
 function renderInstalledTargets(){
   const list=el('targetList');
   if(!list)return;
-  const checked=new Set(installedRows.filter((entry)=>entry.checkbox.checked).map((entry)=>entry.id));
+  const previous=new Set(installedRows.map(entry=>entry.id));
+  const checked=new Set(installedRows.filter(entry=>entry.checkbox.checked).map(entry=>entry.id));
   for(const entry of installedRows)entry.row.remove();
   installedRows=[];
   const seen=new Set();
@@ -403,18 +408,23 @@ function renderInstalledTargets(){
     const checkbox=node('input');
     checkbox.type='checkbox';
     checkbox.value=target.id;
-    checkbox.checked=checked.has(target.id)&&!row.hidden;
+    // A newly discovered selected profile starts enabled. A row rebuilt
+    // later preserves an explicit user uncheck instead of selecting it again.
+    checkbox.checked=!row.hidden&&(!previous.has(target.id)||checked.has(target.id));
     checkbox.disabled=busy||row.hidden;
     const icon=node('span','target-printer-icon','▣');
     icon.setAttribute('aria-hidden','true');
     const label=node('span','printer-label');
-    const physical=language==='he'?'כלים פיזיים':(target.physicalTools===1?'physical tool':'physical tools');
-    // A PrusaSlicer target has no physical tool count; it shows its nozzle and slicer only.
-    const summary=typeof target.physicalTools==='number'
-      ?target.nozzle+' mm · '+target.physicalTools+' '+physical
-      :[target.nozzle?target.nozzle+' mm':null,target.slicer||'PrusaSlicer'].filter(Boolean).join(' · ');
-    label.append(node('strong','',target.title||target.model),node('small','',summary));
-    row.title=(target.title||target.model)+' · '+summary;
+    // The tile is a printer, not a technical profile summary. All profile IDs,
+    // nozzle settings and slicer bindings remain intact for conversion.
+    const vendor=target.vendor==='X 5 Series'?'QIDI':String(target.vendor||'').trim();
+    const stem=String(target.model||target.title||'').trim()
+      .replace(/\s+\d+(?:\.\d+)?(?:\s*\+\s*\d+(?:\.\d+)?)*\s*(?:mm)?(?:\s+nozzle)?$/i,'').trim();
+    const lower=stem.toLocaleLowerCase('en'), prefix=vendor.toLocaleLowerCase('en');
+    const fullName=lower===prefix||lower.startsWith(prefix+' ')?stem:[vendor,stem].filter(Boolean).join(' ');
+    label.append(node('strong','',fullName));
+    row.title=[fullName,target.nozzle?target.nozzle+' mm':null,target.slicer||null]
+      .filter(Boolean).join(' · ');
     row.append(checkbox,icon,label);
     list.append(row);
     installedRows.push({id:target.id,row,checkbox});
@@ -836,10 +846,10 @@ async function openUpdate(){
   catch(e){updateError=e?.message||String(e);renderUpdates();}
 }
 function selectAll(){
-  // Visible built-in rows only: installed Orca and PrusaSlicer rows are chosen individually.
-  const boxes=Array.from(document.querySelectorAll('#targetList [data-target-row] input[type=checkbox]:not(:disabled)'))
-    .filter((e)=>!e.closest('.target-option').hidden);
-  const allSelected=boxes.every((e)=>e.checked);
+  const boxes=Array.from(document.querySelectorAll('#targetList .target-option input[type=checkbox]:not(:disabled)'))
+    .filter(box=>!box.closest('.target-option').hidden);
+  if(!boxes.length)return;
+  const allSelected=boxes.every(box=>box.checked);
   for(const box of boxes)box.checked=!allSelected;
   memoryStatus=null;renderTargets();
 }

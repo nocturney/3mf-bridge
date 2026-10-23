@@ -170,31 +170,43 @@ test('ticking a model card selects only its default target; unticking removes th
   assert.equal(cardFor(h,'Creator 5').children[0].checked,true);
 });
 
-test('variant checkboxes keep other nozzles selected and never swap one for another',async()=>{
+test('the 5 Pro card stays simple; nozzle and slicer selection is in a separate settings dialog',async()=>{
   let sent=null;
   const h=loadWithGlobals({
-    GetMyPrinters:()=>({selectedIds:[oldIds.pro],onboardingPending:false}),
+    GetMyPrinters:()=>({selectedIds:[oldIds.c5,oldIds.pro],onboardingPending:false}),
     SaveMyPrinters:(requested)=>{sent=requested;return {selectedIds:requested,onboardingPending:false};},
   });
-  h.api.setSupportedTargets({available:[],installedTargets:proVariants,prusaAvailable:false});
+  h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
   await h.api.init();
   h.dom('myPrintersBtn').fire('click');
   h.dom('printerCatalogSearch').value='Creator 5 Pro';
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,'Creator 5 Pro');
-  const boxes=variantBoxes(card);
-  assert.equal(boxes.length,6); // Five actual slicer/nozzle choices and the catalogue identity.
-  assert.equal(boxes.filter(box=>box.checked).length,1);
-  assert.equal(boxes.find(box=>box.value===oldIds.pro).checked,true);
-  const [quarter]=boxes.filter(box=>box.value===proVariants[0].id);
-  quarter.checked=true;
-  quarter.fire('change');
-  const again=variantBoxes(cardFor(h,'Creator 5 Pro'));
-  assert.equal(again.find(box=>box.value===oldIds.pro).checked,true);
-  assert.equal(again.find(box=>box.value===proVariants[0].id).checked,true);
+  assert.equal(card.querySelectorAll('.catalog-variant-list').length,0);
+  assert.equal(card.querySelectorAll('input').length,1);
+  assert.equal(card.children[0].checked,true);
+  assert.equal(h.dom('myPrintersSelectionCount').textContent,'2 printers selected');
+  const button=card.children.find(x=>x.classList.contains('catalog-model-profile-button'));
+  assert.ok(button,'separate settings action should exist');
+  button.fire('click');
+  assert.equal(h.dom('printerProfileDialog').open,true);
+  let options=h.dom('printerProfileOptions').children.map(child=>child.children[0]);
+  assert.equal(options.length,5); // only five real installed profiles are offered as new choices.
+  assert.equal(options.find(option=>option.value===oldIds.pro).checked,true);
+  // Closing without applying does not mutate the draft or the persisted selection.
+  h.dom('cancelPrinterProfileBtn').fire('click');
+  assert.equal(h.dom('printerProfileDialog').open,false);
+  button.fire('click');
+  options=h.dom('printerProfileOptions').children.map(child=>child.children[0]);
+  options.find(option=>option.value===oldIds.pro).checked=false;
+  options.find(option=>option.value===proVariants[0].id).checked=true;
+  h.dom('applyPrinterProfileBtn').fire('click');
+  assert.equal(h.dom('printerProfileDialog').open,false);
+  assert.equal(h.dom('myPrintersSelectionCount').textContent,'2 printers selected');
+  assert.equal(cardFor(h,'Creator 5 Pro').children[0].checked,true);
   h.dom('saveMyPrintersBtn').fire('click');
   await flush();
-  assert.deepEqual(h.plain(sent),[oldIds.pro,proVariants[0].id]);
+  assert.deepEqual(h.plain(sent),[oldIds.c5,proVariants[0].id]);
 });
 
 test('card text never shows a release date, in English or Hebrew',async()=>{
@@ -374,7 +386,7 @@ test('ready/not-ready status never affects physical grouping or nozzle ordering'
   assert.equal(initial.id,variants[0].id);
 });
 
-test('nozzle variants from valid installed profiles display without conversion tier labels',async()=>{
+test('all nozzle variants remain configurable but their technical details never clutter the model card',async()=>{
   const sample=installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer','0.4','eeeeeeeeee');
   const h=loadWithGlobals({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
   h.api.setSupportedTargets({available:[],installedTargets:[sample,...proVariants],prusaAvailable:false,
@@ -384,9 +396,15 @@ test('nozzle variants from valid installed profiles display without conversion t
   h.dom('myPrintersBtn').fire('click');
   h.dom('printerCatalogSearch').value='Creator 5 Pro';
   h.dom('printerCatalogSearch').fire('input');
-  const labels=textOf(cardFor(h,'Creator 5 Pro'));
-  assert.ok(labels.includes('PrusaSlicer'),labels);
-  assert.doesNotMatch(labels,/Tier|Preferred|Supported|Adapter|דירוג|מומלץ|מתאם מובנה/i);
+  const card=cardFor(h,'Creator 5 Pro');
+  const labels=textOf(card);
+  assert.doesNotMatch(labels,/PrusaSlicer|OrcaSlicer|Flash Studio|0\.4 mm|0\.25 mm|Tier|דירוג/i);
+  assert.equal(card.querySelectorAll('input').length,1);
+  card.children.find(child=>child.classList.contains('catalog-model-profile-button')).fire('click');
+  const optionLabels=textOf(h.dom('printerProfileOptions'));
+  assert.match(optionLabels,/PrusaSlicer/);
+  assert.match(optionLabels,/OrcaSlicer/);
+  assert.equal(h.dom('printerProfileDialog').open,true);
 });
 
 test('unrelated manufacturer fork presets never appear as ready options even from an older backend',()=>{
@@ -432,4 +450,54 @@ test('no conversion ranking implementation remains in the physical printer picke
   const dialogScript=fs.readFileSync(path.join(dist,'my-printers.js'),'utf8');
   assert.doesNotMatch(pickerScript,/sourceTier|primaryMakers|manufacturerSlicers|best source tier/);
   assert.doesNotMatch(dialogScript,/manufacturerGroups|selectedAdapterTargets|מתאם מובנה|builtInVariant/);
+});
+
+
+test('temporarily unchecking and rechecking Creator 5 Pro restores the saved exact 0.25 profile',async()=>{
+  const profile=proVariants[0];
+  const saved=[oldIds.cc2,oldIds.c5,oldIds.qidi,oldIds.u1,profile.id];
+  let request;
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:saved,onboardingPending:false}),
+    SaveMyPrinters:ids=>{request=[...ids];return {selectedIds:ids,onboardingPending:false};},
+  });
+  h.api.setSupportedTargets({available:availabilityAll(),installedTargets:proVariants,prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('printerCatalogSearch').value='Creator 5 Pro';
+  h.dom('printerCatalogSearch').fire('input');
+  const before=cardFor(h,'Creator 5 Pro').children[0];
+  assert.equal(before.checked,true);
+  before.checked=false;before.fire('change');
+  assert.equal(h.dom('myPrintersSelectionCount').textContent,'4 printers selected');
+  const restore=cardFor(h,'Creator 5 Pro').children[0];
+  restore.checked=true;restore.fire('change');
+  assert.equal(h.dom('myPrintersSelectionCount').textContent,'5 printers selected');
+  h.dom('saveMyPrintersBtn').fire('click');
+  await flush();
+  assert.deepEqual(h.plain(request),saved);
+});
+
+test('two preexisting spelling-alias IDs show one physical printer without erasing either saved ID',async()=>{
+  const saved=['anker-anker-m5c','anker-ankermake-m5c'];
+  let request;
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:saved,onboardingPending:false}),
+    SaveMyPrinters:ids=>{request=[...ids];return {selectedIds:ids,onboardingPending:false};},
+  });
+  h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  h.dom('printerCatalogSearch').value='M5C';
+  h.dom('printerCatalogSearch').fire('input');
+  const m5c=cardFor(h,'M5C');
+  assert.ok(m5c);
+  assert.equal(m5c.querySelectorAll('input').length,1);
+  assert.equal(m5c.querySelectorAll('.catalog-variant-list').length,0);
+  assert.equal(m5c.children[0].checked,true);
+  assert.equal(h.dom('myPrintersSelectionCount').textContent,'1 printers selected');
+  assert.equal(h.dom('selectedPrinterSummary').children.length,1);
+  h.dom('saveMyPrintersBtn').fire('click');
+  await flush();
+  assert.deepEqual(h.plain(request),saved);
 });

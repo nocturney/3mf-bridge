@@ -71,19 +71,18 @@ test('the PrusaSlicer row is probed through the backend and shown only when prob
   assert.match(app,/setRowVisible\(prusaRow,box,visible\);/);
 });
 
-test('select-all never silently includes the PrusaSlicer row',()=>{
+test('select-all includes every visible enabled built-in, installed Orca and PrusaSlicer destination',()=>{
   const selectAll=app.slice(app.indexOf('function selectAll()'),app.indexOf('function registerHandlers'));
-  // Built-in rows carry data-target-row; the PrusaSlicer row does not.
-  assert.match(selectAll,/#targetList \[data-target-row\] input\[type=checkbox\]/);
-  assert.doesNotMatch(selectAll.replace(/\/\/.*$/gm,''),/prusa/i);
+  assert.match(selectAll,/#targetList \.target-option input\[type=checkbox\]:not\(:disabled\)/);
+  assert.match(selectAll,/!box\.closest\('\.target-option'\)\.hidden/);
 });
 
-test('select-all label counts only the visible built-in rows, never the PrusaSlicer row',()=>{
+test('select-all label counts every visible ready conversion target, never hidden or disabled rows',()=>{
   const render=app.slice(app.indexOf('function renderTargets()'),app.indexOf('// Publishes the destination inputs'));
-  assert.match(render,/const shown=builtIns\.filter\(\(entry\)=>builtInVisible\(entry\.target\)\);/);
-  assert.match(render,/const checkedShown=shown\.filter\(\(entry\)=>entry\.checkbox\.checked\)\.length;/);
+  assert.match(render,/\.\.\.installedRows\.map/);
+  assert.match(render,/prusaRow\?\[/);
+  assert.match(render,/!row\.hidden&&!checkbox\.disabled/);
   assert.match(render,/el\('selectAllBtn'\)\.textContent=checkedShown===shown\.length\?t\('deselectAll'\):t\('selectAll'\);/);
-  assert.doesNotMatch(render,/prusaChecked/);
   assert.match(render,/box\.disabled=busy\|\|!visible;/);
 });
 

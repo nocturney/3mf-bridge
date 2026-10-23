@@ -152,7 +152,7 @@ test('saving in My Printers hides and unchecks deselected rows and keeps the oth
   assert.equal(checked(orcaRow),false);
   assert.equal(visible(app.rows.prusa),true);
   assert.equal(checked(app.rows.prusa),true);
-  assert.equal(app.dom('selectAllBtn').hidden,true);
+  assert.equal(app.dom('selectAllBtn').hidden,false,'remaining Orca and Prusa rows can be selected as a group');
 });
 
 test('a destination newly selected in My Printers appears checked after save',async()=>{
@@ -186,13 +186,17 @@ test('select-all and conversion honour only visible, enabled rows',async()=>{
     ConvertBatch:(request)=>{sent.push(request.targets);return {filesDone:1,successes:0,failures:0,files:[]};},
   });
   await ready(app);
-  // Select all toggles only the visible built-in rows; hidden rows are never touched.
+  // Select all now includes every visible installed profile as well as built-ins.
+  const orcaRow=app.document.querySelectorAll('[data-installed-target="'+orcaId+'"]')[0];
+  assert.equal(checked(orcaRow),true);
   app.dom('selectAllBtn').fire('click');
   assert.equal(checked(app.rows.u1),false);
   assert.equal(checked(app.rows.c5),false);
+  assert.equal(checked(orcaRow),false);
   app.dom('selectAllBtn').fire('click');
   assert.equal(checked(app.rows.u1),true);
   assert.equal(checked(app.rows.c5),true);
+  assert.equal(checked(orcaRow),true);
   // A checked box on a hidden row, set after the last render, must still not convert.
   app.rows.cc2.querySelector('input').checked=true;
   app.rows.prusa.querySelector('input').checked=true;
@@ -222,4 +226,40 @@ test('with no selection the main list says so and conversion stays disabled',asy
   assert.equal(app.dom('emptyTargetNotice').hidden,false);
   assert.equal(app.dom('convertBtn').disabled,true);
   assert.equal(app.dom('selectAllBtn').hidden,true);
+});
+
+
+test('real five-printer setup: Creator 5 Pro 0.25 is checked, Select all toggles all five, no technical subtitles',async()=>{
+  const proId='orca-flashforge-creator-5-pro-025-9988776655';
+  const pro={id:proId,vendor:'Flashforge',model:'Creator 5 Pro',
+    title:'Flashforge Creator 5 Pro 0.25 nozzle',nozzle:'0.25',
+    slicer:'Flash Studio Desktop',physicalTools:1,materials:['PLA']};
+  const saved=[builtIn.cc2,builtIn.c5,builtIn.qidi,builtIn.u1,proId];
+  const sent=[];
+  const app=startApp({
+    InstalledOrcaTargets:()=>({targets:[pro],rejected:[]}),
+    GetMyPrinters:()=>({selectedIds:saved,onboardingPending:false}),
+    SaveMyPrinters:ids=>({selectedIds:ids,onboardingPending:false}),
+    SelectFiles:()=>[{path:'C:/models/a.3mf',name:'a.3mf',folder:'C:/models',sizeLabel:'1 KB'}],
+    ConvertBatch:request=>{sent.push(request.targets);return {filesDone:1,successes:0,failures:0,files:[]};},
+  });
+  await ready(app);
+  const rows=[...targets.map(t=>app.rows[t]),...app.document.querySelectorAll('[data-installed-target="'+proId+'"]')];
+  assert.equal(rows.length,5);
+  assert.ok(rows.every(row=>visible(row)&&checked(row)), 'all five saved targets must start checked');
+  const installed=rows[4];
+  assert.equal(installed.querySelector('strong').textContent,'Flashforge Creator 5 Pro');
+  assert.equal(installed.querySelector('small'),null);
+  assert.match(installed.title,/0.25 mm · Flash Studio Desktop/);
+  assert.equal(app.dom('selectAllBtn').hidden,false);
+  app.dom('selectAllBtn').fire('click');
+  assert.ok(rows.every(row=>!checked(row)),'Select all clears all FIVE checked rows');
+  app.dom('selectAllBtn').fire('click');
+  assert.ok(rows.every(row=>checked(row)),'Select all restores all FIVE including Creator 5 Pro');
+  app.dom('addFilesBtn').fire('click');
+  await settle();
+  app.dom('convertBtn').fire('click');
+  await settle();
+  assert.equal(sent.length,1);
+  assert.deepEqual([...sent[0]].sort(),['cc2','c5','qidi','u1',proId].sort());
 });

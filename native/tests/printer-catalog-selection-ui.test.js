@@ -44,20 +44,17 @@ test('curated catalogue opens first; the complete underlying catalogue is one to
   assert.equal(h.dom('catalogModelList').children.length,expected.length);
   assert.equal(h.dom('showOtherManufacturersBtn').getAttribute('aria-pressed'),'true');
   assert.equal(h.dom('catalogSearchCount').hidden,true);
-  // Different stored catalogue spellings remain separately reachable and
-  // labelled by actual MODEL spelling, never as conversion engines.
+  // Spelling aliases share ONE physical checkbox, rather than two unrelated
+  // nozzle or conversion choices. Their exact stored identities still exist.
   h.dom('printerCatalogSearch').value='CR-10';
   h.dom('printerCatalogSearch').fire('input');
-  const card=cardFor(h,'creality-creality-cr-10-s-pro-v2');
-  assert.ok(card);
-  const variants=card.children.find(child=>child.classList.contains('catalog-variant-list'));
-  assert.ok(variants);
-  const aliasRows=variants.children.map(option=>[option.children[0].value,option.children[1].textContent]);
-  assert.deepEqual(aliasRows.map(([id])=>id).sort(),
-    ['creality-creality-cr-10-s-pro-v2','creality-creality-cr-10s-pro-v2']);
-  assert.equal(new Set(aliasRows.map(([,name])=>name)).size,2);
   const group=expected.find(group=>group.ids.includes('creality-creality-cr-10-s-pro-v2'));
-  assert.deepEqual(group.ids.slice().sort(),aliasRows.map(([id])=>id).sort());
+  const card=cardFor(h,group.id);
+  assert.ok(card);
+  assert.equal(card.querySelectorAll('input').length,1);
+  assert.equal(card.querySelectorAll('.catalog-variant-list').length,0);
+  assert.deepEqual(group.ids.slice().sort(),
+    ['creality-creality-cr-10-s-pro-v2','creality-creality-cr-10s-pro-v2']);
 });
 
 test('an unknown catalogue model is selected in the dialog but is never a conversion destination',async()=>{
@@ -99,8 +96,14 @@ test('a physical model and its installed nozzle targets share one card with a 0.
   h.dom('printerCatalogSearch').value='Creator 5 Pro';
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,pro[0].id);
-  const boxes=card.children.find(child=>child.classList.contains('catalog-variant-list')).children;
-  assert.equal(boxes.length,4); // three installed variants plus the selectable original catalogue ID
+  assert.equal(card.querySelectorAll('input').length,1);
+  assert.equal(card.querySelectorAll('.catalog-variant-list').length,0);
+  const button=card.children.find(child=>child.classList.contains('catalog-model-profile-button'));
+  assert.ok(button,'real installed variants have a separate settings button');
+  button.fire('click');
+  const options=h.dom('printerProfileOptions').children;
+  assert.equal(options.length,3); // only installed real profiles, no fake catalogue 'preset'
+  assert.ok(options.every(option=>option.children[0].value.startsWith('orca-')));
 });
 
 test('saved selections come first in saved order, then makers A-Z, newest release first within a maker',()=>{

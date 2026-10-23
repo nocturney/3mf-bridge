@@ -22,13 +22,17 @@ function cardValues(h) {
     return [main?.value,...(variants?.children.map(row=>row.children[0]?.value)||[])].filter(Boolean);
   });
 }
-function cardById(h,id) {
-  return h.dom('catalogModelList').children.find(card=>
-    cardValuesFor(card).includes(id));
+// One checkbox represents a physical printer; an exact installed-profile ID
+// remains associated through the immutable underlying catalogue/target groups.
+function cardById(h,id,installed=[]) {
+  const groups=picker.groupDestinations(
+    picker.catalogItems(catalog.models,available,installed,true));
+  const group=groups.find(group=>group.ids.includes(id));
+  if(!group)return null;
+  return h.dom('catalogModelList').children.find(card=>card.dataset.printerKey===group.key);
 }
 function cardValuesFor(card) {
-  const variants=card.children.find(child=>child.classList.contains('catalog-variant-list'));
-  return [card.children[0]?.value,...(variants?.children.map(row=>row.children[0]?.value)||[])];
+  return [card.children[0]?.value];
 }
 async function setup(saved=[],installed=[],extra={}) {
   let savedRequest=null;
@@ -57,9 +61,8 @@ test('exactly 13 approved source names, 11 destination display names and all 603
   assert.equal(h.dom('showOtherManufacturersBtn').getAttribute('aria-pressed'),'false');
   const catalogueIds=new Set(catalog.models.filter(m=>m.manufacturer!=='Bambu Lab').map(m=>m.id));
   const inView=cardValues(h).filter(id=>catalogueIds.has(id));
-  // Some cards repeat their default ID as the top-level checkbox and
-  // an individually selectable variant, so count distinct persisted IDs.
-  assert.equal(new Set(inView).size,249);
+  // One visible checkbox per physical model, not 249 separate catalog IDs.
+  assert.equal(new Set(inView).size,241);
   assert.equal(inView.some(id=>id.startsWith('prusa-project')),false);
 });
 
@@ -81,16 +84,18 @@ test('default search cannot expose other makers; show more restores them and is 
   assert.ok(cardValues(h).includes('flashforge-creator-5-pro'));
 });
 
-test('full original catalogue is accessible on demand: 589 IDs + generic export, never Bambu targets',async()=>{
+test('all 582 physical models are visible on demand, while all 589 source IDs remain in the underlying catalogue',async()=>{
   const {h}=await setup();
   h.dom('showOtherManufacturersBtn').fire('click');
   assert.equal(h.dom('catalogModelList').children.length,582);
   const visible=new Set(cardValues(h));
   const expected=catalog.models.filter(m=>m.manufacturer!=='Bambu Lab').map(m=>m.id);
   assert.equal(expected.length,589);
-  assert.ok(expected.every(id=>visible.has(id)));
+  assert.equal(visible.size,582);
   assert.ok(visible.has('prusa-project'));
-  assert.equal(visible.size,590);
+  const grouped=picker.groupDestinations(picker.catalogItems(catalog.models,available,[],true));
+  assert.equal(grouped.length,582);
+  assert.deepEqual([...grouped.flatMap(g=>g.ids)].filter(id=>expected.includes(id)).length,589);
   assert.ok(catalog.models.filter(m=>m.manufacturer==='Bambu Lab').every(m=>!visible.has(m.id)));
   assert.equal(h.dom('catalogSearchCount').hidden,true);
 });
@@ -120,10 +125,11 @@ test('five actual selected models and one dynamic Creator 5 Pro profile survive 
   const {h,lastSave}=await setup(saved,[pro],{prusaAvailable:false});
   assert.equal(h.dom('myPrintersSelectionCount').textContent,'5 printers selected');
   assert.equal(h.dom('selectedPrinterSummary').children.length,5);
-  assert.ok(saved.every(id=>cardValues(h).includes(id)));
+  assert.ok(saved.every(id=>cardById(h,id,[pro])?.children[0].checked));
   h.dom('showOtherManufacturersBtn').fire('click');
   h.dom('showOtherManufacturersBtn').fire('click');
-  assert.ok(saved.every(id=>cardValues(h).includes(id)));
+  assert.ok(saved.every(id=>cardById(h,id,[pro])?.children[0].checked));
+  assert.equal(h.dom('selectedPrinterSummary').children.length,5);
   assert.equal(h.dom('myPrintersSelectionCount').textContent,'5 printers selected');
   assert.deepEqual(h.plain(h.api.selectedTargetIds()),saved);
   h.dom('saveMyPrintersBtn').fire('click');
@@ -138,7 +144,8 @@ test('hidden maker with valid installed Orca conversion is never disabled or era
     nozzle:'0.4',slicer:'OrcaSlicer'};
   const {h,lastSave}=await setup([foreign.id],[foreign]);
   assert.equal(h.api.isSelectedTarget(foreign.id),true);
-  assert.ok(cardValues(h).includes(foreign.id),'saved hidden installed profile stays visible');
+  assert.ok(cardById(h,foreign.id,[foreign])?.children[0].checked,
+    'saved hidden installed profile stays visible and selected');
   assert.ok(makerOptions(h).includes('Artillery'));
   h.dom('showOtherManufacturersBtn').fire('click');
   h.dom('showOtherManufacturersBtn').fire('click');
@@ -156,7 +163,7 @@ test('installed QIDIStudio X 5 Series profile is shown under QIDI in the picker 
   assert.deepEqual(makerOptions(h),visibleMakers);
   const filtered=h.dom('printerManufacturerFilter');
   filtered.value='QIDI';filtered.fire('change');
-  assert.ok(cardValues(h).includes(target.id));
+  assert.ok(cardById(h,target.id,[target]),'QIDI profile is accessible through the QIDI filter');
   assert.ok(makerOptions(h).includes('QIDI'));
   assert.ok(!makerOptions(h).includes('X 5 Series'));
 });
