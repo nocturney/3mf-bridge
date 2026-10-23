@@ -142,40 +142,40 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 // default may be repeated for virtual slots, but conflicting values are
 // never guessed or remapped.
 func normalizeCrealitySupportFlags(bundle *orcaBundle, sourceSlots int) error {
-    if bundle.Slicer != "Creality Print" || !strings.HasPrefix(bundle.Profile.ModelID, "Creality ") ||
-        sourceSlots <= bundle.PhysicalTools {
-        return nil
-    }
-    // bl_to_std defaults missing support-only flags to one "0" entry.
-    // Write the same documented default for each virtual filament before
-    // conversion, rather than allowing a one-entry fallback in the output.
-    raw := []any{"0"}
-    if value, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
-        switch flags := value.(type) {
-        case []any:
-            if len(flags) == 0 {
-                return fmt.Errorf("Creality Print support flags are empty")
-            }
-            raw = flags
-        case string:
-            if flags != "0" && flags != "1" {
-                return fmt.Errorf("Creality Print support flag %q is invalid", flags)
-            }
-            raw = []any{flags}
-        default:
-            return fmt.Errorf("Creality Print support flags are malformed")
-        }
-    }
-    if len(raw) == sourceSlots {
-        return nil
-    }
-    if len(raw) != 1 {
-        return fmt.Errorf("Creality Print support flags have %d values for %d filaments", len(raw), sourceSlots)
-    }
-    flags := make([]any, sourceSlots)
-    for i := range flags {
-        flags[i] = raw[0]
-    }
-    bundle.Profile.ProjectSettings["filament_is_support"] = flags
-    return nil
+	if bundle.Slicer != "Creality Print" || !strings.HasPrefix(bundle.Profile.ModelID, "Creality ") ||
+		sourceSlots <= bundle.PhysicalTools {
+		return nil
+	}
+	// bl_to_std defaults missing support-only flags to one "0" entry.
+	// Write the same documented default for each virtual filament before
+	// conversion, rather than allowing a one-entry fallback in the output.
+	raw := []any{"0"}
+	if value, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
+		switch flags := value.(type) {
+		case []any:
+			if len(flags) == 0 {
+				return fmt.Errorf("Creality Print support flags are empty")
+			}
+			raw = flags
+		case string:
+			if flags != "0" && flags != "1" {
+				return fmt.Errorf("Creality Print support flag %q is invalid", flags)
+			}
+			raw = []any{flags}
+		default:
+			return fmt.Errorf("Creality Print support flags are malformed")
+		}
+	}
+	if len(raw) == sourceSlots {
+		return nil
+	}
+	if len(raw) != 1 {
+		return fmt.Errorf("Creality Print support flags have %d values for %d filaments", len(raw), sourceSlots)
+	}
+	flags := make([]any, sourceSlots)
+	for i := range flags {
+		flags[i] = raw[0]
+	}
+	bundle.Profile.ProjectSettings["filament_is_support"] = flags
+	return nil
 }

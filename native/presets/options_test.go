@@ -278,66 +278,65 @@ func TestOrcaFamilyKeepsLegacyFourTargetRoots(t *testing.T) {
 	}
 }
 
-
 func TestQIDIStudioExecutableAliasForNativeOpen(t *testing.T) {
-    dir := t.TempDir()
-    app := filepath.Join(dir, "QIDIStudio")
-    profiles := filepath.Join(app, "resources", "profiles")
-    writeVendorFolder(t, profiles)
-    legacy := filepath.Join(app, "QIDIStudio.exe")
-    hyphenated := filepath.Join(app, "qidi-studio.exe")
-    if err := os.WriteFile(hyphenated, []byte("MZ"), 0600); err != nil {
-        t.Fatal(err)
-    }
-    loc := slicerLocation{id: "qidi-studio", name: "QIDIStudio", root: profiles, executable: legacy}
-    root, exe, _, err := resolveSlicerAt([]slicerLocation{loc}, Specs["qidi"], "auto")
-    if err != nil || root != profiles || exe != hyphenated {
-        t.Fatalf("hyphenated installed executable not selected: root=%q exe=%q err=%v", root, exe, err)
-    }
-    if err := os.WriteFile(legacy, []byte("MZ"), 0600); err != nil {
-        t.Fatal(err)
-    }
-    _, exe, _, err = resolveSlicerAt([]slicerLocation{loc}, Specs["qidi"], "qidi-studio")
-    if err != nil || exe != legacy {
-        t.Fatalf("legacy QIDIStudio executable no longer preferred: %q %v", exe, err)
-    }
-    if err := os.Remove(legacy); err != nil {
-        t.Fatal(err)
-    }
-    if err := os.Remove(hyphenated); err != nil {
-        t.Fatal(err)
-    }
-    if err := os.Symlink(legacy, hyphenated); err == nil {
-        _, exe, _, err = resolveSlicerAt([]slicerLocation{loc}, Specs["qidi"], "auto")
-        if err != nil || exe != legacy {
-            t.Fatalf("symlinked executable must not count as alias: %q %v", exe, err)
-        }
-    }
+	dir := t.TempDir()
+	app := filepath.Join(dir, "QIDIStudio")
+	profiles := filepath.Join(app, "resources", "profiles")
+	writeVendorFolder(t, profiles)
+	legacy := filepath.Join(app, "QIDIStudio.exe")
+	hyphenated := filepath.Join(app, "qidi-studio.exe")
+	if err := os.WriteFile(hyphenated, []byte("MZ"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	loc := slicerLocation{id: "qidi-studio", name: "QIDIStudio", root: profiles, executable: legacy}
+	root, exe, _, err := resolveSlicerAt([]slicerLocation{loc}, Specs["qidi"], "auto")
+	if err != nil || root != profiles || exe != hyphenated {
+		t.Fatalf("hyphenated installed executable not selected: root=%q exe=%q err=%v", root, exe, err)
+	}
+	if err := os.WriteFile(legacy, []byte("MZ"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	_, exe, _, err = resolveSlicerAt([]slicerLocation{loc}, Specs["qidi"], "qidi-studio")
+	if err != nil || exe != legacy {
+		t.Fatalf("legacy QIDIStudio executable no longer preferred: %q %v", exe, err)
+	}
+	if err := os.Remove(legacy); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Remove(hyphenated); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(legacy, hyphenated); err == nil {
+		_, exe, _, err = resolveSlicerAt([]slicerLocation{loc}, Specs["qidi"], "auto")
+		if err != nil || exe != legacy {
+			t.Fatalf("symlinked executable must not count as alias: %q %v", exe, err)
+		}
+	}
 }
 
 // Detect known owner-specific forks without accepting an unrelated vendor's
 // copied profiles (the latter would misleadingly claim full slicer support).
 func TestOrcaAdditionalOfficialForkInstallPaths(t *testing.T) {
-    pf := filepath.Join("C:", "Program Files")
-    win := orcaFamilyLocations("windows", pf, "", "", "", nil)
-    expected := map[string]string{
-        "creality-print": filepath.Join(pf, "Creality", "Creality Print 7.0", "resources", "profiles"),
-        "anycubic-slicer-next": filepath.Join(pf, "AnycubicSlicerNext", "resources", "profiles"),
-    }
-    for id, root := range expected {
-        found := false
-        for _, loc := range win {
-            if loc.id == id && loc.root == root {
-                found = true
-                break
-            }
-        }
-        if !found {
-            t.Fatalf("missing official %s install layout %s", id, root)
-        }
-    }
-    // Source-only Bambu remains excluded, and installed generic Orca is still last.
-    if win[len(win)-1].id != "orca-slicer" {
-        t.Fatal("new vendor forks must not displace generic fallback")
-    }
+	pf := filepath.Join("C:", "Program Files")
+	win := orcaFamilyLocations("windows", pf, "", "", "", nil)
+	expected := map[string]string{
+		"creality-print":       filepath.Join(pf, "Creality", "Creality Print 7.0", "resources", "profiles"),
+		"anycubic-slicer-next": filepath.Join(pf, "AnycubicSlicerNext", "resources", "profiles"),
+	}
+	for id, root := range expected {
+		found := false
+		for _, loc := range win {
+			if loc.id == id && loc.root == root {
+				found = true
+				break
+			}
+		}
+		if !found {
+			t.Fatalf("missing official %s install layout %s", id, root)
+		}
+	}
+	// Source-only Bambu remains excluded, and installed generic Orca is still last.
+	if win[len(win)-1].id != "orca-slicer" {
+		t.Fatal("new vendor forks must not displace generic fallback")
+	}
 }
