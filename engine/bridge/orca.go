@@ -128,6 +128,9 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 	if err = normalizeFlashforgeCreator5ProSupportFlags(bundle, len(insp.Filaments)); err != nil {
 		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
 	}
+	if err = normalizeObservedOrcaMultitoolSupportFlags(bundle, len(insp.Filaments)); err != nil {
+		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
+	}
 	result, err := publishConversion(conversionPlan{
 		source: src, destination: dst, target: bundle.Target,
 		expectedModel: bundle.Profile.ModelID,
@@ -253,6 +256,54 @@ func normalizeFlashforgeCreator5ProSupportFlags(bundle *orcaBundle, sourceSlots 
 	flags := make([]any, count)
 	for i := range flags {
 		flags[i] = "0"
+	}
+	bundle.Profile.ProjectSettings["filament_is_support"] = flags
+	return nil
+}
+
+// normalizeObservedOrcaMultitoolSupportFlags fixes the documented native
+// Orca 2.4.2 exit-251 validator for physical multi-tool profiles of four
+// installed vendor families. With missing support flags, the upstream
+// converter emits a one-slot implicit zero while filament_colour contains
+// max(physical tools, source slots) entries. A disposable QA 3MF with only
+// this output field aligned produced real nozzle/model-matching G-code.
+// This is output-only; manufacturer presets and physical tool/nozzle arrays
+// are never rewritten. Other slicers and vendors remain unchanged.
+func normalizeObservedOrcaMultitoolSupportFlags(bundle *orcaBundle, sourceSlots int) error {
+	if bundle.Slicer != "OrcaSlicer" || bundle.PhysicalTools < 2 {
+		return nil
+	}
+	observed := false
+	for _, prefix := range []string{"orca-prusa-", "orca-ratrig-", "orca-volumic-", "orca-re3d-"} {
+		if strings.HasPrefix(bundle.Target, prefix) {
+			observed = true
+			break
+		}
+	}
+	if !observed {
+		return nil
+	}
+	count := max(bundle.PhysicalTools, sourceSlots)
+	if raw, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
+		switch flags := raw.(type) {
+		case []any:
+			if len(flags) == count {
+				return nil // Preserve explicit manufacturer per-slot flags verbatim.
+			}
+			if len(flags) != 1 || fmt.Sprint(flags[0]) != "0" {
+				return fmt.Errorf("Orca multi-tool support flags mismatch %d material slots", count)
+			}
+		case string:
+			if flags != "0" {
+				return fmt.Errorf("Orca multi-tool support flag %q cannot be expanded", flags)
+			}
+		default:
+			return fmt.Errorf("Orca multi-tool support flag type is invalid")
+		}
+	}
+	flags := make([]any, count)
+	for i := range flags {
+		flags[i] = "0" // The converter's existing implicit default, made per-slot.
 	}
 	bundle.Profile.ProjectSettings["filament_is_support"] = flags
 	return nil

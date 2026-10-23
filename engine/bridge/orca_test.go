@@ -395,3 +395,87 @@ func TestOrcaInstalledNarrowNozzle025ConvertsBambu02WithoutChangingPhysicalNozzl
 		t.Fatalf("converted project missing: %v", err)
 	}
 }
+
+func TestObservedOrcaMultitoolSupportFlagsMatchNativePalette(t *testing.T) {
+	for _, tc := range []struct {
+		prefix string
+		tools  int
+		source int
+	}{
+		{"orca-prusa-", 5, 1},
+		{"orca-ratrig-", 2, 1},
+		{"orca-volumic-", 2, 3},
+		{"orca-re3d-", 2, 1},
+	} {
+		b := syntheticOrcaBundle(tc.tools)
+		b.Target = tc.prefix + "sample-0123456789"
+		b.Slicer = "OrcaSlicer"
+		nozzles := append([]any(nil), b.Profile.ProjectSettings["nozzle_diameter"].([]any)...)
+		if err := normalizeObservedOrcaMultitoolSupportFlags(b, tc.source); err != nil {
+			t.Fatal(err)
+		}
+		want := make([]any, max(tc.tools, tc.source))
+		for i := range want {
+			want[i] = "0"
+		}
+		if !reflect.DeepEqual(b.Profile.ProjectSettings["filament_is_support"], want) {
+			t.Fatalf("%s flags = %v, want %v", tc.prefix, b.Profile.ProjectSettings["filament_is_support"], want)
+		}
+		if !reflect.DeepEqual(b.Profile.ProjectSettings["nozzle_diameter"], nozzles) || b.PhysicalTools != tc.tools {
+			t.Fatalf("%s changed physical nozzle or tool count", tc.prefix)
+		}
+	}
+}
+
+func TestObservedOrcaMultitoolFlagsPreserveExplicitOrFailClosed(t *testing.T) {
+	for _, tc := range []struct {
+		raw     any
+		slots   int
+		wantErr bool
+		want    any
+	}{
+		{[]any{"0", "1"}, 1, false, []any{"0", "1"}},
+		{[]any{"0"}, 3, false, []any{"0", "0", "0"}},
+		{"0", 1, false, []any{"0", "0"}},
+		{[]any{"0", "1"}, 3, true, []any{"0", "1"}},
+		{[]any{"1"}, 3, true, []any{"1"}},
+		{"1", 2, true, "1"},
+		{[]any{}, 2, true, []any{}},
+		{42, 2, true, 42},
+	} {
+		b := syntheticOrcaBundle(2)
+		b.Slicer = "OrcaSlicer"
+		b.Target = "orca-volumic-sample-0123456789"
+		b.Profile.ProjectSettings["filament_is_support"] = tc.raw
+		err := normalizeObservedOrcaMultitoolSupportFlags(b, tc.slots)
+		if (err != nil) != tc.wantErr {
+			t.Fatalf("%#v slots=%d: error %v", tc.raw, tc.slots, err)
+		}
+		if !reflect.DeepEqual(b.Profile.ProjectSettings["filament_is_support"], tc.want) {
+			t.Fatalf("%#v slots=%d: flag result %v, want %v", tc.raw, tc.slots, b.Profile.ProjectSettings["filament_is_support"], tc.want)
+		}
+	}
+}
+
+func TestObservedOrcaMultitoolFlagsDoNotAlterOtherSlicersOrVendors(t *testing.T) {
+	for _, tc := range []struct {
+		slicer string
+		target string
+		tools  int
+	}{
+		{"Snapmaker Orca", "orca-ratrig-sample-0123456789", 2},
+		{"Creality Print", "orca-volumic-sample-0123456789", 2},
+		{"Flash Studio", "orca-re3d-sample-0123456789", 4},
+		{"OrcaSlicer", "orca-anycubic-sample-0123456789", 2},
+		{"OrcaSlicer", "orca-ratrig-sample-0123456789", 1},
+	} {
+		b := syntheticOrcaBundle(tc.tools)
+		b.Slicer, b.Target = tc.slicer, tc.target
+		if err := normalizeObservedOrcaMultitoolSupportFlags(b, 3); err != nil {
+			t.Fatal(err)
+		}
+		if _, exists := b.Profile.ProjectSettings["filament_is_support"]; exists {
+			t.Fatalf("unrelated %s/%s/%d unexpectedly received support flags", tc.slicer, tc.target, tc.tools)
+		}
+	}
+}
