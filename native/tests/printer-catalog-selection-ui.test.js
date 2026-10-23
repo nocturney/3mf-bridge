@@ -98,11 +98,16 @@ test('a physical model and its installed nozzle targets share one card with a 0.
   const card=cardFor(h,pro[0].id);
   assert.equal(card.querySelectorAll('input').length,1);
   assert.equal(card.querySelectorAll('.catalog-variant-list').length,0);
-  const button=card.children.find(child=>child.classList.contains('catalog-model-profile-button'));
-  assert.ok(button,'real installed variants have a separate settings button');
+  assert.equal(card.querySelectorAll('.catalog-model-profile-button').length,0,
+    'unselected hardware cards never show a slicer/nozzle settings button');
+  card.children[0].checked=true;card.children[0].fire('change');
+  const pill=h.dom('selectedPrinterSummary').children.find(x=>x.children.some(c=>c.textContent==='Flashforge Creator 5 Pro'));
+  assert.ok(pill,'selected printer has a summary chip');
+  const button=pill.children.find(child=>child.classList.contains('selected-printer-settings'));
+  assert.ok(button,'slicer override exists only for an actively selected printer with alternatives');
   button.fire('click');
   const options=h.dom('printerProfileOptions').children;
-  assert.equal(options.length,3); // only installed real profiles, no fake catalogue 'preset'
+  assert.equal(options.length,2); // automatic Flash Studio + validated OrcaSlicer at same nozzle
   assert.ok(options.every(option=>option.children[0].value.startsWith('orca-')));
 });
 

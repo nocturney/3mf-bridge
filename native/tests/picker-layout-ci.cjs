@@ -51,6 +51,7 @@ const availability=['u1','c5','cc2','qidi'].map(target=>({target,available:true}
 const installedTargets=[
   ['0.25','1111111111','Flash Studio Desktop'],['0.4','2222222222','OrcaSlicer'],['0.6','3333333333','OrcaSlicer'],
   ['0.8','4444444444','OrcaSlicer'],['0.4','5555555555','Flash Studio'],
+  ['0.25','6666666666','OrcaSlicer'],
 ].map(([nozzle,hex,slicer])=>({
   id:'orca-flashforge-creator-5-pro-'+nozzle.replace('.','')+'-'+hex,vendor:'Flashforge',model:'Creator 5 Pro',
   title:'Flashforge Creator 5 Pro '+nozzle+' nozzle',nozzle,slicer,
@@ -121,8 +122,18 @@ function pageMain(config){
     const pills=[...summary.querySelectorAll('.selected-printer-pill')];
     for(const pill of pills){
       const pr=rectOf(pill);
-      if(!inside(pr,sr))issues.push('selected pill outside summary: "'+text(pill)+'" '+J(pr)+' summary '+J(sr));
-      if(pill.scrollWidth>pill.clientWidth+1)issues.push('selected pill text clipped: "'+text(pill)+'"');
+      // At short heights the summary intentionally scrolls horizontally. A
+      // pill outside the viewport in X is fine; clipping its NAME or settings
+      // button vertically (or inside its own bounds) is never acceptable.
+      if(pr.y<sr.y-1||pr.bottom>sr.bottom+1)
+        issues.push('selected pill clipped vertically: "'+text(pill)+'" '+J(pr)+' summary '+J(sr));
+      if(pill.scrollWidth>pill.clientWidth+1||pill.scrollHeight>pill.clientHeight+1)
+        issues.push('selected pill content clipped: "'+text(pill)+'"');
+      const name=pill.querySelector('strong'),action=pill.querySelector('.selected-printer-settings');
+      if(name&&name.scrollWidth>name.clientWidth+1)
+        issues.push('selected printer name truncated: "'+text(name)+'"');
+      if(action&&!inside(rectOf(action),pr))
+        issues.push('slicer action outside selected printer pill: '+J(rectOf(action)));
     }
     // The part of a box that is visible: inside the list, the dialog scroll area and the viewport.
     const visiblePart=(r)=>{
@@ -220,12 +231,17 @@ function pageMain(config){
     }
     await document.fonts.ready;
     const report=measure();
-    // Verify the separate profile modal using real Chromium, not a mocked DOM.
+    // Hardware catalogue has NO settings action. Slicer alternatives are
+    // configured for an already selected model in the selected-printer summary.
     if(config.installed&&config.filter==='Creator 5 Pro'){
       const creator=[...document.querySelectorAll('.catalog-model-card')]
         .find(card=>text(card.querySelector('.catalog-model-copy strong'))==='Creator 5 Pro');
-      const button=creator?.querySelector('.catalog-model-profile-button');
-      if(!button)throw Error('Creator 5 Pro has no separate profile settings button');
+      if(creator?.querySelector('.catalog-model-profile-button'))
+        throw Error('Technical settings action leaked onto a catalogue card');
+      const pill=[...document.querySelectorAll('.selected-printer-pill')]
+        .find(row=>text(row).includes('Creator 5 Pro'));
+      const button=pill?.querySelector('.selected-printer-settings');
+      if(!button)throw Error('Selected Creator 5 Pro lacks a slicer preference in the selected summary');
       button.click();
       const profile=document.getElementById('printerProfileDialog');
       const profileFrame=profile.querySelector('.dialog-frame');
@@ -376,11 +392,11 @@ function checkScenario(scenario,report){
   if(scenario.installed){
     if(creator?.variants.length!==0||creator?.values.length!==1)
       problems.push('Creator 5 Pro shows technical sub-options in its model tile');
-    if(!creator?.hasProfileSettings)
-      problems.push('Creator 5 Pro is missing the separate profile settings action');
+    if(creator?.hasProfileSettings)
+      problems.push('Unselected hardware catalogue card contains a slicer-settings button');
     if(scenario.filter){
-      if(!report.profile?.open||report.profile.choices.length!==5)
-        problems.push('Creator 5 Pro profile settings did not open with all five installed profiles: '+JSON.stringify(report.profile));
+      if(!report.profile?.open||report.profile.choices.length!==2)
+        problems.push('Selected Creator 5 Pro slicer settings must contain auto and same-nozzle Orca only: '+JSON.stringify(report.profile));
       const exact=report.profile?.choices.find(choice=>choice.id==='orca-flashforge-creator-5-pro-025-1111111111');
       if(!exact?.checked)problems.push('the saved Creator 5 Pro 0.25 mm profile was not preserved: '+JSON.stringify(report.profile));
       if(report.profile?.frame){

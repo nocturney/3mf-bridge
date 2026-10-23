@@ -170,7 +170,7 @@ test('ticking a model card selects only its default target; unticking removes th
   assert.equal(cardFor(h,'Creator 5').children[0].checked,true);
 });
 
-test('the 5 Pro card stays simple; nozzle and slicer selection is in a separate settings dialog',async()=>{
+test('the 5 Pro hardware card has no settings; selected printer slicer preference uses same nozzle',async()=>{
   let sent=null;
   const h=loadWithGlobals({
     GetMyPrinters:()=>({selectedIds:[oldIds.c5,oldIds.pro],onboardingPending:false}),
@@ -183,30 +183,35 @@ test('the 5 Pro card stays simple; nozzle and slicer selection is in a separate 
   h.dom('printerCatalogSearch').fire('input');
   const card=cardFor(h,'Creator 5 Pro');
   assert.equal(card.querySelectorAll('.catalog-variant-list').length,0);
+  assert.equal(card.querySelectorAll('.catalog-model-profile-button').length,0);
   assert.equal(card.querySelectorAll('input').length,1);
   assert.equal(card.children[0].checked,true);
   assert.equal(h.dom('myPrintersSelectionCount').textContent,'2 printers selected');
-  const button=card.children.find(x=>x.classList.contains('catalog-model-profile-button'));
-  assert.ok(button,'separate settings action should exist');
+  const pill=h.dom('selectedPrinterSummary').children.find(x=>textOf(x).includes('Creator 5 Pro'));
+  assert.ok(pill,'selected physical printer remains in the summary');
+  const button=pill.children.find(x=>x.classList.contains('selected-printer-settings'));
+  assert.ok(button,'slicer preference belongs to selected-printer settings');
   button.fire('click');
   assert.equal(h.dom('printerProfileDialog').open,true);
   let options=h.dom('printerProfileOptions').children.map(child=>child.children[0]);
-  assert.equal(options.length,5); // only five real installed profiles are offered as new choices.
-  assert.equal(options.find(option=>option.value===oldIds.pro).checked,true);
-  // Closing without applying does not mutate the draft or the persisted selection.
+  assert.equal(options.length,2,'only two actual 0.4 mm slicers, no nozzle alternatives');
+  assert.equal(options.find(option=>option.value===oldIds.pro).checked,true,'existing manual Orca choice preserved');
+  const manufacturer=proVariants.find(v=>v.slicer==='Flash Studio');
+  assert.ok(options.some(option=>option.value===manufacturer.id),'automatic manufacturer choice exists');
+  // Cancellation never changes the draft or persisted profile.
   h.dom('cancelPrinterProfileBtn').fire('click');
   assert.equal(h.dom('printerProfileDialog').open,false);
   button.fire('click');
   options=h.dom('printerProfileOptions').children.map(child=>child.children[0]);
   options.find(option=>option.value===oldIds.pro).checked=false;
-  options.find(option=>option.value===proVariants[0].id).checked=true;
+  options.find(option=>option.value===manufacturer.id).checked=true;
   h.dom('applyPrinterProfileBtn').fire('click');
   assert.equal(h.dom('printerProfileDialog').open,false);
   assert.equal(h.dom('myPrintersSelectionCount').textContent,'2 printers selected');
   assert.equal(cardFor(h,'Creator 5 Pro').children[0].checked,true);
   h.dom('saveMyPrintersBtn').fire('click');
   await flush();
-  assert.deepEqual(h.plain(sent),[oldIds.c5,proVariants[0].id]);
+  assert.deepEqual(h.plain(sent),[oldIds.c5,manufacturer.id]);
 });
 
 test('card text never shows a release date, in English or Hebrew',async()=>{
@@ -374,19 +379,19 @@ test('no vendor, process, or converter preference changes the default when no 0.
   assert.equal(defaultCard([orca,qidi],'X-Plus 5').id,orca.id);
 });
 
-test('ready/not-ready status never affects physical grouping or nozzle ordering',()=>{
+test('readiness changes the default safely but never changes physical card grouping or variant order',()=>{
   const variants=[
     {id:'prusa-acme-mini-aaaaaaaaaa',manufacturer:'Acme',model:'Mini',nozzle:'0.4',slicer:'PrusaSlicer',ready:false},
     {id:'orca-acme-mini-bbbbbbbbbb',manufacturer:'Acme',model:'Mini',nozzle:'0.6',slicer:'OrcaSlicer',ready:true},
   ];
   const initial=picker.groupDestinations(variants)[0];
   const swapped=picker.groupDestinations(variants.map(v=>({...v,ready:!v.ready})))[0];
-  assert.deepEqual(initial.ids,swapped.ids);
-  assert.equal(initial.id,swapped.id);
-  assert.equal(initial.id,variants[0].id);
+  assert.deepEqual(initial.ids,swapped.ids,'hardware identity independent of engine availability');
+  assert.equal(initial.id,variants[1].id,'the only complete installed target is preferred');
+  assert.equal(swapped.id,variants[0].id,'unready installed profiles cannot become a default');
 });
 
-test('all nozzle variants remain configurable but their technical details never clutter the model card',async()=>{
+test('the catalogue never exposes nozzle choices; selected-printer settings offer compatible slicers only',async()=>{
   const sample=installedTarget('Flashforge','Creator 5 Pro','OrcaSlicer','0.4','eeeeeeeeee');
   const h=loadWithGlobals({GetMyPrinters:()=>({selectedIds:[],onboardingPending:false})});
   h.api.setSupportedTargets({available:[],installedTargets:[sample,...proVariants],prusaAvailable:false,
@@ -400,10 +405,16 @@ test('all nozzle variants remain configurable but their technical details never 
   const labels=textOf(card);
   assert.doesNotMatch(labels,/PrusaSlicer|OrcaSlicer|Flash Studio|0\.4 mm|0\.25 mm|Tier|דירוג/i);
   assert.equal(card.querySelectorAll('input').length,1);
-  card.children.find(child=>child.classList.contains('catalog-model-profile-button')).fire('click');
+  assert.equal(card.querySelectorAll('.catalog-model-profile-button').length,0);
+  card.children[0].checked=true;card.children[0].fire('change');
+  const pill=h.dom('selectedPrinterSummary').children.find(x=>textOf(x).includes('Creator 5 Pro'));
+  const button=pill?.children.find(x=>x.classList.contains('selected-printer-settings'));
+  assert.ok(button,'slicer setting is attached only to selected printers');
+  button.fire('click');
   const optionLabels=textOf(h.dom('printerProfileOptions'));
-  assert.match(optionLabels,/PrusaSlicer/);
+  assert.match(optionLabels,/Default|ברירת מחדל/);
   assert.match(optionLabels,/OrcaSlicer/);
+  assert.doesNotMatch(optionLabels,/PrusaSlicer|0\.25 mm|0\.6 mm/);
   assert.equal(h.dom('printerProfileDialog').open,true);
 });
 

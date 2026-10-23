@@ -503,11 +503,13 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
 .catalog-model-card input{width:17px;height:17px;accent-color:var(--brand);flex:none}
 .catalog-model-main{grid-column:2;grid-row:1;display:flex;align-items:center;gap:9px;min-width:0;cursor:pointer}
 .catalog-model-card>input{grid-column:1;grid-row:1}
-.catalog-model-profile-button{grid-column:3;grid-row:1;align-self:center;white-space:nowrap;
-  padding:6px 9px;border:1px solid #c8dcd2;border-radius:7px;background:#fff;
-  color:#315e50;font:inherit;font-size:11px;font-weight:600;cursor:pointer}
-.catalog-model-profile-button:hover{background:#eaf6ef;border-color:#6ca991}
-.catalog-model-profile-button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+/* Slicer choices are available only within the selected-printer summary.
+   Never put nozzle or slicer controls in the hardware catalogue cards. */
+.selected-printer-settings{align-self:flex-start;padding:3px 7px;border:1px solid #c8dcd2;
+  border-radius:6px;background:#f5faf7;color:#315e50;font:inherit;font-size:10px;
+  cursor:pointer}
+.selected-printer-settings:hover{background:#eaf6ef;border-color:#6ca991}
+.selected-printer-settings:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .printer-profile-dialog{width:min(510px,calc(100vw - 28px));max-width:none}
 .printer-profile-content{display:flex;flex-direction:column;gap:12px;min-height:0;padding:14px 18px}
 .printer-profile-options{display:flex;flex-direction:column;gap:7px}
@@ -608,10 +610,14 @@ body[dir="ltr"] .result-path,body[dir="ltr"] .queue-file-details strong{directio
   .my-printers-dialog .selected-printer-overview{padding:5px 8px}
   .my-printers-dialog .selected-printer-overview h3{margin:0 0 3px}
   .my-printers-dialog .selected-printer-summary{
-    flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;max-height:38px;gap:5px
+    flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;max-height:44px;gap:5px;align-items:center
   }
-  .my-printers-dialog .selected-printer-pill{flex:0 0 auto;min-width:0;max-width:230px;padding:3px 6px}
-  .my-printers-dialog .selected-printer-pill strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* A saved printer with slicer controls needs ONE complete row. Do not clip
+     its name or place a second line underneath a 38px-high scroll viewport. */
+  .my-printers-dialog .selected-printer-pill{flex:0 0 auto;flex-direction:row;
+    align-items:center;min-width:max-content;max-width:none;padding:3px 6px;gap:7px}
+  .my-printers-dialog .selected-printer-pill strong{white-space:nowrap;overflow:visible;text-overflow:clip}
+  .my-printers-dialog .selected-printer-settings{flex:none;padding:2px 6px}
   .my-printers-dialog .printer-filter-row{gap:6px}
   .my-printers-dialog .printer-filter-row .field{gap:2px}
   .my-printers-dialog .printer-filter-row select,
