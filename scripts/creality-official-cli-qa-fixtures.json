@@ -1,0 +1,42 @@
+{
+  "schema": "slicebridge.creality.cli-fixtures.v1",
+  "head": "7d8cc3479fed15a878a4c292a6d775ea7603f573",
+  "slicerVersion": "6157",
+  "cases": [
+    {
+      "name": "Creality-Creality-K2-0.4-QA",
+      "model": "Creality K2",
+      "nozzle": "0.4",
+      "cut": "30",
+      "sourceSHA256": "bf7ef266f36f17bead98ee0b771db4c9b7ad693b45a5e0631d4756e1bf897d63"
+    },
+    {
+      "name": "Creality-SPARKX-i7-0.2-QA",
+      "model": "Creality SPARKX i7",
+      "nozzle": "0.2",
+      "cut": "28",
+      "sourceSHA256": "e9f97e8008abe7dd483f4b2f8e46523c3ef2d8302a1ba33448572b344a595619"
+    },
+    {
+      "name": "Creality-SPARKX-i7-0.4-QA",
+      "model": "Creality SPARKX i7",
+      "nozzle": "0.4",
+      "cut": "28",
+      "sourceSHA256": "11ed145662c5a044117dd001687c333396190bc0f1da8d5a73a683caa442a66e"
+    },
+    {
+      "name": "Creality-SPARKX-i7-0.6-QA",
+      "model": "Creality SPARKX i7",
+      "nozzle": "0.6",
+      "cut": "28",
+      "sourceSHA256": "45d8954a66f9839f7384073b07ee1de224c4a880181316c01e2ce83fa9aaf813"
+    },
+    {
+      "name": "Creality-SPARKX-i7-0.8-QA",
+      "model": "Creality SPARKX i7",
+      "nozzle": "0.8",
+      "cut": "28",
+      "sourceSHA256": "87776fe40e97df441dcd65c0eee1008f5c4984714cd6841e01ea83fbf09f23a4"
+    }
+  ]
+}
