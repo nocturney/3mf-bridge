@@ -596,3 +596,207 @@ func TestObservedLegacyRH3DFailsClosedOnUnknownWipe(t *testing.T) {
 		}
 	}
 }
+
+func TestObservedAnycubicInactiveCutNoActiveMechanicsModified(t *testing.T) {
+	tests := []struct {
+		model, id, nozzle string
+		nullFlush         bool
+	}{
+		{"Anycubic Kobra S1 Max", "orca-anycubic-s1-025-0123456789", "0.25", true},
+		{"Anycubic Kobra S1 Max", "orca-anycubic-s1-04-0123456789", "0.4", false},
+		{"Anycubic Kobra S1 Max", "orca-anycubic-s1-06-0123456789", "0.6", true},
+		{"Anycubic Kobra S1 Max", "orca-anycubic-s1-08-0123456789", "0.8", true},
+		{"Anycubic Kobra X", "orca-anycubic-kobra-x-0123456789", "0.4", false},
+	}
+	for _, tc := range tests {
+		t.Run(tc.id, func(t *testing.T) {
+			b := syntheticOrcaBundle(1)
+			b.Target, b.Slicer, b.Profile.ModelID, b.Nozzle = tc.id, "OrcaSlicer", tc.model, tc.nozzle
+			cfg := b.Profile.ProjectSettings
+			cfg["nozzle_diameter"] = []any{tc.nozzle}
+			cfg["retraction_distances_when_cut"] = []any{"0"}
+			cfg["long_retractions_when_cut"] = []any{"0"}
+			cfg["enable_long_retraction_when_cut"] = "0"
+			cfg["change_filament_gcode"] = "M400\nM600 ; installed manufacturer command"
+			cfg["machine_start_gcode"] = "G28\nM104 S150"
+			cfg["machine_end_gcode"] = "M104 S0\nM84"
+			if tc.nullFlush {
+				cfg["filament_flush_temp"] = []any{"nil"}
+			} else {
+				cfg["filament_flush_temp"] = []any{"245"} // Preserve explicitly valid thermal values.
+			}
+			if err := normalizeObservedAnycubicInactiveCutFields(b, 1); err != nil {
+				t.Fatal(err)
+			}
+			if _, exists := cfg["retraction_distances_when_cut"]; exists {
+				t.Fatal("unused zero cut length was not removed")
+			}
+			if cfg["long_retractions_when_cut"].([]any)[0] != "0" ||
+				cfg["enable_long_retraction_when_cut"] != "0" {
+				t.Fatal("active vendor cutter flags were modified")
+			}
+			if !reflect.DeepEqual(cfg["nozzle_diameter"], []any{tc.nozzle}) ||
+				b.Nozzle != tc.nozzle || b.PhysicalTools != 1 {
+				t.Fatal("physical nozzle/tool changed")
+			}
+			if cfg["change_filament_gcode"] != "M400\nM600 ; installed manufacturer command" ||
+				cfg["machine_start_gcode"] != "G28\nM104 S150" ||
+				cfg["machine_end_gcode"] != "M104 S0\nM84" {
+				t.Fatal("manufacturer firmware scripts were modified")
+			}
+			_, foundFlush := cfg["filament_flush_temp"]
+			if tc.nullFlush == foundFlush {
+				t.Fatal("null flush override was not resolved exactly as expected")
+			}
+			if !tc.nullFlush && cfg["filament_flush_temp"].([]any)[0] != "245" {
+				t.Fatal("explicit flush temperature was modified")
+			}
+			before, err := json.Marshal(cfg)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if err := normalizeObservedAnycubicInactiveCutFields(b, 1); err != nil {
+				t.Fatal(err)
+			}
+			after, err := json.Marshal(cfg)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if string(before) != string(after) {
+				t.Fatal("normalization is not idempotent")
+			}
+		})
+	}
+}
+
+func TestObservedAnycubicCutScopeNeverTouchesActiveOrMultiMaterialProfiles(t *testing.T) {
+	for _, tc := range []struct {
+		slicer, target, model string
+		tools, sourceSlots    int
+	}{
+		{"Creality Print", "orca-anycubic-model-0123456789", "Anycubic Kobra X", 1, 1},
+		{"OrcaSlicer", "orca-creality-model-0123456789", "Anycubic Kobra X", 1, 1},
+		{"OrcaSlicer", "orca-anycubic-model-0123456789", "Anycubic Kobra 3", 1, 1},
+		{"OrcaSlicer", "orca-anycubic-model-0123456789", "Anycubic Kobra S1 Max", 2, 1},
+		{"OrcaSlicer", "orca-anycubic-model-0123456789", "Anycubic Kobra S1 Max", 1, 3},
+		{"OrcaSlicer", "orca-creality-model-0123456789", "Creality SPARKX i7", 1, 1},
+	} {
+		b := syntheticOrcaBundle(tc.tools)
+		b.Target, b.Slicer, b.Profile.ModelID = tc.target, tc.slicer, tc.model
+		cfg := b.Profile.ProjectSettings
+		cfg["retraction_distances_when_cut"] = []any{"0"}
+		cfg["long_retractions_when_cut"] = []any{"0"}
+		cfg["enable_long_retraction_when_cut"] = "0"
+		cfg["filament_flush_temp"] = []any{"nil"}
+		before, err := json.Marshal(cfg)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := normalizeObservedAnycubicInactiveCutFields(b, tc.sourceSlots); err != nil {
+			t.Fatal(err)
+		}
+		after, err := json.Marshal(cfg)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if string(before) != string(after) {
+			t.Fatalf("changed excluded profile %s / %s / %d material(s)", tc.slicer, tc.model, tc.sourceSlots)
+		}
+	}
+}
+
+func TestObservedAnycubicCutFailsClosedOnUncertainMachineSettings(t *testing.T) {
+	type badCase struct {
+		name   string
+		mutate func(map[string]any)
+	}
+	for _, tc := range []badCase{
+		{"enabled cut flag", func(c map[string]any) { c["long_retractions_when_cut"] = []any{"1"} }},
+		{"enabled global cut flag", func(c map[string]any) { c["enable_long_retraction_when_cut"] = "1" }},
+		{"unknown per-extruder flags", func(c map[string]any) { c["long_retractions_when_cut"] = []any{"0", "1"} }},
+		{"unknown nullable flush", func(c map[string]any) { c["filament_flush_temp"] = "nil" }},
+		{"unknown multi-flush values", func(c map[string]any) { c["filament_flush_temp"] = []any{"nil", "220"} }},
+		{"cut length referenced by firmware script", func(c map[string]any) {
+			c["change_filament_gcode"] = "G1 E-{retraction_distances_when_cut[0]}"
+		}},
+		{"flush temperature referenced by firmware script", func(c map[string]any) {
+			c["machine_start_gcode"] = "M109 S{filament_flush_temp[0]}"
+		}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			b := syntheticOrcaBundle(1)
+			b.Target, b.Slicer, b.Profile.ModelID = "orca-anycubic-kobra-s1-0123456789", "OrcaSlicer", "Anycubic Kobra S1 Max"
+			cfg := b.Profile.ProjectSettings
+			cfg["retraction_distances_when_cut"] = []any{"0"}
+			cfg["long_retractions_when_cut"] = []any{"0"}
+			cfg["enable_long_retraction_when_cut"] = "0"
+			cfg["filament_flush_temp"] = []any{"nil"}
+			tc.mutate(cfg)
+			before, err := json.Marshal(cfg)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if err := normalizeObservedAnycubicInactiveCutFields(b, 1); err == nil {
+				t.Fatal("unsafe active or script-dependent mechanical settings accepted")
+			}
+			after, err := json.Marshal(cfg)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if string(before) != string(after) {
+				t.Fatal("changed machine settings on fail-closed result")
+			}
+		})
+	}
+}
+
+func TestObservedAnycubicCutPreservesAllOtherManufacturerLengths(t *testing.T) {
+	for _, original := range []any{[]any{"12"}, []any{"18"}, []any{"28"}, []any{"30"}, "0", []any{"0", "0"}} {
+		b := syntheticOrcaBundle(1)
+		b.Target, b.Slicer, b.Profile.ModelID = "orca-anycubic-kobra-x-0123456789", "OrcaSlicer", "Anycubic Kobra X"
+		cfg := b.Profile.ProjectSettings
+		cfg["retraction_distances_when_cut"] = original
+		cfg["long_retractions_when_cut"] = []any{"0"}
+		cfg["enable_long_retraction_when_cut"] = "0"
+		if err := normalizeObservedAnycubicInactiveCutFields(b, 1); err != nil {
+			t.Fatal(err)
+		}
+		if !reflect.DeepEqual(cfg["retraction_distances_when_cut"], original) {
+			t.Fatalf("rewrote non-documented manufacturer cut distance %v", original)
+		}
+	}
+}
+
+func TestObservedAnycubicInactiveCutChecksVendorScriptArrays(t *testing.T) {
+	for _, tc := range []struct {
+		label  string
+		script []any
+		fail   bool
+	}{
+		{"safe manufacturer array", []any{"; manufacturer filament start\nM104 S190"}, false},
+		{"cut value used by script array", []any{"G1 E-{retraction_distances_when_cut[0]}"}, true},
+		{"flush value used by script array", []any{"M109 S{filament_flush_temp[0]}"}, true},
+		{"invalid script-array value", []any{nil}, true},
+	} {
+		t.Run(tc.label, func(t *testing.T) {
+			b := syntheticOrcaBundle(1)
+			b.Target, b.Slicer, b.Profile.ModelID = "orca-anycubic-kobra-x-0123456789", "OrcaSlicer", "Anycubic Kobra X"
+			cfg := b.Profile.ProjectSettings
+			cfg["retraction_distances_when_cut"] = []any{"0"}
+			cfg["long_retractions_when_cut"] = []any{"0"}
+			cfg["enable_long_retraction_when_cut"] = "0"
+			cfg["filament_start_gcode"] = tc.script
+			err := normalizeObservedAnycubicInactiveCutFields(b, 1)
+			if (err != nil) != tc.fail {
+				t.Fatalf("script array validation: err=%v, fail=%v", err, tc.fail)
+			}
+			_, remains := cfg["retraction_distances_when_cut"]
+			if remains != tc.fail {
+				t.Fatal("script verification did not preserve or omit the inactive cut field as expected")
+			}
+			if !reflect.DeepEqual(cfg["filament_start_gcode"], tc.script) {
+				t.Fatal("manufacturer filament script changed")
+			}
+		})
+	}
+}

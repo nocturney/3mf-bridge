@@ -134,6 +134,9 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 	if err = normalizeObservedOrcaLegacyProjectCompatibility(bundle); err != nil {
 		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
 	}
+	if err = normalizeObservedAnycubicInactiveCutFields(bundle, len(insp.Filaments)); err != nil {
+		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
+	}
 	result, err := publishConversion(conversionPlan{
 		source: src, destination: dst, target: bundle.Target,
 		expectedModel: bundle.Profile.ModelID,
@@ -372,6 +375,88 @@ func normalizeObservedOrcaLegacyProjectCompatibility(bundle *orcaBundle) error {
 		default:
 			return fmt.Errorf("RH3D firmware retraction has unknown wipe setting")
 		}
+	}
+	return nil
+}
+
+// normalizeObservedAnycubicInactiveCutFields addresses a native OrcaSlicer
+// 2.4.2 validation error for five verified installed Anycubic presets only.
+// The vendor presets explicitly disable *both* long-cut retraction toggles,
+// while supplying an otherwise-invalid length of 0 mm for the disabled
+// feature. Orca requires a 10..18 mm value even when the feature is off.
+//
+// In one-material output only, omit that unused override so the slicer may
+// validate its own inactive default. No enabled retraction, cutter motion,
+// filament-change script, physical tool/nozzle, manufacturer file or user
+// profile is ever modified. A nullable "nil" flush-temperature override is
+// similarly omitted only for that one-material/no-filament-switch scenario.
+// For multiple source materials, preserve every manufacturer value unchanged
+// until a separate, real multi-material native test justifies compatibility.
+func normalizeObservedAnycubicInactiveCutFields(bundle *orcaBundle, sourceSlots int) error {
+	if bundle.Slicer != "OrcaSlicer" || bundle.PhysicalTools != 1 ||
+		sourceSlots != 1 || !strings.HasPrefix(bundle.Target, "orca-anycubic-") {
+		return nil
+	}
+	switch bundle.Profile.ModelID {
+	case "Anycubic Kobra S1 Max", "Anycubic Kobra X":
+	default:
+		return nil
+	}
+	cfg := bundle.Profile.ProjectSettings
+	rawCut, exists := cfg["retraction_distances_when_cut"]
+	if !exists {
+		return nil
+	}
+	cut, ok := rawCut.([]any)
+	if !ok || len(cut) != 1 || cut[0] != "0" {
+		return nil // Never alter an unknown or potentially active vendor length.
+	}
+	long, ok := cfg["long_retractions_when_cut"].([]any)
+	if !ok || len(long) != 1 || long[0] != "0" ||
+		cfg["enable_long_retraction_when_cut"] != "0" {
+		return fmt.Errorf("Anycubic inactive cut distance 0 has ambiguous active cutter flags")
+	}
+	for name, value := range cfg {
+		if !strings.Contains(name, "gcode") {
+			continue
+		}
+		checkScript := func(script string) error {
+			if strings.Contains(script, "retraction_distances_when_cut") ||
+				strings.Contains(script, "filament_flush_temp") {
+				return fmt.Errorf("Anycubic custom script %s refers to inactive cut/flush values", name)
+			}
+			return nil
+		}
+		switch scripts := value.(type) {
+		case string:
+			if err := checkScript(scripts); err != nil {
+				return err
+			}
+		case []any:
+			for _, item := range scripts {
+				script, ok := item.(string)
+				if !ok {
+					return fmt.Errorf("Anycubic custom script %s contains an unknown value", name)
+				}
+				if err := checkScript(script); err != nil {
+					return err
+				}
+			}
+		default:
+			return fmt.Errorf("Anycubic custom script %s has unknown type", name)
+		}
+	}
+	removeNullFlush := false
+	if rawFlush, found := cfg["filament_flush_temp"]; found {
+		flush, ok := rawFlush.([]any)
+		if !ok || len(flush) != 1 {
+			return fmt.Errorf("Anycubic inactive cut has ambiguous flush temperature override")
+		}
+		removeNullFlush = flush[0] == "nil"
+	}
+	delete(cfg, "retraction_distances_when_cut")
+	if removeNullFlush {
+		delete(cfg, "filament_flush_temp")
 	}
 	return nil
 }
