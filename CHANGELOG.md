@@ -4,8 +4,14 @@ Published development builds are listed under [GitHub Releases](https://github.c
 
 ## Unreleased
 
+## [0.4.0-beta.4.dev.23] - 2026-10-24 (experimental development build; release status: see GitHub Releases)
+
 - **Model-specific output filenames:** converted files now begin with the physical target model (for example `U1-`, `Creator5Pro-`, `CR10-`, `Neptune4Pro-`) rather than the generic Orca slicer name. Installed targets append their *actual nozzle and stable target identifier*, e.g. `Creator5Pro-0.4-SB0123456789-sample.3mf`, so different nozzles/slicers cannot race for an ambiguous filename. Atomic no-overwrite collision numbering remains. The generic Prusa export keeps `PRUSA-` because no printer model is selected. Legacy Electron's built-in adapter prefixes also use model names. Folder import skips a generated-looking output **only when its matching original source exists in the same directory**; a user file named `H2D-benchy.3mf` stays visible, and older output prefixes are recognized conservatively (generic `PRUSA-` and legacy `ORCA-` remain reserved during folder import as before).
 - **Local printer artwork fallback across slicers:** prefer the exact matching PNG in the target's own installed slicer, then the same vendor/model cover in other trusted installed Orca-family roots, Bambu Studio and PrusaSlicer resources. The additional apps supply **images only**, never foreign conversion settings, and only exact-model PNGs from bounded allowed paths are read. No network images, approximate model matching, user-preference resets or redistributed manufacturer art.
+- **Implementation and review:** [PR #80](https://github.com/nocturney/slicebridge/pull/80) was squash-merged into protected main at `413c392523faeff61657eb2dca4485d59de1fc02`. Regression tests cover model-named source visibility, nozzle/target differentiation, exact-match artwork and original preferences.
+- **Verification scope:** PR checks and CodeQL passed on the reviewed PR HEAD. Separate pre-release artifact smoke checks validated the Windows embedded engine and the macOS sidecar's five-material 3MF fixture; this does not establish GUI operation, physical printer output, or all installed slicers' compatibility.
+- **Known limitations:** printer cover art is local and exact-match only; some installed models may have no image. Multi-color mapping, slicer version/placement compatibility and safe physical print remain experimental. Reopen the 3MF in the destination slicer, verify nozzle, material/tool assignments and placement before printing. No automatic printer submission or mutation of installed user profiles. Windows builds may be unsigned; the macOS package is ad-hoc signed, not notarized.
+
 
 ## [0.4.0-beta.4.dev.22] - 2026-10-24 (published experimental Pre-release; PR #79 merged)
 
