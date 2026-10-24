@@ -283,6 +283,18 @@ def _ini_list(text, key):
     return [item.strip().strip('"') for item in match.group(1).strip().strip('"').split(";")]
 
 
+def _normalized_palette_color(color):
+    """Opaque 8-digit Bambu RGBA and 6-digit RGB specify the same physical color.
+
+    Non-opaque alpha is not silently discarded. This affects QA comparison
+    only; it does not mutate or rewrite a 3MF project.
+    """
+    color = str(color).strip().upper()
+    if re.fullmatch(r"#[0-9A-F]{8}", color) and color.endswith("FF"):
+        return color[:7]
+    return color
+
+
 def palette(pkg, family):
     """Ordered (colour, material) per filament slot, or None when the package has none."""
     if CODEC[family] == "bbl-json":
@@ -327,7 +339,7 @@ def palette(pkg, family):
         raise InputError("filament colour and material lists are missing or differ in length")
     if not colors:
         return None
-    return [(str(c).strip().upper(), str(t).strip().upper()) for c, t in zip(colors, types)]
+    return [(_normalized_palette_color(c), str(t).strip().upper()) for c, t in zip(colors, types)]
 
 
 def object_extruders(pkg):
@@ -392,6 +404,19 @@ def mapped_object_tools(src_geo, out_geo, source_meta, output_meta):
                     % verified)
 
 
+def _active_script_commands(value):
+    """True only for non-comment slicer/firmware commands, not inert flags.
+
+    An identical vendor placeholder comment is not proof that the target
+    inherited the source printer's active firmware script.
+    """
+    values = value if isinstance(value, list) else [value]
+    return any(isinstance(script, str) and any(
+        line.strip() and not line.lstrip().startswith((";", "#"))
+        for line in script.splitlines())
+        for script in values)
+
+
 def _scalar(value):
     try:
         return repr(float(value))
@@ -426,7 +451,16 @@ def compare(source, output, family="auto", expect_model=None,
     src_pal = palette(src, src_family)
     src_cfg = src.json_config("Metadata/project_settings.config") if CODEC[src_family] == "bbl-json" else None
     src_paint = [p for _, p in src_geo["tris"] if p]
-    src_channels = used_channels(src_family, src_ext, src_paint)
+    # Real Bambu/Orca paint_color may contain a serialized sub-triangle
+    # subdivision tree (e.g. BC, CC, 8C), NOT a hexadecimal slot number.
+    # Only the small legacy single-state codes used in repo fixtures have
+    # independently proven direct channel semantics here. For other codes,
+    # raw geometry/paint equality remains checked in paint_state, but
+    # paint-to-virtual-slot inference must be explicitly skipped.
+    paint_channels_unverified = (CODEC[src_family] == "bbl-json" and any(
+        str(code).upper() not in ("4", "8", "C", "1C", "2C") for code in src_paint))
+    src_channels = used_channels(src_family, src_ext,
+                                 [] if paint_channels_unverified else src_paint)
 
     checks = []
 
@@ -534,10 +568,14 @@ def compare(source, output, family="auto", expect_model=None,
         gaps = [c for c in sorted(src_channels) if c > len(out_pal)]
         unlike = [c for c in sorted(src_channels) if c <= len(out_pal) and src_pal and c <= len(src_pal)
                   and out_pal[c - 1] != src_pal[c - 1]]
-        status = "fail" if gaps or unlike else "pass"
+        status = ("fail" if gaps or unlike else
+                  "skip" if paint_channels_unverified else "pass")
+        note = ("; complex Bambu paint codes cannot be safely decoded into "
+                "virtual channels; raw codes are compared in paint_state"
+                if paint_channels_unverified else "")
         add("virtual_channels", status,
-            f"channels used by source {sorted(src_channels)}; missing in output {gaps}; "
-            f"changed identity {unlike}")
+            f"explicitly provable source channels {sorted(src_channels)}; "
+            f"missing in output {gaps}; changed identity {unlike}{note}")
 
     out_ext = guarded("output_object_extruders", lambda: object_extruders(out))
     if not src_ext and not out_ext:
@@ -572,7 +610,9 @@ def compare(source, output, family="auto", expect_model=None,
             add("process_intent", "fail", detail)
         else:
             carried = sorted(k for k, v in src_cfg.items()
-                             if k.endswith("_gcode") and str(v).strip() and out_cfg.get(k) == v)
+                             if k.endswith("_gcode")
+                             and k != "emit_machine_limits_to_gcode"
+                             and _active_script_commands(v) and out_cfg.get(k) == v)
             add("machine_scripts_not_carried", "fail" if carried else "pass",
                 f"source machine scripts copied into output: {carried}" if carried
                 else "no source printer scripts copied; target profile owns them")
@@ -603,6 +643,7 @@ def compare(source, output, family="auto", expect_model=None,
                                 "Metadata/SliceBridge_source_filaments.json" in out.files and
                                 "Metadata/Slic3r_PE.config" not in out.files else "native or JSON profile"),
         "source_channels": sorted(src_channels),
+        "source_paint_channels_unverified": paint_channels_unverified,
         "source_object_extruders": src_ext,
     }
     return {

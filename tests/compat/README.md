@@ -43,10 +43,15 @@ Skipped checks are reported as `skip`, never `pass`.
   so they are checked identically. Labels come from `Application` metadata or
   `printer_model`; an unlabelled JSON project defaults to `orca` and says so
   (`basis: layout-default`).
-- **Paint decoding.** Bambu/Orca codes are decoded only as 4→1, 8→2, C→3, 1C→4,
-  2C→5. That scheme is inferred from repo fixtures and generators, not from the
-  upstream codec. Paint is still compared on the raw code, so unknown codes are
-  compared, not dropped.
+- **Paint decoding.** Only the simple Bambu/Orca fixture codes 4→1, 8→2,
+  C→3, 1C→4 and 2C→5 have independently verified direct-channel meanings.
+  Real subtriangle paint trees such as BC, CC and 8C are not decoded as a
+  single tool/channel: `virtual_channels` is marked `skip` for those projects
+  (unless an explicit, provable object-tool mapping fails), while `paint_state`
+  still compares the complete raw per-triangle paint codes and world-space
+  geometry. A raw-paint match must not be described as validation of physical
+  multicolor spool/tool changes. Opaque eight-digit Bambu colors `#RRGGBBFF`
+  and six-digit `#RRGGBB` compare equal for QA only; nonopaque alpha does not.
 - **Prusa is unverified.** `Slic3r_PE*.config` names, the `mmu_segmentation`
   attribute and the INI-style filament lists were written from memory. They
   have not been checked against a real PrusaSlicer export. Prusa checks should

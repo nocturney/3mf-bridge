@@ -194,6 +194,53 @@ class BblSyntheticTests(Base):
         self.assertTrue(any("does not prove" in note for note in report["notes"]))
 
 
+class RealPaintCodecRegressionTests(Base):
+    def test_opaque_rgba_bambu_colors_compare_equal_to_rgb(self):
+        source = self.source(colors=["#FF0000FF", "#00FF00FF", "#FF0000FF",
+                                     "#FFFF00FF", "#FFFFFFFF"])
+        output = syn.set_bbl_palette(self.clean(source), COLORS, TYPES)
+        result = self.pair(source, output)
+        self.assertEqual(statuses(result)["palette_slots"], "pass")
+        self.assertEqual(statuses(result)["virtual_channels"], "pass")
+
+    def test_translucent_alpha_does_not_silently_compare_as_opaque(self):
+        source = self.source(colors=["#FF000080"] + COLORS[1:])
+        output = syn.set_bbl_palette(self.clean(source), COLORS, TYPES)
+        result = self.pair(source, output)
+        self.assertEqual(statuses(result)["palette_slots"], "fail")
+
+    def test_real_subtriangle_paint_is_raw_checked_not_falsely_decoded(self):
+        source = self.source(paints=["CC", "BC", "8C", "2C"])
+        result = self.pair(source, self.clean(source))
+        self.assertEqual(statuses(result)["paint_state"], "pass")
+        self.assertEqual(statuses(result)["palette_slots"], "pass")
+        self.assertEqual(statuses(result)["virtual_channels"], "skip")
+        self.assertTrue(result["facts"]["source_paint_channels_unverified"])
+        modified = syn.set_triangle_paint(self.clean(source), 0, "4")
+        bad = self.pair(source, modified)
+        self.assertEqual(statuses(bad)["paint_state"], "fail")
+
+    def test_inert_vendor_comments_and_emit_flag_are_not_active_scripts(self):
+        src = self.source()
+        settings = json.loads(src["Metadata/project_settings.config"])
+        settings["emit_machine_limits_to_gcode"] = "1"
+        settings["filament_end_gcode"] = ["; filament end gcode\\n"] * 5
+        src["Metadata/project_settings.config"] = json.dumps(settings).encode()
+        dst = self.clean(src)
+        result = self.pair(src, dst)
+        self.assertEqual(statuses(result)["machine_scripts_not_carried"], "pass")
+
+    def test_active_machine_script_still_detected(self):
+        src = self.source()
+        dst = self.clean(src)
+        settings = json.loads(dst["Metadata/project_settings.config"])
+        src_cfg = json.loads(src["Metadata/project_settings.config"])
+        settings["machine_start_gcode"] = src_cfg["machine_start_gcode"]
+        dst["Metadata/project_settings.config"] = json.dumps(settings).encode()
+        result = self.pair(src, dst)
+        self.assertEqual(statuses(result)["machine_scripts_not_carried"], "fail")
+
+
 class NonOverwriteTests(Base):
     def setUp(self):
         super().setUp()
