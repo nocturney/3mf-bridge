@@ -200,7 +200,7 @@ func normalizeCrealityFilamentDiameters(bundle *orcaBundle, sourceSlots int) err
 // Repeat only the slicer's known 0 default. Do not edit installed printer
 // profiles, nozzle diameters, physical tool assignments, or other Orca forks.
 func normalizeFlashforgeCreator5ProSupportFlags(bundle *orcaBundle, sourceSlots int) error {
-	if bundle.Slicer != "Flash Studio" ||
+	if (bundle.Slicer != "Flash Studio" && bundle.Slicer != "Flash Studio Desktop") ||
 		bundle.Profile.ModelID != "Flashforge Creator 5 Pro" || bundle.PhysicalTools != 4 {
 		return nil
 	}
