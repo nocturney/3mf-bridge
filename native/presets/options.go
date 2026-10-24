@@ -148,6 +148,12 @@ func orcaFamilyApps(platform string) []appInstall {
 			{"flash-studio", "Flash Studio Desktop", filepath.Join("Flashforge", "Flash Studio Desktop"), "flash studio.exe"},
 			{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", "elegoo-slicer.exe"},
 			{"qidi-studio", "QIDIStudio", "QIDIStudio", "QIDIStudio.exe"},
+			// Creality Print 7.3 still installs under the 7.0 folder on Windows.
+			{"creality-print", "Creality Print", filepath.Join("Creality", "Creality Print 7.0"), "CrealityPrint.exe"},
+			{"creality-print", "Creality Print", filepath.Join("Creality", "Creality Print"), "CrealityPrint.exe"},
+			// This is the Orca-based Slicer Next, not the old Prusa-based Anycubic Slicer.
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "AnycubicSlicerNext", "AnycubicSlicerNext.exe"},
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "Anycubic Slicer Next", "AnycubicSlicerNext.exe"},
 			{"orca-slicer", "OrcaSlicer", "OrcaSlicer", "orca-slicer.exe"},
 		}
 	case "darwin":
@@ -157,6 +163,9 @@ func orcaFamilyApps(platform string) []appInstall {
 			{"flash-studio", "Flash Studio Desktop", "Flash Studio Desktop", ""},
 			{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", ""},
 			{"qidi-studio", "QIDIStudio", "QIDIStudio", ""},
+			{"creality-print", "Creality Print", "Creality Print", ""},
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "AnycubicSlicerNext", ""},
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "Anycubic Slicer Next", ""},
 			{"orca-slicer", "OrcaSlicer", "OrcaSlicer", ""},
 		}
 	}

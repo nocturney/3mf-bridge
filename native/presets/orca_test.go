@@ -2,6 +2,7 @@ package presets
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -436,6 +437,10 @@ func TestOrcaForkOwnershipWhitelistDoesNotFilterGenericOrExplicitProfiles(t *tes
 		{"qidi-studio", "QIDI", true},
 		{"qidi-studio", "X 5 Series", true},
 		{"qidi-studio", "Anker", false},
+		{"creality-print", "Creality", true},
+		{"creality-print", "Anycubic", false},
+		{"anycubic-slicer-next", "Anycubic", true},
+		{"anycubic-slicer-next", "Creality", false},
 		{"orca-slicer", "Anker", true},
 		{"system", "Anker", true},
 	} {
@@ -508,5 +513,105 @@ func TestMacInstallTreeDiscoversUserApplications(t *testing.T) {
 	d := discoverOrca(mine)
 	if len(d.Targets) != 1 || d.Targets[0].Slicer != "OrcaSlicer" {
 		t.Fatalf("user-installed OrcaSlicer not discovered: %+v", d)
+	}
+}
+
+// Regression: installed Orca and Snapmaker packages contain dozens of root
+// metadata/index files. These are not vendor directories and must never count
+// toward the security bound for distinct vendor trees.
+func TestNonVendorRootFilesDoNotExhaustVendorScanCap(t *testing.T) {
+	root := writeOrcaTree(t, "Acme", acmeSample())
+	for i := 0; i < maxOrcaVendors+15; i++ {
+		name := filepath.Join(root, fmt.Sprintf("000-index-%03d.json", i))
+		if err := os.WriteFile(name, []byte("{}"), 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	discovered := discoverFrom(root)
+	if len(discovered.Targets) != 1 {
+		t.Fatalf("root metadata files hid valid machine preset; got %+v", discovered)
+	}
+}
+
+// Real Peopoly 0.6/0.8 installed profiles expose an inheritance-only 0.2mm
+// process as the inherited default. An explicit compatible nozzle process
+// must win without changing manufacturer parameters or physical nozzle.
+func TestOrcaAbstractProcessDoesNotShadowPhysicalNozzleProcess(t *testing.T) {
+	for _, tc := range []struct{ nozzle, layer, width string }{
+		{"0.6", "0.30", "0.6"}, {"0.8", "0.40", "0.82"},
+	} {
+		t.Run(tc.nozzle, func(t *testing.T) {
+			files := acmeSample()
+			delete(files, acmeMachine)
+			machine := "Acme Mini " + tc.nozzle + " nozzle"
+			files["machine/"+machine+".json"] = map[string]any{
+				"name": machine, "printer_model": "Acme Mini", "printer_technology": "FFF",
+				"nozzle_diameter": []any{tc.nozzle}, "machine_start_gcode": "G28",
+				"machine_end_gcode": "M104 S0", "default_print_profile": "abstract 0.2mm",
+				"default_filament_profile": []any{"Acme PLA"},
+			}
+			files[acmeFilament]["compatible_printers"] = []any{machine}
+			files["process/abstract 0.2mm.json"] = map[string]any{
+				"name": "abstract 0.2mm", "instantiation": "false",
+				"compatible_printers": []any{machine}, "layer_height": "0.2",
+				"line_width": "0.22",
+			}
+			selected := "Acme " + tc.layer + "mm Standard " + tc.nozzle
+			files["process/"+selected+".json"] = map[string]any{
+				"name": selected, "instantiation": "true",
+				"compatible_printers": []any{machine}, "layer_height": tc.layer,
+				"line_width": tc.width,
+			}
+			root := writeOrcaTree(t, "Acme", files)
+			d := discoverFrom(root)
+			if len(d.Targets) != 1 || len(d.Rejected) != 0 {
+				t.Fatalf("discovery: %+v", d)
+			}
+			bundle, err := resolveOrca([]slicerLocation{{id: "test", name: "Test Orca", root: root}}, d.Targets[0].ID)
+			if err != nil {
+				t.Fatal(err)
+			}
+			settings := bundle.Profile.ProjectSettings
+			if settings["print_settings_id"] != selected || settings["line_width"] != tc.width {
+				t.Fatalf("selected abstract or wrong-width process: profile=%v width=%v, expected %s / %s",
+					settings["print_settings_id"], settings["line_width"], selected, tc.width)
+			}
+			if bundle.Nozzle != tc.nozzle || fmt.Sprint(settings["nozzle_diameter"]) != "["+tc.nozzle+"]" {
+				t.Fatalf("physical nozzle was altered: bundle=%s settings=%v", bundle.Nozzle, settings["nozzle_diameter"])
+			}
+		})
+	}
+}
+func TestOrcaOnlyTooNarrowProcessIsNotSelectable(t *testing.T) {
+	files := acmeSample()
+	files[acmeMachine]["nozzle_diameter"] = []any{"0.6"}
+	files[acmeProcess]["line_width"] = "0.22"
+	files[acmeProcess]["instantiation"] = "false"
+	d := discoverFrom(writeOrcaTree(t, "Acme", files))
+	if len(d.Targets) != 0 || len(d.Rejected) != 1 || !strings.Contains(d.Rejected[0].Reason, "no installed compatible process") {
+		t.Fatalf("only process is too narrow for physical nozzle: %+v", d)
+	}
+}
+
+func TestOrcaAlreadyVerifiedPreferredProcessIsUnchanged(t *testing.T) {
+	files := acmeSample()
+	files[acmeProcess]["line_width"] = "0.22"
+	files[acmeProcess]["instantiation"] = "false"
+	files["process/0.20mm Alternative.json"] = map[string]any{
+		"name": "0.20mm Alternative", "instantiation": "true",
+		"compatible_printers": []any{"Acme Mini 0.4 nozzle"},
+		"layer_height":        "0.2", "line_width": "0.42",
+	}
+	root := writeOrcaTree(t, "Acme", files)
+	d := discoverFrom(root)
+	if len(d.Targets) != 1 {
+		t.Fatalf("existing 0.4 mm target changed: %+v", d)
+	}
+	bundle, err := resolveOrca([]slicerLocation{{id: "test", name: "Test Orca", root: root}}, d.Targets[0].ID)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if bundle.Profile.ProjectSettings["print_settings_id"] != "0.20mm Acme Standard" || bundle.Profile.ProjectSettings["line_width"] != "0.22" {
+		t.Fatalf("already compatible 0.4 mm process changed: %+v", bundle.Profile.ProjectSettings)
 	}
 }

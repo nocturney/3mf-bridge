@@ -66,7 +66,8 @@ test('extra virtual filament slots are disclosed without any silent merge',()=>{
   const app=read('frontend/dist/app.js');
   assert.match(app,/virtualSlotsReview:'כל \{n\} ערוצי הצבע/);
   assert.match(app,/virtualSlotsReview:'All \{n\} source color\/material/);
-  assert.match(app,/if\(report\.user_slot_mapping_required\)/);
+  assert.match(app,/const mappingReview=Boolean\(result\.ok&&result\.report\?\.user_slot_mapping_required\)/);
+  assert.match(app,/row\.append\(node\('p','warning-line material-mapping-warning'/);
   assert.match(app,/t\('virtualSlotsReview',\{n:report\.virtual_filament_slots,physical:report\.physical_toolheads\}\)/);
   assert.doesNotMatch(app,/identical_source_slots_coalesced/);
 });

@@ -265,20 +265,17 @@ func TestCreatorFiveCoverNeverStandsInForCreatorFivePro(t *testing.T) {
 	writeInstalledOrcaVendor(t, root, "Flashforge", "Flashforge Creator 5 Pro")
 	writePNGCover(t, root, "Flashforge/Flashforge Creator 5_cover.png", color.RGBA{9, 9, 9, 255})
 
-	// Only the plain Creator 5 picture exists, so the Pro target must stay blank.
-	reply, err := (&App{}).PrinterArtworkForInstalledTarget(installedTargetIDFor(t, "Flashforge Creator 5 Pro"))
-	if err != nil {
-		t.Fatal(err)
-	}
+	// Scope this negative lookup to the temporary fixture. A real slicer
+	// installation on the QA host may legitimately have an exact Pro cover,
+	// which the production fallback is supposed to find.
+	source := presets.OrcaArtworkSource{Root: root, Vendor: "Flashforge", Model: "Flashforge Creator 5 Pro"}
+	reply := findInstalledTargetArtwork(source, nil)
 	if reply.Found || reply.DataURI != "" {
 		t.Fatalf("Creator 5 cover borrowed by Creator 5 Pro: %+v", reply)
 	}
 
 	proCover := writePNGCover(t, root, "Flashforge/Flashforge Creator 5 Pro_cover.png", color.RGBA{250, 1, 1, 255})
-	reply, err = (&App{}).PrinterArtworkForInstalledTarget(installedTargetIDFor(t, "Flashforge Creator 5 Pro"))
-	if err != nil {
-		t.Fatal(err)
-	}
+	reply = findInstalledTargetArtwork(source, nil)
 	if !reply.Found || reply.DataURI != pngDataURIOf(t, proCover) {
 		t.Fatalf("exact Creator 5 Pro cover not used: %+v", reply)
 	}
@@ -298,16 +295,17 @@ func TestInstalledTargetCoverRejectsSymlinkSvgAndUnsafeModelNames(t *testing.T) 
 	root := t.TempDir()
 	useInstalledRoots(t, root, t.TempDir())
 	writeInstalledOrcaVendor(t, root, "Flashforge", "Flashforge Creator 5 Pro")
-	app := &App{}
-	id := installedTargetIDFor(t, "Flashforge Creator 5 Pro")
+	// Negative PNG and symlink tests must not fall back to a real installed
+	// exact-name cover; use the disposable vendor tree only.
+	source := presets.OrcaArtworkSource{Root: root, Vendor: "Flashforge", Model: "Flashforge Creator 5 Pro"}
 
 	// An SVG renamed to a cover name is not a PNG and must never be returned.
 	svg := filepath.Join(root, "Flashforge", "Flashforge Creator 5 Pro_cover.png")
 	if err := os.WriteFile(svg, []byte("<svg><script>alert(1)</script></svg>"), 0600); err != nil {
 		t.Fatal(err)
 	}
-	if reply, err := app.PrinterArtworkForInstalledTarget(id); err != nil || reply.Found {
-		t.Fatalf("SVG disguised as cover accepted: %+v %v", reply, err)
+	if reply := findInstalledTargetArtwork(source, nil); reply.Found {
+		t.Fatal("SVG disguised as cover accepted")
 	}
 
 	// A cover symlinked out of the installation must be refused.
@@ -319,8 +317,8 @@ func TestInstalledTargetCoverRejectsSymlinkSvgAndUnsafeModelNames(t *testing.T) 
 	if err := os.Symlink(external, svg); err != nil {
 		t.Skipf("symlinks unavailable: %v", err)
 	}
-	if reply, err := app.PrinterArtworkForInstalledTarget(id); err != nil || reply.Found || reply.DataURI != "" {
-		t.Fatalf("symlink escaped installed root: %+v %v", reply, err)
+	if reply := findInstalledTargetArtwork(source, nil); reply.Found || reply.DataURI != "" {
+		t.Fatal("symlink escaped installed root")
 	}
 
 	// Model names that could steer the path are never turned into a file name.

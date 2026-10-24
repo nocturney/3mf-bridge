@@ -290,6 +290,10 @@ func orcaVendorOwnedByApp(appID, vendor string) bool {
 		return strings.EqualFold(vendor, "Elegoo")
 	case "qidi-studio":
 		return strings.EqualFold(vendor, "QIDI") || strings.EqualFold(vendor, "X 5 Series")
+	case "creality-print":
+		return strings.EqualFold(vendor, "Creality")
+	case "anycubic-slicer-next":
+		return strings.EqualFold(vendor, "Anycubic")
 	default:
 		return true // Generic Orca and explicitly configured custom profile roots.
 	}
@@ -307,16 +311,21 @@ func scanOrca(locations []slicerLocation) ([]orcaCandidate, []OrcaRejection) {
 		if err != nil {
 			continue
 		}
-		for i, vendor := range vendors {
-			if i >= maxOrcaVendors {
-				break
-			}
+		scannedVendors := 0
+		for _, vendor := range vendors {
 			// Bambu remains source-only. Upstream profiles bundled into a
 			// different maker's fork are not offered as ready destinations.
 			if !vendor.IsDir() || vendor.Name() == "BBL" || vendor.Name() == "OrcaFilamentLibrary" ||
 				!orcaVendorOwnedByApp(loc.id, vendor.Name()) {
 				continue
 			}
+			// Bound the number of actual eligible vendor directories, not
+			// root JSON index files / artwork. Orca-derived installations can
+			// contain >64 top-level non-directory files before a real vendor.
+			if scannedVendors >= maxOrcaVendors {
+				break
+			}
+			scannedVendors++
 			found, problems := scanOrcaVendor(loc, vendor.Name())
 			for _, candidate := range found {
 				key := candidate.target.Vendor + "\x00" + candidate.target.Machine
@@ -618,14 +627,14 @@ func orcaCompatibleProcess(index catalog, compatible []string, preferred, machin
 		}
 		return false
 	}
-	if preferred != "" && has(preferred) {
-		if process, err := flatten(index, "process", preferred, map[string]bool{}); err == nil {
-			return preferred, process, nil
-		}
-	}
 	diameter, err := strconv.ParseFloat(nozzle, 64)
 	if err != nil || diameter <= 0 {
 		return "", nil, fmt.Errorf("invalid machine nozzle for process lookup")
+	}
+	if preferred != "" && has(preferred) {
+		if process, err := flatten(index, "process", preferred, map[string]bool{}); err == nil && !orcaProcessTooNarrowForNozzle(process, diameter) {
+			return preferred, process, nil
+		}
 	}
 	bestName := ""
 	var bestProcess map[string]any
@@ -635,7 +644,7 @@ func orcaCompatibleProcess(index catalog, compatible []string, preferred, machin
 			continue
 		}
 		process, err := flatten(index, "process", name, map[string]bool{})
-		if err != nil {
+		if err != nil || orcaProcessTooNarrowForNozzle(process, diameter) {
 			continue
 		}
 		height, err := strconv.ParseFloat(orcaFirstString(process["layer_height"]), 64)
@@ -654,6 +663,17 @@ func orcaCompatibleProcess(index catalog, compatible []string, preferred, machin
 		return "", nil, fmt.Errorf("no installed compatible process for %q (default %q unusable)", machine, preferred)
 	}
 	return bestName, bestProcess, nil
+}
+
+// A few installed vendor defaults inherit a 0.2 mm process even for 0.6/0.8
+// mm nozzles (Peopoly Magneto X). Orca 2.4.2 rejects the resulting 0.22 mm
+// line as too small. Reject that process choice, not the vendor's values:
+// a different explicitly compatible installed process must supply the width.
+// An absent, automatic (0), percentage, or unparseable width is left alone.
+func orcaProcessTooNarrowForNozzle(process map[string]any, diameter float64) bool {
+	value := strings.TrimSpace(orcaFirstString(process["line_width"]))
+	width, err := strconv.ParseFloat(value, 64)
+	return err == nil && width > 0 && width < diameter*0.5
 }
 
 // orcaNozzle requires one uniform, supported diameter per installed tool. The
