@@ -86,8 +86,9 @@ func writeInstalledOrcaVendor(t *testing.T, root, vendor, printerModel string) {
 	}
 }
 
-// useInstalledRoots points each target's slicer lookup at a fixed temp root, so
-// tests never see real installations. Unused targets get an empty root.
+// useInstalledRoots supplies synthetic temp roots. Generic Orca discovery
+// may still see real installed apps, so installedTargetIDFor explicitly
+// selects only the synthetic custom-profile targets. Unused roots stay empty.
 func useInstalledRoots(t *testing.T, u1, c5 string) {
 	t.Helper()
 	empty := t.TempDir()
@@ -100,7 +101,7 @@ func useInstalledRoots(t *testing.T, u1, c5 string) {
 func installedTargetIDFor(t *testing.T, printerModel string) string {
 	t.Helper()
 	for _, target := range presets.DiscoverOrca().Targets {
-		if target.Model == printerModel {
+		if target.Model == printerModel && target.Nozzle == "0.4" && target.Slicer == "Custom local profile" {
 			return target.ID
 		}
 	}
