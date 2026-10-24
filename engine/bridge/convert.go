@@ -78,95 +78,23 @@ func ConvertWithProfile(source, destination, target, profileFile string) (map[st
 // installed physical nozzle. The default retains historical source matching;
 // an explicit target selection is validated against manufacturer sizes.
 func ConvertWithTargetNozzle(source, destination, target, profileFile, requestedNozzle string) (map[string]any, error) {
-	target = strings.ToLower(target)
-	if targetModels[target] == "" {
-		return nil, fail("TARGET_NOT_VALIDATED", "unknown target %q", target)
-	}
-
-	src, dst, err := resolvePaths(source, destination)
-	if err != nil {
-		return nil, err
-	}
-	before, err := inspectPackage(src)
-	if err != nil {
-		return nil, fail("SOURCE_INVALID", "%v", err)
-	}
-	sourceNozzle, err := detectSourceNozzle(src)
-	if err != nil {
-		return nil, fail("SOURCE_NOZZLE_INVALID", "%v", err)
-	}
-	targetNozzle := requestedNozzle
-	if targetNozzle == "" {
-		targetNozzle, err = targetNozzleForSource(target, sourceNozzle.Nozzle)
-		if err != nil {
-			return nil, fail("TARGET_NOZZLE_UNAVAILABLE", "%v", err)
-		}
-	} else if !validTargetNozzle(target, targetNozzle) {
-		return nil, fail("TARGET_NOZZLE_UNAVAILABLE", "target %s does not support physical nozzle %q", target, requestedNozzle)
-	}
-	if (target != "u1" || targetNozzle != "0.4") && profileFile == "" {
-		return nil, fail("TARGET_PROFILE_REQUIRED", "installed %s %smm slicer nozzle profile is required", target, targetNozzle)
-	}
-	insp, err := converter.Inspect(src)
-	if err != nil {
-		return nil, fail("SOURCE_INVALID", "cannot read source filament assignments: %v", err)
-	}
-	if len(insp.Filaments) == 0 {
-		return nil, fail("NO_FILAMENTS", "source contains no usable filament data")
-	}
-	slots, mapping, err := sourceSlotPlan(insp.Filaments)
-	if err != nil {
-		return nil, fail("SOURCE_FILAMENTS_INVALID", "%v", err)
-	}
-	var base *printer.Profile
-	var bundle *targetBundle
-	if target == "u1" && targetNozzle == "0.4" {
-		// Keep the already field-validated 0.4mm U1 engine behavior unchanged.
-		base = printer.Builtin("snapmaker-u1")
-	} else {
-		bundle, err = loadTargetBundle(profileFile, target)
-		if err != nil {
-			return nil, fail("TARGET_PROFILE_INVALID", "target %s installed slicer profile: %v", target, err)
-		}
-		if bundle.Nozzle != targetNozzle {
-			return nil, fail("TARGET_NOZZLE_MISMATCH",
-				"requested %s nozzle %s mm but profile bundle is %s mm", target, targetNozzle, bundle.Nozzle)
-		}
-		// The vendor profile's four physical tools remain unchanged. Extra
-		// slots are virtual project filaments for manual slicer review.
-		if len(slots) > bundle.Profile.FilamentSlots {
-			bundle.Profile.FilamentSlots = len(slots)
-		}
-		if err = bindNativeFilamentSettings(bundle, insp.Filaments); err != nil {
-			return nil, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", target, err)
-		}
-		base = &bundle.Profile
-	}
-	if base == nil {
-		return nil, fail("ENGINE_INVALID", "target base profile missing")
-	}
-	return publishConversion(conversionPlan{
-		source: src, destination: dst, target: target,
-		// targetModels["u1"] is "Snapmaker U1", the built-in U1 identity too.
-		expectedModel: targetModels[target],
-		base:          base, filaments: insp.Filaments, slots: slots, mapping: mapping,
-		before: before, physicalTools: 4, sourceNozzle: sourceNozzle,
-		targetNozzle: targetNozzle, requestedNozzle: requestedNozzle,
-	})
+	return ConvertTarget(source, destination, TargetRequest{Target: target, ProfileFile: profileFile, Nozzle: requestedNozzle})
 }
 
-// conversionPlan is the resolved input to the shared publish path. The legacy
-// targets and installed Orca-family bundles differ only in how it is built.
+// conversionPlan is the resolved input to the shared publish path. It is built
+// only by buildPlan from a ResolvedTargetProfile (see resolved.go).
 type conversionPlan struct {
 	source, destination, target, expectedModel string
-	base                                      *printer.Profile
-	filaments                                 []converter.Filament
-	slots                                     []converter.Slot
-	mapping                                   map[int]int
-	before                                    packageFacts
-	physicalTools                             int
-	sourceNozzle                              NozzleInfo
-	targetNozzle, requestedNozzle             string
+	base                                       *printer.Profile
+	filaments                                  []converter.Filament
+	slots                                      []converter.Slot
+	mapping                                    map[int]int
+	before                                     packageFacts
+	physicalTools                              int
+	sourceNozzle                               NozzleInfo
+	targetNozzle, requestedNozzle              string
+	profileKind                                ProfileKind
+	nozzleOrigin                               NozzleOrigin
 }
 
 // resolvePaths applies the same path and extension rules to every engine.
@@ -289,6 +217,8 @@ func publishConversion(plan conversionPlan) (map[string]any, error) {
 		"target_nozzle":               plan.targetNozzle,
 		"nozzle_remapped":             plan.sourceNozzle.Nozzle != plan.targetNozzle,
 		"nozzle_selected_by_user":     plan.requestedNozzle != "",
+		"target_nozzle_origin":        string(plan.nozzleOrigin),
+		"profile_kind":                string(plan.profileKind),
 		"source_filament_slots":       len(plan.filaments),
 		"target_filament_slots_used":  len(slots),
 		"virtual_filament_slots":      len(slots),

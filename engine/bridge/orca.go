@@ -6,8 +6,6 @@ import (
 	"os"
 	"regexp"
 	"strings"
-
-	"github.com/BryanSmee/bl_to_std/pkg/converter"
 )
 
 // orcaTargetID is the stable identifier the native resolver derives from one
@@ -82,73 +80,33 @@ func loadOrcaBundle(filename string) (*orcaBundle, error) {
 // ConvertWithOrcaBundle converts through an installed Orca-family profile
 // bundle prepared by the native resolver. The bundle supplies the target ID,
 // printer model, physical nozzle and physical tool count; source slots beyond
-// the physical tools stay virtual, exactly as in the built-in engines.
+// the physical tools stay virtual. It shares ConvertTarget's plan and publish
+// path and differs only in loader.
 func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]any, error) {
-	src, dst, err := resolvePaths(source, destination)
-	if err != nil {
-		return nil, err
-	}
-	bundle, err := loadOrcaBundle(profileFile)
-	if err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "installed profile: %v", err)
-	}
-	before, err := inspectPackage(src)
-	if err != nil {
-		return nil, fail("SOURCE_INVALID", "%v", err)
-	}
-	sourceNozzle, err := detectSourceNozzle(src)
-	if err != nil {
-		return nil, fail("SOURCE_NOZZLE_INVALID", "%v", err)
-	}
-	insp, err := converter.Inspect(src)
-	if err != nil {
-		return nil, fail("SOURCE_INVALID", "cannot read source filament assignments: %v", err)
-	}
-	if len(insp.Filaments) == 0 {
-		return nil, fail("NO_FILAMENTS", "source contains no usable filament data")
-	}
-	slots, mapping, err := sourceSlotPlan(insp.Filaments)
-	if err != nil {
-		return nil, fail("SOURCE_FILAMENTS_INVALID", "%v", err)
-	}
-	if len(slots) > bundle.Profile.FilamentSlots {
-		bundle.Profile.FilamentSlots = len(slots)
-	}
-	if err = bindNativeFilamentSettings(&bundle.targetBundle, insp.Filaments); err != nil {
-		return nil, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", bundle.Target, err)
-	}
-	// Creality Print 7.3 refuses a valid multi-filament project when the
-	// installed single-nozzle preset's support flags still have one entry.
-	if err = normalizeCrealitySupportFlags(bundle, len(insp.Filaments)); err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
-	}
-	if err = normalizeCrealityFilamentDiameters(bundle, len(insp.Filaments)); err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
-	}
-	if err = normalizeFlashforgeCreator5ProSupportFlags(bundle, len(insp.Filaments)); err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
-	}
-	if err = normalizeObservedOrcaMultitoolSupportFlags(bundle, len(insp.Filaments)); err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
-	}
-	if err = normalizeObservedOrcaLegacyProjectCompatibility(bundle); err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
-	}
-	if err = normalizeObservedAnycubicInactiveCutFields(bundle, len(insp.Filaments)); err != nil {
-		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
-	}
-	result, err := publishConversion(conversionPlan{
-		source: src, destination: dst, target: bundle.Target,
-		expectedModel: bundle.Profile.ModelID,
-		base:          &bundle.Profile, filaments: insp.Filaments, slots: slots, mapping: mapping,
-		before: before, physicalTools: bundle.PhysicalTools, sourceNozzle: sourceNozzle,
-		targetNozzle: bundle.Nozzle, requestedNozzle: bundle.Nozzle,
+	return convertWith(source, destination, func(NozzleInfo) (*ResolvedTargetProfile, error) {
+		return resolveInstalledOrca(profileFile, "", "")
 	})
-	if err != nil {
-		return nil, err
+}
+
+// normalizeInstalledOrcaCompatibility preserves the published dev.24 vendor-
+// scoped compatibility adjustments when using the unified conversion plan.
+// Apply only the narrowly verified transformations, in the original order;
+// ambiguous manufacturer values still fail closed.
+func normalizeInstalledOrcaCompatibility(bundle *orcaBundle, sourceFilaments int) error {
+	for _, step := range []func(*orcaBundle, int) error{
+		normalizeCrealitySupportFlags,
+		normalizeCrealityFilamentDiameters,
+		normalizeFlashforgeCreator5ProSupportFlags,
+		normalizeObservedOrcaMultitoolSupportFlags,
+	} {
+		if err := step(bundle, sourceFilaments); err != nil {
+			return err
+		}
 	}
-	result["profile_kind"] = "installed_orca_json"
-	return result, nil
+	if err := normalizeObservedOrcaLegacyProjectCompatibility(bundle); err != nil {
+		return err
+	}
+	return normalizeObservedAnycubicInactiveCutFields(bundle, sourceFilaments)
 }
 
 // normalizeCrealitySupportFlags fixes one observed Creality Print 7.3 CLI
@@ -242,28 +200,55 @@ func normalizeCrealityFilamentDiameters(bundle *orcaBundle, sourceSlots int) err
 // Repeat only the slicer's known 0 default. Do not edit installed printer
 // profiles, nozzle diameters, physical tool assignments, or other Orca forks.
 func normalizeFlashforgeCreator5ProSupportFlags(bundle *orcaBundle, sourceSlots int) error {
-	if bundle.Slicer != "Flash Studio" ||
+	if (bundle.Slicer != "Flash Studio" && bundle.Slicer != "Flash Studio Desktop") ||
 		bundle.Profile.ModelID != "Flashforge Creator 5 Pro" || bundle.PhysicalTools != 4 {
 		return nil
 	}
-	count := max(bundle.PhysicalTools, sourceSlots)
-	if raw, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
+	return alignFlashStudioFourToolSupportFlags(bundle.Profile.ProjectSettings,
+		max(bundle.PhysicalTools, sourceSlots), bundle.Profile.ModelID)
+}
+
+// Flash Studio Desktop's real Windows CLI also rejects Creator 5 (non-Pro)
+// 3MF output without four filament_is_support flags. Its installed four-tool
+// machine preset has no explicit flag: the slicer defaults to one zero while
+// the project palette expands to four. Apply only to this exact validated
+// manufacturer model and app. Nozzle/tool assignments and source stay intact.
+func normalizeFlashStudioCreator5SupportFlags(bundle *targetBundle, sourceSlots int) error {
+	if bundle.Target != "c5" || bundle.Profile.ModelID != "Flashforge Creator 5" ||
+		(bundle.Slicer != "Flash Studio" && bundle.Slicer != "Flash Studio Desktop") {
+		return nil
+	}
+	// This built-in alias describes four physical toolheads. Never fabricate
+	// four flags for a malformed one- or two-nozzle installed machine.
+	nozzles, ok := bundle.Profile.ProjectSettings["nozzle_diameter"].([]any)
+	if !ok || len(nozzles) != 4 {
+		return fmt.Errorf("Flashforge Creator 5 requires exactly four physical nozzle entries")
+	}
+	return alignFlashStudioFourToolSupportFlags(bundle.Profile.ProjectSettings,
+		max(4, sourceSlots), bundle.Profile.ModelID)
+}
+
+// Preserve complete manufacturer flags verbatim. Expand only an absent
+// setting or the already-known zero default; never guess or discard a partial
+// or conflicting array. This changes only a temporary in-memory project.
+func alignFlashStudioFourToolSupportFlags(settings map[string]any, count int, model string) error {
+	if raw, exists := settings["filament_is_support"]; exists {
 		flags, ok := raw.([]any)
 		if !ok {
-			return fmt.Errorf("Flashforge Creator 5 Pro support flag type is invalid")
+			return fmt.Errorf("%s support flag type is invalid", model)
 		}
 		if len(flags) == count {
-			return nil // Preserve manufacturer-provided per-slot flags verbatim.
+			return nil
 		}
 		if len(flags) != 1 || fmt.Sprint(flags[0]) != "0" {
-			return fmt.Errorf("Flashforge Creator 5 Pro support flags mismatch %d material slots", count)
+			return fmt.Errorf("%s support flags mismatch %d material slots", model, count)
 		}
 	}
 	flags := make([]any, count)
 	for i := range flags {
 		flags[i] = "0"
 	}
-	bundle.Profile.ProjectSettings["filament_is_support"] = flags
+	settings["filament_is_support"] = flags
 	return nil
 }
 
