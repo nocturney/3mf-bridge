@@ -85,7 +85,7 @@ func TestFolderQueueAndGeneratedOutputs(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, name := range []string{"alpha.3mf", "subfolder/beta.3mf", "subfolder/U1-skip.3mf"} {
+	for _, name := range []string{"alpha.3mf", "subfolder/beta.3mf", "subfolder/U1-beta.3mf"} {
 		target := filepath.Join(root, filepath.FromSlash(name))
 		if err := os.WriteFile(target, data, 0600); err != nil {
 			t.Fatal(err)
@@ -105,7 +105,7 @@ func TestFolderQueueAndGeneratedOutputs(t *testing.T) {
 	if len(once) != 1 {
 		t.Fatalf("duplicates were not removed: %+v", once)
 	}
-	manual, err := collectInputs([]string{filepath.Join(nested, "U1-skip.3mf")})
+	manual, err := collectInputs([]string{filepath.Join(nested, "U1-beta.3mf")})
 	if err != nil || len(manual) != 1 {
 		t.Fatalf("manually-selected previous output should remain allowed: %v %+v", err, manual)
 	}
@@ -364,5 +364,62 @@ func TestAutoNozzleRejectsSavedFilamentPreset(t *testing.T) {
 	got, err := app.GetSettings()
 	if err != nil || len(got.Printers["u1"].Filaments) != 0 {
 		t.Fatalf("invalid preset was persisted: %+v %v", got, err)
+	}
+}
+
+func TestFolderImportKeepsGenuineModelNamedSourcesAndSkipsProvableOutputs(t *testing.T) {
+	dir := t.TempDir()
+	data, err := os.ReadFile(filepath.Join("..", "tests", "fixtures", "bambu-one-color.3mf"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	genuine := []string{
+		"source.3mf", "H2D-benchy.3mf", "P1S-bracket.3mf",
+		"Neptune4Pro-test.3mf", "U1-original-name.3mf",
+	}
+	generated := []string{
+		"Creator5Pro-0.4-SB0123456789-source.3mf",
+		"Creator5Pro-0.4-SB0123456789-source-2.3mf",
+		"Creator5Pro-0.6-SBfedcba9876-source.3mf",
+		"U1-source.3mf", "ORCA-Acme-foo-0-4-source.3mf", "PRUSA-orphan.3mf",
+	}
+	for _, name := range append(append([]string{}, genuine...), generated...) {
+		if err := os.WriteFile(filepath.Join(dir, name), data, 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	collected, err := collectInputs([]string{dir})
+	if err != nil {
+		t.Fatal(err)
+	}
+	found := map[string]bool{}
+	for _, file := range collected {
+		found[file.Name] = true
+	}
+	if len(found) != len(genuine) {
+		t.Fatalf("wrong number of imported sources: got %v want %v", found, genuine)
+	}
+	for _, name := range genuine {
+		if !found[name] {
+			t.Errorf("genuine model-prefixed user source was silently dropped: %q", name)
+		}
+	}
+	for _, name := range generated {
+		if found[name] || !isGeneratedSiblingOutput(filepath.Join(dir, name)) {
+			t.Errorf("unambiguous previously generated output was re-imported: %q", name)
+		}
+	}
+	// Without the original source sibling the filename alone cannot prove
+	// it is an output. Never discard an arbitrary user project by prefix.
+	standalone := filepath.Join(t.TempDir(), "H2D-0.4-SB0123456789-orphan.3mf")
+	if err := os.WriteFile(standalone, data, 0600); err != nil {
+		t.Fatal(err)
+	}
+	if isGeneratedSiblingOutput(standalone) {
+		t.Fatal("orphan may be user-authored and must not disappear silently")
+	}
+	reselected, err := collectInputs([]string{filepath.Join(dir, generated[0])})
+	if err != nil || len(reselected) != 1 {
+		t.Fatalf("manual project reselection was incorrectly blocked: %v %+v", err, reselected)
 	}
 }

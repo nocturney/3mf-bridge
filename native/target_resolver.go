@@ -89,7 +89,7 @@ func resolveInstalledOrcaTarget(target string, preference PrinterSettings, loade
 		return nil, resolveFail("TARGET_PROFILE_INVALID", err)
 	}
 	return &conversionTarget{
-		ID: target, Prefix: presets.OrcaPrefix(target), Slicer: bundle.Slicer,
+		ID: target, Prefix: presets.InstalledOrcaOutputPrefix(target, bundle.Profile.ModelID, bundle.Vendor, bundle.Nozzle), Slicer: bundle.Slicer,
 		// A stale saved nozzle that disagrees with the installed machine is
 		// refused by the bridge (TARGET_NOZZLE_MISMATCH), never reconciled.
 		Request:   bridge.TargetRequest{Target: target, ProfileFile: file, Nozzle: explicitNozzle(preference)},

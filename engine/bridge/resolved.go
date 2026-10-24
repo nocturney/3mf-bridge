@@ -70,6 +70,7 @@ type ResolvedTargetProfile struct {
 
 	base   *printer.Profile
 	bundle *targetBundle // nil only for the built-in template
+	orca   *orcaBundle   // installed Orca-only compatibility fixes, scoped by slicer/model
 }
 
 // requestedNozzle is the nozzle reported as "selected by user": anything that
@@ -151,6 +152,13 @@ func buildPlan(source, destination string, resolve profileResolver) (conversionP
 		}
 		if err = bindNativeFilamentSettings(resolved.bundle, insp.Filaments); err != nil {
 			return plan, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", resolved.ID, err)
+		}
+		// Keep all installed Orca-fork compatibility guards from published dev.24.
+		// They operate on the resolved in-memory bundle, never a saved vendor file.
+		if resolved.orca != nil {
+			if err = normalizeInstalledOrcaCompatibility(resolved.orca, len(insp.Filaments)); err != nil {
+				return plan, fail("TARGET_PROFILE_INVALID", "target %s: %v", resolved.ID, err)
+			}
 		}
 	}
 	return conversionPlan{
@@ -252,6 +260,6 @@ func resolveInstalledOrca(profileFile, expectedID, requestedNozzle string) (*Res
 	return &ResolvedTargetProfile{
 		ID: bundle.Target, Kind: ProfileInstalledOrca, ExpectedModel: bundle.Profile.ModelID,
 		Nozzle: bundle.Nozzle, NozzleOrigin: NozzleFromProfile, PhysicalTools: bundle.PhysicalTools,
-		base: &bundle.Profile, bundle: &bundle.targetBundle,
+		base: &bundle.Profile, bundle: &bundle.targetBundle, orca: bundle,
 	}, nil
 }

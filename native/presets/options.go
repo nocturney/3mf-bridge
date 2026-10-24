@@ -148,6 +148,12 @@ func orcaFamilyApps(platform string) []appInstall {
 			{"flash-studio", "Flash Studio Desktop", filepath.Join("Flashforge", "Flash Studio Desktop"), "flash studio.exe"},
 			{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", "elegoo-slicer.exe"},
 			{"qidi-studio", "QIDIStudio", "QIDIStudio", "QIDIStudio.exe"},
+			// Creality Print 7.3 still installs under the 7.0 folder on Windows.
+			{"creality-print", "Creality Print", filepath.Join("Creality", "Creality Print 7.0"), "CrealityPrint.exe"},
+			{"creality-print", "Creality Print", filepath.Join("Creality", "Creality Print"), "CrealityPrint.exe"},
+			// This is the Orca-based Slicer Next, not the old Prusa-based Anycubic Slicer.
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "AnycubicSlicerNext", "AnycubicSlicerNext.exe"},
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "Anycubic Slicer Next", "AnycubicSlicerNext.exe"},
 			{"orca-slicer", "OrcaSlicer", "OrcaSlicer", "orca-slicer.exe"},
 		}
 	case "darwin":
@@ -157,6 +163,9 @@ func orcaFamilyApps(platform string) []appInstall {
 			{"flash-studio", "Flash Studio Desktop", "Flash Studio Desktop", ""},
 			{"elegoo-slicer", "ElegooSlicer", "ElegooSlicer", ""},
 			{"qidi-studio", "QIDIStudio", "QIDIStudio", ""},
+			{"creality-print", "Creality Print", "Creality Print", ""},
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "AnycubicSlicerNext", ""},
+			{"anycubic-slicer-next", "Anycubic Slicer Next", "Anycubic Slicer Next", ""},
 			{"orca-slicer", "OrcaSlicer", "OrcaSlicer", ""},
 		}
 	}
@@ -181,6 +190,100 @@ func orcaFamilyLocations(platform, programFiles, programFilesX86, localAppData, 
 		}
 	}
 	return result
+}
+
+// artworkRootsForOS extends the installed Orca-family asset inventory with
+// Bambu Studio and PrusaSlicer. Their profile artwork may be used for the
+// EXACT same model even though their conversion profiles are not eligible
+// Orca destination profiles. Roots remain explicit trusted app installations:
+// no recursive drive search, no remote images, no frontend-supplied paths.
+func artworkRootsForOS(platform, programFiles, programFilesX86, localAppData, home string, overrides []string) []slicerLocation {
+	locations := orcaFamilyLocations(platform, programFiles, programFilesX86, localAppData, home, overrides)
+	seen := map[string]bool{}
+	for _, loc := range locations {
+		seen[loc.root] = true
+	}
+	var extras []appInstall
+	switch platform {
+	case "windows":
+		extras = []appInstall{
+			{"bambu-studio", "Bambu Studio", "Bambu Studio", ""},
+			{"prusa-slicer", "PrusaSlicer", filepath.Join("Prusa3D", "PrusaSlicer"), ""},
+		}
+	case "darwin":
+		extras = []appInstall{
+			{"bambu-studio", "Bambu Studio", "BambuStudio", ""},
+			{"bambu-studio", "Bambu Studio", "Bambu Studio", ""},
+			{"prusa-slicer", "PrusaSlicer", "PrusaSlicer", ""},
+		}
+	}
+	for _, app := range extras {
+		for _, base := range installBases(platform, programFiles, programFilesX86, localAppData, home) {
+			locations = appendUnique(locations, seen, installLocation(platform, base, app))
+		}
+	}
+	return locations
+}
+
+// ArtworkRoots reports only roots that really exist on this machine. Printer
+// model matching, PNG validation and symlink containment remain enforced by
+// the artwork reader, not by untrusted slicer preset metadata.
+func ArtworkRoots() []string {
+	pf := os.Getenv("ProgramFiles")
+	if runtime.GOOS == "windows" && pf == "" {
+		pf = `C:\Program Files`
+	}
+	home, _ := os.UserHomeDir()
+	overrides := []string{}
+	for _, target := range []string{"u1", "c5", "cc2", "qidi"} {
+		overrides = append(overrides, os.Getenv("BRIDGE_SLICER_PROFILE_"+strings.ToUpper(target)))
+	}
+	locations := artworkRootsForOS(runtime.GOOS, pf, os.Getenv("ProgramFiles(x86)"),
+		os.Getenv("LOCALAPPDATA"), home, overrides)
+	result := []string{}
+	seen := map[string]bool{}
+	for _, loc := range locations {
+		absolute, err := filepath.Abs(loc.root)
+		if err != nil || seen[absolute] {
+			continue
+		}
+		if info, err := os.Stat(absolute); err == nil && info.IsDir() {
+			seen[absolute] = true
+			result = append(result, absolute)
+		}
+	}
+	return result
+}
+
+// PrusaThumbnailRoots returns only known installed PrusaSlicer system profile
+// directories. These are for model pictures, never for foreign conversion
+// machine/process/filament settings. No BRIDGE_SLICER_PROFILE_* override enters
+// this list, and no arbitrary user path is accepted.
+func PrusaThumbnailRoots() []string {
+	pf := os.Getenv("ProgramFiles")
+	if runtime.GOOS == "windows" && pf == "" {
+		pf = `C:\Program Files`
+	}
+	home, _ := os.UserHomeDir()
+	locations := artworkRootsForOS(runtime.GOOS, pf, os.Getenv("ProgramFiles(x86)"),
+		os.Getenv("LOCALAPPDATA"), home, nil)
+	roots := []string{}
+	seen := make(map[string]bool)
+	for _, loc := range locations {
+		if loc.id != "prusa-slicer" {
+			continue
+		}
+		absolute, err := filepath.Abs(loc.root)
+		if err != nil || seen[absolute] {
+			continue
+		}
+		info, err := os.Stat(absolute)
+		if err == nil && info.IsDir() {
+			seen[absolute] = true
+			roots = append(roots, absolute)
+		}
+	}
+	return roots
 }
 
 // installedOrcaFamilyLocations reads the live environment for orcaFamilyLocations.

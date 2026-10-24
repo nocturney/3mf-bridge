@@ -110,6 +110,7 @@ test('IPC converts all 4 targets concurrently, protects source, and handles coll
     const before = await fs.readFile(input);
     const convert = handlers.get('convert-3mf');
     const targets = ['u1', 'c5', 'cc2', 'qidi'];
+    const modelPrefixes = {u1:'U1',c5:'Creator5',cc2:'CentauriCarbon2',qidi:'XPlus5'};
 
     for (let attempt = 1; attempt <= 2; attempt++) {
       const result = await convert(null, { filePath: input, targets });
@@ -119,6 +120,7 @@ test('IPC converts all 4 targets concurrently, protects source, and handles coll
       for (const target of targets) {
         const entry = result.results.find((r) => r.target === target);
         assert.ok(entry && entry.report && entry.report.ok);
+        assert.equal(entry.prefix, modelPrefixes[target]);
         assert.equal(entry.outputName,
           entry.prefix + '-model' + (attempt === 1 ? '' : '-2') + '.3mf');
         assert.equal(entry.report.engine, 'bl2std');
@@ -188,9 +190,9 @@ test('one missing vendor profile does not cancel successful conversions for othe
     assert.equal(result.failures[0].code, 'ENGINE_FAILED');
     const files = await fs.readdir(dir);
     assert.ok(files.includes('U1-model.3mf'));
-    assert.ok(files.includes('C5-model.3mf'));
-    assert.ok(files.includes('QIDI-model.3mf'));
-    assert.ok(!files.includes('CC2-model.3mf'));
+    assert.ok(files.includes('Creator5-model.3mf'));
+    assert.ok(files.includes('XPlus5-model.3mf'));
+    assert.ok(!files.includes('CentauriCarbon2-model.3mf'));
   } finally {
     blockedVendorTarget = null;
     await fs.rm(dir, { recursive: true, force: true });

@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"sort"
 	"strings"
@@ -60,9 +61,91 @@ type BatchProgress struct {
 	Completed bool   `json:"completed"`
 }
 
+// An installed-target output has a stable model/nozzle/identity marker.
+// Never infer that an ordinary user file such as "H2D-test.3mf" or
+// "P1S-bracket.3mf" is an output simply because a printer with that name
+// happens to be installed. The distinct SB marker also keeps importing
+// folders independent of expensive installed-printer rescans.
+var generatedInstalledFilename = regexp.MustCompile(`(?i)^[A-Za-z0-9]{1,40}-(?:0\.2|0\.25|0\.4|0\.6|0\.8|Unknown)-SB[0-9a-f]{10}-(.+\.3mf)$`)
+
+var previousOutputPrefixes = []string{
+	"U1-", "C5-", "CC2-", "QIDI-", "ORCA-", "PRUSA-",
+	"Creator5-", "CentauriCarbon2-", "XPlus5-",
+}
+
+// hasSourceSibling recognizes generated filenames only when their original
+// source project is still present in the same folder as a regular file.
+// This conservative rule prevents dropping user-authored model-named sources.
+// A moved output may be re-imported: users can always remove it from the queue.
+func hasSourceSibling(output, sourceName string) bool {
+	if sourceName == "" || sourceName == filepath.Base(output) ||
+		!strings.EqualFold(filepath.Ext(sourceName), ".3mf") {
+		return false
+	}
+	dir := filepath.Dir(output)
+	regular := func(name string) bool {
+		if name == "" || name == filepath.Base(output) {
+			return false
+		}
+		st, err := os.Lstat(filepath.Join(dir, name))
+		return err == nil && st.Mode().IsRegular()
+	}
+	if regular(sourceName) {
+		return true
+	}
+	// A second output uses Prefix-original-2.3mf. Check for original.3mf
+	// as well, but never infer an output without a matching source sibling.
+	stem := strings.TrimSuffix(sourceName, filepath.Ext(sourceName))
+	if pos := strings.LastIndexByte(stem, '-'); pos > 0 {
+		number := stem[pos+1:]
+		if len(number) <= 3 && len(number) >= 1 {
+			valid := true
+			for _, char := range number {
+				if char < '0' || char > '9' {
+					valid = false
+					break
+				}
+			}
+			if valid {
+				return regular(stem[:pos] + filepath.Ext(sourceName))
+			}
+		}
+	}
+	return false
+}
+
+func isGeneratedSiblingOutput(path string) bool {
+	name := filepath.Base(path)
+	if !strings.EqualFold(filepath.Ext(name), ".3mf") {
+		return false
+	}
+	if m := generatedInstalledFilename.FindStringSubmatch(name); m != nil &&
+		hasSourceSibling(path, m[1]) {
+		return true
+	}
+	upper := strings.ToUpper(name)
+	// These two legacy prefixes identify SliceBridge export *formats*, not
+	// physical printer models. Keep the pre-existing folder-import behavior
+	// for generated generic Prusa and old Orca projects, even when the old
+	// source file has been moved out of the directory.
+	if strings.HasPrefix(upper, "PRUSA-") || strings.HasPrefix(upper, "ORCA-") {
+		return true
+	}
+	for _, legacy := range previousOutputPrefixes {
+		if !strings.HasPrefix(upper, strings.ToUpper(legacy)) {
+			continue
+		}
+		remainder := name[len(legacy):]
+		if hasSourceSibling(path, remainder) {
+			return true
+		}
+	}
+	return false
+}
+
 // CollectInputs expands files and folders from the native picker or OS drop.
-// Symlink directories are not traversed and previously generated output files
-// are not requeued when a whole source folder is dropped.
+// Symlink directories are not traversed and outputs from installed target
+// models are not requeued when a whole source folder is dropped.
 func collectInputs(paths []string) ([]FileInfo, error) {
 	if len(paths) == 0 {
 		return []FileInfo{}, nil
@@ -73,13 +156,8 @@ func collectInputs(paths []string) ([]FileInfo, error) {
 	collected := []FileInfo{}
 	seen := map[string]bool{}
 	add := func(name string, fromFolder bool) error {
-		if fromFolder {
-			upper := strings.ToUpper(filepath.Base(name))
-			for _, prefix := range []string{"U1-", "C5-", "CC2-", "QIDI-", "ORCA-", "PRUSA-"} {
-				if strings.HasPrefix(upper, prefix) {
-					return nil
-				}
-			}
+		if fromFolder && isGeneratedSiblingOutput(name) {
+			return nil
 		}
 		if !strings.EqualFold(filepath.Ext(name), ".3mf") {
 			return nil
@@ -305,10 +383,10 @@ func convertWithLoaders(source, target, sourceNozzle string, preference PrinterS
 	})
 }
 
-// resolvedPrefix names the output prefix for a refused target, as before.
+// resolvedPrefix retains the legacy empty prefix when an installed profile cannot be resolved.
 func resolvedPrefix(target string) string {
 	if presets.IsOrcaTargetID(target) {
-		return presets.OrcaPrefix(target)
+		return ""
 	}
 	return outputs[target]
 }

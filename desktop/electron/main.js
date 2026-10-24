@@ -12,9 +12,9 @@ let lastOutputFolder = null;
 
 const TARGETS = {
   u1: 'U1',
-  c5: 'C5',
-  cc2: 'CC2',
-  qidi: 'QIDI'
+  c5: 'Creator5',
+  cc2: 'CentauriCarbon2',
+  qidi: 'XPlus5'
 };
 
 async function fitWindowToInitialContent(win) {

@@ -193,7 +193,7 @@ func TestCreator5ProTargetIDsAreDistinctAndStable(t *testing.T) {
 	if !strings.HasPrefix(id04, "orca-flashforge-flashforge-creator-5-pro-0-4-") || id025 == id04 {
 		t.Fatalf("0.4 ID wrong or colliding with 0.25: %s vs %s", id04, id025)
 	}
-	if prefix := OrcaPrefix(id025); !strings.HasPrefix(prefix, "ORCA-FLASHFORGE-") || len(prefix) > len("ORCA-")+24 {
+	if prefix := InstalledOrcaOutputPrefix(id025, c5ProModel, "Flashforge", "0.25"); !strings.HasPrefix(prefix, "Creator5Pro-0.25-SB") || !strings.HasSuffix(prefix, id025[len(id025)-10:]) {
 		t.Fatalf("output prefix %q", prefix)
 	}
 	if _, err := resolveOrca(locations, id025); err != nil {

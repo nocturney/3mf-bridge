@@ -49,7 +49,7 @@ const translations = {
     sourceAssumed:'קוטר דיזת המקור לא זוהה — הונחה 0.4 מ״מ.',
     switchedNozzle:'בוצעה התאמת קוטר דיזה לפי הגדרות המדפסת.',
     virtualSlotsReview:'כל {n} ערוצי הצבע והחומר מהמקור נשמרו בנפרד. למדפסת {physical} ראשי הדפסה; יש לבחור בתוך הסלייסר מה לאחד או להסיר לפני חיתוך והדפסה.',
-    summarySuccess:'הומר בהצלחה',summaryFailure:'נכשל',
+    summarySuccess:'הומר בהצלחה',summaryReview:'מיפוי לבדיקה',summaryFailure:'נכשל',
     noSource:'הוסף לפחות קובץ אחד.',noTargets:'בחר מדפסת יעד אחת לפחות.',
     fileLimit:'מותר להוסיף לכל היותר 200 קבצים.',queueEmpty:'עדיין אין קבצים בתור.',
     afterSlice:'יש לבדוק חומרים, דיזה ותמיכות ולבצע Slice מחדש.',
@@ -113,7 +113,7 @@ const translations = {
     sourceAssumed:'No source nozzle specified — 0.4 mm assumed.',
     switchedNozzle:'Nozzle diameter was adapted to match the saved target configuration.',
     virtualSlotsReview:'All {n} source color/material slots were preserved separately. This printer has {physical} physical tools; choose what to merge or remove in the slicer before slicing or printing.',
-    summarySuccess:'Converted',summaryFailure:'Failed',
+    summarySuccess:'Converted',summaryReview:'Review mapping',summaryFailure:'Failed',
     noSource:'Add at least one source project.',noTargets:'Select one or more printers.',
     fileLimit:'You can queue a maximum of 200 projects.',queueEmpty:'No files in the queue yet.',
     afterSlice:'Review materials, nozzle and supports; re-slice before printing.',
@@ -531,7 +531,9 @@ function resultLine(parent,result,source){
   const subtitle=node('div','result-path',result.ok?result.outputName:result.error);
   subtitle.title=result.ok?result.outputPath:result.error;
   content.append(title,subtitle);
-  const status=node('span','status-pill '+(result.ok?'good':'bad'),result.ok?t('summarySuccess'):t('summaryFailure'));
+  const mappingReview=Boolean(result.ok&&result.report?.user_slot_mapping_required);
+  const status=node('span','status-pill '+(result.ok?(mappingReview?'review':'good'):'bad'),
+    result.ok?(mappingReview?t('summaryReview'):t('summarySuccess')):t('summaryFailure'));
   top.append(content,status);row.append(top);
   if(result.ok){
     const actions=node('div','result-actions');
@@ -544,6 +546,10 @@ function resultLine(parent,result,source){
     const heading=node('summary','',t('details'));
     const grid=node('div','detail-grid');
     const report=result.report||{};
+    if(mappingReview){
+      row.append(node('p','warning-line material-mapping-warning',
+        t('virtualSlotsReview',{n:report.virtual_filament_slots,physical:report.physical_toolheads})));
+    }
     addMetric(grid,t('source')+' '+t('nozzle'),(source.nozzle||'?')+' mm');
     addMetric(grid,t('target')+' '+t('nozzle'),(report.target_nozzle||'?')+' mm');
     addMetric(grid,t('materialSlots'),(report.source_filament_slots??(source.filaments||[]).length)+' → '+(report.target_filament_slots||'?'));
@@ -566,10 +572,6 @@ function resultLine(parent,result,source){
       grid.append(node('div','detail-full warning-line',t('sourceAssumed')));
     }else if(report.nozzle_remapped){
       grid.append(node('div','detail-full warning-line',t('switchedNozzle')));
-    }
-    if(report.user_slot_mapping_required){
-      grid.append(node('div','detail-full warning-line',
-        t('virtualSlotsReview',{n:report.virtual_filament_slots,physical:report.physical_toolheads})));
     }
     if(report.printer_profile_generic){
       grid.append(node('div','detail-full warning-line',t('prusaGenericReview')));

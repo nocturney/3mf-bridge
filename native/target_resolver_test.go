@@ -105,7 +105,7 @@ func TestResolverSavedQuarterMillimeterNozzleWinsOverSource(t *testing.T) {
 	if got := strings.Join(rec.vendorCalls, ","); got != "c5@0.25" {
 		t.Fatalf("installed profile requested for %q, want c5@0.25 (source is 0.4)", got)
 	}
-	if resolved.Request.Nozzle != "0.25" || resolved.Request.Target != "c5" || resolved.Prefix != "C5" {
+	if resolved.Request.Nozzle != "0.25" || resolved.Request.Target != "c5" || resolved.Prefix != "Creator5" {
 		t.Fatalf("saved physical nozzle not carried to the conversion core: %+v", resolved.Request)
 	}
 	if _, err := os.Stat(resolved.Request.ProfileFile); err != nil {
@@ -151,7 +151,9 @@ func TestResolverInstalledOrcaIgnoresSourceNozzleAndVendorLoader(t *testing.T) {
 	if len(rec.vendorCalls) != 0 || strings.Join(rec.orcaCalls, ",") != testOrcaID {
 		t.Fatalf("installed target must use only its own profile: vendor %v orca %v", rec.vendorCalls, rec.orcaCalls)
 	}
-	if resolved.Slicer != testOrcaSlicer || resolved.Prefix != presets.OrcaPrefix(testOrcaID) || resolved.Request.Nozzle != "" {
+	expectedPrefix := presets.InstalledOrcaOutputPrefix(testOrcaID, "Flashforge Creator 5 Pro", "", "0.25")
+	if resolved.Slicer != testOrcaSlicer || resolved.Prefix != expectedPrefix ||
+		!strings.HasSuffix(resolved.Prefix, "-0.25-SBabcdef0123") || resolved.Request.Nozzle != "" {
 		t.Fatalf("unexpected resolution: %+v", resolved)
 	}
 	profile := resolved.Request.ProfileFile
@@ -294,7 +296,7 @@ func TestMismatchedSavedNozzleFailsClosedWithoutWritingOutput(t *testing.T) {
 }
 
 func TestBuiltinAliasOutputPrefixesAreStable(t *testing.T) {
-	want := map[string]string{"u1": "U1", "c5": "C5", "cc2": "CC2", "qidi": "QIDI"}
+	want := map[string]string{"u1": "U1", "c5": "Creator5", "cc2": "CentauriCarbon2", "qidi": "XPlus5"}
 	for alias, prefix := range want {
 		if outputs[alias] != prefix {
 			t.Fatalf("alias %s prefix %q, want %q", alias, outputs[alias], prefix)
