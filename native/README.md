@@ -29,6 +29,17 @@ only shipped UI languages. Toggle between them in the top bar; Hebrew is RTL.
 - Detects material or profile mismatches and fails that target instead of
   issuing fake output; checks mesh integrity, removes stale sliced G-code,
   and uses atomic no-overwrite publishing (source project is unchanged).
+- **Output naming:** model-specific results use the normalized physical printer model,
+  not the slicer vendor (`Creator5Pro-project.3mf`, `CR10-project.3mf`,
+  `Neptune4Pro-project.3mf` or `U1-project.3mf`). Repeated outputs use
+  `-2`, `-3`, etc. Source names remain unchanged. The generic unbound
+  PrusaSlicer project has no selected printer and therefore retains `PRUSA-`.
+- **Printer pictures:** local installed machine cover PNGs only. The exact
+  image in the selected printer profile's slicer is preferred; if missing,
+  matching vendor/model images in other allowlisted locally installed Orca
+  forks, Bambu Studio and PrusaSlicer are eligible fallbacks. A non-OEM cover
+  does *not* supply a machine/filament preset, and similar model names are
+  never treated as interchangeable. No network lookup or bundled art.
 - For projects with more than four Bambu source color/material channels,
   preserve **every original virtual filament**, its material type, its color
   and its painted/object assignments in the converted 3MF. This is NOT

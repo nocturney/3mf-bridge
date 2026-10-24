@@ -366,3 +366,28 @@ func TestAutoNozzleRejectsSavedFilamentPreset(t *testing.T) {
 		t.Fatalf("invalid preset was persisted: %+v %v", got, err)
 	}
 }
+
+func TestFolderPrefixesIncludeInstalledModelsAndOldOutputs(t *testing.T) {
+	targets := []presets.OrcaTarget{
+		{Model: "Flashforge Creator 5 Pro", Vendor: "Flashforge"},
+		{Model: "Creality CR-10", Vendor: "Creality"},
+		{Model: "Elegoo Neptune 4 Pro", Vendor: "Elegoo"},
+	}
+	prefixes := folderOutputPrefixes(targets)
+	found := map[string]bool{}
+	for _, prefix := range prefixes {
+		found[prefix] = true
+	}
+	for _, expected := range []string{
+		"U1-", "CREATOR5-", "CENTAURICARBON2-", "XPLUS5-",
+		"CREATOR5PRO-", "CR10-", "NEPTUNE4PRO-",
+		"C5-", "CC2-", "QIDI-", "ORCA-", "PRUSA-",
+	} {
+		if !found[expected] {
+			t.Fatalf("converted filename %q would be re-imported as a source: %v", expected, prefixes)
+		}
+	}
+	if found["FLASHFORGE-"] || found["SLICER-"] {
+		t.Fatal("folder skip rules must be based on actual models, not brand labels")
+	}
+}

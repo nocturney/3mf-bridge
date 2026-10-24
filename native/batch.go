@@ -60,9 +60,37 @@ type BatchProgress struct {
 	Completed bool   `json:"completed"`
 }
 
+// folderOutputPrefixes recognizes outputs from the four original adapters,
+// the generic Prusa export and installed model-specific Orca targets. This is
+// used only for folder imports: a user can still manually reselect any .3mf.
+func folderOutputPrefixes(targets []presets.OrcaTarget) []string {
+	seen := map[string]bool{}
+	prefixes := []string{}
+	add := func(prefix string) {
+		if prefix == "" {
+			return
+		}
+		marker := strings.ToUpper(prefix) + "-"
+		if !seen[marker] {
+			seen[marker] = true
+			prefixes = append(prefixes, marker)
+		}
+	}
+	for _, old := range []string{"U1", "C5", "CC2", "QIDI", "ORCA", "PRUSA"} {
+		add(old) // Also exclude files from pre-dev.23 SliceBridge releases.
+	}
+	for _, current := range outputs {
+		add(current)
+	}
+	for _, target := range targets {
+		add(presets.ModelFilenamePrefix(target.Model, target.Vendor))
+	}
+	return prefixes
+}
+
 // CollectInputs expands files and folders from the native picker or OS drop.
-// Symlink directories are not traversed and previously generated output files
-// are not requeued when a whole source folder is dropped.
+// Symlink directories are not traversed and outputs from installed target
+// models are not requeued when a whole source folder is dropped.
 func collectInputs(paths []string) ([]FileInfo, error) {
 	if len(paths) == 0 {
 		return []FileInfo{}, nil
@@ -72,10 +100,14 @@ func collectInputs(paths []string) ([]FileInfo, error) {
 	}
 	collected := []FileInfo{}
 	seen := map[string]bool{}
+	var generatedPrefixes []string // Lazily read installed targets only for folder imports.
 	add := func(name string, fromFolder bool) error {
 		if fromFolder {
+			if generatedPrefixes == nil {
+				generatedPrefixes = folderOutputPrefixes(presets.DiscoverOrca().Targets)
+			}
 			upper := strings.ToUpper(filepath.Base(name))
-			for _, prefix := range []string{"U1-", "C5-", "CC2-", "QIDI-", "ORCA-", "PRUSA-"} {
+			for _, prefix := range generatedPrefixes {
 				if strings.HasPrefix(upper, prefix) {
 					return nil
 				}
@@ -338,13 +370,14 @@ func configuredConvert(source, target, sourceNozzle string, preference PrinterSe
 // The profile itself fixes nozzle, tool count and model, so the per-printer
 // preferences of the built-in targets intentionally do not apply.
 func installedConvert(source, target string) ConvertResult {
-	result := ConvertResult{Target: target, Prefix: presets.OrcaPrefix(target)}
+	result := ConvertResult{Target: target}
 	bundle, err := presets.ResolveOrcaBundle(target)
 	if err != nil {
 		result.Code = "TARGET_PROFILE_INVALID"
 		result.Error = err.Error()
 		return result
 	}
+	result.Prefix = presets.ModelFilenamePrefix(bundle.Profile.ModelID, bundle.Vendor)
 	profileFile, cleanup, err := tempOrcaBundle(bundle)
 	if err != nil {
 		result.Code = "TARGET_PROFILE_INVALID"

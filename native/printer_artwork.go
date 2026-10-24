@@ -53,24 +53,9 @@ func validLocalCoverPath(relative string) bool {
 }
 
 func allowedProfileRoots() []string {
-	seen, values := make(map[string]bool), []string{}
-	for _, target := range []string{"u1", "c5", "cc2", "qidi"} {
-		for _, root := range presets.Candidates(target) {
-			if root == "" {
-				continue
-			}
-			normalized, err := filepath.Abs(root)
-			if err != nil {
-				continue
-			}
-			if seen[normalized] {
-				continue
-			}
-			seen[normalized] = true
-			values = append(values, normalized)
-		}
-	}
-	return values
+	// Dynamic and legacy printer cards share one complete, explicitly allowed
+	// local installed-slicer artwork inventory. No arbitrary filesystem search.
+	return presets.ArtworkRoots()
 }
 
 func localPNGDataURI(profileRoot, relative string) (string, bool) {
