@@ -30,9 +30,15 @@ type PrinterArtworkReply struct {
 // Production always re-resolves the target from disk.
 var resolveInstalledArtwork = presets.ResolveOrcaArtworkSource
 
-func validLocalCoverPath(relative string) bool {
+// Test seam: production only discovers known installed PrusaSlicer roots.
+var prusaThumbnailRootList = presets.PrusaThumbnailRoots
+
+// A local artwork path is always exactly vendor/filename.png. The caller
+// independently restricts which filenames may be requested from which trusted
+// installation; the frontend cannot supply a path or URL.
+func validLocalPNGPath(relative string) bool {
 	if len(relative) > 320 || strings.Count(relative, "/") != 1 ||
-		!strings.HasSuffix(relative, "_cover.png") ||
+		!strings.HasSuffix(relative, ".png") ||
 		strings.ContainsAny(relative, "\\:\x00\r\n") ||
 		strings.Contains(relative, "..") {
 		return false
@@ -52,6 +58,16 @@ func validLocalCoverPath(relative string) bool {
 	return true
 }
 
+func validLocalCoverPath(relative string) bool {
+	return strings.HasSuffix(relative, "_cover.png") && validLocalPNGPath(relative)
+}
+
+func validPrusaThumbnailPath(relative string) bool {
+	// Only used with a model-linked, locally installed PrusaSlicer vendor INI.
+	// It may specify a _thumbnail_v2.png or an arbitrary vendor-named PNG.
+	return validLocalPNGPath(relative)
+}
+
 func allowedProfileRoots() []string {
 	// Dynamic and legacy printer cards share one complete, explicitly allowed
 	// local installed-slicer artwork inventory. No arbitrary filesystem search.
@@ -59,7 +75,15 @@ func allowedProfileRoots() []string {
 }
 
 func localPNGDataURI(profileRoot, relative string) (string, bool) {
-	if !validLocalCoverPath(relative) {
+	return localPNGDataURIValidated(profileRoot, relative, validLocalCoverPath)
+}
+
+func localPrusaPNGDataURI(profileRoot, relative string) (string, bool) {
+	return localPNGDataURIValidated(profileRoot, relative, validPrusaThumbnailPath)
+}
+
+func localPNGDataURIValidated(profileRoot, relative string, valid func(string) bool) (string, bool) {
+	if !valid(relative) {
 		return "", false
 	}
 	root, err := filepath.EvalSymlinks(profileRoot)
@@ -162,7 +186,13 @@ func (a *App) PrinterArtwork(modelID string) (PrinterArtworkReply, error) {
 	}
 	for _, model := range catalog.Models {
 		if model.ID == modelID {
-			return findPrinterArtwork(model, allowedProfileRoots()), nil
+			// Orca-family exact-model covers retain priority. PrusaSlicer
+			// thumbnails are read only when that cover is actually absent.
+			cover := findPrinterArtwork(model, allowedProfileRoots())
+			if cover.Found {
+				return cover, nil
+			}
+			return findPrusaThumbnailArtwork(model, prusaThumbnailRootList()), nil
 		}
 	}
 	return PrinterArtworkReply{}, fmt.Errorf("unknown printer model")
