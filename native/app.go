@@ -65,7 +65,7 @@ type ConvertReply struct {
 	Error               string          `json:"error,omitempty"`
 }
 
-var outputs = map[string]string{"u1": "U1", "c5": "C5", "cc2": "CC2", "qidi": "QIDI"}
+var outputs = map[string]string{"u1": "U1", "c5": "Creator5", "cc2": "CentauriCarbon2", "qidi": "XPlus5"}
 
 func fileInfo(path string) (*FileInfo, error) {
 	if !strings.EqualFold(filepath.Ext(path), ".3mf") {

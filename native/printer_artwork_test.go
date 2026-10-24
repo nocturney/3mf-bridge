@@ -365,3 +365,60 @@ func TestInstalledTargetWithoutCoverFallsBackHonestly(t *testing.T) {
 		t.Fatalf("missing cover must not invent artwork: %+v", reply)
 	}
 }
+
+func TestInstalledOtherSlicerProvidesExactPro5ArtworkWithoutMachinePreset(t *testing.T) {
+	owner := t.TempDir()
+	bambu := t.TempDir() // Stand-in for another installed app's trusted resource root.
+	source := presets.OrcaArtworkSource{Root: owner, Vendor: "Flashforge", Model: "Flashforge Creator 5 Pro"}
+	writePNGCover(t, bambu, "Flashforge/Flashforge Creator 5_cover.png", color.RGBA{9, 0, 9, 255})
+	if result := findInstalledTargetArtwork(source, []string{bambu}); result.Found {
+		t.Fatal("plain Creator 5 image must not be used for Creator 5 Pro")
+	}
+	expected := writePNGCover(t, bambu, "Flashforge/Flashforge Creator 5 Pro_cover.png", color.RGBA{5, 8, 10, 255})
+	result := findInstalledTargetArtwork(source, []string{bambu})
+	if !result.Found || result.Provenance != provenanceInstalledSlicer ||
+		result.DataURI != pngDataURIOf(t, expected) {
+		t.Fatalf("a different locally installed slicer with exact same model art must be accepted: %+v", result)
+	}
+	own := writePNGCover(t, owner, "Flashforge/Flashforge Creator 5 Pro_cover.png", color.RGBA{240, 30, 20, 255})
+	result = findInstalledTargetArtwork(source, []string{bambu})
+	if !result.Found || result.DataURI != pngDataURIOf(t, own) {
+		t.Fatal("own installed target cover must still take precedence over generic art")
+	}
+}
+
+func TestInstalledCreatorFiveProConversionProducesModelNamedFile(t *testing.T) {
+	root := t.TempDir()
+	useInstalledRoots(t, t.TempDir(), root)
+	writeInstalledOrcaVendor(t, root, "Flashforge", "Flashforge Creator 5 Pro")
+
+	file := filepath.Join(t.TempDir(), "sample.3mf")
+	data, err := os.ReadFile(loadFixture(t, "bambu-one-color.3mf"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err = os.WriteFile(file, data, 0600); err != nil {
+		t.Fatal(err)
+	}
+	target := installedTargetIDFor(t, "Flashforge Creator 5 Pro")
+	result := installedConvert(file, target)
+	if !result.OK {
+		t.Fatalf("installed Creator 5 Pro conversion did not succeed: %s %s", result.Code, result.Error)
+	}
+	expectedPrefix := presets.InstalledOrcaOutputPrefix(target, "Flashforge Creator 5 Pro", "Flashforge", "0.4")
+	if result.Prefix != expectedPrefix || result.OutputName != expectedPrefix+"-sample.3mf" ||
+		filepath.Base(result.OutputPath) != result.OutputName {
+		t.Fatalf("target-specific naming was not applied: %+v", result)
+	}
+	if _, err := os.Stat(result.OutputPath); err != nil {
+		t.Fatalf("actual 3MF output was not created: %v", err)
+	}
+	folderFiles, err := collectInputs([]string{filepath.Dir(file)})
+	if err != nil || len(folderFiles) != 1 || folderFiles[0].Path != file {
+		t.Fatalf("folder picker re-imported its own model-named output: %+v, %v", folderFiles, err)
+	}
+	manual, err := collectInputs([]string{result.OutputPath})
+	if err != nil || len(manual) != 1 || manual[0].Path != result.OutputPath {
+		t.Fatalf("explicitly reselecting output must remain possible: %+v, %v", manual, err)
+	}
+}

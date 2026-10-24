@@ -185,17 +185,6 @@ func TestMalformedOrUnknownIdentifiersFailClosed(t *testing.T) {
 	}
 }
 
-func TestOrcaPrefixIsFilesystemSafeAndStable(t *testing.T) {
-	got := OrcaPrefix("orca-acme-mini-0-4-nozzle-0123456789")
-	if got != "ORCA-ACME-MINI-0-4-NOZZLE" {
-		t.Fatalf("prefix %q", got)
-	}
-	long := OrcaPrefix("orca-" + strings.Repeat("abc-", 20) + "0123456789")
-	if len(long) > len("ORCA-")+24 || strings.ContainsAny(long, "abcdefghijklmnopqrstuvwxyz/\\:") {
-		t.Fatalf("prefix not bounded or safe: %q", long)
-	}
-}
-
 // This mirrors the four installed Flash Studio machine variants, including the
 // vendor's incorrect AD5M process defaults for 0.4/0.6/0.8. The fixture uses
 // standalone mock machine/filament/process data; no vendor files are copied.

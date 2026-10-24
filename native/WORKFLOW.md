@@ -24,10 +24,17 @@ The native desktop workflow now supports:
    never from arbitrary UI-supplied paths.
 4. **Multiple source projects / folders**: select several 3MF files or
    recursively add a folder via native dialogs or OS drag/drop. Deduplicate,
-   skip past generated outputs during folder traversal, do not follow
-   symlinks, and refuse batches above 200 source projects. For each project,
-   up to four target conversions run in parallel; projects process
-   one-by-one to bound memory and give incremental progress.
+   skip recognizable previously generated outputs during folder traversal
+   only if the original source file exists as a sibling, except the already
+   reserved generic `PRUSA-` and historical `ORCA-` export prefixes (to avoid discarding
+   real user projects named `H2D-benchy.3mf` or `U1-bracket.3mf`). Do not
+   follow symlinks; refuse batches above 200 source projects. Explicitly
+   selecting a converted 3MF is still allowed. Output names use the physical
+   printer model first (`U1-`, `Creator5Pro-`, `Neptune4Pro-`), never `ORCA-`;
+   installed targets append physical nozzle and stable target ID (e.g.
+   `Creator5Pro-0.4-SB0123456789-project.3mf`) to distinguish variants.
+   The generic unbound Prusa export keeps `PRUSA-`. For each project, conversions run independently;
+   projects process one-by-one to bound memory and give incremental progress.
 
 ### Window behavior / desktop interaction
 

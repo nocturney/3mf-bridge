@@ -75,6 +75,7 @@ type OrcaDiscovery struct {
 // OrcaBundle is the generic target bundle read by engine/bridge.
 type OrcaBundle struct {
 	Target           string                    `json:"target"`
+	Vendor           string                    `json:"vendor"`
 	Slicer           string                    `json:"slicer"`
 	Nozzle           string                    `json:"nozzle"`
 	PhysicalTools    int                       `json:"physical_tools"`
@@ -91,20 +92,6 @@ type orcaCandidate struct {
 // IsOrcaTargetID reports whether an ID has the shape produced by this package.
 func IsOrcaTargetID(id string) bool {
 	return orcaTargetPattern.MatchString(id)
-}
-
-// OrcaPrefix derives a filesystem-safe output prefix from a target ID.
-func OrcaPrefix(id string) string {
-	body := strings.TrimPrefix(id, "orca-")
-	if len(body) > 11 {
-		// Drop the "-<10 hex>" suffix that keeps IDs unique per install.
-		body = body[:len(body)-11]
-	}
-	body = strings.ToUpper(body)
-	if len(body) > 24 {
-		body = body[:24]
-	}
-	return "ORCA-" + strings.Trim(body, "-")
 }
 
 // DiscoverOrca lists installed machine presets that resolve completely, plus
@@ -484,7 +471,7 @@ func resolveOrcaMachine(index catalog, byMachine map[string]map[string][]string,
 		}
 	}
 	bundle := OrcaBundle{
-		Target: target, Slicer: loc.name, Nozzle: nozzle, PhysicalTools: tools,
+		Target: target, Vendor: vendor, Slicer: loc.name, Nozzle: nozzle, PhysicalTools: tools,
 		Profile: printer.Profile{
 			Name: target, DisplayName: model, ModelID: model, FilamentSlots: tools,
 			FilamentProfiles: filamentNames, DefaultFilamentProfile: filamentNames["PLA"], ProjectSettings: project,
