@@ -2,6 +2,8 @@
   "schema": "slicebridge.creality.cli-fixtures.v1",
   "head": "7d8cc3479fed15a878a4c292a6d775ea7603f573",
   "slicerVersion": "6157",
+  "bedSizeMM": 260,
+  "qaCubeSizeMM": 10,
   "cases": [
     {
       "name": "Creality-Creality-K2-0.4-QA",

@@ -107,11 +107,30 @@ foreach ($case in $spec.cases) {
     if ($motions -le 100 -or $extrusions -le 50 -or $bambuMacros -ne 0) {
         throw ("No meaningful native toolpath, or Bambu-only macros leaked: "+$name)
     }
+    # This pinned synthetic cube is 10 mm on a 260 mm bed. Require an interior placement;
+    # a GUI import can silently leave the same model touching the 0 mm bed corner.
+    $bboxPrefix='; OBJECTS_BOUNDING = '
+    $bboxLine=$lines | Where-Object {$_.StartsWith($bboxPrefix)} | Select-Object -First 1
+    if (!$bboxLine) { throw ("Missing object bounding box in native G-code: "+$name) }
+    $parts=$bboxLine.Substring($bboxPrefix.Length).Split(',')
+    if ($parts.Count -ne 6) { throw ("Malformed native object bounds: "+$name) }
+    $bounds=@($parts | ForEach-Object {[double]::Parse($_,[Globalization.CultureInfo]::InvariantCulture)})
+    $bed=[double]$spec.bedSizeMM
+    $cube=[double]$spec.qaCubeSizeMM
+    if ($bed -ne 260 -or $cube -ne 10 -or
+        $bounds[0] -lt 1 -or $bounds[1] -lt 1 -or $bounds[3] -gt ($bed-1) -or
+        $bounds[4] -gt ($bed-1) -or $bounds[2] -lt -0.1 -or
+        [Math]::Abs(($bounds[3]-$bounds[0])-$cube) -gt 0.15 -or
+        [Math]::Abs(($bounds[4]-$bounds[1])-$cube) -gt 0.15 -or
+        [Math]::Abs(($bounds[5]-$bounds[2])-$cube) -gt 0.15) {
+        throw ("Native G-code geometry outside safe QA plate bounds: "+$name)
+    }
     $hash=(Get-FileHash -LiteralPath $output -Algorithm SHA256).Hash
     $results+=@{target=$name;source3mfSHA256=$sourceSha;gcodeSHA256=$hash;
         physicalNozzleMM=[string]$case.nozzle;manufacturerCutDistanceMM=[string]$case.cut;
         printerModel=[string]$case.model;gcodeBytes=(Get-Item $output).Length;
-        motionCommands=$motions;extrusionCommands=$extrusions;config=$config;
+        motionCommands=$motions;extrusionCommands=$extrusions;objectBoundsMM=$bounds;
+        validatedBedSizeMM=$bed;config=$config;
         slicer='Official signed Creality Print 7.3.0.6157 Windows CLI';
         noHardwarePrint=$true;sourceModified=$false}
     Write-Output ("QA_VERIFIED "+$name+" nozzle="+$case.nozzle+" cutMM="+$case.cut+" motions="+$motions+" extrusions="+$extrusions+" SHA256="+$hash)
