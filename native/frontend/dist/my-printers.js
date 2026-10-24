@@ -475,7 +475,15 @@ function render(){
   slotRegistry.dialog.clear();
   list.replaceChildren();
   list.hidden=!showList;
-  matches.models.forEach((group,index)=>list.append(groupCard(group,index)));
+  // A Chromium/WebView IntersectionObserver can miss newly replaced cards
+  // after successive search/manufacturer filters. For an explicit, bounded
+  // result set, resolve its exact local images eagerly. The full 603-model
+  // catalogue remains lazy, so browsing never starts hundreds of file reads.
+  const eagerFilteredArtwork=Boolean(term||manufacturer)&&matches.models.length<=96;
+  matches.models.forEach((group,index)=>{
+    list.append(groupCard(group,index));
+    if(eagerFilteredArtwork)queueArtwork(group);
+  });
   if(showList&&!matches.models.length)list.append(node('p','catalog-empty',t('none')));
   $('catalogSearchCount').textContent=t('showing',{
     shown:matches.models.length,total:matches.total
