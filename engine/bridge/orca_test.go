@@ -479,3 +479,120 @@ func TestObservedOrcaMultitoolFlagsDoNotAlterOtherSlicersOrVendors(t *testing.T)
 		}
 	}
 }
+
+func TestObservedLegacyOrcaProjectCompatibilityChangesOnlyReproducedFields(t *testing.T) {
+	tests := []struct {
+		name, id, model, key string
+		original, expected   string
+	}{
+		{"Anycubic Max", "orca-anycubic-kobra-max-0123456789", "Anycubic Kobra Max",
+			"layer_change_gcode", ";AFTER_LAYER_CHANGE\n;[layer_z]", ";AFTER_LAYER_CHANGE\n;[layer_z]\nG92 E0\n"},
+		{"Anycubic Plus", "orca-anycubic-kobra-plus-0123456789", "Anycubic Kobra Plus",
+			"layer_change_gcode", ";AFTER_LAYER_CHANGE\n;[layer_z]", ";AFTER_LAYER_CHANGE\n;[layer_z]\nG92 E0\n"},
+		{"Anycubic Vyper", "orca-anycubic-vyper-0123456789", "Anycubic Vyper",
+			"layer_change_gcode", ";AFTER_LAYER_CHANGE\n;[layer_z]", ";AFTER_LAYER_CHANGE\n;[layer_z]\nG92 E0\n"},
+		{"Dremel 3D40", "orca-dremel-3d40-0123456789", "Dremel 3D40",
+			"before_layer_change_gcode", ";BEFORE_LAYER_CHANGE\n;[layer_z]\nG92 E0\n", ";BEFORE_LAYER_CHANGE\n;[layer_z]\n"},
+		{"Dremel 3D45", "orca-dremel-3d45-0123456789", "Dremel 3D45",
+			"before_layer_change_gcode", ";BEFORE_LAYER_CHANGE\n;[layer_z]\nG92 E0\n", ";BEFORE_LAYER_CHANGE\n;[layer_z]\n"},
+		{"FLSun QQ-S Pro", "orca-flsun-qq-s-pro-0123456789", "FLSun QQ-S Pro",
+			"machine_start_gcode", "G28\nM117 Print [output_filename_format]\nM104 S140", "G28\nM117 Print started\nM104 S140"},
+		{"RH3D E3NG", "orca-rh3d-e3ng-0123456789", "E3NG v1.2S",
+			"wipe", "1", "0"},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			b := syntheticOrcaBundle(1)
+			b.Target, b.Slicer, b.Profile.ModelID = tc.id, "OrcaSlicer", tc.model
+			b.Profile.ProjectSettings[tc.key] = tc.original
+			b.Profile.ProjectSettings["use_firmware_retraction"] = "1"
+			b.Profile.ProjectSettings["machine_end_gcode"] = "M104 S0 ; vendor end"
+			nozzles := append([]any(nil), b.Profile.ProjectSettings["nozzle_diameter"].([]any)...)
+			if err := normalizeObservedOrcaLegacyProjectCompatibility(b); err != nil {
+				t.Fatal(err)
+			}
+			if got := b.Profile.ProjectSettings[tc.key]; got != tc.expected {
+				t.Fatalf("%s: %s=%q, want %q", tc.name, tc.key, got, tc.expected)
+			}
+			if err := normalizeObservedOrcaLegacyProjectCompatibility(b); err != nil {
+				t.Fatal(err)
+			}
+			if got := b.Profile.ProjectSettings[tc.key]; got != tc.expected {
+				t.Fatalf("repeated normalization changed the project: %v", got)
+			}
+			if !reflect.DeepEqual(b.Profile.ProjectSettings["nozzle_diameter"], nozzles) || b.PhysicalTools != 1 ||
+				b.Profile.ProjectSettings["machine_end_gcode"] != "M104 S0 ; vendor end" {
+				t.Fatal("physical nozzle, tool count or manufacturer end script modified")
+			}
+		})
+	}
+}
+
+func TestObservedLegacyOrcaUnrelatedFamiliesStayUnchanged(t *testing.T) {
+	for _, tc := range []struct {
+		slicer, model, target string
+		tools                 int
+	}{
+		{"Snapmaker Orca", "Anycubic Kobra Max", "orca-anycubic-sample-0123456789", 1},
+		{"Creality Print", "Dremel 3D40", "orca-dremel-sample-0123456789", 1},
+		{"OrcaSlicer", "Anycubic Kobra Max", "orca-dremel-sample-0123456789", 1},
+		{"OrcaSlicer", "Other Anycubic", "orca-anycubic-sample-0123456789", 1},
+		{"OrcaSlicer", "FLSun QQ-S Pro", "orca-flsun-sample-0123456789", 2},
+		{"OrcaSlicer", "E3NG v1.2S", "orca-rh3d-sample-0123456789", 2},
+	} {
+		b := syntheticOrcaBundle(tc.tools)
+		b.Slicer, b.Profile.ModelID, b.Target = tc.slicer, tc.model, tc.target
+		b.Profile.ProjectSettings["layer_change_gcode"] = ";AFTER_LAYER_CHANGE\n;[layer_z]"
+		b.Profile.ProjectSettings["before_layer_change_gcode"] = ";BEFORE_LAYER_CHANGE\n;[layer_z]\nG92 E0\n"
+		b.Profile.ProjectSettings["machine_start_gcode"] = "M117 Print [output_filename_format]"
+		b.Profile.ProjectSettings["wipe"] = "1"
+		b.Profile.ProjectSettings["use_firmware_retraction"] = "1"
+		prior, err := json.Marshal(b.Profile.ProjectSettings)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := normalizeObservedOrcaLegacyProjectCompatibility(b); err != nil {
+			t.Fatal(err)
+		}
+		after, err := json.Marshal(b.Profile.ProjectSettings)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if string(after) != string(prior) {
+			t.Fatalf("unrelated %s / %s / %s was modified", tc.slicer, tc.model, tc.target)
+		}
+	}
+}
+
+func TestObservedLegacyOrcaCustomScriptsAreNotRewritten(t *testing.T) {
+	for _, tc := range []struct{ model, target, key, input string }{
+		{"Anycubic Kobra Plus", "orca-anycubic-plus-0123456789", "layer_change_gcode", "G28 ; custom layer script"},
+		{"Dremel 3D45", "orca-dremel-3d45-0123456789", "before_layer_change_gcode", "G92 E0\nM117 custom"},
+		{"FLSun QQ-S Pro", "orca-flsun-qq-s-0123456789", "machine_start_gcode", "G28\nM117 custom start"},
+	} {
+		b := syntheticOrcaBundle(1)
+		b.Slicer, b.Profile.ModelID, b.Target = "OrcaSlicer", tc.model, tc.target
+		b.Profile.ProjectSettings[tc.key] = tc.input
+		if err := normalizeObservedOrcaLegacyProjectCompatibility(b); err != nil {
+			t.Fatal(err)
+		}
+		if got := b.Profile.ProjectSettings[tc.key]; got != tc.input {
+			t.Fatalf("modified unknown manufacturer script for %s: %v", tc.model, got)
+		}
+	}
+}
+
+func TestObservedLegacyRH3DFailsClosedOnUnknownWipe(t *testing.T) {
+	for _, raw := range []any{[]any{"1"}, "maybe", true, nil} {
+		b := syntheticOrcaBundle(1)
+		b.Slicer, b.Profile.ModelID, b.Target = "OrcaSlicer", "E3NG v1.2S", "orca-rh3d-e3ng-0123456789"
+		b.Profile.ProjectSettings["use_firmware_retraction"] = "1"
+		b.Profile.ProjectSettings["wipe"] = raw
+		if err := normalizeObservedOrcaLegacyProjectCompatibility(b); err == nil {
+			t.Fatalf("ambiguous RH3D wipe %v accepted", raw)
+		}
+		if !reflect.DeepEqual(b.Profile.ProjectSettings["wipe"], raw) {
+			t.Fatalf("ambiguous wipe %v changed", raw)
+		}
+	}
+}

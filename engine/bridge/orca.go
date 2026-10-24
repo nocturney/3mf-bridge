@@ -131,6 +131,9 @@ func ConvertWithOrcaBundle(source, destination, profileFile string) (map[string]
 	if err = normalizeObservedOrcaMultitoolSupportFlags(bundle, len(insp.Filaments)); err != nil {
 		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
 	}
+	if err = normalizeObservedOrcaLegacyProjectCompatibility(bundle); err != nil {
+		return nil, fail("TARGET_PROFILE_INVALID", "target %s: %v", bundle.Target, err)
+	}
 	result, err := publishConversion(conversionPlan{
 		source: src, destination: dst, target: bundle.Target,
 		expectedModel: bundle.Profile.ModelID,
@@ -306,5 +309,69 @@ func normalizeObservedOrcaMultitoolSupportFlags(bundle *orcaBundle, sourceSlots 
 		flags[i] = "0" // The converter's existing implicit default, made per-slot.
 	}
 	bundle.Profile.ProjectSettings["filament_is_support"] = flags
+	return nil
+}
+
+// normalizeObservedOrcaLegacyProjectCompatibility addresses only four locally
+// reproduced OrcaSlicer 2.4.2 CLI failures. It modifies the in-memory project
+// assembled for conversion, NEVER installed printer presets or user settings.
+// The script changes are guarded by exact vendor/model and observed script text:
+// unknown/new manufacturer variants are left untouched, not guessed.
+//
+// No motion, homing, heater, or physical nozzle setting is modified.
+//   - Three Anycubic models require resetting E after each layer when Orca emits
+//     relative extrusion. Their installed script has only commented instructions.
+//   - Dremel's legacy G92 E0 before each layer conflicts with absolute E mode.
+//   - FLSun's M117 LCD message contains an unsupported filename placeholder.
+//   - RH3D's firmware retraction is incompatible with simultaneous wipe.
+func normalizeObservedOrcaLegacyProjectCompatibility(bundle *orcaBundle) error {
+	if bundle.Slicer != "OrcaSlicer" || bundle.PhysicalTools != 1 {
+		return nil
+	}
+	cfg := bundle.Profile.ProjectSettings
+	model := bundle.Profile.ModelID
+	switch {
+	case strings.HasPrefix(bundle.Target, "orca-anycubic-") &&
+		(model == "Anycubic Kobra Max" || model == "Anycubic Kobra Plus" || model == "Anycubic Vyper"):
+		script, ok := cfg["layer_change_gcode"].(string)
+		if !ok {
+			return fmt.Errorf("installed Anycubic layer change script is missing")
+		}
+		reset := regexp.MustCompile(`(?m)^[ \t]*G92[ \t]+E0(?:\.0+)?(?:[ \t]*;[^\n]*)?[ \t]*$`)
+		if reset.MatchString(script) {
+			return nil // Installed profile already has an active reset; never duplicate.
+		}
+		if strings.TrimSpace(script) != ";AFTER_LAYER_CHANGE\n;[layer_z]" {
+			return nil // Unknown vendor customization: preserve it unchanged.
+		}
+		cfg["layer_change_gcode"] = strings.TrimRight(script, "\r\n") + "\nG92 E0\n"
+	case strings.HasPrefix(bundle.Target, "orca-dremel-") &&
+		(model == "Dremel 3D40" || model == "Dremel 3D45"):
+		const old = ";BEFORE_LAYER_CHANGE\n;[layer_z]\nG92 E0\n"
+		if script, ok := cfg["before_layer_change_gcode"].(string); ok && script == old {
+			cfg["before_layer_change_gcode"] = ";BEFORE_LAYER_CHANGE\n;[layer_z]\n"
+		}
+	case strings.HasPrefix(bundle.Target, "orca-flsun-") && model == "FLSun QQ-S Pro":
+		script, ok := cfg["machine_start_gcode"].(string)
+		if !ok {
+			return fmt.Errorf("installed FLSun start script is missing")
+		}
+		const legacyLine = "M117 Print [output_filename_format]"
+		if strings.Count(script, legacyLine) == 1 {
+			cfg["machine_start_gcode"] = strings.Replace(script, legacyLine, "M117 Print started", 1)
+		} // Otherwise preserve the installed script without guessing replacements.
+	case strings.HasPrefix(bundle.Target, "orca-rh3d-") && model == "E3NG v1.2S":
+		if cfg["use_firmware_retraction"] != "1" {
+			return nil
+		}
+		switch cfg["wipe"] {
+		case "1":
+			cfg["wipe"] = "0" // Native Orca rejects firmware retraction plus wipe.
+		case "0":
+			return nil
+		default:
+			return fmt.Errorf("RH3D firmware retraction has unknown wipe setting")
+		}
+	}
 	return nil
 }
