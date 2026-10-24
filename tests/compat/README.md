@@ -52,6 +52,10 @@ Skipped checks are reported as `skip`, never `pass`.
   geometry. A raw-paint match must not be described as validation of physical
   multicolor spool/tool changes. Opaque eight-digit Bambu colors `#RRGGBBFF`
   and six-digit `#RRGGBB` compare equal for QA only; nonopaque alpha does not.
+- **Script provenance.** Identical active G-code scripts for two *different*
+  printer models fail. If the source and an explicitly named target are the
+  same model, identical scripts are `skip` rather than a false copy error or
+  an unearned pass: only the installed OEM preset could prove their origin.
 - **Prusa is unverified.** `Slic3r_PE*.config` names, the `mmu_segmentation`
   attribute and the INI-style filament lists were written from memory. They
   have not been checked against a real PrusaSlicer export. Prusa checks should

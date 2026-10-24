@@ -518,3 +518,35 @@ class CliTests(Base):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SameVendorScriptOriginTests(Base):
+    """Identical OEM scripts cannot prove copy-versus-legitimate-target origin."""
+
+    def target_with_source_script(self, target_model):
+        src = self.source()
+        out = self.clean(src)
+        source_settings = json.loads(src["Metadata/project_settings.config"])
+        target_settings = json.loads(out["Metadata/project_settings.config"])
+        assert source_settings["machine_start_gcode"]
+        target_settings["printer_model"] = target_model
+        target_settings["machine_start_gcode"] = source_settings["machine_start_gcode"]
+        out["Metadata/project_settings.config"] = json.dumps(target_settings).encode()
+        return src, out
+
+    def test_identical_explicit_same_model_scripts_are_unverified_not_failed(self):
+        src, out = self.target_with_source_script("Bambu Lab A1")
+        report = self.pair(src, out, expect_model="Bambu Lab A1")
+        self.assertEqual(statuses(report)["machine_scripts_not_carried"], "skip")
+        self.assertIn("origin cannot be proven", self.detail(report, "machine_scripts_not_carried"))
+        self.assertTrue(report["ok"])
+
+    def test_same_model_without_explicit_proof_still_fails(self):
+        src, out = self.target_with_source_script("Bambu Lab A1")
+        report = self.pair(src, out)
+        self.assertEqual(statuses(report)["machine_scripts_not_carried"], "fail")
+
+    def test_active_source_script_different_model_is_never_exempt(self):
+        src, out = self.target_with_source_script("Anycubic Kobra 3")
+        report = self.pair(src, out, expect_model="Anycubic Kobra 3")
+        self.assertEqual(statuses(report)["machine_scripts_not_carried"], "fail")

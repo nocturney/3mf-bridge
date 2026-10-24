@@ -613,9 +613,22 @@ def compare(source, output, family="auto", expect_model=None,
                              if k.endswith("_gcode")
                              and k != "emit_machine_limits_to_gcode"
                              and _active_script_commands(v) and out_cfg.get(k) == v)
-            add("machine_scripts_not_carried", "fail" if carried else "pass",
-                f"source machine scripts copied into output: {carried}" if carried
-                else "no source printer scripts copied; target profile owns them")
+            source_model = src_cfg.get("printer_model")
+            output_model = out_cfg.get("printer_model")
+            same_explicit_vendor = (bool(carried) and bool(expect_model) and
+                                    source_model == output_model == expect_model)
+            # A source and a known target of the *same* manufacturer model may
+            # legitimately have identical installed firmware scripts. Without
+            # reading the target's installed preset, origin is not provable.
+            # Never call that a pass; only skip. Cross-model active scripts
+            # remain a hard failure.
+            status = "skip" if same_explicit_vendor else "fail" if carried else "pass"
+            reason = (f"source and explicitly verified target model {expect_model!r} "
+                      f"share active scripts {carried}; script origin cannot be proven"
+                      if same_explicit_vendor else
+                      f"source machine scripts copied into output: {carried}" if carried else
+                      "no source active printer scripts copied")
+            add("machine_scripts_not_carried", status, reason)
             keys = [k for k in PROCESS_KEYS if k in src_cfg]
             diffs = [k for k in keys if k not in out_cfg or _scalar(out_cfg[k]) != _scalar(src_cfg[k])]
             if not keys:
