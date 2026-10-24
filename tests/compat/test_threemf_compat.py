@@ -516,10 +516,6 @@ class CliTests(Base):
         self.assertIn('"ok": false', text)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class SameVendorScriptOriginTests(Base):
     """Identical OEM scripts cannot prove copy-versus-legitimate-target origin."""
 
@@ -550,3 +546,7 @@ class SameVendorScriptOriginTests(Base):
         src, out = self.target_with_source_script("Anycubic Kobra 3")
         report = self.pair(src, out, expect_model="Anycubic Kobra 3")
         self.assertEqual(statuses(report)["machine_scripts_not_carried"], "fail")
+
+
+if __name__ == "__main__":
+    unittest.main()
