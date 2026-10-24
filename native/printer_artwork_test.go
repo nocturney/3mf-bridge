@@ -405,7 +405,8 @@ func TestInstalledCreatorFiveProConversionProducesModelNamedFile(t *testing.T) {
 	if !result.OK {
 		t.Fatalf("installed Creator 5 Pro conversion did not succeed: %s %s", result.Code, result.Error)
 	}
-	if result.Prefix != "Creator5Pro" || result.OutputName != "Creator5Pro-sample.3mf" ||
+	expectedPrefix := presets.InstalledOrcaOutputPrefix(target, "Flashforge Creator 5 Pro", "Flashforge", "0.4")
+	if result.Prefix != expectedPrefix || result.OutputName != expectedPrefix+"-sample.3mf" ||
 		filepath.Base(result.OutputPath) != result.OutputName {
 		t.Fatalf("target-specific naming was not applied: %+v", result)
 	}

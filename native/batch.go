@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"sort"
 	"strings"
@@ -60,32 +61,86 @@ type BatchProgress struct {
 	Completed bool   `json:"completed"`
 }
 
-// folderOutputPrefixes recognizes outputs from the four original adapters,
-// the generic Prusa export and installed model-specific Orca targets. This is
-// used only for folder imports: a user can still manually reselect any .3mf.
-func folderOutputPrefixes(targets []presets.OrcaTarget) []string {
-	seen := map[string]bool{}
-	prefixes := []string{}
-	add := func(prefix string) {
-		if prefix == "" {
-			return
+// An installed-target output has a stable model/nozzle/identity marker.
+// Never infer that an ordinary user file such as "H2D-test.3mf" or
+// "P1S-bracket.3mf" is an output simply because a printer with that name
+// happens to be installed. The distinct SB marker also keeps importing
+// folders independent of expensive installed-printer rescans.
+var generatedInstalledFilename = regexp.MustCompile(`(?i)^[A-Za-z0-9]{1,40}-(?:0\.2|0\.25|0\.4|0\.6|0\.8|Unknown)-SB[0-9a-f]{10}-(.+\.3mf)$`)
+
+var previousOutputPrefixes = []string{
+	"U1-", "C5-", "CC2-", "QIDI-", "ORCA-", "PRUSA-",
+	"Creator5-", "CentauriCarbon2-", "XPlus5-",
+}
+
+// hasSourceSibling recognizes generated filenames only when their original
+// source project is still present in the same folder as a regular file.
+// This conservative rule prevents dropping user-authored model-named sources.
+// A moved output may be re-imported: users can always remove it from the queue.
+func hasSourceSibling(output, sourceName string) bool {
+	if sourceName == "" || sourceName == filepath.Base(output) ||
+		!strings.EqualFold(filepath.Ext(sourceName), ".3mf") {
+		return false
+	}
+	dir := filepath.Dir(output)
+	regular := func(name string) bool {
+		if name == "" || name == filepath.Base(output) {
+			return false
 		}
-		marker := strings.ToUpper(prefix) + "-"
-		if !seen[marker] {
-			seen[marker] = true
-			prefixes = append(prefixes, marker)
+		st, err := os.Lstat(filepath.Join(dir, name))
+		return err == nil && st.Mode().IsRegular()
+	}
+	if regular(sourceName) {
+		return true
+	}
+	// A second output uses Prefix-original-2.3mf. Check for original.3mf
+	// as well, but never infer an output without a matching source sibling.
+	stem := strings.TrimSuffix(sourceName, filepath.Ext(sourceName))
+	if pos := strings.LastIndexByte(stem, '-'); pos > 0 {
+		number := stem[pos+1:]
+		if len(number) <= 3 && len(number) >= 1 {
+			valid := true
+			for _, char := range number {
+				if char < '0' || char > '9' {
+					valid = false
+					break
+				}
+			}
+			if valid {
+				return regular(stem[:pos] + filepath.Ext(sourceName))
+			}
 		}
 	}
-	for _, old := range []string{"U1", "C5", "CC2", "QIDI", "ORCA", "PRUSA"} {
-		add(old) // Also exclude files from pre-dev.23 SliceBridge releases.
+	return false
+}
+
+func isGeneratedSiblingOutput(path string) bool {
+	name := filepath.Base(path)
+	if !strings.EqualFold(filepath.Ext(name), ".3mf") {
+		return false
 	}
-	for _, current := range outputs {
-		add(current)
+	if m := generatedInstalledFilename.FindStringSubmatch(name); m != nil &&
+		hasSourceSibling(path, m[1]) {
+		return true
 	}
-	for _, target := range targets {
-		add(presets.ModelFilenamePrefix(target.Model, target.Vendor))
+	upper := strings.ToUpper(name)
+	// These two legacy prefixes identify SliceBridge export *formats*, not
+	// physical printer models. Keep the pre-existing folder-import behavior
+	// for generated generic Prusa and old Orca projects, even when the old
+	// source file has been moved out of the directory.
+	if strings.HasPrefix(upper, "PRUSA-") || strings.HasPrefix(upper, "ORCA-") {
+		return true
 	}
-	return prefixes
+	for _, legacy := range previousOutputPrefixes {
+		if !strings.HasPrefix(upper, strings.ToUpper(legacy)) {
+			continue
+		}
+		remainder := name[len(legacy):]
+		if hasSourceSibling(path, remainder) {
+			return true
+		}
+	}
+	return false
 }
 
 // CollectInputs expands files and folders from the native picker or OS drop.
@@ -100,18 +155,9 @@ func collectInputs(paths []string) ([]FileInfo, error) {
 	}
 	collected := []FileInfo{}
 	seen := map[string]bool{}
-	var generatedPrefixes []string // Lazily read installed targets only for folder imports.
 	add := func(name string, fromFolder bool) error {
-		if fromFolder {
-			if generatedPrefixes == nil {
-				generatedPrefixes = folderOutputPrefixes(presets.DiscoverOrca().Targets)
-			}
-			upper := strings.ToUpper(filepath.Base(name))
-			for _, prefix := range generatedPrefixes {
-				if strings.HasPrefix(upper, prefix) {
-					return nil
-				}
-			}
+		if fromFolder && isGeneratedSiblingOutput(name) {
+			return nil
 		}
 		if !strings.EqualFold(filepath.Ext(name), ".3mf") {
 			return nil
@@ -377,7 +423,7 @@ func installedConvert(source, target string) ConvertResult {
 		result.Error = err.Error()
 		return result
 	}
-	result.Prefix = presets.ModelFilenamePrefix(bundle.Profile.ModelID, bundle.Vendor)
+	result.Prefix = presets.InstalledOrcaOutputPrefix(target, bundle.Profile.ModelID, bundle.Vendor, bundle.Nozzle)
 	profileFile, cleanup, err := tempOrcaBundle(bundle)
 	if err != nil {
 		result.Code = "TARGET_PROFILE_INVALID"

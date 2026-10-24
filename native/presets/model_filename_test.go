@@ -81,11 +81,37 @@ func TestArtworkCandidateRootsAcrossInstalledSlicers(t *testing.T) {
 	macs := artworkRootsForOS("darwin", "", "", "", "/Users/qa", nil)
 	macFound := false
 	for _, loc := range macs {
-		if loc.root == "/Applications/BambuStudio.app/Contents/Resources/profiles" {
+		if loc.root == filepath.Join("/Applications", "BambuStudio.app", "Contents", "Resources", "profiles") {
 			macFound = true
 		}
 	}
 	if !macFound {
 		t.Fatal("macOS Bambu Studio local artwork fallback missing")
+	}
+}
+
+func TestInstalledOrcaFilenameDisambiguatesSameModelNozzleAndApp(t *testing.T) {
+	model, vendor := "Flashforge Creator 5 Pro", "Flashforge"
+	id1 := "orca-flashforge-creator-5-pro-0-4-nozzle-0123456789"
+	id2 := "orca-flashforge-creator-5-pro-0-6-nozzle-fedcba9876"
+	id3 := "orca-flashforge-creator-5-pro-0-4-nozzle-abcde98765"
+	one := InstalledOrcaOutputPrefix(id1, model, vendor, "0.4")
+	two := InstalledOrcaOutputPrefix(id2, model, vendor, "0.6")
+	three := InstalledOrcaOutputPrefix(id3, model, vendor, "0.4")
+	if one != "Creator5Pro-0.4-SB0123456789" ||
+		two != "Creator5Pro-0.6-SBfedcba9876" ||
+		three != "Creator5Pro-0.4-SBabcde98765" {
+		t.Fatalf("wrong model-first printer/nozzle/app prefixes: %q %q %q", one, two, three)
+	}
+	if one == two || one == three || two == three {
+		t.Fatal("same printer with different nozzle or slicer must not race for the same output path")
+	}
+	if !strings.HasPrefix(InstalledOrcaOutputPrefix("orca-acme-test-0123456789",
+		"Acme Mini", "Acme", "0.4"), "Mini-") {
+		t.Fatal("installed model should always be at the beginning")
+	}
+	if a, b := InstalledOrcaOutputPrefix("orca-acme-k1-0000000001", "K1", "Acme", "0.4"),
+		InstalledOrcaOutputPrefix("orca-other-k1-0000000002", "K1", "Other", "0.4"); a == b {
+		t.Fatal("different physical printer identities with same model token must not collide")
 	}
 }

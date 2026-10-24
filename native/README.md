@@ -29,11 +29,17 @@ only shipped UI languages. Toggle between them in the top bar; Hebrew is RTL.
 - Detects material or profile mismatches and fails that target instead of
   issuing fake output; checks mesh integrity, removes stale sliced G-code,
   and uses atomic no-overwrite publishing (source project is unchanged).
-- **Output naming:** model-specific results use the normalized physical printer model,
-  not the slicer vendor (`Creator5Pro-project.3mf`, `CR10-project.3mf`,
-  `Neptune4Pro-project.3mf` or `U1-project.3mf`). Repeated outputs use
-  `-2`, `-3`, etc. Source names remain unchanged. The generic unbound
-  PrusaSlicer project has no selected printer and therefore retains `PRUSA-`.
+- **Output naming:** model-specific results begin with the normalized physical
+  printer model, not the slicer vendor. Installed targets add the actual nozzle
+  and an opaque, stable `SB<target-id>` marker (`Creator5Pro-0.4-SB0123456789-project.3mf`,
+  `CR10-0.6-SBfedcba9876-project.3mf`): nozzle and slicer variants no longer
+  race for a generic output name. Built-in results use `U1-project.3mf`,
+  `Creator5-project.3mf`, etc. Repeated same-target outputs use `-2`, `-3`.
+  Source names remain unchanged. Folder import filters generated outputs only
+  when a matching source sibling exists, never from the model prefix alone.
+  Existing generic `PRUSA-` and historical `ORCA-` prefixes remain reserved
+  for folder-import filtering, matching prior release behavior.
+  The generic unbound PrusaSlicer export keeps `PRUSA-`.
 - **Printer pictures:** local installed machine cover PNGs only. The exact
   image in the selected printer profile's slicer is preferred; if missing,
   matching vendor/model images in other allowlisted locally installed Orca
