@@ -263,3 +263,56 @@ test('real five-printer setup: Creator 5 Pro 0.25 is checked, Select all toggles
   assert.equal(sent.length,1);
   assert.deepEqual([...sent[0]].sort(),['cc2','c5','qidi','u1',proId].sort());
 });
+
+test('four-slot single-tool conversion warns outside collapsed details instead of claiming print-ready success',async()=>{
+  const source={path:'C:/qa/four-colours.3mf',name:'four-colours.3mf',
+    folder:'C:/qa',sizeLabel:'1 KB',nozzle:'0.4',objects:1,instances:1,plates:1,
+    filaments:[
+      {type:'PLA',color:'#FF0000'},
+      {type:'PLA',color:'#00FF00'},
+      {type:'PLA',color:'#0000FF'},
+      {type:'PLA',color:'#FFFFFF'},
+    ]};
+  async function perform(mappingRequired){
+    const app=startApp({
+      InstalledOrcaTargets:()=>({targets:[orca],rejected:[]}),
+      GetMyPrinters:()=>({selectedIds:[orcaId],onboardingPending:false}),
+      SelectFiles:()=>[source],
+      ConvertBatch:()=>({
+        filesDone:1,successes:1,failures:0,error:'',
+        files:[{source,failures:[],results:[{
+          target:orcaId,ok:true,outputName:'four-converted.3mf',outputPath:'C:/qa/four-converted.3mf',
+          report:{source_filament_slots:4,target_filament_slots:4,virtual_filament_slots:4,
+            physical_toolheads:1,target_nozzle:'0.4',user_slot_mapping_required:mappingRequired,
+            geometry_triangles:12,removed_slice_cache_entries:0},
+        }]}],
+      }),
+    });
+    await ready(app);
+    app.dom('addFilesBtn').fire('click');await settle();
+    app.dom('convertBtn').fire('click');await settle();
+    return app;
+  }
+  const review=await perform(true);
+  const row=review.dom('resultList').querySelector('.result-row');
+  assert.ok(row,'conversion result must be visible');
+  const pill=row.querySelector('.status-pill');
+  assert.equal(pill.classList.contains('review'),true);
+  assert.equal(pill.textContent,'Review mapping');
+  assert.equal(pill.classList.contains('good'),false,
+    'cannot claim ordinary green success when physical tool mapping needs review');
+  const warning=row.querySelector('.material-mapping-warning');
+  assert.ok(warning,'manual material mapping caution must be visible on result card');
+  assert.equal(warning.closest('details'),null,'warning cannot live in collapsed details');
+  assert.equal(warning.hidden,false);
+  assert.match(warning.textContent,/All 4 source color\/material/);
+  const detail=row.querySelector('.report-details');
+  assert.ok(detail,'diagnostic details remain accessible');
+  assert.equal(detail.open,false,'even closed diagnostic panel must not hide warning');
+
+  const ordinary=await perform(false);
+  const ordinaryRow=ordinary.dom('resultList').querySelector('.result-row');
+  assert.equal(ordinaryRow.querySelector('.status-pill').classList.contains('good'),true);
+  assert.equal(ordinaryRow.querySelector('.material-mapping-warning'),null,
+    'ordinary one-to-one conversion should not get a false material warning');
+});
