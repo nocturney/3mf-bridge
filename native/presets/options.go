@@ -255,6 +255,37 @@ func ArtworkRoots() []string {
 	return result
 }
 
+// PrusaThumbnailRoots returns only known installed PrusaSlicer system profile
+// directories. These are for model pictures, never for foreign conversion
+// machine/process/filament settings. No BRIDGE_SLICER_PROFILE_* override enters
+// this list, and no arbitrary user path is accepted.
+func PrusaThumbnailRoots() []string {
+	pf := os.Getenv("ProgramFiles")
+	if runtime.GOOS == "windows" && pf == "" {
+		pf = `C:\Program Files`
+	}
+	home, _ := os.UserHomeDir()
+	locations := artworkRootsForOS(runtime.GOOS, pf, os.Getenv("ProgramFiles(x86)"),
+		os.Getenv("LOCALAPPDATA"), home, nil)
+	roots := []string{}
+	seen := make(map[string]bool)
+	for _, loc := range locations {
+		if loc.id != "prusa-slicer" {
+			continue
+		}
+		absolute, err := filepath.Abs(loc.root)
+		if err != nil || seen[absolute] {
+			continue
+		}
+		info, err := os.Stat(absolute)
+		if err == nil && info.IsDir() {
+			seen[absolute] = true
+			roots = append(roots, absolute)
+		}
+	}
+	return roots
+}
+
 // installedOrcaFamilyLocations reads the live environment for orcaFamilyLocations.
 // The per-target BRIDGE_SLICER_PROFILE_* overrides are kept as explicit preferences.
 func installedOrcaFamilyLocations() []slicerLocation {

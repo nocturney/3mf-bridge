@@ -337,6 +337,55 @@ test('a refused or failed artwork request leaves an honest unavailable card and 
   }
 });
 
+test('unselected Anycubic and Creality models receive exact PrusaSlicer thumbnail replies',async()=>{
+  const asked=[];
+  const expected={
+    'anycubic-anycubic-i3-mega':installedCover('data:image/png;base64,QU5Z'),
+    'creality-creality-cr-10-s':installedCover('data:image/png;base64,Q1JF'),
+    'anycubic-anycubic-kobra-3':installedCover('data:image/png;base64,S09C'),
+  };
+  // i3 Mega / CR-10 S lack Orca hints; Kobra 3 has one but the raw
+  // catalogue repeats its vendor prefix. Both index pathways must resolve.
+  for(const id of Object.keys(expected)){
+    const m=catalog.models.find(model=>model.id===id);
+    assert.ok(m,id);
+    assert.equal(m.localCoverCandidates.length>0,id==='anycubic-anycubic-kobra-3');
+  }
+  let observer=null;
+  class ViewportObserver {
+    constructor(callback){this.callback=callback;this.seen=new Set();observer=this;}
+    observe(slot){this.seen.add(slot);}
+    unobserve(slot){this.seen.delete(slot);}
+    disconnect(){this.seen.clear();}
+    makeVisible(slot){this.callback([{target:slot,isIntersecting:true}]);}
+  }
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtwork:(id)=>{asked.push(id);return expected[id]||{found:false};},
+  },{IntersectionObserver:ViewportObserver});
+  h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  for(const [query,model,id] of [
+    ['Anycubic i3 Mega','i3 Mega','anycubic-anycubic-i3-mega'],
+    ['Creality CR-10 S','CR-10 S','creality-creality-cr-10-s'],
+    ['Anycubic Kobra 3','Kobra 3','anycubic-anycubic-kobra-3'],
+  ]){
+    h.dom('printerCatalogSearch').value=query;
+    h.dom('printerCatalogSearch').fire('input');
+    const card=cardFor(h,model);
+    assert.ok(card,query+' was not rendered');
+    const avatar=avatarOf(h,model);
+    assert.ok(observer.seen.has(avatar),query+' was not observed in the catalogue');
+    observer.makeVisible(avatar);
+    await flush();
+    const photo=avatar.querySelector('img.printer-cover-photo');
+    assert.ok(photo,query+' thumbnail was never painted');
+    assert.equal(photo.src,expected[id].dataUri);
+    assert.ok(asked.includes(id),'exact canonical catalogue ID was not looked up: '+id);
+  }
+});
+
 // My Printers is a physical inventory. A conversion engine's ranking and
 // readiness never sort manufacturers, variants or the default card checkbox.
 const installedTarget=(vendor,model,slicer,nozzle,hex,ready)=>({

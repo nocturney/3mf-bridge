@@ -88,8 +88,9 @@ const node=(tag,cls,text)=>{
 };
 const api=()=>window.go?.main?.App;
 
-// Artwork is resolved per physical model, never per nozzle. Exact catalogue
-// covers are checked first (still sourced from installed slicers, without scans).
+// Artwork is resolved per physical model, never per nozzle. Catalogue IDs
+// are always tried: some models have no Orca cover candidates but DO have
+// exact PrusaSlicer vendor thumbnails resolved by the native backend.
 // Only misses resolve an installed target once per slicer, not once per nozzle.
 // Missing images show "Image unavailable"; nothing is bundled or downloaded.
 const artCache=new Map(),artQueued=new Set(),artQueue=[],artGroups=new Map();
@@ -195,8 +196,15 @@ function observeArtwork(slot,group){
 
 function buildCatalogIndex(){
   catalogIndex=new Map();
-  for(const model of catalog?.models??[]){
-    if(picker.isHidden(model)||!Array.isArray(model.localCoverCandidates)||!model.localCoverCandidates.length)continue;
+  // Group cards use picker.catalogItems(), which removes a repeated vendor
+  // prefix from names such as "Anycubic i3 Mega" and "Creality CR-10 S".
+  // Index those SAME canonical items, not raw catalogue rows, otherwise
+  // their physical keys never agree and the picture RPC is never called.
+  // Include models without Orca cover hints: the backend can resolve their
+  // exact PrusaSlicer vendor thumbnail instead.
+  const canonical=picker.catalogItems(catalog?.models??[],[],[],false,[]);
+  for(const model of canonical){
+    if(model.id==='prusa-project'||picker.isHidden(model))continue;
     for(const key of picker.lookupKeys(model)){
       if(!catalogIndex.has(key))catalogIndex.set(key,[]);
       catalogIndex.get(key).push(model.id);
