@@ -386,6 +386,66 @@ test('unselected Anycubic and Creality models receive exact PrusaSlicer thumbnai
   }
 });
 
+test('successive catalogue searches load artwork despite a silent IntersectionObserver',async()=>{
+  class SilentIntersectionObserver {
+    observe(){}
+    unobserve(){}
+    disconnect(){}
+  }
+  const requests=[];
+  const src1='data:image/png;base64,QU5Z';
+  const src2='data:image/png;base64,Q1JF';
+  const pictures={
+    'anycubic-anycubic-i3-mega':installedCover(src1),
+    'creality-creality-cr-10-s':installedCover(src2),
+  };
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtwork:(id)=>{requests.push(id);return pictures[id]||{found:false};},
+  },{IntersectionObserver:SilentIntersectionObserver});
+  h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  // The observer never fires; the initial broad list must remain lazy.
+  assert.deepEqual(requests,[]);
+  for(const [search,model,id,source] of [
+    ['Anycubic i3 Mega','i3 Mega','anycubic-anycubic-i3-mega',src1],
+    ['Creality CR-10 S','CR-10 S','creality-creality-cr-10-s',src2],
+  ]){
+    h.dom('printerCatalogSearch').value=search;
+    h.dom('printerCatalogSearch').fire('input');
+    await flush();
+    assert.ok(requests.includes(id),'missing request after filter change: '+id);
+    const img=avatarOf(h,model)?.querySelector('img.printer-cover-photo');
+    assert.equal(img?.src,source,'exact visible image was not loaded after filter change');
+  }
+});
+
+test('Creality manufacturer filter triggers bounded exact local cover requests',async()=>{
+  class SilentIntersectionObserver {
+    observe(){}
+    unobserve(){}
+    disconnect(){}
+  }
+  const asked=[];
+  const h=loadWithGlobals({
+    GetMyPrinters:()=>({selectedIds:[],onboardingPending:false}),
+    PrinterArtwork:(id)=>{asked.push(id);return {found:false};},
+  },{IntersectionObserver:SilentIntersectionObserver});
+  h.api.setSupportedTargets({available:[],installedTargets:[],prusaAvailable:false});
+  await h.api.init();
+  h.dom('myPrintersBtn').fire('click');
+  assert.deepEqual(asked,[]);
+  h.dom('printerManufacturerFilter').value='Creality';
+  h.dom('printerManufacturerFilter').fire('change');
+  await flush();
+  const crealityIds=catalog.models.filter(model=>model.manufacturer==='Creality').map(model=>model.id);
+  assert.equal(crealityIds.length,74);
+  assert.ok(asked.includes('creality-creality-cr-10-s'),'missing a known local Prusa thumbnail candidate');
+  assert.ok(asked.length>=65,'Creality filter failed to request most visible manufacturer models');
+  assert.ok(asked.every(id=>crealityIds.includes(id)),'a filtered maker requested another manufacturer');
+});
+
 // My Printers is a physical inventory. A conversion engine's ranking and
 // readiness never sort manufacturers, variants or the default card checkbox.
 const installedTarget=(vendor,model,slicer,nozzle,hex,ready)=>({
