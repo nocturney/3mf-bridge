@@ -204,24 +204,51 @@ func normalizeFlashforgeCreator5ProSupportFlags(bundle *orcaBundle, sourceSlots 
 		bundle.Profile.ModelID != "Flashforge Creator 5 Pro" || bundle.PhysicalTools != 4 {
 		return nil
 	}
-	count := max(bundle.PhysicalTools, sourceSlots)
-	if raw, exists := bundle.Profile.ProjectSettings["filament_is_support"]; exists {
+	return alignFlashStudioFourToolSupportFlags(bundle.Profile.ProjectSettings,
+		max(bundle.PhysicalTools, sourceSlots), bundle.Profile.ModelID)
+}
+
+// Flash Studio Desktop's real Windows CLI also rejects Creator 5 (non-Pro)
+// 3MF output without four filament_is_support flags. Its installed four-tool
+// machine preset has no explicit flag: the slicer defaults to one zero while
+// the project palette expands to four. Apply only to this exact validated
+// manufacturer model and app. Nozzle/tool assignments and source stay intact.
+func normalizeFlashStudioCreator5SupportFlags(bundle *targetBundle, sourceSlots int) error {
+	if bundle.Target != "c5" || bundle.Profile.ModelID != "Flashforge Creator 5" ||
+		(bundle.Slicer != "Flash Studio" && bundle.Slicer != "Flash Studio Desktop") {
+		return nil
+	}
+	// This built-in alias describes four physical toolheads. Never fabricate
+	// four flags for a malformed one- or two-nozzle installed machine.
+	nozzles, ok := bundle.Profile.ProjectSettings["nozzle_diameter"].([]any)
+	if !ok || len(nozzles) != 4 {
+		return fmt.Errorf("Flashforge Creator 5 requires exactly four physical nozzle entries")
+	}
+	return alignFlashStudioFourToolSupportFlags(bundle.Profile.ProjectSettings,
+		max(4, sourceSlots), bundle.Profile.ModelID)
+}
+
+// Preserve complete manufacturer flags verbatim. Expand only an absent
+// setting or the already-known zero default; never guess or discard a partial
+// or conflicting array. This changes only a temporary in-memory project.
+func alignFlashStudioFourToolSupportFlags(settings map[string]any, count int, model string) error {
+	if raw, exists := settings["filament_is_support"]; exists {
 		flags, ok := raw.([]any)
 		if !ok {
-			return fmt.Errorf("Flashforge Creator 5 Pro support flag type is invalid")
+			return fmt.Errorf("%s support flag type is invalid", model)
 		}
 		if len(flags) == count {
-			return nil // Preserve manufacturer-provided per-slot flags verbatim.
+			return nil
 		}
 		if len(flags) != 1 || fmt.Sprint(flags[0]) != "0" {
-			return fmt.Errorf("Flashforge Creator 5 Pro support flags mismatch %d material slots", count)
+			return fmt.Errorf("%s support flags mismatch %d material slots", model, count)
 		}
 	}
 	flags := make([]any, count)
 	for i := range flags {
 		flags[i] = "0"
 	}
-	bundle.Profile.ProjectSettings["filament_is_support"] = flags
+	settings["filament_is_support"] = flags
 	return nil
 }
 

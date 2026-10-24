@@ -153,6 +153,14 @@ func buildPlan(source, destination string, resolve profileResolver) (conversionP
 		if err = bindNativeFilamentSettings(resolved.bundle, insp.Filaments); err != nil {
 			return plan, fail("MATERIAL_REVIEW_REQUIRED", "target %s: %v", resolved.ID, err)
 		}
+		// Flash Studio's verified four-tool Creator 5 output needs the same
+		// support-flag alignment already applied to its installed Pro variant.
+		// Scope only to the exact installed C5 vendor target, not other slicers.
+		if resolved.Kind == ProfileInstalledVendor && resolved.ID == "c5" {
+			if err = normalizeFlashStudioCreator5SupportFlags(resolved.bundle, len(insp.Filaments)); err != nil {
+				return plan, fail("TARGET_PROFILE_INVALID", "target %s: %v", resolved.ID, err)
+			}
+		}
 		// Keep all installed Orca-fork compatibility guards from published dev.24.
 		// They operate on the resolved in-memory bundle, never a saved vendor file.
 		if resolved.orca != nil {
